@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>决胜高考 | 高三化学备考导航</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ===== Hero区域 ===== */
+        .hero {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 50%, #1e3a5f 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(251,191,36,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(59,130,246,0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border: 1px solid rgba(251,191,36,0.4);
+            border-radius: 20px;
+            color: #fbbf24;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            color: #fbbf24;
+            letter-spacing: 8px;
+            margin-bottom: 16px;
+            position: relative;
+            text-shadow: 0 2px 20px rgba(251,191,36,0.2);
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            color: #94a3b8;
+            font-weight: 400;
+            position: relative;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* ===== 快捷导航 ===== */
+        .quick-nav {
+            background: white;
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .quick-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .quick-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+            background: #f1f5f9;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .quick-btn:hover {
+            border-color: var(--btn-color);
+            background: var(--btn-color)10;
+            transform: translateY(-2px);
+        }
+        .quick-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            background: var(--btn-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ===== 主体内容 ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .unit-section {
+            margin-bottom: 48px;
+        }
+        .unit-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, var(--unit-color)15, var(--unit-color)05);
+            border-left: 4px solid var(--unit-color);
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .unit-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--unit-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .unit-info {
+            flex: 1;
+        }
+        .unit-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--unit-color);
+            margin-bottom: 2px;
+        }
+        .unit-title {
+            font-size: 14px;
+            color: #64748b;
+        }
+        .unit-count {
+            font-size: 13px;
+            color: var(--unit-color);
+            background: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid var(--unit-color)30;
+        }
+
+        /* ===== 章节 ===== */
+        .chapter {
+            margin-bottom: 28px;
+        }
+        .chapter-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #475569;
+            padding: 8px 12px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        /* ===== 卡片网格 ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .topic-card {
+            display: block;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .topic-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #cbd5e1;
+            transition: background 0.2s;
+        }
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08), 0 4px 10px -2px rgba(0,0,0,0.04);
+            border-color: #cbd5e1;
+        }
+        .topic-card:hover::before {
+            background: #fbbf24;
+        }
+        .card-type {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            color: #475569;
+            background: #f1f5f9;
+        }
+        .card-type.tag-hot { background: #fef3c7; color: #b45309; }
+        .card-type.tag-hard { background: #fee2e2; color: #b91c1c; }
+        .card-type.tag-key { background: #dbeafe; color: #1d4ed8; }
+        .card-type.tag-answer { background: #d1fae5; color: #047857; }
+        .card-type.tag-special { background: #e0e7ff; color: #4338ca; }
+        .card-type.tag-extend { background: #fce7f3; color: #be185d; }
+        .card-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            text-align: center;
+            padding: 48px 20px;
+            color: #94a3b8;
+            font-size: 13px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 36px; letter-spacing: 4px; }
+            .hero-stats { gap: 24px; }
+            .stat-num { font-size: 24px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .quick-inner { gap: 8px; }
+            .quick-btn { padding: 8px 12px; font-size: 12px; }
+            .quick-text { display: none; }
+            .unit-header { flex-wrap: wrap; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 50px 16px 40px; }
+            .hero-title { font-size: 28px; }
+            .hero-subtitle { font-size: 15px; }
+        }
+
+        /* ===== 平滑滚动 ===== */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-badge">高三化学一轮复习</div>
+        <h1 class="hero-title">决胜高考</h1>
+        <p class="hero-subtitle">考点导航系统 · 精准突破 · 高效备考</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-num">6</div>
+                <div class="stat-label">大单元</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">16</div>
+                <div class="stat-label">章节</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">99</div>
+                <div class="stat-label">个考点</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">67</div>
+                <div class="stat-label">讲次</div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="quick-nav">
+        <div class="quick-inner">
+            <a href="#大单元一" class="quick-btn" style="--btn-color: #3b82f6"><span class="quick-num">01</span><span class="quick-text">化学基本概念与化学实验基础知识</span></a><a href="#大单元二" class="quick-btn" style="--btn-color: #06b6d4"><span class="quick-num">02</span><span class="quick-text">元素及其化合物</span></a><a href="#大单元三" class="quick-btn" style="--btn-color: #8b5cf6"><span class="quick-num">03</span><span class="quick-text">物质结构与性质 元素周期律</span></a><a href="#大单元四" class="quick-btn" style="--btn-color: #ef4444"><span class="quick-num">04</span><span class="quick-text">化学反应原理</span></a><a href="#大单元五" class="quick-btn" style="--btn-color: #10b981"><span class="quick-num">05</span><span class="quick-text">有机化学基础</span></a><a href="#大单元六" class="quick-btn" style="--btn-color: #f59e0b"><span class="quick-num">06</span><span class="quick-text">化学实验综合应用</span></a>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <section class="unit-section" id="大单元一">
+            <div class="unit-header" style="--unit-color: #3b82f6">
+                <div class="unit-icon">01</div>
+                <div class="unit-info">
+                    <h2 class="unit-name">大单元一</h2>
+                    <p class="unit-title">化学基本概念与化学实验基础知识</p>
+                </div>
+                <div class="unit-count">16个考点</div>
+            </div>
+            <div class="unit-content">
+                
+            <div class="chapter">
+                <div class="chapter-title">第一章 化学物质及其变化</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic01.html" class="topic-card">
+                    <div class="card-type ">第1讲</div>
+                    <div class="card-title">物质的组成、性质和转化</div>
+                </a>
+                <a href="./topics/topic02.html" class="topic-card">
+                    <div class="card-type ">第2讲</div>
+                    <div class="card-title">离子反应 离子方程式</div>
+                </a>
+                <a href="./topics/topic03.html" class="topic-card">
+                    <div class="card-type tag-key">考点突破1</div>
+                    <div class="card-title">六角度判断离子方程式正误</div>
+                </a>
+                <a href="./topics/topic04.html" class="topic-card">
+                    <div class="card-type tag-hard">难点突破1</div>
+                    <div class="card-title">与量有关的离子方程式书写技巧</div>
+                </a>
+                <a href="./topics/topic05.html" class="topic-card">
+                    <div class="card-type ">第3讲</div>
+                    <div class="card-title">氧化还原反应的概念和规律</div>
+                </a>
+                <a href="./topics/topic06.html" class="topic-card">
+                    <div class="card-type ">第4讲</div>
+                    <div class="card-title">氧化还原反应方程式的配平与书写</div>
+                </a>
+                <a href="./topics/topic07.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化1</div>
+                    <div class="card-title">陌生情境下氧化还原方程式的书写</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第二章 化学计量与简单计算</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic08.html" class="topic-card">
+                    <div class="card-type ">第5讲</div>
+                    <div class="card-title">物质的量 气体摩尔体积</div>
+                </a>
+                <a href="./topics/topic09.html" class="topic-card">
+                    <div class="card-type ">第6讲</div>
+                    <div class="card-title">物质的量浓度及溶液配制</div>
+                </a>
+                <a href="./topics/topic10.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化2</div>
+                    <div class="card-title">阿伏加德罗常数(N<sub>A</sub>)应用判断</div>
+                </a>
+                <a href="./topics/topic11.html" class="topic-card">
+                    <div class="card-type tag-hard">难点突破2</div>
+                    <div class="card-title">化学计算的常用方法</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第三章 化学实验基础知识</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic12.html" class="topic-card">
+                    <div class="card-type ">第7讲</div>
+                    <div class="card-title">化学实验基础知识与技能</div>
+                </a>
+                <a href="./topics/topic13.html" class="topic-card">
+                    <div class="card-type tag-answer">答题规范1</div>
+                    <div class="card-title">装置的气密性检验</div>
+                </a>
+                <a href="./topics/topic14.html" class="topic-card">
+                    <div class="card-type ">第8讲</div>
+                    <div class="card-title">仪器的组合与气体体积的测定</div>
+                </a>
+                <a href="./topics/topic15.html" class="topic-card">
+                    <div class="card-type ">第9讲</div>
+                    <div class="card-title">物质的分离与提纯</div>
+                </a>
+                <a href="./topics/topic16.html" class="topic-card">
+                    <div class="card-type tag-answer">答题规范2</div>
+                    <div class="card-title">物质的分离提纯操作规范</div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="unit-section" id="大单元二">
+            <div class="unit-header" style="--unit-color: #06b6d4">
+                <div class="unit-icon">02</div>
+                <div class="unit-info">
+                    <h2 class="unit-name">大单元二</h2>
+                    <p class="unit-title">元素及其化合物</p>
+                </div>
+                <div class="unit-count">18个考点</div>
+            </div>
+            <div class="unit-content">
+                
+            <div class="chapter">
+                <div class="chapter-title">第四章 金属及其化合物</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic17.html" class="topic-card">
+                    <div class="card-type ">第10讲</div>
+                    <div class="card-title">钠及其重要化合物</div>
+                </a>
+                <a href="./topics/topic18.html" class="topic-card">
+                    <div class="card-type ">第11讲</div>
+                    <div class="card-title">碱金属 钠及其重要化合物的转化</div>
+                </a>
+                <a href="./topics/topic19.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化3</div>
+                    <div class="card-title">Na<sub>2</sub>CO<sub>3</sub>、NaHCO<sub>3</sub>含量测定的思维方法</div>
+                </a>
+                <a href="./topics/topic20.html" class="topic-card">
+                    <div class="card-type ">第12讲</div>
+                    <div class="card-title">铁及其重要化合物</div>
+                </a>
+                <a href="./topics/topic21.html" class="topic-card">
+                    <div class="card-type ">第13讲</div>
+                    <div class="card-title">铁及其化合物转化关系</div>
+                </a>
+                <a href="./topics/topic22.html" class="topic-card">
+                    <div class="card-type ">第14讲</div>
+                    <div class="card-title">铝、镁及其化合物</div>
+                </a>
+                <a href="./topics/topic23.html" class="topic-card">
+                    <div class="card-type ">第15讲</div>
+                    <div class="card-title">金属材料与金属冶炼 铜</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第五章 非金属及其化合物</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic24.html" class="topic-card">
+                    <div class="card-type ">第16讲</div>
+                    <div class="card-title">氯及其重要化合物</div>
+                </a>
+                <a href="./topics/topic25.html" class="topic-card">
+                    <div class="card-type ">第17讲</div>
+                    <div class="card-title">卤素 氯及其化合物的转化关系</div>
+                </a>
+                <a href="./topics/topic26.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化4</div>
+                    <div class="card-title">海洋资源的综合利用——氯、溴、碘的提取</div>
+                </a>
+                <a href="./topics/topic27.html" class="topic-card">
+                    <div class="card-type ">第18讲</div>
+                    <div class="card-title">硫及其化合物</div>
+                </a>
+                <a href="./topics/topic28.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化5</div>
+                    <div class="card-title">SO<sub>2</sub>的测定及治理</div>
+                </a>
+                <a href="./topics/topic29.html" class="topic-card">
+                    <div class="card-type ">第19讲</div>
+                    <div class="card-title">硫及其化合物的相互转化</div>
+                </a>
+                <a href="./topics/topic30.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化6</div>
+                    <div class="card-title">陌生含硫化合物的制备</div>
+                </a>
+                <a href="./topics/topic31.html" class="topic-card">
+                    <div class="card-type ">第20讲</div>
+                    <div class="card-title">氮及其氧化物 硝酸</div>
+                </a>
+                <a href="./topics/topic32.html" class="topic-card">
+                    <div class="card-type ">第21讲</div>
+                    <div class="card-title">氨 铵盐</div>
+                </a>
+                <a href="./topics/topic33.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化7</div>
+                    <div class="card-title">氮及其化合物转化关系的应用</div>
+                </a>
+                <a href="./topics/topic34.html" class="topic-card">
+                    <div class="card-type ">第22讲</div>
+                    <div class="card-title">碳、硅 无机非金属材料</div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="unit-section" id="大单元三">
+            <div class="unit-header" style="--unit-color: #8b5cf6">
+                <div class="unit-icon">03</div>
+                <div class="unit-info">
+                    <h2 class="unit-name">大单元三</h2>
+                    <p class="unit-title">物质结构与性质 元素周期律</p>
+                </div>
+                <div class="unit-count">21个考点</div>
+            </div>
+            <div class="unit-content">
+                
+            <div class="chapter">
+                <div class="chapter-title">第六章 化学与可持续发展</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic35.html" class="topic-card">
+                    <div class="card-type ">第23讲</div>
+                    <div class="card-title">化学与STSE 化学与中华文明</div>
+                </a>
+                <a href="./topics/topic36.html" class="topic-card">
+                    <div class="card-type ">第24讲</div>
+                    <div class="card-title">常见气体的实验室制备</div>
+                </a>
+                <a href="./topics/topic37.html" class="topic-card">
+                    <div class="card-type tag-extend">教材延伸1</div>
+                    <div class="card-title">Be、Sn、Pb、Cr、V等金属元素及其化合物</div>
+                </a>
+                <a href="./topics/topic38.html" class="topic-card">
+                    <div class="card-type tag-extend">教材延伸2</div>
+                    <div class="card-title">Sc、Ti、Pd、As、B等非金属元素及其化合物</div>
+                </a>
+                <a href="./topics/topic39.html" class="topic-card">
+                    <div class="card-type tag-special">专项突破2</div>
+                    <div class="card-title">常见无机物的转化关系及应用</div>
+                </a>
+                <a href="./topics/topic40.html" class="topic-card">
+                    <div class="card-type tag-special">专项突破3</div>
+                    <div class="card-title">劳动项目与化学知识</div>
+                </a>
+                <a href="./topics/topic41.html" class="topic-card">
+                    <div class="card-type tag-special">专项突破4</div>
+                    <div class="card-title">陈述Ⅰ和陈述Ⅱ因果关系判断</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第七章 原子结构与性质</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic42.html" class="topic-card">
+                    <div class="card-type ">第25讲</div>
+                    <div class="card-title">原子结构 核外电子排布规律</div>
+                </a>
+                <a href="./topics/topic43.html" class="topic-card">
+                    <div class="card-type ">第26讲</div>
+                    <div class="card-title">元素周期表 元素的性质</div>
+                </a>
+                <a href="./topics/topic44.html" class="topic-card">
+                    <div class="card-type tag-answer">答题规范3</div>
+                    <div class="card-title">电离能大小比较</div>
+                </a>
+                <a href="./topics/topic45.html" class="topic-card">
+                    <div class="card-type tag-special">专项突破5</div>
+                    <div class="card-title">元素综合推断</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第八章 分子结构与性质</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic46.html" class="topic-card">
+                    <div class="card-type ">第27讲</div>
+                    <div class="card-title">化学键及分类</div>
+                </a>
+                <a href="./topics/topic47.html" class="topic-card">
+                    <div class="card-type ">第28讲</div>
+                    <div class="card-title">价层电子对互斥模型 杂化轨道理论</div>
+                </a>
+                <a href="./topics/topic48.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化8</div>
+                    <div class="card-title">键角大小比较的两种模型</div>
+                </a>
+                <a href="./topics/topic49.html" class="topic-card">
+                    <div class="card-type tag-extend">拓展延伸9</div>
+                    <div class="card-title">等电子原理 大π键</div>
+                </a>
+                <a href="./topics/topic50.html" class="topic-card">
+                    <div class="card-type ">第29讲</div>
+                    <div class="card-title">分子的性质 配位键与超分子</div>
+                </a>
+                <a href="./topics/topic51.html" class="topic-card">
+                    <div class="card-type tag-special">专项突破6</div>
+                    <div class="card-title">元素综合推断选择排除</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第九章 晶体结构与性质</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic52.html" class="topic-card">
+                    <div class="card-type ">第30讲</div>
+                    <div class="card-title">晶体的聚集状态 常见晶体类型</div>
+                </a>
+                <a href="./topics/topic53.html" class="topic-card">
+                    <div class="card-type tag-answer">答题规范4</div>
+                    <div class="card-title">晶体熔、沸点比较及归因分析</div>
+                </a>
+                <a href="./topics/topic54.html" class="topic-card">
+                    <div class="card-type ">第31讲</div>
+                    <div class="card-title">晶胞中粒子数及晶胞参数计算</div>
+                </a>
+                <a href="./topics/topic55.html" class="topic-card">
+                    <div class="card-type tag-special">专项突破7</div>
+                    <div class="card-title">物质结构与性质原理填空词</div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="unit-section" id="大单元四">
+            <div class="unit-header" style="--unit-color: #ef4444">
+                <div class="unit-icon">04</div>
+                <div class="unit-info">
+                    <h2 class="unit-name">大单元四</h2>
+                    <p class="unit-title">化学反应原理</p>
+                </div>
+                <div class="unit-count">16个考点</div>
+            </div>
+            <div class="unit-content">
+                
+            <div class="chapter">
+                <div class="chapter-title">第十章 化学反应与能量转化</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic56.html" class="topic-card">
+                    <div class="card-type ">第32讲</div>
+                    <div class="card-title">反应热 热化学方程式</div>
+                </a>
+                <a href="./topics/topic57.html" class="topic-card">
+                    <div class="card-type ">第33讲</div>
+                    <div class="card-title">盖斯定律及应用</div>
+                </a>
+                <a href="./topics/topic58.html" class="topic-card">
+                    <div class="card-type ">第34讲</div>
+                    <div class="card-title">原电池 常见化学电源</div>
+                </a>
+                <a href="./topics/topic59.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化9</div>
+                    <div class="card-title">新型化学电源变式实验</div>
+                </a>
+                <a href="./topics/topic60.html" class="topic-card">
+                    <div class="card-type ">第35讲</div>
+                    <div class="card-title">电解原理及其应用</div>
+                </a>
+                <a href="./topics/topic61.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化10</div>
+                    <div class="card-title">电解原理的创新应用</div>
+                </a>
+                <a href="./topics/topic62.html" class="topic-card">
+                    <div class="card-type ">第36讲</div>
+                    <div class="card-title">多池、多室电化学装置</div>
+                </a>
+                <a href="./topics/topic63.html" class="topic-card">
+                    <div class="card-type ">第37讲</div>
+                    <div class="card-title">金属的腐蚀与防护</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第十一章 化学反应速率与化学平衡</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic64.html" class="topic-card">
+                    <div class="card-type ">第38讲</div>
+                    <div class="card-title">化学反应速率及影响因素</div>
+                </a>
+                <a href="./topics/topic65.html" class="topic-card">
+                    <div class="card-type ">第39讲</div>
+                    <div class="card-title">外因对化学反应速率影响的理论解释</div>
+                </a>
+                <a href="./topics/topic66.html" class="topic-card">
+                    <div class="card-type ">第40讲</div>
+                    <div class="card-title">化学平衡状态与化学平衡常数</div>
+                </a>
+                <a href="./topics/topic67.html" class="topic-card">
+                    <div class="card-type ">第41讲</div>
+                    <div class="card-title">化学平衡常数与平衡转化率的相关计算</div>
+                </a>
+                <a href="./topics/topic68.html" class="topic-card">
+                    <div class="card-type tag-hard">难点突破3</div>
+                    <div class="card-title">多平衡体系中平衡常数的计算</div>
+                </a>
+                <a href="./topics/topic69.html" class="topic-card">
+                    <div class="card-type ">第42讲</div>
+                    <div class="card-title">影响化学平衡的因素</div>
+                </a>
+                <a href="./topics/topic70.html" class="topic-card">
+                    <div class="card-type tag-hard">难点突破4</div>
+                    <div class="card-title">化学反应速率和化学平衡常规图像</div>
+                </a>
+                <a href="./topics/topic71.html" class="topic-card">
+                    <div class="card-type ">第43讲</div>
+                    <div class="card-title">化学反应的方向与调控</div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="unit-section" id="大单元五">
+            <div class="unit-header" style="--unit-color: #10b981">
+                <div class="unit-icon">05</div>
+                <div class="unit-info">
+                    <h2 class="unit-name">大单元五</h2>
+                    <p class="unit-title">有机化学基础</p>
+                </div>
+                <div class="unit-count">23个考点</div>
+            </div>
+            <div class="unit-content">
+                
+            <div class="chapter">
+                <div class="chapter-title">第十二章 水溶液中的离子反应与平衡</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic72.html" class="topic-card">
+                    <div class="card-type ">第44讲</div>
+                    <div class="card-title">弱电解质的电离平衡</div>
+                </a>
+                <a href="./topics/topic73.html" class="topic-card">
+                    <div class="card-type ">第45讲</div>
+                    <div class="card-title">水的电离和溶液的pH</div>
+                </a>
+                <a href="./topics/topic74.html" class="topic-card">
+                    <div class="card-type tag-hard">难点突破5</div>
+                    <div class="card-title">强酸(碱)与弱酸(碱)比较问题</div>
+                </a>
+                <a href="./topics/topic75.html" class="topic-card">
+                    <div class="card-type ">第46讲</div>
+                    <div class="card-title">酸碱中和滴定拓展应用</div>
+                </a>
+                <a href="./topics/topic76.html" class="topic-card">
+                    <div class="card-type tag-answer">答题规范5</div>
+                    <div class="card-title">滴定终点判断</div>
+                </a>
+                <a href="./topics/topic77.html" class="topic-card">
+                    <div class="card-type ">第47讲</div>
+                    <div class="card-title">盐类的水解及影响因素</div>
+                </a>
+                <a href="./topics/topic78.html" class="topic-card">
+                    <div class="card-type ">第48讲</div>
+                    <div class="card-title">溶液中三大守恒 水解常数及应用</div>
+                </a>
+                <a href="./topics/topic79.html" class="topic-card">
+                    <div class="card-type ">第49讲</div>
+                    <div class="card-title">沉淀溶解平衡及应用</div>
+                </a>
+                <a href="./topics/topic80.html" class="topic-card">
+                    <div class="card-type tag-hard">难点突破6</div>
+                    <div class="card-title">溶液中粒子平衡的常见类型及应用</div>
+                </a>
+                <a href="./topics/topic81.html" class="topic-card">
+                    <div class="card-type ">第50讲</div>
+                    <div class="card-title">液相平衡体系的综合分析</div>
+                </a>
+                <a href="./topics/topic82.html" class="topic-card">
+                    <div class="card-type ">第51讲</div>
+                    <div class="card-title">无机化工流程题的解题策略(一)</div>
+                </a>
+                <a href="./topics/topic83.html" class="topic-card">
+                    <div class="card-type ">第52讲</div>
+                    <div class="card-title">无机化工流程题的解题策略(二)</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第十三章 有机化合物的结构 烃</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic84.html" class="topic-card">
+                    <div class="card-type ">第53讲</div>
+                    <div class="card-title">有机化合物的分类、命名及研究方法</div>
+                </a>
+                <a href="./topics/topic85.html" class="topic-card">
+                    <div class="card-type ">第54讲</div>
+                    <div class="card-title">有机化合物的空间结构 同系物 同分异构体</div>
+                </a>
+                <a href="./topics/topic86.html" class="topic-card">
+                    <div class="card-type ">第55讲</div>
+                    <div class="card-title">烃 化石燃料</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第十四章 烃的衍生物</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic87.html" class="topic-card">
+                    <div class="card-type ">第56讲</div>
+                    <div class="card-title">卤代烃 醇 酚</div>
+                </a>
+                <a href="./topics/topic88.html" class="topic-card">
+                    <div class="card-type ">第57讲</div>
+                    <div class="card-title">醛 酮</div>
+                </a>
+                <a href="./topics/topic89.html" class="topic-card">
+                    <div class="card-type ">第58讲</div>
+                    <div class="card-title">羧酸 酯 酰胺</div>
+                </a>
+                <a href="./topics/topic90.html" class="topic-card">
+                    <div class="card-type ">第59讲</div>
+                    <div class="card-title">生物大分子 合成高分子</div>
+                </a>
+                </div>
+            </div>
+            <div class="chapter">
+                <div class="chapter-title">第十五章 有机化合物的综合应用</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic91.html" class="topic-card">
+                    <div class="card-type ">第60讲</div>
+                    <div class="card-title">官能团与有机物的性质 有机反应类型</div>
+                </a>
+                <a href="./topics/topic92.html" class="topic-card">
+                    <div class="card-type ">第61讲</div>
+                    <div class="card-title">限定条件下有机物的同分异构体</div>
+                </a>
+                <a href="./topics/topic93.html" class="topic-card">
+                    <div class="card-type ">第62讲</div>
+                    <div class="card-title">有机合成与有机合成路线的设计</div>
+                </a>
+                <a href="./topics/topic94.html" class="topic-card">
+                    <div class="card-type ">第63讲</div>
+                    <div class="card-title">有机化学综合大题突破</div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="unit-section" id="大单元六">
+            <div class="unit-header" style="--unit-color: #f59e0b">
+                <div class="unit-icon">06</div>
+                <div class="unit-info">
+                    <h2 class="unit-name">大单元六</h2>
+                    <p class="unit-title">化学实验综合应用</p>
+                </div>
+                <div class="unit-count">5个考点</div>
+            </div>
+            <div class="unit-content">
+                
+            <div class="chapter">
+                <div class="chapter-title">第十六章 化学实验综合应用</div>
+                <div class="cards-grid">
+                    
+                <a href="./topics/topic95.html" class="topic-card">
+                    <div class="card-type ">第64讲</div>
+                    <div class="card-title">简单实验方案的设计与评价</div>
+                </a>
+                <a href="./topics/topic96.html" class="topic-card">
+                    <div class="card-type tag-hot">热点强化11</div>
+                    <div class="card-title">创新型微探究实验</div>
+                </a>
+                <a href="./topics/topic97.html" class="topic-card">
+                    <div class="card-type ">第65讲</div>
+                    <div class="card-title">以定量测定为主的综合实验</div>
+                </a>
+                <a href="./topics/topic98.html" class="topic-card">
+                    <div class="card-type ">第66讲</div>
+                    <div class="card-title">以反应原理、物质性质探究为主的综合实验</div>
+                </a>
+                <a href="./topics/topic99.html" class="topic-card">
+                    <div class="card-type ">第67讲</div>
+                    <div class="card-title">以物质制备为主的综合实验</div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>决胜高考 · 高三化学备考导航系统</p>
+        <p style="margin-top:8px;opacity:0.7;">内容持续更新中，建议收藏本页以便随时复习</p>
+    </footer>
+</body>
+</html>
