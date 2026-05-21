@@ -11,7 +11,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
             background: #f8fafc;
             color: #0f172a;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         .navbar {
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
@@ -62,56 +62,182 @@
             background: #3b82f6;
             margin-bottom: 16px;
         }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
+        .topic-type { color: #64748b; font-size: 14px; margin-bottom: 8px; }
         .topic-title {
             font-size: 28px;
             font-weight: 700;
             color: #0f172a;
             line-height: 1.4;
         }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
+        .topic-chapter { color: #94a3b8; font-size: 14px; margin-top: 12px; }
+
+        /* 知识卡片 */
+        .card {
             background: white;
             border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 32px;
             margin-bottom: 24px;
-            font-size: 36px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
-        .content-title {
-            font-size: 20px;
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #3b82f620;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-title .icon { font-size: 24px; }
+
+        /* 核心知识 */
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .knowledge-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #3b82f6;
+        }
+        .knowledge-item h4 {
+            color: #1e40af;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .knowledge-item p {
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
             font-weight: 600;
-            color: #334155;
+        }
+        .formula {
+            background: #1e293b;
+            color: #fbbf24;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        /* 考点列表 */
+        .exam-point {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            border-radius: 0 12px 12px 0;
+        }
+        .exam-point h4 {
+            color: #dc2626;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .exam-point p { color: #7f1d1d; font-size: 14px; }
+
+        /* 例题 */
+        .example-box {
+            background: #fffbeb;
+            border: 2px solid #f59e0b;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .example-title {
+            color: #b45309;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .example-title span { background: #f59e0b; color: white; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+        .question {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+        .solution {
+            background: #ecfdf5;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .solution h5 {
+            color: #059669;
+            font-size: 14px;
             margin-bottom: 12px;
         }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
+        .thinking {
+            background: #dbeafe;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 16px;
         }
+        .thinking h5 {
+            color: #1d4ed8;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* 变式训练 */
+        .practice {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .practice-title {
+            color: #15803d;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .practice-item {
+            background: white;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .answer-toggle {
+            background: #22c55e;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 12px;
+        }
+        .answer { display: none; background: #fef9c3; padding: 12px 16px; border-radius: 10px; margin-top: 12px; }
+        .answer.show { display: block; }
+
+        /* 标签 */
+        .tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        .tag-warning {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* 导航 */
         .nav-footer {
             display: flex;
             justify-content: space-between;
@@ -138,24 +264,12 @@
             background: #3b82f608;
             transform: translateY(-1px);
         }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
+        .nav-btn.next { justify-content: flex-end; flex-direction: row-reverse; }
+        .footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 13px; }
+
         @media (max-width: 600px) {
+            .knowledge-grid { grid-template-columns: 1fr; }
             .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
         }
     </style>
 </head>
@@ -174,15 +288,186 @@
             <div class="topic-chapter">第一章 化学物质及其变化</div>
         </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+        <!-- 核心知识 -->
+        <div class="card">
+            <div class="card-title"><span class="icon">📚</span> 核心知识</div>
+
+            <div class="knowledge-grid">
+                <div class="knowledge-item">
+                    <h4>🔬 元素</h4>
+                    <p>具有相同<span class="highlight">核电荷数</span>（质子数）的同一类原子的总称</p>
+                    <p style="margin-top:8px;"><b>决定：</b>种类由质子数决定</p>
+                </div>
+                <div class="knowledge-item">
+                    <h4>⚛️ 原子</h4>
+                    <p>化学变化中的<span class="highlight">最小粒子</span></p>
+                    <p style="margin-top:8px;"><b>组成：</b>质子 + 中子 + 电子</p>
+                </div>
+                <div class="knowledge-item">
+                    <h4>💧 分子</h4>
+                    <p>保持物质<span class="highlight">化学性质</span>的最小粒子</p>
+                    <p style="margin-top:8px;"><b>存在：</b>气体、液体、部分固体</p>
+                </div>
+                <div class="knowledge-item">
+                    <h4>⚡ 离子</h4>
+                    <p>带电的<span class="highlight">原子或原子团</span></p>
+                    <p style="margin-top:8px;"><b>分类：</b>阳离子（+）、阴离子（-）</p>
+                </div>
+            </div>
+
+            <div class="formula">
+                原子 = 质子 + 中子 + 电子　｜　离子 = 原子 ± 电子
+            </div>
+
+            <div style="margin-top:16px;">
+                <span class="tag">纯净物</span>只含一种物质，化学式唯一
+                <br><br>
+                <span class="tag">混合物</span>含多种物质，无固定化学式
+                <br><br>
+                <span class="tag tag-warning">⚠️ 注意</span>空气是混合物，但成分相对固定
+            </div>
+        </div>
+
+        <!-- 考点精讲 -->
+        <div class="card">
+            <div class="card-title"><span class="icon">🎯</span> 考点精讲</div>
+
+            <div class="exam-point">
+                <h4>考点1：物质分类的两条主线</h4>
+                <p><b>树状分类法：</b>按物质种类逐级细分（单质→金属/非金属→氧化物/酸/碱/盐）<br>
+                <b>交叉分类法：</b>同一种物质可属于多个类别</p>
+            </div>
+
+            <div class="exam-point">
+                <h4>考点2：同素异形体</h4>
+                <p>由<span class="highlight">同种元素</span>形成的<span class="highlight">不同单质</span></p>
+                <p style="margin-top:8px;">
+                    <b>常见：</b>O₂ 和 O₃（金刚石、石墨、C₆₀）<br>
+                    <b>注意：</b>性质不同，但化学式不同不算同素异形体！
+                </p>
+            </div>
+
+            <div class="exam-point">
+                <h4>考点3：物质转化规律</h4>
+                <div style="margin-top:12px; font-size:14px;">
+                    <div style="background:#f8fafc;padding:16px;border-radius:10px;">
+                        <b>金属 → 氧化物 → 碱 → 盐</b><br>
+                        2Na + O₂ → Na₂O　　Na₂O + H₂O → NaOH<br><br>
+                        <b>非金属 → 氧化物 → 酸 → 盐</b><br>
+                        S + O₂ → SO₂　　SO₂ + H₂O → H₂SO₃
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 例题精讲 -->
+        <div class="card">
+            <div class="card-title"><span class="icon">✍️</span> 例题精讲</div>
+
+            <div class="example-box">
+                <div class="example-title"><span>例1</span> 下列说法正确的是（　　）</div>
+                <div class="question">
+                    <p>① 元素是物质的具体存在形式</p>
+                    <p>② 元素的化学性质主要由最外层电子数决定</p>
+                    <p>③ 原子是化学变化中的最小粒子，不可再分</p>
+                    <p>④ 带电的原子或原子团叫离子</p>
+                </div>
+                <div class="solution">
+                    <h5>✅ 答案：②③④</h5>
+                </div>
+                <div class="thinking">
+                    <h5>💡 解题思路</h5>
+                    <p>① 错——物质是具体存在，元素是抽象概念<br>
+                    ② 对——最外层电子决定化学性质<br>
+                    ③ 对——原子是化学变化最小粒子，但物理上可分<br>
+                    ④ 对——离子的定义</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title"><span>例2</span> 下列属于同素异形体的是（　　）</div>
+                <div class="question">
+                    <p>A. ¹²C 和 ¹⁴C　　B. O₂ 和 O₃　　C. CO 和 CO₂　　D. Na 和 NaCl</p>
+                </div>
+                <div class="solution">
+                    <h5>✅ 答案：B</h5>
+                </div>
+                <div class="thinking">
+                    <h5>💡 解题思路</h5>
+                    <p>同素异形体 = 同元素 + 不同单质<br>
+                    A 错——同位素，是同一元素的不同原子<br>
+                    B 对——O₂ 和 O₃ 都是氧元素的不同单质<br>
+                    C 错——CO 和 CO₂ 是化合物，不是单质<br>
+                    D 错——Na 是单质，NaCl 是化合物</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 变式训练 -->
+        <div class="card">
+            <div class="card-title"><span class="icon">🏋️</span> 变式训练</div>
+
+            <div class="practice">
+                <div class="practice-title">📝 趁热打铁，做完再看答案哦~</div>
+
+                <div class="practice-item">
+                    <b>练习1：</b>下列关于物质分类的说法正确的是（　　）<br>
+                    A. 冰水共存物是混合物<br>
+                    B. 纯净物一定由同种分子构成<br>
+                    C. 只含一种元素的物质一定是纯净物<br>
+                    D. 空气属于混合物<br><br>
+                    <div style="text-align:right;"><span class="tag">本题满分：6分</span></div>
+                    <div class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">🙋 点击查看答案</div>
+                    <div class="answer"><b>答案：D</b><br>A错——冰水都是H₂O，是纯净物<br>B错——离子化合物由离子构成<br>C错——O₂和O₃混合是混合物<br>D对——空气含N₂、O₂等多种物质</div>
+                </div>
+
+                <div class="practice-item">
+                    <b>练习2：</b>写出下列物质转化的化学方程式：<br>
+                    ① Ca → CaO → Ca(OH)₂ → CaCO₃<br>
+                    ② S → SO₂ → H₂SO₃ → Na₂SO₃<br><br>
+                    <div class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">🙋 点击查看答案</div>
+                    <div class="answer">
+                        <b>①</b><br>
+                        2Ca + O₂ ═══ 2CaO<br>
+                        CaO + H₂O ═══ Ca(OH)₂<br>
+                        Ca(OH)₂ + CO₂ ═══ CaCO₃↓ + H₂O<br><br>
+                        <b>②</b><br>
+                        S + O₂ ═══ SO₂<br>
+                        SO₂ + H₂O ⇌ H₂SO₃<br>
+                        H₂SO₃ + 2NaOH ═══ Na₂SO₃ + 2H₂O
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 总结 -->
+        <div class="card" style="background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); color: white;">
+            <div class="card-title" style="color:#fbbf24; border-bottom-color: rgba(255,255,255,0.1);">
+                <span class="icon">📌</span> 本讲小结
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:14px;">
+                <div style="background:rgba(255,255,255,0.1); padding:16px; border-radius:10px;">
+                    <b style="color:#fbbf24;">原子结构</b><br>
+                    质子数 = 核电荷数 = 原子序数
+                </div>
+                <div style="background:rgba(255,255,255,0.1); padding:16px; border-radius:10px;">
+                    <b style="color:#fbbf24;">同素异形体</b><br>
+                    同元素 + 不同单质
+                </div>
+                <div style="background:rgba(255,255,255,0.1); padding:16px; border-radius:10px;">
+                    <b style="color:#fbbf24;">纯净物 vs 混合物</b><br>
+                    有无固定化学式
+                </div>
+                <div style="background:rgba(255,255,255,0.1); padding:16px; border-radius:10px;">
+                    <b style="color:#fbbf24;">转化规律</b><br>
+                    金属/非金属 → 氧化物 → 碱/酸 → 盐
+                </div>
+            </div>
         </div>
 
         <div class="nav-footer">
             <a href="#" class="nav-btn disabled">← 上一讲</a>
-            <a href="./topic02.html" class="nav-btn next ">下一讲 →</a>
+            <a href="./topic02.html" class="nav-btn next">下一讲：离子反应 →</a>
         </div>
     </main>
 
