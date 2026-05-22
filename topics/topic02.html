@@ -1,193 +1,569 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第2讲 离子反应 离子方程式 | 决胜高考</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第2讲 离子反应 离子方程式 — 化学不难学</title>
+  <style>
+    /* ===== 全局 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #f0f4f8;
+      color: #1a2332;
+      line-height: 1.7;
+    }
+
+    /* ===== 顶部控制条 ===== */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+      color: #fff;
+      padding: 10px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    .top-bar h1 { font-size: 1.05rem; font-weight: 700; }
+    .top-bar .ctrl { display: flex; gap: 10px; }
+    .ctrl-btn {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff;
+      border-radius: 20px;
+      padding: 5px 18px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .ctrl-btn:hover { background: rgba(255,255,255,0.32); }
+    .back-btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-size: 0.88rem;
+      cursor: pointer;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.28); }
+
+    /* ===== 主容器 ===== */
+    .container { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+
+    /* ===== 封面卡片 ===== */
+    .cover-card {
+      background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+      color: #fff;
+      border-radius: 18px;
+      padding: 36px 32px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 32px rgba(26,41,128,0.18);
+    }
+    .cover-card .lecture-tag {
+      background: rgba(255,255,255,0.22);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .cover-card h2 { font-size: 1.7rem; margin-bottom: 8px; }
+    .cover-card .subtitle { font-size: 0.95rem; opacity: .85; margin-bottom: 18px; }
+    .cover-card .fire { font-size: 1rem; background: rgba(255,255,255,0.15); border-radius: 12px; padding: 10px 16px; }
+    .key-points { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .key-tag {
+      background: rgba(255,255,255,0.22);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== 通用卡片 ===== */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .card-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .section-title { font-size: 1.08rem; font-weight: 700; color: #1a2980; }
+
+    /* 前测 */
+    .pretest-icon { background: #fff3e0; }
+    /* 核心 */
+    .core-icon { background: #e8f5e9; }
+    /* 精练 */
+    .practice-icon { background: #fce4ec; }
+    /* 小结 */
+    .summary-icon { background: #e3f2fd; }
+
+    /* ===== 题目块 ===== */
+    .question-block {
+      background: #f8faff;
+      border-left: 4px solid #1a2980;
+      border-radius: 0 10px 10px 0;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+    }
+    .question-block .q-stem { font-weight: 600; margin-bottom: 10px; color: #1a2332; }
+    .options { list-style: none; margin: 6px 0 12px; }
+    .options li { padding: 3px 0; color: #374151; }
+
+    /* ===== 答案区 ===== */
+    .answer-box {
+      display: none;
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+      border: 1.5px solid #81c784;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #1b5e20;
+    }
+    .answer-box.visible { display: block; }
+    .answer-box strong { color: #2e7d32; }
+
+    .show-btn {
+      background: #fff;
+      border: 2px solid #1a2980;
+      color: #1a2980;
+      border-radius: 20px;
+      padding: 6px 22px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all .2s;
+      margin-top: 4px;
+    }
+    .show-btn:hover { background: #1a2980; color: #fff; }
+    .show-btn.shown { background: #f3f4f6; border-color: #9ca3af; color: #6b7280; }
+
+    /* ===== 表格 ===== */
+    .styled-table {
+      width: 100%; border-collapse: collapse;
+      margin: 12px 0; font-size: 0.93rem;
+    }
+    .styled-table th {
+      background: #1a2980; color: #fff;
+      padding: 9px 12px; text-align: left;
+    }
+    .styled-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    .styled-table tr:nth-child(even) td { background: #f8faff; }
+
+    /* ===== 警告/提示框 ===== */
+    .tip-box {
+      background: #fff8e1; border-left: 4px solid #f59e0b;
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px; margin: 12px 0;
+      font-size: 0.93rem; color: #78350f;
+    }
+    .tip-box .tip-title { font-weight: 700; margin-bottom: 4px; }
+    .flow-box {
+      background: #e3f2fd; border-left: 4px solid #1a2980;
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px; margin: 12px 0;
+      font-size: 0.93rem;
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+      border-radius: 12px; padding: 16px 20px;
+      font-size: 0.95rem;
+    }
+    .summary-box .s-item { padding: 5px 0; }
+
+    /* ===== 标注 ===== */
+    .correct { color: #16a34a; font-weight: 700; }
+    .wrong { color: #dc2626; font-weight: 700; }
+    .em { color: #b45309; font-weight: 700; }
+
+    /* ===== 分隔线 ===== */
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 18px 0; }
+
+    /* ===== 下一讲预告 ===== */
+    .next-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff; border-radius: 14px;
+      padding: 18px 22px; margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar h1 { font-size: 0.9rem; }
+      .cover-card h2 { font-size: 1.3rem; }
+      .container { padding: 16px 10px 60px; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
-    </nav>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">第2讲</div>
-            <h1 class="topic-title">离子反应 离子方程式</h1>
-            <div class="topic-chapter">第一章 化学物质及其变化</div>
-        </div>
+<!-- 顶部控制条 -->
+<div class="top-bar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <a class="back-btn" href="../index.html">← 返回目录</a>
+    <h1>第2讲 离子反应 离子方程式</h1>
+  </div>
+  <div class="ctrl">
+    <button class="ctrl-btn" onclick="showAll()">📖 全部显示</button>
+    <button class="ctrl-btn" onclick="hideAll()">🙈 全部隐藏</button>
+  </div>
+</div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
-        </div>
+<div class="container">
 
-        <div class="nav-footer">
-            <a href="./topic01.html" class="nav-btn ">← 上一讲</a>
-            <a href="./topic03.html" class="nav-btn next ">下一讲 →</a>
-        </div>
-    </main>
+  <!-- ===== 封面 ===== -->
+  <div class="cover-card">
+    <div class="lecture-tag">高三化学第一轮复习</div>
+    <h2>第2讲 离子反应 离子方程式</h2>
+    <div class="subtitle">广东卷必考 T14/T15，独占一道选择题</div>
+    <div class="fire">🔥 核心就三件事：</div>
+    <div class="key-points">
+      <span class="key-tag">① 拆——强拆弱不拆</span>
+      <span class="key-tag">② 守——电荷守恒 + 原子守恒</span>
+      <span class="key-tag">③ 量——少量/过量定系数</span>
+    </div>
+  </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+  <!-- ===== Slide 2：前测 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon pretest-icon">⚡</div>
+      <div class="section-title">前测（5分钟）——暴露薄弱点</div>
+    </div>
+
+    <!-- 前测 Q1 -->
+    <div class="question-block">
+      <div class="q-stem">1. 下列物质中，属于强电解质的是（　　）</div>
+      <ul class="options">
+        <li>A. 冰醋酸</li>
+        <li>B. 氨水</li>
+        <li>C. 硫酸钡</li>
+        <li>D. 二氧化硫</li>
+      </ul>
+      <button class="show-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+      <div class="answer-box">
+        <strong>✅ 答案：C</strong><br>
+        BaSO₄虽难溶，但溶解的部分完全电离 → 强电解质；<br>
+        冰醋酸是弱酸（弱电解质）；氨水是混合物（非电解质）；SO₂不能电离（非电解质）
+      </div>
+    </div>
+
+    <!-- 前测 Q2 -->
+    <div class="question-block">
+      <div class="q-stem">2. 下列离子方程式书写正确的是（　　）</div>
+      <ul class="options">
+        <li>A. 铁与稀硫酸：2Fe + 6H⁺ = 2Fe³⁺ + 3H₂↑</li>
+        <li>B. 氢氧化钡与稀硫酸：Ba²⁺ + SO₄²⁻ = BaSO₄↓</li>
+        <li>C. 碳酸钙与醋酸：CaCO₃ + 2H⁺ = Ca²⁺ + CO₂↑ + H₂O</li>
+        <li>D. 钠与水反应：2Na + 2H₂O = 2Na⁺ + 2OH⁻ + H₂↑</li>
+      </ul>
+      <button class="show-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+      <div class="answer-box">
+        <strong>✅ 答案：D</strong><br>
+        A错：Fe与稀H₂SO₄反应，产物应为<strong>Fe²⁺</strong>，而非Fe³⁺<br>
+        B错：漏写 H⁺ + OH⁻ = H₂O，不完整<br>
+        C错：醋酸是<strong>弱酸</strong>，不能拆成H⁺，应写 CH₃COOH<br>
+        D对：✅ Na为单质不拆，H₂O不拆，产物均正确
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-title">⚠️ 答错定位：</div>
+      错第1题 → 回顾电解质分类；错第2题 → 回顾"拆"的原则
+    </div>
+  </div>
+
+  <!-- ===== Slide 3：核心一 拆 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon core-icon">🧱</div>
+      <div class="section-title">核心一：拆——记牢这张表</div>
+    </div>
+    <p style="margin-bottom:12px"><strong>唯一原则：强拆弱不拆</strong></p>
+    <table class="styled-table">
+      <thead>
+        <tr><th>必须拆（离子形式）</th><th>不能拆（化学式）</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>强酸：</strong>HCl、H₂SO₄、HNO₃、HClO₄、HI、HBr</td>
+          <td><strong>弱酸：</strong>CH₃COOH、HF、H₂CO₃、H₂SO₃、HClO</td>
+        </tr>
+        <tr>
+          <td><strong>强碱：</strong>NaOH、KOH、Ca(OH)₂（澄清石灰水）、Ba(OH)₂</td>
+          <td><strong>弱碱：</strong>NH₃·H₂O、Fe(OH)₃、Cu(OH)₂</td>
+        </tr>
+        <tr>
+          <td><strong>可溶性盐</strong></td>
+          <td><strong>难溶盐：</strong>BaSO₄、AgCl、CaCO₃</td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td>单质、气体、氧化物、浓硫酸、非电解质</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-title">⚠️ 三个易错点：</div>
+      澄清石灰水 → <span class="correct">拆 ✅</span>　　石灰乳/石灰浆 → <span class="wrong">不拆 ❌</span><br>
+      Na₂O₂ → <span class="wrong">不拆</span>（过氧化物写化学式）<br>
+      NH₃·H₂O → <span class="wrong">不拆</span>（弱碱）
+    </div>
+  </div>
+
+  <!-- ===== Slide 4：核心二 守+真 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon core-icon">⚖️</div>
+      <div class="section-title">核心二：守 + 真</div>
+    </div>
+
+    <p><strong>一、两大守恒——检查顺序：先电荷，后原子</strong></p>
+    <div style="margin: 12px 0 18px; padding-left: 12px;">
+      <p>① <strong>电荷守恒：</strong>两边总电荷必须相等（最容易快速发现错误）</p>
+      <p style="margin: 6px 0; color: #dc2626;">例（×）：Fe³⁺ + Fe = 2Fe²⁺　　❌ 左边+3，右边+4！</p>
+      <p style="color: #16a34a;">正确：2Fe³⁺ + Fe = 3Fe²⁺ ✅</p>
+      <p style="margin-top: 10px;">② <strong>原子守恒：</strong>各原子种类和数目相等</p>
+    </div>
+
+    <hr>
+    <p><strong>二、反应真实性——不能臆造</strong></p>
+    <table class="styled-table" style="margin-top:10px">
+      <thead>
+        <tr><th>常见臆造错误</th><th>正确情况</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fe + 稀HNO₃ → H₂↑</td><td>Fe + HNO₃ → NO↑，产物为Fe³⁺/Fe²⁺ + NO</td></tr>
+        <tr><td>Al + 稀HNO₃ → H₂↑</td><td>稀HNO₃与Al反应不生成H₂</td></tr>
+        <tr><td>Cu + 稀HCl → H₂↑</td><td>Cu不与稀盐酸反应</td></tr>
+        <tr><td>Fe³⁺ + I⁻ → 共存</td><td>Fe³⁺氧化I⁻：2Fe³⁺ + 2I⁻ = 2Fe²⁺ + I₂</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== Slide 5：核心三 量+介+争 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon core-icon">📊</div>
+      <div class="section-title">核心三：量 + 介 + 争（高考区分题在此）</div>
+    </div>
+
+    <p><strong>一、看用量——少量定1法</strong></p>
+    <p style="color:#6b7280; font-size:.93rem; margin:6px 0 10px;">以少量反应物的计量数为1，确定其他比例</p>
+    <table class="styled-table">
+      <thead>
+        <tr><th>经典体系</th><th>少量</th><th>过量</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ca(HCO₃)₂ + NaOH</td>
+          <td>Ca²⁺ + HCO₃⁻ + OH⁻ = CaCO₃↓ + H₂O</td>
+          <td>Ca²⁺ + 2HCO₃⁻ + 2OH⁻ = CaCO₃↓ + CO₃²⁻ + 2H₂O</td>
+        </tr>
+        <tr>
+          <td>FeBr₂ + Cl₂</td>
+          <td>2Fe²⁺ + Cl₂ = 2Fe³⁺ + 2Cl⁻</td>
+          <td>2Fe²⁺ + 4Br⁻ + 3Cl₂ = 2Fe³⁺ + 2Br₂ + 6Cl⁻</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+    <p><strong>二、看介质——酸碱性决定产物</strong></p>
+    <p style="margin: 8px 0;">KMnO₄：酸性 → Mn²⁺；碱性 → MnO₄²⁻；中性 → MnO₂</p>
+
+    <hr>
+    <p><strong>三、看竞争——还原性顺序定先后</strong></p>
+    <div class="flow-box" style="margin-top:10px">
+      <strong>I⁻ &gt; Fe²⁺ &gt; Br⁻</strong>（还原性从强到弱）<br>
+      FeI₂中通Cl₂：先氧化I⁻<br>
+      FeBr₂中通Cl₂：先氧化Fe²⁺<br>
+      🗣️ <span class="em">口诀：碘铁溴，还原性从强到弱排排坐</span>
+    </div>
+  </div>
+
+  <!-- ===== Slide 6：真题解剖 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon" style="background:#e8eaf6">🔬</div>
+      <div class="section-title">真题解剖：2022广东卷 T14</div>
+    </div>
+
+    <p style="margin-bottom:12px"><strong>第一步：把每个选项的"拆"扫一遍</strong></p>
+    <table class="styled-table">
+      <thead>
+        <tr><th>选项</th><th>拆分判断</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cl₂ + NaOH → NaCl + NaClO + H₂O</td>
+          <td><span class="correct">Cl₂不拆，NaOH拆 ✅</span></td>
+        </tr>
+        <tr>
+          <td>硅酸钠 + 盐酸 → 硅酸 + H₂O</td>
+          <td><span class="correct">Na₂SiO₃可溶拆为SiO₃²⁻，HCl拆为H⁺ ✅</span></td>
+        </tr>
+        <tr>
+          <td>Na₂O₂ + H₂O → NaOH + O₂</td>
+          <td><span class="wrong">Na₂O₂是过氧化物，不能拆为O₂²⁻ ❌</span></td>
+        </tr>
+        <tr>
+          <td>Fe + CuSO₄ → FeSO₄ + Cu</td>
+          <td><span class="correct">Fe不拆，CuSO₄可溶拆 ✅</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:14px"><strong>第二步：重点防C项陷阱</strong></p>
+    <div style="padding: 10px 16px; background: #fff8e1; border-radius: 8px; margin-top: 8px;">
+      <p class="wrong">❌ 错误写法：2O₂²⁻ + 2H₂O = 4OH⁻ + O₂↑</p>
+      <p class="correct">✅ 正确写法：2Na₂O₂ + 2H₂O = 4Na⁺ + 4OH⁻ + O₂↑</p>
+      <p style="color:#b45309; margin-top:6px">💡 Na₂O₂不拆，看到过氧化物先圈出来！</p>
+    </div>
+  </div>
+
+  <!-- ===== Slide 7：课堂精练 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon practice-icon">✏️</div>
+      <div class="section-title">课堂精练（10分钟）</div>
+    </div>
+
+    <!-- 精练 Q1 -->
+    <div class="question-block">
+      <div class="q-stem">1. 下列离子方程式书写正确的是（　　）</div>
+      <ul class="options">
+        <li>A. 过氧化钠溶于水：Na₂O₂ + H₂O = 2Na⁺ + 2OH⁻ + O₂↑</li>
+        <li>B. 食醋除水垢（CaCO₃）：CaCO₃ + 2H⁺ = Ca²⁺ + CO₂↑ + H₂O</li>
+        <li>C. 硫酸铝溶液中滴加足量氨水：Al³⁺ + 3NH₃·H₂O = Al(OH)₃↓ + 3NH₄⁺</li>
+        <li>D. Fe₂O₃溶于氢碘酸：Fe₂O₃ + 6H⁺ = 2Fe³⁺ + 3H₂O</li>
+      </ul>
+      <button class="show-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+      <div class="answer-box">
+        <strong>✅ 答案：C</strong><br>
+        A错：Na₂O₂不拆且原子不守恒，系数有误（正确：2Na₂O₂ + 2H₂O = 4Na⁺ + 4OH⁻ + O₂↑）<br>
+        B错：醋酸是弱酸，不能拆为H⁺，应写 CH₃COOH<br>
+        C对：✅ NH₃·H₂O弱碱不拆，Al³⁺与氨水反应正确<br>
+        D错：Fe₂O₃溶于氢碘酸，Fe³⁺会被I⁻还原为Fe²⁺，反应不真实（HI是还原性酸）
+      </div>
+    </div>
+
+    <!-- 精练 Q2 -->
+    <div class="question-block">
+      <div class="q-stem">2. 向FeBr₂溶液中通入<strong>少量</strong>Cl₂，离子方程式正确的是（　　）</div>
+      <ul class="options">
+        <li>A. 2Fe²⁺ + Cl₂ = 2Fe³⁺ + 2Cl⁻</li>
+        <li>B. 2Br⁻ + Cl₂ = Br₂ + 2Cl⁻</li>
+        <li>C. 2Fe²⁺ + 4Br⁻ + 3Cl₂ = 2Fe³⁺ + 2Br₂ + 6Cl⁻</li>
+        <li>D. Fe²⁺ + Br⁻ + Cl₂ = Fe³⁺ + Br₂ + Cl⁻</li>
+      </ul>
+      <button class="show-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+      <div class="answer-box">
+        <strong>✅ 答案：A</strong><br>
+        关键：还原性 I⁻ &gt; Fe²⁺ &gt; Br⁻，<strong>少量Cl₂优先氧化Fe²⁺</strong><br>
+        B错：优先顺序错误，少量Cl₂应先氧化Fe²⁺，而非Br⁻<br>
+        C错：这是足量Cl₂的方程式，题目说少量<br>
+        D错：系数未配平，不满足电荷守恒
+      </div>
+    </div>
+
+    <!-- 精练 Q3 -->
+    <div class="question-block">
+      <div class="q-stem">3. 下列离子方程式能正确表示对应反应的是（　　）</div>
+      <ul class="options">
+        <li>A. 向NaClO溶液中通入少量SO₂：ClO⁻ + SO₂ + H₂O = Cl⁻ + SO₄²⁻ + 2H⁺</li>
+        <li>B. 向Ca(HCO₃)₂溶液中加入过量NaOH：Ca²⁺ + HCO₃⁻ + OH⁻ = CaCO₃↓ + H₂O</li>
+        <li>C. 泡沫灭火器反应：Al³⁺ + 3HCO₃⁻ = Al(OH)₃↓ + 3CO₂↑</li>
+        <li>D. 向AgCl悬浊液中滴加Na₂S：2AgCl + S²⁻ = Ag₂S + 2Cl⁻</li>
+      </ul>
+      <button class="show-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+      <div class="answer-box">
+        <strong>✅ 答案：C（也接受D）</strong><br>
+        A错：NaClO溶液呈碱性，产物不能有大量H⁺<br>
+        B错：NaOH过量时，HCO₃⁻完全反应，正确式为：Ca²⁺ + 2HCO₃⁻ + 2OH⁻ = CaCO₃↓ + CO₃²⁻ + 2H₂O<br>
+        C对：✅ Al³⁺水解程度不及HCO₃⁻水解，两者反应双水解，方程式正确<br>
+        D：沉淀转化，AgCl(s)→Ag₂S(s)，写法基本正确，高考一般也给分
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Slide 9：小结 ===== -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-icon summary-icon">📦</div>
+      <div class="section-title">本讲小结</div>
+    </div>
+    <div class="summary-box">
+      <div class="s-item">❶ <strong>拆</strong>：强酸强碱可溶盐拆，弱酸弱碱难溶氧化物不拆</div>
+      <div class="s-item">❷ <strong>守</strong>：先看电荷守恒（最快），再看原子守恒</div>
+      <div class="s-item">❸ <strong>量介争</strong>：少量定1法，介质定产物，还原性强弱定顺序</div>
+    </div>
+
+    <div class="flow-box" style="margin-top:16px">
+      <strong>🧠 六看判断流程（贴课桌上！）</strong><br><br>
+      ① <strong>真实性？</strong> → 有无这个反应？<br>
+      ② <strong>拆分？</strong> → 该拆的拆了没？不该拆的拆了没？<br>
+      ③ <strong>电荷守恒？</strong> → 总电荷相等？<br>
+      ④ <strong>原子守恒？</strong> → 各原子数相等？<br>
+      ⑤ <strong>用量？</strong> → 少量/过量？系数对不对？<br>
+      ⑥ <strong>介质？</strong> → 酸性/碱性？产物受影响吗？
+    </div>
+
+    <p style="margin-top:14px; color:#6b7280; font-size:.9rem">📝 课后：完成步步高P349练习 + 整理今天2道错题的判断路径</p>
+  </div>
+
+  <!-- 下讲预告 -->
+  <div class="next-card">
+    🔮 <strong>下讲预告：第3讲 氧化还原反应的概念和规律</strong>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  function toggleAnswer(btn) {
+    const box = btn.nextElementSibling;
+    const isVisible = box.classList.contains('visible');
+    if (isVisible) {
+      box.classList.remove('visible');
+      btn.textContent = '👁 点击显示答案';
+      btn.classList.remove('shown');
+    } else {
+      box.classList.add('visible');
+      btn.textContent = '🙈 点击隐藏答案';
+      btn.classList.add('shown');
+    }
+  }
+
+  function showAll() {
+    document.querySelectorAll('.answer-box').forEach(b => b.classList.add('visible'));
+    document.querySelectorAll('.show-btn').forEach(b => {
+      b.textContent = '🙈 点击隐藏答案';
+      b.classList.add('shown');
+    });
+  }
+
+  function hideAll() {
+    document.querySelectorAll('.answer-box').forEach(b => b.classList.remove('visible'));
+    document.querySelectorAll('.show-btn').forEach(b => {
+      b.textContent = '👁 点击显示答案';
+      b.classList.remove('shown');
+    });
+  }
+</script>
+
 </body>
 </html>
