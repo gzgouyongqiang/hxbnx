@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>决胜高考 | 高三化学备考导航（预览方案）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --gold: #fbbf24;
+            --blue: #1e3a5f;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ===== Hero区域 ===== */
+        .hero {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 50%, #1e3a5f 100%);
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(251,191,36,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(59,130,246,0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border: 1px solid rgba(251,191,36,0.4);
+            border-radius: 20px;
+            color: #fbbf24;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            color: #fbbf24;
+            letter-spacing: 8px;
+            margin-bottom: 12px;
+            position: relative;
+            text-shadow: 0 2px 20px rgba(251,191,36,0.2);
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            color: #94a3b8;
+            font-weight: 400;
+            position: relative;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 32px;
+            position: relative;
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* ===== 核心改动：大标签页切换 ===== */
+        .tab-bar {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .tab-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            padding: 0 20px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 18px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .tab-btn:hover {
+            color: #334155;
+            background: #f8fafc;
+        }
+        .tab-btn.active {
+            color: #0f172a;
+        }
+        .tab-btn.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            border-radius: 3px 3px 0 0;
+        }
+        .tab-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .tab-btn:nth-child(1) .tab-icon { background: #dbeafe; }
+        .tab-btn:nth-child(1).active .tab-icon { background: #3b82f6; color: white; }
+        .tab-btn:nth-child(2) .tab-icon { background: #fce7f3; }
+        .tab-btn:nth-child(2).active .tab-icon { background: #ec4899; color: white; }
+        .tab-count {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .tab-btn.active .tab-count {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        /* ===== 内容区域 ===== */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ===== 快捷导航（一轮复习专用） ===== */
+        .quick-nav {
+            background: white;
+            padding: 20px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .quick-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .quick-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+            background: #f1f5f9;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .quick-btn:hover {
+            border-color: var(--btn-color);
+            background: color-mix(in srgb, var(--btn-color) 8%, white);
+            transform: translateY(-2px);
+        }
+        .quick-num {
+            width: 26px; height: 26px;
+            border-radius: 6px;
+            background: var(--btn-color);
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700;
+        }
+
+        /* ===== 一轮复习主体 ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .unit-section { margin-bottom: 48px; }
+        .unit-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--unit-color) 10%, white), color-mix(in srgb, var(--unit-color) 3%, white));
+            border-left: 4px solid var(--unit-color);
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .unit-icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: var(--unit-color);
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700;
+            flex-shrink: 0;
+        }
+        .unit-info { flex: 1; }
+        .unit-name {
+            font-size: 18px; font-weight: 700;
+            color: var(--unit-color); margin-bottom: 2px;
+        }
+        .unit-title {
+            font-size: 14px; color: #64748b;
+        }
+        .unit-count {
+            font-size: 13px; color: var(--unit-color);
+            background: white; padding: 4px 12px;
+            border-radius: 20px; font-weight: 600;
+            border: 1px solid color-mix(in srgb, var(--unit-color) 20%, transparent);
+        }
+        .chapter { margin-bottom: 28px; }
+        .chapter-title {
+            font-size: 15px; font-weight: 600; color: #475569;
+            padding: 8px 12px; background: #f1f5f9;
+            border-radius: 8px; margin-bottom: 16px;
+            display: inline-block;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .topic-card {
+            display: block; background: white;
+            border: 1px solid #e2e8f0; border-radius: 12px;
+            padding: 16px 18px; text-decoration: none;
+            color: inherit; transition: all 0.25s;
+            position: relative; overflow: hidden;
+        }
+        .topic-card::before {
+            content: ""; position: absolute;
+            left: 0; top: 0; bottom: 0; width: 3px;
+            background: #cbd5e1; transition: background 0.2s;
+        }
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+        .topic-card:hover::before { background: #fbbf24; }
+        .card-type {
+            display: inline-block; font-size: 11px; font-weight: 600;
+            padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+            color: #475569; background: #f1f5f9;
+        }
+        .card-type.tag-hot { background: #fef3c7; color: #b45309; }
+        .card-type.tag-hard { background: #fee2e2; color: #b91c1c; }
+        .card-type.tag-key { background: #dbeafe; color: #1d4ed8; }
+        .card-type.tag-answer { background: #d1fae5; color: #047857; }
+        .card-type.tag-special { background: #e0e7ff; color: #4338ca; }
+        .card-type.tag-extend { background: #fce7f3; color: #be185d; }
+        .card-title {
+            font-size: 15px; font-weight: 500; color: #1e293b; line-height: 1.5;
+        }
+
+        /* ===== 试题选讲板块 ===== */
+        .exam-hero {
+            background: linear-gradient(135deg, #831843 0%, #701a75 50%, #4a044e 100%);
+            padding: 40px 20px 32px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .exam-hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(236,72,153,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 30%, rgba(168,85,247,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .exam-hero-title {
+            font-size: 28px; font-weight: 700; margin-bottom: 8px;
+            position: relative;
+        }
+        .exam-hero-desc {
+            font-size: 14px; color: #d1d5db; position: relative;
+        }
+
+        /* 试题分类标签 */
+        .exam-filter {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .filter-chip {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-chip:hover {
+            border-color: #ec4899;
+            color: #ec4899;
+        }
+        .filter-chip.active {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* 试题年份分组 */
+        .exam-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 20px;
+        }
+        .exam-year-section {
+            margin-bottom: 40px;
+        }
+        .exam-year-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #fce7f3;
+        }
+        .exam-year-badge {
+            font-size: 20px; font-weight: 800;
+            color: #be185d;
+            background: linear-gradient(135deg, #fce7f3, #fdf2f8);
+            padding: 6px 16px;
+            border-radius: 8px;
+        }
+        .exam-year-info {
+            font-size: 13px; color: #64748b;
+        }
+
+        /* 试题卡片 */
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+        .exam-card {
+            display: block;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .exam-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #ec4899, #a855f7);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .exam-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -5px rgba(236,72,153,0.12);
+            border-color: #fbcfe8;
+        }
+        .exam-card:hover::before { opacity: 1; }
+        .exam-card-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .exam-type-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+        .exam-type-badge.xz { background: #dbeafe; color: #1d4ed8; }
+        .exam-type-badge.sy { background: #d1fae5; color: #047857; }
+        .exam-type-badge.hg { background: #fef3c7; color: #b45309; }
+        .exam-type-badge.yl { background: #ede9fe; color: #7c3aed; }
+        .exam-type-badge.yj { background: #fce7f3; color: #be185d; }
+        .exam-type-badge.jg { background: #e0e7ff; color: #4338ca; }
+        .exam-card-source {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .exam-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .exam-card-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .exam-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .exam-card-tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .exam-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 空状态 */
+        .exam-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+        .exam-empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        .exam-empty-text {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            text-align: center;
+            padding: 48px 20px;
+            color: #94a3b8;
+            font-size: 13px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 36px; letter-spacing: 4px; }
+            .hero-stats { gap: 24px; }
+            .stat-num { font-size: 24px; }
+            .cards-grid, .exam-grid { grid-template-columns: 1fr; }
+            .quick-inner { gap: 8px; }
+            .quick-btn { padding: 8px 12px; font-size: 12px; }
+            .tab-btn { font-size: 14px; padding: 14px 16px; gap: 8px; }
+            .tab-text { display: none; }
+            .tab-btn.active .tab-text { display: inline; }
+            .exam-hero-title { font-size: 22px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 40px 16px 30px; }
+            .hero-title { font-size: 28px; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-badge">高三化学备考</div>
+        <h1 class="hero-title">决胜高考</h1>
+        <p class="hero-subtitle">考点导航系统 · 精准突破 · 高效备考</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-num">6</div>
+                <div class="stat-label">大单元</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">16</div>
+                <div class="stat-label">章节</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">99</div>
+                <div class="stat-label">个考点</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">67</div>
+                <div class="stat-label">讲次</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 大标签页切换 -->
+    <nav class="tab-bar">
+        <div class="tab-inner">
+            <button class="tab-btn active" onclick="switchTab('review')">
+                <span class="tab-icon">📚</span>
+                <span>高考一轮复习</span>
+                <span class="tab-count">99个考点</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('exam')">
+                <span class="tab-icon">📝</span>
+                <span>试题选讲</span>
+                <span class="tab-count">3套</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====== Tab 1: 高考一轮复习 ====== -->
+    <div id="tab-review" class="tab-content active">
+        <nav class="quick-nav">
+            <div class="quick-inner">
+                <a href="#大单元一" class="quick-btn" style="--btn-color: #3b82f6"><span class="quick-num">01</span><span>化学基本概念与化学实验基础知识</span></a>
+                <a href="#大单元二" class="quick-btn" style="--btn-color: #06b6d4"><span class="quick-num">02</span><span>元素及其化合物</span></a>
+                <a href="#大单元三" class="quick-btn" style="--btn-color: #8b5cf6"><span class="quick-num">03</span><span>物质结构与性质 元素周期律</span></a>
+                <a href="#大单元四" class="quick-btn" style="--btn-color: #ef4444"><span class="quick-num">04</span><span>化学反应原理</span></a>
+                <a href="#大单元五" class="quick-btn" style="--btn-color: #10b981"><span class="quick-num">05</span><span>有机化学基础</span></a>
+                <a href="#大单元六" class="quick-btn" style="--btn-color: #f59e0b"><span class="quick-num">06</span><span>化学实验综合应用</span></a>
+            </div>
+        </nav>
+        <main class="container">
+            <section class="unit-section" id="大单元一">
+                <div class="unit-header" style="--unit-color: #3b82f6">
+                    <div class="unit-icon">01</div>
+                    <div class="unit-info">
+                        <h2 class="unit-name">大单元一</h2>
+                        <p class="unit-title">化学基本概念与化学实验基础知识</p>
+                    </div>
+                    <div class="unit-count">16个考点</div>
+                </div>
+                <div class="unit-content">
+                    <div class="chapter">
+                        <div class="chapter-title">第一章 化学物质及其变化</div>
+                        <div class="cards-grid">
+                            <a href="./topics/01.html" class="topic-card">
+                                <div class="card-type">第1讲</div>
+                                <div class="card-title">物质的组成、性质和转化</div>
+                            </a>
+                            <a href="./topics/02.html" class="topic-card">
+                                <div class="card-type">第2讲</div>
+                                <div class="card-title">离子反应 离子方程式</div>
+                            </a>
+                            <a href="./topics/zt-01.html" class="topic-card">
+                                <div class="card-type tag-key">专项突破1</div>
+                                <div class="card-title">六角度判断离子方程式正误</div>
+                            </a>
+                            <a href="./topics/nd-01.html" class="topic-card">
+                                <div class="card-type tag-hard">难点突破1</div>
+                                <div class="card-title">与量有关的离子方程式书写技巧</div>
+                            </a>
+                            <a href="./topics/03.html" class="topic-card">
+                                <div class="card-type">第3讲</div>
+                                <div class="card-title">氧化还原反应的概念和规律</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <p style="text-align:center;color:#94a3b8;font-size:14px;padding:20px;">... 其他大单元同现有页面，此处省略 ...</p>
+        </main>
+    </div>
+
+    <!-- ====== Tab 2: 试题选讲 ====== -->
+    <div id="tab-exam" class="tab-content">
+        <!-- 试题板块头图 -->
+        <div class="exam-hero">
+            <div class="exam-hero-title">📝 试题选讲</div>
+            <div class="exam-hero-desc">选择题 · 实验题 · 化工题 · 原理题 · 有机题 · 逐题精讲</div>
+        </div>
+
+        <!-- 题型筛选 -->
+        <div class="exam-filter">
+            <span class="filter-chip active" onclick="filterExam('all')">全部</span>
+            <span class="filter-chip" onclick="filterExam('xz')">🔘 选择题</span>
+            <span class="filter-chip" onclick="filterExam('sy')">🧪 实验题</span>
+            <span class="filter-chip" onclick="filterExam('hg')">🏭 化工题</span>
+            <span class="filter-chip" onclick="filterExam('yl')">⚗️ 原理题</span>
+            <span class="filter-chip" onclick="filterExam('yj')">🧬 有机题</span>
+            <span class="filter-chip" onclick="filterExam('jg')">🔬 结构题</span>
+        </div>
+
+        <div class="exam-container">
+            <!-- 2025年 -->
+            <div class="exam-year-section" data-types="xz,sy,hg,yl,yj,jg">
+                <div class="exam-year-header">
+                    <span class="exam-year-badge">2025</span>
+                    <span class="exam-year-info">共 6 组</span>
+                </div>
+                <div class="exam-grid">
+                    <a href="#" class="exam-card" data-type="xz">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge xz">选择题</span>
+                            <span class="exam-card-source">2025年全国甲卷</span>
+                        </div>
+                        <div class="exam-card-title">2025全国甲卷 选择题精讲（7-13题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2025-06-07</span>
+                            <span>📊 7道题</span>
+                            <span>⏱ 约30分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">离子方程式</span>
+                            <span class="exam-tag">NA判断</span>
+                            <span class="exam-tag">电化学</span>
+                            <span class="exam-tag">有机性质</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="sy">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge sy">实验题</span>
+                            <span class="exam-card-source">2025年全国甲卷</span>
+                        </div>
+                        <div class="exam-card-title">2025全国甲卷 实验综合题精讲（26题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2025-06-07</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约15分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">制备实验</span>
+                            <span class="exam-tag">滴定计算</span>
+                            <span class="exam-tag">装置评价</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="hg">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge hg">化工题</span>
+                            <span class="exam-card-source">2025年全国甲卷</span>
+                        </div>
+                        <div class="exam-card-title">2025全国甲卷 工艺流程题精讲（27题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2025-06-07</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约15分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">工艺流程</span>
+                            <span class="exam-tag">氧化还原</span>
+                            <span class="exam-tag">条件控制</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="yl">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge yl">原理题</span>
+                            <span class="exam-card-source">2025年全国甲卷</span>
+                        </div>
+                        <div class="exam-card-title">2025全国甲卷 反应原理题精讲（28题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2025-06-07</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约15分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">化学平衡</span>
+                            <span class="exam-tag">电化学</span>
+                            <span class="exam-tag">图像分析</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="yj">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge yj">有机题</span>
+                            <span class="exam-card-source">2025年全国甲卷</span>
+                        </div>
+                        <div class="exam-card-title">2025全国甲卷 有机推断题精讲（36题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2025-06-07</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约15分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">有机推断</span>
+                            <span class="exam-tag">合成路线</span>
+                            <span class="exam-tag">官能团</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="jg">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge jg">结构题</span>
+                            <span class="exam-card-source">2025年全国甲卷</span>
+                        </div>
+                        <div class="exam-card-title">2025全国甲卷 物质结构题精讲（35题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2025-06-07</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约12分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">杂化轨道</span>
+                            <span class="exam-tag">晶胞计算</span>
+                            <span class="exam-tag">分子性质</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2024年 -->
+            <div class="exam-year-section" data-types="xz,sy,yj">
+                <div class="exam-year-header">
+                    <span class="exam-year-badge">2024</span>
+                    <span class="exam-year-info">共 3 组</span>
+                </div>
+                <div class="exam-grid">
+                    <a href="#" class="exam-card" data-type="xz">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge xz">选择题</span>
+                            <span class="exam-card-source">2024年全国乙卷</span>
+                        </div>
+                        <div class="exam-card-title">2024全国乙卷 选择题精讲（7-13题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2024-06-07</span>
+                            <span>📊 7道题</span>
+                            <span>⏱ 约30分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">阿伏加德罗</span>
+                            <span class="exam-tag">离子共存</span>
+                            <span class="exam-tag">电离平衡</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="sy">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge sy">实验题</span>
+                            <span class="exam-card-source">2024年广州市一模</span>
+                        </div>
+                        <div class="exam-card-title">2024广州一模 实验探究题精讲</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2024-03-15</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约15分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">性质探究</span>
+                            <span class="exam-tag">变量控制</span>
+                            <span class="exam-tag">评价改进</span>
+                        </div>
+                    </a>
+                    <a href="#" class="exam-card" data-type="yj">
+                        <div class="exam-card-top">
+                            <span class="exam-type-badge yj">有机题</span>
+                            <span class="exam-card-source">2024年全国乙卷</span>
+                        </div>
+                        <div class="exam-card-title">2024全国乙卷 有机推断题精讲（36题）</div>
+                        <div class="exam-card-meta">
+                            <span>📅 2024-06-07</span>
+                            <span>📊 1道大题</span>
+                            <span>⏱ 约15分钟</span>
+                        </div>
+                        <div class="exam-card-tags">
+                            <span class="exam-tag">多肽合成</span>
+                            <span class="exam-tag">手性碳</span>
+                            <span class="exam-tag">反应类型</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 提示：随时可添加 -->
+            <div style="text-align:center; padding: 30px 20px; border: 2px dashed #e2e8f0; border-radius: 14px; margin-top: 20px;">
+                <div style="font-size: 28px; margin-bottom: 8px;">➕</div>
+                <div style="font-size: 14px; color: #94a3b8;">随时添加新试题，按题型分类管理，来源不限（高考、模拟、周测、月考均可）</div>
+                <div style="font-size: 12px; color: #cbd5e1; margin-top: 6px;">添加方式：创建 HTML 文件放到 exams/ 目录，然后在此处添加链接即可</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>化学不难学 · 决胜高考 | 持续更新中</p>
+    </footer>
+
+    <script>
+        // 标签页切换
+        function switchTab(tab) {
+            // 切换按钮状态
+            document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', (tab === 'review' && i === 0) || (tab === 'exam' && i === 1));
+            });
+            // 切换内容
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 试题类型筛选
+        function filterExam(type) {
+            // 切换筛选按钮
+            document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // 过滤卡片
+            document.querySelectorAll('.exam-card').forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // 过滤年份分组
+            document.querySelectorAll('.exam-year-section').forEach(section => {
+                const types = section.dataset.types.split(',');
+                const visible = type === 'all' || types.includes(type);
+                section.style.display = visible ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
