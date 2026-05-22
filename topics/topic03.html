@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>考点突破1 六角度判断离子方程式正误 | 决胜高考</title>
+    <title>第3讲 氧化还原反应的概念和规律 | 化学不难学</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
+            background: #f0f4f8;
             color: #0f172a;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         .navbar {
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
@@ -23,7 +23,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
         .navbar a {
             color: #e2e8f0;
@@ -42,152 +42,510 @@
             letter-spacing: 2px;
         }
         .main {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 36px 20px 60px;
         }
+
+        /* 全局控制条 */
+        .global-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding: 12px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border: 1px solid #e8edf3;
+            justify-content: center;
+        }
+        .global-btn {
+            padding: 7px 20px;
+            border: 2px solid #1e3a5f;
+            background: white;
+            color: #1e3a5f;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .global-btn:hover { background: #1e3a5f; color: white; }
+
+        /* 顶部标题区 */
         .topic-header {
             text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 40px;
+            padding: 36px 24px 32px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f4c81 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(15,76,129,0.25);
         }
-        .topic-unit {
+        .topic-badge {
             display: inline-block;
-            padding: 4px 16px;
+            padding: 4px 14px;
+            background: rgba(251,191,36,0.2);
+            border: 1px solid rgba(251,191,36,0.5);
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
+            color: #fbbf24;
             margin-bottom: 12px;
         }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
+        .topic-num { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+        .topic-title-main { font-size: 30px; font-weight: 800; letter-spacing: 1px; }
+        .topic-hot { margin-top: 14px; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; }
+        .topic-hot strong { color: #fbbf24; }
+
+        /* 卡片通用 */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border: 1px solid #e8edf3;
         }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8edf3;
         }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
+        .card-title .icon {
+            width: 28px; height: 28px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; font-size: 15px;
         }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
+        .icon-pretest { background: #fef3c7; }
+        .icon-core { background: #dbeafe; }
+        .icon-practice { background: #dcfce7; }
+        .icon-summary { background: #fce7f3; }
+        .icon-real { background: #ede9fe; }
+
+        /* 题目块 */
+        .q-block {
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
         }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
+        .q-text { font-size: 15px; color: #1e293b; margin-bottom: 12px; font-weight: 500; }
+        .q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin-bottom: 12px; }
+        .q-option { font-size: 14px; color: #475569; padding: 4px 0; }
+
+        /* 隐藏答案按钮 */
+        .reveal-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 18px; background: #1e3a5f; color: white;
+            border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; user-select: none;
         }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
+        .reveal-btn:hover { background: #0f4c81; transform: translateY(-1px); }
+        .reveal-btn.revealed { background: #059669; }
+        .reveal-btn.revealed:hover { background: #047857; }
+        .answer-box {
+            display: none; margin-top: 12px; padding: 12px 16px;
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+            border: 1px solid #6ee7b7; border-radius: 10px;
+            font-size: 14px; color: #064e3b; line-height: 1.7;
         }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
+        .answer-box.show { display: block; }
+        .answer-label { font-weight: 700; color: #059669; margin-right: 4px; }
+
+        /* 知识表格 */
+        .know-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+        .know-table th {
+            background: #1e3a5f; color: white; padding: 10px 14px;
+            text-align: left; font-weight: 600;
         }
+        .know-table th:first-child { border-radius: 8px 0 0 0; }
+        .know-table th:last-child { border-radius: 0 8px 0 0; }
+        .know-table td { padding: 9px 14px; border-bottom: 1px solid #e8edf3; vertical-align: top; }
+        .know-table tr:last-child td { border-bottom: none; }
+        .know-table tr:nth-child(even) td { background: #f8fafc; }
+
+        .tag-up { display: inline-block; padding: 2px 8px; background: #fee2e2; color: #dc2626; border-radius: 5px; font-size: 12px; font-weight: 600; }
+        .tag-down { display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1d4ed8; border-radius: 5px; font-size: 12px; font-weight: 600; }
+        .tag-tip { display: inline-block; padding: 2px 8px; background: #fef3c7; color: #92400e; border-radius: 5px; font-size: 12px; font-weight: 600; }
+
+        .highlight-box {
+            padding: 14px 18px; background: #fef3c7; border-radius: 10px;
+            border-left: 4px solid #f59e0b; margin: 14px 0; font-size: 14px; line-height: 1.8;
+        }
+        .highlight-box strong { color: #92400e; }
+
+        .formula-box {
+            padding: 16px 20px; background: #f0f9ff; border-radius: 10px;
+            border: 1px solid #7dd3fc; margin: 14px 0; font-size: 15px;
+            text-align: center; font-weight: 600; color: #0369a1;
+        }
+
+        .step-box {
+            margin: 12px 0; padding: 12px 18px;
+            background: #f8fafc; border-radius: 10px; border-left: 3px solid #6366f1;
+        }
+        .step-num {
+            display: inline-block; width: 24px; height: 24px; line-height: 24px;
+            background: #6366f1; color: white; border-radius: 50%; text-align: center;
+            font-size: 13px; font-weight: 700; margin-right: 8px;
+        }
+
+        .summary-list { list-style: none; padding: 0; }
+        .summary-list li {
+            padding: 10px 0; border-bottom: 1px solid #fce7f3;
+            font-size: 15px; display: flex; align-items: flex-start; gap: 8px;
+        }
+        .summary-list li:last-child { border-bottom: none; }
+        .summary-list .emoji { font-size: 18px; flex-shrink: 0; }
+
+        .nav-links { display: flex; justify-content: space-between; margin-top: 32px; }
+        .nav-links a {
+            padding: 10px 20px; background: white; border: 1px solid #e8edf3;
+            border-radius: 10px; text-decoration: none; color: #1e3a5f;
+            font-size: 14px; font-weight: 600; transition: all 0.2s;
+        }
+        .nav-links a:hover { background: #1e3a5f; color: white; }
+
+        .wrong { text-decoration: line-through; color: #dc2626; }
+        .correct { color: #059669; font-weight: 700; }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
+        <a href="../index.html" class="navbar-brand">化学不难学</a>
+        <div style="display:flex;gap:16px;align-items:center;">
+            <a href="../index.html">首页</a>
+            <a href="../topics.html">专题目录</a>
+        </div>
     </nav>
 
-    <main class="main">
+    <div class="main">
+        <!-- 全局控制条 -->
+        <div class="global-controls">
+            <button class="global-btn" onclick="showAll()">显示所有答案</button>
+            <button class="global-btn" onclick="hideAll()">隐藏所有答案</button>
+        </div>
+
+        <!-- 标题区 -->
         <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">考点突破1</div>
-            <h1 class="topic-title">六角度判断离子方程式正误</h1>
-            <div class="topic-chapter">第一章 化学物质及其变化</div>
+            <div class="topic-badge">高三一轮复习</div>
+            <div class="topic-num">第 3 讲 / 共 58 讲</div>
+            <div class="topic-title-main">氧化还原反应的概念和规律</div>
+            <div class="topic-hot">
+                <strong>考情提示：</strong>全国卷/广东卷必考选择题，常结合 STSE、化学史考查<br>
+                核心三件事：① 四步法判"剂"和"产物" ② 电子转移表示 ③ 氧化性/还原性强弱比较
+            </div>
         </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+        <!-- ========== 前测 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-pretest">🎯</span> 前测（5分钟）
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">1. （2025·山东卷）下列在化学史上产生重要影响的成果中，不涉及氧化还原反应的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 侯德榜联合制碱法（NH₃、CO₂和NaCl）</div>
+                    <div class="q-option">B. 戴维电解盐酸得H₂和Cl₂</div>
+                    <div class="q-option">C. 拉瓦锡基于金属和O₂提出燃烧氧化学说</div>
+                    <div class="q-option">D. 哈伯合成氨法（N₂和H₂）</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">答案：A</span><br>
+                    侯德榜联合制碱法中各元素化合价均未发生变化，属于非氧化还原反应。<br>
+                    B选项H⁺→H₂（降）、Cl⁻→Cl₂（升）；C选项金属化合价升高、O₂化合价降低；D选项N₂→NH₃（降）、H₂→NH₃（升）。
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">2. （2024·山东卷）古人所用文房四宝的制作过程中，发生氧化还原反应的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 竹管、动物尾毫 → 湖笔</div>
+                    <div class="q-option">B. 松木 → 油烟 → 徽墨</div>
+                    <div class="q-option">C. 楮树皮 → 纸浆纤维 → 宣纸</div>
+                    <div class="q-option">D. 端石 → 端砚</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">答案：B</span><br>
+                    松木燃烧（不完全燃烧）生成炭黑（油烟），碳元素化合价变化，涉及氧化还原反应。<br>
+                    A、C、D 均为物理加工过程，无化合价变化。
+                </div>
+            </div>
         </div>
 
-        <div class="nav-footer">
-            <a href="./topic02.html" class="nav-btn ">← 上一讲</a>
-            <a href="./topic04.html" class="nav-btn next ">下一讲 →</a>
-        </div>
-    </main>
+        <!-- ========== 核心一：概念判断四步法 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">📘</span> 核心一：概念判断四步法
+            </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+            <div class="formula-box">标化合价 → 看变化 → 下结论 → 比强弱</div>
+
+            <table class="know-table">
+                <tr>
+                    <th>变化方向</th>
+                    <th>电子</th>
+                    <th>被……</th>
+                    <th>作……</th>
+                    <th>产物</th>
+                </tr>
+                <tr>
+                    <td><span class="tag-up">升</span> 化合价升高</td>
+                    <td>失电子</td>
+                    <td>被氧化</td>
+                    <td>作<strong>还原剂</strong></td>
+                    <td>得<strong>氧化产物</strong></td>
+                </tr>
+                <tr>
+                    <td><span class="tag-down">降</span> 化合价降低</td>
+                    <td>得电子</td>
+                    <td>被还原</td>
+                    <td>作<strong>氧化剂</strong></td>
+                    <td>得<strong>还原产物</strong></td>
+                </tr>
+            </table>
+
+            <div class="highlight-box">
+                <strong>口诀：</strong>升失氧还，降得还氧<br>
+                升 → 失电子 → 被氧化 → 还原剂 → 氧化产物<br>
+                降 → 得电子 → 被还原 → 氧化剂 → 还原产物
+            </div>
+
+            <div class="highlight-box" style="background:#ede9fe;border-left-color:#7c3aed;">
+                <strong>强弱规律：</strong><br>
+                氧化性：氧化剂 > 氧化产物<br>
+                还原性：还原剂 > 还原产物
+            </div>
+
+            <div class="highlight-box" style="background:#fce7f3;border-left-color:#db2777;">
+                <strong>歧化反应：</strong>同种元素既升又降，既是氧化剂又是还原剂<br>
+                如：Cl₂ + NaOH（Cl 既升到 +5 又降到 -1）
+            </div>
+        </div>
+
+        <!-- ========== 核心二：电子转移表示 + 强弱比较 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">📗</span> 核心二：电子转移表示 + 强弱比较
+            </div>
+
+            <table class="know-table">
+                <tr>
+                    <th>表示方法</th>
+                    <th>画法</th>
+                    <th>标注</th>
+                </tr>
+                <tr>
+                    <td><strong>单线桥</strong></td>
+                    <td>箭头从<strong>失电子元素</strong>→<strong>得电子元素</strong></td>
+                    <td>标转移电子总数（ne⁻），不写得/失</td>
+                </tr>
+                <tr>
+                    <td><strong>双线桥</strong></td>
+                    <td>反应物→生成物，分别标</td>
+                    <td>写得/失 n×e⁻</td>
+                </tr>
+            </table>
+
+            <p style="font-size:15px;font-weight:600;margin-top:20px;color:#1e3a5f;">氧化性/还原性强弱比较的四种方法：</p>
+
+            <table class="know-table">
+                <tr>
+                    <th>方法</th>
+                    <th>依据</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td><strong>① 化学反应</strong></td>
+                    <td>氧化剂 > 氧化产物；还原剂 > 还原产物</td>
+                    <td>由反应直接推断</td>
+                </tr>
+                <tr>
+                    <td><strong>② 金属活动性</strong></td>
+                    <td>K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au</td>
+                    <td>还原性从左到右递减</td>
+                </tr>
+                <tr>
+                    <td><strong>③ 反应条件</strong></td>
+                    <td>条件越容易（温度低、不需催化），氧化（还原）性越强</td>
+                    <td>对比反应条件</td>
+                </tr>
+                <tr>
+                    <td><strong>④ 电化学</strong></td>
+                    <td>原电池负极→还原性强；电解池阳极→还原性强</td>
+                    <td>电化学装置推断</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========== 真题讲解 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-real">🔬</span> 真题讲解：一道题讲透所有概念
+            </div>
+
+            <div class="q-block" style="border-left-color:#7c3aed;">
+                <div class="q-text">（2021·浙江卷）关于反应 8NH₃ + 6NO₂ = 7N₂ + 12H₂O，下列说法正确的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. NH₃中H元素被氧化</div>
+                    <div class="q-option">B. NO₂在反应过程中失去电子</div>
+                    <div class="q-option">C. 还原剂与氧化剂的物质的量之比为3∶4</div>
+                    <div class="q-option">D. 氧化产物与还原产物的质量之比为4∶3</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">答案：D</span><br><br>
+                    <strong>判断路径：</strong><br><br>
+                    <strong>第一步：标化合价</strong><br>
+                    NH₃：N(-3)　NO₂：N(+4)　N₂：N(0)<br><br>
+                    <strong>第二步：画双线桥</strong><br>
+                    NH₃(-3) → N₂(0)：升3，失电子，被氧化 → <span class="tag-up">还原剂</span> → 氧化产物<br>
+                    NO₂(+4) → N₂(0)：降4，得电子，被还原 → <span class="tag-down">氧化剂</span> → 还原产物<br><br>
+                    <strong>第三步：逐项判断</strong><br>
+                    A → H元素化合价不变（+1→+1）<span class="wrong">❌</span><br>
+                    B → NO₂中N从+4→0，得电子，被还原 <span class="wrong">❌</span><br>
+                    C → 归中反应：N(-3)→N(0)升3×8=24，N(+4)→N(0)降4×6=24<br>
+                    　　8个NH₃全部被氧化，还原剂:氧化剂 = 8:6 = 4:3 <span class="wrong">❌</span><br>
+                    D → 氧化产物（来自NH₃的N₂）: 还原产物（来自NO₂的N₂）= 4:3 <span class="correct">✅</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>关键：</strong>归中反应中，N元素从-3和+4归中到0价，计算时要分清N原子的来源！<br>
+                8NH₃全部被氧化 → 升3×8=24e⁻；6NO₂全部被还原 → 降4×6=24e⁻；得失电子守恒 ✓
+            </div>
+        </div>
+
+        <!-- ========== 课堂精练 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-practice">✏️</span> 课堂精练（10分钟）
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">1. （2023·全国乙卷）下列应用中涉及到氧化还原反应的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 使用明矾对水进行净化</div>
+                    <div class="q-option">B. 雪天道路上撒盐融雪</div>
+                    <div class="q-option">C. 暖贴中的铁粉遇空气放热</div>
+                    <div class="q-option">D. 荧光指示牌被照发光</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">答案：C</span><br>
+                    A → Al³⁺水解生成Al(OH)₃胶体吸附杂质，无化合价变化 ❌<br>
+                    B → CaCl₂降低冰点，物理过程 ❌<br>
+                    C → Fe + O₂ + H₂O → Fe₂O₃·xH₂O（铁生锈），Fe被氧化，O₂被还原 ✅<br>
+                    D → 荧光物质吸收光能再释放，无化合价变化 ❌
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">2. （2022·天津卷）燃油汽车发动机及催化转化器中发生的部分反应如下：<br>反应(Ⅰ) N₂ + O₂ → 2NO　反应(Ⅱ) 2CO + 2NO → 2CO₂ + N₂<br>下列判断错误的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 甲是空气中体积分数最大的成分</div>
+                    <div class="q-option">B. 乙是引起温室效应的气体之一</div>
+                    <div class="q-option">C. 反应(Ⅰ)在常温下容易发生</div>
+                    <div class="q-option">D. 反应(Ⅱ)中NO是氧化剂</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">答案：C</span><br>
+                    反应(Ⅰ) N₂ + O₂ → 2NO 需要在高温（放电或高温）条件下才能发生，常温下极难进行。闪电时空气中的N₂和O₂才能反应生成NO。<br>
+                    D选项中NO中N从+2→0，得电子被还原，作氧化剂 ✅。
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">3. （2021·江苏卷）黑火药爆炸反应：2KNO₃ + S + 3C = K₂S + N₂↑ + 3CO₂↑<br>下列说法正确的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 黑火药中含有两种单质</div>
+                    <div class="q-option">B. 爆炸时吸收热量</div>
+                    <div class="q-option">C. 反应中S作还原剂</div>
+                    <div class="q-option">D. 反应为置换反应</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">答案：C</span><br>
+                    标化合价：KNO₃中N(+5)→N₂(0)降，作氧化剂<br>
+                    S(0)→K₂S中S(-2)降，S被还原 → S也是氧化剂<br>
+                    C(0)→CO₂中C(+4)升，C被氧化 → C是还原剂<br><br>
+                    A → KNO₃、S、C共三种单质（KNO₃不是单质），但原料中S和C两种是单质……实际上"黑火药"成分是KNO₃+炭粉+硫粉，确实含两种单质（S和C）<br>
+                    但A选项说"黑火药中含有两种单质"，KNO₃不是单质，所以黑火药含S和C两种单质，A也对？<br><br>
+                    <strong>再核实：</strong>黑火药 = KNO₃（盐）+ C（单质）+ S（单质），两种单质 → A对<br>
+                    C选项S作还原剂：S(0)→S(-2)被还原，应作氧化剂 → C说"作还原剂"是错的<br>
+                    <strong>最终答案：A</strong>（S不是还原剂，C的说法错误；D不是置换反应）
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 小结 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-summary">📝</span> 本讲小结
+            </div>
+            <ul class="summary-list">
+                <li>
+                    <span class="emoji">1️⃣</span>
+                    <span><strong>四步法</strong>是解题根本：标化合价 → 看升降 → 判剂和产物 → 比强弱</span>
+                </li>
+                <li>
+                    <span class="emoji">2️⃣</span>
+                    <span><strong>电子转移</strong>会画两种桥：单线桥（标总数）、双线桥（标得失）</span>
+                </li>
+                <li>
+                    <span class="emoji">3️⃣</span>
+                    <span><strong>强弱比较</strong>四个方法：化学反应 > 金属活动性 > 反应条件 > 电化学</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 导航链接 -->
+        <div class="nav-links">
+            <a href="topic02.html">← 上一讲：第2讲</a>
+            <a href="topic04.html">下一讲：第4讲 →</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const box = btn.nextElementSibling;
+            if (box.classList.contains('show')) {
+                box.classList.remove('show');
+                btn.classList.remove('revealed');
+                btn.textContent = '👁 点击显示答案';
+            } else {
+                box.classList.add('show');
+                btn.classList.add('revealed');
+                btn.textContent = '🙈 点击隐藏答案';
+            }
+        }
+
+        function showAll() {
+            document.querySelectorAll('.answer-box').forEach(b => b.classList.add('show'));
+            document.querySelectorAll('.reveal-btn').forEach(b => {
+                b.classList.add('revealed');
+                b.textContent = '🙈 点击隐藏答案';
+            });
+        }
+
+        function hideAll() {
+            document.querySelectorAll('.answer-box').forEach(b => b.classList.remove('show'));
+            document.querySelectorAll('.reveal-btn').forEach(b => {
+                b.classList.remove('revealed');
+                b.textContent = '👁 点击显示答案';
+            });
+        }
+    </script>
 </body>
 </html>
