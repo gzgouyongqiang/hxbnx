@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第4讲 氧化还原反应方程式的配平与书写 | 决胜高考</title>
+    <title>第4讲 氧化还原反应方程式的配平与书写 | 化学不难学</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
+            background: #f0f4f8;
             color: #0f172a;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         .navbar {
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
@@ -23,7 +23,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
         .navbar a {
             color: #e2e8f0;
@@ -42,152 +42,585 @@
             letter-spacing: 2px;
         }
         .main {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 36px 20px 60px;
         }
+
+        /* 全局控制条 */
+        .global-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding: 12px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border: 1px solid #e8edf3;
+            justify-content: center;
+        }
+        .global-btn {
+            padding: 7px 20px;
+            border: 2px solid #1e3a5f;
+            background: white;
+            color: #1e3a5f;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .global-btn:hover { background: #1e3a5f; color: white; }
+
+        /* 顶部标题区 */
         .topic-header {
             text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 40px;
+            padding: 36px 24px 32px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f4c81 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(15,76,129,0.25);
         }
-        .topic-unit {
+        .topic-badge {
             display: inline-block;
-            padding: 4px 16px;
+            padding: 4px 14px;
+            background: rgba(251,191,36,0.2);
+            border: 1px solid rgba(251,191,36,0.5);
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
+            color: #fbbf24;
             margin-bottom: 12px;
         }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
+        .topic-num { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+        .topic-title-main { font-size: 30px; font-weight: 800; letter-spacing: 1px; }
+        .topic-hot { margin-top: 14px; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; }
+        .topic-hot strong { color: #fbbf24; }
+
+        /* 卡片通用 */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border: 1px solid #e8edf3;
         }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8edf3;
         }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
+        .card-title .icon {
+            width: 28px; height: 28px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; font-size: 15px;
         }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
+        .icon-pretest { background: #fef3c7; }
+        .icon-core { background: #dbeafe; }
+        .icon-practice { background: #dcfce7; }
+        .icon-summary { background: #fce7f3; }
+        .icon-real { background: #ede9fe; }
+
+        /* 题目块 */
+        .q-block {
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
         }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
+        .q-text { font-size: 15px; color: #1e293b; margin-bottom: 12px; font-weight: 500; }
+        .q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin-bottom: 12px; }
+        .q-option { font-size: 14px; color: #475569; padding: 4px 0; }
+
+        /* 隐藏答案按钮 */
+        .reveal-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 18px; background: #1e3a5f; color: white;
+            border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; user-select: none;
         }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
+        .reveal-btn:hover { background: #0f4c81; transform: translateY(-1px); }
+        .reveal-btn.revealed { background: #059669; }
+        .reveal-btn.revealed:hover { background: #047857; }
+        .answer-box {
+            display: none; margin-top: 12px; padding: 12px 16px;
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+            border: 1px solid #6ee7b7; border-radius: 10px;
+            font-size: 14px; color: #064e3b; line-height: 1.7;
         }
+        .answer-box.show { display: block; }
+        .answer-label { font-weight: 700; color: #059669; margin-right: 4px; }
+
+        /* 知识表格 */
+        .know-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+        .know-table th {
+            background: #1e3a5f; color: white; padding: 10px 14px;
+            text-align: left; font-weight: 600;
+        }
+        .know-table th:first-child { border-radius: 8px 0 0 0; }
+        .know-table th:last-child { border-radius: 0 8px 0 0; }
+        .know-table td { padding: 9px 14px; border-bottom: 1px solid #e8edf3; vertical-align: top; }
+        .know-table tr:last-child td { border-bottom: none; }
+        .know-table tr:nth-child(even) td { background: #f8fafc; }
+
+        .tag-up { display: inline-block; padding: 2px 8px; background: #fee2e2; color: #dc2626; border-radius: 5px; font-size: 12px; font-weight: 600; }
+        .tag-down { display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1d4ed8; border-radius: 5px; font-size: 12px; font-weight: 600; }
+        .tag-tip { display: inline-block; padding: 2px 8px; background: #fef3c7; color: #92400e; border-radius: 5px; font-size: 12px; font-weight: 600; }
+
+        .highlight-box {
+            padding: 14px 18px; background: #fef3c7; border-radius: 10px;
+            border-left: 4px solid #f59e0b; margin: 14px 0; font-size: 14px; line-height: 1.8;
+        }
+        .highlight-box strong { color: #92400e; }
+
+        .formula-box {
+            padding: 16px 20px; background: #f0f9ff; border-radius: 10px;
+            border: 1px solid #7dd3fc; margin: 14px 0; font-size: 15px;
+            text-align: center; font-weight: 600; color: #0369a1;
+        }
+
+        .step-box {
+            margin: 12px 0; padding: 12px 18px;
+            background: #f8fafc; border-radius: 10px; border-left: 3px solid #6366f1;
+        }
+        .step-num {
+            display: inline-block; width: 24px; height: 24px; line-height: 24px;
+            background: #6366f1; color: white; border-radius: 50%; text-align: center;
+            font-size: 13px; font-weight: 700; margin-right: 8px;
+        }
+
+        .summary-list { list-style: none; padding: 0; }
+        .summary-list li {
+            padding: 10px 14px; margin-bottom: 8px;
+            background: #fefce8; border-radius: 10px;
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 14px; line-height: 1.7;
+        }
+        .emoji { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+        .nav-links {
+            display: flex; justify-content: space-between; margin-top: 40px;
+            padding-top: 24px; border-top: 2px solid #e8edf3;
+        }
+        .nav-links a {
+            padding: 10px 20px; background: white; border-radius: 10px;
+            color: #1e3a5f; text-decoration: none; font-size: 14px; font-weight: 600;
+            border: 1px solid #e8edf3; transition: all 0.2s;
+        }
+        .nav-links a:hover { background: #1e3a5f; color: white; border-color: #1e3a5f; }
+
+        /* 步骤流程 */
+        .flow-steps {
+            display: flex; gap: 0; margin: 16px 0; flex-wrap: wrap; justify-content: center;
+        }
+        .flow-step {
+            display: flex; align-items: center; gap: 0;
+        }
+        .flow-step-num {
+            width: 36px; height: 36px; line-height: 36px;
+            background: #6366f1; color: white; border-radius: 50%;
+            text-align: center; font-weight: 700; font-size: 15px; flex-shrink: 0;
+        }
+        .flow-step-label {
+            padding: 6px 14px; background: #ede9fe; color: #6366f1;
+            font-weight: 600; font-size: 14px; border-radius: 0 8px 8px 0;
+            margin-left: -2px;
+        }
+        .flow-arrow {
+            font-size: 20px; color: #a5b4fc; margin: 0 6px; font-weight: 700;
+        }
+
+        /* 介质配平表格 */
+        .media-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 14px 0; }
+        .media-table th {
+            background: #7c3aed; color: white; padding: 10px 14px; text-align: center; font-weight: 600;
+        }
+        .media-table th:first-child { border-radius: 8px 0 0 0; }
+        .media-table th:last-child { border-radius: 0 8px 0 0; }
+        .media-table td { padding: 10px 14px; border-bottom: 1px solid #e8edf3; text-align: center; }
+        .media-table tr:last-child td { border-bottom: none; }
+        .media-table tr:nth-child(even) td { background: #f5f3ff; }
+
+        /* 判断路径 */
+        .judge-path {
+            margin: 12px 0; padding: 0;
+        }
+        .judge-step {
+            display: flex; gap: 12px; margin-bottom: 10px;
+        }
+        .judge-num {
+            width: 24px; height: 24px; line-height: 24px;
+            background: #7c3aed; color: white; border-radius: 50%;
+            text-align: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+        }
+        .judge-content {
+            padding: 10px 16px; background: #f5f3ff; border-radius: 10px;
+            font-size: 14px; line-height: 1.7; flex: 1;
+        }
+
         @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
+            .topic-title-main { font-size: 22px; }
+            .q-options { grid-template-columns: 1fr; }
+            .card { padding: 20px 16px; }
+            .flow-steps { flex-direction: column; align-items: center; }
+            .flow-arrow { transform: rotate(90deg); }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
+        <a href="../index.html">📚 化学不难学</a>
+        <span class="navbar-brand">第4讲</span>
     </nav>
 
-    <main class="main">
+    <div class="main">
+        <!-- 全局控制条 -->
+        <div class="global-controls">
+            <button class="global-btn" onclick="showAll()">👁 显示所有答案</button>
+            <button class="global-btn" onclick="hideAll()">🙈 隐藏所有答案</button>
+        </div>
+
+        <!-- 标题区 -->
         <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">第4讲</div>
-            <h1 class="topic-title">氧化还原反应方程式的配平与书写</h1>
-            <div class="topic-chapter">第一章 化学物质及其变化</div>
+            <div class="topic-badge">高三化学一轮复习</div>
+            <div class="topic-num">第一讲 → 第六十七讲</div>
+            <div class="topic-title-main">氧化还原反应方程式的配平与书写</div>
+            <div class="topic-hot">
+                🔥 <strong>工艺流程大题必考</strong>，选择题也常结合NA考查电子转移。<br>
+                核心就三件事：① 配平五步法 ② 介质配平 ③ 电子转移计算
+            </div>
         </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+        <!-- ========== 前测 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-pretest">🎯</span> 前测（5分钟）
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">1. （2022·浙江卷）关于反应 4CO₂ + SiH₄ = 4CO + 2H₂O + SiO₂，下列说法<strong>正确</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. CO是氧化产物</div>
+                    <div class="q-option">B. SiH₄发生还原反应</div>
+                    <div class="q-option">C. 氧化剂与还原剂的物质的量之比为1∶4</div>
+                    <div class="q-option">D. 生成1 mol SiO₂时，转移8 mol电子</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：D</span><br>
+                    CO₂→CO，C从+4→+2降2，被还原，CO₂是氧化剂，4个CO₂共降8；<br>
+                    SiH₄→SiO₂，Si从-4→+4升8，是还原剂；<br>
+                    氧化剂∶还原剂 = 4∶1
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">2. 配平下列离子方程式（写系数即可）：</div>
+                <div class="formula-box">____ Cr₂O₇²⁻ + ____ Fe²⁺ + ____ H⁺ → ____ Cr³⁺ + ____ Fe³⁺ + ____ H₂O</div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：</span>1, 6, 14, 2, 6, 7
+                </div>
+            </div>
         </div>
 
-        <div class="nav-footer">
-            <a href="./03.html" class="nav-btn ">← 上一讲</a>
-            <a href="./rd-01.html" class="nav-btn next ">下一讲 →</a>
-        </div>
-    </main>
+        <!-- ========== 核心一：配平五步法 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">📐</span> 核心一：配平五步法
+            </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <span class="flow-step-num">①</span>
+                    <span class="flow-step-label">标</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">
+                    <span class="flow-step-num">②</span>
+                    <span class="flow-step-label">等</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">
+                    <span class="flow-step-num">③</span>
+                    <span class="flow-step-label">定</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">
+                    <span class="flow-step-num">④</span>
+                    <span class="flow-step-label">配</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step">
+                    <span class="flow-step-num">⑤</span>
+                    <span class="flow-step-label">查</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                示例：配平 ____Cu + ____HNO₃(稀) = ____Cu(NO₃)₂ + ____NO↑ + ____H₂O
+            </div>
+
+            <div class="step-box">
+                <span class="step-num">①标</span>
+                标化合价：Cu(0→+2)，HNO₃中N(+5→+2)
+            </div>
+            <div class="step-box">
+                <span class="step-num">②等</span>
+                找最小公倍数：Cu升2，N降3，最小公倍数6
+            </div>
+            <div class="step-box">
+                <span class="step-num">③定</span>
+                定氧化剂/还原剂系数：Cu×3，HNO₃(变价部分)×2
+            </div>
+            <div class="step-box">
+                <span class="step-num">④配</span>
+                原子守恒配其他
+            </div>
+            <div class="formula-box">3Cu + 8HNO₃ = 3Cu(NO₃)₂ + 2NO↑ + 4H₂O</div>
+            <div class="step-box">
+                <span class="step-num">⑤查</span>
+                检查守恒：左右原子数、电荷均相等 ✅
+            </div>
+
+            <div class="highlight-box">
+                <strong>⚠️ 抓大放小：</strong>先配变价元素，再配非变价元素，最后配H和O
+            </div>
+        </div>
+
+        <!-- ========== 核心二：介质配平 + 多元素变价 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">⚗️</span> 核心二：介质配平 + 多元素变价
+            </div>
+
+            <p style="font-size:15px; font-weight:700; color:#7c3aed; margin-bottom:12px;">一、介质配平（离子方程式）</p>
+
+            <table class="media-table">
+                <tr>
+                    <th>介质</th>
+                    <th>左边多O</th>
+                    <th>左边少O</th>
+                </tr>
+                <tr>
+                    <td><strong>酸性</strong></td>
+                    <td>+ 2H⁺ → 生成 H₂O</td>
+                    <td>+ H₂O → 生成 2H⁺</td>
+                </tr>
+                <tr>
+                    <td><strong>碱性</strong></td>
+                    <td>+ H₂O → 生成 2OH⁻</td>
+                    <td>+ 2OH⁻ → 生成 H₂O</td>
+                </tr>
+            </table>
+
+            <div class="highlight-box" style="border-left-color:#7c3aed; background:#f5f3ff;">
+                <strong>经典示例：</strong>酸性KMnO₄氧化Fe²⁺<br>
+                MnO₄⁻ + Fe²⁺ + H⁺ → Mn²⁺ + Fe³⁺ + H₂O<br><br>
+                Mn(+7→+2)降5，Fe(+2→+3)升1 → 最小公倍数5<br>
+                → MnO₄⁻:1, Fe²⁺:5, 再配H⁺和H₂O
+            </div>
+            <div class="formula-box">MnO₄⁻ + 5Fe²⁺ + 8H⁺ = Mn²⁺ + 5Fe³⁺ + 4H₂O</div>
+
+            <p style="font-size:15px; font-weight:700; color:#7c3aed; margin:20px 0 12px;">二、多元素变价——算总升降值</p>
+
+            <div class="highlight-box" style="border-left-color:#7c3aed; background:#f5f3ff;">
+                <strong>示例：</strong>FeS₂ + O₂ = Fe₂O₃ + SO₂
+            </div>
+
+            <div class="step-box">
+                <span class="step-num">①</span>
+                标价：Fe(+2→+3)升1，S(-1→+4)升5×2=10，一个FeS₂共升11
+            </div>
+            <div class="step-box">
+                <span class="step-num">②</span>
+                O₂(0→-2)降2×2=4（每个O₂降4）
+            </div>
+            <div class="step-box">
+                <span class="step-num">③</span>
+                最小公倍数44，FeS₂:4，O₂:11
+            </div>
+            <div class="formula-box">4FeS₂ + 11O₂ = 2Fe₂O₃ + 8SO₂</div>
+
+            <div class="highlight-box">
+                🎯 <strong>口诀：</strong>多个变价一起算，别漏原子乘个数
+            </div>
+        </div>
+
+        <!-- ========== 真题讲解 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-real">🔬</span> 真题讲解：配平 + 电子转移计算
+            </div>
+
+            <div class="q-block" style="border-left-color:#7c3aed;">
+                <div class="q-text">（2024·湖北卷·T7改编）二氧化氯(ClO₂)可用于自来水消毒。实验室用草酸(H₂C₂O₄)和KClO₃制取ClO₂的反应为：</div>
+                <div class="formula-box">H₂C₂O₄ + KClO₃ ——→ CO₂↑ + ClO₂↑</div>
+                <div class="q-options">
+                    <div class="q-option">A. 该反应中KClO₃是还原剂</div>
+                    <div class="q-option">B. 每生成1 mol ClO₂，转移1 mol电子</div>
+                    <div class="q-option">C. 氧化产物与还原产物的物质的量之比为1∶2</div>
+                    <div class="q-option">D. 该反应在强碱性条件下进行</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">🔬 讲判断路径</span><br><br>
+                    <strong>第一步：配平（五步法）</strong><br>
+                    ①标：H₂C₂O₄中C(+3→+4)升1×2=2，KClO₃中Cl(+5→+4)降1<br>
+                    ②等：2和1的最小公倍数=2<br>
+                    ③定：H₂C₂O₄系数1，KClO₃系数2<br>
+                    ④配：H₂C₂O₄ + 2KClO₃ = 2CO₂↑ + 2ClO₂↑ + 2KOH<br><br>
+                    <strong>第二步：逐项判断</strong><br>
+                    A→KClO₃中Cl降价，是<strong>氧化剂</strong> ❌<br>
+                    B→每个Cl从+5→+4降1，2个Cl转移2e⁻，生成2个ClO₂，每生成1 mol ClO₂转移1 mol e⁻ ✅<br>
+                    C→氧化产物为CO₂，还原产物为ClO₂，比例为2:2=1:1 ❌<br>
+                    D→产物有KOH，强碱性有利于反应进行，但草酸在强碱性条件下会成盐，真实条件为酸性 ❌<br><br>
+                    <span class="answer-label">✅ 答案：B</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 课堂精练 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-practice">✏️</span> 课堂精练（10分钟）
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">1. （2022·浙江卷）关于反应 4CO₂ + SiH₄ = 4CO + 2H₂O + SiO₂，若生成1 mol SiO₂，下列说法<strong>错误</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. CO₂是氧化剂</div>
+                    <div class="q-option">B. SiH₄中Si的化合价为-4</div>
+                    <div class="q-option">C. 转移电子数为8 mol</div>
+                    <div class="q-option">D. CO是还原产物</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：D</span><br>
+                    A→CO₂中C(+4→+2)降2，是氧化剂 ✅<br>
+                    B→SiH₄中H为+1，4个H共+4，Si=-4 ✅<br>
+                    C→Si(-4→+4)升8，生成1 mol SiO₂转移8 mol e⁻ ✅<br>
+                    D→CO来自CO₂中C被还原，是<strong>还原产物</strong> ❌
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">2. （2024·浙江1月卷）汽车尾气中的NO和CO在催化剂作用下发生反应：2NO + 2CO = N₂ + 2CO₂。下列说法<strong>不正确</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 生成1 mol CO₂转移电子的数目为2 mol</div>
+                    <div class="q-option">B. 催化剂降低NO与CO反应的活化能</div>
+                    <div class="q-option">C. NO是氧化剂，CO是还原剂</div>
+                    <div class="q-option">D. N₂既是氧化产物又是还原产物</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：D</span><br>
+                    A→C(+2→+4)升2，每个CO₂对应2e⁻，每生成1 mol CO₂转移2 mol e⁻ ✅<br>
+                    B→催化剂降低活化能 ✅<br>
+                    C→NO中N(+2→0)降低，是氧化剂；CO中C(+2→+4)升高，是还原剂 ✅<br>
+                    D→N₂中N来自NO（被还原），所以N₂是<strong>还原产物</strong>，不是氧化产物 ❌
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">3. 制备纳米Si的流程：SiO₂ + Mg → Si + MgO（未配平）。下列说法<strong>错误</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. SiO₂可与NaOH溶液反应</div>
+                    <div class="q-option">B. 盐酸在该工艺中体现了还原性</div>
+                    <div class="q-option">C. 高纯Si可用于制造硅太阳能电池</div>
+                    <div class="q-option">D. 该反应中氧化剂与还原剂的物质的量之比为1∶2</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：B</span><br>
+                    配平：SiO₂ + 2Mg = Si + 2MgO<br>
+                    A→SiO₂ + 2NaOH = Na₂SiO₃ + H₂O ✅<br>
+                    B→HCl与MgO反应→MgCl₂ + H₂O，体现<strong>酸性</strong>，非还原性 ❌<br>
+                    C→高纯Si是半导体→太阳能电池 ✅<br>
+                    D→SiO₂降4是氧化剂，Mg升2×2=4是还原剂，氧化剂∶还原剂=1∶2 ✅
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 小结 ========== -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-summary">📝</span> 本讲小结
+            </div>
+            <ul class="summary-list">
+                <li>
+                    <span class="emoji">1️⃣</span>
+                    <span><strong>配平五步法：</strong>标 → 等 → 定 → 配 → 查</span>
+                </li>
+                <li>
+                    <span class="emoji">2️⃣</span>
+                    <span><strong>介质口诀：</strong>酸性多O加H⁺变H₂O，碱性多O加水变OH⁻</span>
+                </li>
+                <li>
+                    <span class="emoji">3️⃣</span>
+                    <span><strong>电子转移计算：</strong>找准变价元素，一个原子一个原子算，乘对系数</span>
+                </li>
+            </ul>
+
+            <div class="highlight-box" style="margin-top:16px;">
+                🧠 <strong>配平后必验三件事：</strong><br>
+                ① 得失电子数相等？<br>
+                ② 原子数左右相等？<br>
+                ③ 电荷数左右相等（离子方程式）？
+            </div>
+
+            <div style="margin-top:14px; padding:10px 16px; background:#f0f9ff; border-radius:8px; font-size:13px; color:#0369a1;">
+                📝 课后：完成步步高P353练习 + 用五步法配平 FeS₂ + O₂ = Fe₂O₃ + SO₂ 并标电子转移
+            </div>
+            <div style="margin-top:8px; padding:10px 16px; background:#f5f3ff; border-radius:8px; font-size:13px; color:#7c3aed;">
+                🔮 下讲预告：第5讲 钠及其化合物
+            </div>
+        </div>
+
+        <!-- 导航链接 -->
+        <div class="nav-links">
+            <a href="./03.html">← 第3讲 氧化还原反应的概念和规律</a>
+            <a href="./rd-01.html">热点强化1 →</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const box = btn.nextElementSibling;
+            if (box.classList.contains('show')) {
+                box.classList.remove('show');
+                btn.classList.remove('revealed');
+                btn.textContent = '👁 点击显示答案';
+            } else {
+                box.classList.add('show');
+                btn.classList.add('revealed');
+                btn.textContent = '🙈 点击隐藏答案';
+            }
+        }
+
+        function showAll() {
+            document.querySelectorAll('.answer-box').forEach(b => b.classList.add('show'));
+            document.querySelectorAll('.reveal-btn').forEach(b => {
+                b.classList.add('revealed');
+                b.textContent = '🙈 点击隐藏答案';
+            });
+        }
+
+        function hideAll() {
+            document.querySelectorAll('.answer-box').forEach(b => b.classList.remove('show'));
+            document.querySelectorAll('.reveal-btn').forEach(b => {
+                b.classList.remove('revealed');
+                b.textContent = '👁 点击显示答案';
+            });
+        }
+    </script>
 </body>
 </html>
