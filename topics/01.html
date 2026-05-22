@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <title>第1讲 物质的组成、性质和转化 | 化学不难学</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #f0f4f8;
+            color: #0f172a;
+            line-height: 1.7;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            padding: 0 24px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .navbar a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .navbar a:hover { color: #fbbf24; }
+        .navbar-brand {
+            color: #fbbf24;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 36px 20px 60px;
+        }
+
+        /* 顶部标题区 */
+        .topic-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 36px 24px 32px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f4c81 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(15,76,129,0.25);
+        }
+        .topic-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(251,191,36,0.2);
+            border: 1px solid rgba(251,191,36,0.5);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 12px;
+        }
+        .topic-num {
+            font-size: 15px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 8px;
+        }
+        .topic-title-main {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .topic-hot {
+            margin-top: 14px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.8;
+        }
+        .topic-hot strong { color: #fbbf24; }
+
+        /* 卡片通用 */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border: 1px solid #e8edf3;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8edf3;
+        }
+        .card-title .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .icon-pretest { background: #fef3c7; }
+        .icon-core { background: #dbeafe; }
+        .icon-practice { background: #dcfce7; }
+        .icon-summary { background: #fce7f3; }
+
+        /* 前测题目 */
+        .q-block {
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+        .q-text {
+            font-size: 15px;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .q-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 16px;
+            margin-bottom: 12px;
+        }
+        .q-option {
+            font-size: 14px;
+            color: #475569;
+            padding: 4px 0;
+        }
+        .q-option-full {
+            font-size: 14px;
+            color: #475569;
+            padding: 4px 0;
+            grid-column: 1 / -1;
+        }
+
+        /* 隐藏答案按钮 */
+        .reveal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 18px;
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .reveal-btn:hover { background: #0f4c81; transform: translateY(-1px); }
+        .reveal-btn.revealed { background: #059669; }
+        .reveal-btn.revealed:hover { background: #047857; }
+
+        .answer-box {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+            border: 1px solid #6ee7b7;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #064e3b;
+            line-height: 1.7;
+        }
+        .answer-box.show { display: block; }
+        .answer-label {
+            font-weight: 700;
+            color: #059669;
+            margin-right: 4px;
+        }
+
+        /* 知识表格 */
+        .know-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+        .know-table th {
+            background: #1e3a5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .know-table th:first-child { border-radius: 8px 0 0 0; }
+        .know-table th:last-child { border-radius: 0 8px 0 0; }
+        .know-table td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #e8edf3;
+            vertical-align: top;
+        }
+        .know-table tr:last-child td { border-bottom: none; }
+        .know-table tr:nth-child(even) td { background: #f8fafc; }
+        .tag-phys {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .tag-chem {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #fee2e2;
+            color: #dc2626;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .tag-warn {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #fef3c7;
+            color: #d97706;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* 口诀框 */
+        .mnemonic {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fcd34d;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin: 14px 0;
+            font-size: 15px;
+            color: #78350f;
+            font-weight: 600;
+        }
+        .mnemonic::before {
+            content: "🗣️ 口诀：";
+            color: #d97706;
+        }
+
+        /* 陷阱警告 */
+        .trap-box {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin: 14px 0;
+            font-size: 14px;
+            color: #7f1d1d;
+        }
+        .trap-box::before {
+            content: "⚠️ 高频陷阱：";
+            font-weight: 700;
+            color: #dc2626;
+        }
+
+        /* 方法步骤 */
+        .steps {
+            margin: 14px 0;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .step-num {
+            width: 26px;
+            height: 26px;
+            background: #1e3a5f;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-text {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .step-text strong { color: #1e3a5f; }
+
+        /* 练习题大题样式 */
+        .practice-q {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid #10b981;
+        }
+        .practice-q .q-text {
+            border: none;
+        }
+        .analysis-box {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid #93c5fd;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #1e3b6e;
+            line-height: 1.8;
+        }
+        .analysis-box.show { display: block; }
+        .analysis-label {
+            font-weight: 700;
+            color: #2563eb;
+            margin-right: 4px;
+        }
+
+        /* 全局显示/隐藏控制栏 */
+        .ctrl-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: #1e3a5f;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            color: white;
+            font-size: 14px;
+        }
+        .ctrl-bar-title { font-weight: 600; }
+        .ctrl-btns { display: flex; gap: 10px; }
+        .ctrl-btn {
+            padding: 6px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.15); }
+        .ctrl-btn.active { background: #fbbf24; border-color: #fbbf24; color: #1e3a5f; font-weight: 700; }
+
+        /* 小结区域 */
+        .summary-list {
+            list-style: none;
+        }
+        .summary-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 15px;
+            color: #334155;
+        }
+        .summary-list li:last-child { border-bottom: none; }
+        .summary-list .num {
+            width: 24px;
+            height: 24px;
+            background: #fbbf24;
+            color: #78350f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* 导航页脚 */
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 36px;
+            gap: 16px;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+            background: white;
+            color: #334155;
+        }
+        .nav-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+            transform: translateY(-1px);
+        }
+        .nav-btn.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+        .nav-btn.next {
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+        }
+        footer.footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+        @media (max-width: 600px) {
+            .topic-title-main { font-size: 22px; }
+            .card { padding: 20px 18px; }
+            .q-options { grid-template-columns: 1fr; }
+            .ctrl-bar { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html">← 返回首页</a>
+        <span class="navbar-brand">化学不难学</span>
+        <a href="../index.html">导航</a>
+    </nav>
+
+    <main class="main">
+
+        <!-- 顶部标题 -->
+        <div class="topic-header">
+            <div class="topic-badge">高三第一轮复习</div>
+            <div class="topic-num">第 1 讲</div>
+            <div class="topic-title-main">物质的组成、性质和转化</div>
+            <div class="topic-hot">
+                🔥 广东卷必考 T1，<strong>4分到手题</strong>。核心三件事：<br>
+                ① 变化辨析　② STSE判断　③ 分类避坑
+            </div>
+        </div>
+
+        <!-- 全局控制条 -->
+        <div class="ctrl-bar">
+            <span class="ctrl-bar-title">📋 课堂模式控制</span>
+            <div class="ctrl-btns">
+                <button class="ctrl-btn" onclick="hideAll()">隐藏所有答案</button>
+                <button class="ctrl-btn" onclick="showAll()">显示所有答案</button>
+            </div>
+        </div>
+
+        <!-- Slide 2：前测 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-pretest">⚡</span>
+                前测（5分钟）——快速判断，暴露薄弱点
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">1.&ensp;下列过程中，属于<strong>化学变化</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 石油分馏</div>
+                    <div class="q-option">B. 煤的干馏</div>
+                    <div class="q-option">C. 海水晒盐</div>
+                    <div class="q-option">D. 碘升华</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">
+                    👁 点击显示答案
+                </button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：B</span>
+                    煤的干馏（干馏=加强热分解）有新物质生成，属化学变化。<br>
+                    <span style="color:#6b7280">错1 → 变化辨析；提示：有无新物质是唯一标准。</span>
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">2.&ensp;下列材料中，主要成分属于<strong>硅酸盐</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 光导纤维</div>
+                    <div class="q-option">B. 石英坩埚</div>
+                    <div class="q-option">C. 普通玻璃</div>
+                    <div class="q-option">D. 碳纳米管</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">
+                    👁 点击显示答案
+                </button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：C</span>
+                    普通玻璃（Na₂SiO₃·CaSiO₃·SiO₂）是硅酸盐；光导纤维和石英坩埚主要成分是 SiO₂，不是硅酸盐；碳纳米管是碳的同素异形体。<br>
+                    <span style="color:#6b7280">错2 → 材料分类。</span>
+                </div>
+            </div>
+
+            <div class="q-block">
+                <div class="q-text">3.&ensp;下列物质分类<strong>正确</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 纯碱属于碱</div>
+                    <div class="q-option">B. 盐酸属于酸</div>
+                    <div class="q-option">C. Na₂O₂属于碱性氧化物</div>
+                    <div class="q-option">D. 冰水混合物属于纯净物</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">
+                    👁 点击显示答案
+                </button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：D</span>
+                    冰水混合物只含 H₂O 一种物质 → 纯净物。<br>
+                    A错：纯碱（Na₂CO₃）是盐；B错：盐酸是混合物；C错：Na₂O₂是过氧化物（O为-1价）。<br>
+                    <span style="color:#6b7280">错3 → 分类陷阱。带着问题听课！</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3：核心一——变化辨析 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">📊</span>
+                核心一：变化辨析——记住这一张表
+            </div>
+            <p style="font-size:15px;color:#64748b;margin-bottom:14px;">
+                <strong>唯一标准</strong>：有无新物质生成
+            </p>
+            <table class="know-table">
+                <tr>
+                    <th style="width:22%">类型</th>
+                    <th style="width:38%">物理变化 ✅</th>
+                    <th style="width:40%">化学变化 ❌（易误）</th>
+                </tr>
+                <tr>
+                    <td><strong>三馏</strong></td>
+                    <td><span class="tag-phys">分馏</span> <span class="tag-phys">蒸馏</span></td>
+                    <td><span class="tag-chem">干馏</span>（有新物质）</td>
+                </tr>
+                <tr>
+                    <td><strong>三色</strong></td>
+                    <td><span class="tag-phys">焰色反应</span>（物理！）</td>
+                    <td><span class="tag-chem">显色反应</span></td>
+                </tr>
+                <tr>
+                    <td><strong>其他物理</strong></td>
+                    <td colspan="2">升华、吸附、渗析、<span class="tag-phys">盐析</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"化"字组</strong></td>
+                    <td>——</td>
+                    <td>裂化、裂解、风化、钝化、炭化、硝化、酯化、皂化、老化、硫化、酸化、氢化、水化、氧化</td>
+                </tr>
+                <tr>
+                    <td><strong>其他化学</strong></td>
+                    <td>——</td>
+                    <td>脱水、变性、同素异形体互变</td>
+                </tr>
+            </table>
+            <div class="mnemonic">焰色物理干馏化，裂化裂解都是化，盐析物理皂化化。</div>
+        </div>
+
+        <!-- Slide 4：真题解剖 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">🔬</span>
+                真题解剖：2024广东卷T1——讲判断路径，不是讲答案
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text"><strong>圈关键词 → 定考点</strong>：看到"硅酸盐矿物"→ 材料分类；"蛋白质"→ 有机物；"合金"→ 定义；"长石→硅芯片"→ 物质用途。</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text"><strong>逐项判断，找陷阱</strong>：长石是硅酸盐矿物 ✅，但硅芯片原料是<strong>高纯硅</strong>，不是硅酸盐 ❌。</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text"><strong>建立判断模型</strong>：识别对象 → 定位概念 → 核对陷阱。</div>
+                </div>
+            </div>
+            <div class="trap-box">看到"XX是XX的原料"，先想化学式对不对！</div>
+        </div>
+
+        <!-- Slide 5：核心二——物质分类六大陷阱 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">🎯</span>
+                核心二：物质分类——六大陷阱
+            </div>
+            <table class="know-table">
+                <tr>
+                    <th style="width:22%">物质</th>
+                    <th style="width:33%">错误分类（坑！）</th>
+                    <th style="width:45%">正确分类</th>
+                </tr>
+                <tr>
+                    <td>纯碱</td>
+                    <td><span class="tag-warn">碱</span></td>
+                    <td>盐（Na₂CO₃）</td>
+                </tr>
+                <tr>
+                    <td>盐酸</td>
+                    <td><span class="tag-warn">酸</span></td>
+                    <td>混合物（HCl水溶液）</td>
+                </tr>
+                <tr>
+                    <td>冰水混合物</td>
+                    <td><span class="tag-warn">混合物</span></td>
+                    <td>纯净物（同种物质 H₂O）</td>
+                </tr>
+                <tr>
+                    <td>Na₂O₂</td>
+                    <td><span class="tag-warn">碱性氧化物</span></td>
+                    <td>过氧化物（O为-1价）</td>
+                </tr>
+                <tr>
+                    <td>Al₂O₃</td>
+                    <td><span class="tag-warn">碱性氧化物</span></td>
+                    <td>两性氧化物</td>
+                </tr>
+                <tr>
+                    <td>漂白粉</td>
+                    <td><span class="tag-warn">纯净物</span></td>
+                    <td>混合物（Ca(ClO)₂ + CaCl₂）</td>
+                </tr>
+            </table>
+            <div class="mnemonic">纯碱非碱盐酸混，冰水纯净过氧非碱，铝氧两性漂白混。</div>
+        </div>
+
+        <!-- Slide 6：核心三——电解质+氧化物 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-core">⚡</span>
+                核心三：电解质 + 氧化物——一句话讲清
+            </div>
+            <p style="font-size:15px;font-weight:700;color:#1e3a5f;margin-bottom:10px;">电解质三要素判断：</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">①</div>
+                    <div class="step-text">化合物</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">②</div>
+                    <div class="step-text">自身电离（不是借助其他物质）</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">③</div>
+                    <div class="step-text">溶液或熔融态导电</div>
+                </div>
+            </div>
+            <table class="know-table" style="margin-top:14px;">
+                <tr>
+                    <th>物质</th>
+                    <th>结论</th>
+                    <th>理由</th>
+                </tr>
+                <tr>
+                    <td>BaSO₄（难溶）</td>
+                    <td><span class="tag-phys">电解质 ✅</span></td>
+                    <td>熔融态导电，自身电离</td>
+                </tr>
+                <tr>
+                    <td>CO₂（水溶液导电）</td>
+                    <td><span class="tag-chem">非电解质</span></td>
+                    <td>导电靠 H₂CO₃，不是 CO₂ 自身</td>
+                </tr>
+                <tr>
+                    <td>Cl₂</td>
+                    <td>既不是，也不是</td>
+                    <td>单质，不属于化合物，无法分类</td>
+                </tr>
+            </table>
+            <p style="font-size:15px;font-weight:700;color:#1e3a5f;margin:18px 0 10px;">氧化物分类速查：</p>
+            <table class="know-table">
+                <tr>
+                    <th>类别</th>
+                    <th>举例</th>
+                    <th>陷阱提示</th>
+                </tr>
+                <tr>
+                    <td>酸性氧化物</td>
+                    <td>CO₂、SO₂、SO₃</td>
+                    <td>与碱反应生成盐和水</td>
+                </tr>
+                <tr>
+                    <td>碱性氧化物</td>
+                    <td>Na₂O、CaO</td>
+                    <td>与酸反应生成盐和水</td>
+                </tr>
+                <tr>
+                    <td>两性氧化物</td>
+                    <td>Al₂O₃</td>
+                    <td>既与酸又与碱反应</td>
+                </tr>
+                <tr>
+                    <td>不成盐氧化物</td>
+                    <td><span class="tag-warn">CO、NO</span></td>
+                    <td>不与酸碱反应生成盐和水</td>
+                </tr>
+                <tr>
+                    <td>过氧化物</td>
+                    <td><span class="tag-warn">Na₂O₂</span></td>
+                    <td>与水产O₂，不是碱性氧化物！</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Slide 7：课堂精练 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-practice">✏️</span>
+                课堂精练（10分钟）——学生先作答，再点击查看分析
+            </div>
+
+            <div class="practice-q">
+                <div class="q-text">1.&ensp;（2022广东T1改编）中华文明源远流长，下列文物<strong>主要由合金材料制成</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 史前时期玉琮——硅酸盐矿物</div>
+                    <div class="q-option">B. 商代三星堆青铜面具——铜锡合金</div>
+                    <div class="q-option">C. 西汉素纱禅衣——蚕丝纤维</div>
+                    <div class="q-option">D. 唐三彩陶俑——硅酸盐材料</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：B</span>
+                    青铜 = 铜锡合金 → 合金材料。<br>
+                    玉琮和陶俑为硅酸盐，蚕丝为天然有机物（蛋白质）。
+                </div>
+            </div>
+
+            <div class="practice-q">
+                <div class="q-text">2.&ensp;我国承诺2060年前实现"碳中和"。下列措施对实现"碳中和"<strong>不具有积极意义</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 利用CO₂合成可降解塑料</div>
+                    <div class="q-option">B. 大力推广使用风能、太阳能</div>
+                    <div class="q-option">C. 通过清洁煤技术减少煤燃烧污染</div>
+                    <div class="q-option">D. 研发催化剂将CO₂还原为甲醇</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：C</span>
+                    清洁煤技术减少的是 SO₂ 等污染物，但<strong>不减少 CO₂</strong> 排放——<strong>减污 ≠ 减碳</strong>！<br>
+                    A、B、D 均能减少 CO₂ 排放或有效利用 CO₂。
+                </div>
+            </div>
+
+            <div class="practice-q">
+                <div class="q-text">3.&ensp;下列物质的<strong>分类错误</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 碱性氧化物：Na₂O、CaO</div>
+                    <div class="q-option">B. 同素异形体：石墨、C₆₀</div>
+                    <div class="q-option">C. 纯净物：液氨、盐酸</div>
+                    <div class="q-option">D. 电解质：熔融KCl、H₂SO₄</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：C</span>
+                    <strong>盐酸 = HCl水溶液</strong>，是混合物，不是纯净物！<br>
+                    液氨 NH₃(l) 是纯净物 ✅。<br>
+                    A、B、D 分类均正确。
+                </div>
+            </div>
+
+            <div class="practice-q">
+                <div class="q-text">4.&ensp;下列说法<strong>正确</strong>的是（　　）</div>
+                <div class="q-options">
+                    <div class="q-option">A. 碳酸氢钠受热分解产生CO₂，可用作食品膨松剂</div>
+                    <div class="q-option">B. 铝制餐具耐腐蚀，可长时间存放酸性或碱性食物</div>
+                    <div class="q-option">C. 硅芯片的原料是硅酸盐矿物，经提纯后制得高纯硅</div>
+                    <div class="q-option">D. 碳酸钙高温分解属于物理变化</div>
+                </div>
+                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
+                <div class="answer-box">
+                    <span class="answer-label">✅ 答案：A</span>
+                    NaHCO₃ 加热分解产生 CO₂，使面团膨胀，可作膨松剂 ✅。<br>
+                    B错：铝有两性，遇酸遇碱均会被腐蚀；<br>
+                    C错：硅芯片原料是 SiO₂（石英），不是硅酸盐；<br>
+                    D错：CaCO₃ 高温分解有新物质 CaO 和 CO₂ 生成，是化学变化。
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8：课堂小结 -->
+        <div class="card">
+            <div class="card-title">
+                <span class="icon icon-summary">📦</span>
+                课堂小结
+            </div>
+            <ul class="summary-list">
+                <li>
+                    <span class="num">❶</span>
+                    <span>化学变化 = 有新物质生成。记住：<strong>干馏是化学、焰色是物理、盐析是物理、皂化是化学</strong>，含"化"字的绝大多数是化学变化。</span>
+                </li>
+                <li>
+                    <span class="num">❷</span>
+                    <span>STSE题解题路径：<strong>圈关键词 → 定概念 → 查陷阱</strong>。看到"XX是XX的原料"，先验证化学式。</span>
+                </li>
+                <li>
+                    <span class="num">❸</span>
+                    <span>六大分类陷阱：<strong>纯碱非碱（盐），盐酸是混合物，冰水是纯净物，Na₂O₂是过氧化物，Al₂O₃两性，漂白粉混合物</strong>。</span>
+                </li>
+            </ul>
+            <div style="margin-top:20px;padding:14px 18px;background:#f0f9ff;border-radius:10px;font-size:14px;color:#0369a1;border-left:4px solid #38bdf8;">
+                📝 <strong>课后任务：</strong>完成步步高 P347 练习。错题反思：写出<em>错误思路</em> + <em>正确判断依据</em>。<br>
+                🔮 <strong>下讲预告：</strong>第2讲 离子反应 · 离子方程式
+            </div>
+        </div>
+
+        <!-- 翻页导航 -->
+        <div class="nav-footer">
+            <a href="#" class="nav-btn disabled">← 上一讲</a>
+            <a href="./02.html" class="nav-btn next">下一讲 →</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+    </footer>
+
+    <script>
+        // 单题显示/隐藏
+        function toggleAnswer(btn) {
+            const box = btn.nextElementSibling;
+            const isShown = box.classList.contains('show');
+            if (isShown) {
+                box.classList.remove('show');
+                btn.classList.remove('revealed');
+                btn.innerHTML = '👁 点击显示答案';
+            } else {
+                box.classList.add('show');
+                btn.classList.add('revealed');
+                btn.innerHTML = '🙈 点击隐藏答案';
+            }
+        }
+
+        // 全局显示所有
+        function showAll() {
+            document.querySelectorAll('.answer-box, .analysis-box').forEach(box => {
+                box.classList.add('show');
+            });
+            document.querySelectorAll('.reveal-btn').forEach(btn => {
+                btn.classList.add('revealed');
+                btn.innerHTML = '🙈 点击隐藏答案';
+            });
+        }
+
+        // 全局隐藏所有
+        function hideAll() {
+            document.querySelectorAll('.answer-box, .analysis-box').forEach(box => {
+                box.classList.remove('show');
+            });
+            document.querySelectorAll('.reveal-btn').forEach(btn => {
+                btn.classList.remove('revealed');
+                btn.innerHTML = '👁 点击显示答案';
+            });
+        }
+    </script>
+</body>
+</html>
