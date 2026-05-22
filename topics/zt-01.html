@@ -1,193 +1,315 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>专项突破1 六角度判断离子方程式正误 | 化学不难学</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专项突破1 六角度判断离子方程式正误</title>
+<style>
+  body { font-family: "Microsoft YaHei", "微软雅黑", sans-serif; background: #f0f4f8; margin: 0; padding: 20px; }
+  .container { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #1e3a5f, #2a5298); color: #fff; padding: 28px 36px; }
+  .header h1 { margin: 0; font-size: 24px; }
+  .header .sub { margin-top: 8px; color: #fbbf24; font-size: 14px; }
+  .body { padding: 28px 36px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 17px; font-weight: bold; color: #1e3a5f; border-left: 5px solid #fbbf24; padding-left: 12px; margin-bottom: 14px; }
+  .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin-bottom: 14px; }
+  .card-title { font-weight: bold; color: #1e3a5f; margin-bottom: 8px; font-size: 15px; }
+  .eq { font-family: "Cambria Math", "Times New Roman", serif; background: #fffbea; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 14px; display: inline-block; margin: 4px 0; font-size: 15px; color: #1e3a5f; }
+  .wrong { color: #dc2626; font-weight: bold; }
+  .right { color: #16a34a; font-weight: bold; }
+  .tip { background: #fef9c3; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 14px; color: #92400e; }
+  .answer-box { display: none; background: #ecfdf5; border: 1px solid #86efac; border-radius: 8px; padding: 14px 18px; margin-top: 10px; font-size: 14px; color: #166534; }
+  .answer-box.show { display: block; }
+  .toggle-btn { background: #1e3a5f; color: #fff; border: none; border-radius: 6px; padding: 7px 18px; cursor: pointer; font-size: 13px; margin-top: 8px; }
+  .toggle-btn:hover { background: #2a5298; }
+  .global-bar { position: sticky; top: 0; background: #1e3a5f; padding: 10px 36px; z-index: 100; display: flex; gap: 12px; }
+  .global-bar button { background: #fbbf24; color: #1e3a5f; border: none; border-radius: 6px; padding: 8px 20px; cursor: pointer; font-weight: bold; font-size: 14px; }
+  .global-bar button:hover { background: #f59e0b; }
+  .angle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .angle-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; }
+  .angle-card .num { display: inline-block; background: #fbbf24; color: #1e3a5f; font-weight: bold; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; margin-right: 8px; }
+  .angle-card .title { font-weight: bold; color: #1e3a5f; font-size: 14px; }
+  .angle-card .desc { font-size: 13px; color: #475569; margin-top: 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+  th { background: #1e3a5f; color: #fff; padding: 8px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+  tr:nth-child(even) { background: #f8fafc; }
+  .nav { display: flex; justify-content: space-between; padding: 20px 36px; border-top: 1px solid #e2e8f0; }
+  .nav a { color: #1e3a5f; text-decoration: none; font-weight: bold; }
+  .nav a:hover { color: #fbbf24; }
+  .exam-tag { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+  .strategy { background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
+  .strategy .label { font-weight: bold; color: #1e3a5f; }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">化学不难学</span>
-        <a href="../index.html">导航</a>
-    </nav>
+<div class="container">
+  <div class="global-bar">
+    <button onclick="showAll()">显示所有答案</button>
+    <button onclick="hideAll()">隐藏所有答案</button>
+  </div>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">专项突破1</div>
-            <h1 class="topic-title">六角度判断离子方程式正误</h1>
-            <div class="topic-chapter">第一章 化学物质及其变化</div>
+  <div class="header">
+    <h1>🔥 专项突破1 &nbsp;六角度判断离子方程式正误</h1>
+    <div class="sub">高三化学第一轮复习 · 广东卷T14/T15必考，全国卷T11/T12年年出现</div>
+  </div>
+
+  <div class="body">
+
+    <!-- 前测 -->
+    <div class="section">
+      <div class="section-title">📋 前测（5分钟）——快速诊断</div>
+
+      <div class="card">
+        <div class="card-title">1.（2021·广东卷T15）下列离子方程式书写正确的是（　　）</div>
+        <div class="eq">A. SO₂通入酸性KMnO₄溶液：5SO₂ + 2MnO₄⁻ + 2H₂O = 5SO₄²⁻ + 2Mn²⁺ + 4H⁺</div><br>
+        <div class="eq">B. Na₂O₂与水反应：Na₂O₂ + H₂O = 2Na⁺ + 2OH⁻ + O₂↑</div><br>
+        <div class="eq">C. Al与NaOH溶液反应：Al + 2OH⁻ = AlO₂⁻ + H₂↑</div><br>
+        <div class="eq">D. Cl₂通入FeCl₂溶液：Fe²⁺ + Cl₂ = Fe³⁺ + 2Cl⁻</div>
+        <button class="toggle-btn" onclick="toggle('a1')">查看解析</button>
+        <div class="answer-box" id="a1">
+          ✅ <b>A</b>（B系数配平错；C漏H₂O、H₂系数错；D电荷不守恒）<br>
+          ❌ B：2Na₂O₂+2H₂O=4Na⁺+4OH⁻+O₂↑（系数错）<br>
+          ❌ C：2Al+2OH⁻+6H₂O=2Al(OH)₄⁻+3H₂↑（漏H₂O，配平错）<br>
+          ❌ D：2Fe²⁺+Cl₂=2Fe³⁺+2Cl⁻（电荷不守恒）
         </div>
+      </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+      <div class="card">
+        <div class="card-title">2.（2023·北京卷）下列离子方程式与所给事实不相符的是（　　）</div>
+        <div class="eq">A. 制84消毒液：Cl₂ + 2OH⁻ = Cl⁻ + ClO⁻ + H₂O</div><br>
+        <div class="eq">B. 食醋去除水垢中的CaCO₃：CaCO₃ + 2H⁺ = Ca²⁺ + CO₂↑ + H₂O</div><br>
+        <div class="eq">C. FeCl₃腐蚀覆铜板：2Fe³⁺ + Cu = 2Fe²⁺ + Cu²⁺</div><br>
+        <div class="eq">D. 用Na₂S去除废水中的Hg²⁺：Hg²⁺ + S²⁻ = HgS↓</div>
+        <button class="toggle-btn" onclick="toggle('a2')">查看解析</button>
+        <div class="answer-box" id="a2">
+          ✅ <b>B</b>（醋酸是弱酸，不能拆为H⁺，应为CaCO₃+2CH₃COOH=Ca²⁺+2CH₃COO⁻+CO₂↑+H₂O）<br>
+          A✅制84消毒液，Cl₂与冷碱歧化，正确<br>
+          C✅Fe³⁺氧化Cu，正确<br>
+          D✅Hg²⁺与S²⁻生成HgS沉淀，正确
         </div>
+      </div>
+    </div>
 
-        <div class="nav-footer">
-            <a href="./02.html" class="nav-btn ">← 上一讲</a>
-            <a href="./nd-01.html" class="nav-btn next ">下一讲 →</a>
+    <!-- 核心知识 -->
+    <div class="section">
+      <div class="section-title">📌 核心知识——六看全景图</div>
+      <p style="color:#475569;font-size:14px;">看到离子方程式 → 六看逐一排查，哪个角度错就选哪个</p>
+
+      <div class="angle-grid">
+        <div class="angle-card">
+          <div><span class="num">①</span><span class="title">看真实性</span></div>
+          <div class="desc">这个反应真实存在吗？（Fe+稀HNO₃生成H₂？❌）</div>
         </div>
-    </main>
+        <div class="angle-card">
+          <div><span class="num">②</span><span class="title">看拆分</span></div>
+          <div class="desc">该拆的拆了？不该拆的拆了？（醋酸拆H⁺？❌）</div>
+        </div>
+        <div class="angle-card">
+          <div><span class="num">③</span><span class="title">看电荷</span></div>
+          <div class="desc">两边电荷相等吗？（Fe²⁺+Cu=Fe+Cu²⁺？❌）</div>
+        </div>
+        <div class="angle-card">
+          <div><span class="num">④</span><span class="title">看守恒</span></div>
+          <div class="desc">原子数和电子得失守恒吗？（配平对吗？）</div>
+        </div>
+        <div class="angle-card">
+          <div><span class="num">⑤</span><span class="title">看用量</span></div>
+          <div class="desc">少量/过量/滴加顺序对吗？（FeBr₂+Cl₂少量？）</div>
+        </div>
+        <div class="angle-card">
+          <div><span class="num">⑥</span><span class="title">看介质</span></div>
+          <div class="desc">酸碱性影响产物吗？（KMnO₄酸性→Mn²⁺？）</div>
+        </div>
+      </div>
 
-    <footer class="footer">
-        <p>化学不难学 · 高三化学备考导航系统</p>
-    </footer>
+      <div class="strategy">
+        <div class="label">🎯 最佳策略：从最容易判断的角度入手</div>
+        <p style="margin:8px 0 0 0;font-size:14px;color:#475569;">先看拆分（最快），再看电荷（次快），最后看用量和介质（最慢）。</p>
+      </div>
+    </div>
+
+    <!-- 角度①② -->
+    <div class="section">
+      <div class="section-title">🔍 角度①真实性 + 角度②拆分——最快出答案</div>
+
+      <div class="card">
+        <div class="card-title">角度①：反应是否真实存在？</div>
+        <table>
+          <tr><th>常见"造假"事实</th><th>正确事实</th></tr>
+          <tr><td>Fe + 稀HNO₃ → H₂↑</td><td class="wrong">❌ HNO₃有强氧化性，生成NO</td></tr>
+          <tr><td>Cu + 稀HCl → H₂↑</td><td class="wrong">❌ Cu不置换H₂</td></tr>
+          <tr><td>Na + CuSO₄ → Cu</td><td class="wrong">❌ Na先与水反应</td></tr>
+          <tr><td>CaCO₃ + HNO₃ → Ca(NO₃)₂ + H₂CO₃</td><td class="wrong">❌ H₂CO₃分解为CO₂</td></tr>
+          <tr><td>S²⁻ + H⁺(HNO₃) → H₂S↑</td><td class="wrong">❌ HNO₃氧化性，生成S</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">角度②：拆分正确吗？——强拆弱不拆</div>
+        <div class="tip">💡 拆分规则：强酸、强碱、可溶性盐 → 拆；弱酸、弱碱、难溶物、氧化物、单质 → 不拆</div>
+        <table>
+          <tr><th>物质</th><th>是否拆分</th><th>常见错误</th></tr>
+          <tr><td>醋酸（CH₃COOH）</td><td class="wrong">❌ 不拆（弱酸）</td><td>误拆为CH₃COO⁻+H⁺</td></tr>
+          <tr><td>NH₃·H₂O</td><td class="wrong">❌ 不拆（弱碱）</td><td>误拆为NH₄⁺+OH⁻</td></tr>
+          <tr><td>Na₂O₂</td><td class="wrong">❌ 不拆（化学式形式）</td><td>误拆为2Na⁺+O₂²⁻</td></tr>
+          <tr><td>石灰乳（Ca(OH)₂）</td><td class="wrong">❌ 不拆（微溶，悬浊液）</td><td>误拆为Ca²⁺+2OH⁻</td></tr>
+          <tr><td>CaCO₃</td><td class="wrong">❌ 不拆（难溶）</td><td>误拆为Ca²⁺+CO₃²⁻</td></tr>
+          <tr><td>Fe³⁺ + I⁻</td><td class="wrong">❌ 不共存（发生氧化还原反应）</td><td>误认为能共存</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 真题演练 -->
+    <div class="section">
+      <div class="section-title">📝 真题解剖：六看逐项演练</div>
+
+      <div class="card">
+        <div class="card-title"><span class="exam-tag">2022·全国卷</span>能正确表示下列反应的离子方程式为（　　）</div>
+        <div class="eq">A. 硫化铵溶液和硝酸混合：S²⁻ + 2H⁺ = H₂S↑</div>
+        <div class="eq">B. 明矾溶液与过量氨水混合：Al³⁺ + 4NH₃ + 2H₂O = AlO₂⁻ + 4NH₄⁺</div>
+        <div class="eq">C. 硅酸钠溶液中通入二氧化碳：SiO₃²⁻ + CO₂ + H₂O = HSiO₃⁻ + HCO₃⁻</div>
+        <div class="eq">D. 将等浓度Ba(OH)₂和NH₄HSO₄以体积比1:2混合：Ba²⁺ + 2OH⁻ + 2H⁺ + SO₄²⁻ = BaSO₄↓ + 2H₂O</div>
+        <button class="toggle-btn" onclick="toggle('a3')">六看逐项分析</button>
+        <div class="answer-box" id="a3">
+          🔍 <b>逐项六看：</b><br>
+          ①真实？②拆分？③电荷？④守恒？⑤用量？<br><br>
+          <b>A</b> ❌ HNO₃有强氧化性，S²⁻会被氧化为S，不生成H₂S<br>
+          <b>B</b> ❌ Al(OH)₃不溶于氨水；且NH₃·H₂O不拆<br>
+          <b>C</b> ❌ CO₂少量生成CO₃²⁻，过量生成HCO₃⁻；此处按过量写但题目没说，且HSiO₃⁻写法不规范（应为H₂SiO₃↓）<br>
+          <b>D</b> ✅✅ 1:2时OH⁻全部与H⁺反应，NH₄⁺不参与；Ba²⁺+SO₄²⁻=BaSO₄↓，正确<br>
+          ✅ <b>答案：D</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- 角度④⑤⑥ -->
+    <div class="section">
+      <div class="section-title">🔍 角度④守恒 + 角度⑤用量 + 角度⑥介质/竞争</div>
+
+      <div class="card">
+        <div class="card-title">角度⑤：用量——少量定1法</div>
+        <div class="tip">💡 以少量反应物的计量数为1，不足的物质按需要取用</div>
+        <table>
+          <tr><th>反应</th><th>少量</th><th>过量</th></tr>
+          <tr><td>Ca(HCO₃)₂ + NaOH</td><td class="eq">Ca²⁺+HCO₃⁻+OH⁻=CaCO₃↓+H₂O</td><td class="eq">Ca²⁺+2HCO₃⁻+2OH⁻=CaCO₃↓+CO₃²⁻+2H₂O</td></tr>
+          <tr><td>Ba(OH)₂ + NaHCO₃</td><td class="eq">Ba²⁺+OH⁻+HCO₃⁻=BaCO₃↓+H₂O</td><td class="eq">Ba²⁺+2OH⁻+2HCO₃⁻=BaCO₃↓+CO₃²⁻+2H₂O</td></tr>
+          <tr><td>NH₄HSO₄ + Ba(OH)₂</td><td colspan="2" class="eq">先中和H⁺：Ba²⁺+2OH⁻+2H⁺+SO₄²⁻=BaSO₄↓+2H₂O</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">角度⑥：介质/竞争——高考区分度</div>
+        <div class="tip">💡 还原性竞争：I⁻ > Fe²⁺ > Br⁻；少量Cl₂先氧化I⁻</div>
+        <table>
+          <tr><th>场景</th><th>产物</th></tr>
+          <tr><td>Cl₂通入FeBr₂（少量Cl₂）</td><td>先氧化Fe²⁺：2Fe²⁺+Cl₂=2Fe³⁺+2Cl⁻</td></tr>
+          <tr><td>Cl₂通入FeI₂（少量Cl₂）</td><td>先氧化I⁻：2I⁻+Cl₂=I₂+2Cl⁻</td></tr>
+          <tr><td>KMnO₄酸性介质</td><td>还原产物为Mn²⁺（不是MnO₂！）</td></tr>
+          <tr><td>KMnO₄中性/碱性介质</td><td>还原产物为MnO₂或MnO₄²⁻</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 课堂精练 -->
+    <div class="section">
+      <div class="section-title">✏️ 课堂精练（10分钟）</div>
+
+      <div class="card">
+        <div class="card-title">1.（2022·湖南卷）下列离子方程式正确的是（　　）</div>
+        <div class="eq">A. Cl₂通入冷的NaOH溶液：Cl₂ + 2OH⁻ = Cl⁻ + ClO⁻ + H₂O</div><br>
+        <div class="eq">B. 用醋酸和淀粉-KI溶液检验加碘盐中的IO₃⁻：IO₃⁻ + 5I⁻ + 6H⁺ = 3I₂ + 3H₂O</div><br>
+        <div class="eq">C. FeSO₄溶液中加入H₂O₂产生沉淀：2Fe²⁺ + H₂O₂ + 4H₂O = 2Fe(OH)₃↓ + 4H⁺</div><br>
+        <div class="eq">D. NaHCO₃溶液与少量Ba(OH)₂混合：HCO₃⁻ + Ba²⁺ + OH⁻ = BaCO₃↓ + H₂O</div>
+        <button class="toggle-btn" onclick="toggle('q1')">查看解析</button>
+        <div class="answer-box" id="q1">
+          ✅ <b>A、C</b><br>
+          A→Cl₂+冷NaOH：歧化反应 ✅<br>
+          B→醋酸弱酸不能拆H⁺，应为IO₃⁻+5I⁻+6CH₃COOH=3I₂+3H₂O+6CH₃COO⁻ ❌<br>
+          C→Fe²⁺被H₂O₂氧化→Fe³⁺，水解为Fe(OH)₃↓ ✅<br>
+          D→少量Ba(OH)₂：Ba²⁺+2HCO₃⁻+2OH⁻=BaCO₃↓+CO₃²⁻+2H₂O（系数错）❌<br>
+          ✅ <b>答案：AC</b>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">2.（2022·广东卷）下列关于Na的化合物之间转化反应的离子方程式书写正确的是（　　）</div>
+        <div class="eq">A. 碱转化为酸式盐：OH⁻ + H⁺ = H₂O</div><br>
+        <div class="eq">B. 碱转化为两种盐：Cl₂ + 2OH⁻ = Cl⁻ + ClO⁻ + H₂O</div><br>
+        <div class="eq">C. 过氧化物转化为碱：2Na₂O₂ + 2H₂O = 4Na⁺ + 4OH⁻ + O₂↑</div><br>
+        <div class="eq">D. 盐转化为另一种盐：NaHCO₃ + OH⁻ = Na⁺ + CO₃²⁻ + H₂O</div>
+        <button class="toggle-btn" onclick="toggle('q2')">查看解析</button>
+        <div class="answer-box" id="q2">
+          ✅ <b>B、C</b>（注意本题B为正确表达）<br>
+          A→OH⁻+H⁺=H₂O是中和反应，HCO₃⁻才是酸式盐 ❌<br>
+          B→Cl₂+2OH⁻=Cl⁻+ClO⁻+H₂O，生成两种盐（NaCl+NaClO）✅<br>
+          C→2Na₂O₂+2H₂O=4NaOH+O₂↑，过氧化物转化为碱 ✅<br>
+          D→NaHCO₃应拆为HCO₃⁻，Na⁺是多余项 ❌<br>
+          ✅ <b>答案：BC</b>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">3.（2023·浙江卷）下列反应的离子方程式不正确的是（　　）</div>
+        <div class="eq">A. Cl₂通入NaOH溶液：Cl₂ + 2OH⁻ = Cl⁻ + ClO⁻ + H₂O</div><br>
+        <div class="eq">B. Al₂O₃溶于NaOH溶液：Al₂O₃ + 2OH⁻ = 2AlO₂⁻ + H₂O</div><br>
+        <div class="eq">C. 过量CO₂通入饱和Na₂CO₃溶液：CO₂ + 2Na⁺ + CO₃²⁻ + H₂O = 2NaHCO₃↓</div><br>
+        <div class="eq">D. Na₂SO₃溶液中滴入CaCl₂溶液：SO₃²⁻ + Ca²⁺ = CaSO₃↓</div>
+        <button class="toggle-btn" onclick="toggle('q3')">查看解析</button>
+        <div class="answer-box" id="q3">
+          ✅ <b>D</b><br>
+          A→Cl₂+2OH⁻=Cl⁻+ClO⁻+H₂O ✅<br>
+          B→Al₂O₃+2OH⁻=2AlO₂⁻+H₂O ✅<br>
+          C→析出NaHCO₃晶体，SO₃²⁻写对了（但注意是CO₃²⁻）✅<br>
+          本题C选项<b>正确</b><br>
+          D→H₂SO₃酸性弱于HCl，Na₂SO₃+CaCl₂<b>不反应</b>！D ❌<br>
+          ✅ <b>答案：D</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- 小结 -->
+    <div class="section">
+      <div class="section-title">📦 六看速查表 + 小结</div>
+      <div class="card">
+        <div class="card-title">本讲就一句话——六看逐项扫，错在哪一目了然</div>
+        <table>
+          <tr><th>角度</th><th>快速自查</th><th>常考陷阱</th></tr>
+          <tr><td><b>①真实性</b></td><td>这个反应能发生吗？</td><td>HNO₃/H₂SO₄(浓)的强氧化性</td></tr>
+          <tr><td><b>②拆分</b></td><td>弱酸/弱碱/难溶拆了吗？</td><td>醋酸、NH₃·H₂O、石灰乳</td></tr>
+          <tr><td><b>③电荷</b></td><td>左右电荷总数相等吗？</td><td>Fe³⁺+Cu=Fe+Cu²⁺</td></tr>
+          <tr><td><b>④守恒</b></td><td>原子配平对吗？</td><td>Na₂O₂+H₂O配平</td></tr>
+          <tr><td><b>⑤用量</b></td><td>少量/过量/滴加顺序对吗？</td><td>Ca(HCO₃)₂+NaOH少量/过量</td></tr>
+          <tr><td><b>⑥介质</b></td><td>酸碱性影响产物吗？</td><td>KMnO₄酸性→Mn²⁺；FeBr₂+Cl₂</td></tr>
+        </table>
+        <div class="strategy" style="margin-top:14px;">
+          <div class="label">🧠 课后：完成步步高P349专项练习 + 用"六看"分析今天做错的题</div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:12px;">📌 下讲预告：难点突破1 与量有关的离子方程式书写技巧</div>
+    </div>
+
+  </div><!-- end body -->
+
+  <div class="nav">
+    <a href="02.html">← 第2讲</a>
+    <a href="index.html">🏠 目录</a>
+    <a href="nd-01.html">难点突破1 →</a>
+  </div>
+</div>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('show');
+}
+function showAll() {
+  document.querySelectorAll('.answer-box').forEach(el => el.classList.add('show'));
+}
+function hideAll() {
+  document.querySelectorAll('.answer-box').forEach(el => el.classList.remove('show'));
+}
+</script>
 </body>
 </html>
