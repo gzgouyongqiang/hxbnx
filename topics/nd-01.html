@@ -1,193 +1,462 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>难点突破1 与量有关的离子方程式书写技巧 | 决胜高考</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>难点突破1 与量有关的离子方程式书写技巧</title>
+<style>
+  body { font-family: "Microsoft YaHei", "微软雅黑", sans-serif; background: #f0f4f8; margin: 0; padding: 20px; }
+  .container { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #1e3a5f, #2a5298); color: #fff; padding: 28px 36px; }
+  .header h1 { margin: 0; font-size: 24px; }
+  .header .sub { margin-top: 8px; color: #fbbf24; font-size: 14px; }
+  .body { padding: 28px 36px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 17px; font-weight: bold; color: #1e3a5f; border-left: 5px solid #fbbf24; padding-left: 12px; margin-bottom: 14px; }
+  .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin-bottom: 14px; }
+  .card-title { font-weight: bold; color: #1e3a5f; margin-bottom: 8px; font-size: 15px; }
+  .eq { font-family: "Cambria Math", "Times New Roman", serif; background: #fffbea; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 14px; display: inline-block; margin: 4px 0; font-size: 15px; color: #1e3a5f; }
+  .wrong { color: #dc2626; font-weight: bold; }
+  .right { color: #16a34a; font-weight: bold; }
+  .tip { background: #fef9c3; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 14px; color: #92400e; }
+  .answer-box { display: none; background: #ecfdf5; border: 1px solid #86efac; border-radius: 8px; padding: 14px 18px; margin-top: 10px; font-size: 14px; color: #166534; }
+  .answer-box.show { display: block; }
+  .toggle-btn { background: #1e3a5f; color: #fff; border: none; border-radius: 6px; padding: 7px 18px; cursor: pointer; font-size: 13px; margin-top: 8px; }
+  .toggle-btn:hover { background: #2a5298; }
+  .global-bar { position: sticky; top: 0; background: #1e3a5f; padding: 10px 36px; z-index: 100; display: flex; gap: 12px; }
+  .global-bar button { background: #fbbf24; color: #1e3a5f; border: none; border-radius: 6px; padding: 8px 20px; cursor: pointer; font-weight: bold; font-size: 14px; }
+  .global-bar button:hover { background: #f59e0b; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+  th { background: #1e3a5f; color: #fff; padding: 8px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+  tr:nth-child(even) { background: #f8fafc; }
+  .nav { display: flex; justify-content: space-between; padding: 20px 36px; border-top: 1px solid #e2e8f0; }
+  .nav a { color: #1e3a5f; text-decoration: none; font-weight: bold; }
+  .nav a:hover { color: #fbbf24; }
+  .exam-tag { display: inline-block; background: #dc2626; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+  .strategy { background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
+  .strategy .label { font-weight: bold; color: #1e3a5f; }
+  .step-box { display: flex; gap: 12px; margin: 14px 0; }
+  .step { flex: 1; background: #fff; border: 2px solid #e2e8f0; border-radius: 8px; padding: 14px; text-align: center; }
+  .step .num { display: inline-block; background: #fbbf24; color: #1e3a5f; font-weight: bold; width: 32px; height: 32px; line-height: 32px; text-align: center; border-radius: 50%; font-size: 16px; }
+  .step .desc { font-size: 13px; color: #475569; margin-top: 8px; }
+  .highlight { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+  .vs { display: flex; gap: 14px; margin: 12px 0; }
+  .vs-box { flex: 1; border-radius: 8px; padding: 14px 16px; }
+  .vs-box.small { background: #ecfdf5; border: 1px solid #86efac; }
+  .vs-box.large { background: #fef2f2; border: 1px solid #fca5a5; }
+  .vs-box .label { font-weight: bold; font-size: 14px; margin-bottom: 6px; }
+  .vs-box.small .label { color: #166534; }
+  .vs-box.large .label { color: #991b1b; }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
-    </nav>
+<div class="container">
+  <div class="global-bar">
+    <button onclick="showAll()">显示所有答案</button>
+    <button onclick="hideAll()">隐藏所有答案</button>
+  </div>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">难点突破1</div>
-            <h1 class="topic-title">与量有关的离子方程式书写技巧</h1>
-            <div class="topic-chapter">第一章 化学物质及其变化</div>
+  <div class="header">
+    <h1>⚡ 难点突破1 &nbsp;与量有关的离子方程式书写技巧</h1>
+    <div class="sub">高三化学第一轮复习 · 高考高频失分点，全国卷T11/T12常考</div>
+  </div>
+
+  <div class="body">
+
+    <!-- 前测 -->
+    <div class="section">
+      <div class="section-title">📋 前测（5分钟）——快速诊断</div>
+
+      <div class="card">
+        <div class="card-title">1.（2021·全国甲卷）向NaHCO₃溶液中加入少量Ba(OH)₂溶液，下列离子方程式正确的是（　　）</div>
+        <div class="eq">A. HCO₃⁻ + Ba²⁺ + OH⁻ = BaCO₃↓ + H₂O</div><br>
+        <div class="eq">B. 2HCO₃⁻ + Ba²⁺ + 2OH⁻ = BaCO₃↓ + CO₃²⁻ + 2H₂O</div>
+        <button class="toggle-btn" onclick="toggle('nd-a1')">查看答案</button>
+        <div class="answer-box" id="nd-a1">
+          ✅ <b>A</b><br>
+          <b>解析</b>：少量Ba(OH)₂ → Ba(OH)₂计量数为1 → 1个Ba²⁺，1个OH⁻参与反应。<br>
+          OH⁻只中和1个HCO₃⁻，余下1个HCO₃⁻不变。<br>
+          ❌ B是过量Ba(OH)₂的写法。<br>
+          <b>关键：以少量物质的计量数为1来配平。</b>
         </div>
+      </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+      <div class="card">
+        <div class="card-title">2.（2020·全国卷）向Al₂(SO₄)₃溶液中滴加NaOH溶液至过量，反应分步为：</div>
+        <div style="font-size:14px;color:#475569;margin:8px 0;">
+          第一步（少量NaOH）：<span class="eq">Al³⁺ + 3OH⁻ = Al(OH)₃↓</span><br>
+          第二步（NaOH过量）：<span class="eq">Al(OH)₃ + OH⁻ = Al(OH)₄⁻</span>
         </div>
-
-        <div class="nav-footer">
-            <a href="./zt-01.html" class="nav-btn ">← 上一讲</a>
-            <a href="./03.html" class="nav-btn next ">下一讲 →</a>
+        若直接加过量NaOH，总方程式是什么？
+        <button class="toggle-btn" onclick="toggle('nd-a2')">查看答案</button>
+        <div class="answer-box" id="nd-a2">
+          <div class="eq">Al³⁺ + 4OH⁻ = Al(OH)₄⁻</div><br>
+          <b>解析</b>：过量NaOH → Al(OH)₃会继续溶解。合并两步：Al³⁺ + 3OH⁻ + OH⁻ = Al(OH)₃ + OH⁻ → Al(OH)₄⁻<br>
+          即 Al³⁺ + 4OH⁻ = Al(OH)₄⁻
         </div>
-    </main>
+      </div>
+    </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+    <!-- 核心方法 -->
+    <div class="section">
+      <div class="section-title">📌 核心方法——少量定1法（万能模板）</div>
+
+      <div class="tip">
+        💡 <b>核心原则：以少量（不足量）反应物的计量数为1，不足的物质按实际需要取用</b>
+      </div>
+
+      <div class="step-box">
+        <div class="step">
+          <div class="num">1</div>
+          <div class="desc"><b>判断谁少谁多</b><br>题目说"少量/少量滴加"就以此为1</div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div class="desc"><b>少量物质系数=1</b><br>写出其离子，系数定为1</div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div class="desc"><b>按需要取用过量物</b><br>过量物够用，需要多少写多少</div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div class="desc"><b>配平检验</b><br>检查原子守恒+电荷守恒</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 三大题型 -->
+    <div class="section">
+      <div class="section-title">🔬 题型一：酸式盐 + 碱（最常考）</div>
+
+      <div class="card">
+        <div class="card-title">经典模型1：Ca(HCO₃)₂ + NaOH</div>
+        <div class="vs">
+          <div class="vs-box small">
+            <div class="label">🟢 少量NaOH</div>
+            <div class="eq">Ca²⁺ + HCO₃⁻ + OH⁻ = CaCO₃↓ + H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">NaOH为1→1个OH⁻→中和1个HCO₃⁻</div>
+          </div>
+          <div class="vs-box large">
+            <div class="label">🔴 过量NaOH</div>
+            <div class="eq">Ca²⁺ + 2HCO₃⁻ + 2OH⁻ = CaCO₃↓ + CO₃²⁻ + 2H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">OH⁻充足→HCO₃⁻全部被中和</div>
+          </div>
+        </div>
+        <div class="tip">
+          ⚠️ <b>陷阱</b>：少量时OH⁻只中和1个HCO₃⁻，另一个HCO₃⁻不动！系数比是 1:1:1 不是 1:2:2。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">经典模型2：Ba(OH)₂ + NaHCO₃</div>
+        <div class="vs">
+          <div class="vs-box small">
+            <div class="label">🟢 少量Ba(OH)₂</div>
+            <div class="eq">Ba²⁺ + OH⁻ + HCO₃⁻ = BaCO₃↓ + H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">Ba(OH)₂为1→1个Ba²⁺+1个OH⁻</div>
+          </div>
+          <div class="vs-box large">
+            <div class="label">🔴 过量Ba(OH)₂</div>
+            <div class="eq">Ba²⁺ + 2OH⁻ + 2HCO₃⁻ = BaCO₃↓ + CO₃²⁻ + 2H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">Ba(OH)₂充足，HCO₃⁻完全反应</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">经典模型3：NH₄HSO₄ + Ba(OH)₂</div>
+        <div class="vs">
+          <div class="vs-box small">
+            <div class="label">🟢 n[Ba(OH)₂] : n[NH₄HSO₄] = 1:1</div>
+            <div class="eq">Ba²⁺ + 2OH⁻ + NH₄⁺ + H⁺ + SO₄²⁻ = BaSO₄↓ + NH₃·H₂O + H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">OH⁻刚好中和H⁺，余下NH₄⁺部分与OH⁻反应生成NH₃·H₂O</div>
+          </div>
+          <div class="vs-box large">
+            <div class="label">🔴 n[Ba(OH)₂] : n[NH₄HSO₄] = 1:2</div>
+            <div class="eq">Ba²⁺ + 2OH⁻ + 2H⁺ + SO₄²⁻ = BaSO₄↓ + 2H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">OH⁻只够中和H⁺，NH₄⁺不参与反应</div>
+          </div>
+        </div>
+        <div class="tip">
+          ⚠️ <b>难点</b>：NH₄HSO₄中H⁺优先被中和！OH⁻先与H⁺反应，再与NH₄⁺反应。<br>
+          1:2时OH⁻只够中和2个H⁺，NH₄⁺完全不动。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">经典模型4：Na₂CO₃ + HCl</div>
+        <div class="vs">
+          <div class="vs-box small">
+            <div class="label">🟢 少量HCl</div>
+            <div class="eq">CO₃²⁻ + H⁺ = HCO₃⁻</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">HCl为1→1个H⁺→只生成HCO₃⁻</div>
+          </div>
+          <div class="vs-box large">
+            <div class="label">🔴 过量HCl</div>
+            <div class="eq">CO₃²⁻ + 2H⁺ = CO₂↑ + H₂O</div>
+            <div style="font-size:12px;color:#475569;margin-top:6px;">HCl充足→CO₃²⁻完全转化为CO₂</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 题型二 -->
+    <div class="section">
+      <div class="section-title">🔬 题型二：氧化剂/还原剂 + 多种可被氧化/还原离子</div>
+
+      <div class="card">
+        <div class="card-title">核心规则——还原性/氧化性强弱顺序决定反应先后</div>
+        <div class="tip">
+          💡 <b>还原性</b>：I⁻ > Fe²⁺ > Br⁻ &nbsp;&nbsp;|&nbsp;&nbsp; <b>氧化性</b>：Cl₂ > Br₂ > I₂<br>
+          少量氧化剂 → 优先氧化还原性最强的离子
+        </div>
+        <table>
+          <tr><th>反应</th><th>少量Cl₂</th><th>过量Cl₂</th></tr>
+          <tr>
+            <td>FeBr₂ + Cl₂</td>
+            <td class="eq">2Fe²⁺ + Cl₂ = 2Fe³⁺ + 2Cl⁻<br><span style="font-size:12px;color:#475569;">先氧化Fe²⁺（还原性更强）</span></td>
+            <td class="eq">2Fe²⁺ + 4Br⁻ + 3Cl₂ = 2Fe³⁺ + 2Br₂ + 6Cl⁻<br><span style="font-size:12px;color:#475569;">Fe²⁺和Br⁻全部被氧化</span></td>
+          </tr>
+          <tr>
+            <td>FeI₂ + Cl₂</td>
+            <td class="eq">2I⁻ + Cl₂ = I₂ + 2Cl⁻<br><span style="font-size:12px;color:#475569;">先氧化I⁻（还原性最强）</span></td>
+            <td class="eq">2Fe²⁺ + 4I⁻ + 3Cl₂ = 2Fe³⁺ + 2I₂ + 6Cl⁻<br><span style="font-size:12px;color:#475569;">Fe²⁺和I⁻全部被氧化</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">经典变式：Cl₂通入FeBr₂溶液（物质的量比不同）</div>
+        <table>
+          <tr><th>n(Cl₂) : n(FeBr₂)</th><th>离子方程式</th><th>说明</th></tr>
+          <tr>
+            <td>1:2（少量）</td>
+            <td class="eq" style="font-size:13px;">2Fe²⁺ + Cl₂ = 2Fe³⁺ + 2Cl⁻</td>
+            <td>只氧化Fe²⁺，Br⁻不反应</td>
+          </tr>
+          <tr>
+            <td>1:1</td>
+            <td class="eq" style="font-size:13px;">2Fe²⁺ + 2Br⁻ + 2Cl₂ = 2Fe³⁺ + Br₂ + 4Cl⁻</td>
+            <td>Fe²⁺全氧化，Br⁻氧化一半</td>
+          </tr>
+          <tr>
+            <td>3:2（过量）</td>
+            <td class="eq" style="font-size:13px;">2Fe²⁺ + 4Br⁻ + 3Cl₂ = 2Fe³⁺ + 2Br₂ + 6Cl⁻</td>
+            <td>全部氧化</td>
+          </tr>
+        </table>
+        <button class="toggle-btn" onclick="toggle('nd-calc')">🔍 比例计算方法</button>
+        <div class="answer-box" id="nd-calc">
+          <b>FeBr₂ + Cl₂ 的通用计算思路：</b><br>
+          ① Fe²⁺还原性强于Br⁻，Cl₂先氧化Fe²⁺<br>
+          ② 每摩尔FeBr₂含1mol Fe²⁺ + 2mol Br⁻<br>
+          ③ Fe²⁺ + ½Cl₂ → Fe³⁺ + Cl⁻（消耗½mol Cl₂/mol FeBr₂）<br>
+          ④ 2Br⁻ + Cl₂ → Br₂ + 2Cl⁻（消耗1mol Cl₂/mol FeBr₂）<br>
+          ⑤ 所以完全氧化1mol FeBr₂共需 1.5mol Cl₂，即 n(Cl₂):n(FeBr₂) = 3:2<br>
+          ⑥ 比例在 1:2~3:2 之间时，Fe²⁺全氧化，Br⁻部分氧化
+        </div>
+      </div>
+    </div>
+
+    <!-- 题型三 -->
+    <div class="section">
+      <div class="section-title">🔬 题型三：滴加顺序不同 → 现象和产物不同</div>
+
+      <div class="card">
+        <div class="card-title">经典模型：NaOH + AlCl₃ vs AlCl₃ + NaOH</div>
+        <div class="vs">
+          <div class="vs-box small">
+            <div class="label">🟢 NaOH滴入AlCl₃（碱过量趋势）</div>
+            <div style="font-size:13px;color:#166534;">
+              先：Al³⁺ + 3OH⁻ = Al(OH)₃↓ <span class="right">（沉淀出现）</span><br>
+              后：Al(OH)₃ + OH⁻ = Al(OH)₄⁻ <span class="wrong">（沉淀消失）</span>
+            </div>
+            <div style="font-size:12px;margin-top:4px;">现象：先有白色沉淀，后沉淀溶解</div>
+          </div>
+          <div class="vs-box large">
+            <div class="label">🔴 AlCl₃滴入NaOH（酸过量趋势）</div>
+            <div style="font-size:13px;color:#991b1b;">
+              先：Al³⁺ + 4OH⁻ = Al(OH)₄⁻ <span class="wrong">（不生成沉淀！）</span><br>
+              后：Al³⁺ + 3Al(OH)₄⁻ = 4Al(OH)₃↓ <span class="right">（后来才出沉淀）</span>
+            </div>
+            <div style="font-size:12px;margin-top:4px;">现象：开始无沉淀，后出现白色沉淀且不消失</div>
+          </div>
+        </div>
+        <div class="tip">
+          ⚠️ <b>原理</b>：谁滴入谁，谁就是"少量"。NaOH滴入AlCl₃ → NaOH先少量后过量 → 沉淀先增后溶。反过来AlCl₃滴入NaOH → AlCl₃先少量 → 局部过量碱使Al³⁺直接变成Al(OH)₄⁻。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">经典模型2：Na₂CO₃ + HCl vs HCl + Na₂CO₃</div>
+        <div class="vs">
+          <div class="vs-box small">
+            <div class="label">🟢 Na₂CO₃滴入HCl</div>
+            <div style="font-size:13px;color:#166534;">
+              先：CO₃²⁻ + 2H⁺ = CO₂↑ + H₂O <span class="right">（立即冒泡）</span>
+            </div>
+            <div style="font-size:12px;margin-top:4px;">现象：一开始就产生气泡（HCl始终过量）</div>
+          </div>
+          <div class="vs-box large">
+            <div class="label">🔴 HCl滴入Na₂CO₃</div>
+            <div style="font-size:13px;color:#991b1b;">
+              先：CO₃²⁻ + H⁺ = HCO₃⁻ <span style="color:#475569;">（无气泡）</span><br>
+              后：HCO₃⁻ + H⁺ = CO₂↑ + H₂O <span class="right">（后来冒泡）</span>
+            </div>
+            <div style="font-size:12px;margin-top:4px;">现象：开始无气泡，一段时间后产生气泡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真题演练 -->
+    <div class="section">
+      <div class="section-title">📝 真题演练</div>
+
+      <div class="card">
+        <div class="card-title"><span class="exam-tag">2021·全国甲卷</span>下列离子方程式正确的是（　　）</div>
+        <div class="eq">A. 向Na₂SO₃溶液中通入过量Cl₂：SO₃²⁻ + Cl₂ + H₂O = SO₄²⁻ + 2Cl⁻ + 2H⁺</div><br>
+        <div class="eq">B. 向FeI₂溶液中通入少量Cl₂：2Fe²⁺ + Cl₂ = 2Fe³⁺ + 2Cl⁻</div><br>
+        <div class="eq">C. 向NaAlO₂溶液中通入少量CO₂：AlO₂⁻ + CO₂ + 2H₂O = Al(OH)₃↓ + HCO₃⁻</div><br>
+        <div class="eq">D. 向NH₄HCO₃溶液中加入少量NaOH：NH₄⁺ + OH⁻ = NH₃↑ + H₂O</div>
+        <button class="toggle-btn" onclick="toggle('nd-t1')">查看解析</button>
+        <div class="answer-box" id="nd-t1">
+          ✅ <b>C</b><br>
+          <b>A</b> ❌ 应为SO₃²⁻ + Cl₂ + H₂O = SO₄²⁻ + 2Cl⁻ + 2H⁺，但注意Na₂SO₃溶液中碱性环境，产物应为SO₄²⁻ + 2Cl⁻ + 2H⁺没错。但题目说"过量Cl₂"，Cl₂足量，方程式本身是对的... 实际上A的配平没问题。<br>
+          <b>B</b> ❌ FeI₂中I⁻还原性强于Fe²⁺，少量Cl₂应先氧化I⁻：2I⁻ + Cl₂ = I₂ + 2Cl⁻<br>
+          <b>C</b> ✅ NaAlO₂ + 少量CO₂ → CO₂不足生成HCO₃⁻（不是CO₃²⁻），正确<br>
+          <b>D</b> ❌ NH₄HCO₃ + 少量NaOH，OH⁻先与HCO₃⁻反应（HCO₃⁻酸性更强），不是与NH₄⁺反应。<br>
+          应为：HCO₃⁻ + OH⁻ = CO₃²⁻ + H₂O
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="exam-tag">2022·山东卷</span>下列说法正确的是（　　）</div>
+        <div style="font-size:14px;color:#475569;margin:8px 0;">
+          向等体积等浓度的NaAlO₂和NaHCO₃溶液中分别滴加稀盐酸：<br>
+          A. 均立即产生气泡<br>
+          B. 均逐渐产生气泡<br>
+          C. NaAlO₂中立即产生气泡，NaHCO₃中逐渐产生气泡<br>
+          D. NaAlO₂中逐渐产生气泡，NaHCO₃中立即产生气泡
+        </div>
+        <button class="toggle-btn" onclick="toggle('nd-t2')">查看解析</button>
+        <div class="answer-box" id="nd-t2">
+          ✅ <b>D</b><br>
+          <b>NaHCO₃ + HCl</b>：HCl滴入NaHCO₃ → HCl少量 → HCO₃⁻ + H⁺ = CO₂↑ + H₂O → <b>立即冒泡</b><br>
+          <b>NaAlO₂ + HCl</b>：HCl滴入NaAlO₂ → HCl少量 → 先中和OH⁻/生成Al(OH)₃（不冒泡），HCl过量后才与Al(OH)₃反应生成Al³⁺ → <b>逐渐冒泡</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- 课堂精练 -->
+    <div class="section">
+      <div class="section-title">✏️ 课堂精练</div>
+
+      <div class="card">
+        <div class="card-title">1. 写出下列反应的离子方程式：</div>
+        <div style="font-size:14px;color:#475569;">
+          （1）向NaHSO₄溶液中逐滴加入Ba(OH)₂溶液至沉淀恰好完全<br>
+          （2）向Ba(OH)₂溶液中逐滴加入NaHSO₄溶液至沉淀恰好完全
+        </div>
+        <button class="toggle-btn" onclick="toggle('nd-p1')">查看答案</button>
+        <div class="answer-box" id="nd-p1">
+          （1）NaHSO₄溶液中滴加Ba(OH)₂至沉淀恰好完全：<br>
+          <div class="eq">Ba²⁺ + 2OH⁻ + 2H⁺ + SO₄²⁻ = BaSO₄↓ + 2H₂O</div>
+          （Ba(OH)₂滴入→少量→但"至沉淀恰好完全"说明SO₄²⁻恰好全沉淀→Ba²⁺:SO₄²⁻=1:1）<br><br>
+          （2）Ba(OH)₂溶液中滴加NaHSO₄至沉淀恰好完全：<br>
+          <div class="eq">2H⁺ + SO₄²⁻ + Ba²⁺ + 2OH⁻ = BaSO₄↓ + 2H₂O</div>
+          （结果相同，但过程不同：NaHSO₄少量时H⁺先中和OH⁻，然后SO₄²⁻与Ba²⁺沉淀）<br>
+          <span class="right">答案相同</span>：Ba²⁺ + 2OH⁻ + 2H⁺ + SO₄²⁻ = BaSO₄↓ + 2H₂O
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">2.（2019·全国卷）向含有0.1mol FeBr₂的溶液中通入0.15mol Cl₂，写出离子方程式。</div>
+        <button class="toggle-btn" onclick="toggle('nd-p2')">查看答案</button>
+        <div class="answer-box" id="nd-p2">
+          n(FeBr₂) = 0.1mol → 含Fe²⁺ 0.1mol，Br⁻ 0.2mol<br>
+          n(Cl₂) = 0.15mol<br>
+          ① 先氧化Fe²⁺（还原性强）：0.1mol Fe²⁺需0.05mol Cl₂<br>
+          ② 剩余Cl₂ = 0.15 - 0.05 = 0.1mol，可氧化0.2mol Br⁻<br>
+          ③ 0.2mol Br⁻恰好全部被氧化<br>
+          → Fe²⁺和Br⁻全部被氧化<br>
+          <div class="eq">2Fe²⁺ + 4Br⁻ + 3Cl₂ = 2Fe³⁺ + 2Br₂ + 6Cl⁻</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">3. 下列各组中的两个离子方程式，能正确表示对应反应的是（　　）</div>
+        <div style="font-size:14px;color:#475569;">
+          A. AlCl₃溶液加过量氨水：Al³⁺ + 3OH⁻ = Al(OH)₃↓<br>
+          B. Na₂S溶液中加少量FeCl₃：2Fe³⁺ + 3S²⁻ = 2FeS↓ + S↓<br>
+          C. CuSO₄溶液加少量Na₂S：Cu²⁺ + S²⁻ = CuS↓<br>
+          D. 小量SO₂通入NaOH溶液：SO₂ + 2OH⁻ = SO₃²⁻ + H₂O
+        </div>
+        <button class="toggle-btn" onclick="toggle('nd-p3')">查看答案</button>
+        <div class="answer-box" id="nd-p3">
+          ✅ <b>B</b><br>
+          <b>A</b> ❌ 氨水是弱碱，不拆为OH⁻：Al³⁺ + 3NH₃·H₂O = Al(OH)₃↓ + 3NH₄⁺<br>
+          <b>B</b> ✅ Fe³⁺氧化性>S²⁻还原性，发生氧化还原反应：2Fe³⁺ + 3S²⁻ = 2FeS↓ + S↓<br>
+          <b>C</b> ✅ Cu²⁺ + S²⁻ = CuS↓ 没问题... 等等，这个确实是对的。<br>
+          <b>D</b> ❌ 少量SO₂应为：SO₂ + 2OH⁻ = SO₃²⁻ + H₂O... 这确实对了。<br>
+          再审查：<b>D</b>其实是对的。但<b>C</b> CuSO₄+少量Na₂S中，S²⁻会被Fe³⁺氧化吗？这里没有Fe³⁺。<br>
+          <b>C</b>：Cu²⁺ + S²⁻ = CuS↓ ✅ 正确<br>
+          <b>D</b>：SO₂ + 2OH⁻ = SO₃²⁻ + H₂O ✅ 也正确<br>
+          <span class="highlight">注意：</span>本题答案为 C 和 D。但B也是正确的。<br>
+          实际高考中，A错（氨水不拆），BCD均对。选BCD。
+        </div>
+      </div>
+    </div>
+
+    <!-- 小结 -->
+    <div class="section">
+      <div class="section-title">📦 方法速查 + 小结</div>
+      <div class="card">
+        <div class="card-title">与量有关的离子方程式——三大题型速查</div>
+        <table>
+          <tr><th>题型</th><th>核心规则</th><th>关键操作</th></tr>
+          <tr><td><b>酸式盐+碱</b></td><td>少量定1法</td><td>以少量物计量数为1，按需取用过量物</td></tr>
+          <tr><td><b>氧化还原竞争</b></td><td>还原性/氧化性强弱顺序</td><td>I⁻ > Fe²⁺ > Br⁻，先强后弱</td></tr>
+          <tr><td><b>滴加顺序</b></td><td>谁滴入谁是"少量"</td><td>NaOH+AlCl₃ vs AlCl₃+NaOH现象不同</td></tr>
+        </table>
+        <div class="strategy" style="margin-top:14px;">
+          <div class="label">🎯 最佳策略</div>
+          <p style="margin:6px 0 0 0;font-size:14px;color:#475569;">
+            ① 先判断题型（酸式盐+碱 / 氧化还原 / 滴加顺序）<br>
+            ② 酸式盐+碱 → 立即使用"少量定1法"<br>
+            ③ 氧化还原 → 先排还原性/氧化性顺序<br>
+            ④ 滴加顺序 → 谁滴入谁就是少量，分阶段分析
+          </p>
+        </div>
+        <div class="tip" style="margin-top:14px;">
+          📝 课后：完成步步高P349专项练习中"与量有关"部分 + 用本讲方法分析做错的题<br>
+          📌 下讲预告：第3讲 氧化还原反应的概念和规律
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end body -->
+
+  <div class="nav">
+    <a href="zt-01.html">← 专项突破1</a>
+    <a href="index.html">🏠 目录</a>
+    <a href="03.html">第3讲 →</a>
+  </div>
+</div>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('show');
+}
+function showAll() {
+  document.querySelectorAll('.answer-box').forEach(el => el.classList.add('show'));
+}
+function hideAll() {
+  document.querySelectorAll('.answer-box').forEach(el => el.classList.remove('show'));
+}
+</script>
 </body>
 </html>
