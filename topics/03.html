@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第3讲 氧化还原反应的概念和规律 | 化学不难学</title>
+    <title>第3讲 氧化还原反应 | 化学不难学</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
             background: #f0f4f8;
             color: #0f172a;
             line-height: 1.7;
@@ -41,511 +41,820 @@
             font-weight: 700;
             letter-spacing: 2px;
         }
-        .main {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 36px 20px 60px;
+        .page-banner {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 36px 32px 28px;
+            text-align: center;
         }
-
-        /* 全局控制条 */
-        .global-controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 24px;
-            padding: 12px 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-            border: 1px solid #e8edf3;
-            justify-content: center;
+        .page-banner h1 {
+            font-size: 26px;
+            font-weight: 800;
         }
-        .global-btn {
-            padding: 7px 20px;
-            border: 2px solid #1e3a5f;
-            background: white;
-            color: #1e3a5f;
-            border-radius: 8px;
+        .page-banner h1 em {
+            font-style: normal;
+            color: #e94560;
+        }
+        .page-banner p {
             font-size: 14px;
+            opacity: 0.6;
+            margin-top: 6px;
+        }
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 28px 20px 20px;
+        }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: #fafbfc;
+    color: #1a1a2e;
+    line-height: 1.75;
+  }
+  .header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 36px 32px 28px;
+  }
+  .header h1 { font-size: 24px; font-weight: 800; }
+  .header h1 em { font-style: normal; color: #e94560; }
+  .header p { font-size: 14px; opacity: 0.6; margin-top: 6px; }
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+  .block {
+    margin-bottom: 36px;
+    border-left: 4px solid #e94560;
+    border-radius: 0 10px 10px 0;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .block-head {
+    padding: 18px 24px;
+    background: linear-gradient(90deg, #fef2f4, #fff);
+    border-bottom: 1px solid #fde8ec;
+  }
+  .block-num {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .block-head h2 { display: inline; font-size: 17px; font-weight: 700; color: #1a1a2e; }
+  .block-head .must { font-size: 12px; color: #e94560; font-weight: 600; margin-left: 8px; }
+  .block-head .often { font-size: 12px; color: #f39c12; font-weight: 600; margin-left: 8px; }
+  .block-body { padding: 0; }
+  .sub {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f1f3;
+  }
+  .sub:last-child { border-bottom: none; }
+  .sub-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sub-title.exam { color: #0f3460; }
+  .sub-title.trap { color: #e94560; }
+  .sub-title.tip  { color: #27ae60; }
+  .sub p, .sub li { font-size: 14px; color: #333; line-height: 1.8; }
+  .sub ul { padding-left: 20px; }
+  .sub li { margin-bottom: 4px; }
+  .q-box {
+    background: #f6f8fb;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid #e0e6ed;
+    margin-bottom: 10px;
+  }
+  .q-box .q-source {
+    font-size: 12px;
+    color: #0f3460;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .q-box .q-text {
+    font-size: 14px;
+    color: #1a1a2e;
+    font-weight: 500;
+  }
+  .q-answer {
+    font-size: 13px;
+    color: #27ae60;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .q-img {
+    margin: 10px 0;
+    text-align: center;
+  }
+  .q-img img {
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #e0e6ed;
+    background: #fff;
+  }
+  .opt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .opt-grid .opt-item {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 8px;
+  }
+  .opt-grid .opt-item img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  .opt-grid .opt-item .opt-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 4px;
+  }
+  .opt-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .opt-row .opt-item {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 6px;
+  }
+  .opt-row .opt-item img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  .opt-row .opt-item .opt-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 4px;
+  }
+  .q-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .q-table th, .q-table td {
+    border: 1px solid #d0d7de;
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .q-table th {
+    background: #f1f3f5;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .q-table td {
+    color: #333;
+  }
+  .q-table .opt-cell {
+    text-align: center;
+    font-weight: 700;
+    color: #0f3460;
+    width: 40px;
+  }
+  .trap-box {
+    background: #fef2f4;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid #fde8ec;
+  }
+  .trap-box p { color: #c0392b; }
+  .tip-box {
+    background: #eafaf1;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid #c8e6c9;
+  }
+  .tip-box p { color: #1e8449; }
+  .tip-box ul { color: #1e8449; }
+  .divider {
+    text-align: center;
+    margin: 32px 0;
+    color: #ccc;
+    font-size: 20px;
+    letter-spacing: 12px;
+  }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .toggle-btn {
+    display: inline-block;
+    cursor: pointer;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+    margin-left: 8px;
+    user-select: none;
+    transition: all 0.2s;
+  }
+  .toggle-btn.answer-btn {
+    color: #27ae60;
+    border-color: #27ae60;
+    background: #eafaf1;
+  }
+  .toggle-btn.answer-btn:hover { background: #d5f5e3; }
+  .toggle-btn.trap-btn {
+    color: #e94560;
+    border-color: #e94560;
+    background: #fef2f4;
+  }
+  .toggle-btn.trap-btn:hover { background: #fde8ec; }
+  .toggle-btn.tip-btn {
+    color: #0f3460;
+    border-color: #0f3460;
+    background: #e8f0fe;
+  }
+  .toggle-btn.tip-btn:hover { background: #d4e4fc; }
+
+  .q-answer-inner {
+    font-size: 13px;
+    color: #27ae60;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .collapsible.open {
+    max-height: 2000px;
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 600;
-            cursor: pointer;
+            text-decoration: none;
             transition: all 0.2s;
         }
-        .global-btn:hover { background: #1e3a5f; color: white; }
-
-        /* 顶部标题区 */
-        .topic-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 36px 24px 32px;
-            background: linear-gradient(135deg, #1e3a5f 0%, #0f4c81 100%);
-            border-radius: 20px;
-            color: white;
-            box-shadow: 0 4px 20px rgba(15,76,129,0.25);
-        }
-        .topic-badge {
-            display: inline-block;
-            padding: 4px 14px;
-            background: rgba(251,191,36,0.2);
-            border: 1px solid rgba(251,191,36,0.5);
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+        .nav-btn.prev {
+            background: #1e3a5f;
             color: #fbbf24;
-            margin-bottom: 12px;
         }
-        .topic-num { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
-        .topic-title-main { font-size: 30px; font-weight: 800; letter-spacing: 1px; }
-        .topic-hot { margin-top: 14px; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; }
-        .topic-hot strong { color: #fbbf24; }
-
-        /* 卡片通用 */
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 28px 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-            border: 1px solid #e8edf3;
+        .nav-btn.prev:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
         }
-        .card-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #1e3a5f;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #e8edf3;
+        .nav-btn.next {
+            background: #1e3a5f;
+            color: #fbbf24;
         }
-        .card-title .icon {
-            width: 28px; height: 28px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-size: 15px;
+        .nav-btn.next:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
         }
-        .icon-pretest { background: #fef3c7; }
-        .icon-core { background: #dbeafe; }
-        .icon-practice { background: #dcfce7; }
-        .icon-summary { background: #fce7f3; }
-        .icon-real { background: #ede9fe; }
-
-        /* 题目块 */
-        .q-block {
-            margin-bottom: 20px;
-            padding: 16px 20px;
-            background: #f8fafc;
+        footer.footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 13px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+        /* 前测样式 */
+        .pretest-box {
+            background: #fff8e1;
+            border: 2px dashed #f59e0b;
             border-radius: 12px;
-            border-left: 4px solid #3b82f6;
+            padding: 20px 24px;
+            margin-bottom: 30px;
         }
-        .q-text { font-size: 15px; color: #1e293b; margin-bottom: 12px; font-weight: 500; }
-        .q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin-bottom: 12px; }
-        .q-option { font-size: 14px; color: #475569; padding: 4px 0; }
-
-        /* 隐藏答案按钮 */
-        .reveal-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 7px 18px; background: #1e3a5f; color: white;
-            border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
-            cursor: pointer; transition: all 0.2s; user-select: none;
+        .pretest-box .pt-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #b45309;
+            margin-bottom: 4px;
         }
-        .reveal-btn:hover { background: #0f4c81; transform: translateY(-1px); }
-        .reveal-btn.revealed { background: #059669; }
-        .reveal-btn.revealed:hover { background: #047857; }
-        .answer-box {
-            display: none; margin-top: 12px; padding: 12px 16px;
-            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-            border: 1px solid #6ee7b7; border-radius: 10px;
-            font-size: 14px; color: #064e3b; line-height: 1.7;
+        .pretest-box .pt-sub {
+            font-size: 12px;
+            color: #92400e;
+            margin-bottom: 14px;
         }
-        .answer-box.show { display: block; }
-        .answer-label { font-weight: 700; color: #059669; margin-right: 4px; }
-
-        /* 知识表格 */
-        .know-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
-        .know-table th {
-            background: #1e3a5f; color: white; padding: 10px 14px;
-            text-align: left; font-weight: 600;
+        .pt-q {
+            margin-bottom: 12px;
+            font-size: 14px;
         }
-        .know-table th:first-child { border-radius: 8px 0 0 0; }
-        .know-table th:last-child { border-radius: 0 8px 0 0; }
-        .know-table td { padding: 9px 14px; border-bottom: 1px solid #e8edf3; vertical-align: top; }
-        .know-table tr:last-child td { border-bottom: none; }
-        .know-table tr:nth-child(even) td { background: #f8fafc; }
-
-        .tag-up { display: inline-block; padding: 2px 8px; background: #fee2e2; color: #dc2626; border-radius: 5px; font-size: 12px; font-weight: 600; }
-        .tag-down { display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1d4ed8; border-radius: 5px; font-size: 12px; font-weight: 600; }
-        .tag-tip { display: inline-block; padding: 2px 8px; background: #fef3c7; color: #92400e; border-radius: 5px; font-size: 12px; font-weight: 600; }
-
-        .highlight-box {
-            padding: 14px 18px; background: #fef3c7; border-radius: 10px;
-            border-left: 4px solid #f59e0b; margin: 14px 0; font-size: 14px; line-height: 1.8;
+        .pt-q .q-label {
+            font-weight: 700;
+            color: #b45309;
         }
-        .highlight-box strong { color: #92400e; }
-
-        .formula-box {
-            padding: 16px 20px; background: #f0f9ff; border-radius: 10px;
-            border: 1px solid #7dd3fc; margin: 14px 0; font-size: 15px;
-            text-align: center; font-weight: 600; color: #0369a1;
+        .pt-q .q-opts {
+            margin-left: 12px;
+            color: #444;
         }
-
-        .step-box {
-            margin: 12px 0; padding: 12px 18px;
-            background: #f8fafc; border-radius: 10px; border-left: 3px solid #6366f1;
-        }
-        .step-num {
-            display: inline-block; width: 24px; height: 24px; line-height: 24px;
-            background: #6366f1; color: white; border-radius: 50%; text-align: center;
-            font-size: 13px; font-weight: 700; margin-right: 8px;
-        }
-
-        .summary-list { list-style: none; padding: 0; }
-        .summary-list li {
-            padding: 10px 0; border-bottom: 1px solid #fce7f3;
-            font-size: 15px; display: flex; align-items: flex-start; gap: 8px;
-        }
-        .summary-list li:last-child { border-bottom: none; }
-        .summary-list .emoji { font-size: 18px; flex-shrink: 0; }
-
-        .nav-links { display: flex; justify-content: space-between; margin-top: 32px; }
-        .nav-links a {
-            padding: 10px 20px; background: white; border: 1px solid #e8edf3;
-            border-radius: 10px; text-decoration: none; color: #1e3a5f;
-            font-size: 14px; font-weight: 600; transition: all 0.2s;
-        }
-        .nav-links a:hover { background: #1e3a5f; color: white; }
-
-        .wrong { text-decoration: line-through; color: #dc2626; }
-        .correct { color: #059669; font-weight: 700; }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">化学不难学</a>
-        <div style="display:flex;gap:16px;align-items:center;">
-            <a href="../index.html">首页</a>
-            <a href="../topics.html">专题目录</a>
-        </div>
+        <a href="../index.html">← 返回首页</a>
+        <span class="navbar-brand">化学不难学</span>
     </nav>
 
-    <div class="main">
-        <!-- 全局控制条 -->
-        <div class="global-controls">
-            <button class="global-btn" onclick="showAll()">显示所有答案</button>
-            <button class="global-btn" onclick="hideAll()">隐藏所有答案</button>
-        </div>
-
-        <!-- 标题区 -->
-        <div class="topic-header">
-            <div class="topic-badge">高三一轮复习</div>
-            <div class="topic-num">第 3 讲 / 共 58 讲</div>
-            <div class="topic-title-main">氧化还原反应的概念和规律</div>
-            <div class="topic-hot">
-                <strong>考情提示：</strong>全国卷/广东卷必考选择题，常结合 STSE、化学史考查<br>
-                核心三件事：① 四步法判"剂"和"产物" ② 电子转移表示 ③ 氧化性/还原性强弱比较
-            </div>
-        </div>
-
-        <!-- ========== 前测 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-pretest">🎯</span> 前测（5分钟）
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">1. （2025·山东卷）下列在化学史上产生重要影响的成果中，不涉及氧化还原反应的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. 侯德榜联合制碱法（NH₃、CO₂和NaCl）</div>
-                    <div class="q-option">B. 戴维电解盐酸得H₂和Cl₂</div>
-                    <div class="q-option">C. 拉瓦锡基于金属和O₂提出燃烧氧化学说</div>
-                    <div class="q-option">D. 哈伯合成氨法（N₂和H₂）</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">答案：A</span><br>
-                    侯德榜联合制碱法中各元素化合价均未发生变化，属于非氧化还原反应。<br>
-                    B选项H⁺→H₂（降）、Cl⁻→Cl₂（升）；C选项金属化合价升高、O₂化合价降低；D选项N₂→NH₃（降）、H₂→NH₃（升）。
-                </div>
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">2. （2024·山东卷）古人所用文房四宝的制作过程中，发生氧化还原反应的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. 竹管、动物尾毫 → 湖笔</div>
-                    <div class="q-option">B. 松木 → 油烟 → 徽墨</div>
-                    <div class="q-option">C. 楮树皮 → 纸浆纤维 → 宣纸</div>
-                    <div class="q-option">D. 端石 → 端砚</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">答案：B</span><br>
-                    松木燃烧（不完全燃烧）生成炭黑（油烟），碳元素化合价变化，涉及氧化还原反应。<br>
-                    A、C、D 均为物理加工过程，无化合价变化。
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 核心一：概念判断四步法 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-core">📘</span> 核心一：概念判断四步法
-            </div>
-
-            <div class="formula-box">标化合价 → 看变化 → 下结论 → 比强弱</div>
-
-            <table class="know-table">
-                <tr>
-                    <th>变化方向</th>
-                    <th>电子</th>
-                    <th>被……</th>
-                    <th>作……</th>
-                    <th>产物</th>
-                </tr>
-                <tr>
-                    <td><span class="tag-up">升</span> 化合价升高</td>
-                    <td>失电子</td>
-                    <td>被氧化</td>
-                    <td>作<strong>还原剂</strong></td>
-                    <td>得<strong>氧化产物</strong></td>
-                </tr>
-                <tr>
-                    <td><span class="tag-down">降</span> 化合价降低</td>
-                    <td>得电子</td>
-                    <td>被还原</td>
-                    <td>作<strong>氧化剂</strong></td>
-                    <td>得<strong>还原产物</strong></td>
-                </tr>
-            </table>
-
-            <div class="highlight-box">
-                <strong>口诀：</strong>升失氧还，降得还氧<br>
-                升 → 失电子 → 被氧化 → 还原剂 → 氧化产物<br>
-                降 → 得电子 → 被还原 → 氧化剂 → 还原产物
-            </div>
-
-            <div class="highlight-box" style="background:#ede9fe;border-left-color:#7c3aed;">
-                <strong>强弱规律：</strong><br>
-                氧化性：氧化剂 > 氧化产物<br>
-                还原性：还原剂 > 还原产物
-            </div>
-
-            <div class="highlight-box" style="background:#fce7f3;border-left-color:#db2777;">
-                <strong>歧化反应：</strong>同种元素既升又降，既是氧化剂又是还原剂<br>
-                如：Cl₂ + NaOH（Cl 既升到 +5 又降到 -1）
-            </div>
-        </div>
-
-        <!-- ========== 核心二：电子转移表示 + 强弱比较 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-core">📗</span> 核心二：电子转移表示 + 强弱比较
-            </div>
-
-            <table class="know-table">
-                <tr>
-                    <th>表示方法</th>
-                    <th>画法</th>
-                    <th>标注</th>
-                </tr>
-                <tr>
-                    <td><strong>单线桥</strong></td>
-                    <td>箭头从<strong>失电子元素</strong>→<strong>得电子元素</strong></td>
-                    <td>标转移电子总数（ne⁻），不写得/失</td>
-                </tr>
-                <tr>
-                    <td><strong>双线桥</strong></td>
-                    <td>反应物→生成物，分别标</td>
-                    <td>写得/失 n×e⁻</td>
-                </tr>
-            </table>
-
-            <p style="font-size:15px;font-weight:600;margin-top:20px;color:#1e3a5f;">氧化性/还原性强弱比较的四种方法：</p>
-
-            <table class="know-table">
-                <tr>
-                    <th>方法</th>
-                    <th>依据</th>
-                    <th>示例</th>
-                </tr>
-                <tr>
-                    <td><strong>① 化学反应</strong></td>
-                    <td>氧化剂 > 氧化产物；还原剂 > 还原产物</td>
-                    <td>由反应直接推断</td>
-                </tr>
-                <tr>
-                    <td><strong>② 金属活动性</strong></td>
-                    <td>K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au</td>
-                    <td>还原性从左到右递减</td>
-                </tr>
-                <tr>
-                    <td><strong>③ 反应条件</strong></td>
-                    <td>条件越容易（温度低、不需催化），氧化（还原）性越强</td>
-                    <td>对比反应条件</td>
-                </tr>
-                <tr>
-                    <td><strong>④ 电化学</strong></td>
-                    <td>原电池负极→还原性强；电解池阳极→还原性强</td>
-                    <td>电化学装置推断</td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- ========== 真题讲解 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-real">🔬</span> 真题讲解：一道题讲透所有概念
-            </div>
-
-            <div class="q-block" style="border-left-color:#7c3aed;">
-                <div class="q-text">（2021·浙江卷）关于反应 8NH₃ + 6NO₂ = 7N₂ + 12H₂O，下列说法正确的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. NH₃中H元素被氧化</div>
-                    <div class="q-option">B. NO₂在反应过程中失去电子</div>
-                    <div class="q-option">C. 还原剂与氧化剂的物质的量之比为3∶4</div>
-                    <div class="q-option">D. 氧化产物与还原产物的质量之比为4∶3</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">答案：D</span><br><br>
-                    <strong>判断路径：</strong><br><br>
-                    <strong>第一步：标化合价</strong><br>
-                    NH₃：N(-3)　NO₂：N(+4)　N₂：N(0)<br><br>
-                    <strong>第二步：画双线桥</strong><br>
-                    NH₃(-3) → N₂(0)：升3，失电子，被氧化 → <span class="tag-up">还原剂</span> → 氧化产物<br>
-                    NO₂(+4) → N₂(0)：降4，得电子，被还原 → <span class="tag-down">氧化剂</span> → 还原产物<br><br>
-                    <strong>第三步：逐项判断</strong><br>
-                    A → H元素化合价不变（+1→+1）<span class="wrong">❌</span><br>
-                    B → NO₂中N从+4→0，得电子，被还原 <span class="wrong">❌</span><br>
-                    C → 归中反应：N(-3)→N(0)升3×8=24，N(+4)→N(0)降4×6=24<br>
-                    　　8个NH₃全部被氧化，还原剂:氧化剂 = 8:6 = 4:3 <span class="wrong">❌</span><br>
-                    D → 氧化产物（来自NH₃的N₂）: 还原产物（来自NO₂的N₂）= 4:3 <span class="correct">✅</span>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                <strong>关键：</strong>归中反应中，N元素从-3和+4归中到0价，计算时要分清N原子的来源！<br>
-                8NH₃全部被氧化 → 升3×8=24e⁻；6NO₂全部被还原 → 降4×6=24e⁻；得失电子守恒 ✓
-            </div>
-        </div>
-
-        <!-- ========== 课堂精练 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-practice">✏️</span> 课堂精练（10分钟）
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">1. （2023·全国乙卷）下列应用中涉及到氧化还原反应的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. 使用明矾对水进行净化</div>
-                    <div class="q-option">B. 雪天道路上撒盐融雪</div>
-                    <div class="q-option">C. 暖贴中的铁粉遇空气放热</div>
-                    <div class="q-option">D. 荧光指示牌被照发光</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">答案：C</span><br>
-                    A → Al³⁺水解生成Al(OH)₃胶体吸附杂质，无化合价变化 ❌<br>
-                    B → CaCl₂降低冰点，物理过程 ❌<br>
-                    C → Fe + O₂ + H₂O → Fe₂O₃·xH₂O（铁生锈），Fe被氧化，O₂被还原 ✅<br>
-                    D → 荧光物质吸收光能再释放，无化合价变化 ❌
-                </div>
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">2. （2022·天津卷）燃油汽车发动机及催化转化器中发生的部分反应如下：<br>反应(Ⅰ) N₂ + O₂ → 2NO　反应(Ⅱ) 2CO + 2NO → 2CO₂ + N₂<br>下列判断错误的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. 甲是空气中体积分数最大的成分</div>
-                    <div class="q-option">B. 乙是引起温室效应的气体之一</div>
-                    <div class="q-option">C. 反应(Ⅰ)在常温下容易发生</div>
-                    <div class="q-option">D. 反应(Ⅱ)中NO是氧化剂</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">答案：C</span><br>
-                    反应(Ⅰ) N₂ + O₂ → 2NO 需要在高温（放电或高温）条件下才能发生，常温下极难进行。闪电时空气中的N₂和O₂才能反应生成NO。<br>
-                    D选项中NO中N从+2→0，得电子被还原，作氧化剂 ✅。
-                </div>
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">3. （2021·江苏卷）黑火药爆炸反应：2KNO₃ + S + 3C = K₂S + N₂↑ + 3CO₂↑<br>下列说法正确的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. 黑火药中含有两种单质</div>
-                    <div class="q-option">B. 爆炸时吸收热量</div>
-                    <div class="q-option">C. 反应中S作还原剂</div>
-                    <div class="q-option">D. 反应为置换反应</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">答案：C</span><br>
-                    标化合价：KNO₃中N(+5)→N₂(0)降，作氧化剂<br>
-                    S(0)→K₂S中S(-2)降，S被还原 → S也是氧化剂<br>
-                    C(0)→CO₂中C(+4)升，C被氧化 → C是还原剂<br><br>
-                    A → KNO₃、S、C共三种单质（KNO₃不是单质），但原料中S和C两种是单质……实际上"黑火药"成分是KNO₃+炭粉+硫粉，确实含两种单质（S和C）<br>
-                    但A选项说"黑火药中含有两种单质"，KNO₃不是单质，所以黑火药含S和C两种单质，A也对？<br><br>
-                    <strong>再核实：</strong>黑火药 = KNO₃（盐）+ C（单质）+ S（单质），两种单质 → A对<br>
-                    C选项S作还原剂：S(0)→S(-2)被还原，应作氧化剂 → C说"作还原剂"是错的<br>
-                    <strong>最终答案：A</strong>（S不是还原剂，C的说法错误；D不是置换反应）
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 小结 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-summary">📝</span> 本讲小结
-            </div>
-            <ul class="summary-list">
-                <li>
-                    <span class="emoji">1️⃣</span>
-                    <span><strong>四步法</strong>是解题根本：标化合价 → 看升降 → 判剂和产物 → 比强弱</span>
-                </li>
-                <li>
-                    <span class="emoji">2️⃣</span>
-                    <span><strong>电子转移</strong>会画两种桥：单线桥（标总数）、双线桥（标得失）</span>
-                </li>
-                <li>
-                    <span class="emoji">3️⃣</span>
-                    <span><strong>强弱比较</strong>四个方法：化学反应 > 金属活动性 > 反应条件 > 电化学</span>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 导航链接 -->
-        <div class="nav-links">
-            <a href="./nd-01.html">← 难点突破1</a>
-            <a href="./04.html">下一讲：第4讲 →</a>
-        </div>
+    <div class="page-banner">
+        <h1>第<em>3</em>讲 &nbsp;氧化还原反应的概念和规律</h1>
+        <p>以考定教 · 2027届高三化学第一轮复习 · 真题来源：2023—2025广东卷+全国卷</p>
     </div>
 
+    <div class="main">
+
+<!-- 前测 -->
+<div class="pretest-box">
+    <div class="pt-title">⚡ 前测（5分钟）——暴露薄弱点</div>
+    <div class="pt-sub">先做再看答案，诚实地面对自己</div>
+
+    <div class="pt-q">
+        <span class="q-label">1.</span> （2025·山东卷）下列在化学史上产生重要影响的成果中，不涉及氧化还原反应的是（　　）<br>
+        <span class="q-opts">A. 侯德榜联合制碱法（NH₃、CO₂和NaCl）&nbsp; B. 戴维电解盐酸得H₂和Cl₂<br>
+        C. 拉瓦锡基于金属和O₂提出燃烧氧化学说 &nbsp; D. 哈伯合成氨法（N₂和H₂）</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt1')">🔍 查看答案</span>
+        <div class="collapsible pt1"><div class="q-answer-inner">✅ A —— 侯德榜联合制碱法中各元素化合价均未变化，属于非氧化还原反应。B：H⁺→H₂（降）、Cl⁻→Cl₂（升）；C：金属化合价升高、O化合价降低；D：N₂→NH₃（降）、H₂→NH₃（升）。</div></div>
+    </div>
+
+    <div class="pt-q">
+        <span class="q-label">2.</span> （2024·山东卷）古人所用文房四宝的制作过程中，发生氧化还原反应的是（　　）<br>
+        <span class="q-opts">A. 竹管、动物尾毫 → 湖笔 &nbsp; B. 松木 → 油烟 → 徽墨<br>
+        C. 楮树皮 → 纸浆纤维 → 宣纸 &nbsp; D. 端石 → 端砚</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt2')">🔍 查看答案</span>
+        <div class="collapsible pt2"><div class="q-answer-inner">✅ B —— 松木不完全燃烧生成炭黑（油烟），碳元素化合价变化，涉及氧化还原反应。A、C、D均为物理加工过程，无化合价变化。</div></div>
+    </div>
+    <p style="font-size:12px;color:#b45309;margin-top:8px;">⚠️ 第1题错 → 回顾考点1；第2题错 → 回顾考点1~2</p>
+</div>
+
+<!-- 考点1 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点1</span>
+    <h2>氧化还原反应的判断——标化合价，看升降</h2>
+    <span class="must">🔴 必考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·山东·第1题</div>
+        <div class="q-text">下列在化学史上产生重要影响的成果中，不涉及氧化还原反应的是<br>
+        A. 侯德榜发明了以NH₃、CO₂和NaCl为原料的联合制碱法<br>
+        B. 戴维电解盐酸得到H₂和Cl₂，从而提出了酸的含氢学说<br>
+        C. 拉瓦锡基于金属和O₂的反应提出了燃烧的氧化学说<br>
+        D. 哈伯发明了以N₂和H₂为原料合成氨的方法</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-1')">🔍 查看答案</span>
+        <div class="collapsible a1-1"><div class="q-answer-inner">
+          ✅ <strong>A</strong><br>
+          逐一标化合价：<br>
+          A → NaCl+NH₃+CO₂+H₂O→NaHCO₃+NH₄Cl，各元素化合价不变 → <strong>非氧化还原反应</strong> ✅<br>
+          B → HCl电解：H⁺(+1→0 降)、Cl⁻(-1→0 升) → 氧化还原 ❌<br>
+          C → 金属(0→+n 升)、O₂(0→-2 降) → 氧化还原 ❌<br>
+          D → N₂(0→-3 降)、H₂(0→+1 升) → 氧化还原 ❌
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2023·广东·第7题（节选）</div>
+        <div class="q-text">擦干已洗净的铁锅，以防生锈，防止生成氧化铁；铁丝在O₂中燃烧生成Fe₃O₄。以上两个现象涉及的化学知识关联判断正确的是？</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-2')">🔍 查看答案</span>
+        <div class="collapsible a1-2"><div class="q-answer-inner">
+          铁锅防锈 → Fe被O₂氧化为Fe₂O₃·xH₂O，涉及氧化还原<br>
+          铁丝在O₂中燃烧 → 3Fe + 2O₂ =<sup>点燃</sup> Fe₃O₄，Fe从0升到+2/+3，O从0降到-2，涉及氧化还原<br>
+          两者都涉及氧化还原，但本质不同（缓慢氧化 vs 剧烈燃烧），不能简单等同。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't1')">⚠️ 查看陷阱</span><div class="collapsible t1"><div class="trap-box">
+        <p><strong>① "有O₂参与的反应一定是氧化还原反应"</strong>——❌ 2Na₂O + O₂ = 2Na₂O₂，Na₂O₂中O为-1价，但该反应为化合反应且化合价有变化，所以是氧化还原。但反过来，CaO + H₂O = Ca(OH)₂无化合价变化，虽含O元素却不是氧化还原！<strong>判断依据只有一个：有无化合价变化</strong></p>
+        <p><strong>② "分解反应/化合反应一定是氧化还原反应"</strong>——❌ 2H₂O =<sup>通电</sup> 2H₂↑ + O₂↑ 是氧化还原（化合价变了），但 CaCO₃ =<sup>高温</sup> CaO + CO₂↑ 不是氧化还原（化合价没变）！<strong>四大基本反应类型与氧化还原无必然对应关系</strong></p>
+        <p><strong>③ "浓硫酸的脱水性 = 氧化性"</strong>——❌ 蔗糖遇浓硫酸变黑：先脱水（C₁₂H₂₂O₁₁ → 12C + 11H₂O，无化合价变化），再氧化（C + 2H₂SO₄(浓) = CO₂↑ + 2SO₂↑ + 2H₂O，有化合价变化）。<strong>脱水性和氧化性是两步不同过程！</strong></p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g1')">✅ 查看指导</span><div class="collapsible g1"><div class="tip-box">
+        <p><strong>判断氧化还原反应唯一标准：有无化合价变化</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li><strong>第一步：</strong>标出反应物和生成物中各元素的化合价</li>
+          <li><strong>第二步：</strong>对比同种元素反应前后化合价是否变化</li>
+          <li><strong>第三步：</strong>有变化 → 氧化还原反应；无变化 → 非氧化还原反应</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>常见非氧化还原反应：</strong>复分解反应（酸碱盐之间的反应）、部分分解反应（CaCO₃分解）、部分化合反应（CaO+H₂O）</p>
+        <p style="margin-top:4px;"><strong>常见必为氧化还原的反应：</strong>燃烧、金属与酸反应、电解、歧化反应、归中反应</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点2 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点2</span>
+    <h2>氧化剂、还原剂的判断——"升失氧还，降得还氧"</h2>
+    <span class="must">🔴 核心考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第11题（节选）</div>
+        <div class="q-text">利用如图装置进行实验：打开K₁、K₂，一定时间后，a中溶液变蓝；关闭K₁，打开K₃，点燃酒精灯加热数分钟后，滴入无水乙醇。下列说法错误的是<br>
+        A. a中现象体现了I⁻的还原性<br>
+        B. b中H₂O₂既作氧化剂也作还原剂<br>
+        C. 乙醇滴加过程中，c中的铜丝由黑变红，说明乙醇被氧化<br>
+        D. d中有银镜反应发生，说明c中产物有乙酸</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-1')">🔍 查看答案</span>
+        <div class="collapsible a2-1"><div class="q-answer-inner">
+          ✅ <strong>D</strong>（选"错误"的选项）<br>
+          A → a中I⁻被氧化为I₂，使淀粉变蓝，体现I⁻的还原性 ✅正确（不选）<br>
+          B → b中H₂O₂分解：2H₂O₂ = 2H₂O + O₂↑，O从-1变为-2（被还原，作氧化剂）和0（被氧化，作还原剂），既作氧化剂也作还原剂 ✅正确（不选）<br>
+          C → 铜丝由黑(CuO)变红(Cu)，CuO中Cu从+2→0被还原，乙醇被氧化为乙醛 ✅正确（不选）<br>
+          D → 银镜反应检验的是醛基，乙醛可发生银镜反应。但c中CuO催化乙醇氧化可生成乙醛，乙醛可发生银镜反应。<strong>实际上d中能发生银镜反应</strong>，说明c中产物有乙醛或进一步氧化为乙酸后再还原……该选项需要结合实验细节判断，真题答案为D错误。
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2024·广东·第13题（节选）</div>
+        <div class="q-text">由氨制硝酸过程中，NH₃做还原剂，体现了NH₃的还原性——该陈述是否正确？</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-2')">🔍 查看答案</span>
+        <div class="collapsible a2-2"><div class="q-answer-inner">
+          ✅ <strong>正确</strong> —— 4NH₃ + 5O₂ =<sup>催化</sup> 4NO + 6H₂O，NH₃中N从-3→+2升高，<strong>失电子被氧化，作还原剂</strong>，体现还原性。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't2')">⚠️ 查看陷阱</span><div class="collapsible t2"><div class="trap-box">
+        <p><strong>① "氧化剂得电子 → 化合价降低 → 发生氧化反应"</strong>——❌ 氧化剂得电子，化合价降低，发生的是<strong>还原反应</strong>！口诀：氧化剂被还原，还原剂被氧化</p>
+        <p><strong>② "H₂O₂一定既作氧化剂又作还原剂"</strong>——❌ 看反应！H₂O₂与KMnO₄反应时只作还原剂（O从-1→0升），与KI反应时只作氧化剂（O从-1→-2降）。<strong>只有自身分解时才既作氧化剂又作还原剂！</strong></p>
+        <p><strong>③ "还原性强的物质氧化性一定弱"</strong>——❌ 物质可以同时具有氧化性和还原性（如H₂O₂、Fe²⁺、SO₂），强弱取决于具体反应中的角色</p>
+        <p><strong>④ "含氧酸都有氧化性"</strong>——❌ H₃PO₄、H₂CO₃等含氧酸无强氧化性（P、C已是最高价态，但不能氧化常见还原剂）</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g2')">✅ 查看指导</span><div class="collapsible g2"><div class="tip-box">
+        <p><strong>口诀表——一张表搞定所有判断：</strong></p>
+        <table class="q-table">
+          <tr><th>变化</th><th>电子</th><th>被……</th><th>作……</th><th>产物叫……</th></tr>
+          <tr><td><strong>化合价升高</strong></td><td>失电子</td><td>被氧化</td><td>还原剂</td><td>氧化产物</td></tr>
+          <tr><td><strong>化合价降低</strong></td><td>得电子</td><td>被还原</td><td>氧化剂</td><td>还原产物</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>速记口诀：</strong>升失氧还（升→失电子→被氧化→还原剂），降得还氧（降→得电子→被还原→氧化剂）</p>
+        <p style="margin-top:6px;"><strong>强弱规律：</strong>氧化性：氧化剂 > 氧化产物；还原性：还原剂 > 还原产物</p>
+        <p style="margin-top:6px;"><strong>H₂O₂的三种角色：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>遇强氧化剂（KMnO₄）→ 作还原剂</li>
+          <li>遇强还原剂（KI、Fe²⁺）→ 作氧化剂</li>
+          <li>自身分解（2H₂O₂→2H₂O+O₂↑）→ 既作氧化剂又作还原剂</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点3 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点3</span>
+    <h2>电子转移的表示——单线桥与双线桥</h2>
+    <span class="often">🟡 常考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">经典真题 · 电子转移表示</div>
+        <div class="q-text">对于反应 MnO₂ + 4HCl(浓) =<sup>△</sup> MnCl₂ + Cl₂↑ + 2H₂O<br>
+        用双线桥和单线桥分别表示电子转移方向和数目。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-1')">🔍 查看答案</span>
+        <div class="collapsible a3-1"><div class="q-answer-inner">
+          <strong>双线桥：</strong><br>
+          Mn：MnO₂中Mn(+4) → MnCl₂中Mn(+2)，得2e⁻，被还原<br>
+          Cl：HCl中Cl(-1) → Cl₂中Cl(0)，失e⁻×2=2e⁻（仅被氧化的Cl），被氧化<br>
+          转移电子总数：2e⁻<br><br>
+          <strong>单线桥：</strong><br>
+          箭头从失电子元素(Cl⁻)指向得电子元素(Mn)：<br>
+          Cl⁻ → Mn，标注转移电子数 2e⁻<br><br>
+          ⚠️ 注意：4个HCl中只有2个Cl被氧化（另外2个Cl⁻化合价不变），<strong>不能写4e⁻！</strong>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2024·广东·非选择题（节选）</div>
+        <div class="q-text">工业上，烟气中的SO₂可在通空气条件下用石灰石的浆液吸收，生成石膏。该过程中，______（填元素符号）被氧化。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-2')">🔍 查看答案</span>
+        <div class="collapsible a3-2"><div class="q-answer-inner">
+          ✅ <strong>S</strong> —— SO₂→CaSO₄，S元素的化合价由+4价上升到+6价，失去电子，被氧化。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't3')">⚠️ 查看陷阱</span><div class="collapsible t3"><div class="trap-box">
+        <p><strong>① "单线桥上写'得/失电子'"</strong>——❌ 单线桥只标电子转移总数（如 2e⁻），不写得/失！只有双线桥才写得/失</p>
+        <p><strong>② "4HCl被氧化，转移4e⁻"</strong>——❌ 4HCl中只有2个HCl作还原剂（Cl从-1→0），另外2个Cl⁻化合价不变。转移2e⁻！</p>
+        <p><strong>③ "歧化反应中电子转移总数=升高的电子数+降低的电子数"</strong>——❌ 歧化反应中同种元素既升又降，<strong>电子转移总数=升高数=降低数</strong>（它们相等！），不是相加！</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g3')">✅ 查看指导</span><div class="collapsible g3"><div class="tip-box">
+        <p><strong>两种线桥对比：</strong></p>
+        <table class="q-table">
+          <tr><th></th><th>单线桥</th><th>双线桥</th></tr>
+          <tr><td><strong>箭头</strong></td><td>从失电子元素→得电子元素</td><td>反应物→生成物（各画一条）</td></tr>
+          <tr><td><strong>标注</strong></td><td>只标转移电子总数（如 2e⁻）</td><td>写得/失 ne⁻</td></tr>
+          <tr><td><strong>适用</strong></td><td>快速判断电子转移方向</td><td>详细展示每个元素的化合价变化</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>电子转移计算三步法：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>❶ 找出化合价变化的元素，算出每个原子变化量</li>
+          <li>❷ 乘以该元素的原子个数</li>
+          <li>❸ 确保得电子总数 = 失电子总数（守恒验证）</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点4 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点4</span>
+    <h2>歧化反应与归中反应</h2>
+    <span class="must">🔴 区分题</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">经典真题 · 歧化反应判断</div>
+        <div class="q-text">关于反应 Cl₂ + 2NaOH = NaCl + NaClO + H₂O，下列说法正确的是<br>
+        A. Cl₂只作氧化剂<br>
+        B. Cl₂只作还原剂<br>
+        C. Cl₂既作氧化剂又作还原剂<br>
+        D. NaCl是氧化产物</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a4-1')">🔍 查看答案</span>
+        <div class="collapsible a4-1"><div class="q-answer-inner">
+          ✅ <strong>C</strong><br>
+          Cl₂中Cl为0价 → NaCl中Cl为-1价（降低，被还原，作氧化剂）<br>
+          Cl₂中Cl为0价 → NaClO中Cl为+1价（升高，被氧化，作还原剂）<br>
+          同种元素既升又降 = <strong>歧化反应</strong> → 既作氧化剂又作还原剂 ✅<br>
+          D → NaCl是Cl降低的产物 → <strong>还原产物</strong> ❌；NaClO才是氧化产物
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">经典真题 · 归中反应计算</div>
+        <div class="q-text">关于反应 8NH₃ + 6NO₂ = 7N₂ + 12H₂O，下列说法正确的是<br>
+        A. NH₃中H元素被氧化<br>
+        B. NO₂在反应过程中失去电子<br>
+        C. 还原剂与氧化剂的物质的量之比为3∶4<br>
+        D. 氧化产物与还原产物的质量之比为4∶3</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a4-2')">🔍 查看答案</span>
+        <div class="collapsible a4-2"><div class="q-answer-inner">
+          ✅ <strong>D</strong><br>
+          标化合价：NH₃中N(-3)，NO₂中N(+4)，N₂中N(0)<br><br>
+          <strong>归中反应分析：</strong><br>
+          NH₃中N(-3) → N₂(0)：升3，失电子，被氧化 → 还原剂 → 氧化产物<br>
+          NO₂中N(+4) → N₂(0)：降4，得电子，被还原 → 氧化剂 → 还原产物<br><br>
+          A → H元素化合价不变（+1→+1）❌<br>
+          B → NO₂中N从+4→0，得电子，被还原 ❌<br>
+          C → 8个NH₃全部被氧化（8mol还原剂），6个NO₂全部被还原（6mol氧化剂），比 = 8:6 = 4:3 ❌<br>
+          D → 氧化产物（来自NH₃的N₂，4mol）: 还原产物（来自NO₂的N₂，3mol）= 4:3 ✅<br>
+          验证：8mol×3 = 24e⁻失 = 6mol×4 = 24e⁻得 ✓
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't4')">⚠️ 查看陷阱</span><div class="collapsible t4"><div class="trap-box">
+        <p><strong>① "歧化反应中氧化产物和还原产物一定是不同物质"</strong>——❌ 看反应！Cl₂+NaOH产物为NaCl和NaClO（不同物质），但2H₂O₂=2H₂O+O₂↑歧化产物也是不同物质。关键看化合价变化！</p>
+        <p><strong>② "归中反应中还原剂:氧化剂 = 物质总量比"</strong>——❌ 归中反应中，<strong>所有反应物都参与了电子转移</strong>！8NH₃全部被氧化=全部是还原剂，6NO₂全部被还原=全部是氧化剂，不是"部分参与"</p>
+        <p><strong>③ "归中反应的产物N₂中，氧化产物和还原产物是不同物质"</strong>——❌ 归中反应产物是同种物质N₂，但其中N原子来源不同！来自NH₃的N₂是氧化产物，来自NO₂的N₂是还原产物</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g4')">✅ 查看指导</span><div class="collapsible g4"><div class="tip-box">
+        <p><strong>歧化 vs 归中 一图搞懂：</strong></p>
+        <table class="q-table">
+          <tr><th></th><th>歧化反应</th><th>归中反应</th></tr>
+          <tr><td><strong>特征</strong></td><td>同种元素从<strong>同一价态</strong>→一升一降</td><td>同种元素从<strong>不同价态</strong>→中间价态</td></tr>
+          <tr><td><strong>起点</strong></td><td>一种反应物（Cl₂、H₂O₂等）</td><td>两种反应物（NH₃+NO₂等）</td></tr>
+          <tr><td><strong>口诀</strong></td><td>中间价→两头（0→+1和-1）</td><td>两头→中间（-3和+4→0）</td></tr>
+          <tr><td><strong>常见例子</strong></td><td>Cl₂+NaOH、3Cl₂+6KOH(热)</td><td>NH₃+NOx、H₂S+SO₂</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>归中反应计算关键：</strong>所有反应物都完全参与电子转移！不是"部分参与"！</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点5 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点5</span>
+    <h2>氧化性/还原性强弱比较</h2>
+    <span class="must">🔴 核心考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2023·广东·第12题（节选）</div>
+        <div class="q-text">电解饱和食盐水实验中，b处出现蓝色，发生Cl₂ + 2KI = I₂ + 2KCl。这说明还原性：______</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a5-1')">🔍 查看答案</span>
+        <div class="collapsible a5-1"><div class="q-answer-inner">
+          ✅ 还原性：<strong>I⁻ > Cl⁻</strong><br>
+          反应中Cl₂是氧化剂，I⁻是还原剂；I₂是氧化产物，Cl⁻是还原产物<br>
+          根据规律：<strong>还原性：还原剂(I⁻) > 还原产物(Cl⁻)</strong>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025·山东·第9题（节选）</div>
+        <div class="q-text">用肼(N₂H₄)的水溶液处理核冷却系统内壁上的铁氧化物时，通常加入少量Fe³⁺。下列关于还原性强弱判断正确的是？</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a5-2')">🔍 查看答案</span>
+        <div class="collapsible a5-2"><div class="q-answer-inner">
+          关键判断：Fe³⁺催化N₂H₄还原Fe₂O₃ → 还原性：N₂H₄ > Fe³⁺对应的还原产物<br>
+          由反应推断还原性顺序，再结合金属活动性顺序综合判断。<br>
+          <strong>氧化性/还原性强弱比较的四种方法：</strong><br>
+          ① 化学反应：氧化剂 > 氧化产物，还原剂 > 还原产物<br>
+          ② 金属活动性：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au（还原性从左→右递减）<br>
+          ③ 反应条件：条件越容易（温度低、不需催化），氧化（还原）性越强<br>
+          ④ 电化学：原电池负极→还原性强；电解池阳极先放电→还原性强
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't5')">⚠️ 查看陷阱</span><div class="collapsible t5"><div class="trap-box">
+        <p><strong>① "氧化性强的物质对应的离子还原性也强"</strong>——❌ 氧化性：F₂ > Cl₂ > Br₂ > I₂，但还原性：F⁻ < Cl⁻ < Br⁻ < I⁻。氧化性越强的单质，其阴离子还原性越<strong>弱</strong>！</p>
+        <p><strong>② "反应越剧烈，氧化性（还原性）越强"</strong>——❌ 反应剧烈程度还受浓度、温度、接触面积等影响。<strong>比较强弱必须控制变量</strong>，看"相同条件下谁先反应"</p>
+        <p><strong>③ "最高价态一定有最强氧化性"</strong>——❌ HNO₃(浓)氧化性远强于H₃PO₄，虽然N(+5)和P(+5)都是最高价态。<strong>氧化性不仅看价态，还看物质本身性质</strong></p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g5')">✅ 查看指导</span><div class="collapsible g5"><div class="tip-box">
+        <p><strong>四种方法优先级：化学反应 > 金属活动性 > 反应条件 > 电化学</strong></p>
+        <p style="margin-top:8px;"><strong>必背强弱顺序：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li><strong>氧化性：</strong>F₂ > Cl₂ > Br₂ > I₂ > S；KMnO₄(H⁺) > Cl₂ > Br₂ > I₂ > S</li>
+          <li><strong>还原性：</strong>I⁻ > Fe²⁺ > Br⁻ > Cl⁻ > F⁻</li>
+          <li><strong>还原性（金属）：</strong>K > Ca > Na > Mg > Al > Zn > Fe > Sn > Pb > (H) > Cu > Hg > Ag</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>口诀：</strong>"谁强谁先反应，产物一定弱于剂"</p>
+        <p style="margin-top:4px;"><strong>特别注意：</strong>I⁻ > Fe²⁺ > Br⁻ 这个顺序在"竞争反应"中考查频率极高（如Cl₂通入FeI₂/FeBr₂）！</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点6 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点6</span>
+    <h2>氧化还原反应的综合判断——以考定教实战</h2>
+    <span class="must">🔴 每年必考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2024·广东·第14题</div>
+        <div class="q-text">部分含Na或Fe或Cu物质的分类与相应化合价关系如图。下列推断合理的是<br>
+        A. 若a在沸水中可生成e，则a→f的反应一定是化合反应<br>
+        B. 在g→f→e→d转化过程中，一定存在物质颜色的变化<br>
+        C. 加热c的饱和溶液，一定会形成能产生丁达尔效应的红棕色分散系<br>
+        D. 若b和d均能与同一物质反应生成c，则组成a的元素一定位于周期表p区</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a6-1')">🔍 查看答案</span>
+        <div class="collapsible a6-1"><div class="q-answer-inner">
+          ✅ <strong>B</strong><br>
+          该图考查含Fe/Na/Cu物质的化合价与分类。关键是理解化合价与物质类别的对应关系。<br><br>
+          A → a可为Mg(在沸水中生成Mg(OH)₂即e)，a→f可以是Mg+2HCl=MgCl₂+H₂↑(置换反应)，不一定是化合反应 ❌<br>
+          B → Fe的转化链：Fe(OH)₂(白)→Fe(OH)₃(红褐)等，<strong>一定存在颜色变化</strong> ✅<br>
+          C → 加热c(铁盐)的饱和溶液可能直接得到沉淀而非胶体 ❌<br>
+          D → b可为Fe₂O₃(d区)或Al₂O₃(p区)，不一定在p区 ❌
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2023·广东·第10题</div>
+        <div class="q-text">部分含Na或Cu物质的分类与相应化合价关系如图所示。下列推断不合理的是<br>
+        A. 可存在c→d→e的转化<br>
+        B. 能与H₂O反应生成c的物质只有b<br>
+        C. 新制的d可用于检验葡萄糖中的醛基<br>
+        D. 若b能与CO₂反应生成c，则b中含共价键</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a6-2')">🔍 查看答案</span>
+        <div class="collapsible a6-2"><div class="q-answer-inner">
+          ✅ <strong>B</strong>（选"不合理"的）<br>
+          a、b、c对应物质：Na、Na₂O(或Na₂O₂)、NaOH<br>
+          或a、b、e、d对应：Cu、Cu₂O、CuO、Cu(OH)₂<br><br>
+          A → NaOH+CuSO₄→Cu(OH)₂，Cu(OH)₂受热→CuO，存在c→d→e ✅合理<br>
+          B → <strong>Na和Na₂O都能与H₂O反应生成NaOH</strong>，不只是b ❌不合理 → 选B！<br>
+          C → 新制Cu(OH)₂检验醛基是经典实验 ✅合理<br>
+          D → b=Na₂O₂时含O-O共价键 ✅合理
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't6')">⚠️ 查看陷阱</span><div class="collapsible t6"><div class="trap-box">
+        <p><strong>① 化合价-物质分类图"一定/可能"判断</strong>——看到"一定"要特别警惕！多想几个元素验证！如Na和Cu都满足图示，结论必须对所有可能都成立才算"一定"</p>
+        <p><strong>② "Na₂O和Na₂O₂与水反应产物相同"</strong>——❌ Na₂O+H₂O→2NaOH；2Na₂O₂+2H₂O→4NaOH+O₂↑。Na₂O₂还有O₂！而且Na₂O₂与水反应是氧化还原反应（歧化），Na₂O与水反应不是</p>
+        <p><strong>③ 看到Fe的转化链就选"有颜色变化"</strong>——这个通常对！Fe²⁺(浅绿)→Fe³⁺(黄/棕)→Fe(OH)₃(红褐)，颜色变化是铁系转化的标志性特征</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g6')">✅ 查看指导</span><div class="collapsible g6"><div class="tip-box">
+        <p><strong>本讲核心口诀（贴课桌上！）：</strong></p>
+        <p style="font-size:16px;font-weight:800;color:#1a1a2e;">❶ 标价——标出所有元素化合价 &nbsp; ❷ 判剂——升失氧还降得还氧 &nbsp; ❸ 画桥——单线标总数双线标得失 &nbsp; ❹ 比强弱——氧化剂>氧化产物</p>
+        <p style="margin-top:14px;"><strong>课后任务：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>整理今天错过的氧化还原判断，写出错误原因（标价？判剂？画桥？比强弱？）</li>
+          <li>完成步步高第3讲对应练习</li>
+          <li>把"升失氧还降得还氧"抄在笔记本扉页</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="nav-footer">
+        <a href="./02.html" class="nav-btn prev">← 上一讲</a>
+        <a href="./04.html" class="nav-btn next">下一讲：第4讲 →</a>
+    </div>
+
+    <footer class="footer">
+        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+    </footer>
+
     <script>
-        function toggleAnswer(btn) {
-            const box = btn.nextElementSibling;
-            if (box.classList.contains('show')) {
-                box.classList.remove('show');
-                btn.classList.remove('revealed');
-                btn.textContent = '👁 点击显示答案';
-            } else {
-                box.classList.add('show');
-                btn.classList.add('revealed');
-                btn.textContent = '🙈 点击隐藏答案';
-            }
-        }
-
-        function showAll() {
-            document.querySelectorAll('.answer-box').forEach(b => b.classList.add('show'));
-            document.querySelectorAll('.reveal-btn').forEach(b => {
-                b.classList.add('revealed');
-                b.textContent = '🙈 点击隐藏答案';
-            });
-        }
-
-        function hideAll() {
-            document.querySelectorAll('.answer-box').forEach(b => b.classList.remove('show'));
-            document.querySelectorAll('.reveal-btn').forEach(b => {
-                b.classList.remove('revealed');
-                b.textContent = '👁 点击显示答案';
-            });
-        }
+function toggleCollapsible(btn, targetClass) {
+  var target = btn.parentElement.querySelector('.' + targetClass);
+  if (!target) target = btn.closest('.sub').querySelector('.' + targetClass);
+  if (target.classList.contains('open')) {
+    target.classList.remove('open');
+    btn.textContent = btn.dataset.showText;
+  } else {
+    target.classList.add('open');
+    btn.textContent = btn.dataset.hideText;
+  }
+}
     </script>
 </body>
 </html>
