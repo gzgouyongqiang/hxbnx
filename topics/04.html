@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第4讲 氧化还原反应方程式的配平与书写 | 化学不难学</title>
+    <title>第4讲 钠及其化合物 | 化学不难学</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
             background: #f0f4f8;
             color: #0f172a;
             line-height: 1.7;
@@ -41,586 +41,875 @@
             font-weight: 700;
             letter-spacing: 2px;
         }
-        .main {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 36px 20px 60px;
-        }
-
-        /* 全局控制条 */
-        .global-controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 24px;
-            padding: 12px 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-            border: 1px solid #e8edf3;
-            justify-content: center;
-        }
-        .global-btn {
-            padding: 7px 20px;
-            border: 2px solid #1e3a5f;
-            background: white;
-            color: #1e3a5f;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .global-btn:hover { background: #1e3a5f; color: white; }
-
-        /* 顶部标题区 */
-        .topic-header {
+        .page-banner {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 36px 32px 28px;
             text-align: center;
-            margin-bottom: 40px;
-            padding: 36px 24px 32px;
-            background: linear-gradient(135deg, #1e3a5f 0%, #0f4c81 100%);
-            border-radius: 20px;
-            color: white;
-            box-shadow: 0 4px 20px rgba(15,76,129,0.25);
         }
-        .topic-badge {
+        .page-banner h1 {
+            font-size: 26px;
+            font-weight: 800;
+        }
+        .page-banner h1 em {
+            font-style: normal;
+            color: #e94560;
+        }
+        .page-banner p {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 6px;
+        }
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 28px 20px 20px;
+        }
+        .block {
+            margin-bottom: 36px;
+            border-left: 4px solid #e94560;
+            border-radius: 0 10px 10px 0;
+            background: #fff;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .block-head {
+            padding: 18px 24px;
+            background: linear-gradient(90deg, #fef2f4, #fff);
+            border-bottom: 1px solid #fde8ec;
+        }
+        .block-num {
             display: inline-block;
-            padding: 4px 14px;
-            background: rgba(251,191,36,0.2);
-            border: 1px solid rgba(251,191,36,0.5);
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #fbbf24;
-            margin-bottom: 12px;
-        }
-        .topic-num { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
-        .topic-title-main { font-size: 30px; font-weight: 800; letter-spacing: 1px; }
-        .topic-hot { margin-top: 14px; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; }
-        .topic-hot strong { color: #fbbf24; }
-
-        /* 卡片通用 */
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 28px 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-            border: 1px solid #e8edf3;
-        }
-        .card-title {
-            font-size: 17px;
+            background: #e94560;
+            color: #fff;
+            border-radius: 6px;
+            padding: 2px 10px;
+            font-size: 12px;
             font-weight: 700;
-            color: #1e3a5f;
-            margin-bottom: 18px;
+            margin-right: 8px;
+        }
+        .block-head h2 { display: inline; font-size: 17px; font-weight: 700; color: #1a1a2e; }
+        .block-head .must { font-size: 12px; color: #e94560; font-weight: 600; margin-left: 8px; }
+        .block-head .often { font-size: 12px; color: #f39c12; font-weight: 600; margin-left: 8px; }
+        .block-body { padding: 0; }
+        .sub {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f1f3;
+        }
+        .sub:last-child { border-bottom: none; }
+        .sub-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
+            gap: 6px;
+        }
+        .sub-title.exam { color: #0f3460; }
+        .sub-title.trap { color: #e94560; }
+        .sub-title.tip  { color: #27ae60; }
+        .sub p, .sub li { font-size: 14px; color: #333; line-height: 1.8; }
+        .sub ul { padding-left: 20px; }
+        .sub li { margin-bottom: 4px; }
+        .q-box {
+            background: #f6f8fb;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #e0e6ed;
+            margin-bottom: 10px;
+        }
+        .q-box .q-source {
+            font-size: 12px;
+            color: #0f3460;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .q-box .q-text {
+            font-size: 14px;
+            color: #1a1a2e;
+            font-weight: 500;
+        }
+        .q-answer {
+            font-size: 13px;
+            color: #27ae60;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        .q-img {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .q-img img {
+            max-width: 100%;
+            border-radius: 6px;
+            border: 1px solid #e0e6ed;
+            background: #fff;
+        }
+        .opt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .opt-grid .opt-item {
+            text-align: center;
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        .opt-grid .opt-item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .opt-grid .opt-item .opt-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 4px;
+        }
+        .opt-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #e8edf3;
+            margin: 12px 0;
         }
-        .card-title .icon {
-            width: 28px; height: 28px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-size: 15px;
+        .opt-row .opt-item {
+            text-align: center;
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 6px;
         }
-        .icon-pretest { background: #fef3c7; }
-        .icon-core { background: #dbeafe; }
-        .icon-practice { background: #dcfce7; }
-        .icon-summary { background: #fce7f3; }
-        .icon-real { background: #ede9fe; }
-
-        /* 题目块 */
-        .q-block {
-            margin-bottom: 20px;
-            padding: 16px 20px;
-            background: #f8fafc;
+        .opt-row .opt-item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .opt-row .opt-item .opt-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 4px;
+        }
+        .q-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        .q-table th, .q-table td {
+            border: 1px solid #d0d7de;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .q-table th {
+            background: #f1f3f5;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        .q-table td {
+            color: #333;
+        }
+        .q-table .opt-cell {
+            text-align: center;
+            font-weight: 700;
+            color: #0f3460;
+            width: 40px;
+        }
+        .trap-box {
+            background: #fef2f4;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #fde8ec;
+        }
+        .trap-box p { color: #c0392b; }
+        .tip-box {
+            background: #eafaf1;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #c8e6c9;
+        }
+        .tip-box p { color: #1e8449; }
+        .tip-box ul { color: #1e8449; }
+        .divider {
+            text-align: center;
+            margin: 32px 0;
+            color: #ccc;
+            font-size: 20px;
+            letter-spacing: 12px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .toggle-btn {
+            display: inline-block;
+            cursor: pointer;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid;
+            margin-left: 8px;
+            user-select: none;
+            transition: all 0.2s;
+        }
+        .toggle-btn.answer-btn {
+            color: #27ae60;
+            border-color: #27ae60;
+            background: #eafaf1;
+        }
+        .toggle-btn.answer-btn:hover { background: #d5f5e3; }
+        .toggle-btn.trap-btn {
+            color: #e94560;
+            border-color: #e94560;
+            background: #fef2f4;
+        }
+        .toggle-btn.trap-btn:hover { background: #fde8ec; }
+        .toggle-btn.tip-btn {
+            color: #0f3460;
+            border-color: #0f3460;
+            background: #e8f0fe;
+        }
+        .toggle-btn.tip-btn:hover { background: #d4e4fc; }
+        .q-answer-inner {
+            font-size: 13px;
+            color: #27ae60;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .collapsible {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .collapsible.open {
+            max-height: 2000px;
+            opacity: 1;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-btn.prev {
+            background: #1e3a5f;
+            color: #fbbf24;
+        }
+        .nav-btn.prev:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+        }
+        .nav-btn.next {
+            background: #1e3a5f;
+            color: #fbbf24;
+        }
+        .nav-btn.next:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+        }
+        footer.footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 13px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+        .pretest-box {
+            background: #fff8e1;
+            border: 2px dashed #f59e0b;
             border-radius: 12px;
-            border-left: 4px solid #3b82f6;
+            padding: 20px 24px;
+            margin-bottom: 30px;
         }
-        .q-text { font-size: 15px; color: #1e293b; margin-bottom: 12px; font-weight: 500; }
-        .q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin-bottom: 12px; }
-        .q-option { font-size: 14px; color: #475569; padding: 4px 0; }
-
-        /* 隐藏答案按钮 */
-        .reveal-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 7px 18px; background: #1e3a5f; color: white;
-            border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
-            cursor: pointer; transition: all 0.2s; user-select: none;
+        .pretest-box .pt-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #b45309;
+            margin-bottom: 4px;
         }
-        .reveal-btn:hover { background: #0f4c81; transform: translateY(-1px); }
-        .reveal-btn.revealed { background: #059669; }
-        .reveal-btn.revealed:hover { background: #047857; }
-        .answer-box {
-            display: none; margin-top: 12px; padding: 12px 16px;
-            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-            border: 1px solid #6ee7b7; border-radius: 10px;
-            font-size: 14px; color: #064e3b; line-height: 1.7;
+        .pretest-box .pt-sub {
+            font-size: 12px;
+            color: #92400e;
+            margin-bottom: 14px;
         }
-        .answer-box.show { display: block; }
-        .answer-label { font-weight: 700; color: #059669; margin-right: 4px; }
-
-        /* 知识表格 */
-        .know-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
-        .know-table th {
-            background: #1e3a5f; color: white; padding: 10px 14px;
-            text-align: left; font-weight: 600;
+        .pt-q {
+            margin-bottom: 12px;
+            font-size: 14px;
         }
-        .know-table th:first-child { border-radius: 8px 0 0 0; }
-        .know-table th:last-child { border-radius: 0 8px 0 0; }
-        .know-table td { padding: 9px 14px; border-bottom: 1px solid #e8edf3; vertical-align: top; }
-        .know-table tr:last-child td { border-bottom: none; }
-        .know-table tr:nth-child(even) td { background: #f8fafc; }
-
-        .tag-up { display: inline-block; padding: 2px 8px; background: #fee2e2; color: #dc2626; border-radius: 5px; font-size: 12px; font-weight: 600; }
-        .tag-down { display: inline-block; padding: 2px 8px; background: #dbeafe; color: #1d4ed8; border-radius: 5px; font-size: 12px; font-weight: 600; }
-        .tag-tip { display: inline-block; padding: 2px 8px; background: #fef3c7; color: #92400e; border-radius: 5px; font-size: 12px; font-weight: 600; }
-
-        .highlight-box {
-            padding: 14px 18px; background: #fef3c7; border-radius: 10px;
-            border-left: 4px solid #f59e0b; margin: 14px 0; font-size: 14px; line-height: 1.8;
+        .pt-q .q-label {
+            font-weight: 700;
+            color: #b45309;
         }
-        .highlight-box strong { color: #92400e; }
-
-        .formula-box {
-            padding: 16px 20px; background: #f0f9ff; border-radius: 10px;
-            border: 1px solid #7dd3fc; margin: 14px 0; font-size: 15px;
-            text-align: center; font-weight: 600; color: #0369a1;
-        }
-
-        .step-box {
-            margin: 12px 0; padding: 12px 18px;
-            background: #f8fafc; border-radius: 10px; border-left: 3px solid #6366f1;
-        }
-        .step-num {
-            display: inline-block; width: 24px; height: 24px; line-height: 24px;
-            background: #6366f1; color: white; border-radius: 50%; text-align: center;
-            font-size: 13px; font-weight: 700; margin-right: 8px;
-        }
-
-        .summary-list { list-style: none; padding: 0; }
-        .summary-list li {
-            padding: 10px 14px; margin-bottom: 8px;
-            background: #fefce8; border-radius: 10px;
-            display: flex; align-items: flex-start; gap: 10px;
-            font-size: 14px; line-height: 1.7;
-        }
-        .emoji { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-
-        .nav-links {
-            display: flex; justify-content: space-between; margin-top: 40px;
-            padding-top: 24px; border-top: 2px solid #e8edf3;
-        }
-        .nav-links a {
-            padding: 10px 20px; background: white; border-radius: 10px;
-            color: #1e3a5f; text-decoration: none; font-size: 14px; font-weight: 600;
-            border: 1px solid #e8edf3; transition: all 0.2s;
-        }
-        .nav-links a:hover { background: #1e3a5f; color: white; border-color: #1e3a5f; }
-
-        /* 步骤流程 */
-        .flow-steps {
-            display: flex; gap: 0; margin: 16px 0; flex-wrap: wrap; justify-content: center;
-        }
-        .flow-step {
-            display: flex; align-items: center; gap: 0;
-        }
-        .flow-step-num {
-            width: 36px; height: 36px; line-height: 36px;
-            background: #6366f1; color: white; border-radius: 50%;
-            text-align: center; font-weight: 700; font-size: 15px; flex-shrink: 0;
-        }
-        .flow-step-label {
-            padding: 6px 14px; background: #ede9fe; color: #6366f1;
-            font-weight: 600; font-size: 14px; border-radius: 0 8px 8px 0;
-            margin-left: -2px;
-        }
-        .flow-arrow {
-            font-size: 20px; color: #a5b4fc; margin: 0 6px; font-weight: 700;
-        }
-
-        /* 介质配平表格 */
-        .media-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 14px 0; }
-        .media-table th {
-            background: #7c3aed; color: white; padding: 10px 14px; text-align: center; font-weight: 600;
-        }
-        .media-table th:first-child { border-radius: 8px 0 0 0; }
-        .media-table th:last-child { border-radius: 0 8px 0 0; }
-        .media-table td { padding: 10px 14px; border-bottom: 1px solid #e8edf3; text-align: center; }
-        .media-table tr:last-child td { border-bottom: none; }
-        .media-table tr:nth-child(even) td { background: #f5f3ff; }
-
-        /* 判断路径 */
-        .judge-path {
-            margin: 12px 0; padding: 0;
-        }
-        .judge-step {
-            display: flex; gap: 12px; margin-bottom: 10px;
-        }
-        .judge-num {
-            width: 24px; height: 24px; line-height: 24px;
-            background: #7c3aed; color: white; border-radius: 50%;
-            text-align: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
-        }
-        .judge-content {
-            padding: 10px 16px; background: #f5f3ff; border-radius: 10px;
-            font-size: 14px; line-height: 1.7; flex: 1;
-        }
-
-        @media (max-width: 600px) {
-            .topic-title-main { font-size: 22px; }
-            .q-options { grid-template-columns: 1fr; }
-            .card { padding: 20px 16px; }
-            .flow-steps { flex-direction: column; align-items: center; }
-            .flow-arrow { transform: rotate(90deg); }
+        .pt-q .q-opts {
+            margin-left: 12px;
+            color: #444;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html">📚 化学不难学</a>
-        <span class="navbar-brand">第4讲</span>
+        <a href="../index.html">← 返回首页</a>
+        <span class="navbar-brand">化学不难学</span>
     </nav>
 
-    <div class="main">
-        <!-- 全局控制条 -->
-        <div class="global-controls">
-            <button class="global-btn" onclick="showAll()">👁 显示所有答案</button>
-            <button class="global-btn" onclick="hideAll()">🙈 隐藏所有答案</button>
-        </div>
-
-        <!-- 标题区 -->
-        <div class="topic-header">
-            <div class="topic-badge">高三化学一轮复习</div>
-            <div class="topic-num">第一讲 → 第六十七讲</div>
-            <div class="topic-title-main">氧化还原反应方程式的配平与书写</div>
-            <div class="topic-hot">
-                🔥 <strong>工艺流程大题必考</strong>，选择题也常结合NA考查电子转移。<br>
-                核心就三件事：① 配平五步法 ② 介质配平 ③ 电子转移计算
-            </div>
-        </div>
-
-        <!-- ========== 前测 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-pretest">🎯</span> 前测（5分钟）
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">1. （2022·浙江卷）关于反应 4CO₂ + SiH₄ = 4CO + 2H₂O + SiO₂，下列说法<strong>正确</strong>的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. CO是氧化产物</div>
-                    <div class="q-option">B. SiH₄发生还原反应</div>
-                    <div class="q-option">C. 氧化剂与还原剂的物质的量之比为1∶4</div>
-                    <div class="q-option">D. 生成1 mol SiO₂时，转移8 mol电子</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">✅ 答案：D</span><br>
-                    CO₂→CO，C从+4→+2降2，被还原，CO₂是氧化剂，4个CO₂共降8；<br>
-                    SiH₄→SiO₂，Si从-4→+4升8，是还原剂；<br>
-                    氧化剂∶还原剂 = 4∶1
-                </div>
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">2. 配平下列离子方程式（写系数即可）：</div>
-                <div class="formula-box">____ Cr₂O₇²⁻ + ____ Fe²⁺ + ____ H⁺ → ____ Cr³⁺ + ____ Fe³⁺ + ____ H₂O</div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">✅ 答案：</span>1, 6, 14, 2, 6, 7
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 核心一：配平五步法 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-core">📐</span> 核心一：配平五步法
-            </div>
-
-            <div class="flow-steps">
-                <div class="flow-step">
-                    <span class="flow-step-num">①</span>
-                    <span class="flow-step-label">标</span>
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-step-num">②</span>
-                    <span class="flow-step-label">等</span>
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-step-num">③</span>
-                    <span class="flow-step-label">定</span>
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-step-num">④</span>
-                    <span class="flow-step-label">配</span>
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-step-num">⑤</span>
-                    <span class="flow-step-label">查</span>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                示例：配平 ____Cu + ____HNO₃(稀) = ____Cu(NO₃)₂ + ____NO↑ + ____H₂O
-            </div>
-
-            <div class="step-box">
-                <span class="step-num">①标</span>
-                标化合价：Cu(0→+2)，HNO₃中N(+5→+2)
-            </div>
-            <div class="step-box">
-                <span class="step-num">②等</span>
-                找最小公倍数：Cu升2，N降3，最小公倍数6
-            </div>
-            <div class="step-box">
-                <span class="step-num">③定</span>
-                定氧化剂/还原剂系数：Cu×3，HNO₃(变价部分)×2
-            </div>
-            <div class="step-box">
-                <span class="step-num">④配</span>
-                原子守恒配其他
-            </div>
-            <div class="formula-box">3Cu + 8HNO₃ = 3Cu(NO₃)₂ + 2NO↑ + 4H₂O</div>
-            <div class="step-box">
-                <span class="step-num">⑤查</span>
-                检查守恒：左右原子数、电荷均相等 ✅
-            </div>
-
-            <div class="highlight-box">
-                <strong>⚠️ 抓大放小：</strong>先配变价元素，再配非变价元素，最后配H和O
-            </div>
-        </div>
-
-        <!-- ========== 核心二：介质配平 + 多元素变价 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-core">⚗️</span> 核心二：介质配平 + 多元素变价
-            </div>
-
-            <p style="font-size:15px; font-weight:700; color:#7c3aed; margin-bottom:12px;">一、介质配平（离子方程式）</p>
-
-            <table class="media-table">
-                <tr>
-                    <th>介质</th>
-                    <th>左边多O</th>
-                    <th>左边少O</th>
-                </tr>
-                <tr>
-                    <td><strong>酸性</strong></td>
-                    <td>+ 2H⁺ → 生成 H₂O</td>
-                    <td>+ H₂O → 生成 2H⁺</td>
-                </tr>
-                <tr>
-                    <td><strong>碱性</strong></td>
-                    <td>+ H₂O → 生成 2OH⁻</td>
-                    <td>+ 2OH⁻ → 生成 H₂O</td>
-                </tr>
-            </table>
-
-            <div class="highlight-box" style="border-left-color:#7c3aed; background:#f5f3ff;">
-                <strong>经典示例：</strong>酸性KMnO₄氧化Fe²⁺<br>
-                MnO₄⁻ + Fe²⁺ + H⁺ → Mn²⁺ + Fe³⁺ + H₂O<br><br>
-                Mn(+7→+2)降5，Fe(+2→+3)升1 → 最小公倍数5<br>
-                → MnO₄⁻:1, Fe²⁺:5, 再配H⁺和H₂O
-            </div>
-            <div class="formula-box">MnO₄⁻ + 5Fe²⁺ + 8H⁺ = Mn²⁺ + 5Fe³⁺ + 4H₂O</div>
-
-            <p style="font-size:15px; font-weight:700; color:#7c3aed; margin:20px 0 12px;">二、多元素变价——算总升降值</p>
-
-            <div class="highlight-box" style="border-left-color:#7c3aed; background:#f5f3ff;">
-                <strong>示例：</strong>FeS₂ + O₂ = Fe₂O₃ + SO₂
-            </div>
-
-            <div class="step-box">
-                <span class="step-num">①</span>
-                标价：Fe(+2→+3)升1，S(-1→+4)升5×2=10，一个FeS₂共升11
-            </div>
-            <div class="step-box">
-                <span class="step-num">②</span>
-                O₂(0→-2)降2×2=4（每个O₂降4）
-            </div>
-            <div class="step-box">
-                <span class="step-num">③</span>
-                最小公倍数44，FeS₂:4，O₂:11
-            </div>
-            <div class="formula-box">4FeS₂ + 11O₂ = 2Fe₂O₃ + 8SO₂</div>
-
-            <div class="highlight-box">
-                🎯 <strong>口诀：</strong>多个变价一起算，别漏原子乘个数
-            </div>
-        </div>
-
-        <!-- ========== 真题讲解 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-real">🔬</span> 真题讲解：配平 + 电子转移计算
-            </div>
-
-            <div class="q-block" style="border-left-color:#7c3aed;">
-                <div class="q-text">（2024·湖北卷·T7改编）二氧化氯(ClO₂)可用于自来水消毒。实验室用草酸(H₂C₂O₄)和KClO₃制取ClO₂的反应为：</div>
-                <div class="formula-box">H₂C₂O₄ + KClO₃ ——→ CO₂↑ + ClO₂↑</div>
-                <div class="q-options">
-                    <div class="q-option">A. 该反应中KClO₃是还原剂</div>
-                    <div class="q-option">B. 每生成1 mol ClO₂，转移1 mol电子</div>
-                    <div class="q-option">C. 氧化产物与还原产物的物质的量之比为1∶2</div>
-                    <div class="q-option">D. 该反应在强碱性条件下进行</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">🔬 讲判断路径</span><br><br>
-                    <strong>第一步：配平（五步法）</strong><br>
-                    ①标：H₂C₂O₄中C(+3→+4)升1×2=2，KClO₃中Cl(+5→+4)降1<br>
-                    ②等：2和1的最小公倍数=2<br>
-                    ③定：H₂C₂O₄系数1，KClO₃系数2<br>
-                    ④配：H₂C₂O₄ + 2KClO₃ = 2CO₂↑ + 2ClO₂↑ + 2KOH<br><br>
-                    <strong>第二步：逐项判断</strong><br>
-                    A→KClO₃中Cl降价，是<strong>氧化剂</strong> ❌<br>
-                    B→每个Cl从+5→+4降1，2个Cl转移2e⁻，生成2个ClO₂，每生成1 mol ClO₂转移1 mol e⁻ ✅<br>
-                    C→氧化产物为CO₂，还原产物为ClO₂，比例为2:2=1:1 ❌<br>
-                    D→产物有KOH，强碱性有利于反应进行，但草酸在强碱性条件下会成盐，真实条件为酸性 ❌<br><br>
-                    <span class="answer-label">✅ 答案：B</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 课堂精练 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-practice">✏️</span> 课堂精练（10分钟）
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">1. （2022·浙江卷）关于反应 4CO₂ + SiH₄ = 4CO + 2H₂O + SiO₂，若生成1 mol SiO₂，下列说法<strong>错误</strong>的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. CO₂是氧化剂</div>
-                    <div class="q-option">B. SiH₄中Si的化合价为-4</div>
-                    <div class="q-option">C. 转移电子数为8 mol</div>
-                    <div class="q-option">D. CO是还原产物</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">✅ 答案：D</span><br>
-                    A→CO₂中C(+4→+2)降2，是氧化剂 ✅<br>
-                    B→SiH₄中H为+1，4个H共+4，Si=-4 ✅<br>
-                    C→Si(-4→+4)升8，生成1 mol SiO₂转移8 mol e⁻ ✅<br>
-                    D→CO来自CO₂中C被还原，是<strong>还原产物</strong> ❌
-                </div>
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">2. （2024·浙江1月卷）汽车尾气中的NO和CO在催化剂作用下发生反应：2NO + 2CO = N₂ + 2CO₂。下列说法<strong>不正确</strong>的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. 生成1 mol CO₂转移电子的数目为2 mol</div>
-                    <div class="q-option">B. 催化剂降低NO与CO反应的活化能</div>
-                    <div class="q-option">C. NO是氧化剂，CO是还原剂</div>
-                    <div class="q-option">D. N₂既是氧化产物又是还原产物</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">✅ 答案：D</span><br>
-                    A→C(+2→+4)升2，每个CO₂对应2e⁻，每生成1 mol CO₂转移2 mol e⁻ ✅<br>
-                    B→催化剂降低活化能 ✅<br>
-                    C→NO中N(+2→0)降低，是氧化剂；CO中C(+2→+4)升高，是还原剂 ✅<br>
-                    D→N₂中N来自NO（被还原），所以N₂是<strong>还原产物</strong>，不是氧化产物 ❌
-                </div>
-            </div>
-
-            <div class="q-block">
-                <div class="q-text">3. 制备纳米Si的流程：SiO₂ + Mg → Si + MgO（未配平）。下列说法<strong>错误</strong>的是（　　）</div>
-                <div class="q-options">
-                    <div class="q-option">A. SiO₂可与NaOH溶液反应</div>
-                    <div class="q-option">B. 盐酸在该工艺中体现了还原性</div>
-                    <div class="q-option">C. 高纯Si可用于制造硅太阳能电池</div>
-                    <div class="q-option">D. 该反应中氧化剂与还原剂的物质的量之比为1∶2</div>
-                </div>
-                <button class="reveal-btn" onclick="toggleAnswer(this)">👁 点击显示答案</button>
-                <div class="answer-box">
-                    <span class="answer-label">✅ 答案：B</span><br>
-                    配平：SiO₂ + 2Mg = Si + 2MgO<br>
-                    A→SiO₂ + 2NaOH = Na₂SiO₃ + H₂O ✅<br>
-                    B→HCl与MgO反应→MgCl₂ + H₂O，体现<strong>酸性</strong>，非还原性 ❌<br>
-                    C→高纯Si是半导体→太阳能电池 ✅<br>
-                    D→SiO₂降4是氧化剂，Mg升2×2=4是还原剂，氧化剂∶还原剂=1∶2 ✅
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 小结 ========== -->
-        <div class="card">
-            <div class="card-title">
-                <span class="icon icon-summary">📝</span> 本讲小结
-            </div>
-            <ul class="summary-list">
-                <li>
-                    <span class="emoji">1️⃣</span>
-                    <span><strong>配平五步法：</strong>标 → 等 → 定 → 配 → 查</span>
-                </li>
-                <li>
-                    <span class="emoji">2️⃣</span>
-                    <span><strong>介质口诀：</strong>酸性多O加H⁺变H₂O，碱性多O加水变OH⁻</span>
-                </li>
-                <li>
-                    <span class="emoji">3️⃣</span>
-                    <span><strong>电子转移计算：</strong>找准变价元素，一个原子一个原子算，乘对系数</span>
-                </li>
-            </ul>
-
-            <div class="highlight-box" style="margin-top:16px;">
-                🧠 <strong>配平后必验三件事：</strong><br>
-                ① 得失电子数相等？<br>
-                ② 原子数左右相等？<br>
-                ③ 电荷数左右相等（离子方程式）？
-            </div>
-
-            <div style="margin-top:14px; padding:10px 16px; background:#f0f9ff; border-radius:8px; font-size:13px; color:#0369a1;">
-                📝 课后：完成步步高P353练习 + 用五步法配平 FeS₂ + O₂ = Fe₂O₃ + SO₂ 并标电子转移
-            </div>
-            <div style="margin-top:8px; padding:10px 16px; background:#f5f3ff; border-radius:8px; font-size:13px; color:#7c3aed;">
-                🔮 下讲预告：第5讲 钠及其化合物
-            </div>
-        </div>
-
-        <!-- 导航链接 -->
-        <div class="nav-links">
-            <a href="./03.html">← 第3讲 氧化还原反应的概念和规律</a>
-            <a href="./rd-01.html">热点强化1 →</a>
-        </div>
+    <div class="page-banner">
+        <h1>第<em>4</em>讲 &nbsp;钠及其化合物</h1>
+        <p>以考定教 · 2027届高三化学第一轮复习 · 真题来源：2023—2025广东卷+全国卷</p>
     </div>
 
+    <div class="main">
+
+<!-- 前测 -->
+<div class="pretest-box">
+    <div class="pt-title">⚡ 前测（5分钟）——暴露薄弱点</div>
+    <div class="pt-sub">先做再看答案，诚实地面对自己</div>
+
+    <div class="pt-q">
+        <span class="q-label">1.</span> 下列关于钠及其化合物的说法正确的是（　　）<br>
+        <span class="q-opts">A. Na₂O₂与水反应生成NaOH和H₂ &nbsp; B. Na₂O₂中既含离子键又含共价键<br>
+        C. Na₂CO₃的热稳定性弱于NaHCO₃ &nbsp; D. 钠在空气中燃烧生成Na₂O</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt1')">🔍 查看答案</span>
+        <div class="collapsible pt1"><div class="q-answer-inner">✅ B —— Na₂O₂中Na⁺与O₂²⁻之间为离子键，O₂²⁻中两个O原子之间为非极性共价键（O-O键），故既含离子键又含共价键 ✅<br>
+        A → 2Na₂O₂+2H₂O=4NaOH+O₂↑，产物是O₂不是H₂ ❌<br>
+        C → Na₂CO₃热稳定性<strong>强于</strong>NaHCO₃（NaHCO₃受热易分解）❌<br>
+        D → 钠在空气中燃烧生成Na₂O₂，不是Na₂O ❌</div></div>
+    </div>
+
+    <div class="pt-q">
+        <span class="q-label">2.</span> 下列叙述正确的是（　　）<br>
+        <span class="q-opts">A. 小苏打是碳酸钠，可作食品膨松剂 &nbsp; B. 纯碱是NaHCO₃，可除油污<br>
+        C. 小苏打是NaHCO₃，遇酸产生CO₂可作膨松剂 &nbsp; D. Na₂O₂可用于呼吸面具供氧</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt2')">🔍 查看答案</span>
+        <div class="collapsible pt2"><div class="q-answer-inner">✅ C、D —— 小苏打=NaHCO₃，遇酸(如醋酸)产生CO₂，可作烘焙膨松剂 ✅；Na₂O₂与CO₂/H₂O反应产生O₂，可用于呼吸面具 ✅<br>
+        A → 小苏打是碳酸<strong>氢</strong>钠（NaHCO₃），不是碳酸钠 ❌<br>
+        B → 纯碱=Na₂CO₃（不是NaHCO₃），除油污是利用其碱性水解油脂 ❌</div></div>
+    </div>
+    <p style="font-size:12px;color:#b45309;margin-top:8px;">⚠️ 第1题错 → 回顾考点1~2；第2题错 → 回顾考点3~4</p>
+</div>
+
+<!-- 考点1 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点1</span>
+    <h2>钠单质的性质与转化链</h2>
+    <span class="must">🔴 必考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第7题</div>
+        <div class="q-text">能满足下列物质间直接转化关系，且推理成立的是<br>
+        <span style="font-size:13px;color:#555;">单质 X →<sup>O₂</sup> 氧化物₁ →<sup>O₂</sup> 氧化₂ →<sup>H₂O</sup> 酸(或碱) →<sup>NaOH或HCl</sup> 盐</span><br>
+        A. X可为铝，盐的水溶液一定显酸性<br>
+        B. X可为硫，氧化物₁可使品红溶液褪色<br>
+        C. X可为钠，氧化物₂可与水反应生成H₂<br>
+        D. X可为碳，盐的热稳定性：NaHCO₃ > Na₂CO₃</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-1')">🔍 查看答案</span>
+        <div class="collapsible a1-1"><div class="q-answer-inner">
+          ✅ <strong>B</strong><br><br>
+          <strong>逐项分析：</strong><br>
+          A → Al与O₂生成Al₂O₃，无法再被O₂氧化为氧化物₂（Al₂O₃已稳定），且Al₂O₃不溶于水 ❌<br>
+          B → S燃烧生成SO₂（氧化物₁，使品红褪色），SO₂被氧化为SO₃（氧化物₂），SO₃+H₂O→H₂SO₄，H₂SO₄+NaOH→盐 ✅<br>
+          C → Na常温→Na₂O（氧化物₁），Na₂O→Na₂O₂（氧化物₂），但<strong>Na₂O₂与水反应生成NaOH和O₂，不是H₂</strong> ❌<br>
+          D → Na₂CO₃热稳定性<strong>强于</strong>NaHCO₃（结论写反了）❌
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2023·广东·第10题</div>
+        <div class="q-text">部分含Na或Cu物质的分类与相应化合价关系如图所示。下列推断不合理的是<br>
+        A. 可存在c→d→e的转化<br>
+        B. 能与H₂O反应生成c的物质只有b<br>
+        C. 新制的d可用于检验葡萄糖中的醛基<br>
+        D. 若b能与CO₂反应生成c，则b中含共价键</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-2')">🔍 查看答案</span>
+        <div class="collapsible a1-2"><div class="q-answer-inner">
+          ✅ <strong>B</strong>（选"不合理"的）<br><br>
+          Na对应物质：a=Na(0价)、b=Na₂O或Na₂O₂、c=NaOH<br>
+          Cu对应物质：a=Cu(0价)、b=Cu₂O或CuO、d=Cu(OH)₂、e=…<br><br>
+          A → NaOH+CuSO₄→Cu(OH)₂↓，Cu(OH)₂<sup>△</sup>→CuO，存在c→d→e ✅合理<br>
+          B → <strong>Na和Na₂O₂都能与H₂O反应生成NaOH</strong>，不只是b ❌不合理 → <strong>选B！</strong><br>
+          C → 新制Cu(OH)₂检验醛基（银镜反应/斐林反应）是经典实验 ✅合理<br>
+          D → b=Na₂O₂时，O₂²⁻含O-O非极性共价键+Na⁺与O₂²⁻的离子键 ✅合理
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025·安徽·第6题（节选）</div>
+        <div class="q-text">金属钠的液氨溶液放置时缓慢放出气体，同时生成NaNH₂。下列关于液氨与金属钠反应的化学方程式正确的是？<br>
+        A. 2Na + 2NH₃ = 2NaNH₂ + H₂↑&emsp;（正确答案）<br>
+        B. Na + 2NH₃ = NaNH₂ + NH₄⁺&emsp;（不合理）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-3')">🔍 查看答案</span>
+        <div class="collapsible a1-3"><div class="q-answer-inner">
+          ✅ <strong>A</strong> —— 金属钠与液氨反应：2Na + 2NH₃ = 2NaNH₂ + H₂↑<br>
+          类比Na与水反应：2Na + 2H₂O = 2NaOH + H₂↑<br>
+          <strong>本质相同：</strong>Na失电子变为Na⁺，NH₃中H⁺得电子变为H₂。液氨可视为"弱水"。<br>
+          注意：该反应与Na₂O₂+H₂O（歧化反应）不同，这里是Na与NH₃之间的氧化还原。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't1')">⚠️ 查看陷阱</span><div class="collapsible t1"><div class="trap-box">
+        <p><strong>① "钠在空气中燃烧生成Na₂O"</strong>——❌ 钠在空气中<strong>常温</strong>缓慢氧化生成Na₂O，但<strong>燃烧</strong>时生成Na₂O₂！条件不同产物不同！</p>
+        <p><strong>② "Na₂O₂与水反应生成H₂"</strong>——❌ 2Na₂O₂+2H₂O=4NaOH+O₂↑，生成O₂不是H₂！<strong>Na₂O₂是强氧化剂，把水中的O氧化为O₂</strong></p>
+        <p><strong>③ "Na₂O和Na₂O₂与水反应产物相同"</strong>——❌ Na₂O+H₂O=2NaOH（非氧化还原）；2Na₂O₂+2H₂O=4NaOH+O₂↑（歧化反应，氧化还原）。<strong>前者只生成NaOH，后者还产生O₂</strong></p>
+        <p><strong>④ "只有Na与水反应能产生H₂"</strong>——❌ Na与液氨反应也能产生H₂（2Na+2NH₃=2NaNH₂+H₂↑）</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g1')">✅ 查看指导</span><div class="collapsible g1"><div class="tip-box">
+        <p><strong>钠的转化链（必须烂熟于心）：</strong></p>
+        <table class="q-table">
+          <tr><th>反应</th><th>条件</th><th>方程式</th><th>类型</th></tr>
+          <tr><td>Na→Na₂O</td><td>常温O₂缓慢氧化</td><td>4Na + O₂ = 2Na₂O</td><td>氧化还原</td></tr>
+          <tr><td>Na→Na₂O₂</td><td>点燃/燃烧</td><td>2Na + O₂ =<sup>点燃</sup> Na₂O₂</td><td>氧化还原</td></tr>
+          <tr><td>Na₂O→NaOH</td><td>与H₂O反应</td><td>Na₂O + H₂O = 2NaOH</td><td>非氧化还原</td></tr>
+          <tr><td>Na₂O₂→NaOH+O₂</td><td>与H₂O反应</td><td>2Na₂O₂+2H₂O=4NaOH+O₂↑</td><td>歧化（氧化还原）</td></tr>
+          <tr><td>Na₂O₂→Na₂CO₃+O₂</td><td>与CO₂反应</td><td>2Na₂O₂+2CO₂=2Na₂CO₃+O₂</td><td>歧化（氧化还原）</td></tr>
+          <tr><td>Na→NaCl</td><td>在Cl₂中燃烧</td><td>2Na + Cl₂ =<sup>点燃</sup> 2NaCl</td><td>氧化还原</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>记忆口诀：</strong>常温氧化钠，燃烧过氧化钠；氧化物一非氧，氧化物二必歧化。</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点2 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点2</span>
+    <h2>Na₂O₂的特殊性质——强氧化性与歧化反应</h2>
+    <span class="must">🔴 核心考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2024·广东·第7题（节选）</div>
+        <div class="q-text">"光荣属于劳动者，幸福属于劳动者。"下列劳动项目与所述化学知识没有关联的是<br>
+        A. 用滴定法测水中Cl⁻含量<br>
+        B. 利用过氧化钠和水生成氢氧化钠和氧气的反应可以检验Na₂O₂是否失效<br>
+        C. 顺丁橡胶硫化就是聚异戊二烯中的碳碳双键打开与硫形成二硫键<br>
+        D. 通过¹⁴C测定化石年代是利用同位素的放射性，与同素异形体无关</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-1')">🔍 查看答案</span>
+        <div class="collapsible a2-1"><div class="q-answer-inner">
+          ✅ <strong>D</strong>（选"没有关联"的）<br><br>
+          A → Ag⁺+Cl⁻=AgCl沉淀，滴定法测Cl⁻，与化学知识有关联 ✅<br>
+          B → 2Na₂O₂+2H₂O=4NaOH+O₂↑，产生O₂（可观察气泡）→ 检验Na₂O₂是否失效，关联正确 ✅<br>
+          C → 橡胶硫化=打开双键与S形成-S-S-二硫键，关联正确 ✅<br>
+          D → ¹⁴C测年代用的是放射性同位素的半衰期，与"<strong>同素异形体</strong>"无关 ❌ → <strong>选D</strong>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第9题（节选）</div>
+        <div class="q-text">元素a~i为短周期元素，其第一电离能与原子序数的关系如图。可推断a~i分别是B、C、N、O、F、Ne、<strong>Na</strong>、Mg、Al。下列说法正确的是<br>
+        A. a和g同主族<br>
+        B. Na、Mg、Al属于同周期，从左到右金属性依次减弱<br>
+        C. e、d、c分别是N、O、F，原子半径c > d > e<br>
+        D. NH₃分子间存在氢键，沸点NH₃ > CH₄</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-2')">🔍 查看答案</span>
+        <div class="collapsible a2-2"><div class="q-answer-inner">
+          ✅ <strong>B</strong><br>
+          A → a=B(第ⅢA族)，g=Na(第ⅠA族)，不同主族 ❌<br>
+          B → Na、Mg、Al为第三周期，从左到右金属性Na > Mg > Al ✅<br>
+          C → 同周期从左到右原子半径<strong>减小</strong>，应为c > d > e即N > O > F，但题目写反了 ❌<br>
+          D → NH₃有氢键沸点高，CH₄无氢键沸点低，但b=C不是a=C，NH₃沸点确实高于CH₄……该选项需结合原图分析。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't2')">⚠️ 查看陷阱</span><div class="collapsible t2"><div class="trap-box">
+        <p><strong>① "Na₂O₂是碱性氧化物"</strong>——❌ Na₂O₂与酸反应除了生成盐和水，还生成O₂（如2Na₂O₂+4HCl=4NaCl+2H₂O+O₂↑），<strong>不符合碱性氧化物定义</strong>！Na₂O₂是过氧化物，不是碱性氧化物</p>
+        <p><strong>② "Na₂O₂与水反应中，Na₂O₂既作氧化剂又作还原剂"</strong>——✅ 这是正确的！Na₂O₂中O为-1价，反应后一部分变为-2价（NaOH中，被还原），一部分变为0价（O₂中，被氧化），<strong>O₂²⁻发生歧化</strong></p>
+        <p><strong>③ "Na₂O₂与CO₂反应不产生O₂"</strong>——❌ 2Na₂O₂+2CO₂=2Na₂CO₃+O₂，同样产生O₂！这也是呼吸面具/潜水艇供氧的原理</p>
+        <p><strong>④ "Na₂O₂能漂白是因为生成了NaOH"</strong>——❌ 漂白是因为<strong>H₂O₂（中间产物）的强氧化性</strong>，不是NaOH的碱性！Na₂O₂是真正的漂白剂</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g2')">✅ 查看指导</span><div class="collapsible g2"><div class="tip-box">
+        <p><strong>Na₂O vs Na₂O₂ 对比表：</strong></p>
+        <table class="q-table">
+          <tr><th></th><th>Na₂O（氧化钠）</th><th>Na₂O₂（过氧化钠）</th></tr>
+          <tr><td><strong>O的化合价</strong></td><td>-2</td><td>-1（特殊！）</td></tr>
+          <tr><td><strong>类别</strong></td><td>碱性氧化物</td><td>过氧化物（非碱性氧化物）</td></tr>
+          <tr><td><strong>颜色</strong></td><td>白色</td><td>淡黄色</td></tr>
+          <tr><td><strong>与H₂O反应</strong></td><td>Na₂O+H₂O=2NaOH（无O₂）</td><td>2Na₂O₂+2H₂O=4NaOH+O₂↑（歧化）</td></tr>
+          <tr><td><strong>与CO₂反应</strong></td><td>Na₂O+CO₂=Na₂CO₃</td><td>2Na₂O₂+2CO₂=2Na₂CO₃+O₂↑</td></tr>
+          <tr><td><strong>与HCl反应</strong></td><td>Na₂O+2HCl=2NaCl+H₂O</td><td>2Na₂O₂+4HCl=4NaCl+2H₂O+O₂↑</td></tr>
+          <tr><td><strong>生成条件</strong></td><td>4Na+O₂=2Na₂O（常温）</td><td>2Na+O₂=Na₂O₂（点燃）</td></tr>
+          <tr><td><strong>化学键</strong></td><td>离子键</td><td>离子键+非极性共价键(O-O)</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>Na₂O₂的四大用途：</strong>①漂白剂（强氧化性）②供氧剂（呼吸面具/潜水艇）③杀菌消毒 ④氧化剂（可将Fe²⁺氧化为Fe³⁺等）</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点3 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点3</span>
+    <h2>Na₂CO₃与NaHCO₃的性质对比</h2>
+    <span class="must">🔴 高频考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第7题（D选项）+ 2025·新课标·第1题</div>
+        <div class="q-text">下列叙述正确的是<br>
+        A. 硫酸铜具有杀菌作用，可用作饮用水消毒剂<br>
+        <strong>B. 小苏打遇酸能产生气体，可用作食品膨松剂</strong><br>
+        C. 碳化硅抗氧化且耐高温，可用作固体电解质<br>
+        D. 聚氯乙烯塑料制品耐腐蚀，可用作食品包装</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-1')">🔍 查看答案</span>
+        <div class="collapsible a3-1"><div class="q-answer-inner">
+          ✅ <strong>B</strong><br>
+          小苏打=碳酸氢钠（NaHCO₃），遇酸（醋酸、柠檬酸等）产生CO₂气体，使面食/糕点疏松多孔 ✅<br>
+          A → Cu²⁺有毒，不能用于饮用水消毒 ❌<br>
+          C → SiC是共价晶体，无离子导电性，不能作电解质 ❌<br>
+          D → PVC受热分解产生有毒物质，禁用于食品包装 ❌
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第7题（D选项分析）</div>
+        <div class="q-text">关于盐的热稳定性，下列判断正确的是？<br>
+        A. NaHCO₃ > Na₂CO₃ &emsp; B. Na₂CO₃ > NaHCO₃</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-2')">🔍 查看答案</span>
+        <div class="collapsible a3-2"><div class="q-answer-inner">
+          ✅ <strong>B. Na₂CO₃ > NaHCO₃</strong><br>
+          NaHCO₃受热易分解：2NaHCO₃ =<sup>△</sup> Na₂CO₃ + H₂O + CO₂↑<br>
+          Na₂CO₃加热不分解（>1000℃才分解）<br>
+          <strong>规律：同种金属的正盐热稳定性 > 酸式盐</strong><br>
+          类似地：CaCO₃ > Ca(HCO₃)₂
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2024·广东·第10题（D选项）</div>
+        <div class="q-text">下列关于NA（阿伏加德罗常数）的叙述正确的是？<br>
+        D. Na与H₂O反应生成11.2L H₂，由于未给出气体所处的状态，无法求出生成气体的物质的量，也无法得出转移电子数目。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-3')">🔍 查看答案</span>
+        <div class="collapsible a3-3"><div class="q-answer-inner">
+          ✅ <strong>D正确</strong>（但题干问的是"正确的是"，D说"无法求出"——这个判断本身是正确的）<br><br>
+          <strong>注意：</strong>Na与H₂O反应时，气体体积取决于温度和压强！<br>
+          2Na + 2H₂O = 2NaOH + H₂↑<br>
+          标准状况(0℃, 101kPa)下，1mol H₂ ≈ 22.4L<br>
+          但题目只说"11.2L"，<strong>没说是什么状况</strong>（可能是25℃常压），所以无法确定物质的量。
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2024·广东·非选择题（节选·纯碱除水垢）</div>
+        <div class="q-text">工业锅炉需定期除水垢，其中的硫酸钙用纯碱溶液处理。探究Na₂CO₃溶液浓度对反应速率的影响。<br>
+        反应：CaSO₄ + Na₂CO₃ = CaCO₃↓ + Na₂SO₄<br>
+        ① 用Na₂CO₃固体配制溶液，以滴定法测定其浓度。<br>
+        ② 探究浓度对反应速率的影响。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-4')">🔍 查看答案</span>
+        <div class="collapsible a3-4"><div class="q-answer-inner">
+          <strong>纯碱(Na₂CO₃)除水垢原理：</strong><br>
+          CaSO₄(微溶) + Na₂CO₃(可溶) = CaCO₃↓(难溶) + Na₂SO₄(可溶)<br>
+          将微溶的CaSO₄转化为更难溶的CaCO₃沉淀，实现除垢。<br><br>
+          <strong>Na₂CO₃溶液配制需用到的仪器：</strong>烧杯、酸式滴定管（量取Na₂CO₃溶液进行滴定）、玻璃棒等。<br>
+          <strong>滴定反应：</strong>Na₂CO₃ + 2HCl = 2NaCl + H₂O + CO₂↑（用HCl标准溶液滴定Na₂CO₃浓度）
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't3')">⚠️ 查看陷阱</span><div class="collapsible t3"><div class="trap-box">
+        <p><strong>① "小苏打=Na₂CO₃，纯碱=NaHCO₃"</strong>——❌ <strong>完全反了！</strong>小苏打=NaHCO₃（碳酸氢钠），纯碱=Na₂CO₃（碳酸钠）</p>
+        <p><strong>② "Na₂CO₃和NaHCO₃都显碱性，碱性强弱相同"</strong>——❌ Na₂CO₃水解程度更大，碱性<strong>更强</strong>。Na₂CO₃溶液pH约11~12，NaHCO₃溶液pH约8~9。所以除油污用Na₂CO₃（热纯碱效果更好），不用NaHCO₃</p>
+        <p><strong>③ "NaHCO₃和Na₂CO₃都能与酸反应，现象相同"</strong>——❌ 两者都能与酸反应产生CO₂，但<strong>反应速率不同</strong>！NaHCO₃与酸反应更快（不需要等CO₃²⁻先结合一个H⁺变HCO₃⁻再反应）。灭火器用NaHCO₃就是因为反应快</p>
+        <p><strong>④ "碳酸钠可用于治疗胃酸过多"</strong>——❌ Na₂CO₃碱性太强，刺激胃黏膜。治疗胃酸过多用NaHCO₃（弱碱性）或Al(OH)₃</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g3')">✅ 查看指导</span><div class="collapsible g3"><div class="tip-box">
+        <p><strong>Na₂CO₃ vs NaHCO₃ 全面对比：</strong></p>
+        <table class="q-table">
+          <tr><th></th><th>Na₂CO₃（纯碱/苏打）</th><th>NaHCO₃（小苏打）</th></tr>
+          <tr><td><strong>溶解度</strong></td><td>较大（室温约22g/100mL）</td><td>较小（室温约10g/100mL）</td></tr>
+          <tr><td><strong>碱性</strong></td><td>较强（pH≈11~12）</td><td>较弱（pH≈8~9）</td></tr>
+          <tr><td><strong>热稳定性</strong></td><td>稳定，加热不分解</td><td>受热易分解：2NaHCO₃=Na₂CO₃+H₂O+CO₂↑</td></tr>
+          <tr><td><strong>与盐酸反应</strong></td><td>Na₂CO₃+2HCl→2NaCl+H₂O+CO₂↑（较快）</td><td>NaHCO₃+HCl→NaCl+H₂O+CO₂↑（<strong>更快</strong>）</td></tr>
+          <tr><td><strong>与NaOH反应</strong></td><td>不反应</td><td>NaHCO₃+NaOH=Na₂CO₃+H₂O</td></tr>
+          <tr><td><strong>与Ca(OH)₂反应</strong></td><td>Na₂CO₃+Ca(OH)₂=CaCO₃↓+2NaOH</td><td>2NaHCO₃+Ca(OH)₂=CaCO₃↓+Na₂CO₃+2H₂O</td></tr>
+          <tr><td><strong>相互转化</strong></td><td>Na₂CO₃+H₂O+CO₂=2NaHCO₃</td><td>2NaHCO₃=△ Na₂CO₃+H₂O+CO₂↑</td></tr>
+          <tr><td><strong>主要用途</strong></td><td>制玻璃、造纸、除油污</td><td>灭火剂、烘焙膨松剂、治胃酸</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>相互转化口诀：</strong>"碳加酸和水变碳酸氢，碳酸氢加热变回碳酸" → Na₂CO₃<sup>+CO₂+H₂O</sup>⇌NaHCO₃<sup>△</sup></p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点4 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点4</span>
+    <h2>Na₂CO₃与NaHCO₃的鉴别与除杂</h2>
+    <span class="often">🟡 常考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第15题（节选·C选项）</div>
+        <div class="q-text">铜和稀硝酸反应产生NO，通入NaHCO₃溶液中。酚酞的变色范围是8.2~10，c中溶液红色刚好褪去时，此时溶液可能呈弱碱性，所以不能判断HCO₃⁻是否恰好完全反应。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a4-1')">🔍 查看答案</span>
+        <div class="collapsible a4-1"><div class="q-answer-inner">
+          ✅ <strong>C选项判断错误</strong><br>
+          NO通入NaHCO₃溶液：NO+O₂→NO₂，NO₂+H₂O→HNO₃+NO<br>
+          酸性增强，NaHCO₃消耗（HCO₃⁻+H⁺→H₂O+CO₂）<br>
+          酚酞红色褪去≠HCO₃⁻恰好完全消耗！<br>
+          因为NaHCO₃本身是弱碱性（pH≈8~9），酚酞在弱碱性时也几乎无色。<strong>红色刚好褪去可能只是溶液从较强碱性降到弱碱性</strong>，HCO₃⁻可能还有剩余。
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2023·广东·第12题（节选）</div>
+        <div class="q-text">关于NaHCO₃的叙述，下列正确的是？<br>
+        B. 1mol NaHCO₃完全分解，得到0.5mol CO₂分子<br>
+        C. 1mol NaHCO₃溶液中HCO₃⁻数目小于NA</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a4-2')">🔍 查看答案</span>
+        <div class="collapsible a4-2"><div class="q-answer-inner">
+          ✅ <strong>B、C均正确</strong>（题目选D为答案）<br><br>
+          B → 2NaHCO₃ =<sup>△</sup> Na₂CO₃ + CO₂↑ + H₂O<br>
+          2mol NaHCO₃ → 1mol CO₂，所以1mol NaHCO₃ → 0.5mol CO₂ ✅<br><br>
+          C → NaHCO₃溶液中HCO₃⁻既水解又电离：<br>
+          HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻（水解）<br>
+          HCO₃⁻ ⇌ H⁺ + CO₃²⁻（电离）<br>
+          由于水解和电离都消耗HCO₃⁻，故1mol NaHCO₃溶液中HCO₃⁻数目<strong>小于</strong>NA ✅
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't4')">⚠️ 查看陷阱</span><div class="collapsible t4"><div class="trap-box">
+        <p><strong>① "加热法鉴别Na₂CO₃和NaHCO₃：加热有气体产生的是Na₂CO₃"</strong>——❌ 刚好<strong>反了</strong>！加热分解产生CO₂和H₂O的是NaHCO₃（受热易分解），Na₂CO₃加热不分解</p>
+        <p><strong>② "用CaCl₂溶液鉴别：有沉淀的是Na₂CO₃，无沉淀的是NaHCO₃"</strong>——❌ 两者加CaCl₂都会产生沉淀！Na₂CO₃+CaCl₂→CaCO₃↓+2NaCl ✅；但<strong>NaHCO₃+CaCl₂一般不直接反应</strong>（NaHCO₃碱性太弱，不能使Ca²⁺沉淀）。所以在<strong>较低浓度</strong>下确实可以鉴别：有白色沉淀→Na₂CO₃</p>
+        <p><strong>③ "加稀盐酸鉴别：产生气泡快的是Na₂CO₃"</strong>——❌ NaHCO₃与盐酸反应<strong>更快</strong>！因为Na₂CO₃需要两步反应（CO₃²⁻先结合一个H⁺变成HCO₃⁻，再结合一个H⁺产生CO₂），而NaHCO₃只需一步（HCO₃⁻+H⁺→CO₂↑）</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g4')">✅ 查看指导</span><div class="collapsible g4"><div class="tip-box">
+        <p><strong>Na₂CO₃与NaHCO₃鉴别方法汇总：</strong></p>
+        <table class="q-table">
+          <tr><th>方法</th><th>操作</th><th>Na₂CO₃现象</th><th>NaHCO₃现象</th></tr>
+          <tr><td><strong>加热法</strong></td><td>分别加热固体</td><td>无变化</td><td>产生气体（能使石灰水变浑浊）</td></tr>
+          <tr><td><strong>加酸速度</strong></td><td>滴加稀盐酸</td><td>先慢后快（两步反应）</td><td>立即产生大量气泡（一步反应）</td></tr>
+          <tr><td><strong>加CaCl₂</strong></td><td>加CaCl₂溶液</td><td>立即产生白色沉淀</td><td>无明显现象（或微浑）</td></tr>
+          <tr><td><strong>加Ca(OH)₂</strong></td><td>加澄清石灰水</td><td>产生白色沉淀</td><td>也产生白色沉淀（无法区分）</td></tr>
+          <tr><td><strong>测pH</strong></td><td>pH试纸</td><td>pH≈11~12（较强碱性）</td><td>pH≈8~9（较弱碱性）</td></tr>
+        </table>
+        <p style="margin-top:8px;"><strong>NaHCO₃溶液的双重性：</strong>既是弱酸（电离出H⁺），又是弱碱（水解出OH⁻）。这是高考常考的"两性"物质。</p>
+        <p style="margin-top:4px;"><strong>除杂提醒：</strong>Na₂CO₃中混有NaHCO₃ → 加热分解即可除杂（2NaHCO₃=△ Na₂CO₃+H₂O+CO₂↑）</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点5 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点5</span>
+    <h2>钠的焰色反应与NaOH的性质</h2>
+    <span class="often">🟡 常考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第13题（B选项·节选）</div>
+        <div class="q-text">下列推断合理的是<br>
+        B. 钾和钠的原子结构不同，电子跃迁时能量变化不同 → 钾和钠的焰色不同<br>
+        （结构与性质对应合理，B不选）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a5-1')">🔍 查看答案</span>
+        <div class="collapsible a5-1"><div class="q-answer-inner">
+          ✅ <strong>B推断合理</strong><br>
+          焰色反应原理：金属原子（或离子）在外焰高温下，核外电子吸收能量跃迁到激发态，回到基态时以光的形式释放能量。<br>
+          Na和K的电子排布不同 → 跃迁能量不同 → 发出光的波长不同 → <strong>焰色不同</strong><br>
+          Na：黄色（589nm）；K：紫色（需透过蓝色钴玻璃滤去Na的黄光）
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第6题（节选·A选项）</div>
+        <div class="q-text">下列实验能达到预期目的的是<br>
+        A. 碳酸钠溶液加热浸泡，去除铁锅油污</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a5-2')">🔍 查看答案</span>
+        <div class="collapsible a5-2"><div class="q-answer-inner">
+          ✅ <strong>A能达目的</strong><br>
+          Na₂CO₃水解：CO₃²⁻ + H₂O ⇌ HCO₃⁻ + OH⁻（碱性）<br>
+          加热促进水解（水解是吸热反应），碱性增强<br>
+          油脂在碱性、加热条件下水解更彻底 → 去除油污效果更好<br>
+          <strong>原理：热的纯碱溶液碱性更强，加速油脂水解。</strong>
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't5')">⚠️ 查看陷阱</span><div class="collapsible t5"><div class="trap-box">
+        <p><strong>① "焰色反应是化学变化"</strong>——❌ 焰色反应是<strong>物理变化</strong>！只是电子跃迁发光，没有生成新物质</p>
+        <p><strong>② "所有钠的化合物焰色都是黄色"</strong>——✅ 正确！焰色反应检验的是<strong>元素</strong>（Na元素），无论是NaCl、Na₂CO₃、Na₂SO₄还是NaOH，只要含Na⁺，焰色都是黄色</p>
+        <p><strong>③ "NaOH不能用于干燥酸性气体以外的气体"</strong>——❌ NaOH是强碱，不能干燥酸性气体（CO₂、SO₂、HCl等），但<strong>可以干燥碱性或中性气体</strong>（NH₃、H₂、O₂、N₂等）</p>
+        <p><strong>④ "NaOH与Al反应产生H₂，所以NaOH是氧化剂"</strong>——❌ NaOH+Al+H₂O→NaAlO₂+H₂↑，但H₂中的H来自H₂O而非NaOH，<strong>H₂O才是氧化剂</strong>！NaOH只提供碱性环境</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g5')">✅ 查看指导</span><div class="collapsible g5"><div class="tip-box">
+        <p><strong>焰色反应操作步骤（考试常考）：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>❶ 铂丝（或铁丝）用稀盐酸洗净，在火焰上灼烧至无色</li>
+          <li>❷ 蘸取待测溶液（或固体）</li>
+          <li>❸ 放在酒精灯外焰上灼烧</li>
+          <li>❹ 观察火焰颜色（K的焰色需透过蓝色钴玻璃观察）</li>
+          <li>❺ 测试完毕后，用稀盐酸洗净铂丝</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>NaOH的四大用途：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>① 强碱，用于中和酸性物质</li>
+          <li>② 油脂水解（制肥皂）</li>
+          <li>③ 检验气体：如用NaOH溶液检验CO₂（产生沉淀）</li>
+          <li>④ 干燥剂：可干燥NH₃等碱性/中性气体</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点6 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点6</span>
+    <h2>钠的原子结构与其在元素周期表中的位置</h2>
+    <span class="must">🔴 结合周期表考查</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025·广东·第9题（完整版）</div>
+        <div class="q-text">元素a~i为短周期元素，其第一电离能与原子序数的关系如图。下列说法正确的是<br>
+        A. a和g同主族<br>
+        <strong>B. Na、Mg、Al属于同周期，从左到右金属性依次减弱</strong><br>
+        C. e、d、c分别是N、O、F，原子半径c > d > e<br>
+        D. b为C，c为N，沸点NH₃ > CH₄</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a6-1')">🔍 查看答案</span>
+        <div class="collapsible a6-1"><div class="q-answer-inner">
+          ✅ <strong>B</strong><br>
+          由第一电离能图像推断：a~i = B、C、N、O、F、Ne、Na、Mg、Al<br><br>
+          A → a=B(第ⅢA族)，g=Na(第ⅠA族)，不同主族 ❌<br>
+          B → Na、Mg、Al为第三周期，同周期从左到右金属性递减（Na > Mg > Al）✅<br>
+          C → 同周期从左到右原子半径<strong>减小</strong>，N > O > F，但"原子半径c > d > e"是否对应需看图 ❌<br>
+          D → NH₃有氢键沸点高，CH₄无氢键沸点低，NH₃ > CH₄ ✅<br>
+          （本题答案为B，需结合原图具体分析C和D选项表述）
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025·湖南·第8题（节选）</div>
+        <div class="q-text">关于金属性的比较：Fe熔点高于Na是因为金属键更强，而不是因为Fe的金属性比钠弱。金属性是金属失电子的能力，与金属熔点无关。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a6-2')">🔍 查看答案</span>
+        <div class="collapsible a6-2"><div class="q-answer-inner">
+          <strong>关键区分：</strong><br>
+          <strong>金属性</strong> = 失电子能力（Na > Mg > Al）<br>
+          <strong>金属键强度</strong> 与金属性不是一回事！Fe的金属键强（d电子参与成键，价电子多）→ 熔点高<br>
+          Na的金属键弱（只有1个价电子）→ 熔点低<br><br>
+          <strong>考试陷阱：</strong>"金属性强的金属熔点一定高"——❌ Na金属性强但熔点低（98℃），W金属性较弱但熔点极高（3422℃）。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't6')">⚠️ 查看陷阱</span><div class="collapsible t6"><div class="trap-box">
+        <p><strong>① "钠的金属性强，所以钠的化合物碱性一定强"</strong>——❌ 金属性影响最高价氧化物对应水化物的碱性，但碱性还与浓度有关。NaOH碱性确实强于Mg(OH)₂，但这是最高价氧化物水化物之间的比较</p>
+        <p><strong>② "Na的金属性最强"</strong>——❌ 碱金属中从上到下金属性递增（Li < Na < K < Rb < Cs），<strong> Cs金属性最强</strong>。但高考中Na是考查重点</p>
+        <p><strong>③ "第一电离能越小，金属性越强"</strong>——✅ 大多数情况下成立！但Na和Mg之间有一个反常：Na的I₁ < Mg的I₁（因为Mg的3s²为全满稳定结构），所以Na金属性强于Mg ✅</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g6')">✅ 查看指导</span><div class="collapsible g6"><div class="tip-box">
+        <p><strong>钠的原子结构核心：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>位置：第三周期第ⅠA族</li>
+          <li>电子排布：1s² 2s² 2p⁶ 3s¹（Ne + 3s¹）</li>
+          <li>最外层1个电子 → 易失去 → <strong>强还原性</strong></li>
+          <li>离子结构：Na⁺（与Ne电子排布相同）</li>
+        </ul>
+        <p style="margin-top:10px;"><strong>本讲核心口诀（贴课桌上！）：</strong></p>
+        <p style="font-size:16px;font-weight:800;color:#1a1a2e;">❶ 常温氧化钠，燃烧过氧化钠 → ❷ 碳酸氢钠不稳定，加热分解产气体 → ❸ 纯碱强碱性，小苏打弱碱除胃酸 → ❹ Na₂O₂既离子又共价，歧化反应记心间</p>
+        <p style="margin-top:14px;"><strong>课后任务：</strong></p>
+        <ul style="list-style:disc;padding-left:20px;">
+          <li>默写Na、Na₂O、Na₂O₂、NaOH、Na₂CO₃、NaHCO₃的相互转化关系图</li>
+          <li>完成步步高第4讲对应练习</li>
+          <li>用加热法在家中实验：分别加热食盐和小苏打，观察现象（注意安全）</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="nav-footer">
+        <a href="./03.html" class="nav-btn prev">← 上一讲</a>
+        <a href="./05.html" class="nav-btn next">下一讲：第5讲 →</a>
+    </div>
+
+    <footer class="footer">
+        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+    </footer>
+
     <script>
-        function toggleAnswer(btn) {
-            const box = btn.nextElementSibling;
-            if (box.classList.contains('show')) {
-                box.classList.remove('show');
-                btn.classList.remove('revealed');
-                btn.textContent = '👁 点击显示答案';
-            } else {
-                box.classList.add('show');
-                btn.classList.add('revealed');
-                btn.textContent = '🙈 点击隐藏答案';
-            }
-        }
-
-        function showAll() {
-            document.querySelectorAll('.answer-box').forEach(b => b.classList.add('show'));
-            document.querySelectorAll('.reveal-btn').forEach(b => {
-                b.classList.add('revealed');
-                b.textContent = '🙈 点击隐藏答案';
-            });
-        }
-
-        function hideAll() {
-            document.querySelectorAll('.answer-box').forEach(b => b.classList.remove('show'));
-            document.querySelectorAll('.reveal-btn').forEach(b => {
-                b.classList.remove('revealed');
-                b.textContent = '👁 点击显示答案';
-            });
-        }
+function toggleCollapsible(btn, targetClass) {
+  var target = btn.parentElement.querySelector('.' + targetClass);
+  if (!target) target = btn.closest('.sub').querySelector('.' + targetClass);
+  if (target.classList.contains('open')) {
+    target.classList.remove('open');
+    btn.textContent = btn.dataset.showText;
+  } else {
+    target.classList.add('open');
+    btn.textContent = btn.dataset.hideText;
+  }
+}
     </script>
 </body>
 </html>
