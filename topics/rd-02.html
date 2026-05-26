@@ -1,193 +1,922 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>热点强化2 阿伏加德罗常数(N<sub>A</sub>)应用判断 | 决胜高考</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>热点强化2 阿伏加德罗常数(NA)应用判断 | 化学不难学</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.75;
+    }
+    .navbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .navbar a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .navbar a:hover { color: #fbbf24; }
+    .navbar-brand { color: #fbbf24; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+    .header {
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      color: #fff;
+      padding: 40px 32px 32px;
+      text-align: center;
+    }
+    .header .lecture-tag {
+      display: inline-block;
+      background: #fbbf24;
+      color: #1a1a2e;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .header h1 { font-size: 24px; font-weight: 800; }
+    .header h1 em { font-style: normal; color: #fbbf24; }
+    .header p { font-size: 14px; opacity: 0.75; margin-top: 8px; }
+    .header .tags { margin-top: 14px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .header .tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fef2f2;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    /* 考点块 */
+    .block {
+      margin-bottom: 36px;
+      border-left: 4px solid #dc2626;
+      border-radius: 0 12px 12px 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .block-head {
+      padding: 16px 22px;
+      background: linear-gradient(90deg, #fef2f2 0%, #fff 100%);
+      border-bottom: 1px solid #fecaca;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .block-num {
+      background: #dc2626;
+      color: #fff;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .block-head h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; flex: 1; }
+    .must { font-size: 12px; color: #dc2626; font-weight: 600; background: #fef2f2; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+
+    .sub { padding: 18px 22px; border-bottom: 1px solid #f0f1f3; }
+    .sub:last-child { border-bottom: none; }
+    .sub-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sub-title.exam { color: #0f3460; }
+    .sub-title.trap { color: #dc2626; }
+    .sub-title.tip { color: #15803d; }
+
+    .q-box {
+      background: #f6f8fb;
+      border-radius: 8px;
+      padding: 14px 16px;
+      border: 1px solid #e0e6ed;
+      margin-bottom: 10px;
+    }
+    .q-source {
+      font-size: 12px;
+      color: #0f3460;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .q-source .dot { width: 6px; height: 6px; background: #0f3460; border-radius: 50%; display: inline-block; }
+    .q-text { font-size: 14px; color: #1a1a2e; font-weight: 500; line-height: 1.8; }
+
+    .knowledge-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .knowledge-box .kb-title { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
+    .knowledge-box p, .knowledge-box li { font-size: 13px; color: #374151; line-height: 1.9; }
+    .knowledge-box ul { padding-left: 18px; }
+    .knowledge-box li { margin-bottom: 3px; }
+
+    /* 三年速览卡片 */
+    .year-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    @media (max-width: 600px) {
+      .year-cards { grid-template-columns: 1fr; }
+    }
+    .year-card {
+      background: #fff;
+      border-radius: 10px;
+      border: 2px solid #e5e7eb;
+      padding: 14px;
+      text-align: center;
+    }
+    .year-card .yc-year {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: #dc2626;
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+    .year-card .yc-correct {
+      font-size: 22px;
+      font-weight: 800;
+      color: #15803d;
+    }
+    .year-card .yc-trap {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* 考向表 */
+    .kaoxiang-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 13px;
+    }
+    .kaoxiang-table th {
+      background: #991b1b;
+      color: #fff;
+      padding: 8px 10px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .kaoxiang-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+      vertical-align: top;
+      text-align: center;
+      font-size: 12px;
+    }
+    .kaoxiang-table tr:nth-child(even) td { background: #fef2f2; }
+    .kaoxiang-table .kxtag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: 8px;
+    }
+    .kxtag-must { background: #fecaca; color: #991b1b; }
+    .kxtag-often { background: #fef3c7; color: #92400e; }
+    .kxtag-rare { background: #e2e8f0; color: #475569; }
+
+    /* 口诀卡 */
+    .mantra-box {
+      background: linear-gradient(135deg, #fef2f2 0%, #fef3c7 100%);
+      border: 2px solid #fbbf24;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 14px 0;
+    }
+    .mantra-box .mantra-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #991b1b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mantra-box .mantra-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 2;
+      text-align: center;
+    }
+
+    /* 展开/收起 */
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      margin: 8px 4px 4px 0;
+      transition: all 0.2s;
+    }
+    .btn-answer { background: #e8f4fd; color: #0369a1; }
+    .btn-answer:hover { background: #bae6fd; }
+    .btn-trap { background: #fef2f2; color: #dc2626; }
+    .btn-trap:hover { background: #fecaca; }
+    .btn-tip { background: #f0fdf4; color: #15803d; }
+    .btn-tip:hover { background: #bbf7d0; }
+
+    .reveal { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .reveal.open { max-height: 1600px; }
+
+    .answer-box {
+      background: #e8f4fd;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #0369a1;
+      font-weight: 600;
+      line-height: 1.8;
+    }
+    .trap-box {
+      background: #fef2f2;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #dc2626;
+      line-height: 1.8;
+    }
+    .trap-box strong { font-weight: 700; }
+    .tip-box {
+      background: #f0fdf4;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #15803d;
+      line-height: 1.8;
+    }
+    .tip-box li { margin-bottom: 4px; }
+    .tip-box ul { padding-left: 18px; }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 13px;
+    }
+    .data-table th {
+      background: #0f3460;
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .data-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+      vertical-align: top;
+    }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #dc2626; font-weight: 700; }
+
+    .hl-red { color: #dc2626; font-weight: 700; }
+    .hl-blue { color: #0369a1; font-weight: 700; }
+    .hl-green { color: #15803d; font-weight: 700; }
+
+    .page-footer {
+      text-align: center;
+      padding: 32px 16px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+    .page-footer a { color: #0f3460; text-decoration: none; }
+    .nav-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .nav-btn {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      background: #0f3460;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #1e3a5f; }
+    .nav-btn.secondary { background: #e2e8f0; color: #0f3460; }
+    .nav-btn.secondary:hover { background: #cbd5e1; }
+
+    @media (max-width: 600px) {
+      .header { padding: 28px 16px 22px; }
+      .header h1 { font-size: 20px; }
+      .wrap { padding: 18px 10px 40px; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
-    </nav>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">热点强化2</div>
-            <h1 class="topic-title">阿伏加德罗常数(N<sub>A</sub>)应用判断</h1>
-            <div class="topic-chapter">第二章 化学计量与简单计算</div>
+<nav class="navbar">
+  <a href="../index.html">
+    <span style="font-size:20px;">🏠</span>
+    <span class="navbar-brand">化学不难学</span>
+  </a>
+  <a href="../index.html#topics">&larr; 返回专题列表</a>
+</nav>
+
+<header class="header">
+  <div class="lecture-tag">热点强化2 &middot; 必考选择题</div>
+  <h1>阿伏加德罗常数 <em>N<sub>A</sub> 应用判断</em></h1>
+  <p>广东卷连续三年第10/11题 &mdash; 8大考向全覆盖 &mdash; 10秒速判口诀</p>
+  <div class="tags">
+    <span class="tag">🎯 N<sub>A</sub>选择题</span>
+    <span class="tag">⚡ 水解陷阱</span>
+    <span class="tag">📐 气体体积</span>
+    <span class="tag">🔗 化学键计数</span>
+    <span class="tag">⚖️ 电子转移</span>
+    <span class="tag">🔄 可逆反应</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ====== 三年真题速览 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">速览</span>
+      <h2>2023-2025 广东高考 N<sub>A</sub> 题三年对比</h2>
+      <span class="must">每年必考</span>
+    </div>
+    <div class="sub">
+      <div class="year-cards">
+        <!-- 2025 -->
+        <div class="year-card">
+          <div class="yc-year">2025 &middot; 第10题</div>
+          <div class="yc-correct">选 D</div>
+          <div class="yc-trap">
+            ❌ A：¹⁸O₂ 中子数算错<br>
+            ❌ B：Fe+H₂O 产物错<br>
+            ❌ C：NH₄⁺ 水解<br>
+            ✅ D：标况Cl₂共价键
+          </div>
         </div>
-
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+        <!-- 2024 -->
+        <div class="year-card">
+          <div class="yc-year">2024 &middot; 第10题</div>
+          <div class="yc-correct">选 A</div>
+          <div class="yc-trap">
+            ✅ A：C₂H₂ σ键计数<br>
+            ❌ B：NH₄⁺ 水解<br>
+            ❌ C：数据不足<br>
+            ❌ D：非标况
+          </div>
         </div>
-
-        <div class="nav-footer">
-            <a href="./06.html" class="nav-btn ">← 上一讲</a>
-            <a href="./nd-02.html" class="nav-btn next ">下一讲 →</a>
+        <!-- 2023 -->
+        <div class="year-card">
+          <div class="yc-year">2023 &middot; 第11题</div>
+          <div class="yc-correct">选 D</div>
+          <div class="yc-trap">
+            ❌ A：共价键数误算<br>
+            ❌ B：分解产物比错<br>
+            ❌ C：HCO₃⁻ 水解+电离<br>
+            ✅ D：质子数守恒
+          </div>
         </div>
-    </main>
+      </div>
+      <div class="knowledge-box" style="margin-top:12px;">
+        <div class="kb-title">📊 三年规律总结</div>
+        <ul>
+          <li><strong>题号固定：</strong>2025/2024 第10题，2023 第11题 — 选择题靠前位置</li>
+          <li><strong>错误选项套路：</strong>每年至少2个错误选项涉及"盐溶液离子数（水解）"或"气体体积（非标况）"</li>
+          <li><strong>正确选项特征：</strong>通常是化学键计数、质子数守恒等"可精确算出"的选项</li>
+          <li><strong>核心能力：</strong>不是算数，是<strong>识别陷阱</strong> — 找出那个"没有陷阱"的选项</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+  <!-- ====== 八大考向总览 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考向</span>
+      <h2>N<sub>A</sub> 题八大考向分类 + 判定口诀</h2>
+      <span class="must">核心框架</span>
+    </div>
+    <div class="sub">
+      <table class="kaoxiang-table">
+        <thead>
+          <tr>
+            <th>#</th><th>考向</th><th>核心陷阱</th><th>出现频率</th><th>一票否决词</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td style="text-align:left;">盐溶液中的离子数目</td>
+            <td style="text-align:left;">弱碱阳离子/弱酸阴离子<strong>水解</strong>，数目<nNA</td>
+            <td><span class="kxtag kxtag-must">三年全考</span></td>
+            <td style="text-align:left;">NH₄⁺、Fe³⁺、CO₃²⁻、HCO₃⁻</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td style="text-align:left;">气体体积→物质的量</td>
+            <td style="text-align:left;">未说"标准状况"不能用22.4L/mol</td>
+            <td><span class="kxtag kxtag-must">三年全考</span></td>
+            <td style="text-align:left;">标况 / 标准状况 / STP</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td style="text-align:left;">化学键/共用电子对</td>
+            <td style="text-align:left;">有机物中σ键/π键数目、单键数≠键的总数</td>
+            <td><span class="kxtag kxtag-often">高频</span></td>
+            <td style="text-align:left;">σ键、π键、共价键</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td style="text-align:left;">氧化还原电子转移</td>
+            <td style="text-align:left;">变价元素个数×化合价变化值，产物判断常错</td>
+            <td><span class="kxtag kxtag-often">高频</span></td>
+            <td style="text-align:left;">转移电子、失去电子</td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td style="text-align:left;">可逆反应"不完全"</td>
+            <td style="text-align:left;">可逆反应、弱电解质电离→反应物不能完全转化</td>
+            <td><span class="kxtag kxtag-often">常考</span></td>
+            <td style="text-align:left;">N₂+3H₂⇌2NH₃、SO₂+O₂⇌SO₃</td>
+          </tr>
+          <tr>
+            <td><strong>6</strong></td>
+            <td style="text-align:left;">混合物/隐含条件</td>
+            <td style="text-align:left;">未给具体量、"一定量"、"适量"→无法确定</td>
+            <td><span class="kxtag kxtag-often">常考</span></td>
+            <td style="text-align:left;">一定量、适量、混合气体</td>
+          </tr>
+          <tr>
+            <td><strong>7</strong></td>
+            <td style="text-align:left;">粒子结构（质子/中子/电子）</td>
+            <td style="text-align:left;">D₂O vs H₂O中子数不同、同位素干扰</td>
+            <td><span class="kxtag kxtag-rare">偶考</span></td>
+            <td style="text-align:left;">中子、质子、同位素</td>
+          </tr>
+          <tr>
+            <td><strong>8</strong></td>
+            <td style="text-align:left;">pH与H⁺/OH⁻数目</td>
+            <td style="text-align:left;">缺溶液体积无法求数目，水自身电离被忽略</td>
+            <td><span class="kxtag kxtag-rare">偶考</span></td>
+            <td style="text-align:left;">pH=、H⁺数目</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mantra-box">
+        <div class="mantra-title">🔥 N<sub>A</sub> 题 10 秒速判口诀</div>
+        <div class="mantra-text">
+          ⚡ 不见标况不算 Vm &nbsp;|&nbsp; 💧 可水解离子 &lt; nNA<br>
+          🔗 键数看清 σ 与 π &nbsp;|&nbsp; ⚖️ 变价元素乘系数<br>
+          🔄 可逆反应≠完全 &nbsp;|&nbsp; ❓ 数据不全直接排<br>
+          👑 正确选项：<strong>能精确算 + 无陷阱</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 考向1-2 真题精析 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考向1-2</span>
+      <h2>水解陷阱 + 气体摩尔体积陷阱</h2>
+      <span class="must">三年全考</span>
+    </div>
+
+    <!-- 考向1: 水解 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 考向1 &mdash; 盐溶液离子数目 = 水解陷阱重灾区</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025广东 第10题 C</div>
+        <div class="q-text">
+          <strong>C．</strong>在 1L 0.1mol/L 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1NA
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx1a')">🔍 查看答案</button>
+        <div class="reveal" id="ans_kx1a">
+          <div class="answer-box">
+            <strong>错误。</strong>n(NH₄Cl) = 0.1 &times; 1 = 0.1mol，但 NH₄⁺ 是弱碱阳离子，<strong>水解：</strong>NH₄⁺ + H₂O ⇌ NH₃&middot;H₂O + H⁺，实际 n(NH₄⁺) &lt; 0.1mol，即数目 &lt; 0.1NA。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx1a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap_kx1a">
+          <div class="trap-box">
+            <strong>连续三年完全相同的套路！</strong><br>
+            &bull; 2025：NH₄Cl 溶液 NH₄⁺ → 水解<br>
+            &bull; 2024：NH₄NO₃ 溶液 NH₄⁺ → 水解<br>
+            &bull; 2023：NaHCO₃ 溶液 HCO₃⁻ → 水解+电离（双通道消耗）<br><br>
+            <strong>常见可水解离子一览：</strong><br>
+            弱碱阳离子：NH₄⁺、Fe³⁺、Al³⁺、Cu²⁺、Fe²⁺、Zn²⁺<br>
+            弱酸阴离子：CO₃²⁻、HCO₃⁻、SO₃²⁻、CH₃COO⁻、PO₄³⁻<br>
+            酸式根（双通道）：HCO₃⁻、HSO₃⁻、H₂PO₄⁻、HPO₄²⁻
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx1a')">✅ 查看指导</button>
+        <div class="reveal" id="tip_kx1a">
+          <div class="tip-box">
+            <ul>
+              <li><strong>看到含以上离子的盐溶液+数目 → 直接判定 "&lt; nNA"，不需要算！</strong></li>
+              <li>只有强酸强碱盐（NaCl、KNO₃、Na₂SO₄等）的离子数目才严格等于 c&middot;V&middot;NA</li>
+              <li>酸式根最危险：既水解又电离，消耗更彻底</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 考向2: 气体体积 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 考向2 &mdash; 气体体积→物质的量 = 必须"标准状况"</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024广东 第10题 D</div>
+        <div class="q-text">
+          <strong>D．</strong>Na 与 H₂O 反应生成 11.2L H₂，转移电子数目为 NA
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx2a')">🔍 查看答案</button>
+        <div class="reveal" id="ans_kx2a">
+          <div class="answer-box">
+            <strong>错误。</strong>题目只说"生成 11.2L H₂"，<strong>未说明标准状况</strong>（0℃、101kPa），无法用 22.4L/mol 换算物质的量，因此无法计算转移电子数。<br><br>
+            <strong>对比2025广东D选项（正确）：</strong>"<strong>标准状况下</strong>的 22.4L Cl₂ 与足量 H₂ 反应，形成的共价键数目为 2NA" — 多了"标准状况下"四个字，天壤之别！
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx2a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap_kx2a">
+          <div class="trap-box">
+            <strong>没有"标准状况"四个字 → 直接排除</strong><br>
+            &bull; 标准状况：0℃、101kPa，Vm ≈ 22.4 L/mol<br>
+            &bull; 常温常压：25℃、101kPa，Vm ≈ 24.5 L/mol（不能用22.4）<br>
+            &bull; 高温高压：Vm 明显偏离 22.4<br><br>
+            <strong>特殊记忆：</strong>SO₃ 在标况下是<strong>固体</strong>，HF、H₂O 在标况下是<strong>液体</strong> — 都不能用 22.4 L/mol！
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx2a')">✅ 查看指导</button>
+        <div class="reveal" id="tip_kx2a">
+          <div class="tip-box">
+            <ul>
+              <li><strong>口诀：</strong>"不见标况不算 Vm，常温常压也不行"</li>
+              <li>题干有"标准状况"才用 22.4 L/mol，否则直接排除涉及气体体积换算的选项</li>
+              <li>标况下为液态/固态的物质：SO₃、H₂O、HF、CCl₄、CHCl₃、Br₂ — 体积≠22.4n</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 考向3-4 真题精析 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考向3-4</span>
+      <h2>化学键计数 + 氧化还原电子转移</h2>
+      <span class="must">高频</span>
+    </div>
+
+    <!-- 考向3: 化学键 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 考向3 &mdash; 共价键/σ键/π键计数</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024广东 第10题 A（✅正确选项）</div>
+        <div class="q-text">
+          <strong>A．</strong>26g C₂H₂ 中含有 σ 键的数目为 3NA
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx3a')">🔍 查看答案</button>
+        <div class="reveal" id="ans_kx3a">
+          <div class="answer-box">
+            <strong>正确。</strong><br>
+            &bull; M(C₂H₂) = 26 g/mol，n = 26/26 = 1 mol<br>
+            &bull; C₂H₂ 结构：H-C≡C-H<br>
+            &bull; 2 个 C-H σ键 + 1 个 C-C σ键（三键中的1个σ）= <strong>3 个 σ 键</strong><br>
+            &bull; 另外还有 2 个 π 键（不算在σ键内）<br>
+            &rArr; 1mol C₂H₂ 含 3NA 个 σ 键 ✅
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx3a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap_kx3a">
+          <div class="trap-box">
+            <strong>有机分子键计数高频错误：</strong><br>
+            &bull; 分不清 σ 键和 π 键：单键全是 σ，双键=1σ+1π，三键=1σ+2π<br>
+            &bull; 漏数 C-H 键：每个 H 原子必连 1 个 σ 键<br>
+            &bull; 苯环特殊：每个 C-C 键等同于 1.5 键（1σ + 0.5π），所以 1mol 苯含 12mol σ 键（6C-C × 1σ + 6C-H × 1σ）<br>
+            &bull; 错误变体："共价键总数"包括 σ+π，"σ键数"只数 σ
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx3a')">✅ 查看指导</button>
+        <div class="reveal" id="tip_kx3a">
+          <div class="tip-box">
+            <ul>
+              <li><strong>化学键计数的正确选项往往是答案</strong>（可精确计算，无陷阱）</li>
+              <li>步骤：写出结构式 &rarr; 数单键(C-H/C-C/C-O等) &rarr; 乘以NA</li>
+              <li>常考有机物：C₂H₂(3σ)、C₂H₄(5σ)、C₂H₆(7σ)、CH₄(4σ)、C₆H₆(12σ)</li>
+              <li>无机物：NH₃(3σ)、H₂O(2σ)、CO₂(2σ)、N₂(1σ+2π)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 考向4: 电子转移 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 考向4 &mdash; 氧化还原电子转移数目</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025广东 第10题 B</div>
+        <div class="q-text">
+          <strong>B．</strong>1mol Fe 与水蒸气完全反应，生成 H₂ 的数目为 2NA
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx4a')">🔍 查看答案</button>
+        <div class="reveal" id="ans_kx4a">
+          <div class="answer-box">
+            <strong>错误。</strong><br>
+            铁与水蒸气反应：<strong>3Fe + 4H₂O(g) &rarr; Fe₃O₄ + 4H₂</strong><br>
+            &rArr; 3mol Fe → 4mol H₂ &rArr; 1mol Fe → 4/3 mol H₂ = <strong>4/3 NA 个H₂分子</strong><br>
+            选项说 2NA，大了 50%。<br><br>
+            <strong>注意：</strong>Fe 与水蒸气反应生成的是 Fe₃O₄（Fe 平均价态 +8/3），不是 Fe₂O₃（+3）。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx4a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap_kx4a">
+          <div class="trap-box">
+            <strong>电子转移题的两大陷阱：</strong><br>
+            &bull; <strong>1) 产物搞错：</strong>Fe+水蒸气 → Fe₃O₄（不是Fe₂O₃）；Fe+Cl₂ → FeCl₃（不是FeCl₂）；Na+O₂(常温) → Na₂O，Na+O₂(点燃) → Na₂O₂<br>
+            &bull; <strong>2) 系数算错：</strong>电子转移数 = 变价原子数 &times; 化合价变化值，不是简单的 1:1<br><br>
+            <strong>经典对比：</strong><br>
+            1mol Fe + 足量稀H₂SO₄ → 转移 2mol e⁻（Fe→Fe²⁺）<br>
+            1mol Fe + 足量稀HNO₃(过量) → 转移 3mol e⁻（Fe→Fe³⁺）<br>
+            两个结果差 1.5 倍，命题人最爱混淆！
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx4a')">✅ 查看指导</button>
+        <div class="reveal" id="tip_kx4a">
+          <div class="tip-box">
+            <ul>
+              <li>先确认<strong>反应方程式是否正确</strong>（产物是不是你以为的那个）</li>
+              <li>再算<strong>电子转移总数</strong> = 变价原子摩尔数 &times; |Δ化合价|</li>
+              <li>常考反应电子转移速查：<br>
+                &bull; 2Na₂O₂ + 2H₂O → 4NaOH + O₂↑：2mol Na₂O₂ → 转移 2mol e⁻（歧化）<br>
+                &bull; 3Cu + 8HNO₃(稀) → 3Cu(NO₃)₂ + 2NO↑ + 4H₂O：3mol Cu → 转移 6mol e⁻<br>
+                &bull; 2Al + 2NaOH + 2H₂O → 2NaAlO₂ + 3H₂↑：2mol Al → 转移 6mol e⁻</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 考向5-8 真题精析 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考向5-8</span>
+      <h2>可逆反应 / 隐含条件 / 粒子结构 / pH</h2>
+      <span class="must">常考</span>
+    </div>
+
+    <!-- 考向5: 可逆反应 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 考向5 &mdash; 可逆反应 ≠ 完全转化</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>综合考向（广东卷TA题中高频出现）</div>
+        <div class="q-text">
+          <strong>常见命题形式：</strong>"1mol N₂ 与 3mol H₂ 充分反应，生成 NH₃ 的数目为 2NA"<br>
+          <strong>典型错误：</strong>"标准状况下，2mol SO₂ 与 1mol O₂ 充分反应，转移电子数目为 4NA"
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx5a')">🔍 查看答案</button>
+        <div class="reveal" id="ans_kx5a">
+          <div class="answer-box">
+            <strong>以上说法全部错误。</strong><br>
+            &bull; N₂ + 3H₂ ⇌ 2NH₃ 是<strong>可逆反应</strong>，反应不能进行到底，生成的 NH₃ &lt; 2mol<br>
+            &bull; SO₂ + O₂ ⇌ SO₃ 也是可逆反应，不能完全转化<br>
+            &bull; 弱电解质的电离也是可逆的：1mol CH₃COOH 溶于水，电离出的 H⁺ &lt; 1mol
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx5a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap_kx5a">
+          <div class="trap-box">
+            <strong>看到这些关键词 → "充分反应"不等于"完全反应"</strong><br>
+            &bull; "充分反应/一定条件下反应" → 可逆反应未进行到底<br>
+            &bull; 常考可逆反应：N₂+3H₂⇌2NH₃、2SO₂+O₂⇌2SO₃、2NO₂⇌N₂O₄、Cl₂+H₂O⇌HCl+HClO<br>
+            &bull; 弱电解质电离：CH₃COOH⇌CH₃COO⁻+H⁺、NH₃&middot;H₂O⇌NH₄⁺+OH⁻<br>
+            &bull; 盐类水解也是可逆的！（回到考向1）
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx5a')">✅ 查看指导</button>
+        <div class="reveal" id="tip_kx5a">
+          <div class="tip-box">
+            <ul>
+              <li><strong>做法：</strong>看到涉及可逆反应的选项 → 产物数目必定 &lt; nNA → 直接排除</li>
+              <li><strong>记忆：</strong>"是可逆就不完全，电水解也同理" — 两大可逆体系：化学平衡 + 电离水解平衡</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 考向6-8 速查 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 考向6-8 &mdash; 混合物/粒子结构/pH 快速判断</div>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>考向</th><th>典型陷阱</th><th>判定方法</th><th>示例</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>6. 混合物/隐含条件</strong></td>
+            <td>"一定量的xx"、"适量的yy" — 没给具体量</td>
+            <td><span class="hl-red">数据不全 → 直接排除</span></td>
+            <td>"Na与H₂O反应生成11.2L H₂"（没说是标况 → 数据不全）</td>
+          </tr>
+          <tr>
+            <td><strong>7. 粒子结构</strong></td>
+            <td>同位素中子数不同、D₂O≠H₂O</td>
+            <td><span class="hl-blue">核对原子组成</span>：质子数=原子序数，中子数=质量数-质子数</td>
+            <td>2025广东A：1mol ¹⁸O₂ 比 ¹⁶O₂ 多 4NA 中子（不是2NA）</td>
+          </tr>
+          <tr>
+            <td><strong>8. pH与H⁺/OH⁻</strong></td>
+            <td>给了pH但没给溶液体积 &rarr; 无法求数目</td>
+            <td><span class="hl-red">n(H⁺) = 10^(-pH) &times; V</span>，缺V → 不能算</td>
+            <td>"pH=1的盐酸中H⁺数目为0.1NA"（没体积，无解）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="knowledge-box" style="margin-top:14px;">
+        <div class="kb-title">🔬 同位素中子数速查</div>
+        <ul>
+          <li>¹H（氕）：0中子 | ²H/D（氘）：1中子 | ³H/T（氚）：2中子</li>
+          <li>¹²C：6中子 | ¹³C：7中子 | ¹⁴C：8中子</li>
+          <li>¹⁶O：8中子 | ¹⁸O：10中子</li>
+          <li>H₂O中子数=8（仅O），D₂O中子数=1×2+8=10，T₂O中子数=2×2+8=12</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 总结：NA题满分攻略 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">总结</span>
+      <h2>N<sub>A</sub> 选择题满分攻略</h2>
+      <span class="must">必看</span>
+    </div>
+    <div class="sub">
+      <div class="sub-title exam">⚡ 做题步骤（30秒内完成）</div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">Step 1：扫描所有选项，标记四大"直接排除"信号 🚫</div>
+        <ul>
+          <li>① 有可水解离子 + 数目 = nNA → <span class="hl-red">排除</span></li>
+          <li>② 有气体体积 + 无"标准状况" → <span class="hl-red">排除</span></li>
+          <li>③ 有可逆反应/弱电解质 + "数目等于" → <span class="hl-red">排除</span></li>
+          <li>④ 数据不全（缺体积、缺浓度、缺具体量）→ <span class="hl-red">排除</span></li>
+        </ul>
+      </div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">Step 2：在剩余选项中，找"可精确计算"的 ✅</div>
+        <ul>
+          <li>化学键计数（给质量 + 给结构式 → 可精确算）</li>
+          <li>质子/中子/电子数（给物质的量 + 给原子组成 → 可精确算）</li>
+          <li>标准状况下的气体摩尔数（标况 + 22.4L → 可精确算）</li>
+        </ul>
+      </div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">Step 3：最终确认 — 算一遍</div>
+        <p style="font-size:13px;">对疑似正确的选项，快速用草稿纸算一遍：n = m/M, N = n&middot;NA，确认无误后选定。</p>
+      </div>
+
+      <div class="mantra-box" style="margin-top:18px;">
+        <div class="mantra-title">🏆 三年真题验证：这个思维流程100%有效</div>
+        <div class="mantra-text" style="font-size:14px; text-align:left;">
+          <strong>2025：</strong>扫排除 → C(水解)不选、A/B(算错)不选 → D可精确算 ✅<br>
+          <strong>2024：</strong>扫排除 → B(水解)不选 → C/D数据不全不选 → A可精确算 ✅<br>
+          <strong>2023：</strong>扫排除 → C(水解+电离)不选 → A/B算错不选 → D可精确算 ✅
+        </div>
+      </div>
+
+      <table class="data-table" style="margin-top:16px;">
+        <thead>
+          <tr><th>错误选项类型</th><th>2025出现</th><th>2024出现</th><th>2023出现</th><th>识别难度</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>盐溶液离子水解</td>
+            <td class="highlight">C选项</td>
+            <td class="highlight">B选项</td>
+            <td class="highlight">C选项</td>
+            <td>⭐⭐ 中等（需记忆可水解离子）</td>
+          </tr>
+          <tr>
+            <td>气体体积非标况</td>
+            <td>—</td>
+            <td class="highlight">D选项</td>
+            <td>—</td>
+            <td>⭐ 简单（没有"标况"就排除）</td>
+          </tr>
+          <tr>
+            <td>氧化还原产物/系数错</td>
+            <td class="highlight">B选项</td>
+            <td>—</td>
+            <td class="highlight">B选项</td>
+            <td>⭐⭐⭐ 较难（需准确记忆方程式）</td>
+          </tr>
+          <tr>
+            <td>粒子结构算错</td>
+            <td class="highlight">A选项</td>
+            <td>—</td>
+            <td class="highlight">A选项</td>
+            <td>⭐⭐ 中等（需仔细数中子/键数）</td>
+          </tr>
+          <tr>
+            <td>混合物/数据不全</td>
+            <td>—</td>
+            <td class="highlight">C选项</td>
+            <td>—</td>
+            <td>⭐ 简单（缺数据就排除）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <div class="page-footer">
+    <p>化学不难学 &middot; 以考定教 &middot; 热点强化2</p>
+    <div class="nav-btns">
+      <a href="06.html" class="nav-btn secondary">&larr; 第6讲 物质的量浓度</a>
+      <a href="../index.html" class="nav-btn secondary">🏠 返回主页</a>
+      <a href="nd-02.html" class="nav-btn">→ 难点突破2 化学计算常用方法</a>
+    </div>
+  </div>
+</main>
+
+<script>
+function toggle(btn, id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  if (isOpen) {
+    if (btn.classList.contains('btn-answer')) btn.textContent = '🔍 查看答案';
+    else if (btn.classList.contains('btn-trap')) btn.textContent = '⚠️ 查看陷阱';
+    else if (btn.classList.contains('btn-tip')) btn.textContent = '✅ 查看指导';
+  } else {
+    if (btn.classList.contains('btn-answer')) btn.textContent = '🔒 隐藏答案';
+    else if (btn.classList.contains('btn-trap')) btn.textContent = '🔒 隐藏陷阱';
+    else if (btn.classList.contains('btn-tip')) btn.textContent = '🔒 隐藏指导';
+  }
+}
+</script>
 </body>
 </html>
