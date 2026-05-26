@@ -1,193 +1,638 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>难点突破2 化学计算的常用方法 | 决胜高考</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>难点突破2 化学计算的常用方法 | 化学不难学</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.75;
+    }
+    .navbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .navbar a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .navbar a:hover { color: #fbbf24; }
+    .navbar-brand { color: #fbbf24; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+    .header {
+      background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+      color: #fff;
+      padding: 40px 32px 32px;
+      text-align: center;
+    }
+    .header .lecture-tag {
+      display: inline-block;
+      background: #fbbf24;
+      color: #1a1a2e;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .header h1 { font-size: 24px; font-weight: 800; }
+    .header h1 em { font-style: normal; color: #fbbf24; }
+    .header p { font-size: 14px; opacity: 0.75; margin-top: 8px; }
+    .header .tags { margin-top: 14px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .header .tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fef2f2;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 28px 16px 60px; }
+    .block {
+      margin-bottom: 36px;
+      border-left: 4px solid #7c3aed;
+      border-radius: 0 12px 12px 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .block-head {
+      padding: 16px 22px;
+      background: linear-gradient(90deg, #f5f3ff 0%, #fff 100%);
+      border-bottom: 1px solid #ddd6fe;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .block-num {
+      background: #7c3aed;
+      color: #fff;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .block-head h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; flex: 1; }
+    .must { font-size: 12px; color: #7c3aed; font-weight: 600; background: #f5f3ff; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+    .sub { padding: 18px 22px; border-bottom: 1px solid #f0f1f3; }
+    .sub:last-child { border-bottom: none; }
+    .sub-title { font-size: 13px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .sub-title.exam { color: #0f3460; }
+    .sub-title.trap { color: #7c3aed; }
+    .sub-title.tip { color: #15803d; }
+    .q-box { background: #f6f8fb; border-radius: 8px; padding: 14px 16px; border: 1px solid #e0e6ed; margin-bottom: 10px; }
+    .q-source { font-size: 12px; color: #0f3460; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .q-source .dot { width: 6px; height: 6px; background: #0f3460; border-radius: 50%; display: inline-block; }
+    .q-text { font-size: 14px; color: #1a1a2e; font-weight: 500; line-height: 1.8; }
+    .knowledge-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+    .knowledge-box .kb-title { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
+    .knowledge-box p, .knowledge-box li { font-size: 13px; color: #374151; line-height: 1.9; }
+    .knowledge-box ul { padding-left: 18px; }
+    .knowledge-box li { margin-bottom: 3px; }
+    .method-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+    @media (max-width: 600px) { .method-cards { grid-template-columns: 1fr; } }
+    .method-card { border-radius: 12px; padding: 18px 14px; text-align: center; color: #fff; }
+    .method-card:nth-child(1) { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+    .method-card:nth-child(2) { background: linear-gradient(135deg, #0369a1, #075985); }
+    .method-card:nth-child(3) { background: linear-gradient(135deg, #dc2626, #991b1b); }
+    .method-card .mc-num { font-size: 28px; font-weight: 800; display: block; margin-bottom: 6px; }
+    .method-card .mc-title { font-size: 13px; font-weight: 700; }
+    .method-card .mc-desc { font-size: 11px; opacity: 0.85; margin-top: 4px; line-height: 1.5; }
+    .compare-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+    .compare-table th, .compare-table td { border: 1px solid #d0d7de; padding: 10px 12px; text-align: left; }
+    .compare-table th { background: linear-gradient(90deg, #7c3aed, #6d28d9); font-weight: 700; color: #fff; }
+    .compare-table tr:nth-child(even) td { background: #fafbfc; }
+    .highlight-row td { background: #fef3c7 !important; font-weight: 700; color: #92400e; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+    .data-table th { background: #4c1d95; color: #fff; padding: 8px 12px; text-align: left; font-weight: 700; }
+    .data-table td { padding: 9px 12px; border-bottom: 1px solid #e5e7eb; color: #374151; vertical-align: top; }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table .highlight { color: #dc2626; font-weight: 700; }
+    .mantra-box { background: linear-gradient(135deg, #f5f3ff 0%, #fef3c7 100%); border: 2px solid #fbbf24; border-radius: 10px; padding: 16px 20px; margin: 14px 0; }
+    .mantra-box .mantra-title { font-size: 14px; font-weight: 800; color: #4c1d95; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .mantra-box .mantra-text { font-size: 15px; font-weight: 700; color: #1a1a2e; line-height: 2; text-align: center; }
+    .pretest-box { background: #fff8e1; border: 2px dashed #f59e0b; border-radius: 12px; padding: 20px 24px; margin-bottom: 30px; }
+    .pretest-box .pt-title { font-size: 16px; font-weight: 800; color: #b45309; margin-bottom: 4px; }
+    .pretest-box .pt-sub { font-size: 12px; color: #92400e; margin-bottom: 14px; }
+    .pt-q { margin-bottom: 12px; font-size: 14px; }
+    .pt-q .q-label { font-weight: 700; color: #b45309; }
+    .pt-q .q-opts { margin-left: 12px; color: #444; }
+    .toggle-btn { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: none; margin: 8px 4px 4px 0; transition: all 0.2s; }
+    .btn-answer { background: #e8f4fd; color: #0369a1; }
+    .btn-answer:hover { background: #bae6fd; }
+    .btn-trap { background: #f5f3ff; color: #7c3aed; }
+    .btn-trap:hover { background: #ede9fe; }
+    .btn-tip { background: #f0fdf4; color: #15803d; }
+    .btn-tip:hover { background: #bbf7d0; }
+    .reveal { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .reveal.open { max-height: 2000px; }
+    .answer-box { background: #e8f4fd; border-radius: 8px; padding: 12px 14px; margin-top: 6px; font-size: 13px; color: #0369a1; font-weight: 600; line-height: 1.8; }
+    .trap-box { background: #f5f3ff; border-radius: 8px; padding: 12px 14px; margin-top: 6px; font-size: 13px; color: #6d28d9; line-height: 1.8; }
+    .trap-box strong { font-weight: 700; }
+    .tip-box { background: #f0fdf4; border-radius: 8px; padding: 12px 14px; margin-top: 6px; font-size: 13px; color: #15803d; line-height: 1.8; }
+    .tip-box li { margin-bottom: 4px; }
+    .tip-box ul { padding-left: 18px; }
+    .hl-purple { color: #7c3aed; font-weight: 700; }
+    .hl-red { color: #dc2626; font-weight: 700; }
+    .hl-blue { color: #0369a1; font-weight: 700; }
+    .hl-green { color: #15803d; font-weight: 700; }
+    .page-footer { text-align: center; padding: 32px 16px; color: #94a3b8; font-size: 13px; }
+    .page-footer a { color: #0f3460; text-decoration: none; }
+    .nav-btns { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+    .nav-btn { padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; background: #7c3aed; color: #fff; transition: background 0.2s; }
+    .nav-btn:hover { background: #6d28d9; }
+    .nav-btn.secondary { background: #e2e8f0; color: #0f3460; }
+    .nav-btn.secondary:hover { background: #cbd5e1; }
+    .divider { text-align: center; margin: 32px 0; color: #ccc; font-size: 20px; letter-spacing: 12px; }
+    @media (max-width: 600px) {
+      .header { padding: 28px 16px 22px; }
+      .header h1 { font-size: 20px; }
+      .wrap { padding: 18px 10px 40px; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
-    </nav>
+<nav class="navbar">
+  <a href="../index.html"><span style="font-size:20px;">&#x1F3E0;</span><span class="navbar-brand">化学不难学</span></a>
+  <a href="../index.html#topics">&larr; 返回专题列表</a>
+</nav>
+<header class="header">
+  <div class="lecture-tag">难点突破2 &middot; 计算专题</div>
+  <h1>化学计算的 <em>常用方法</em></h1>
+  <p>以考定教 &middot; 2027届高三化学第一轮复习 &middot; 真题来源：2023&mdash;2025广东卷 + 全国各省卷</p>
+  <div class="tags">
+    <span class="tag">&#x2696;&#xFE0F; 守恒法</span>
+    <span class="tag">&#x1F4CA; 关系式法</span>
+    <span class="tag">&#x2795; 差量法</span>
+    <span class="tag">&#x1F3AF; 极值法</span>
+    <span class="tag">&#x1F522; 平均值法</span>
+  </div>
+</header>
+<main class="wrap">
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">难点突破2</div>
-            <h1 class="topic-title">化学计算的常用方法</h1>
-            <div class="topic-chapter">第二章 化学计量与简单计算</div>
-        </div>
+<!-- 前测 -->
+<div class="pretest-box">
+  <div class="pt-title">&#x26A1; 前测（5分钟）&mdash;&mdash;化学计算方法快速检测</div>
+  <div class="pt-sub">三道经典计算题，看看你能否选择最优方法快速破解</div>
+  <div class="pt-q">
+    <span class="q-label">【前测1&middot;守恒法】</span> 向NaOH溶液中通入一定量CO&#x2082;后，溶液中含Na&#x207A; 0.4mol、HCO&#x2083;&#x207B; 0.2mol、CO&#x2083;&#xB2;&#x207B; 0.1mol。则通入的CO&#x2082;的物质的量为：<br>
+    <span class="q-opts">A. 0.15 mol &emsp; B. 0.30 mol &emsp; C. 0.45 mol &emsp; D. 0.60 mol</span>
+    <button class="toggle-btn btn-answer" onclick="toggle(this,'pt1')">&#x1F50D; 查看答案</button>
+    <div class="reveal" id="pt1"><div class="answer-box">&#x2705; <strong>B正确！</strong>用<span class="hl-purple">C元素守恒</span>：n(CO&#x2082;) = n(HCO&#x2083;&#x207B;) + n(CO&#x2083;&#xB2;&#x207B;) = 0.2 + 0.1 = 0.3 mol。Na&#x207A;的量是干扰信息！守恒法一步到位，根本不需要写方程式。</div></div>
+  </div>
+  <div class="pt-q">
+    <span class="q-label">【前测2&middot;电子守恒法】</span> 4mol Sb 与含有 NaNO&#x2083; 和 O&#x2082; 的混合物反应，其中 3mol O&#x2082; 参与反应，反应中总电子转移为：<br>
+    <span class="q-opts">A. 12 mol &emsp; B. 16 mol &emsp; C. 20 mol &emsp; D. 24 mol</span>
+    <button class="toggle-btn btn-answer" onclick="toggle(this,'pt2')">&#x1F50D; 查看答案</button>
+    <div class="reveal" id="pt2"><div class="answer-box">&#x2705; <strong>C正确！</strong>用<span class="hl-purple">得失电子守恒</span>：Sb作还原剂（0&rarr;+5），4mol Sb转移 4&times;5 = 20mol e&#x207B;。这就是2025湖南卷第8题的核心思路&mdash;&mdash;不需要配平方程式，直接盯住还原剂的化合价变化即可。</div></div>
+  </div>
+  <div class="pt-q">
+    <span class="q-label">【前测3&middot;关系式法】</span> 工业上用铝土矿（含Al&#x2082;O&#x2083;）制备金属铝。若要生产 2.7t 铝，至少需要含 Al&#x2082;O&#x2083; 质量分数为 80% 的铝土矿多少吨？<br>
+    <span class="q-opts">A. 3.2t &emsp; B. 5.1t &emsp; C. 6.4t &emsp; D. 8.5t</span>
+    <button class="toggle-btn btn-answer" onclick="toggle(this,'pt3')">&#x1F50D; 查看答案</button>
+    <div class="reveal" id="pt3"><div class="answer-box">&#x2705; <strong>C正确！</strong>用<span class="hl-purple">关系式法</span>：Al&#x2082;O&#x2083; &rarr; 2Al（Al守恒）<br>n(Al) = 2.7&times;10&#x2076;/27 = 10&#x2075; mol，n(Al&#x2082;O&#x2083;) = 10&#x2075;/2 = 0.5&times;10&#x2075; mol<br>m(纯Al&#x2082;O&#x2083;) = 0.5&times;10&#x2075;&times;102 = 5.1t，m(铝土矿) = 5.1/80% = <strong>6.375t &asymp; 6.4t</strong></div></div>
+  </div>
+  <p style="font-size:12px;color:#b45309;margin-top:8px;">&#x26A0;&#xFE0F; 三道全对说明计算基本功扎实，哪道错了就重点看对应板块！</p>
+</div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
-        </div>
+<!-- 方法总览 -->
+<div style="text-align:center;margin-bottom:30px;">
+  <p style="font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">&#x1F3AF; 化学计算五大常用方法</p>
+  <div class="method-cards">
+    <div class="method-card"><span class="mc-num">01</span><span class="mc-title">守恒法</span><span class="mc-desc">原子守恒 / 电子守恒<br>电荷守恒 / 质量守恒</span></div>
+    <div class="method-card"><span class="mc-num">02</span><span class="mc-title">关系式法</span><span class="mc-desc">多步反应一步到位<br>抓住核心元素传递</span></div>
+    <div class="method-card"><span class="mc-num">03</span><span class="mc-title">差量法 + 极值法</span><span class="mc-desc">利用质量/体积差<br>极端假设快速判断</span></div>
+  </div>
+</div>
 
-        <div class="nav-footer">
-            <a href="./rd-02.html" class="nav-btn ">← 上一讲</a>
-            <a href="./07.html" class="nav-btn next ">下一讲 →</a>
-        </div>
-    </main>
+<!-- ========== 板块一 ========== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块一</span>
+    <h2>"守恒法"&mdash;&mdash;化学计算的第一思维</h2>
+    <span class="must">&#x1F534; 必须掌握</span>
+  </div>
+  <div class="sub">
+    <div class="sub-title exam">&#x1F4DD; 核心原理</div>
+    <p><strong>守恒法的本质：</strong>化学反应前后，某些量的总和不变。抓住这些"不变量"，可以跳过复杂的中间步骤，直接建立等量关系。</p>
+    <table class="data-table" style="margin-top:12px;">
+      <thead><tr><th style="width:18%">守恒类型</th><th>含义</th><th>典型应用场景</th></tr></thead>
+      <tbody>
+        <tr><td><strong class="hl-purple">原子守恒</strong></td><td>反应前后某元素的原子个数不变</td><td>多步反应中某元素最终产物求算、混合物组成</td></tr>
+        <tr><td><strong class="hl-purple">电子守恒</strong></td><td>氧化剂得电子总数 = 还原剂失电子总数</td><td>氧化还原反应计算（转移电子数、产物比例）</td></tr>
+        <tr><td><strong class="hl-purple">电荷守恒</strong></td><td>溶液中阳离子正电荷 = 阴离子负电荷</td><td>离子浓度计算、判断离子浓度大小关系</td></tr>
+        <tr><td><strong class="hl-purple">质量守恒</strong></td><td>反应前后物质总质量不变</td><td>差量法的基础、固液质量变化分析</td></tr>
+      </tbody>
+    </table>
+    <div class="mantra-box">
+      <div class="mantra-title">&#x1F4A1; 守恒法思维口诀</div>
+      <div class="mantra-text">
+        &#x26A1; 看到元素传递 &rarr; <strong>原子守恒</strong><br>
+        &#x2696;&#xFE0F; 看到氧化还原 &rarr; <strong>电子守恒</strong><br>
+        &#x2795; 看到溶液离子 &rarr; <strong>电荷守恒</strong><br>
+        &#x1F4CF; 看到质量变化 &rarr; <strong>质量守恒 + 差量法</strong>
+      </div>
+    </div>
+  </div>
+  <div class="sub">
+    <div class="sub-title exam">&#x1F4DD; 真题举例</div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>2025&middot;新课标卷&middot;第7题 &mdash; HF溶液中的元素守恒与电荷守恒</div>
+      <div class="q-text">
+        总浓度为 0.1 mol/L 的 HF 水溶液中存在平衡：HF &harr; H&#x207A; + F&#x207B;、F&#x207B; + H&#x2082;O &harr; HF + OH&#x207B;。下列叙述正确的是：<br><br>
+        <strong>A.</strong> M、N分别为 c(F&#x207B;)、c(HF) 关系曲线<br>
+        <strong>B.</strong> K<sub>a</sub>(HF) &times; K<sub>a2</sub>(HF) = 10<sup>-7.80</sup><br>
+        <strong>C.</strong> 溶液中 c(HF) = c<sub>&#x603;</sub> &minus; c(F&#x207B;) &minus; c(H&#x207A;)<br>
+        <strong>D.</strong> pH = 1 时，c(Na&#x207A;) + c(H&#x207A;) = c(F&#x207B;) + c(OH&#x207B;)
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s1-1')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s1-1"><div class="answer-box">
+        &#x2705; <strong>B正确。</strong><br><br>
+        &#x274C; <strong>C错误（元素守恒！）：</strong>溶液中HF的存在形式有 HF、F&#x207B;、<strong>HF&#x2082;&#x207B;</strong>（二氟氢根）三种！<br>
+        &rarr; 根据F元素守恒：<strong>c<sub>&#x603;</sub>(HF) = c(HF) + c(F&#x207B;) + c(HF&#x2082;&#x207B;)</strong><br>
+        &rarr; C选项漏了 HF&#x2082;&#x207B;，所以 c(HF) &ne; c<sub>&#x603;</sub> &minus; c(F&#x207B;) &minus; c(H&#x207A;)<br><br>
+        &#x274C; <strong>D错误（电荷守恒！）：</strong>电荷守恒式右侧<strong>缺少了 HF&#x2082;&#x207B; 的浓度项</strong>。<br>
+        &rarr; 正确应为：c(Na&#x207A;) + c(H&#x207A;) = c(F&#x207B;) + c(OH&#x207B;) + <strong>c(HF&#x2082;&#x207B;)</strong><br><br>
+        &#x1F4A1; <strong>本题启示：</strong>HF&#x2082;&#x207B; 容易被忽略！写守恒式时必须把<strong>所有含目标元素的微粒</strong>都列出来。
+      </div></div>
+      <button class="toggle-btn btn-trap" onclick="toggle(this,'t1-1')">&#x26A0;&#xFE0F; 查看陷阱</button>
+      <div class="reveal" id="t1-1"><div class="trap-box">
+        <p><strong>&#x2460; 元素守恒漏算微粒</strong>&mdash;&mdash;&#x274C; HF溶液中含F的微粒有三种：HF、F&#x207B;、HF&#x2082;&#x207B;，不是两种！类似的，CO&#x2082;水溶液中含C微粒有CO&#x2082;、H&#x2082;CO&#x2083;、HCO&#x2083;&#x207B;、CO&#x2083;&#xB2;&#x207B;四种</p>
+        <p><strong>&#x2461; 电荷守恒漏算离子</strong>&mdash;&mdash;&#x274C; 任何带电微粒都要计入！HF&#x2082;&#x207B;带&minus;1电荷，不能漏掉</p>
+        <p><strong>&#x2462; 质子守恒与电荷守恒混淆</strong>&mdash;&mdash;&#x274C; 电荷守恒：&#x3A3;正电荷=&#x3A3;负电荷；质子守恒：c(H&#x207A;)=c(OH&#x207B;)+&#x3A3;其他碱消耗的H&#x207A;。两者含义完全不同</p>
+      </div></div>
+      <button class="toggle-btn btn-tip" onclick="toggle(this,'g1-1')">&#x2705; 查看指导</button>
+      <div class="reveal" id="g1-1"><div class="tip-box">
+        <p><strong>写守恒式三步法：</strong></p>
+        <ol style="padding-left:20px;">
+          <li><strong>全部列举。</strong> 把溶液中含目标元素/电荷的所有微粒全部列出来，不要遗漏</li>
+          <li><strong>确定系数。</strong> 每个微粒贡献多少原子/多少电荷（注意HF&#x2082;&#x207B;含2个F原子但只带1个负电荷）</li>
+          <li><strong>建立等式。</strong> 左边=右边，检查是否有遗漏</li>
+        </ol>
+        <p style="margin-top:10px;"><strong>常见"隐形微粒"速查：</strong></p>
+        <ul>
+          <li>HF溶液：别忘了 HF&#x2082;&#x207B;</li>
+          <li>H&#x2083;PO&#x2084;溶液：别忘了 H&#x2082;PO&#x2084;&#x207B;、HPO&#x2084;&#xB2;&#x207B;、PO&#x2084;&#xB3;&#x207B;（共四种含磷微粒）</li>
+          <li>H&#x2082;SO&#x2083;溶液：别忘了 HSO&#x2084;&#x207B;</li>
+          <li>任何水溶液：别忘了 H&#x207A; 和 OH&#x207B;</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>2025&middot;湖南卷&middot;第8题 &mdash; Sb与NaNO&#x2083;/O&#x2082;反应的电子转移</div>
+      <div class="q-text">
+        NaSbO&#x2083;是一种合成聚酯的催化剂，可用"硝酸钠法"制备。下列说法错误的是：<br><br>
+        <strong>C.</strong> 反应中氧化剂和还原剂的物质的量之比为 4:7<br>
+        <strong>D.</strong> 反应中消耗 4mol Sb，转移 20mol e&#x207B;
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s1-2')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s1-2"><div class="answer-box">
+        &#x274C; <strong>C错误，D正确！</strong><br><br>
+        <strong>电子守恒分析：</strong>Sb是还原剂（0&rarr;+5），4mol Sb共失去 4&times;5 = <strong>20mol e&#x207B;</strong> &#x2714;&#xFE0F; D正确<br><br>
+        <strong>氧化剂是谁？</strong>NaNO&#x2083;中的N（+5&rarr;某低价态）和 O&#x2082;（0&rarr;&minus;2）同时做氧化剂<br>
+        &rarr; 氧化剂总量 = NaNO&#x2083;(4mol) + O&#x2082;(3mol) = 7mol<br>
+        &rarr; 还原剂 = Sb(4mol)<br>
+        &rarr; 氧化剂:还原剂 = <strong>7:4</strong>（不是4:7！）&#x2714;&#xFE0F; C说反了<br><br>
+        &#x1F4A1; <strong>解题关键：</strong>看到氧化还原反应&mdash;&mdash;第一时间找还原剂化合价变化&times;物质的量 = 总电子转移，不需要完整配平！
+      </div></div>
+      <button class="toggle-btn btn-trap" onclick="toggle(this,'t1-2')">&#x26A0;&#xFE0F; 查看陷阱</button>
+      <div class="reveal" id="t1-2"><div class="trap-box">
+        <p><strong>&#x2460; 氧化剂可能有多个</strong>&mdash;&mdash;&#x274C; 本题中NaNO&#x2083;和O&#x2082;同时做氧化剂，氧化剂总量=两者之和</p>
+        <p><strong>&#x2461; 氧化剂/还原剂比搞反</strong>&mdash;&mdash;&#x274C; C选项故意说成4:7，实际是7:4</p>
+        <p><strong>&#x2462; 电子守恒不需要配平</strong>&mdash;&mdash;&#x2705; 只需盯住<strong>还原剂的化合价升高&times;物质的量</strong>即可</p>
+      </div></div>
+    </div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>2025&middot;浙江卷&middot;第12题 &mdash; 电化学合成中的电子守恒</div>
+      <div class="q-text">
+        通过电化学方法制备NaBrO&#x2083;。已知氧化性：H&#x2082;O&#x2082; &gt; NaBrO&#x2083;。下列说法不正确的是：<br><br>
+        <strong>D.</strong> 原料足量时，理论上电路中转移 0.2mol e&#x207B; 可得到 0.1mol NaBrO&#x2083;
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s1-3')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s1-3"><div class="answer-box">
+        &#x274C; <strong>D错误！</strong><br><br>
+        由得失电子守恒：电路中转移 0.2mol e&#x207B;，若只靠电解直接氧化Br&#x207B;，确实生成0.1mol NaBrO&#x2083;。<br>
+        <strong>但是！</strong>阳极上生成的 H&#x2082;O&#x2082; 也具有氧化性（题给：氧化性 H&#x2082;O&#x2082; &gt; NaBrO&#x2083;），H&#x2082;O&#x2082; 可以<strong>继续</strong>将 Br&#x207B; 氧化为 NaBrO&#x2083;。这部分氧化<strong>不消耗电路中的电子！</strong><br>
+        &rarr; 实际得到的 NaBrO&#x2083; &gt; 0.1mol<br><br>
+        &#x1F4A1; <strong>本质：</strong>电化学+化学氧化的"串联反应"中，不能只按电子守恒算电化学步骤的产物。
+      </div></div>
+    </div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>2025&middot;浙江卷&middot;第19题(2) &mdash; 草酸铜钾制备中的双元素守恒</div>
+      <div class="q-text">
+        步骤I：75&#x2103;下，水中依次加入 0.032mol K&#x2082;C&#x2082;O&#x2084;、0.020mol CuCl&#x2082;、0.012mol H&#x2082;C&#x2082;O&#x2084;充分反应。根据K元素守恒和C元素守恒可知，溶液M中含有 0.016mol KHC&#x2082;O&#x2084;、0.008mol K&#x2082;C&#x2082;O&#x2084;。求pH。
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s1-4')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s1-4"><div class="answer-box">
+        <strong>双元素守恒联立方程：</strong><br><br>
+        &#x1F4D0; <strong>K守恒：</strong>2&times;0.032 = 2n(KHC&#x2082;O&#x2084;) + 2n(K&#x2082;C&#x2082;O&#x2084;) &rarr; a + b = 0.032<br>
+        &#x1F4D0; <strong>C守恒：</strong>2&times;0.032 + 2&times;0.012 = 2a + 2b &rarr; a + b = 0.044<br>
+        <strong>联立：</strong>n(KHC&#x2082;O&#x2084;) = 0.016mol，n(K&#x2082;C&#x2082;O&#x2084;) = 0.008mol<br><br>
+        &#x1F4CF; c(H&#x207A;) &#x2248; &#x221A;(Ka&times;c) &rarr; pH &asymp; 4 &#x2714;&#xFE0F;<br><br>
+        &#x1F4A1; <strong>两个守恒式联立</strong>，不需要知道具体反应方程式就能算出各物质的量！
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">&middot; &middot; &middot;</div>
+
+<!-- ========== 板块二 ========== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块二</span>
+    <h2>"关系式法"&mdash;&mdash;多步反应一步到位</h2>
+    <span class="must">&#x1F534; 高频必考</span>
+  </div>
+  <div class="sub">
+    <div class="sub-title exam">&#x1F4DD; 核心原理</div>
+    <p><strong>关系式法：</strong>在多步连续反应中，找到初始反应物与最终产物之间的<strong>物质的量关系</strong>，然后一步计算，跳过所有中间步骤。</p>
+    <div class="knowledge-box" style="margin-top:10px;">
+      <div class="kb-title">&#x1F3AF; 关系式法的适用条件</div>
+      <ul>
+        <li>多步反应中<strong>某元素的原子完全传递</strong>（无损失）</li>
+        <li>工业流程题中从原料到最终产品</li>
+        <li>多个平行反应中<strong>产物合并</strong>的情况</li>
+      </ul>
+    </div>
+    <p style="margin-top:10px;background:#e8f4fd;padding:10px;border-radius:6px;font-size:15px;font-weight:700;color:#0369a1;text-align:center;">
+      &#x1F4A1; <strong>建立关系式的核心：找"不变元素"</strong>&mdash;&mdash;该元素从原料到产品，原子个数不变
+    </p>
+  </div>
+  <div class="sub">
+    <div class="sub-title exam">&#x1F4DD; 真题举例</div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>经典关系式法 &mdash; 工业流程中的元素传递</div>
+      <table class="compare-table">
+        <tr><th style="width:30%">工业流程</th><th>关系式</th><th>关键</th></tr>
+        <tr class="highlight-row"><td><strong>铝土矿&rarr;Al</strong></td><td>Al&#x2082;O&#x2083; &rarr; 2Al</td><td>Al守恒（注意Al&#x2082;O&#x2083;含2个Al）</td></tr>
+        <tr><td><strong>硫铁矿&rarr;H&#x2082;SO&#x2084;</strong></td><td>FeS&#x2082; &rarr; 2H&#x2082;SO&#x2084;</td><td>S守恒（1个S&rarr;1个H&#x2082;SO&#x2084;）</td></tr>
+        <tr><td><strong>NH&#x2083;&rarr;NO&rarr;HNO&#x2083;</strong></td><td>NH&#x2083; &rarr; NO &rarr; HNO&#x2083;</td><td>N守恒（转化率需乘）</td></tr>
+        <tr><td><strong>FeS&#x2082;&rarr;SO&#x2082;&rarr;H&#x2082;SO&#x2084;</strong></td><td>FeS&#x2082; &rarr; 2H&#x2082;SO&#x2084;</td><td>S守恒（中间产物不需要管）</td></tr>
+      </table>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s2-1')">&#x1F50D; 查看详细推导</button>
+      <div class="reveal" id="s2-1"><div class="answer-box">
+        <strong>硫铁矿制硫酸的完整推导：</strong><br>
+        4FeS&#x2082; + 11O&#x2082; &rarr; 2Fe&#x2082;O&#x2083; + 8SO&#x2082;&emsp;&emsp;&hellip;(1)<br>
+        2SO&#x2082; + O&#x2082; &rarr; 2SO&#x2083;&emsp;&emsp;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;(2)<br>
+        SO&#x2083; + H&#x2082;O &rarr; H&#x2082;SO&#x2084;&emsp;&emsp;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;(3)<br>
+        从(1)：4FeS&#x2082; &rarr; 8SO&#x2082; &rarr; 8H&#x2082;SO&#x2084;，约分：<strong>FeS&#x2082; &rarr; 2H&#x2082;SO&#x2084;</strong><br>
+        &#x1F4A1; 不需要三步分别算！一步关系式搞定。实际生产中还需乘转化率。
+      </div></div>
+    </div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>2025&middot;新课标卷&middot;第8题相关 &mdash; 碘回收流程中的关系式</div>
+      <div class="q-text">
+        实验室利用沉淀法从含碘废液中回收碘。含碘废液中I&#x207B;总浓度为 0.05mol/L，取 200mL 废液处理，最终得到 1.14g I&#x2082; 晶体。求碘的回收率。
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s2-2')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s2-2"><div class="answer-box">
+        <strong>关系式法：</strong>2I&#x207B; &rarr; I&#x2082;（I守恒）<br>
+        n(I&#x207B;总) = 0.05 &times; 0.2 = 0.01mol<br>
+        理论 n(I&#x2082;) = 0.01/2 = 0.005mol<br>
+        理论 m(I&#x2082;) = 0.005 &times; 254 = 1.27g<br>
+        实际得到 1.14g<br>
+        回收率 = 1.14/1.27 &times; 100% = <strong>89.8%</strong><br>
+        &#x1F4A1; 中间的沉淀、溶解、氧化还原等步骤全部跳过，只盯住I元素从废液到I&#x2082;晶体。
+      </div></div>
+    </div>
+  </div>
+  <div class="sub">
+    <div class="sub-title trap">&#x26A0;&#xFE0F; 陷阱</div>
+    <button class="toggle-btn btn-trap" onclick="toggle(this,'t2')">&#x26A0;&#xFE0F; 查看陷阱</button>
+    <div class="reveal" id="t2"><div class="trap-box">
+      <p><strong>&#x2460; 忘记乘转化率</strong>&mdash;&mdash;&#x274C; 工业生产中每一步都有损耗，实际产量 = 理论产量 &times; 各步转化率的乘积</p>
+      <p><strong>&#x2461; 元素传递不完整</strong>&mdash;&mdash;&#x274C; 中间步骤有元素损失（如尾气排放、废渣带走），不能直接用守恒关系式</p>
+      <p><strong>&#x2462; 关系式系数写错</strong>&mdash;&mdash;&#x274C; Al&#x2082;O&#x2083; &rarr; 2Al（不是1:1！），FeS&#x2082; &rarr; 2H&#x2082;SO&#x2084;（也不是1:1！）。一定要核对化学式中原子的个数</p>
+    </div></div>
+  </div>
+  <div class="sub">
+    <div class="sub-title tip">&#x2705; 避坑指导</div>
+    <button class="toggle-btn btn-tip" onclick="toggle(this,'g2')">&#x2705; 查看指导</button>
+    <div class="reveal" id="g2"><div class="tip-box">
+      <p><strong>关系式法标准操作流程：</strong></p>
+      <ol style="padding-left:20px;">
+        <li><strong>找核心元素。</strong> 哪个元素从原料完整传递到产品？</li>
+        <li><strong>写首尾化学式。</strong> 原料（含1个该元素）&rarr; 产品（含n个该元素）</li>
+        <li><strong>调整系数。</strong> 确保该元素左右两边原子数相等</li>
+        <li><strong>代入计算。</strong> n(原料) &rarr; n(产品) &rarr; m(产品)，别忘了乘转化率</li>
+      </ol>
+      <p style="margin-top:10px;"><strong>高考常考关系式（建议默写）：</strong></p>
+      <table class="data-table" style="font-size:12px;">
+        <thead><tr><th>原料</th><th>产品</th><th>关系式</th></tr></thead>
+        <tbody>
+          <tr><td>FeS&#x2082;</td><td>H&#x2082;SO&#x2084;</td><td>FeS&#x2082; ~ 2H&#x2082;SO&#x2084;</td></tr>
+          <tr><td>Al&#x2082;O&#x2083;</td><td>Al</td><td>Al&#x2082;O&#x2083; ~ 2Al</td></tr>
+          <tr><td>N&#x2082;</td><td>HNO&#x2083;</td><td>N&#x2082; ~ 2HNO&#x2083;</td></tr>
+          <tr><td>C</td><td>CO&#x2082;</td><td>C ~ CO&#x2082;</td></tr>
+          <tr><td>Fe（+水蒸气）</td><td>Fe&#x2083;O&#x2084;</td><td>3Fe ~ Fe&#x2083;O&#x2084;</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+<div class="divider">&middot; &middot; &middot;</div>
+
+<!-- ========== 板块三 ========== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块三</span>
+    <h2>"差量法 + 极值法"&mdash;&mdash;利用差值和极端情况速算</h2>
+    <span class="must">&#x1F534; 高频易错</span>
+  </div>
+  <div class="sub">
+    <div class="sub-title exam">&#x1F4DD; 核心原理</div>
+    <div class="knowledge-box">
+      <div class="kb-title">&#x1F4CA; 差量法</div>
+      <p>利用反应前后<strong>质量差、体积差、物质的量差</strong>建立比例关系。当题目给出反应前后的变化量时，直接用差量列比例。</p>
+      <p style="margin-top:6px;"><strong>公式：</strong>反应物消耗量 / 理论差量 = 实际差量 / 实际消耗</p>
+      <p style="margin-top:4px;font-size:12px;color:#6b7280;">适用于：固体增重/减重、气体体积缩小、溶液质量变化等</p>
+    </div>
+    <div class="knowledge-box" style="margin-top:12px;">
+      <div class="kb-title">&#x1F3AF; 极值法（平均值法）</div>
+      <p>假设混合物中<strong>只含其中一种成分</strong>（极端情况），计算出一个理论值。如果实际值介于两个极值之间，说明是混合物。</p>
+      <p style="margin-top:6px;"><strong>常用于：</strong>判断混合物组成、确定平均相对分子质量范围、确定化学式等</p>
+    </div>
+  </div>
+  <div class="sub">
+    <div class="sub-title exam">&#x1F4DD; 真题举例</div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>经典差量法题 &mdash; 金属与酸反应的固体质量变化</div>
+      <div class="q-text">
+        将 6.5g 锌放入足量稀硫酸中，完全反应后，溶液质量增加了 <strong>6.3g</strong>。求生成 H&#x2082; 的体积（标况）。
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s3-1')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s3-1"><div class="answer-box">
+        <strong>差量法：</strong>Zn + H&#x2082;SO&#x2084; = ZnSO&#x2084; + H&#x2082;&uarr;<br>
+        理论差量：每消耗65g Zn（1mol），放出2g H&#x2082;（1mol），溶液增加 65 &minus; 2 = <strong>63g</strong><br>
+        设实际消耗 Zn 为 x g：x / 63 = 6.3 / 63 &rarr; x = <strong>6.3g</strong><br>
+        n(H&#x2082;) = 6.3/65 = 0.097mol，V(H&#x2082;) = 0.097 &times; 22.4 = <strong>2.17L</strong><br>
+        &#x1F4A1; 不需要单独求Zn和H&#x2082;各自的量，直接用"差量比"一步到位！
+      </div></div>
+    </div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>经典极值法题 &mdash; 混合金属的平均摩尔电子质量</div>
+      <div class="q-text">
+        由两种金属组成的混合物 12g，与足量盐酸反应，收集到标况下 11.2L H&#x2082;。则该混合物可能是：<br>
+        A. Fe 和 Zn &emsp; B. Mg 和 Al &emsp; C. Cu 和 Zn &emsp; D. Na 和 Mg
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s3-2')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s3-2"><div class="answer-box">
+        <strong>极值法（平均值法）：</strong><br>
+        n(H&#x2082;) = 11.2/22.4 = 0.5mol，n(e&#x207B;转移) = 1.0mol<br>
+        平均摩尔电子质量 = 12/1.0 = <strong>12 g/mol&middot;e&#x207B;</strong><br><br>
+        各金属的 M/化合价：Fe(+2):28 | Zn(+2):32.5 | Mg(+2):12 | Al(+3):9 | Na(+1):23<br>
+        两种金属的 M/化合价 必须一个&ge;12，一个&le;12：<br>
+        &bull; A: 28和32.5 都&ge;12 &rarr; &#x274C;<br>
+        &bull; B: 12和9 &rarr; Mg恰好=12 &rarr; 接近但不完全匹配<br>
+        &bull; D: 23和12 &rarr; 12~23之间包含12 &rarr; &#x2705;<br>
+        &#x1F4A1; <strong>答案D（Na和Mg）</strong>。极值法让你不需要分别计算每种组合！
+      </div></div>
+    </div>
+
+    <div class="q-box">
+      <div class="q-source"><span class="dot"></span>2025&middot;广东卷&middot;第14题 &mdash; 水系电池理论容量计算（电子守恒法）</div>
+      <div class="q-text">
+        一种高容量水系电池，放电时电极材料每转移1mol电子对应的理论容量为 F（96500 C/mol）。充电时 16g S 能提供的理论容量为 300500 C&mdash;&mdash;该说法是否正确？
+      </div>
+      <button class="toggle-btn btn-answer" onclick="toggle(this,'s3-3')">&#x1F50D; 查看解析</button>
+      <div class="reveal" id="s3-3"><div class="answer-box">
+        <strong>电子守恒法计算容量：</strong><br>
+        n(S) = 16/32 = 0.5mol<br>
+        关键：每个S原子转移多少电子？<br>
+        如果 S(0&rarr;+2)：0.5&times;2 = 1mol e&#x207B; &rarr; 容量 = 96500 C<br>
+        如果 S(0&rarr;+4)：0.5&times;4 = 2mol e&#x207B; &rarr; 容量 = 193000 C<br>
+        D选项说 300500 C &asymp; 96500&times;3.11 &rarr; <strong>不是整数倍，D说法有误</strong><br>
+        &#x1F4A1; 容量 = 转移电子数 &times; F。关键在于<strong>正确判断化合价变化</strong>。
+      </div></div>
+    </div>
+  </div>
+  <div class="sub">
+    <div class="sub-title trap">&#x26A0;&#xFE0F; 陷阱</div>
+    <button class="toggle-btn btn-trap" onclick="toggle(this,'t3')">&#x26A0;&#xFE0F; 查看陷阱</button>
+    <div class="reveal" id="t3"><div class="trap-box">
+      <p><strong>&#x2460; 差量法的方向搞反</strong>&mdash;&mdash;&#x274C; 固体质量是增加还是减少？气体体积是增大还是缩小？要看清关键词</p>
+      <p><strong>&#x2461; 极值法边界遗漏</strong>&mdash;&mdash;&#x274C; 一种金属不反应（如Cu），极值之一应该是"只有另一种金属反应"</p>
+      <p><strong>&#x2462; 理论差量算错</strong>&mdash;&mdash;&#x274C; 必须代入具体方程式计算。如 Fe + CuSO&#x2084; = FeSO&#x2084; + Cu，固体增重 = 64&minus;56 = 8g/mol</p>
+      <p><strong>&#x2463; 极值法只适合两组分</strong>&mdash;&mdash;&#x274C; 三组分混合物需要更多信息</p>
+    </div></div>
+  </div>
+  <div class="sub">
+    <div class="sub-title tip">&#x2705; 避坑指导</div>
+    <button class="toggle-btn btn-tip" onclick="toggle(this,'g3')">&#x2705; 查看指导</button>
+    <div class="reveal" id="g3"><div class="tip-box">
+      <p><strong>五种计算方法选择速查表：</strong></p>
+      <table class="data-table" style="font-size:12px;margin-top:8px;">
+        <thead><tr><th>看到什么特征</th><th>优先选择</th><th>为什么</th></tr></thead>
+        <tbody>
+          <tr><td>"某元素从A&rarr;B&rarr;C"</td><td><span class="hl-purple">关系式法</span></td><td>跳过中间步骤</td></tr>
+          <tr><td>氧化还原反应求电子转移</td><td><span class="hl-purple">电子守恒</span></td><td>不需要配平全方程</td></tr>
+          <tr><td>"溶液中离子浓度&hellip;"</td><td><span class="hl-purple">电荷守恒</span></td><td>正负电荷相等</td></tr>
+          <tr><td>"固体增加/减少了x g"</td><td><span class="hl-purple">差量法</span></td><td>直接用差量比</td></tr>
+          <tr><td>"可能是哪些混合物"</td><td><span class="hl-purple">极值法</span></td><td>用边界值排除</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+<!-- 总结板块 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">总结</span>
+    <h2>化学计算五大方法 &times; 真题验证总结</h2>
+    <span class="must">必看</span>
+  </div>
+  <div class="sub">
+    <div class="mantra-box">
+      <div class="mantra-title">&#x1F3C6; 化学计算方法选择终极总结</div>
+      <div class="mantra-text" style="font-size:14px;text-align:left;">
+        &#x1F517; <strong>守恒法 = 万能钥匙</strong>（最优先尝试）<br>
+        &#x1F517; <strong>关系式法 = 多步反应终结者</strong>（工业流程首选）<br>
+        &#x1F517; <strong>差量法 = 差值速算器</strong>（有增/减量时直接用）<br>
+        &#x1F517; <strong>极值法 = 混合物判断器</strong>（两端夹击定位）<br>
+        &#x1F517; <strong>平均值法 = 范围缩定器</strong>（与极值法配合使用）<br><br>
+        &#x1F4A1; <strong>核心心法：看到题目不要急着列方程，先问自己"这个题能不能用守恒？能不能用关系式？" &mdash;&mdash; 能的话，一定是更快的方法！</strong>
+      </div>
+    </div>
+
+    <table class="data-table" style="margin-top:16px;">
+      <thead><tr><th>年份/来源</th><th>题目</th><th>最优方法</th><th>关键</th></tr></thead>
+      <tbody>
+        <tr><td>2025新课标第7题</td><td>HF溶液守恒式判断</td><td class="highlight">原子守恒+电荷守恒</td><td>不漏HF&#x2082;&#x207B;</td></tr>
+        <tr><td>2025湖南第8题</td><td>Sb氧化还原电子转移</td><td class="highlight">电子守恒</td><td>Sb(0&rarr;+5)，4&times;5=20</td></tr>
+        <tr><td>2025浙江第12题</td><td>电化学制备NaBrO&#x2083;</td><td class="highlight">电子守恒+分析</td><td>H&#x2082;O&#x2082;额外氧化</td></tr>
+        <tr><td>2025浙江第19题</td><td>草酸铜钾组成</td><td class="highlight">双元素守恒联立</td><td>K守恒+C守恒</td></tr>
+        <tr><td>2025浙江第18题</td><td>氯水氯元素守恒</td><td class="highlight">元素守恒</td><td>c(Cl&#x2082;)=c(HClO)+c(ClO&minus;)+c(Cl&minus;)+2c(ClO&#x2082;&minus;)</td></tr>
+        <tr><td>2025广东第14题</td><td>水系电池容量</td><td class="highlight">电子守恒</td><td>容量=e&times;F</td></tr>
+      </tbody>
+    </table>
+
+    <div class="knowledge-box" style="margin-top:16px;">
+      <div class="kb-title">&#x1F4DD; 课后任务</div>
+      <ul>
+        <li>默写本页"高考常考关系式"表格（遮住右边自己写）</li>
+        <li>用守恒法完成：向Na&#x2082;CO&#x2083;溶液中通入CO&#x2082;后各离子浓度的关系式</li>
+        <li>完成步步高"难点突破2"对应的练习题，注意标注每道题用的哪种方法</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 底部导航 -->
+<div class="page-footer">
+  <p>化学不难学 &middot; 以考定教 &middot; 难点突破2</p>
+  <div class="nav-btns">
+    <a href="rd-02.html" class="nav-btn secondary">&larr; 热点强化2 NA应用</a>
+    <a href="../index.html" class="nav-btn secondary">&#x1F3E0; 返回主页</a>
+    <a href="07.html" class="nav-btn">&rarr; 第7讲 化学实验基础</a>
+  </div>
+</div>
+</main>
+
+<script>
+function toggle(btn, id) {
+  var el = document.getElementById(id);
+  var isOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  if (isOpen) {
+    if (btn.classList.contains('btn-answer')) btn.textContent = '\uD83D\uDD0D 查看答案';
+    else if (btn.classList.contains('btn-trap')) btn.textContent = '\u26A0\uFE0F 查看陷阱';
+    else if (btn.classList.contains('btn-tip')) btn.textContent = '\u2705 查看指导';
+  } else {
+    if (btn.classList.contains('btn-answer')) btn.textContent = '\uD83D\uDD12 隐藏答案';
+    else if (btn.classList.contains('btn-trap')) btn.textContent = '\uD83D\uDD12 隐藏陷阱';
+    else if (btn.classList.contains('btn-tip')) btn.textContent = '\uD83D\uDD12 隐藏指导';
+  }
+}
+</script>
 </body>
 </html>
