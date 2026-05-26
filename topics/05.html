@@ -1,354 +1,226 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <title>第5讲 物质的量 气体摩尔体积 | 化学不难学</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
-      background: #f0f4f8;
-      color: #1a1a2e;
-      line-height: 1.75;
-    }
-    /* 导航 */
-    .navbar {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-      padding: 0 24px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    }
-    .navbar a {
-      color: #e2e8f0;
-      text-decoration: none;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .navbar a:hover { color: #fbbf24; }
-    .navbar-brand { color: #fbbf24; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <title>第5讲 物质的量 气体摩尔体积 | 化学不难学</title>
+    <style>
+        :root {
+            --accent: #3b82f6;
+            --accent-light: #eff6ff;
+            --accent-border: #bfdbfe;
+            --badge-bg: #3b82f6;
+            --navy-dark: #0f172a;
+            --navy-mid: #1e3a5f;
+            --gold: #fbbf24;
+            --bg: #f0f4f8;
+            --text: #1a1a2e;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+        }
 
-    /* 顶部 banner */
-    .header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      color: #fff;
-      padding: 40px 32px 32px;
-      text-align: center;
-    }
-    .header .lecture-tag {
-      display: inline-block;
-      background: #e94560;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 12px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-    .header h1 { font-size: 24px; font-weight: 800; }
-    .header h1 em { font-style: normal; color: #fbbf24; }
-    .header p { font-size: 14px; opacity: 0.6; margin-top: 8px; }
-    .header .tags { margin-top: 14px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .header .tag {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #e2e8f0;
-      font-size: 12px;
-      padding: 3px 10px;
-      border-radius: 12px;
-    }
+        /* ===== 导航栏 ===== */
+        .navbar {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            padding: 0 24px; height: 56px;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .navbar-brand {
+            color: var(--gold); font-size: 18px; font-weight: 700;
+            text-decoration: none; letter-spacing: 2px;
+        }
+        .navbar-links { display: flex; gap: 20px; }
+        .navbar-links a {
+            color: #e2e8f0; text-decoration: none; font-size: 14px;
+            display: flex; align-items: center; gap: 4px; transition: color 0.2s;
+        }
+        .navbar-links a:hover { color: var(--gold); }
 
-    /* 主体 */
-    .wrap {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 28px 16px 60px;
-    }
+        /* ===== 页头（分类型配色） ===== */
+        .page-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            color: #fff; padding: 40px 32px 32px; text-align: center;
+        }
+        .header-badge {
+            display: inline-block; background: var(--badge-bg); color: #fff;
+            font-size: 12px; font-weight: 700; padding: 4px 14px;
+            border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px;
+        }
+        .page-header h1 {
+            font-size: 26px; font-weight: 800;
+        }
+        .page-header h1 em {
+            font-style: normal; color: var(--gold);
+        }
+        .page-header p {
+            font-size: 13px; opacity: 0.65; margin-top: 6px;
+        }
 
-    /* 考点块 */
-    .block {
-      margin-bottom: 36px;
-      border-left: 4px solid #e94560;
-      border-radius: 0 12px 12px 0;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-    .block-head {
-      padding: 16px 22px;
-      background: linear-gradient(90deg, #fef2f4 0%, #fff 100%);
-      border-bottom: 1px solid #fde8ec;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .block-num {
-      background: #e94560;
-      color: #fff;
-      border-radius: 6px;
-      padding: 2px 10px;
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .block-head h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; flex: 1; }
-    .must { font-size: 12px; color: #e94560; font-weight: 600; background: #fef2f4; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
-    .often { font-size: 12px; color: #f39c12; font-weight: 600; background: #fff8ec; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+        /* ===== 主内容区 ===== */
+        .content {
+            max-width: 820px; margin: 0 auto; padding: 28px 20px 60px;
+        }
+        .block {
+            margin-bottom: 36px;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .block-head {
+            padding: 16px 22px;
+            background: linear-gradient(90deg, #eff6ff, #fff);
+            border-bottom: 1px solid var(--accent-border);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .block-num {
+            background: var(--accent); color: #fff;
+            border-radius: 6px; padding: 2px 10px;
+            font-size: 12px; font-weight: 700; white-space: nowrap;
+        }
+        .block-head h2 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
+        .must { font-size: 12px; color: var(--accent); font-weight: 600; background: var(--accent-light); padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+        .often { font-size: 12px; color: #f59e0b; font-weight: 600; background: #fffbeb; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
 
-    /* 子块 */
-    .sub { padding: 18px 22px; border-bottom: 1px solid #f0f1f3; }
-    .sub:last-child { border-bottom: none; }
-    .sub-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sub-title.exam { color: #0f3460; }
-    .sub-title.trap { color: #e94560; }
-    .sub-title.tip  { color: #27ae60; }
+        .sub {
+            padding: 18px 22px; border-bottom: 1px solid #f0f1f3;
+        }
+        .sub:last-child { border-bottom: none; }
+        .sub-title {
+            font-size: 13px; font-weight: 700; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .sub-title.exam { color: #0f3460; }
+        .sub-title.trap { color: var(--accent); }
+        .sub-title.tip  { color: #059669; }
+        .sub p, .sub li { font-size: 14px; color: #333; line-height: 1.9; }
+        .sub ul, .sub ol { padding-left: 22px; }
+        .sub li { margin-bottom: 4px; }
 
-    /* 真题框 */
-    .q-box {
-      background: #f6f8fb;
-      border-radius: 8px;
-      padding: 14px 16px;
-      border: 1px solid #e0e6ed;
-      margin-bottom: 10px;
-    }
-    .q-source {
-      font-size: 12px;
-      color: #0f3460;
-      font-weight: 700;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .q-source .dot { width: 6px; height: 6px; background: #0f3460; border-radius: 50%; display: inline-block; }
-    .q-text { font-size: 14px; color: #1a1a2e; font-weight: 500; line-height: 1.8; }
-    .q-options { margin: 10px 0; }
-    .q-options p { font-size: 14px; color: #333; line-height: 2; }
+        .q-box {
+            background: #f6f8fb; border-radius: 8px; padding: 14px 16px;
+            border: 1px solid #e0e6ed; margin-bottom: 12px;
+        }
+        .q-source {
+            font-size: 12px; color: #0f3460; font-weight: 700; margin-bottom: 6px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .q-source .dot {
+            width: 6px; height: 6px; background: #0f3460; border-radius: 50%; display: inline-block;
+        }
+        .q-text { font-size: 14px; color: var(--text); line-height: 1.8; }
+        .q-options { margin: 10px 0; }
+        .q-options p { font-size: 14px; color: #333; line-height: 2; }
+        .q-img { max-width: 100%; height: auto; border-radius: 6px; margin: 8px 0; }
+        .q-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+        .q-table th, .q-table td { border: 1px solid #d1d5db; padding: 8px 12px; text-align: left; }
+        .q-table th { background: #f3f4f6; font-weight: 600; }
 
-    /* 知识框 */
-    .knowledge-box {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 12px 0;
-    }
-    .knowledge-box .kb-title { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
-    .knowledge-box p, .knowledge-box li { font-size: 13px; color: #374151; line-height: 1.9; }
-    .knowledge-box ul { padding-left: 18px; }
-    .knowledge-box li { margin-bottom: 3px; }
+        .steps-box {
+            background: #fafafa; border-radius: 8px; padding: 14px 16px;
+            border: 1px solid #e5e7eb; margin: 10px 0;
+        }
+        .step-item {
+            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;
+        }
+        .step-item:last-child { margin-bottom: 0; }
+        .step-num {
+            background: var(--navy-dark); color: #fff;
+            width: 22px; height: 22px; border-radius: 50%;
+            font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .step-text { font-size: 13px; color: #374151; line-height: 1.8; }
+        .step-text strong { color: var(--navy-dark); }
 
-    /* 公式框 */
-    .formula-box {
-      background: #fffbeb;
-      border: 2px solid #fbbf24;
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 12px 0;
-      text-align: center;
-    }
-    .formula-box .main-formula {
-      font-size: 18px;
-      font-weight: 700;
-      color: #92400e;
-      letter-spacing: 1px;
-    }
-    .formula-box .explain {
-      font-size: 12px;
-      color: #a16207;
-      margin-top: 6px;
-      line-height: 1.8;
-    }
+        /* 可展开按钮 */
+        .toggle-btn {
+            background: none; border: 1px solid #d1d5db;
+            padding: 6px 14px; border-radius: 16px;
+            font-size: 12px; color: #6b7280; cursor: pointer;
+            transition: all 0.2s; margin-top: 8px;
+        }
+        .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .hidden-content {
+            display: none; padding: 12px 0 0;
+        }
+        .hidden-content.open { display: block; }
 
-    /* 展开/收起 */
-    .toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      border: none;
-      margin: 8px 4px 4px 0;
-      transition: all 0.2s;
-    }
-    .btn-answer { background: #e8f4fd; color: #0369a1; }
-    .btn-answer:hover { background: #bae6fd; }
-    .btn-trap { background: #fef2f2; color: #dc2626; }
-    .btn-trap:hover { background: #fecaca; }
-    .btn-tip { background: #f0fdf4; color: #15803d; }
-    .btn-tip:hover { background: #bbf7d0; }
+        /* ===== 底部导航 ===== */
+        .nav-footer {
+            max-width: 820px; margin: 0 auto 0;
+            padding: 20px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 12px;
+        }
+        .nav-footer a {
+            text-decoration: none; padding: 10px 20px;
+            border-radius: 24px; font-size: 14px; font-weight: 600;
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .nav-prev {
+            background: #e2e8f0; color: var(--text);
+            border: 1px solid #cbd5e1;
+        }
+        .nav-prev:hover { background: #cbd5e1; }
+        .nav-prev.disabled {
+            opacity: 0.35; pointer-events: none; cursor: default;
+        }
+        .nav-next {
+            background: var(--accent); color: #fff;
+        }
+        .nav-next:hover { filter: brightness(1.15); }
 
-    .reveal { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
-    .reveal.open { max-height: 1200px; }
+        /* ===== 底部信息 ===== */
+        .site-footer {
+            text-align: center; padding: 24px 16px 32px;
+            color: var(--text-light); font-size: 13px;
+        }
 
-    .answer-box {
-      background: #e8f4fd;
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-top: 6px;
-      font-size: 13px;
-      color: #0369a1;
-      font-weight: 600;
-      line-height: 1.8;
-    }
-    .trap-box {
-      background: #fef2f2;
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-top: 6px;
-      font-size: 13px;
-      color: #dc2626;
-      line-height: 1.8;
-    }
-    .trap-box strong { font-weight: 700; }
-    .tip-box {
-      background: #f0fdf4;
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-top: 6px;
-      font-size: 13px;
-      color: #15803d;
-      line-height: 1.8;
-    }
-    .tip-box li { margin-bottom: 4px; }
-    .tip-box ul { padding-left: 18px; }
-
-    /* 表格 */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 10px 0;
-      font-size: 13px;
-    }
-    .data-table th {
-      background: #0f3460;
-      color: #fff;
-      padding: 8px 12px;
-      text-align: left;
-      font-weight: 700;
-    }
-    .data-table td {
-      padding: 9px 12px;
-      border-bottom: 1px solid #e5e7eb;
-      color: #374151;
-      vertical-align: top;
-    }
-    .data-table tr:nth-child(even) td { background: #f9fafb; }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table .highlight { color: #e94560; font-weight: 700; }
-
-    /* 衍生公式表 */
-    .derive-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 10px 0;
-      font-size: 13px;
-    }
-    .derive-table th {
-      background: #1e40af;
-      color: #fff;
-      padding: 8px 12px;
-      text-align: center;
-      font-weight: 700;
-    }
-    .derive-table td {
-      padding: 9px 12px;
-      border: 1px solid #e5e7eb;
-      text-align: center;
-      color: #374151;
-    }
-    .derive-table td:first-child { text-align: left; font-weight: 600; color: #0f3460; white-space: nowrap; }
-
-    /* 分色标注 */
-    .hl-red { color: #e94560; font-weight: 700; }
-    .hl-blue { color: #0369a1; font-weight: 700; }
-    .hl-green { color: #15803d; font-weight: 700; }
-
-    /* 底部 */
-    .page-footer {
-      text-align: center;
-      padding: 32px 16px;
-      color: #94a3b8;
-      font-size: 13px;
-    }
-    .page-footer a { color: #0f3460; text-decoration: none; }
-    .nav-btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 16px;
-    }
-    .nav-btn {
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      background: #0f3460;
-      color: #fff;
-      transition: background 0.2s;
-    }
-    .nav-btn:hover { background: #1e3a5f; }
-    .nav-btn.secondary { background: #e2e8f0; color: #0f3460; }
-    .nav-btn.secondary:hover { background: #cbd5e1; }
-
-    @media (max-width: 600px) {
-      .header { padding: 28px 16px 22px; }
-      .header h1 { font-size: 20px; }
-      .wrap { padding: 18px 10px 40px; }
-      .derive-table { font-size: 11px; }
-    }
-  </style>
+        /* ===== 响应式 ===== */
+        @media (max-width: 640px) {
+            .page-header { padding: 28px 20px 24px; }
+            .page-header h1 { font-size: 21px; }
+            .content { padding: 20px 12px 40px; }
+            .navbar { padding: 0 14px; }
+            .navbar-links { gap: 12px; }
+            .nav-footer { flex-direction: column; gap: 10px; }
+            .nav-footer a { width: 100%; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
+        <div class="navbar-links">
+            <a href="../index.html">📚 全部专题</a>
+            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+        </div>
+    </nav>
 
-<!-- 导航 -->
-<nav class="navbar">
-  <a href="../index.html">
-    <span style="font-size:20px;">🏠</span>
-    <span class="navbar-brand">化学不难学</span>
-  </a>
-  <a href="../index.html#topics">← 返回专题列表</a>
-</nav>
+    <header class="page-header">
+        <div class="header-badge">第5讲</div>
+        <h1>第5讲 物质的量 气体摩尔体积</h1>
+        <p>步步高大一轮复习讲义 · 以考定教</p>
+    </header>
 
-<!-- 顶部标题 -->
-<header class="header">
-  <div class="lecture-tag">第5讲 · 化学计量基础</div>
-  <h1>物质的量 <em>气体摩尔体积</em></h1>
-  <p>从 n=m/M 到 NA 综合判断，广东高考每年必考一道选择题</p>
-  <div class="tags">
-    <span class="tag">🔢 物质的量</span>
-    <span class="tag">📐 气体摩尔体积</span>
-    <span class="tag">🔄 阿伏加德罗定律</span>
-    <span class="tag">🎯 广东高考必考</span>
-  </div>
-</header>
-
-<!-- 主体 -->
-<main class="wrap">
-
-  <!-- ====== 考点1：物质的量基本概念与换算 ====== -->
+    <main class="content">
+<!-- ====== 考点1：物质的量基本概念与换算 ====== -->
   <div class="block">
     <div class="block-head">
       <span class="block-num">考点1</span>
@@ -805,33 +677,30 @@
       </div>
     </div>
   </div>
+    </main>
 
-  <!-- 底部导航 -->
-  <div class="page-footer">
-    <p>化学不难学 · 以考定教 · 第5讲</p>
-    <div class="nav-btns">
-      <a href="04.html" class="nav-btn secondary">← 第4讲 氧化还原配平</a>
-      <a href="../index.html" class="nav-btn secondary">🏠 返回主页</a>
-      <a href="06.html" class="nav-btn">第6讲 物质的量浓度 →</a>
-    </div>
-  </div>
-</main>
+    <nav class="nav-footer">
+        <a href="./rd-01.html" class="nav-prev">← 上一讲 | 热点强化1 陌生情境下氧化还原方程式的书写</a>
+        <a href="./06.html" class="nav-next">下一讲 | 第6讲 物质的量浓度及溶液配制 →</a>
+    </nav>
 
-<script>
-function toggle(btn, id) {
-  const el = document.getElementById(id);
-  const isOpen = el.classList.contains('open');
-  el.classList.toggle('open');
-  if (isOpen) {
-    if (btn.classList.contains('btn-answer')) btn.textContent = '🔍 查看答案';
-    else if (btn.classList.contains('btn-trap')) btn.textContent = '⚠️ 查看陷阱';
-    else if (btn.classList.contains('btn-tip')) btn.textContent = '✅ 查看指导';
+    <footer class="site-footer">
+        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+    </footer>
+
+    <script>
+function toggleCollapsible(btn, targetClass) {
+  var target = btn.parentElement.querySelector('.' + targetClass);
+  if (!target) target = btn.closest('.sub').querySelector('.' + targetClass);
+  if (!target) return;
+  if (target.classList.contains('open')) {
+    target.classList.remove('open');
+    btn.textContent = btn.dataset.showText || '展开';
   } else {
-    if (btn.classList.contains('btn-answer')) btn.textContent = '🔒 隐藏答案';
-    else if (btn.classList.contains('btn-trap')) btn.textContent = '🔒 隐藏陷阱';
-    else if (btn.classList.contains('btn-tip')) btn.textContent = '🔒 隐藏指导';
+    target.classList.add('open');
+    btn.textContent = btn.dataset.hideText || '收起';
   }
 }
-</script>
+    </script>
 </body>
 </html>

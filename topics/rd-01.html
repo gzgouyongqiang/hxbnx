@@ -4,190 +4,715 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>热点强化1 陌生情境下氧化还原方程式的书写 | 决胜高考</title>
+    <title>热点强化1 陌生情境下氧化还原方程式的书写 | 化学不难学</title>
     <style>
+        :root {
+            --accent: #f97316;
+            --accent-light: #fff7ed;
+            --accent-border: #fed7aa;
+            --badge-bg: #f97316;
+            --navy-dark: #0f172a;
+            --navy-mid: #1e3a5f;
+            --gold: #fbbf24;
+            --bg: #f0f4f8;
+            --text: #1a1a2e;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
+            font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
         }
+
+        /* ===== 导航栏 ===== */
         .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            padding: 0 24px; height: 56px;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
         .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            color: var(--gold); font-size: 18px; font-weight: 700;
+            text-decoration: none; letter-spacing: 2px;
         }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .navbar-links { display: flex; gap: 20px; }
+        .navbar-links a {
+            color: #e2e8f0; text-decoration: none; font-size: 14px;
+            display: flex; align-items: center; gap: 4px; transition: color 0.2s;
         }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
+        .navbar-links a:hover { color: var(--gold); }
+
+        /* ===== 页头（分类型配色） ===== */
+        .page-header {
+            background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+            color: #fff; padding: 40px 32px 32px; text-align: center;
         }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
+        .header-badge {
+            display: inline-block; background: var(--badge-bg); color: #fff;
+            font-size: 12px; font-weight: 700; padding: 4px 14px;
+            border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px;
         }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
+        .page-header h1 {
+            font-size: 26px; font-weight: 800;
         }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
+        .page-header h1 em {
+            font-style: normal; color: var(--gold);
         }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
+        .page-header p {
+            font-size: 13px; opacity: 0.65; margin-top: 6px;
         }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+        /* ===== 主内容区 ===== */
+        .content {
+            max-width: 820px; margin: 0 auto; padding: 28px 20px 60px;
         }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
+        .block {
+            margin-bottom: 36px;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            overflow: hidden;
         }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
+        .block-head {
+            padding: 16px 22px;
+            background: linear-gradient(90deg, #fff7ed, #fff);
+            border-bottom: 1px solid var(--accent-border);
+            display: flex; align-items: center; gap: 10px;
         }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
+        .block-num {
+            background: var(--accent); color: #fff;
+            border-radius: 6px; padding: 2px 10px;
+            font-size: 12px; font-weight: 700; white-space: nowrap;
         }
+        .block-head h2 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
+        .must { font-size: 12px; color: var(--accent); font-weight: 600; background: var(--accent-light); padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+        .often { font-size: 12px; color: #f59e0b; font-weight: 600; background: #fffbeb; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+
+        .sub {
+            padding: 18px 22px; border-bottom: 1px solid #f0f1f3;
+        }
+        .sub:last-child { border-bottom: none; }
+        .sub-title {
+            font-size: 13px; font-weight: 700; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .sub-title.exam { color: #0f3460; }
+        .sub-title.trap { color: var(--accent); }
+        .sub-title.tip  { color: #059669; }
+        .sub p, .sub li { font-size: 14px; color: #333; line-height: 1.9; }
+        .sub ul, .sub ol { padding-left: 22px; }
+        .sub li { margin-bottom: 4px; }
+
+        .q-box {
+            background: #f6f8fb; border-radius: 8px; padding: 14px 16px;
+            border: 1px solid #e0e6ed; margin-bottom: 12px;
+        }
+        .q-source {
+            font-size: 12px; color: #0f3460; font-weight: 700; margin-bottom: 6px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .q-source .dot {
+            width: 6px; height: 6px; background: #0f3460; border-radius: 50%; display: inline-block;
+        }
+        .q-text { font-size: 14px; color: var(--text); line-height: 1.8; }
+        .q-options { margin: 10px 0; }
+        .q-options p { font-size: 14px; color: #333; line-height: 2; }
+        .q-img { max-width: 100%; height: auto; border-radius: 6px; margin: 8px 0; }
+        .q-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+        .q-table th, .q-table td { border: 1px solid #d1d5db; padding: 8px 12px; text-align: left; }
+        .q-table th { background: #f3f4f6; font-weight: 600; }
+
+        .steps-box {
+            background: #fafafa; border-radius: 8px; padding: 14px 16px;
+            border: 1px solid #e5e7eb; margin: 10px 0;
+        }
+        .step-item {
+            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;
+        }
+        .step-item:last-child { margin-bottom: 0; }
+        .step-num {
+            background: var(--navy-dark); color: #fff;
+            width: 22px; height: 22px; border-radius: 50%;
+            font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .step-text { font-size: 13px; color: #374151; line-height: 1.8; }
+        .step-text strong { color: var(--navy-dark); }
+
+        /* 可展开按钮 */
+        .toggle-btn {
+            background: none; border: 1px solid #d1d5db;
+            padding: 6px 14px; border-radius: 16px;
+            font-size: 12px; color: #6b7280; cursor: pointer;
+            transition: all 0.2s; margin-top: 8px;
+        }
+        .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .hidden-content {
+            display: none; padding: 12px 0 0;
+        }
+        .hidden-content.open { display: block; }
+
+        /* ===== 底部导航 ===== */
         .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
+            max-width: 820px; margin: 0 auto 0;
+            padding: 20px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 12px;
         }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .nav-footer a {
+            text-decoration: none; padding: 10px 20px;
+            border-radius: 24px; font-size: 14px; font-weight: 600;
             transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
+            display: flex; align-items: center; gap: 6px;
         }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
+        .nav-prev {
+            background: #e2e8f0; color: var(--text);
+            border: 1px solid #cbd5e1;
         }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
+        .nav-prev:hover { background: #cbd5e1; }
+        .nav-prev.disabled {
+            opacity: 0.35; pointer-events: none; cursor: default;
         }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
+        .nav-next {
+            background: var(--accent); color: #fff;
         }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
+        .nav-next:hover { filter: brightness(1.15); }
+
+        /* ===== 底部信息 ===== */
+        .site-footer {
+            text-align: center; padding: 24px 16px 32px;
+            color: var(--text-light); font-size: 13px;
         }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 640px) {
+            .page-header { padding: 28px 20px 24px; }
+            .page-header h1 { font-size: 21px; }
+            .content { padding: 20px 12px 40px; }
+            .navbar { padding: 0 14px; }
+            .navbar-links { gap: 12px; }
+            .nav-footer { flex-direction: column; gap: 10px; }
+            .nav-footer a { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
+        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
+        <div class="navbar-links">
+            <a href="../index.html">📚 全部专题</a>
+            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+        </div>
     </nav>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">热点强化1</div>
-            <h1 class="topic-title">陌生情境下氧化还原方程式的书写</h1>
-            <div class="topic-chapter">第一章 化学物质及其变化</div>
-        </div>
+    <header class="page-header">
+        <div class="header-badge">热点强化1</div>
+        <h1>热点强化1 陌生情境下氧化还原方程式的书写</h1>
+        <p>步步高大一轮复习讲义 · 以考定教</p>
+    </header>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
-        </div>
+    <main class="content">
+<!-- ========== 考点1：陌生情境下判断氧化剂/还原剂 ========== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点1</span>
+      <h2>陌生情境中氧化剂与还原剂的判断</h2>
+      <span class="must">必考</span>
+    </div>
 
-        <div class="nav-footer">
-            <a href="./04.html" class="nav-btn ">← 上一讲</a>
-            <a href="./05.html" class="nav-btn next ">下一讲 →</a>
+    <div class="sub">
+      <div class="sub-title exam">📘 核心方法</div>
+      <div class="knowledge-box">
+        <div class="kb-title">🔑 陌生情境「三步判断法」</div>
+        <div class="steps-box">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>标价态</strong>：找出题干中给定物质的化合价变化方向</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>定角色</strong>：化合价升高的物质是<strong>还原剂</strong>（被氧化）；化合价降低的物质是<strong>氧化剂</strong>（被还原）</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>推产物</strong>：根据反应环境和信息提示，确定氧化/还原产物</div>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 真题1 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025年广东高考 第11题（选择题）</div>
+        <div class="q-text">
+          利用如图装置进行实验：打开K₁、K₂，一定时间后，a中溶液变蓝；关闭K₁，打开K₃，点燃酒精灯加热数分钟后，滴入无水乙醇。下列说法<strong>错误</strong>的是
+        </div>
+        <div class="q-options">
+          <p>A．a中现象体现了 I⁻ 的还原性</p>
+          <p>B．b中 H₂O₂ 既作氧化剂也作还原剂</p>
+          <p>C．乙醇滴加过程中，c中的铜丝由黑变红，说明乙醇被氧化</p>
+          <p>D．d中有银镜反应发生，说明c中产物有乙酸</p>
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans1')">🔍 查看答案</button>
+        <div class="reveal" id="ans1">
+          <div class="answer-box">
+            【答案】D<br><br>
+            A ✅：O₂ 氧化 I⁻ 生成 I₂（遇淀粉变蓝），I⁻ 化合价 -1→0，体现还原性，正确。<br>
+            B ✅：b中H₂O₂ 在MnO₂催化下分解：2H₂O₂ → 2H₂O + O₂↑，O: -1→-2（得电子，作氧化剂）和 -1→0（失电子，作还原剂），既作氧化剂又作还原剂，正确。<br>
+            C ✅：Cu先被O₂氧化为CuO（变黑），乙醇将CuO还原为Cu（变红），乙醇被氧化为乙醛，正确。<br>
+            D ❌：d中银镜反应说明产物是<strong>乙醛</strong>（含醛基），而非乙酸（乙酸不能发生银镜反应），错误。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap1')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap1">
+          <div class="trap-box">
+            <strong>陷阱1：H₂O₂的双重身份</strong><br>
+            H₂O₂ 中O为-1价，可升可降。与强氧化剂（KMnO₄）反应时作<strong>还原剂</strong>，与还原剂（Fe²⁺、I⁻）反应时作<strong>氧化剂</strong>。分解时则<strong>两种角色兼具</strong>。<br><br>
+            <strong>陷阱2：乙醛 vs 乙酸</strong><br>
+            银镜反应检验的是<strong>醛基（—CHO）</strong>，只有乙醛能发生，乙酸不能。看到银镜→产物是乙醛，不是乙酸。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip1')">✅ 查看指导</button>
+        <div class="reveal" id="tip1">
+          <div class="tip-box">
+            <ul>
+              <li>在陌生装置情境中，先理清反应流程：谁和谁反应 → 生成什么 → 物质流向哪里</li>
+              <li>H₂O₂分解是典型的<strong>歧化反应</strong>：同一元素（O）价态一升一降</li>
+              <li>乙醇催化氧化：2CH₃CH₂OH + O₂ →(Cu, △)→ 2CH₃CHO + 2H₂O，产物是乙醛不是乙酸</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真题2 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024年广东高考 第17题 第(2)小题</div>
+        <div class="q-text">
+          工业上，烟气中的 SO₂ 可在通空气条件下用石灰石的浆液吸收，生成石膏（主要成分 CaSO₄）。该过程中，________（填元素符号）被氧化。
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans2')">🔍 查看答案</button>
+        <div class="reveal" id="ans2">
+          <div class="answer-box">
+            【答案】S<br><br>
+            反应：2CaCO₃ + 2SO₂ + O₂ → 2CaSO₄ + 2CO₂<br>
+            SO₂ 中 S 为 +4 价，CaSO₄ 中 S 为 +6 价，化合价升高 → S 被氧化。<br>
+            O₂ 中 O 为 0 价，CaSO₄ 中 O 为 -2 价，化合价降低 → O 被还原（O₂ 是氧化剂）。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap2')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap2">
+          <div class="trap-box">
+            <strong>陷阱：审题——填"元素符号"不是"物质名称"</strong><br>
+            题目问"________（填元素符号）"，应填<strong>S</strong>而不是"硫"或"SO₂"。<br>
+            高考区分很清楚：<br>
+            • "被氧化的是______元素" → 填元素符号<br>
+            • "作还原剂的是______" → 填物质化学式<br>
+            • "体现出______性" → 填"还原"或"氧化"
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip2')">✅ 查看指导</button>
+        <div class="reveal" id="tip2">
+          <div class="tip-box">
+            <ul>
+              <li>工业脱硫流程是高频考题：SO₂ → CaSO₄，S从+4升到+6，SO₂作还原剂</li>
+              <li>口诀牢记：<strong>升失氧、降得还</strong><br>
+                化合价<strong>升</strong>高→<strong>失</strong>去电子→被<strong>氧</strong>化→作还原剂<br>
+                化合价<strong>降</strong>低→<strong>得</strong>到电子→被<strong>还</strong>原→作氧化剂</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 考点2：信息型离子方程式书写 ========== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点2</span>
+      <h2>工业流程中信息型氧化还原方程式的书写</h2>
+      <span class="must">必考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 书写策略</div>
+      <div class="knowledge-box">
+        <div class="kb-title">🔑 陌生方程式书写「五步走」</div>
+        <div class="steps-box">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>找反应物和产物</strong>：从流程图中圈出进入该步骤的物质（反应物）和出来的物质（产物）</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>标变价元素</strong>：只关注化合价发生变化的元素</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>电子守恒定系数</strong>：升高总数 = 降低总数，确定氧化剂和还原剂的系数比</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>电荷守恒补H⁺/OH⁻</strong>：酸性环境加H⁺，碱性加OH⁻</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-text"><strong>质量守恒补H₂O</strong>：哪边缺O加H₂O，同时校正H原子数</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真题3：2025广东工业流程 Fe²⁺被氧化 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025年广东高考 第18题 第(2)小题（工业流程大题）</div>
+        <div class="q-text">
+          某多金属精矿酸浸后，浸取液中含有 Fe²⁺、Cu²⁺、Ni²⁺、Al³⁺等。调节 pH=3.0，通入空气加热，"高压加热"时生成 Fe₂O₃↓。写出该步骤的<strong>离子方程式</strong>。
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans3')">🔍 查看答案</button>
+        <div class="reveal" id="ans3">
+          <div class="answer-box">
+            【配平过程】<br>
+            1. 找物质：Fe²⁺（反应物）→ Fe₂O₃（产物），O₂（来自空气）是氧化剂<br>
+            2. 标变价：Fe: +2→+3（升1，每mol失1e⁻），O₂: 0→-2（降2，每mol O₂得4e⁻）<br>
+            3. 电子守恒：4mol Fe²⁺失4e⁻ = 1mol O₂得4e⁻<br>
+            4. 补O：右边Fe₂O₃有3个O，左边有O₂的2个O，差1个O来自H₂O<br>
+            5. 补H⁺：4个H₂O提供8个H → 生成8H⁺<br><br>
+            <strong>离子方程式：4Fe²⁺ + O₂ + 4H₂O = 2Fe₂O₃↓ + 8H⁺</strong>
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap3')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap3">
+          <div class="trap-box">
+            <strong>陷阱1：O的来源判断</strong><br>
+            Fe₂O₃ 中3个O来自哪里？O₂ 提供2个O，剩余1个O必须来自H₂O。<br>
+            工业流程中"通空气氧化"→ O₂是氧化剂，产物中多余的O通常靠H₂O补充。<br><br>
+            <strong>陷阱2：生成H⁺还是消耗H⁺？</strong><br>
+            本题生成8H⁺，说明酸度增大，所以后续流程需要继续调pH（补碱）。<br>
+            背诵口诀：<strong>通氧氧化Fe²⁺，生成酸来要补碱</strong>。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip3')">✅ 查看指导</button>
+        <div class="reveal" id="tip3">
+          <div class="tip-box">
+            <ul>
+              <li>工业流程中「通空气氧化Fe²⁺」是超高频考点：O₂作氧化剂，Fe²⁺作还原剂</li>
+              <li>配平顺序口诀：<strong>先电子、后电荷、再补H₂O、最后查一遍</strong></li>
+              <li>pH控制类题目中，生成H⁺/OH⁻的方向决定了后续流程走向</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真题4：2023广东 配合物氧化还原 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023年广东高考 第19题 第(1)②小题</div>
+        <div class="q-text">
+          某有机物能与 Co²⁺ 形成橙红色的配离子，该配离子可被 H₂O₂ 氧化成淡蓝色的配离子（Co³⁺）。完成反应的离子方程式（已知氧化剂为 H₂O₂）：<br><br>
+          ______Co²⁺ + ______H₂O₂ + ______H⁺ → ______Co³⁺ + ______H₂O
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans4')">🔍 查看答案</button>
+        <div class="reveal" id="ans4">
+          <div class="answer-box">
+            【配平过程】<br>
+            1. Co: +2→+3（升高1，每mol Co²⁺失1e⁻）<br>
+            2. H₂O₂ 中 O: -1→-2（降低1，每mol H₂O₂得2e⁻，作氧化剂）<br>
+            3. 电子守恒：2Co²⁺失2e⁻ = 1H₂O₂得2e⁻，系数比 2:1<br>
+            4. 电荷：左边 [2×(+2) + 0 + x×(+1)] = 右边 [2×(+3) + 0]，4+x=6，x=2，需2H⁺<br>
+            5. O守恒：左边1个H₂O₂有2个O，右边2个H₂O有2个O，✓<br><br>
+            <strong>离子方程式：2Co²⁺ + H₂O₂ + 2H⁺ = 2Co³⁺ + 2H₂O</strong>
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap4')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap4">
+          <div class="trap-box">
+            <strong>陷阱：H₂O₂作氧化剂时的电子转移数</strong><br>
+            H₂O₂ 中 O 为 -1 价：<br>
+            • 作氧化剂：O -1→-2（每mol H₂O₂得<strong>2e⁻</strong>）→ 生成H₂O<br>
+            • 作还原剂：O -1→0（每mol H₂O₂失<strong>2e⁻</strong>）→ 生成O₂<br>
+            本题题干明确"氧化剂为H₂O₂"，产物是H₂O不是O₂。如果产物写成O₂就错了！
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip4')">✅ 查看指导</button>
+        <div class="reveal" id="tip4">
+          <div class="tip-box">
+            <ul>
+              <li>Co²⁺→Co³⁺是典型的1e⁻转移，记忆系数关系：<strong>2Co²⁺ : 1H₂O₂</strong></li>
+              <li>离子方程式配平顺序：电子守恒 → 电荷守恒（加H⁺/OH⁻）→ 质量守恒（加H₂O）</li>
+              <li>验证口诀：<strong>左边原子=右边原子，左边电荷=右边电荷</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 考点3：工业流程中陌生方程式书写实战 ========== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点3</span>
+      <h2>复杂工业流程中的氧化还原方程式实战</h2>
+      <span class="often">常考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 解题思维</div>
+      <div class="knowledge-box">
+        <div class="kb-title">🔑 工业流程中氧化还原反应的定位方法</div>
+        <p>工业流程题的氧化还原方程式往往隐藏在某个"转化"步骤中。解题时：</p>
+        <ul>
+          <li>看<strong>进出物质</strong>的化合价变化 → 确定谁是氧化剂、谁是还原剂</li>
+          <li>看<strong>反应环境</strong>（酸化/碱化/通气体）→ 确定H⁺/OH⁻/H₂O的参与</li>
+          <li>看<strong>沉淀符号</strong>和气体符号 → 确定产物形态</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 真题5：2023广东 工业流程 Co(OH)₃ 被还原 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023年广东高考 第18题 第(3)小题</div>
+        <div class="q-text">
+          从硝酸浸取液（含Ni²⁺、Co²⁺、Mg²⁺等）中利用氨浸工艺提取Ni、Co。"氨浸"时，Co(OH)₃ 与 SO₃²⁻ 发生氧化还原反应，再与 NH₃·H₂O 反应生成 [Co(NH₃)₆]²⁺。写出由 Co(OH)₃ 转化为 [Co(NH₃)₆]²⁺ 的<strong>离子方程式</strong>。
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans5')">🔍 查看答案</button>
+        <div class="reveal" id="ans5">
+          <div class="answer-box">
+            【分析】<br>
+            1. Co(OH)₃ 中 Co 为 +3 价，[Co(NH₃)₆]²⁺ 中 Co 为 +2 价，Co 被<strong>还原</strong><br>
+            2. SO₃²⁻ 中 S 为 +4 价，被氧化为 SO₄²⁻（S为+6价），SO₃²⁻ 作<strong>还原剂</strong><br>
+            3. 电子守恒：Co³⁺→Co²⁺（得1e⁻），SO₃²⁻→SO₄²⁻（S +4→+6，失2e⁻）<br>
+            &nbsp;&nbsp;&nbsp;2Co(OH)₃得2e⁻ = 1SO₃²⁻失2e⁻，系数比 2:1<br>
+            4. NH₃·H₂O 提供 NH₃ 配位，不参与氧化还原<br><br>
+            <strong>离子方程式：</strong><br>
+            2Co(OH)₃ + SO₃²⁻ + 12NH₃·H₂O = 2[Co(NH₃)₆]²⁺ + SO₄²⁻ + 13H₂O + 2OH⁻
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap5')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap5">
+          <div class="trap-box">
+            <strong>陷阱1：Co的价态判断</strong><br>
+            Co(OH)₃ 中 Co+3→Co+2，是<strong>被还原</strong>，Co(OH)₃ 作氧化剂。<br>
+            不要因为题目说"氧化还原反应"就以为Co一定是被氧化的——Co恰恰是被还原的一方！<br><br>
+            <strong>陷阱2：配体的处理</strong><br>
+            NH₃ 配位不改变Co的化合价（仍是+2），但配位后产物写[Co(NH₃)₆]²⁺。NH₃来自NH₃·H₂O，剩余的OH⁻和H₂O要一并配平。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip5')">✅ 查看指导</button>
+        <div class="reveal" id="tip5">
+          <div class="tip-box">
+            <ul>
+              <li>含有配离子的方程式：先处理氧化还原（电子守恒），再处理配位（配体数），最后补电荷和质量守恒</li>
+              <li>SO₃²⁻ → SO₄²⁻ 是工业流程中常见还原剂：S +4→+6，失2e⁻</li>
+              <li>Co(OH)₃ → Co²⁺ 是Co³⁺的还原，Co³⁺氧化性较强，容易被还原</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真题6：2024广东 工业流程 GaCl₄⁻ -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024年广东高考 第18题 第(2)小题</div>
+        <div class="q-text">
+          从电解铝副产品炭渣（含Ga、Fe等）中提取镓。"浸取"步骤中，盐酸浸取后 Ga³⁺ 与 Cl⁻ 形成配合物 [GaCl₄]⁻。写出由 Ga³⁺ 形成 [GaCl₄]⁻ 的<strong>离子方程式</strong>。<br><br>
+          （注：本题为非氧化还原反应，但属于工业流程中陌生方程式书写的典型代表。）
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans6')">🔍 查看答案</button>
+        <div class="reveal" id="ans6">
+          <div class="answer-box">
+            【分析】<br>
+            这是一个<strong>配位反应</strong>而非氧化还原反应：Ga³⁺ + 4Cl⁻ → [GaCl₄]⁻<br>
+            Ga 的化合价始终为 +3，没有变化。<br>
+            Cl 的化合价始终为 -1，没有变化。<br><br>
+            <strong>离子方程式：Ga³⁺ + 4Cl⁻ = [GaCl₄]⁻</strong><br><br>
+            ⚠️ 本题提示：<strong>并非所有陌生方程式都是氧化还原反应！</strong>先判断化合价是否变化，再决定配平方法。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap6')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap6">
+          <div class="trap-box">
+            <strong>陷阱：不要看到陌生方程式就默认是氧化还原</strong><br>
+            工业流程中混合了多种反应类型：<br>
+            • 酸溶（复分解）：不需电子守恒<br>
+            • 配位反应：不需电子守恒<br>
+            • 沉淀转化：不需电子守恒<br>
+            • 氧化还原：需电子守恒<br><br>
+            <strong>第一步永远是标化合价，而不是直接套配平模板！</strong>
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip6')">✅ 查看指导</button>
+        <div class="reveal" id="tip6">
+          <div class="tip-box">
+            <ul>
+              <li>审陌生方程式第一步：<strong>是否有化合价变化？</strong></li>
+              <li>有 → 用电子守恒法配平</li>
+              <li>没有 → 用原子守恒直接配平（通常是配位、酸溶、沉淀转化）</li>
+              <li>不能所有题都套氧化还原模板——这恰恰是出题人设的坑</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 考点4：陌生情境下的完整书写框架 ========== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点4</span>
+      <h2>陌生氧化还原方程式的完整书写框架</h2>
+      <span class="must">必考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 通用思维流程</div>
+      <div class="flow-diagram">
+        <div class="flow-row">
+          <span class="flow-box">审题：找反应物、产物</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-box red">标化合价变化</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-box">电子守恒定系数</span>
+        </div>
+        <div class="flow-row">
+          <span class="flow-box green">电荷守恒补H⁺/OH⁻</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-box green">质量守恒补H₂O</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-box red">验证：原子+电荷</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析（综合演练）</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2022年广东高考 工业流程节选（典型陌生方程式）</div>
+        <div class="q-text">
+          某湿法炼锌工艺中，用 MnO₂ 将浸出液中的 Fe²⁺ 氧化为 Fe³⁺，再通过调节 pH 使 Fe³⁺ 以 Fe(OH)₃ 形式沉淀除去。写出 MnO₂ 氧化 Fe²⁺ 的<strong>离子方程式</strong>（酸性条件）。
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans7')">🔍 查看答案</button>
+        <div class="reveal" id="ans7">
+          <div class="answer-box">
+            【完整配平过程】<br>
+            1. 物质：MnO₂ + Fe²⁺ → Mn²⁺ + Fe³⁺<br>
+            2. 变价：Mn +4→+2（降2，得2e⁻），Fe +2→+3（升1，失1e⁻）<br>
+            3. 电子：1MnO₂得2e⁻ = 2Fe²⁺失2e⁻ → MnO₂ + 2Fe²⁺ → Mn²⁺ + 2Fe³⁺<br>
+            4. 电荷：左边(-2) + 2×(+2) = +2，右边(+2) + 2×(+3) = +8，差6，加4H⁺（酸性条件）<br>
+            5. O守恒：左边MnO₂有2O，4H⁺配2H₂O<br><br>
+            <strong>MnO₂ + 2Fe²⁺ + 4H⁺ = Mn²⁺ + 2Fe³⁺ + 2H₂O</strong>
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap7')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap7">
+          <div class="trap-box">
+            <strong>陷阱：MnO₂在不同酸碱条件下的产物不同</strong><br>
+            • MnO₂在酸性条件：MnO₂ → Mn²⁺（得2e⁻）<br>
+            • MnO₄⁻在酸性条件：MnO₄⁻ → Mn²⁺（得5e⁻）<br>
+            • MnO₄⁻在中性条件：MnO₄⁻ → MnO₂↓（得3e⁻）<br>
+            • MnO₄⁻在碱性条件：MnO₄⁻ → MnO₄²⁻（得1e⁻）<br>
+            条件不同，还原产物不同，得电子数也不同！
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip7')">✅ 查看指导</button>
+        <div class="reveal" id="tip7">
+          <div class="tip-box">
+            <ul>
+              <li>MnO₂ 在酸性条件下是常用的氧化剂，还原产物为 Mn²⁺</li>
+              <li>KMnO₄系列口诀：<strong>酸5中3碱1</strong>（酸性得5e⁻→Mn²⁺、中性得3e⁻→MnO₂、碱性得1e⁻→MnO₄²⁻）</li>
+              <li>先判断反应环境（酸性/中性/碱性），再确定含氧酸盐的还原产物</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 总结表 ========== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">总结</span>
+      <h2>热点强化1 · 陌生情境方程式满分攻略</h2>
+    </div>
+    <div class="sub">
+      <table class="summary-table">
+        <thead>
+          <tr><th>陌生情境类型</th><th>解题关键</th><th>经典例题</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>工业流程中的氧化</td>
+            <td>看清进出物质的化合价；O₂、H₂O₂、MnO₂ 是常见氧化剂</td>
+            <td>4Fe²⁺ + O₂ + 4H₂O = 2Fe₂O₃↓ + 8H⁺</td>
+          </tr>
+          <tr>
+            <td>配合物体系的氧化还原</td>
+            <td>中心离子价态变化参与电子守恒，配体不参与</td>
+            <td>2Co²⁺ + H₂O₂ + 2H⁺ = 2Co³⁺ + 2H₂O</td>
+          </tr>
+          <tr>
+            <td>陌生氧化剂/还原剂的判断</td>
+            <td>从化合价变化方向判断角色，不要凭"感觉"</td>
+            <td>SO₂→CaSO₄：S被氧化（+4→+6）；Co(OH)₃→Co²⁺：Co被还原（+3→+2）</td>
+          </tr>
+          <tr>
+            <td>非氧化还原的干扰</td>
+            <td>先标化合价——无变化就不是氧化还原，直接原子守恒配平</td>
+            <td>Ga³⁺ + 4Cl⁻ = [GaCl₄]⁻（配位反应，非氧化还原）</td>
+          </tr>
+          <tr>
+            <td>含氧酸根的产物判断</td>
+            <td>酸碱性决定还原产物：KMnO₄→酸Mn²⁺、中MnO₂、碱MnO₄²⁻</td>
+            <td>MnO₂ + 2Fe²⁺ + 4H⁺ = Mn²⁺ + 2Fe³⁺ + 2H₂O</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
     </main>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
+    <nav class="nav-footer">
+        <a href="./04.html" class="nav-prev">← 上一讲 | 第4讲 氧化还原反应方程式的配平与书写</a>
+        <a href="./05.html" class="nav-next">下一讲 | 第5讲 物质的量 气体摩尔体积 →</a>
+    </nav>
+
+    <footer class="site-footer">
+        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
     </footer>
+
+    <script>
+function toggleCollapsible(btn, targetClass) {
+  var target = btn.parentElement.querySelector('.' + targetClass);
+  if (!target) target = btn.closest('.sub').querySelector('.' + targetClass);
+  if (!target) return;
+  if (target.classList.contains('open')) {
+    target.classList.remove('open');
+    btn.textContent = btn.dataset.showText || '展开';
+  } else {
+    target.classList.add('open');
+    btn.textContent = btn.dataset.hideText || '收起';
+  }
+}
+    </script>
 </body>
 </html>
