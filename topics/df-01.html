@@ -1,193 +1,572 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>答题规范1 装置的气密性检验 | 决胜高考</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>答题规范1 装置的气密性检验 | 化学不难学</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.75;
+    }
+    .navbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      padding: 0 24px; height: 56px; display: flex;
+      align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .navbar a { color: #e2e8f0; text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .navbar a:hover { color: #fbbf24; }
+    .navbar-brand { color: #fbbf24; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+
+    .header {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+      color: #fff; padding: 40px 32px 32px; text-align: center;
+    }
+    .header .lecture-tag {
+      display: inline-block; background: #10b981; color: #fff;
+      font-size: 12px; font-weight: 700; padding: 3px 12px;
+      border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px;
+    }
+    .header h1 { font-size: 24px; font-weight: 800; }
+    .header h1 em { font-style: normal; color: #fbbf24; }
+    .header p { font-size: 14px; opacity: 0.7; margin-top: 8px; }
+
+    .wrap { max-width: 820px; margin: 0 auto; padding: 28px 16px 60px; }
+
+    .block {
+      margin-bottom: 36px; border-left: 4px solid #059669;
+      border-radius: 0 12px 12px 0; background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden;
+    }
+    .block-head {
+      padding: 16px 22px; background: linear-gradient(90deg, #ecfdf5 0%, #fff 100%);
+      border-bottom: 1px solid #d1fae5; display: flex; align-items: center; gap: 10px;
+    }
+    .block-num { background: #059669; color: #fff; border-radius: 6px; padding: 2px 10px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .block-head h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; flex: 1; }
+    .must { font-size: 12px; color: #059669; font-weight: 600; background: #ecfdf5; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+
+    .sub { padding: 18px 22px; border-bottom: 1px solid #f0f1f3; }
+    .sub:last-child { border-bottom: none; }
+    .sub-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .sub-title.exam { color: #0f3460; }
+    .sub-title.trap { color: #dc2626; }
+    .sub-title.tip  { color: #059669; }
+    .sub p, .sub li { font-size: 14px; color: #333; line-height: 1.9; }
+    .sub ul, .sub ol { padding-left: 22px; }
+    .sub li { margin-bottom: 4px; }
+
+    .q-box { background: #f6f8fb; border-radius: 8px; padding: 14px 16px; border: 1px solid #e0e6ed; margin-bottom: 10px; }
+    .q-source { font-size: 12px; color: #0f3460; font-weight: 700; margin-bottom: 6px; }
+    .q-text { font-size: 14px; color: #1a1a2e; font-weight: 500; line-height: 1.8; }
+
+    .template-box {
+      background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+      border: 2px solid #059669;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 14px 0;
+    }
+    .template-box .tpl-label {
+      font-size: 12px; font-weight: 700; color: #059669;
+      background: #d1fae5; display: inline-block; padding: 2px 10px;
+      border-radius: 10px; margin-bottom: 10px;
+    }
+    .template-box .tpl-content {
+      font-size: 14px; color: #064e3b; line-height: 2;
+      background: #fff; border-radius: 8px; padding: 14px 16px;
+      border: 1px dashed #a7f3d0;
+    }
+    .template-box .tpl-content strong { color: #dc2626; }
+    .template-box .tpl-content em { font-style: normal; color: #2563eb; font-weight: 600; }
+
+    .steps-box { background: #fafafa; border-radius: 8px; padding: 14px 16px; border: 1px solid #e5e7eb; margin: 10px 0; }
+    .step-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .step-item:last-child { margin-bottom: 0; }
+    .step-num { background: #059669; color: #fff; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-text { font-size: 14px; color: #374151; line-height: 1.8; }
+
+    .trap-box {
+      background: #fef2f2; border-radius: 8px; padding: 14px 16px;
+      border: 1px solid #fecaca; margin: 10px 0;
+    }
+    .trap-box p { color: #b91c1c; }
+    .trap-box li { color: #b91c1c; }
+
+    .tip-box {
+      background: #ecfdf5; border-radius: 8px; padding: 14px 16px;
+      border: 1px solid #a7f3d0; margin: 10px 0;
+    }
+    .tip-box p { color: #064e3b; }
+    .tip-box ul { color: #064e3b; }
+
+    .method-overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .method-card {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #fff;
+      border-radius: 10px;
+      padding: 16px 12px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .method-card:nth-child(2) { background: linear-gradient(135deg, #0f3460, #1a5276); }
+    .method-card:nth-child(3) { background: linear-gradient(135deg, #b45309, #92400e); }
+    .method-card .mc-num {
+      font-size: 22px; font-weight: 800; display: block; margin-bottom: 4px;
+    }
+    .method-card .mc-title {
+      font-size: 12px; font-weight: 600; opacity: 0.95;
+    }
+
+    .pretest-box {
+      background: #fffbeb;
+      border: 2px dashed #f59e0b;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 30px;
+    }
+    .pretest-box .pt-title {
+      font-size: 16px; font-weight: 800; color: #b45309; margin-bottom: 4px;
+    }
+    .pretest-box .pt-sub {
+      font-size: 12px; color: #92400e; margin-bottom: 14px;
+    }
+    .pt-q {
+      margin-bottom: 12px; font-size: 14px;
+    }
+    .pt-q .q-label {
+      font-weight: 700; color: #b45309;
+    }
+    .pt-q .q-opts {
+      margin-left: 12px; color: #444;
+    }
+
+    .score-table {
+      width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;
+    }
+    .score-table th, .score-table td {
+      border: 1px solid #d0d7de; padding: 10px 12px; text-align: left;
+    }
+    .score-table th {
+      background: #ecfdf5; font-weight: 700; color: #059669;
+    }
+    .score-table tr:nth-child(even) td { background: #fafbfc; }
+
+    .toggle-btn {
+      display: inline-block;
+      cursor: pointer;
+      padding: 3px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid;
+      margin-left: 8px;
+      user-select: none;
+      transition: all 0.2s;
+    }
+    .toggle-btn.answer-btn { color: #059669; border-color: #059669; background: #ecfdf5; }
+    .toggle-btn.answer-btn:hover { background: #d1fae5; }
+    .toggle-btn.trap-btn { color: #dc2626; border-color: #dc2626; background: #fef2f2; }
+    .toggle-btn.trap-btn:hover { background: #fecaca; }
+    .toggle-btn.tip-btn { color: #0f3460; border-color: #0f3460; background: #e8f0fe; }
+    .toggle-btn.tip-btn:hover { background: #d4e4fc; }
+
+    .collapsible {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+      opacity: 0; padding-top: 0; padding-bottom: 0;
+    }
+    .collapsible.open { max-height: 3000px; opacity: 1; padding-top: 10px; padding-bottom: 10px; }
+
+    .q-answer-inner {
+      font-size: 14px; color: #059669; font-weight: 500; line-height: 1.9;
+    }
+
+    .divider {
+      text-align: center; margin: 32px 0; color: #ccc;
+      font-size: 20px; letter-spacing: 12px;
+    }
+
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 820px; margin: 20px auto 0; padding: 0 16px;
+    }
+    .nav-btn {
+      display: inline-block; padding: 10px 24px; border-radius: 10px;
+      font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s;
+    }
+    .nav-btn.prev { background: #1e3a5f; color: #fbbf24; }
+    .nav-btn.prev:hover { background: #0f172a; transform: translateY(-1px); }
+    .nav-btn.next { background: #1e3a5f; color: #fbbf24; }
+    .nav-btn.next:hover { background: #0f172a; transform: translateY(-1px); }
+
+    footer.footer {
+      text-align: center; padding: 24px 20px; font-size: 13px;
+      color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
-    </nav>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">答题规范1</div>
-            <h1 class="topic-title">装置的气密性检验</h1>
-            <div class="topic-chapter">第三章 化学实验基础知识</div>
+<div class="navbar">
+  <a href="../index.html">🏠 首页</a>
+  <span class="navbar-brand">化学不难学</span>
+  <a href="../topics/">📚 专题目录</a>
+</div>
+
+<div class="header">
+  <div class="lecture-tag">答题规范</div>
+  <h1>答题规范<em>1</em> &nbsp;装置的气密性检验</h1>
+  <p>以考定教 · 2027届高三化学第一轮复习 · 实验基本操作规范</p>
+</div>
+
+<div class="wrap">
+
+<!-- 前测 -->
+<div class="pretest-box">
+  <div class="pt-title">⚡ 前测（3分钟）—— 你的气密性检验描述规范吗？</div>
+  <div class="pt-sub">两道填空题，测测你的答题用语是否踩中得分点</div>
+
+  <div class="pt-q">
+    <span class="q-label">【前测①】</span> 如何检查右图装置（试管+单孔塞+导气管）的气密性？请写出完整步骤。<br>
+    <span class="q-opts" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;margin:8px 0;min-height:50px;color:#94a3b8;">（先自己写，再对照后面的答题模板）</span>
+    <span class="toggle-btn answer-btn" data-show-text="🔍 参考答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'pt1')">🔍 参考答案</span>
+    <div class="collapsible pt1"><div class="q-answer-inner">
+      <strong>连接好装置</strong>，将导管末端<strong>插入水中</strong>，用<strong>手紧握试管外壁</strong>（或用酒精灯微热），若导管口<strong>有气泡冒出</strong>，且松开手（或冷却）后导管内<strong>形成一段水柱</strong>，则证明装置<strong>气密性良好</strong>。
+    </div></div>
+  </div>
+
+  <div class="pt-q">
+    <span class="q-label">【前测②】</span> 右图装置中有一个长颈漏斗，如何检验其气密性？<br>
+    <span class="q-opts" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;margin:8px 0;min-height:50px;color:#94a3b8;">（注意：长颈漏斗的装置不能用微热法！）</span>
+    <span class="toggle-btn answer-btn" data-show-text="🔍 参考答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'pt2')">🔍 参考答案</span>
+    <div class="collapsible pt2"><div class="q-answer-inner">
+      <strong>关闭止水夹</strong>，向长颈漏斗中加水至<strong>浸没漏斗下端管口</strong>，继续加水，若漏斗中<strong>形成一段稳定的水柱</strong>（液面差一段时间内保持不变），则证明装置<strong>气密性良好</strong>。
+    </div></div>
+  </div>
+
+  <p style="font-size:12px;color:#b45309;margin-top:8px;">⚠️ 你的描述和参考答案差在哪里？缺了哪几个关键词？带着这些问题往下看！</p>
+</div>
+
+<!-- 方法总览 -->
+<div style="text-align:center;margin-bottom:30px;">
+  <p style="font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">🔧 三大经典检验方法</p>
+  <div class="method-overview">
+    <div class="method-card"><span class="mc-num">01</span><span class="mc-title">微热法<br><small style="opacity:0.8;font-weight:400;">最常用 | 一端封闭装置</small></span></div>
+    <div class="method-card"><span class="mc-num">02</span><span class="mc-title">液差法<br><small style="opacity:0.8;font-weight:400;">长颈漏斗类装置</small></span></div>
+    <div class="method-card"><span class="mc-num">03</span><span class="mc-title">注水/充气法<br><small style="opacity:0.8;font-weight:400;">多组分复杂装置</small></span></div>
+  </div>
+</div>
+
+<!-- ==================== 板块一：微热法 ==================== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块一</span>
+    <h2>微热法 —— 最基础、考频最高的检验方法</h2>
+    <span class="must">🔴 必须掌握</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 适用条件 & 核心原理</div>
+      <p><strong>适用装置特征：</strong>装置一端封闭（如试管+单孔塞），另一端通过导管与大气相通。</p>
+      <p style="margin-top:6px;"><strong>原理：</strong>微热使装置内空气膨胀 → 导管口冒气泡；冷却后气体收缩 → 导管内形成水柱，形成液封，证明装置不漏气。</p>
+      <div class="steps-box">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <span class="step-text"><strong>连接装置</strong> → 确保各接口紧密</span>
         </div>
-
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <span class="step-text">将导管末端<strong>插入水中</strong>（水面以下）</span>
         </div>
-
-        <div class="nav-footer">
-            <a href="./07.html" class="nav-btn ">← 上一讲</a>
-            <a href="./08.html" class="nav-btn next ">下一讲 →</a>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <span class="step-text">用<strong>手紧握</strong>（或用热毛巾、酒精灯微热）容器外壁</span>
         </div>
-    </main>
+        <div class="step-item">
+          <span class="step-num">4</span>
+          <span class="step-text"><strong>观察现象 → </strong>导管口有气泡冒出</span>
+        </div>
+        <div class="step-item">
+          <span class="step-num">5</span>
+          <span class="step-text"><strong>松开手/冷却 → </strong>导管内形成一段<strong>水柱（液柱）</strong></span>
+        </div>
+        <div class="step-item">
+          <span class="step-num">6</span>
+          <span class="step-text"><strong>结论 → </strong>装置气密性良好</span>
+        </div>
+      </div>
+    </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+    <div class="sub">
+      <div class="sub-title exam">📝 标准答题模板</div>
+      <div class="template-box">
+        <div class="tpl-label">✅ 满分模板</div>
+        <div class="tpl-content">
+          <strong>连接好装置</strong>，将<em>导管末端插入水中</em>，<strong>用手紧握</strong>（或用酒精灯微热）<em>×××容器外壁</em>，若<strong>导管口有气泡冒出</strong>，且<strong>松开手后</strong>（或冷却后）<strong>导管内形成一段水柱</strong>，则证明装置<strong>气密性良好</strong>。
+        </div>
+      </div>
+      <p style="margin-top:8px;font-size:13px;color:#64748b;">🗣️ 记忆口诀：<strong>"连接→插水→微热→冒泡→水柱→结论"</strong>，六步缺一不可！</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📝 真题情境举例</div>
+      <div class="q-box">
+        <div class="q-source">2023·广东卷·第8题（实验操作判断）</div>
+        <div class="q-text">
+          下列实验操作能达到实验目的的是：<br>
+          A. 将导管末端插入水中，用手紧握试管外壁，观察导管口是否有气泡 → <strong>检查装置气密性</strong><br>
+          B. ...
+        </div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看解析" data-hide-text="🔒 隐藏解析" onclick="toggleCollapsible(this,'s1-1')">🔍 查看解析</span>
+        <div class="collapsible s1-1"><div class="q-answer-inner">
+          ✅ <strong>A正确。</strong>这正是微热法检验气密性的标准描述。<br><br>
+          ⚠️ <strong>高考中"检查气密性"常作为选择题的一个选项出现</strong>，不要求写完整步骤，但要求你能识别正确的操作描述。常见混淆项：选项只说了"有气泡冒出"但没有说"形成水柱"，这就是不完整的！<br><br>
+          💡 出题套路：把不完整的操作描述作为干扰项，考察你是否记得"气泡+水柱"两个现象缺一不可。
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">经典考题 · 气体实验室制备的规范流程</div>
+        <div class="q-text">
+          实验室用MnO₂和浓盐酸加热制取Cl₂的流程中，在加入药品之前，必须进行的第一步操作是________。
+        </div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'s1-2')">🔍 查看答案</span>
+        <div class="collapsible s1-2"><div class="q-answer-inner">
+          ✅ <strong>检查装置气密性。</strong><br><br>
+          🔑 <strong>气体实验室制备的标准流程：</strong><br>
+          ① 检查装置气密性 → ② 加入药品 → ③ 开始反应 → ④ 收集气体 → ⑤ 验满 → ⑥ 拆除装置<br><br>
+          ⚠️ 所有有气体参与的实验，<strong>第一步永远是检查气密性</strong>！这是送分点，绝不可丢！
+        </div></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 常见失分陷阱</div>
+      <div class="trap-box">
+        <p><strong>陷阱1：漏写"连接好装置"</strong></p>
+        <p>→ 不写这步的前提，后面的操作就没意义。阅卷老师看到直接扣分。</p>
+        <p style="margin-top:10px;"><strong>陷阱2：只写"冒泡"，不写"水柱"</strong></p>
+        <p>→ 导管口冒泡只能说明气体受热膨胀逸出，不能证明冷却后不漏气。</p>
+        <p style="margin-top:10px;"><strong>陷阱3：微热后立即下结论，忘记冷却</strong></p>
+        <p>→ 真正的密封装置，冷却后导管内形成水柱，这是关键证据。</p>
+        <p style="margin-top:10px;"><strong>陷阱4：乱用微热法</strong></p>
+        <p>→ 装置中有长颈漏斗与大气相通时，微热法无效！（气体从漏斗跑了）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 板块二：液差法 ==================== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块二</span>
+    <h2>液差法（注水法）—— 长颈漏斗装置的专属方法</h2>
+    <span class="must">🔴 必须掌握</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 适用条件 & 核心原理</div>
+      <p><strong>适用装置特征：</strong>装置中带有<strong>长颈漏斗</strong>（或类似与大气相通的加液口），封闭其他出口后形成液封。</p>
+      <p style="margin-top:6px;"><strong>原理：</strong>向漏斗加水形成液封 → 若装置不漏气，继续加水时漏斗内气体被压缩 → 形成一段水柱且液面差保持不变。</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📝 标准答题模板</div>
+      <div class="template-box">
+        <div class="tpl-label">✅ 满分模板</div>
+        <div class="tpl-content">
+          <strong>关闭止水夹</strong>（或弹簧夹），向<em>长颈漏斗</em>中加水至<strong>浸没漏斗下端管口</strong>，继续加水，若漏斗中<strong>形成一段稳定的水柱</strong>（液面差一段时间内<strong>保持不变</strong>），则证明装置<strong>气密性良好</strong>。
+        </div>
+      </div>
+      <p style="margin-top:8px;font-size:13px;color:#64748b;">🗣️ 记忆口诀：<strong>"夹住→加水浸没→再加水→水柱稳定→结论"</strong></p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📝 真题情境举例</div>
+      <div class="q-box">
+        <div class="q-source">经典考题 · H₂O₂制O₂装置（MnO₂+长颈漏斗）</div>
+        <div class="q-text">
+          用H₂O₂溶液和MnO₂制取O₂的装置如图所示（锥形瓶+双孔塞+长颈漏斗+导气管），请简述检查该装置气密性的方法。
+        </div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'s2-1')">🔍 查看答案</span>
+        <div class="collapsible s2-1"><div class="q-answer-inner">
+          ✅ <strong>关闭止水夹</strong>，向长颈漏斗中加水至<strong>浸没漏斗下端管口</strong>，继续加水，若漏斗中<strong>形成一段稳定的水柱</strong>且液面差保持一段时间不变，则证明装置<strong>气密性良好</strong>。<br><br>
+          ⚠️ <strong>关键点：</strong><br>
+          ① 必须先"关闭止水夹/弹簧夹"——不夹紧，气体从导管跑了，永远形不成液差！<br>
+          ② "浸没下端管口"——这是形成液封的前提！<br>
+          ③ "液面差保持不变"——说明装置内气体出不去，密封好。
+        </div></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 常见失分陷阱</div>
+      <div class="trap-box">
+        <p><strong>陷阱1：忘记"关闭止水夹"</strong></p>
+        <p>→ 这是液差法的前提条件！不关夹子，装置与大气相通，液面永远不可能有差。</p>
+        <p style="margin-top:10px;"><strong>陷阱2：忘记"浸没下端管口"</strong></p>
+        <p>→ 不浸没就没有液封，气体可以从漏斗口跑掉，形成不了液差。</p>
+        <p style="margin-top:10px;"><strong>陷阱3：只说"水柱"不说"稳定/保持不变"</strong></p>
+        <p>→ 如果液面差过一会就消失了，说明装置漏气！必须强调"稳定"！</p>
+        <p style="margin-top:10px;"><strong>陷阱4：对长颈漏斗装置用微热法</strong></p>
+        <p>→ 长颈漏斗与大气相通，微热产生的气体膨胀直接从漏斗逸出，观察不到水柱！</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 板块三：充气/注水法 ==================== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块三</span>
+    <h2>注水法 & 充气法 —— 多组分复杂装置的检验策略</h2>
+    <span class="must">🟡 选学了解</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 适用条件</div>
+      <p><strong>适用装置特征：</strong>装置由多个仪器串联组成，或装置体积较大，无法用微热法或液差法。</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📝 方法一：注水法</div>
+      <div class="template-box">
+        <div class="tpl-label">✅ 答题模板</div>
+        <div class="tpl-content">
+          关闭<em>×××止水夹</em>，向<em>×××口</em>中加水，若<strong>水不能顺利流下</strong>（或形成一段稳定的水柱），则证明该部分装置气密性良好。然后依次分段检查其余部分。
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>适用场景：</strong>启普发生器及类似装置、多段串联装置。</p>
+      <p style="margin-top:4px;font-size:13px;">🔑 核心思路：<strong>分段检查</strong>，逐段封闭，逐段验证。</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📝 方法二：充气法（气压法）</div>
+      <div class="template-box">
+        <div class="tpl-label">✅ 答题模板</div>
+        <div class="tpl-content">
+          关闭<em>×××止水夹</em>，用注射器（或气球、洗耳球）从<em>×××处</em>向装置内<strong>推入空气</strong>，若<em>×××处</em>的液面<strong>上升</strong>（或有气泡冒出），且停止推气后液面<strong>保持不变</strong>，则证明装置<strong>气密性良好</strong>。
+        </div>
+      </div>
+      <div class="q-box" style="margin-top:12px;">
+        <div class="q-source">经典考题 · 多段装置气密性检验</div>
+        <div class="q-text">
+          某实验装置由A（气体发生）→ B（除杂）→ C（干燥）→ D（收集）串联而成，如何检验整套装置的气密性？
+        </div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'s3-1')">🔍 查看答案</span>
+        <div class="collapsible s3-1"><div class="q-answer-inner">
+          ✅ <strong>分段检验：</strong><br>
+          ① 先检验A部分：关闭A与B之间的止水夹，用微热法或液差法检验A的气密性<br>
+          ② 再检验B+C+D部分：封闭D的出口，从B端推入空气，观察D端是否有液面变化且稳定<br>
+          ③ 全部通过 → 整套装置气密性良好。<br><br>
+          💡 多段装置不能妄想"一步检验"！必须<strong>分段+组合</strong>检验。
+        </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">···</div>
+
+<!-- ==================== 板块四：得分要点总结 ==================== -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">板块四</span>
+    <h2>气密性检验得分关键词 & 方法选择决策树</h2>
+    <span class="must">🔴 考前必看</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 阅卷评分关键词（按方法分类）</div>
+      <table class="score-table">
+        <tr><th>方法</th><th>关键词1</th><th>关键词2</th><th>关键词3</th><th>结论</th></tr>
+        <tr>
+          <td><strong>微热法</strong></td>
+          <td>插入水中</td>
+          <td>手紧握/微热 → 气泡冒出</td>
+          <td>松开/冷却 → 水柱</td>
+          <td>气密性良好</td>
+        </tr>
+        <tr>
+          <td><strong>液差法</strong></td>
+          <td>关闭止水夹</td>
+          <td>加水浸没管口</td>
+          <td>水柱稳定/液面差不变</td>
+          <td>气密性良好</td>
+        </tr>
+        <tr>
+          <td><strong>充气法</strong></td>
+          <td>关闭止水夹/封闭出口</td>
+          <td>推入空气</td>
+          <td>液面上升/气泡 + 保持不变</td>
+          <td>气密性良好</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title tip">✅ 方法选择决策树</div>
+      <div class="tip-box">
+        <p><strong>看到装置图，按以下顺序选择方法：</strong></p>
+        <ul style="list-style:none;padding-left:0;">
+          <li>🔍 <strong>Step1：</strong>装置中有<strong>长颈漏斗</strong>与大气相通？ → ✅ <strong>用液差法</strong></li>
+          <li>🔍 <strong>Step2：</strong>装置<strong>一端封闭</strong>（如试管+单孔塞）？ → ✅ <strong>用微热法</strong></li>
+          <li>🔍 <strong>Step3：</strong>装置<strong>多段串联</strong>或体积大？ → ✅ <strong>分段用注水法/充气法</strong></li>
+        </ul>
+        <p style="margin-top:12px;font-weight:700;">⚠️ 选错方法 = 全题0分！先判断装置类型，再套答题模板！</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 五大高频失分点汇总</div>
+      <div class="trap-box">
+        <ol style="padding-left:20px;">
+          <li><strong>缺前提：</strong>没写"连接好装置"或"关闭止水夹"</li>
+          <li><strong>现象不完整：</strong>只写冒泡不写水柱（微热法），或只写水柱不写稳定（液差法）</li>
+          <li><strong>方法用错：</strong>对长颈漏斗装置用微热法</li>
+          <li><strong>结论缺失：</strong>描述完现象就停了，不写"证明气密性良好"</li>
+          <li><strong>多段装置一步检验：</strong>企图用一句话检验整个复杂装置</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="nav-footer">
+    <a href="./07.html" class="nav-btn prev">← 第7讲</a>
+    <a href="./08.html" class="nav-btn next">第8讲 →</a>
+</div>
+
+<footer class="footer">
+    <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+</footer>
+
+<script>
+function toggleCollapsible(btn, targetClass) {
+  var target = btn.parentElement.querySelector('.' + targetClass);
+  if (!target) target = btn.closest('.sub').querySelector('.' + targetClass);
+  if (target.classList.contains('open')) {
+    target.classList.remove('open');
+    btn.textContent = btn.dataset.showText;
+  } else {
+    target.classList.add('open');
+    btn.textContent = btn.dataset.hideText;
+  }
+}
+</script>
 </body>
 </html>
