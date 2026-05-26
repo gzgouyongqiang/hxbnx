@@ -155,10 +155,10 @@
             transition: all 0.2s; margin-top: 8px;
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .hidden-content {
-            display: none; padding: 12px 0 0;
-        }
-        .hidden-content.open { display: block; }
+
+        /* 修复：同时匹配 .hidden-content 和 .collapsible 两种类名 */
+        .hidden-content, .collapsible { display: none; padding: 12px 0 0; }
+        .hidden-content.open, .collapsible.open { display: block; }
 
         /* ===== 底部导航 ===== */
         .nav-footer {
@@ -206,10 +206,10 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
+        <a href="../index.html" class="navbar-brand">âª åå­¦ä¸é¾å­¦</a>
         <div class="navbar-links">
-            <a href="../index.html">📚 全部专题</a>
-            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+            <a href="../index.html">ð å¨é¨ä¸é¢</a>
+            <a href="../exams/2025-gd-01.html">ð è¯é¢éè®²</a>
         </div>
     </nav>
 
@@ -228,25 +228,36 @@
     </main>
 
     <nav class="nav-footer">
-        <a href="./rd-03.html" class="nav-prev">← 上一讲 | 热点强化3 Na₂CO₃、NaHCO₃含量测定的思维方法</a>
+        <a href="./rd-03.html" class="nav-prev">← 上一讲 | 热点强化3 Na2CO3、NaHCO3含量测定的思维方法</a>
         <a href="./13.html" class="nav-next">下一讲 | 第13讲 铁及其化合物转化关系 →</a>
     </nav>
 
     <footer class="site-footer">
-        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+        <p>åå­¦ä¸é¾å­¦ Â· é«ä¸ç¬¬ä¸è½®å¤ä¹  Â· ä»¥èå®æ</p>
     </footer>
 
     <script>
 function toggleCollapsible(btn, targetClass) {
-  var target = btn.parentElement.querySelector('.' + targetClass);
-  if (!target) target = btn.closest('.sub').querySelector('.' + targetClass);
-  if (!target) return;
-  if (target.classList.contains('open')) {
-    target.classList.remove('open');
-    btn.textContent = btn.dataset.showText || '展开';
-  } else {
-    target.classList.add('open');
-    btn.textContent = btn.dataset.hideText || '收起';
+  var content = null;
+  /* 方法1: 紧跟在按钮后面的兄弟节点 */
+  var el = btn.nextElementSibling;
+  while (el) {
+    if (el.classList) {
+      if (el.classList.contains(targetClass.replace(/^\./, ""))) { content = el; break; }
+      if (el.classList.contains("answer-content") || el.classList.contains("trap-content") || el.classList.contains("tip-content")) { content = el; break; }
+    }
+    el = el.nextElementSibling;
+  }
+  /* 方法2: querySelector */
+  if (!content) {
+    var parent = btn.parentElement;
+    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible");
+  }
+  if (!content) return;
+  var isOpen = content.classList.contains("open");
+  content.classList.toggle("open");
+  if (btn.dataset.showText && btn.dataset.hideText) {
+    btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
   }
 }
     </script>
