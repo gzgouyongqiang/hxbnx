@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第8讲 仪器的组合与气体体积的测定 | 决胜高考</title>
+    <title>第8讲 仪器的组合与气体体积的测定 | 化学不难学</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
+            font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #f0f4f8;
             color: #0f172a;
-            line-height: 1.6;
+            line-height: 1.7;
         }
+        /* 导航栏 */
         .navbar {
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
             padding: 0 24px;
@@ -23,7 +24,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
         .navbar a {
             color: #e2e8f0;
@@ -41,153 +42,632 @@
             font-weight: 700;
             letter-spacing: 2px;
         }
+        /* 页面标题横幅 */
+        .page-banner {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 36px 32px 28px;
+            text-align: center;
+        }
+        .page-banner h1 {
+            font-size: 26px;
+            font-weight: 800;
+        }
+        .page-banner h1 em {
+            font-style: normal;
+            color: #e94560;
+        }
+        .page-banner p {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 6px;
+        }
+        /* 主内容区 */
         .main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 28px 20px 60px;
         }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
+        .block {
+            margin-bottom: 36px;
+            border-left: 4px solid #e94560;
+            border-radius: 0 10px 10px 0;
+            background: #fff;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
-        .topic-unit {
+        .block-head {
+            padding: 18px 24px;
+            background: linear-gradient(90deg, #fef2f4, #fff);
+            border-bottom: 1px solid #fde8ec;
+        }
+        .block-num {
             display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
+            background: #e94560;
+            color: #fff;
+            border-radius: 6px;
+            padding: 2px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .block-head h2 { display: inline; font-size: 17px; font-weight: 700; color: #1a1a2e; }
+        .block-head .must { font-size: 12px; color: #e94560; font-weight: 600; margin-left: 8px; }
+        .block-head .often { font-size: 12px; color: #f39c12; font-weight: 600; margin-left: 8px; }
+        .block-body { padding: 0; }
+        .sub {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f1f3;
+        }
+        .sub:last-child { border-bottom: none; }
+        .sub-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sub-title.exam { color: #0f3460; }
+        .sub-title.trap { color: #e94560; }
+        .sub-title.tip  { color: #27ae60; }
+        .sub p, .sub li { font-size: 14px; color: #333; line-height: 1.8; }
+        .sub ul { padding-left: 20px; }
+        .sub li { margin-bottom: 4px; }
+        .q-box {
+            background: #f6f8fb;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #e0e6ed;
+            margin-bottom: 10px;
+        }
+        .q-box .q-source {
+            font-size: 12px;
+            color: #0f3460;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .q-box .q-text {
+            font-size: 14px;
+            color: #1a1a2e;
+            font-weight: 500;
+        }
+        .q-answer {
+            font-size: 13px;
+            color: #27ae60;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        .q-img {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .q-img img {
+            max-width: 100%;
+            border-radius: 6px;
+            border: 1px solid #e0e6ed;
+            background: #fff;
+        }
+        .opt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .opt-grid .opt-item {
+            text-align: center;
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        .opt-grid .opt-item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .opt-grid .opt-item .opt-label {
             font-size: 13px;
             font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
+            color: #333;
+            margin-top: 4px;
         }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
+        .opt-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin: 12px 0;
         }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
+        .opt-row .opt-item {
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 6px;
         }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
+        .opt-row .opt-item img {
+            max-width: 100%;
+            border-radius: 4px;
         }
-        .content-title {
-            font-size: 20px;
+        .opt-row .opt-item .opt-label {
+            font-size: 12px;
             font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
+            color: #333;
+            margin-top: 4px;
         }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
+        .q-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 13px;
         }
+        .q-table th, .q-table td {
+            border: 1px solid #d0d7de;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .q-table th {
+            background: #f1f3f5;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        .q-table td {
+            color: #333;
+        }
+        .q-table .opt-cell {
+            text-align: center;
+            font-weight: 700;
+            color: #0f3460;
+            width: 40px;
+        }
+        .trap-box {
+            background: #fef2f4;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #fde8ec;
+        }
+        .trap-box p { color: #c0392b; }
+        .tip-box {
+            background: #eafaf1;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #c8e6c9;
+        }
+        .tip-box p { color: #1e8449; }
+        .tip-box ul { color: #1e8449; }
+        .divider {
+            text-align: center;
+            margin: 32px 0;
+            color: #ccc;
+            font-size: 20px;
+            letter-spacing: 12px;
+        }
+        /* 折叠按钮样式 */
+        .toggle-btn {
+            display: inline-block;
+            cursor: pointer;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid;
+            margin-left: 8px;
+            user-select: none;
+            transition: all 0.2s;
+        }
+        .toggle-btn.answer-btn {
+            color: #27ae60;
+            border-color: #27ae60;
+            background: #eafaf1;
+        }
+        .toggle-btn.answer-btn:hover { background: #d5f5e3; }
+        .toggle-btn.trap-btn {
+            color: #e94560;
+            border-color: #e94560;
+            background: #fef2f4;
+        }
+        .toggle-btn.trap-btn:hover { background: #fde8ec; }
+        .toggle-btn.tip-btn {
+            color: #0f3460;
+            border-color: #0f3460;
+            background: #e8f0fe;
+        }
+        .toggle-btn.tip-btn:hover { background: #d4e4fc; }
+
+        .q-answer-inner {
+            font-size: 13px;
+            color: #27ae60;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* 隐藏内容样式 */
+        .collapsible {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .collapsible.open {
+            max-height: 2000px;
+            opacity: 1;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        /* 翻页导航 */
         .nav-footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
+            align-items: center;
+            max-width: 800px;
+            margin: 20px auto 0;
+            padding: 0 20px;
         }
         .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
         }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
+        .nav-btn.prev {
+            background: #e2e8f0;
+            color: #475569;
         }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
+        .nav-btn.prev:hover {
+            background: #cbd5e1;
         }
         .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
+            background: #1e3a5f;
+            color: #fbbf24;
         }
-        .footer {
+        .nav-btn.next:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+        }
+        /* 底部 */
+        footer.footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
+            padding: 24px 20px;
             font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
+    <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
+        <a href="../index.html">&#8592; 返回首页</a>
+        <span class="navbar-brand">化学不难学</span>
     </nav>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">第8讲</div>
-            <h1 class="topic-title">仪器的组合与气体体积的测定</h1>
-            <div class="topic-chapter">第三章 化学实验基础知识</div>
-        </div>
+    <!-- 页面标题横幅 -->
+    <div class="page-banner">
+        <h1>第<em>8</em>讲 &nbsp;仪器的组合与气体体积的测定</h1>
+        <p>以考定教 &middot; 2027届高三化学第一轮复习 &middot; 真题来源：2023&mdash;2025广东卷+全国卷</p>
+    </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
-        </div>
+    <!-- 主内容区 -->
+    <div class="main">
 
-        <div class="nav-footer">
-            <a href="./df-01.html" class="nav-btn ">← 上一讲</a>
-            <a href="./09.html" class="nav-btn next ">下一讲 →</a>
-        </div>
-    </main>
+<!-- 考点1 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点1</span>
+    <h2>气体制备的发生装置选择</h2>
+    <span class="must">&#x1F534; 必考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">&#x1F4DD; 真题举例</div>
 
+      <div class="q-box">
+        <div class="q-source">2023&middot;广东&middot;第4题</div>
+        <div class="q-text">1827年，英国科学家法拉第进行了喷泉实验。在此启发下，兴趣小组利用以下装置，进行如下实验。其中，难以达到预期目的的是<br>A．图1：喷泉实验 &nbsp; B．图2：干燥NH&#x2083; &nbsp; C．图3：收集NH&#x2083; &nbsp; D．图4：制备NH&#x2083;</div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看答案" data-hide-text="&#x1F512; 隐藏答案" onclick="toggleCollapsible(this, 'a1-1')">&#x1F50D; 查看答案</span>
+        <div class="collapsible a1-1">
+          <div class="q-answer-inner">&#x2705; 答案：B &mdash;&mdash; P&#x2082;O&#x2085;为酸性氧化物，NH&#x2083;为碱性气体，两者会反应；A NH&#x2083;极易溶于水可做喷泉；C NH&#x2083;密度小于空气，用向下排空气法；D CaO与浓氨水混合放热+吸水，促使NH&#x2083;挥发，正确</div>
+        </div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025&middot;浙江&middot;第8题（6月）</div>
+        <div class="q-text">利用下列装置进行实验，能达到实验目的的是<br>A．铁制镀件上镀铜（铜片作阳极，铁件作阴极）<br>B．用浓氨水和NaOH固体制备NH&#x2083;<br>C．蒸馏分离液体混合物（温度计插入液面）<br>D．乙醇消去反应制乙烯并用酸性KMnO&#x2084;检验</div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看答案" data-hide-text="&#x1F512; 隐藏答案" onclick="toggleCollapsible(this, 'a1-2')">&#x1F50D; 查看答案</span>
+        <div class="collapsible a1-2">
+          <div class="q-answer-inner">&#x2705; 答案：B &mdash;&mdash; NaOH固体溶于水放热且呈碱性，浓氨水+NaOH固体可制NH&#x2083;，属于"固+液不加热"型发生装置；A中铜片应接正极（电源接反）；C中温度计水银球应在支管口处；D中乙醇蒸气、SO&#x2082;也会使KMnO&#x2084;褪色，无法检验乙烯</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn trap-btn" data-show-text="&#x26A0;&#xFE0F; 查看陷阱" data-hide-text="&#x1F512; 隐藏陷阱" onclick="toggleCollapsible(this, 't1')">&#x26A0;&#xFE0F; 查看陷阱</span>
+      <div class="collapsible t1">
+        <div class="trap-box">
+          <p><strong>&#x2460; "固+液不加热"制气有哪些？</strong>&mdash;&mdash; 常见的有：H&#x2082;（Zn+稀H&#x2082;SO&#x2084;）、CO&#x2082;（CaCO&#x2083;+稀HCl）、H&#x2082;S（FeS+稀H&#x2082;SO&#x2084;）、O&#x2082;（H&#x2082;O&#x2082;+MnO&#x2082;催化）、NO&#x2082;（Cu+浓HNO&#x2083;）、NO（Cu+稀HNO&#x2083;）、SO&#x2082;（Na&#x2082;SO&#x2083;+浓H&#x2082;SO&#x2084;）、C&#x2082;H&#x2082;（CaC&#x2082;+H&#x2082;O）、NH&#x2083;（浓氨水+CaO/NaOH）</p>
+          <p><strong>&#x2461; "固+固加热"制气有哪些？</strong>&mdash;&mdash; O&#x2082;（KClO&#x2083;+MnO&#x2082;或KMnO&#x2084;加热）、NH&#x2083;（NH&#x2084;Cl+Ca(OH)&#x2082;加热）、CH&#x2084;（CH&#x2083;COONa+NaOH碱石灰加热）</p>
+          <p><strong>&#x2462; "固+液加热"制气有哪些？</strong>&mdash;&mdash; Cl&#x2082;（MnO&#x2082;+浓HCl加热）、HCl（NaCl+浓H&#x2082;SO&#x2084;加热）、C&#x2082;H&#x2084;（C&#x2082;H&#x2085;OH+浓H&#x2082;SO&#x2084;加热170&#x2103;）、SO&#x2082;（Cu+浓H&#x2082;SO&#x2084;加热）</p>
+          <p><strong>&#x2463; CaO+浓氨水 vs NH&#x2084;Cl+Ca(OH)&#x2082;的区别</strong>&mdash;&mdash; 前者不需加热（CaO吸水+放热），后者需要加热。两种方法都能制NH&#x2083;，但装置不同</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn tip-btn" data-show-text="&#x2705; 查看指导" data-hide-text="&#x1F512; 隐藏指导" onclick="toggleCollapsible(this, 'g1')">&#x2705; 查看指导</span>
+      <div class="collapsible g1">
+        <div class="tip-box">
+          <p><strong>发生装置三步选择法：</strong></p>
+          <ul style="list-style:disc;padding-left:20px;">
+            <li>&#x2460; 看反应物状态：固体+固体？固体+液体？液体+液体？</li>
+            <li>&#x2461; 看是否需要加热：需要加热用酒精灯，不需要用简易装置或启普发生器</li>
+            <li>&#x2462; 看能否用启普发生器：块状固体+液体、不加热、气体不溶于反应液（如H&#x2082;、CO&#x2082;、H&#x2082;S）&mdash;&mdash;但O&#x2082;不能！因为MnO&#x2082;是粉末</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">&middot; &middot; &middot;</div>
+
+<!-- 考点2 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点2</span>
+    <h2>气体净化、干燥、收集与尾气处理的装置连接</h2>
+    <span class="must">&#x1F534; 必考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">&#x1F4DD; 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2024&middot;广东&middot;第8题</div>
+        <div class="q-text">1810年，化学家戴维首次确认"氯气"是一种新元素组成的单质。兴趣小组利用以下装置进行实验。其中，难以达到预期目的的是<br>A．制Cl&#x2082; &nbsp; B．净化干燥Cl&#x2082; &nbsp; C．收集Cl&#x2082; &nbsp; D．验证Cl&#x2082;氧化性（H&#x2082;在Cl&#x2082;中燃烧）</div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看答案" data-hide-text="&#x1F512; 隐藏答案" onclick="toggleCollapsible(this, 'a2-1')">&#x1F50D; 查看答案</span>
+        <div class="collapsible a2-1">
+          <div class="q-answer-inner">&#x2705; 答案：A &mdash;&mdash; MnO&#x2082;与浓盐酸制Cl&#x2082;需要<strong>加热</strong>，图中A装置缺少酒精灯；B用饱和食盐水除HCl、无水CaCl&#x2082;干燥，正确；C向上排空气法收集，正确；D H&#x2082;在Cl&#x2082;中安静燃烧产生苍白色火焰，验证Cl&#x2082;的氧化性</div>
+        </div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2023&middot;广东&middot;第4题（再分析）</div>
+        <div class="q-text">同一道题从<strong>装置组合逻辑</strong>角度重新审视：<br>图4（制备NH&#x2083;）：CaO+浓氨水&rarr;NH&#x2083; &rarr; 图2（干燥）&rarr; 图3（收集）<br>问题出在<strong>干燥环节</strong>&mdash;&mdash;P&#x2082;O&#x2085;不能干燥NH&#x2083;（酸性干燥剂 vs 碱性气体），应改用碱石灰</div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看分析" data-hide-text="&#x1F512; 隐藏分析" onclick="toggleCollapsible(this, 'a2-2')">&#x1F50D; 查看分析</span>
+        <div class="collapsible a2-2">
+          <div class="q-answer-inner">&#x27A1;&#xFE0F; 装置连接逻辑：<strong>制备&rarr;净化（除杂）&rarr;干燥&rarr;收集&rarr;尾气处理</strong>。本题的"断点"在干燥环节：P&#x2082;O&#x2085;与NH&#x2083;反应（P&#x2082;O&#x2085;+3H&#x2082;O+6NH&#x2083;&rarr;2(NH&#x2084;)&#x2083;PO&#x2084;），导致后续无法收集到干燥的NH&#x2083;</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn trap-btn" data-show-text="&#x26A0;&#xFE0F; 查看陷阱" data-hide-text="&#x1F512; 隐藏陷阱" onclick="toggleCollapsible(this, 't2')">&#x26A0;&#xFE0F; 查看陷阱</span>
+      <div class="collapsible t2">
+        <div class="trap-box">
+          <p><strong>&#x2460; 干燥剂选择的核心原则：酸性气体配酸性干燥剂，碱性气体配碱性干燥剂</strong></p>
+          <p><strong>&#x2461; 收集方法混淆：</strong>密度>空气用向上排空气法（Cl&#x2082;、SO&#x2082;、NO&#x2082;、CO&#x2082;、HCl）；密度&lt;空气用向下排空气法（NH&#x2083;、H&#x2082;、CH&#x2084;）；难溶于水且不与水反应的气体可用排水法（H&#x2082;、O&#x2082;、NO、CH&#x2084;、C&#x2082;H&#x2084;、C&#x2082;H&#x2082;）</p>
+          <p><strong>&#x2462; 不能用排水法收集的气体：</strong>易溶于水/与水反应的气体（NH&#x2083;、HCl、SO&#x2082;、NO&#x2082;、Cl&#x2082;等）</p>
+          <p><strong>&#x2463; 装置连接的"通病"：</strong>洗气瓶进气要"长进短出"；干燥管要"大进小出"；尾气吸收要防倒吸（如用倒扣漏斗）</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn tip-btn" data-show-text="&#x2705; 查看指导" data-hide-text="&#x1F512; 隐藏指导" onclick="toggleCollapsible(this, 'g2')">&#x2705; 查看指导</span>
+      <div class="collapsible g2">
+        <div class="tip-box">
+          <p><strong>气体制备实验装置连接"五步走"：</strong></p>
+          <table class="q-table">
+            <tr><th>步骤</th><th>装置</th><th>关键点</th></tr>
+            <tr><td>&#x2460; 发生</td><td>根据反应物状态+温度选择</td><td>分液漏斗/长颈漏斗末端要液封</td></tr>
+            <tr><td>&#x2461; 净化（除杂）</td><td>洗气瓶（液体试剂）</td><td>除什么杂质用什么试剂，不引入新杂质</td></tr>
+            <tr><td>&#x2462; 干燥</td><td>干燥管/洗气瓶（干燥剂）</td><td>酸性气体&#x26A0;碱石灰；碱性气体&#x26A0;P&#x2082;O&#x2085;/浓H&#x2082;SO&#x2084;</td></tr>
+            <tr><td>&#x2463; 收集</td><td>排空气法/排水法</td><td>密度+溶解性双判断</td></tr>
+            <tr><td>&#x2464; 尾气处理</td><td>吸收/点燃/收集</td><td>防倒吸！HCl、NH&#x2083;、SO&#x2082;等必需</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">&middot; &middot; &middot;</div>
+
+<!-- 考点3 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点3</span>
+    <h2>气体体积的测定方法（量气法）</h2>
+    <span class="often">&#x1F7E0; 常考</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">&#x1F4DD; 典型考法分析</div>
+      <div class="q-box">
+        <div class="q-source">考法归纳 &mdash;&mdash; 近年高考多在实验大题中考察</div>
+        <div class="q-text">
+          <p>气体体积测定通常出现在<strong>定量实验</strong>中，常见场景：</p>
+          <ul style="list-style:disc;padding-left:20px;margin-top:8px;">
+            <li>测定某物质纯度（通过反应产生气体的体积换算物质的量）</li>
+            <li>测定气体摩尔体积</li>
+            <li>测定化学反应速率（通过气体体积变化速率）</li>
+            <li>测定阿伏加德罗常数（电解水、金属与酸反应等）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">核心原理</div>
+        <div class="q-text">
+          <strong>排水量气法：</strong>利用气体将水（或其他液体）排出的原理，通过测量排出液体的体积间接测定气体体积。<br>
+          <strong>装置构成：</strong>反应容器 &rarr; 导气管 &rarr; 量气管（或倒扣的带刻度试管/量筒）<br>
+          <strong>读数要求：</strong>
+          <ul style="list-style:disc;padding-left:20px;margin-top:4px;">
+            <li>待装置冷却至<strong>室温</strong>后再读数</li>
+            <li>调节量气管使<strong>两侧液面相平</strong>（保证内外压强相等）</li>
+            <li>视线与量气管内凹液面<strong>最低处相平</strong></li>
+          </ul>
+        </div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看完整操作要点" data-hide-text="&#x1F512; 隐藏" onclick="toggleCollapsible(this, 'a3-1')">&#x1F50D; 查看完整操作要点</span>
+        <div class="collapsible a3-1">
+          <div class="q-answer-inner">
+            <p>&#x2460; 装置气密性<strong>必须先检查</strong></p>
+            <p>&#x2461; 反应前需排尽装置内空气（通入惰性气体或用反应生成气体排空）</p>
+            <p>&#x2462; 使用量气管时，液体一般为水。若气体可溶于水，改用饱和NaCl溶液或排油法</p>
+            <p>&#x2463; 量气的量气管与水准管的液面必须保持相平，确保量气管内压强 = 大气压</p>
+            <p>&#x2464; 温度对气体体积影响大，必须记录实验时的温度和大气压</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn trap-btn" data-show-text="&#x26A0;&#xFE0F; 查看陷阱" data-hide-text="&#x1F512; 隐藏陷阱" onclick="toggleCollapsible(this, 't3')">&#x26A0;&#xFE0F; 查看陷阱</span>
+      <div class="collapsible t3">
+        <div class="trap-box">
+          <p><strong>&#x2460; 量气管读数"三不读"原则：</strong>未冷却不读、液面未相平不读、视线未平视不读</p>
+          <p><strong>&#x2461; 排水法 vs 排液法：</strong>气体若溶于水（如Cl&#x2082;、SO&#x2082;），不能用水排！应用排饱和NaCl溶液法（Cl&#x2082;）/排饱和NaHSO&#x2083;溶液法（SO&#x2082;）或排油法</p>
+          <p><strong>&#x2462; "起始空气"的陷阱：</strong>未排尽装置内的空气就开始反应，会导致气体体积偏大（空气也被当作产物气体排出）</p>
+          <p><strong>&#x2463; 温度压强不校正：</strong>实验条件下测得的体积不等于标准状况体积！需换算：V&#x2080; = V &times; (T&#x2080;/T) &times; (p/p&#x2080;)</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn tip-btn" data-show-text="&#x2705; 查看指导" data-hide-text="&#x1F512; 隐藏指导" onclick="toggleCollapsible(this, 'g3')">&#x2705; 查看指导</span>
+      <div class="collapsible g3">
+        <div class="tip-box">
+          <p><strong>量气实验"五个一定"：</strong></p>
+          <ul style="list-style:disc;padding-left:20px;">
+            <li><strong>一定</strong>要先检查装置气密性</li>
+            <li><strong>一定</strong>要排尽装置内空气后再收集气体</li>
+            <li><strong>一定</strong>要等装置冷却到室温再读数</li>
+            <li><strong>一定</strong>要调节液面相平再读数</li>
+            <li><strong>一定</strong>要记录实验时的温度和大气压</li>
+          </ul>
+          <p style="margin-top:8px;"><strong>排水量气装置的类型：</strong></p>
+          <ul style="list-style:disc;padding-left:20px;">
+            <li><strong>量气管+水准管型：</strong>通过上下移动水准管调节液面相平，量气管刻度直接读数</li>
+            <li><strong>排水集气+量筒型：</strong>将气体通入倒扣在水槽中的量筒，排出水的体积即为气体体积（简易法）</li>
+            <li><strong>注射器型：</strong>反应在密闭注射器中进行，通过活塞移动直接读取气体体积</li>
+          </ul>
+          <p style="margin-top:8px;"><strong>误差分析口诀：</strong></p>
+          <p>未排空气&rarr;偏大（空气混入）；读数时量气管液面高于水准管&rarr;偏小（量气管内压强大于大气压，气体被压缩）；未冷却读数&rarr;偏大（热膨胀）；溶于水的气体用水排&rarr;偏小（部分气体溶解）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">&middot; &middot; &middot;</div>
+
+<!-- 考点4 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点4</span>
+    <h2>综合实验中的装置连接与分析</h2>
+    <span class="must">&#x1F534; 高频</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">&#x1F4DD; 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source">2025&middot;广东&middot;第15题</div>
+        <div class="q-text">按如图组装装置并进行实验：将铜丝插入溶液中，当c中红色褪去时，将铜丝拔离液面。下列叙述错误的是<br>A．a中有化合反应发生，并有颜色变化<br>B．b中气体变红棕色时，所含氮氧化物至少有两种<br>C．c中溶液红色刚好褪去时，HCO&#x2083;&#x207B;恰好完全反应<br>D．若将a中稀硝酸换为浓硫酸并加热，则c中溶液颜色会褪去</div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看答案" data-hide-text="&#x1F512; 隐藏答案" onclick="toggleCollapsible(this, 'a4-1')">&#x1F50D; 查看答案</span>
+        <div class="collapsible a4-1">
+          <div class="q-answer-inner">&#x2705; 答案：C &mdash;&mdash; c中酚酞褪色是因为NaOH被反应消耗/生成的酸中和，此时HCO&#x2083;&#x207B;不一定恰好完全反应；A Cu+稀HNO&#x2083;生成Cu(NO&#x2083;)&#x2082;（蓝色溶液）+NO，为化合反应且颜色由无色变蓝色；B NO被O&#x2082;氧化为NO&#x2082;（红棕色），至少含NO和NO&#x2082;两种；D浓H&#x2082;SO&#x2084;+Cu加热生成SO&#x2082;，SO&#x2082;使品红/酚酞褪色</div>
+        </div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source">2025&middot;广东&middot;第11题</div>
+        <div class="q-text">利用如图装置进行实验：打开K&#x2081;、K&#x2082;，一定时间后，a中溶液变蓝；关闭K&#x2081;，打开K&#x2083;，点燃酒精灯加热数分钟后，滴入无水乙醇。下列说法错误的是<br>A．a中现象体现了I&#x207B;的还原性<br>B．b中H&#x2082;O&#x2082;既作氧化剂也作还原剂<br>C．乙醇滴加过程中，c中的铜丝由黑变红，说明乙醇被氧化<br>D．d中有银镜反应发生，说明c中产物有乙酸</div>
+        <span class="toggle-btn answer-btn" data-show-text="&#x1F50D; 查看答案" data-hide-text="&#x1F512; 隐藏答案" onclick="toggleCollapsible(this, 'a4-2')">&#x1F50D; 查看答案</span>
+        <div class="collapsible a4-2">
+          <div class="q-answer-inner">&#x2705; 答案：D &mdash;&mdash; 银镜反应检验的是<strong>醛基</strong>（&mdash;CHO），不是羧基（&mdash;COOH）！d中银镜说明产物有乙醛（CH&#x2083;CHO），不是乙酸；A I&#x207B;被H&#x2082;O&#x2082;氧化为I&#x2082;（变蓝）体现还原性；B H&#x2082;O&#x2082;在MnO&#x2082;催化下分解，自身氧化还原；C CuO（黑）被乙醇还原为Cu（红），乙醇被氧化为乙醛</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn trap-btn" data-show-text="&#x26A0;&#xFE0F; 查看陷阱" data-hide-text="&#x1F512; 隐藏陷阱" onclick="toggleCollapsible(this, 't4')">&#x26A0;&#xFE0F; 查看陷阱</span>
+      <div class="collapsible t4">
+        <div class="trap-box">
+          <p><strong>&#x2460; 银镜反应 &#x2260; 检验所有有机物</strong>&mdash;&mdash; 银镜反应只检验醛基（&mdash;CHO），不能检验羧基（&mdash;COOH）、酮基（&#x3E;C=O，除非是&#x3B1;-羟基酮）</p>
+          <p><strong>&#x2461; NO无色&rarr;NO&#x2082;红棕色的转化</strong>&mdash;&mdash; 这个转化的条件是接触O&#x2082;（空气中）。如果装置密封好，NO无法变为NO&#x2082;</p>
+          <p><strong>&#x2462; "红色褪去"原因不唯一</strong>&mdash;&mdash; 可能是酸碱中和（碱被消耗），也可能是氧化漂白（如SO&#x2082;使品红褪色），也可能是生成物变色。一定要结合反应分析！</p>
+          <p><strong>&#x2463; 多装置连接题的陷阱</strong>&mdash;&mdash; 前一步的产物是下一步的反应物，前一步未反应完的气体可能干扰下一步！如2025第11题中SO&#x2082;会干扰银镜反应</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <span class="toggle-btn tip-btn" data-show-text="&#x2705; 查看指导" data-hide-text="&#x1F512; 隐藏指导" onclick="toggleCollapsible(this, 'g4')">&#x2705; 查看指导</span>
+      <div class="collapsible g4">
+        <div class="tip-box">
+          <p><strong>综合实验装置分析四步法：</strong></p>
+          <ul style="list-style:disc;padding-left:20px;">
+            <li>&#x2460; <strong>辨装置：</strong>先看图，标出每个装置的<strong>功能</strong>（发生、除杂、反应、收集、尾气）</li>
+            <li>&#x2461; <strong>理流程：</strong>按气流方向理清物质流向，注意"谁先进谁后进"</li>
+            <li>&#x2462; <strong>推反应：</strong>根据药品写反应方程式，推断每步生成/消耗的物质</li>
+            <li>&#x2463; <strong>析现象：</strong>从反应推现象，或从现象反向验证反应。注意干扰因素</li>
+          </ul>
+          <p style="margin-top:8px;"><strong>干扰因素的常见来源：</strong></p>
+          <ul style="list-style:disc;padding-left:20px;">
+            <li>前步残余气体进入后步装置</li>
+            <li>副反应产物的干扰</li>
+            <li>空气中O&#x2082;、CO&#x2082;、H&#x2082;O蒸气的干扰</li>
+            <li>实验操作顺序不当导致的干扰</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">&middot; &middot; &middot;</div>
+
+    </div>
+
+    <!-- 翻页导航 -->
+    <div class="nav-footer">
+        <a href="07.html" class="nav-btn prev">&#x2190; 第7讲</a>
+        <a href="09.html" class="nav-btn next">第9讲 &#x2192;</a>
+    </div>
+
+    <!-- 底部 -->
     <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
+        化学不难学 &mdash; 2027届高三化学第一轮复习 &middot; 第8讲 仪器的组合与气体体积的测定
     </footer>
+
+    <script>
+    function toggleCollapsible(btn, cls) {
+        var parent = btn.parentElement;
+        var content = parent.querySelector('.collapsible.' + cls);
+        if (!content) {
+            // fallback: try finding by class on the whole parent chain
+            var all = parent.querySelectorAll('.collapsible');
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].classList.contains(cls)) {
+                    content = all[i];
+                    break;
+                }
+            }
+        }
+        if (!content) return;
+
+        var isOpen = content.classList.contains('open');
+        if (isOpen) {
+            content.classList.remove('open');
+            if (btn.hasAttribute('data-show-text')) {
+                btn.textContent = btn.getAttribute('data-show-text');
+            }
+        } else {
+            content.classList.add('open');
+            if (btn.hasAttribute('data-hide-text')) {
+                btn.textContent = btn.getAttribute('data-hide-text');
+            }
+        }
+    }
+    </script>
 </body>
 </html>
