@@ -1,193 +1,838 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第6讲 物质的量浓度及溶液配制 | 决胜高考</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .navbar a:hover { color: #fbbf24; }
-        .navbar-brand {
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .topic-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .topic-unit {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: white;
-            background: #3b82f6;
-            margin-bottom: 16px;
-        }
-        .topic-type {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .topic-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-        }
-        .topic-chapter {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-        .content-area {
-            background: white;
-            border-radius: 16px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .content-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f622, #3b82f611);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 36px;
-        }
-        .content-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 12px;
-        }
-        .content-desc {
-            color: #94a3b8;
-            font-size: 15px;
-            max-width: 400px;
-        }
-        .nav-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            gap: 16px;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: #334155;
-        }
-        .nav-btn:hover {
-            border-color: #3b82f6;
-            background: #3b82f608;
-            transform: translateY(-1px);
-        }
-        .nav-btn.disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-        .nav-btn.next {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        @media (max-width: 600px) {
-            .topic-title { font-size: 22px; }
-            .content-area { padding: 40px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>第6讲 物质的量浓度及溶液配制 | 化学不难学</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.75;
+    }
+    /* 导航 */
+    .navbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .navbar a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .navbar a:hover { color: #fbbf24; }
+    .navbar-brand { color: #fbbf24; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+
+    /* 顶部 banner */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 40px 32px 32px;
+      text-align: center;
+    }
+    .header .lecture-tag {
+      display: inline-block;
+      background: #e94560;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .header h1 { font-size: 24px; font-weight: 800; }
+    .header h1 em { font-style: normal; color: #fbbf24; }
+    .header p { font-size: 14px; opacity: 0.6; margin-top: 8px; }
+    .header .tags { margin-top: 14px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .header .tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #e2e8f0;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    /* 主体 */
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    /* 考点块 */
+    .block {
+      margin-bottom: 36px;
+      border-left: 4px solid #e94560;
+      border-radius: 0 12px 12px 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .block-head {
+      padding: 16px 22px;
+      background: linear-gradient(90deg, #fef2f4 0%, #fff 100%);
+      border-bottom: 1px solid #fde8ec;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .block-num {
+      background: #e94560;
+      color: #fff;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .block-head h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; flex: 1; }
+    .must { font-size: 12px; color: #e94560; font-weight: 600; background: #fef2f4; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+    .often { font-size: 12px; color: #f39c12; font-weight: 600; background: #fff8ec; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+
+    /* 子块 */
+    .sub { padding: 18px 22px; border-bottom: 1px solid #f0f1f3; }
+    .sub:last-child { border-bottom: none; }
+    .sub-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sub-title.exam { color: #0f3460; }
+    .sub-title.trap { color: #e94560; }
+    .sub-title.tip  { color: #27ae60; }
+
+    /* 真题框 */
+    .q-box {
+      background: #f6f8fb;
+      border-radius: 8px;
+      padding: 14px 16px;
+      border: 1px solid #e0e6ed;
+      margin-bottom: 10px;
+    }
+    .q-source {
+      font-size: 12px;
+      color: #0f3460;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .q-source .dot { width: 6px; height: 6px; background: #0f3460; border-radius: 50%; display: inline-block; }
+    .q-text { font-size: 14px; color: #1a1a2e; font-weight: 500; line-height: 1.8; }
+    .q-options { margin: 10px 0; }
+    .q-options p { font-size: 14px; color: #333; line-height: 2; }
+
+    /* 知识框 */
+    .knowledge-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .knowledge-box .kb-title { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
+    .knowledge-box p, .knowledge-box li { font-size: 13px; color: #374151; line-height: 1.9; }
+    .knowledge-box ul { padding-left: 18px; }
+    .knowledge-box li { margin-bottom: 3px; }
+
+    /* 公式框 */
+    .formula-box {
+      background: #fffbeb;
+      border: 2px solid #fbbf24;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      text-align: center;
+    }
+    .formula-box .main-formula {
+      font-size: 18px;
+      font-weight: 700;
+      color: #92400e;
+      letter-spacing: 1px;
+    }
+    .formula-box .explain {
+      font-size: 12px;
+      color: #a16207;
+      margin-top: 6px;
+      line-height: 1.8;
+    }
+
+    /* 步骤框 */
+    .step-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .step-box .step-title { font-size: 13px; font-weight: 700; color: #15803d; margin-bottom: 8px; }
+    .step-box li { font-size: 13px; color: #374151; line-height: 2; }
+    .step-box ul { padding-left: 22px; }
+
+    /* 展开/收起 */
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      margin: 8px 4px 4px 0;
+      transition: all 0.2s;
+    }
+    .btn-answer { background: #e8f4fd; color: #0369a1; }
+    .btn-answer:hover { background: #bae6fd; }
+    .btn-trap { background: #fef2f2; color: #dc2626; }
+    .btn-trap:hover { background: #fecaca; }
+    .btn-tip { background: #f0fdf4; color: #15803d; }
+    .btn-tip:hover { background: #bbf7d0; }
+
+    .reveal { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .reveal.open { max-height: 1200px; }
+
+    .answer-box {
+      background: #e8f4fd;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #0369a1;
+      font-weight: 600;
+      line-height: 1.8;
+    }
+    .trap-box {
+      background: #fef2f2;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #dc2626;
+      line-height: 1.8;
+    }
+    .trap-box strong { font-weight: 700; }
+    .tip-box {
+      background: #f0fdf4;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #15803d;
+      line-height: 1.8;
+    }
+    .tip-box li { margin-bottom: 4px; }
+    .tip-box ul { padding-left: 18px; }
+
+    /* 表格 */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 13px;
+    }
+    .data-table th {
+      background: #0f3460;
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .data-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+      vertical-align: top;
+    }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .highlight { color: #e94560; font-weight: 700; }
+
+    /* 分色标注 */
+    .hl-red { color: #e94560; font-weight: 700; }
+    .hl-blue { color: #0369a1; font-weight: 700; }
+    .hl-green { color: #15803d; font-weight: 700; }
+
+    /* 底部 */
+    .page-footer {
+      text-align: center;
+      padding: 32px 16px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+    .page-footer a { color: #0f3460; text-decoration: none; }
+    .nav-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .nav-btn {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      background: #0f3460;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #1e3a5f; }
+    .nav-btn.secondary { background: #e2e8f0; color: #0f3460; }
+    .nav-btn.secondary:hover { background: #cbd5e1; }
+
+    @media (max-width: 600px) {
+      .header { padding: 28px 16px 22px; }
+      .header h1 { font-size: 20px; }
+      .wrap { padding: 18px 10px 40px; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html">← 返回首页</a>
-        <span class="navbar-brand">决胜高考</span>
-        <a href="../index.html">导航</a>
-    </nav>
 
-    <main class="main">
-        <div class="topic-header">
-            <div class="topic-unit">大单元一</div>
-            <div class="topic-type">第6讲</div>
-            <h1 class="topic-title">物质的量浓度及溶液配制</h1>
-            <div class="topic-chapter">第二章 化学计量与简单计算</div>
+<!-- 导航 -->
+<nav class="navbar">
+  <a href="../index.html">
+    <span style="font-size:20px;">🏠</span>
+    <span class="navbar-brand">化学不难学</span>
+  </a>
+  <a href="../index.html#topics">← 返回专题列表</a>
+</nav>
+
+<!-- 顶部标题 -->
+<header class="header">
+  <div class="lecture-tag">第6讲 · 化学计量基础</div>
+  <h1>物质的量浓度 <em>及溶液配制</em></h1>
+  <p>从 c=n/V 到容量瓶操作，广东高考选择题+实验题双重考察</p>
+  <div class="tags">
+    <span class="tag">🧪 物质的量浓度</span>
+    <span class="tag">⚗️ 溶液配制</span>
+    <span class="tag">📐 容量瓶</span>
+    <span class="tag">🎯 广东高考</span>
+  </div>
+</header>
+
+<!-- 主体 -->
+<main class="wrap">
+
+  <!-- ====== 考点1：物质的量浓度的概念与计算 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点1</span>
+      <h2>物质的量浓度(c)的概念与计算</h2>
+      <span class="must">必考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 核心公式体系</div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">🔗 物质的量浓度定义</div>
+        <ul>
+          <li><strong>定义：</strong>单位体积溶液中所含溶质 B 的物质的量，符号 c(B)</li>
+          <li><strong>公式：</strong>c(B) = n(B) / V(液)</li>
+          <li><strong>单位：</strong>mol/L（或 mol·L⁻¹），有时也用 mmol/mL</li>
+        </ul>
+      </div>
+
+      <div class="formula-box">
+        <div class="main-formula">c = n / V（液）</div>
+        <div class="explain">
+          <strong>⚠️ 注意：</strong>① V 是<strong>溶液体积</strong>，不是溶剂体积；② V 单位必须是 <strong>L</strong>（不是 mL）<br>
+          ③ 从 c 求溶质物质的量：<strong>n = c · V</strong>（此即第5讲四大公式之一）
         </div>
+      </div>
 
-        <div class="content-area">
-            <div class="content-icon">📝</div>
-            <div class="content-title">考点内容整理中</div>
-            <div class="content-desc">本讲内容正在精心准备中，敬请期待。你可以先复习其他考点，或稍后再来查看更新。</div>
+      <div class="knowledge-box">
+        <div class="kb-title">📐 稀释定律</div>
+        <p><strong>内容：</strong>稀释前后溶质的物质的量不变。</p>
+        <p style="margin-top:6px;font-size:15px;font-weight:700;color:#1e40af;">c₁ · V₁ = c₂ · V₂</p>
+        <p style="margin-top:4px;font-size:12px;color:#6b7280;">（稀释前浓度×体积 = 稀释后浓度×体积）</p>
+      </div>
+    </div>
+
+    <!-- 真题：2025广东 C选项 盐溶液中离子数 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析 — c·V 结合水解陷阱</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025年广东高考 第10题 C选项</div>
+        <div class="q-text">
+          <strong>C．</strong>在 1L 0.1mol/L 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1NA
         </div>
-
-        <div class="nav-footer">
-            <a href="./05.html" class="nav-btn ">← 上一讲</a>
-            <a href="./rd-02.html" class="nav-btn next ">下一讲 →</a>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans1a')">🔍 查看答案</button>
+        <div class="reveal" id="ans1a">
+          <div class="answer-box">
+            <strong>C选项错误。</strong>从 c·V 计算：n(NH₄Cl) = 0.1mol/L × 1L = 0.1mol，但 NH₄⁺ 是弱碱阳离子，在溶液中会水解：<br>
+            NH₄⁺ + H₂O ⇌ NH₃·H₂O + H⁺<br>
+            因此溶液中 <strong>n(NH₄⁺) < 0.1mol</strong>，即 NH₄⁺ 数目 < 0.1NA。<br><br>
+            <strong>正确选项为D</strong>（标准状况下22.4L Cl₂与足量H₂反应，形成共价键数目为2NA）。
+          </div>
         </div>
-    </main>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap1a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap1a">
+          <div class="trap-box">
+            <strong>陷阱1：把 c·V 算出的 n 直接当离子数</strong><br>
+            NH₄Cl = NH₄⁺ + Cl⁻，电离出的 NH₄⁺ 确实是 0.1mol，但 NH₄⁺ <strong>会水解</strong>，实际数目减少。这是广东卷 NA 题的最高频陷阱之一——2023、2024、2025 连续三年都考！<br><br>
+            <strong>陷阱2：常见可水解离子一览</strong><br>
+            • 弱碱阳离子：NH₄⁺、Fe³⁺、Al³⁺、Cu²⁺、Fe²⁺、Zn²⁺ 等 → 水解使阳离子数减少<br>
+            • 弱酸阴离子：CO₃²⁻、HCO₃⁻、SO₃²⁻、CH₃COO⁻、PO₄³⁻ 等 → 水解使阴离子数减少
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip1a')">✅ 查看指导</button>
+        <div class="reveal" id="tip1a">
+          <div class="tip-box">
+            <ul>
+              <li>在 NA 选择题中，看到"xxmol/L 的 NH₄Cl/FeCl₃/Na₂CO₃ 溶液，xxx 离子数目为 xxNA"——<strong>先怀疑水解</strong></li>
+              <li>判断口诀：<strong>"可水解离子，数目一定 < nNA"</strong></li>
+              <li>只有强酸强碱盐（如 NaCl、KNO₃）的离子数目才严格等于 nNA</li>
+              <li>n = c·V 只是"名义上"的物质的量，不能替代实际存在量</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-    </footer>
+    <!-- 真题：2024广东 B选项 同类型陷阱 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 同类真题 — 2024广东卷</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024年广东高考 第10题 B选项</div>
+        <div class="q-text">
+          <strong>B．</strong>1L 1mol·L⁻¹ NH₄NO₃ 溶液中含 NH₄⁺ 的数目为 NA
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans1b')">🔍 查看答案</button>
+        <div class="reveal" id="ans1b">
+          <div class="answer-box">
+            <strong>B选项错误。</strong>同样的水解陷阱：NH₄⁺ 水解，实际数目 < NA。此题答案选A。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap1b')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap1b">
+          <div class="trap-box">
+            连续两年完全相同的陷阱！<strong>NH₄⁺ 的水解</strong>是广东卷的"看家题"。<br>
+            2023年换了花样——考 HCO₃⁻ 既水解又电离（同样数目 < NA）。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip1b')">✅ 查看指导</button>
+        <div class="reveal" id="tip1b">
+          <div class="tip-box">
+            <ul>
+              <li><strong>3年规律：</strong>广东卷 NA 题每年必考一个"盐溶液中离子数目"选项，且该选项必错</li>
+              <li>2025: NH₄⁺（水解）→ 错 | 2024: NH₄⁺（水解）→ 错 | 2023: HCO₃⁻（水解+电离）→ 错</li>
+              <li><strong>看到这种选项可以直接排除</strong>，不用算</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 考点2：一定物质的量浓度溶液的配制 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点2</span>
+      <h2>一定物质的量浓度溶液的配制</h2>
+      <span class="must">必考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 容量瓶的认识与使用</div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">⚗️ 容量瓶</div>
+        <ul>
+          <li><strong>构造：</strong>细颈、梨形、平底玻璃瓶，配有磨口玻璃塞</li>
+          <li><strong>标识：</strong>温度（20℃）、容积、刻度线</li>
+          <li><strong>常见规格：</strong>50mL、100mL、250mL、500mL、1000mL</li>
+          <li><strong>用途：</strong>专用于配制<strong>一定体积、一定物质的量浓度</strong>的溶液</li>
+          <li><strong>注意事项：</strong>不能用于溶解、稀释、加热、长期储存溶液</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 配制步骤（八字口诀）</div>
+
+      <div class="step-box">
+        <div class="step-title">🧪 用固体配制一定物质的量浓度溶液的完整步骤</div>
+        <ul>
+          <li><strong>① 计算</strong>：根据 c 和 V，计算所需溶质的质量 m = c·V·M</li>
+          <li><strong>② 称量</strong>：用托盘天平（或分析天平）称取所需固体</li>
+          <li><strong>③ 溶解（冷却）</strong>：在<strong>烧杯</strong>中用适量蒸馏水溶解，用<strong>玻璃棒</strong>搅拌，<strong>冷却至室温</strong></li>
+          <li><strong>④ 转移</strong>：用玻璃棒<strong>引流</strong>，将溶液沿玻璃棒注入<strong>容量瓶</strong></li>
+          <li><strong>⑤ 洗涤</strong>：用蒸馏水洗涤烧杯内壁和玻璃棒<strong>2~3次</strong>，洗涤液<strong>全部注入容量瓶</strong></li>
+          <li><strong>⑥ 定容</strong>：加蒸馏水至刻度线<strong>下1~2cm</strong>时，改用<strong>胶头滴管</strong>逐滴加入至凹液面最低处与刻度线相切</li>
+          <li><strong>⑦ 摇匀</strong>：盖好瓶塞，反复上下颠倒摇匀</li>
+          <li><strong>⑧ 装瓶贴签</strong>：将配好的溶液转入试剂瓶，贴好标签</li>
+        </ul>
+      </div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">🔧 关键仪器清单</div>
+        <p>托盘天平（或分析天平）、药匙、<strong>烧杯</strong>、<strong>玻璃棒</strong>、<strong>容量瓶</strong>、<strong>胶头滴管</strong></p>
+        <p style="margin-top:6px;font-size:12px;color:#6b7280;">口诀：天平称、烧杯溶、玻璃棒来引流、容量瓶里定容用、胶头滴管最后动</p>
+      </div>
+    </div>
+
+    <!-- 真题：2024广东 配制溶液仪器选择 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析 — 2024广东 配制Na₂CO₃溶液</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024年广东高考 第17题(3)①（填空题）</div>
+        <div class="q-text">
+          工业锅炉需定期除水垢，其中的硫酸钙用纯碱溶液处理。兴趣小组在实验室探究 Na₂CO₃ 溶液的浓度对反应速率的影响。<br><br>
+          <strong>①</strong> 用 Na₂CO₃ 固体配制溶液，以滴定法测定其浓度。<br>
+          i．该过程中用到的仪器有 __________ 。（备选仪器如图：A.锥形瓶 B.烧杯 C.容量瓶 D.酸式滴定管）
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans2a')">🔍 查看答案</button>
+        <div class="reveal" id="ans2a">
+          <div class="answer-box">
+            <strong>【答案】BD</strong>（烧杯 + 酸式滴定管）<br><br>
+            用固体配制溶液需要烧杯（溶解），以酸式滴定管进行滴定测定浓度。<br>
+            注意：本题并非问"配制溶液的完整仪器"，而是问<strong>"配制溶液 + 滴定法测定浓度"</strong>两个步骤合并所需的仪器。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap2a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap2a">
+          <div class="trap-box">
+            <strong>陷阱1：审题不清</strong><br>
+            题目问的是"配制溶液 + 滴定法测浓度"整个过程的仪器，不只是配制。如果只答烧杯和容量瓶就漏了滴定的仪器。<br><br>
+            <strong>陷阱2：容量瓶不是必须的</strong><br>
+            这里只需配制一定浓度后用滴定法标定，不一定需要用到容量瓶精确配制定体积——用烧杯溶解后用酸式滴定管滴定即可。如果题目换成"配制 250mL 0.1mol/L Na₂CO₃ 溶液"，容量瓶才是必须的。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip2a')">✅ 查看指导</button>
+        <div class="reveal" id="tip2a">
+          <div class="tip-box">
+            <ul>
+              <li>看清楚题目是"配制溶液"还是"配制+测定"，仪器范围不同</li>
+              <li>纯配制一定浓度溶液：天平、药匙、烧杯、玻璃棒、<strong>容量瓶</strong>、胶头滴管</li>
+              <li>配制后用滴定法测浓度：在上述基础上加<strong>滴定管</strong>、锥形瓶等</li>
+              <li>如果只是"用固体配溶液"而未指定准确体积，容量瓶不一定是必须的</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真题：2023广东 配制溶液加酸 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题精析 — 2023广东 配制FeSO₄溶液为何加酸</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023年广东高考 第17题(4)（填空题）</div>
+        <div class="q-text">
+          乙同学测量反应 A 的焓变。<br>
+          查阅资料：配制 FeSO₄ 溶液时需加入酸。加酸的目的 __________ 。<br>
+          提出猜想：Fe 粉与 Fe₂(SO₄)₃ 溶液混合，可能存在 Fe 粉和酸的反应。
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans2b')">🔍 查看答案</button>
+        <div class="reveal" id="ans2b">
+          <div class="answer-box">
+            <strong>【答案】抑制 Fe²⁺ 水解</strong><br><br>
+            Fe²⁺ 是弱碱阳离子，在水中会水解：Fe²⁺ + 2H₂O ⇌ Fe(OH)₂ + 2H⁺<br>
+            加酸（提供 H⁺）可以<strong>抑制水解</strong>，防止生成 Fe(OH)₂ 沉淀，保证溶液中 Fe²⁺ 浓度的准确。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap2b')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap2b">
+          <div class="trap-box">
+            <strong>陷阱：忘记水解与抑制水解的关系</strong><br>
+            可水解的盐配制溶液时，常常需要<strong>加相应的酸或碱来抑制水解</strong>：<br>
+            • FeCl₃ 溶液 → 加少量 HCl（抑制 Fe³⁺ 水解）<br>
+            • FeSO₄ 溶液 → 加少量 H₂SO₄（抑制 Fe²⁺ 水解）<br>
+            • Na₂CO₃ 溶液 → 有时需加少量 NaOH（抑制 CO₃²⁻ 水解）<br>
+            • SnCl₂ 溶液 → 加少量 HCl（抑制 Sn²⁺ 水解）<br><br>
+            <strong>更进一步：</strong>配制 FeSO₄ 溶液时不仅要加酸，还要加少量铁粉——防止 Fe²⁺ 被空气氧化成 Fe³⁺。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip2b')">✅ 查看指导</button>
+        <div class="reveal" id="tip2b">
+          <div class="tip-box">
+            <ul>
+              <li><strong>万能模板：</strong>"配制 XX 溶液时需加入酸/碱，目的是______" → 答"抑制水解"</li>
+              <li>常用的需要加酸配制的盐：FeCl₃、FeSO₄、Fe₂(SO₄)₃、SnCl₂、AlCl₃ 等</li>
+              <li>常用的需要加碱配制的盐：Na₂CO₃、Na₂S 等（抑制阴离子水解）</li>
+              <li>实验题常把"配溶液加酸/碱"与"水解平衡移动"结合起来考</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 考点3：配制溶液的误差分析 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点3</span>
+      <h2>配制溶液的误差分析</h2>
+      <span class="often">常考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 误差分析总表</div>
+      <p style="font-size:13px;color:#6b7280;margin-bottom:8px;">核心依据：c = n / V，n 偏大则 c 偏大，V 偏大则 c 偏小</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>操作</th><th>影响 n</th><th>影响 V</th><th>c 的变化</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>称量时砝码生锈（增重）</td>
+            <td class="highlight">n 偏大</td>
+            <td>—</td>
+            <td class="highlight">偏高</td>
+          </tr>
+          <tr>
+            <td>转移时溶液溅出</td>
+            <td class="highlight">n 偏小</td>
+            <td>—</td>
+            <td class="highlight">偏低</td>
+          </tr>
+          <tr>
+            <td>未洗涤烧杯和玻璃棒</td>
+            <td class="highlight">n 偏小</td>
+            <td>—</td>
+            <td class="highlight">偏低</td>
+          </tr>
+          <tr>
+            <td>未冷却就定容</td>
+            <td>—</td>
+            <td class="highlight">热胀，实际 V 偏小</td>
+            <td class="highlight">偏高</td>
+          </tr>
+          <tr>
+            <td>定容时俯视刻度线</td>
+            <td>—</td>
+            <td class="highlight">V 偏小</td>
+            <td class="highlight">偏高</td>
+          </tr>
+          <tr>
+            <td>定容时仰视刻度线</td>
+            <td>—</td>
+            <td class="highlight">V 偏大</td>
+            <td class="highlight">偏低</td>
+          </tr>
+          <tr>
+            <td>定容时水加多，用胶头滴管吸出</td>
+            <td class="highlight">n 偏小</td>
+            <td>—</td>
+            <td class="highlight">偏低</td>
+          </tr>
+          <tr>
+            <td>摇匀后液面下降，再补水至刻度</td>
+            <td>—</td>
+            <td class="highlight">V 偏大</td>
+            <td class="highlight">偏低</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="knowledge-box" style="margin-top:14px;">
+        <div class="kb-title">📐 俯视/仰视图解</div>
+        <p><strong>定容时：</strong>眼睛视线→刻度线→凹液面最低点，三点一线。</p>
+        <p style="margin-top:4px;">
+          <strong>俯视：</strong>视线向下斜 → 看到的"相切点"比实际液面低 → 加水偏少 → <strong>V偏小，c偏高</strong><br>
+          <strong>仰视：</strong>视线向上斜 → 看到的"相切点"比实际液面高 → 加水偏多 → <strong>V偏大，c偏低</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 考点4：物质的量浓度在高考中的延伸应用 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">考点4</span>
+      <h2>物质的量浓度在高考中的延伸应用</h2>
+      <span class="often">常考</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title exam">📘 三个关键延伸</div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">① 滴定分析中浓度的计算</div>
+        <p style="font-size:13px;">
+          滴定反应：aA + bB → 产物。当达到滴定终点时：<br>
+          <strong>c(A)·V(A) / a = c(B)·V(B) / b</strong><br>
+          即：<strong>c(待测) = c(标准) × V(标准) × a / (V(待测) × b)</strong>
+        </p>
+        <p style="font-size:12px;color:#6b7280;margin-top:4px;">这是广东卷实验大题中几乎必考的计算题型。</p>
+      </div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">② 离子浓度与电荷守恒</div>
+        <p style="font-size:13px;">
+          电解质溶液中，阳离子所带正电荷总数 = 阴离子所带负电荷总数。<br>
+          <strong>电荷守恒式：</strong>∑[阳离子电荷×浓度] = ∑[阴离子电荷×浓度]<br>
+          <span style="font-size:12px;color:#6b7280;">例：Na₂CO₃ 溶液中，c(Na⁺) + c(H⁺) = 2c(CO₃²⁻) + c(HCO₃⁻) + c(OH⁻)</span>
+        </p>
+      </div>
+
+      <div class="knowledge-box">
+        <div class="kb-title">③ 物质的量浓度与质量分数(w)的换算</div>
+        <p style="font-size:13px;">
+          <strong>c = 1000ρw / M</strong><br>
+          <span style="font-size:12px;color:#6b7280;">
+            ρ：溶液密度(g/mL) &nbsp; w：质量分数 &nbsp; M：溶质摩尔质量(g/mol)<br>
+            推导：c = n/V = (m溶质/M) / (m溶液/ρ×10⁻³) = (m溶液·w/M) / (m溶液/ρ×10⁻³) = 1000ρw/M
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 真题延伸 -->
+    <div class="sub">
+      <div class="sub-title exam">🎯 真题验证 — 2023广东 HCO₃⁻ 双重身份</div>
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023年广东高考 第11题 C选项</div>
+        <div class="q-text">
+          侯氏制碱法涉及 NH₄Cl 和 NaHCO₃ 等物质。<br>
+          <strong>C．</strong>体积为 1L 的 1mol·L⁻¹ NaHCO₃ 溶液中，HCO₃⁻ 数目为 NA
+        </div>
+        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans4a')">🔍 查看答案</button>
+        <div class="reveal" id="ans4a">
+          <div class="answer-box">
+            <strong>C选项错误。</strong>HCO₃⁻ 既能水解又能电离：<br>
+            水解：HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻（减少 HCO₃⁻）<br>
+            电离：HCO₃⁻ ⇌ H⁺ + CO₃²⁻（也减少 HCO₃⁻）<br>
+            两条路径都在减少 HCO₃⁻ 数目，所以 <strong>n(HCO₃⁻) < 0.1mol</strong>（N < NA）。
+          </div>
+        </div>
+        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap4a')">⚠️ 查看陷阱</button>
+        <div class="reveal" id="trap4a">
+          <div class="trap-box">
+            <strong>HCO₃⁻ 的双重身份是高频考点</strong><br>
+            HCO₃⁻ 既能与 H⁺ 反应（HCO₃⁻ + H⁺ = H₂O + CO₂↑），又能与 OH⁻ 反应（HCO₃⁻ + OH⁻ = CO₃²⁻ + H₂O）。<br>
+            在溶液中的行为：既水解又电离，两条路径都消耗 HCO₃⁻。<br><br>
+            <strong>对比：</strong>NH₄⁺ 只能水解（不能电离），CO₃²⁻ 只能水解（不能电离），而 HCO₃⁻、HSO₃⁻、H₂PO₄⁻ 等"酸式根"是双通道消耗。
+          </div>
+        </div>
+        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip4a')">✅ 查看指导</button>
+        <div class="reveal" id="tip4a">
+          <div class="tip-box">
+            <ul>
+              <li><strong>酸式根的判断优先级：</strong>HCO₃⁻、HSO₃⁻、H₂PO₄⁻、HPO₄²⁻ 都是"双通道消耗"——数目一定 < nNA</li>
+              <li><strong>真题规律：</strong>涉及这类离子的选项，基本都是错误选项</li>
+              <li><strong>记忆口诀：</strong>"酸式根离子，又要水解又电离，算数目时肯定不给力"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 总结 ====== -->
+  <div class="block">
+    <div class="block-head">
+      <span class="block-num">总结</span>
+      <h2>第6讲 · 满分攻略与易错清单</h2>
+    </div>
+    <div class="sub">
+      <div class="sub-title exam">⚡ 考前速记表</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>知识点</th><th>核心内容</th><th>常见错误</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>c = n/V</td>
+            <td>V 是<strong>溶液体积</strong>，单位 L</td>
+            <td>V 用 mL 代人；V 当溶剂体积</td>
+          </tr>
+          <tr>
+            <td>稀释定律</td>
+            <td>c₁V₁ = c₂V₂</td>
+            <td>忽略稀释前后物质的量不变</td>
+          </tr>
+          <tr>
+            <td>配制步骤</td>
+            <td>计算→称量→溶解→冷却→转移→洗涤→定容→摇匀</td>
+            <td>未冷却就定容（体积不准）</td>
+          </tr>
+          <tr>
+            <td>容量瓶</td>
+            <td>专用定容仪器，不可加热/溶解</td>
+            <td>把容量瓶当烧杯用</td>
+          </tr>
+          <tr>
+            <td>c·V→离子数</td>
+            <td>必须先判断离子是否<strong>水解</strong></td>
+            <td>算出 n 直接乘以 NA</td>
+          </tr>
+          <tr>
+            <td>配制易水解盐</td>
+            <td>加酸/碱抑制水解</td>
+            <td>忘记加酸导致沉淀、浓度不准</td>
+          </tr>
+          <tr>
+            <td>误差分析</td>
+            <td>n 偏大或 V 偏小 → c 偏高</td>
+            <td>俯视/仰视效应混淆</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="knowledge-box" style="margin-top:16px;">
+        <div class="kb-title">🎯 广东卷命题规律</div>
+        <ul>
+          <li><strong>选择题：</strong>每年 NA 题中必有"盐溶液离子数"选项，此选项 <strong>100% 错误</strong>（因为水解）</li>
+          <li><strong>实验大题：</strong>常在滴定分析中考察浓度计算（c待=c标·V标/V待），公式中 a/b 系数不能忘</li>
+          <li><strong>填空题：</strong>"配制 XX 溶液时需加酸"→ 答"抑制水解"，这是一个标准化答案</li>
+          <li><strong>误差分析：</strong>俯视/仰视最容易考，记忆口诀"俯高仰低"（俯视→c偏高；仰视→c偏低）</li>
+          <li>n = c·V 这个公式本身不会单独考，而是和其他坑（水解、可逆反应、非标况）组合出现</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <div class="page-footer">
+    <p>化学不难学 · 以考定教 · 第6讲</p>
+    <div class="nav-btns">
+      <a href="05.html" class="nav-btn secondary">← 第5讲 物质的量 气体摩尔体积</a>
+      <a href="../index.html" class="nav-btn secondary">🏠 返回主页</a>
+      <a href="rd-02.html" class="nav-btn">→ 热点强化2 NA应用判断</a>
+    </div>
+  </div>
+</main>
+
+<script>
+function toggle(btn, id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  el.classList.toggle('open');
+  if (isOpen) {
+    if (btn.classList.contains('btn-answer')) btn.textContent = '🔍 查看答案';
+    else if (btn.classList.contains('btn-trap')) btn.textContent = '⚠️ 查看陷阱';
+    else if (btn.classList.contains('btn-tip')) btn.textContent = '✅ 查看指导';
+  } else {
+    if (btn.classList.contains('btn-answer')) btn.textContent = '🔒 隐藏答案';
+    else if (btn.classList.contains('btn-trap')) btn.textContent = '🔒 隐藏陷阱';
+    else if (btn.classList.contains('btn-tip')) btn.textContent = '🔒 隐藏指导';
+  }
+}
+</script>
 </body>
 </html>
