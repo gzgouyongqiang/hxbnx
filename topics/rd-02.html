@@ -477,14 +477,14 @@
         <div class="q-text">
           <strong>C．</strong>在 1L 0.1mol/L 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx1a')">🔍 查看答案</button>
-        <div class="reveal" id="ans_kx1a">
+        <button class="toggle-btn btn-answer" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'ans_kx1a')">🔍 查看答案</button>
+        <div class="collapsible" id="ans_kx1a">
           <div class="answer-box">
             <strong>错误。</strong>n(NH₄Cl) = 0.1 &times; 1 = 0.1mol，但 NH₄⁺ 是弱碱阳离子，<strong>水解：</strong>NH₄⁺ + H₂O ⇌ NH₃&middot;H₂O + H⁺，实际 n(NH₄⁺) &lt; 0.1mol，即数目 &lt; 0.1NA。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx1a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap_kx1a">
+        <button class="toggle-btn btn-trap" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this,'trap_kx1a')">⚠️ 查看陷阱</button>
+        <div class="collapsible" id="trap_kx1a">
           <div class="trap-box">
             <strong>连续三年完全相同的套路！</strong><br>
             &bull; 2025：NH₄Cl 溶液 NH₄⁺ → 水解<br>
@@ -496,8 +496,8 @@
             酸式根（双通道）：HCO₃⁻、HSO₃⁻、H₂PO₄⁻、HPO₄²⁻
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx1a')">✅ 查看指导</button>
-        <div class="reveal" id="tip_kx1a">
+        <button class="toggle-btn btn-tip" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this,'tip_kx1a')">✅ 查看指导</button>
+        <div class="collapsible" id="tip_kx1a">
           <div class="tip-box">
             <ul>
               <li><strong>看到含以上离子的盐溶液+数目 → 直接判定 "&lt; nNA"，不需要算！</strong></li>
@@ -517,15 +517,15 @@
         <div class="q-text">
           <strong>D．</strong>Na 与 H₂O 反应生成 11.2L H₂，转移电子数目为 NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx2a')">🔍 查看答案</button>
-        <div class="reveal" id="ans_kx2a">
+        <button class="toggle-btn btn-answer" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'ans_kx2a')">🔍 查看答案</button>
+        <div class="collapsible" id="ans_kx2a">
           <div class="answer-box">
             <strong>错误。</strong>题目只说"生成 11.2L H₂"，<strong>未说明标准状况</strong>（0℃、101kPa），无法用 22.4L/mol 换算物质的量，因此无法计算转移电子数。<br><br>
             <strong>对比2025广东D选项（正确）：</strong>"<strong>标准状况下</strong>的 22.4L Cl₂ 与足量 H₂ 反应，形成的共价键数目为 2NA" — 多了"标准状况下"四个字，天壤之别！
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx2a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap_kx2a">
+        <button class="toggle-btn btn-trap" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this,'trap_kx2a')">⚠️ 查看陷阱</button>
+        <div class="collapsible" id="trap_kx2a">
           <div class="trap-box">
             <strong>没有"标准状况"四个字 → 直接排除</strong><br>
             &bull; 标准状况：0℃、101kPa，Vm ≈ 22.4 L/mol<br>
@@ -534,8 +534,8 @@
             <strong>特殊记忆：</strong>SO₃ 在标况下是<strong>固体</strong>，HF、H₂O 在标况下是<strong>液体</strong> — 都不能用 22.4 L/mol！
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx2a')">✅ 查看指导</button>
-        <div class="reveal" id="tip_kx2a">
+        <button class="toggle-btn btn-tip" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this,'tip_kx2a')">✅ 查看指导</button>
+        <div class="collapsible" id="tip_kx2a">
           <div class="tip-box">
             <ul>
               <li><strong>口诀：</strong>"不见标况不算 Vm，常温常压也不行"</li>
@@ -564,8 +564,8 @@
         <div class="q-text">
           <strong>A．</strong>26g C₂H₂ 中含有 σ 键的数目为 3NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx3a')">🔍 查看答案</button>
-        <div class="reveal" id="ans_kx3a">
+        <button class="toggle-btn btn-answer" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'ans_kx3a')">🔍 查看答案</button>
+        <div class="collapsible" id="ans_kx3a">
           <div class="answer-box">
             <strong>正确。</strong><br>
             &bull; M(C₂H₂) = 26 g/mol，n = 26/26 = 1 mol<br>
@@ -575,8 +575,8 @@
             &rArr; 1mol C₂H₂ 含 3NA 个 σ 键 ✅
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx3a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap_kx3a">
+        <button class="toggle-btn btn-trap" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this,'trap_kx3a')">⚠️ 查看陷阱</button>
+        <div class="collapsible" id="trap_kx3a">
           <div class="trap-box">
             <strong>有机分子键计数高频错误：</strong><br>
             &bull; 分不清 σ 键和 π 键：单键全是 σ，双键=1σ+1π，三键=1σ+2π<br>
@@ -585,8 +585,8 @@
             &bull; 错误变体："共价键总数"包括 σ+π，"σ键数"只数 σ
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx3a')">✅ 查看指导</button>
-        <div class="reveal" id="tip_kx3a">
+        <button class="toggle-btn btn-tip" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this,'tip_kx3a')">✅ 查看指导</button>
+        <div class="collapsible" id="tip_kx3a">
           <div class="tip-box">
             <ul>
               <li><strong>化学键计数的正确选项往往是答案</strong>（可精确计算，无陷阱）</li>
@@ -607,8 +607,8 @@
         <div class="q-text">
           <strong>B．</strong>1mol Fe 与水蒸气完全反应，生成 H₂ 的数目为 2NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx4a')">🔍 查看答案</button>
-        <div class="reveal" id="ans_kx4a">
+        <button class="toggle-btn btn-answer" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'ans_kx4a')">🔍 查看答案</button>
+        <div class="collapsible" id="ans_kx4a">
           <div class="answer-box">
             <strong>错误。</strong><br>
             铁与水蒸气反应：<strong>3Fe + 4H₂O(g) &rarr; Fe₃O₄ + 4H₂</strong><br>
@@ -617,8 +617,8 @@
             <strong>注意：</strong>Fe 与水蒸气反应生成的是 Fe₃O₄（Fe 平均价态 +8/3），不是 Fe₂O₃（+3）。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx4a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap_kx4a">
+        <button class="toggle-btn btn-trap" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this,'trap_kx4a')">⚠️ 查看陷阱</button>
+        <div class="collapsible" id="trap_kx4a">
           <div class="trap-box">
             <strong>电子转移题的两大陷阱：</strong><br>
             &bull; <strong>1) 产物搞错：</strong>Fe+水蒸气 → Fe₃O₄（不是Fe₂O₃）；Fe+Cl₂ → FeCl₃（不是FeCl₂）；Na+O₂(常温) → Na₂O，Na+O₂(点燃) → Na₂O₂<br>
@@ -629,8 +629,8 @@
             两个结果差 1.5 倍，命题人最爱混淆！
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx4a')">✅ 查看指导</button>
-        <div class="reveal" id="tip_kx4a">
+        <button class="toggle-btn btn-tip" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this,'tip_kx4a')">✅ 查看指导</button>
+        <div class="collapsible" id="tip_kx4a">
           <div class="tip-box">
             <ul>
               <li>先确认<strong>反应方程式是否正确</strong>（产物是不是你以为的那个）</li>
@@ -663,8 +663,8 @@
           <strong>常见命题形式：</strong>"1mol N₂ 与 3mol H₂ 充分反应，生成 NH₃ 的数目为 2NA"<br>
           <strong>典型错误：</strong>"标准状况下，2mol SO₂ 与 1mol O₂ 充分反应，转移电子数目为 4NA"
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans_kx5a')">🔍 查看答案</button>
-        <div class="reveal" id="ans_kx5a">
+        <button class="toggle-btn btn-answer" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this,'ans_kx5a')">🔍 查看答案</button>
+        <div class="collapsible" id="ans_kx5a">
           <div class="answer-box">
             <strong>以上说法全部错误。</strong><br>
             &bull; N₂ + 3H₂ ⇌ 2NH₃ 是<strong>可逆反应</strong>，反应不能进行到底，生成的 NH₃ &lt; 2mol<br>
@@ -672,8 +672,8 @@
             &bull; 弱电解质的电离也是可逆的：1mol CH₃COOH 溶于水，电离出的 H⁺ &lt; 1mol
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap_kx5a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap_kx5a">
+        <button class="toggle-btn btn-trap" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this,'trap_kx5a')">⚠️ 查看陷阱</button>
+        <div class="collapsible" id="trap_kx5a">
           <div class="trap-box">
             <strong>看到这些关键词 → "充分反应"不等于"完全反应"</strong><br>
             &bull; "充分反应/一定条件下反应" → 可逆反应未进行到底<br>
@@ -682,8 +682,8 @@
             &bull; 盐类水解也是可逆的！（回到考向1）
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip_kx5a')">✅ 查看指导</button>
-        <div class="reveal" id="tip_kx5a">
+        <button class="toggle-btn btn-tip" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this,'tip_kx5a')">✅ 查看指导</button>
+        <div class="collapsible" id="tip_kx5a">
           <div class="tip-box">
             <ul>
               <li><strong>做法：</strong>看到涉及可逆反应的选项 → 产物数目必定 &lt; nNA → 直接排除</li>
@@ -847,7 +847,7 @@ function toggleCollapsible(btn, targetClass) {
   }
   if (!content) {
     var parent = btn.parentElement;
-    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible");
+    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible, .reveal");
   }
   if (!content) return;
   var isOpen = content.classList.contains("open");
@@ -855,12 +855,6 @@ function toggleCollapsible(btn, targetClass) {
   if (btn.dataset.showText && btn.dataset.hideText) {
     btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
   }
-}
-function toggle(btn, id) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  var isOpen = el.classList.contains("open");
-  el.classList.toggle("open");
 }
     </script>
 </body>

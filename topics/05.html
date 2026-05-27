@@ -263,7 +263,7 @@
             transition: all 0.15s; margin-top: 6px;
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-        .hidden-content, .collapsible { display: none; padding: 10px 0 0; }
+        .hidden-content, .collapsible, .reveal { display: none; padding: 10px 0 0; }
         .hidden-content.open, .collapsible.open, .reveal.open { display: block; animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -358,14 +358,14 @@
         <div class="q-text">
           <strong>D．</strong>Na 与 H₂O 反应生成 11.2L H₂，转移电子数目为 NA
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>D选项错误。</strong>题目中只说了"生成 11.2L H₂"，<strong>没有说明"标准状况"</strong>，因此无法计算 H₂ 的物质的量，也就无法求出转移电子数目。<br><br>
             在 NA 题中，凡涉及气体体积换算物质的量，<strong>必须看到"标准状况"四个字</strong>，缺一个字都是错的。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：常温常压 ≠ 标准状况</strong><br>
@@ -374,7 +374,7 @@
             H₂O、CCl₄、CHCl₃、苯等在标况下不是气体，不能用 22.4 L/mol 换算。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -455,14 +455,14 @@
         <div class="q-text">
           <strong>C．</strong>1mol CO 和 H₂ 的混合气体含有的分子数目为 NA
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>C选项错误。</strong>CO 和 H₂ 均由分子构成，1mol 混合气体中无论两种气体的比例如何，总分子数就是 1mol = 1NA。<br>
             但原题给的选项表述为"1mol CO 和 H₂ 的混合气体含有的分子数目为 NA"，正确的理解是：<strong>混合气体"共1mol"，所以分子总数为 NA</strong>。这个选项其实需要仔细读——它的隐含条件是"混合气体一共1mol"还是"CO和H₂各1mol"？通常"1mol CO和H₂的混合气体"指总量1mol，不是各1mol。但原题参考答案为A，此项被判定为正确还是错误取决于具体表述，广东卷给的官方结论为"错误"（可能是认为题干歧义，或原表述被人理解成"各1mol"）——<strong>此处按广东卷官方解析判定：C错误。</strong>
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             无论混合比例如何，1mol 气体混合物中分子总数恒为 NA，但要注意审题：<br>
@@ -471,7 +471,7 @@
             • 如果是"1mol CO 和 H₂"，要判断是指混合物一共1mol还是各1mol
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -506,7 +506,7 @@
           <p>C．在 1L 0.1mol/L 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1NA</p>
           <p>D．标准状况下的 22.4L Cl₂ 与足量 H₂ 反应，形成的共价键数目为 2NA</p>
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】D</strong><br><br>
@@ -516,7 +516,7 @@
             D：Cl₂ + H₂ → 2HCl，1mol Cl₂ 生成 2mol HCl，含 2mol H-Cl 键，共价键数目 = 2NA，D正确。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱A：中子数 ≠ 质量数差</strong><br>
@@ -527,7 +527,7 @@
             凡是 NH₄⁺、Fe³⁺、Al³⁺、CO₃²⁻ 等可水解离子，在溶液中的实际数目一定 < n×NA。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -557,7 +557,7 @@
           <p>C．1mol CO 和 H₂ 的混合气体含有的分子数目为 NA</p>
           <p>D．Na 与 H₂O 反应生成 11.2L H₂，转移电子数目为 NA</p>
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】A</strong><br><br>
@@ -567,7 +567,7 @@
             D：未指明标准状况，无法计算，D错误。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱A：σ键 vs π键 不要搞混</strong><br>
@@ -577,7 +577,7 @@
             凡 NA 题中出现"xxL 气体"却没写"标准状况"，该选项一定错误。这是广东卷出题的经典套路。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -605,7 +605,7 @@
           <p>C．体积为 1L 的 1mol·L⁻¹ NaHCO₃ 溶液中，HCO₃⁻ 数目为 NA</p>
           <p>D．NaCl 和 NH₄Cl 的混合物中含 1mol Cl⁻，则混合物中质子数为 28NA</p>
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】D</strong><br><br>
@@ -615,7 +615,7 @@
             D：含 1mol Cl⁻ 的混合物，无论是 NaCl（质子数 11+17=28）还是 NH₄Cl（质子数 7+4×1+17=28），两者的质子数之和 = 28，且混合物的物质的量为 1mol（因含 1mol Cl⁻），质子数 = 28NA。D正确。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱A：离子化合物 ≠ 全是离子键</strong><br>
@@ -626,7 +626,7 @@
             HCO₃⁻ 既能水解（HCO₃⁻+H₂O⇌H₂CO₃+OH⁻）又能电离（HCO₃⁻⇌H⁺+CO₃²⁻），两个方向都减少 HCO₃⁻ 数目。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -801,7 +801,7 @@ function toggleCollapsible(btn, targetClass) {
   }
   if (!content) {
     var parent = btn.parentElement;
-    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible");
+    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible, .reveal");
   }
   if (!content) return;
   var isOpen = content.classList.contains("open");

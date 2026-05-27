@@ -263,7 +263,7 @@
             transition: all 0.15s; margin-top: 6px;
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-        .hidden-content, .collapsible { display: none; padding: 10px 0 0; }
+        .hidden-content, .collapsible, .reveal { display: none; padding: 10px 0 0; }
         .hidden-content.open, .collapsible.open, .reveal.open { display: block; animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -363,7 +363,7 @@
           <p>C．乙醇滴加过程中，c中的铜丝由黑变红，说明乙醇被氧化</p>
           <p>D．d中有银镜反应发生，说明c中产物有乙酸</p>
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【答案】D<br><br>
@@ -373,7 +373,7 @@
             D ❌：d中银镜反应说明产物是<strong>乙醛</strong>（含醛基），而非乙酸（乙酸不能发生银镜反应），错误。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：H₂O₂的双重身份</strong><br>
@@ -382,7 +382,7 @@
             银镜反应检验的是<strong>醛基（—CHO）</strong>，只有乙醛能发生，乙酸不能。看到银镜→产物是乙醛，不是乙酸。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -403,7 +403,7 @@
         <div class="q-text">
           工业上，烟气中的 SO₂ 可在通空气条件下用石灰石的浆液吸收，生成石膏（主要成分 CaSO₄）。该过程中，________（填元素符号）被氧化。
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【答案】S<br><br>
@@ -412,7 +412,7 @@
             O₂ 中 O 为 0 价，CaSO₄ 中 O 为 -2 价，化合价降低 → O 被还原（O₂ 是氧化剂）。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱：审题——填"元素符号"不是"物质名称"</strong><br>
@@ -423,7 +423,7 @@
             • "体现出______性" → 填"还原"或"氧化"
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -483,7 +483,7 @@
         <div class="q-text">
           某多金属精矿酸浸后，浸取液中含有 Fe²⁺、Cu²⁺、Ni²⁺、Al³⁺等。调节 pH=3.0，通入空气加热，"高压加热"时生成 Fe₂O₃↓。写出该步骤的<strong>离子方程式</strong>。
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【配平过程】<br>
@@ -495,7 +495,7 @@
             <strong>离子方程式：4Fe²⁺ + O₂ + 4H₂O = 2Fe₂O₃↓ + 8H⁺</strong>
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：O的来源判断</strong><br>
@@ -506,7 +506,7 @@
             背诵口诀：<strong>通氧氧化Fe²⁺，生成酸来要补碱</strong>。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -528,7 +528,7 @@
           某有机物能与 Co²⁺ 形成橙红色的配离子，该配离子可被 H₂O₂ 氧化成淡蓝色的配离子（Co³⁺）。完成反应的离子方程式（已知氧化剂为 H₂O₂）：<br><br>
           ______Co²⁺ + ______H₂O₂ + ______H⁺ → ______Co³⁺ + ______H₂O
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【配平过程】<br>
@@ -540,7 +540,7 @@
             <strong>离子方程式：2Co²⁺ + H₂O₂ + 2H⁺ = 2Co³⁺ + 2H₂O</strong>
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱：H₂O₂作氧化剂时的电子转移数</strong><br>
@@ -550,7 +550,7 @@
             本题题干明确"氧化剂为H₂O₂"，产物是H₂O不是O₂。如果产物写成O₂就错了！
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -593,7 +593,7 @@
         <div class="q-text">
           从硝酸浸取液（含Ni²⁺、Co²⁺、Mg²⁺等）中利用氨浸工艺提取Ni、Co。"氨浸"时，Co(OH)₃ 与 SO₃²⁻ 发生氧化还原反应，再与 NH₃·H₂O 反应生成 [Co(NH₃)₆]²⁺。写出由 Co(OH)₃ 转化为 [Co(NH₃)₆]²⁺ 的<strong>离子方程式</strong>。
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【分析】<br>
@@ -606,7 +606,7 @@
             2Co(OH)₃ + SO₃²⁻ + 12NH₃·H₂O = 2[Co(NH₃)₆]²⁺ + SO₄²⁻ + 13H₂O + 2OH⁻
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：Co的价态判断</strong><br>
@@ -616,7 +616,7 @@
             NH₃ 配位不改变Co的化合价（仍是+2），但配位后产物写[Co(NH₃)₆]²⁺。NH₃来自NH₃·H₂O，剩余的OH⁻和H₂O要一并配平。
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -638,7 +638,7 @@
           从电解铝副产品炭渣（含Ga、Fe等）中提取镓。"浸取"步骤中，盐酸浸取后 Ga³⁺ 与 Cl⁻ 形成配合物 [GaCl₄]⁻。写出由 Ga³⁺ 形成 [GaCl₄]⁻ 的<strong>离子方程式</strong>。<br><br>
           （注：本题为非氧化还原反应，但属于工业流程中陌生方程式书写的典型代表。）
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【分析】<br>
@@ -649,7 +649,7 @@
             ⚠️ 本题提示：<strong>并非所有陌生方程式都是氧化还原反应！</strong>先判断化合价是否变化，再决定配平方法。
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱：不要看到陌生方程式就默认是氧化还原</strong><br>
@@ -661,7 +661,7 @@
             <strong>第一步永远是标化合价，而不是直接套配平模板！</strong>
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -711,7 +711,7 @@
         <div class="q-text">
           某湿法炼锌工艺中，用 MnO₂ 将浸出液中的 Fe²⁺ 氧化为 Fe³⁺，再通过调节 pH 使 Fe³⁺ 以 Fe(OH)₃ 形式沉淀除去。写出 MnO₂ 氧化 Fe²⁺ 的<strong>离子方程式</strong>（酸性条件）。
         </div>
-        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'answer-content')">🔍 查看答案</span>
         <div class="collapsible answer-content">
           <div class="answer-box">
             【完整配平过程】<br>
@@ -723,7 +723,7 @@
             <strong>MnO₂ + 2Fe²⁺ + 4H⁺ = Mn²⁺ + 2Fe³⁺ + 2H₂O</strong>
           </div>
         </div>
-        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 'trap-content')">⚠️ 查看陷阱</span>
         <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱：MnO₂在不同酸碱条件下的产物不同</strong><br>
@@ -734,7 +734,7 @@
             条件不同，还原产物不同，得电子数也不同！
           </div>
         </div>
-        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'tip-content')">✅ 查看指导</span>
         <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
@@ -813,7 +813,7 @@ function toggleCollapsible(btn, targetClass) {
   }
   if (!content) {
     var parent = btn.parentElement;
-    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible");
+    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible, .reveal");
   }
   if (!content) return;
   var isOpen = content.classList.contains("open");
