@@ -264,7 +264,7 @@
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
         .hidden-content, .collapsible { display: none; padding: 10px 0 0; }
-        .hidden-content.open, .collapsible.open { display: block; animation: fadeIn 0.25s; }
+        .hidden-content.open, .collapsible.open, .reveal.open { display: block; animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ===== 底部导航 ===== */
@@ -364,8 +364,8 @@
         <div class="q-text">
           <strong>C．</strong>在 1L 0.1mol/L 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans1a')">🔍 查看答案</button>
-        <div class="reveal" id="ans1a">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>C选项错误。</strong>从 c·V 计算：n(NH₄Cl) = 0.1mol/L × 1L = 0.1mol，但 NH₄⁺ 是弱碱阳离子，在溶液中会水解：<br>
             NH₄⁺ + H₂O ⇌ NH₃·H₂O + H⁺<br>
@@ -373,8 +373,8 @@
             <strong>正确选项为D</strong>（标准状况下22.4L Cl₂与足量H₂反应，形成共价键数目为2NA）。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap1a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap1a">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：把 c·V 算出的 n 直接当离子数</strong><br>
             NH₄Cl = NH₄⁺ + Cl⁻，电离出的 NH₄⁺ 确实是 0.1mol，但 NH₄⁺ <strong>会水解</strong>，实际数目减少。这是广东卷 NA 题的最高频陷阱之一——2023、2024、2025 连续三年都考！<br><br>
@@ -383,8 +383,8 @@
             • 弱酸阴离子：CO₃²⁻、HCO₃⁻、SO₃²⁻、CH₃COO⁻、PO₄³⁻ 等 → 水解使阴离子数减少
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip1a')">✅ 查看指导</button>
-        <div class="reveal" id="tip1a">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li>在 NA 选择题中，看到"xxmol/L 的 NH₄Cl/FeCl₃/Na₂CO₃ 溶液，xxx 离子数目为 xxNA"——<strong>先怀疑水解</strong></li>
@@ -405,21 +405,21 @@
         <div class="q-text">
           <strong>B．</strong>1L 1mol·L⁻¹ NH₄NO₃ 溶液中含 NH₄⁺ 的数目为 NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans1b')">🔍 查看答案</button>
-        <div class="reveal" id="ans1b">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>B选项错误。</strong>同样的水解陷阱：NH₄⁺ 水解，实际数目 < NA。此题答案选A。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap1b')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap1b">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             连续两年完全相同的陷阱！<strong>NH₄⁺ 的水解</strong>是广东卷的"看家题"。<br>
             2023年换了花样——考 HCO₃⁻ 既水解又电离（同样数目 < NA）。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip1b')">✅ 查看指导</button>
-        <div class="reveal" id="tip1b">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li><strong>3年规律：</strong>广东卷 NA 题每年必考一个"盐溶液中离子数目"选项，且该选项必错</li>
@@ -489,16 +489,16 @@
           <strong>①</strong> 用 Na₂CO₃ 固体配制溶液，以滴定法测定其浓度。<br>
           i．该过程中用到的仪器有 __________ 。（备选仪器如图：A.锥形瓶 B.烧杯 C.容量瓶 D.酸式滴定管）
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans2a')">🔍 查看答案</button>
-        <div class="reveal" id="ans2a">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】BD</strong>（烧杯 + 酸式滴定管）<br><br>
             用固体配制溶液需要烧杯（溶解），以酸式滴定管进行滴定测定浓度。<br>
             注意：本题并非问"配制溶液的完整仪器"，而是问<strong>"配制溶液 + 滴定法测定浓度"</strong>两个步骤合并所需的仪器。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap2a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap2a">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：审题不清</strong><br>
             题目问的是"配制溶液 + 滴定法测浓度"整个过程的仪器，不只是配制。如果只答烧杯和容量瓶就漏了滴定的仪器。<br><br>
@@ -506,8 +506,8 @@
             这里只需配制一定浓度后用滴定法标定，不一定需要用到容量瓶精确配制定体积——用烧杯溶解后用酸式滴定管滴定即可。如果题目换成"配制 250mL 0.1mol/L Na₂CO₃ 溶液"，容量瓶才是必须的。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip2a')">✅ 查看指导</button>
-        <div class="reveal" id="tip2a">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li>看清楚题目是"配制溶液"还是"配制+测定"，仪器范围不同</li>
@@ -530,16 +530,16 @@
           查阅资料：配制 FeSO₄ 溶液时需加入酸。加酸的目的 __________ 。<br>
           提出猜想：Fe 粉与 Fe₂(SO₄)₃ 溶液混合，可能存在 Fe 粉和酸的反应。
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans2b')">🔍 查看答案</button>
-        <div class="reveal" id="ans2b">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】抑制 Fe²⁺ 水解</strong><br><br>
             Fe²⁺ 是弱碱阳离子，在水中会水解：Fe²⁺ + 2H₂O ⇌ Fe(OH)₂ + 2H⁺<br>
             加酸（提供 H⁺）可以<strong>抑制水解</strong>，防止生成 Fe(OH)₂ 沉淀，保证溶液中 Fe²⁺ 浓度的准确。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap2b')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap2b">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱：忘记水解与抑制水解的关系</strong><br>
             可水解的盐配制溶液时，常常需要<strong>加相应的酸或碱来抑制水解</strong>：<br>
@@ -550,8 +550,8 @@
             <strong>更进一步：</strong>配制 FeSO₄ 溶液时不仅要加酸，还要加少量铁粉——防止 Fe²⁺ 被空气氧化成 Fe³⁺。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip2b')">✅ 查看指导</button>
-        <div class="reveal" id="tip2b">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li><strong>万能模板：</strong>"配制 XX 溶液时需加入酸/碱，目的是______" → 答"抑制水解"</li>
@@ -694,8 +694,8 @@
           侯氏制碱法涉及 NH₄Cl 和 NaHCO₃ 等物质。<br>
           <strong>C．</strong>体积为 1L 的 1mol·L⁻¹ NaHCO₃ 溶液中，HCO₃⁻ 数目为 NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans4a')">🔍 查看答案</button>
-        <div class="reveal" id="ans4a">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>C选项错误。</strong>HCO₃⁻ 既能水解又能电离：<br>
             水解：HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻（减少 HCO₃⁻）<br>
@@ -703,8 +703,8 @@
             两条路径都在减少 HCO₃⁻ 数目，所以 <strong>n(HCO₃⁻) < 0.1mol</strong>（N < NA）。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap4a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap4a">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>HCO₃⁻ 的双重身份是高频考点</strong><br>
             HCO₃⁻ 既能与 H⁺ 反应（HCO₃⁻ + H⁺ = H₂O + CO₂↑），又能与 OH⁻ 反应（HCO₃⁻ + OH⁻ = CO₃²⁻ + H₂O）。<br>
@@ -712,8 +712,8 @@
             <strong>对比：</strong>NH₄⁺ 只能水解（不能电离），CO₃²⁻ 只能水解（不能电离），而 HCO₃⁻、HSO₃⁻、H₂PO₄⁻ 等"酸式根"是双通道消耗。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip4a')">✅ 查看指导</button>
-        <div class="reveal" id="tip4a">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li><strong>酸式根的判断优先级：</strong>HCO₃⁻、HSO₃⁻、H₂PO₄⁻、HPO₄²⁻ 都是"双通道消耗"——数目一定 < nNA</li>

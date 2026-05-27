@@ -264,7 +264,7 @@
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
         .hidden-content, .collapsible { display: none; padding: 10px 0 0; }
-        .hidden-content.open, .collapsible.open { display: block; animation: fadeIn 0.25s; }
+        .hidden-content.open, .collapsible.open, .reveal.open { display: block; animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ===== 底部导航 ===== */
@@ -358,15 +358,15 @@
         <div class="q-text">
           <strong>D．</strong>Na 与 H₂O 反应生成 11.2L H₂，转移电子数目为 NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans1a')">🔍 查看答案</button>
-        <div class="reveal" id="ans1a">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>D选项错误。</strong>题目中只说了"生成 11.2L H₂"，<strong>没有说明"标准状况"</strong>，因此无法计算 H₂ 的物质的量，也就无法求出转移电子数目。<br><br>
             在 NA 题中，凡涉及气体体积换算物质的量，<strong>必须看到"标准状况"四个字</strong>，缺一个字都是错的。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap1a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap1a">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱1：常温常压 ≠ 标准状况</strong><br>
             22.4 L/mol 只在 0℃、101kPa 下成立。常温（25℃）常压下，Vm > 22.4 L/mol，22.4L 气体的物质的量 < 1mol。<br><br>
@@ -374,8 +374,8 @@
             H₂O、CCl₄、CHCl₃、苯等在标况下不是气体，不能用 22.4 L/mol 换算。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip1a')">✅ 查看指导</button>
-        <div class="reveal" id="tip1a">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li>在 NA 选择题中，看到气体体积就立刻去原文找<strong>"标准状况"</strong>四个字</li>
@@ -455,15 +455,15 @@
         <div class="q-text">
           <strong>C．</strong>1mol CO 和 H₂ 的混合气体含有的分子数目为 NA
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans2a')">🔍 查看答案</button>
-        <div class="reveal" id="ans2a">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>C选项错误。</strong>CO 和 H₂ 均由分子构成，1mol 混合气体中无论两种气体的比例如何，总分子数就是 1mol = 1NA。<br>
             但原题给的选项表述为"1mol CO 和 H₂ 的混合气体含有的分子数目为 NA"，正确的理解是：<strong>混合气体"共1mol"，所以分子总数为 NA</strong>。这个选项其实需要仔细读——它的隐含条件是"混合气体一共1mol"还是"CO和H₂各1mol"？通常"1mol CO和H₂的混合气体"指总量1mol，不是各1mol。但原题参考答案为A，此项被判定为正确还是错误取决于具体表述，广东卷给的官方结论为"错误"（可能是认为题干歧义，或原表述被人理解成"各1mol"）——<strong>此处按广东卷官方解析判定：C错误。</strong>
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap2a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap2a">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             无论混合比例如何，1mol 气体混合物中分子总数恒为 NA，但要注意审题：<br>
             • "1mol CO 和 H₂ 的混合气体" → 总量为 1mol，分子数 NA ✓<br>
@@ -471,8 +471,8 @@
             • 如果是"1mol CO 和 H₂"，要判断是指混合物一共1mol还是各1mol
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip2a')">✅ 查看指导</button>
-        <div class="reveal" id="tip2a">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li><strong>混合气体中的分子数</strong>：只要知道总的物质的量，不管组分比例如何，分子总数 = n总 × NA</li>
@@ -506,8 +506,8 @@
           <p>C．在 1L 0.1mol/L 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1NA</p>
           <p>D．标准状况下的 22.4L Cl₂ 与足量 H₂ 反应，形成的共价键数目为 2NA</p>
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans3a')">🔍 查看答案</button>
-        <div class="reveal" id="ans3a">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】D</strong><br><br>
             A：¹⁸O 中子数 = 18-8 = 10，¹⁶O 中子数 = 16-8 = 8，每个 O₂ 含2个O。1mol ¹⁸O₂ 比 1mol ¹⁶O₂ 多 2×(10-8) = 4NA 个中子，A错误。<br><br>
@@ -516,8 +516,8 @@
             D：Cl₂ + H₂ → 2HCl，1mol Cl₂ 生成 2mol HCl，含 2mol H-Cl 键，共价键数目 = 2NA，D正确。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap3a')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap3a">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱A：中子数 ≠ 质量数差</strong><br>
             中子数 = 质量数 - 质子数。¹⁸O 和 ¹⁶O 的中子数差是 2，但一个 O₂ 分子有 2 个 O 原子，所以要 ×2。A 选项说"多 2NA"是偷换概念——用 1mol 原子的差冒充了 1mol 分子的差。<br><br>
@@ -527,8 +527,8 @@
             凡是 NH₄⁺、Fe³⁺、Al³⁺、CO₃²⁻ 等可水解离子，在溶液中的实际数目一定 < n×NA。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip3a')">✅ 查看指导</button>
-        <div class="reveal" id="tip3a">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li>NA 题四步排除法：<br>
@@ -557,8 +557,8 @@
           <p>C．1mol CO 和 H₂ 的混合气体含有的分子数目为 NA</p>
           <p>D．Na 与 H₂O 反应生成 11.2L H₂，转移电子数目为 NA</p>
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans3b')">🔍 查看答案</button>
-        <div class="reveal" id="ans3b">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】A</strong><br><br>
             A：26g C₂H₂，M=26g/mol，n=1mol。每个 C₂H₂ 含 2个C-H σ键 + 1个C-C σ键 + 2个π键。σ键总数 = 3个/mol，1mol C₂H₂ 含 3NA 个 σ 键，A正确。<br><br>
@@ -567,8 +567,8 @@
             D：未指明标准状况，无法计算，D错误。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap3b')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap3b">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱A：σ键 vs π键 不要搞混</strong><br>
             C₂H₂ 结构式 H-C≡C-H，共 3 个 σ 键（2C-H + 1C-C）、2 个 π 键（三键中的 2 个），总计 5 个键。<br>
@@ -577,8 +577,8 @@
             凡 NA 题中出现"xxL 气体"却没写"标准状况"，该选项一定错误。这是广东卷出题的经典套路。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip3b')">✅ 查看指导</button>
-        <div class="reveal" id="tip3b">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li><strong>有机分子键数计算口诀：</strong>单键=σ键；双键=1σ+1π；三键=1σ+2π</li>
@@ -605,8 +605,8 @@
           <p>C．体积为 1L 的 1mol·L⁻¹ NaHCO₃ 溶液中，HCO₃⁻ 数目为 NA</p>
           <p>D．NaCl 和 NH₄Cl 的混合物中含 1mol Cl⁻，则混合物中质子数为 28NA</p>
         </div>
-        <button class="toggle-btn btn-answer" onclick="toggle(this,'ans3c')">🔍 查看答案</button>
-        <div class="reveal" id="ans3c">
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, \'answer-content\')">🔍 查看答案</span>
+        <div class="collapsible answer-content">
           <div class="answer-box">
             <strong>【答案】D</strong><br><br>
             A：NH₄Cl 是离子化合物，含 NH₄⁺ 和 Cl⁻。NH₄⁺ 内部有 4 个 N-H 共价键，加上离子键。共价键只有 4 个（4NA），不是 5NA。A错误。<br><br>
@@ -615,8 +615,8 @@
             D：含 1mol Cl⁻ 的混合物，无论是 NaCl（质子数 11+17=28）还是 NH₄Cl（质子数 7+4×1+17=28），两者的质子数之和 = 28，且混合物的物质的量为 1mol（因含 1mol Cl⁻），质子数 = 28NA。D正确。
           </div>
         </div>
-        <button class="toggle-btn btn-trap" onclick="toggle(this,'trap3c')">⚠️ 查看陷阱</button>
-        <div class="reveal" id="trap3c">
+        <span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, \'trap-content\')">⚠️ 查看陷阱</span>
+        <div class="collapsible trap-content">
           <div class="trap-box">
             <strong>陷阱A：离子化合物 ≠ 全是离子键</strong><br>
             NH₄Cl 中，NH₄⁺ 与 Cl⁻ 间是离子键，但 NH₄⁺ 内部 N-H 是共价键（4个）。不要以为"离子化合物的所有键都是离子键"。<br><br>
@@ -626,8 +626,8 @@
             HCO₃⁻ 既能水解（HCO₃⁻+H₂O⇌H₂CO₃+OH⁻）又能电离（HCO₃⁻⇌H⁺+CO₃²⁻），两个方向都减少 HCO₃⁻ 数目。
           </div>
         </div>
-        <button class="toggle-btn btn-tip" onclick="toggle(this,'tip3c')">✅ 查看指导</button>
-        <div class="reveal" id="tip3c">
+        <span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, \'tip-content\')">✅ 查看指导</span>
+        <div class="collapsible tip-content">
           <div class="tip-box">
             <ul>
               <li><strong>NH₄Cl 的键分析：</strong>NH₄⁺ 内 4 个 N-H 共价键 + NH₄⁺ 与 Cl⁻ 间 1 个离子键，共价键数 ≠ 总键数</li>

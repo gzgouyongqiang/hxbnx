@@ -263,8 +263,8 @@
             transition: all 0.15s; margin-top: 6px;
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-        .hidden-content, .collapsible { display: none; padding: 10px 0 0; }
-        .hidden-content.open, .collapsible.open { display: block; animation: fadeIn 0.25s; }
+        .hidden-content, .collapsible, .reveal { display: none; padding: 10px 0 0; }
+        .hidden-content.open, .collapsible.open, .reveal.open { display: block; animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ===== 底部导航 ===== */
@@ -769,6 +769,12 @@ function toggleCollapsible(btn, targetClass) {
   if (btn.dataset.showText && btn.dataset.hideText) {
     btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
   }
+}
+function toggle(btn, id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var isOpen = el.classList.contains("open");
+  el.classList.toggle("open");
 }
     </script>
 </body>
