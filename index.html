@@ -551,7 +551,8 @@
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 16px;
-            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
@@ -571,11 +572,6 @@
             border-color: var(--mod-color);
         }
         .module-card:hover::before { opacity: 1; }
-        .module-card.active {
-            border-color: var(--mod-color);
-            box-shadow: 0 4px 16px -2px rgba(59, 130, 246, 0.15);
-        }
-        .module-card.active::before { opacity: 1; }
         .module-icon {
             width: 48px; height: 48px;
             border-radius: 12px;
@@ -589,7 +585,7 @@
         .module-card[data-module="yl"] .module-icon { background: rgba(139, 92, 246, 0.1); }
         .module-card[data-module="yj"] .module-icon { background: rgba(236, 72, 153, 0.1); }
         .module-card[data-module="mn"] .module-icon { background: rgba(239, 68, 68, 0.1); }
-        .module-card.active .module-icon {
+        .module-card:hover .module-icon {
             background: var(--mod-color);
             transform: scale(1.05);
         }
@@ -598,7 +594,7 @@
             font-size: 16px; font-weight: 700; color: #1e293b;
             margin-bottom: 3px;
         }
-        .module-card.active .module-name { color: var(--mod-color); }
+        .module-card:hover .module-name { color: var(--mod-color); }
         .module-desc {
             font-size: 12px; color: #94a3b8; line-height: 1.4;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -612,138 +608,6 @@
             font-size: 12px; font-weight: 500; color: #94a3b8;
             padding: 4px 12px; border-radius: 20px;
             background: #f1f5f9; flex-shrink: 0;
-        }
-        .module-arrow {
-            font-size: 12px; color: var(--mod-color);
-            transition: transform 0.3s; flex-shrink: 0;
-        }
-        .module-card.active .module-arrow { transform: rotate(180deg); }
-
-        /* ===== 子分类面板 ===== */
-        .sub-panel {
-            display: none;
-            padding: 28px 0 8px;
-            animation: fadeSlideIn 0.35s ease;
-        }
-        .sub-panel.active { display: block; }
-        @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(-12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .sub-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 20px; padding-bottom: 14px;
-            border-bottom: 2px solid #f1f5f9;
-        }
-        .sub-title {
-            font-size: 18px; font-weight: 700;
-            color: var(--mod-color);
-            display: flex; align-items: center; gap: 8px;
-        }
-        .sub-hint {
-            font-size: 13px; color: #94a3b8;
-        }
-
-        /* ===== 选择题子分类网格 ===== */
-        .xz-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 14px;
-        }
-        .xz-card {
-            display: flex; align-items: center; gap: 14px;
-            padding: 18px 20px;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            text-decoration: none; color: inherit;
-            transition: all 0.25s;
-            position: relative;
-        }
-        .xz-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px -4px rgba(59,130,246,0.15);
-            border-color: #93c5fd;
-        }
-        .xz-card::before {
-            content: ""; position: absolute;
-            left: 0; top: 8px; bottom: 8px; width: 3px;
-            background: #3b82f6; border-radius: 0 3px 3px 0;
-            transition: all 0.2s;
-        }
-        .xz-card:hover::before {
-            top: 4px; bottom: 4px;
-            background: linear-gradient(180deg, #3b82f6, #6366f1);
-        }
-        .xz-num {
-            width: 36px; height: 36px; border-radius: 10px;
-            background: linear-gradient(135deg, #3b82f6, #6366f1);
-            color: white; display: flex; align-items: center; justify-content: center;
-            font-size: 14px; font-weight: 700; flex-shrink: 0;
-        }
-        .xz-info { flex: 1; min-width: 0; }
-        .xz-name {
-            font-size: 15px; font-weight: 600; color: #1e293b;
-            margin-bottom: 2px;
-        }
-        .xz-keywords {
-            font-size: 12px; color: #94a3b8; line-height: 1.4;
-        }
-        .xz-badge {
-            font-size: 11px; font-weight: 600;
-            padding: 3px 10px; border-radius: 12px;
-            background: #f1f5f9; color: #64748b; flex-shrink: 0;
-        }
-        .xz-card.has-content .xz-badge {
-            background: #dcfce7; color: #059669;
-        }
-
-        /* ===== 占位模块 ===== */
-        .placeholder-panel {
-            display: none;
-            padding: 60px 20px;
-            text-align: center;
-            animation: fadeSlideIn 0.35s ease;
-        }
-        .placeholder-panel.active { display: block; }
-        .placeholder-icon {
-            font-size: 56px; margin-bottom: 16px;
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .placeholder-title {
-            font-size: 20px; font-weight: 700; color: #334155;
-            margin-bottom: 8px;
-        }
-        .placeholder-desc {
-            font-size: 14px; color: #94a3b8;
-            max-width: 400px; margin: 0 auto; line-height: 1.6;
-        }
-        .placeholder-badge {
-            display: inline-block; margin-top: 16px;
-            padding: 6px 20px; border-radius: 20px;
-            font-size: 13px; font-weight: 500;
-            background: #fef3c7; color: #b45309;
-        }
-
-        /* ===== 已有试题列表区（选择题模块底部） ===== */
-        .recent-section {
-            margin-top: 28px;
-            padding-top: 24px;
-            border-top: 2px dashed #e2e8f0;
-        }
-        .recent-header {
-            font-size: 15px; font-weight: 600; color: #64748b;
-            margin-bottom: 16px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .recent-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 14px;
         }
 
         /* ===== 响应式 ===== */
@@ -1401,254 +1265,61 @@
             <div class="exam-hero-desc">按题型分类 · 精选真题 · 逐题精讲 · 高效提分</div>
         </div>
 
-        <!-- 搜索框 -->
-        <div class="exam-search">
-            <div class="exam-search-box">
-                <span class="exam-search-icon">🔍</span>
-                <input type="text" class="exam-search-input" id="examSearchInput" placeholder="搜索题目、知识点、来源..." oninput="onExamSearch()">
-                <button class="exam-search-clear" id="examSearchClear" onclick="clearExamSearch()" style="display:none">✕</button>
-            </div>
-        </div>
-
-        <!-- 知识点标签筛选 -->
-        <div class="exam-tag-filter" id="examTagFilter">
-            <span class="exam-tag-filter-label">🏷️ 知识点：</span>
-        </div>
-
         <div class="module-container">
-            <!-- ===== 六大模块导航 ===== -->
             <div class="module-grid">
-                <div class="module-card active" data-module="xz" onclick="switchModule('xz')" style="--mod-color: #3b82f6">
+                <a href="./exams/xz.html" class="module-card" style="--mod-color: #3b82f6">
                     <div class="module-icon">🔘</div>
                     <div class="module-info">
                         <div class="module-name">选择题真题</div>
                         <div class="module-desc">高考选择题逐题精讲，覆盖11个核心考点</div>
                     </div>
                     <div class="module-count">11个专题</div>
-                    <div class="module-arrow">▼</div>
-                </div>
+                </a>
 
-                <div class="module-card" data-module="sy" onclick="switchModule('sy')" style="--mod-color: #10b981">
+                <a href="./exams/sy.html" class="module-card" style="--mod-color: #10b981">
                     <div class="module-icon">🧪</div>
                     <div class="module-info">
                         <div class="module-name">实验题真题</div>
                         <div class="module-desc">实验综合题深度解析与突破</div>
                     </div>
                     <div class="module-status">敬请期待</div>
-                </div>
+                </a>
 
-                <div class="module-card" data-module="hg" onclick="switchModule('hg')" style="--mod-color: #f59e0b">
+                <a href="./exams/hg.html" class="module-card" style="--mod-color: #f59e0b">
                     <div class="module-icon">🏭</div>
                     <div class="module-info">
                         <div class="module-name">化工题真题</div>
                         <div class="module-desc">无机化工流程题解题策略</div>
                     </div>
                     <div class="module-status">敬请期待</div>
-                </div>
+                </a>
 
-                <div class="module-card" data-module="yl" onclick="switchModule('yl')" style="--mod-color: #8b5cf6">
+                <a href="./exams/yl.html" class="module-card" style="--mod-color: #8b5cf6">
                     <div class="module-icon">⚗️</div>
                     <div class="module-info">
                         <div class="module-name">原理题真题</div>
                         <div class="module-desc">化学反应原理综合大题精讲</div>
                     </div>
                     <div class="module-status">敬请期待</div>
-                </div>
+                </a>
 
-                <div class="module-card" data-module="yj" onclick="switchModule('yj')" style="--mod-color: #ec4899">
+                <a href="./exams/yj.html" class="module-card" style="--mod-color: #ec4899">
                     <div class="module-icon">🧬</div>
                     <div class="module-info">
                         <div class="module-name">有机题真题</div>
                         <div class="module-desc">有机化学综合大题突破</div>
                     </div>
                     <div class="module-status">敬请期待</div>
-                </div>
+                </a>
 
-                <div class="module-card" data-module="mn" onclick="switchModule('mn')" style="--mod-color: #ef4444">
+                <a href="./exams/mn.html" class="module-card" style="--mod-color: #ef4444">
                     <div class="module-icon">📋</div>
                     <div class="module-info">
                         <div class="module-name">模拟考试题</div>
                         <div class="module-desc">模拟试卷精选与精讲</div>
                     </div>
                     <div class="module-status">敬请期待</div>
-                </div>
-            </div>
-
-            <!-- ===== 选择题真题 · 子分类面板 ===== -->
-            <div class="sub-panel active" id="panel-xz">
-                <div class="sub-header" style="--mod-color: #3b82f6">
-                    <span class="sub-title">🔘 选择题真题 · 专题分类</span>
-                    <span class="sub-hint">点击专题查看题目列表</span>
-                </div>
-                <div class="xz-grid">
-                    <a href="./exams/xz-01.html" class="xz-card has-content" data-name="化学与材料">
-                        <div class="xz-num">01</div>
-                        <div class="xz-info">
-                            <div class="xz-name">化学与材料</div>
-                            <div class="xz-keywords">合金、无机非金属、有机高分子、复合材料</div>
-                        </div>
-                        <div class="xz-badge">2 题</div>
-                    </a>
-                    <a href="./exams/xz-02.html" class="xz-card" data-name="科技·生活·劳动与化学">
-                        <div class="xz-num">02</div>
-                        <div class="xz-info">
-                            <div class="xz-name">科技·生活·劳动与化学</div>
-                            <div class="xz-keywords">STSE、化学与生活、最新科技成果</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-03.html" class="xz-card has-content" data-name="有机化学基础">
-                        <div class="xz-num">03</div>
-                        <div class="xz-info">
-                            <div class="xz-name">有机化学基础</div>
-                            <div class="xz-keywords">有机物结构、性质、同分异构体</div>
-                        </div>
-                        <div class="xz-badge">1 题</div>
-                    </a>
-                    <a href="./exams/xz-04.html" class="xz-card" data-name="化学实验基础">
-                        <div class="xz-num">04</div>
-                        <div class="xz-info">
-                            <div class="xz-name">化学实验基础</div>
-                            <div class="xz-keywords">仪器使用、基本操作、实验安全</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-05.html" class="xz-card" data-name="元素化合物转化">
-                        <div class="xz-num">05</div>
-                        <div class="xz-info">
-                            <div class="xz-name">元素化合物转化</div>
-                            <div class="xz-keywords">金属/非金属及其化合物、转化关系</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-06.html" class="xz-card" data-name="因果关系配伍判断">
-                        <div class="xz-num">06</div>
-                        <div class="xz-info">
-                            <div class="xz-name">因果关系配伍判断</div>
-                            <div class="xz-keywords">陈述I和II、因果分析</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-07.html" class="xz-card" data-name="元素周期律">
-                        <div class="xz-num">07</div>
-                        <div class="xz-info">
-                            <div class="xz-name">元素周期律</div>
-                            <div class="xz-keywords">原子结构、周期表、元素推断</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-08.html" class="xz-card" data-name="阿伏加德罗常数NA">
-                        <div class="xz-num">08</div>
-                        <div class="xz-info">
-                            <div class="xz-name">阿伏加德罗常数NA</div>
-                            <div class="xz-keywords">微粒数、摩尔质量、气体体积</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-09.html" class="xz-card" data-name="水溶液离子平衡">
-                        <div class="xz-num">09</div>
-                        <div class="xz-info">
-                            <div class="xz-name">水溶液离子平衡</div>
-                            <div class="xz-keywords">电离、水解、pH、离子浓度比较</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-10.html" class="xz-card" data-name="电化学">
-                        <div class="xz-num">10</div>
-                        <div class="xz-info">
-                            <div class="xz-name">电化学</div>
-                            <div class="xz-keywords">原电池、电解池、新型电池</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                    <a href="./exams/xz-11.html" class="xz-card" data-name="物质结构与性质">
-                        <div class="xz-num">11</div>
-                        <div class="xz-info">
-                            <div class="xz-name">物质结构与性质</div>
-                            <div class="xz-keywords">化学键、分子结构、晶体、杂化</div>
-                        </div>
-                        <div class="xz-badge">0 题</div>
-                    </a>
-                </div>
-
-                <!-- 已收录试题 -->
-                <div class="recent-section">
-                    <div class="recent-header">📌 已收录试题</div>
-                    <div class="recent-grid">
-                        <a href="./exams/2025-gd-01.html" class="exam-card" data-type="xz">
-                            <div class="exam-card-top">
-                                <span class="exam-type-badge xz">选择题</span>
-                                <span class="exam-card-source">2025年广东卷</span>
-                            </div>
-                            <div class="exam-card-title">第1题 合金与材料辨识</div>
-                            <div class="exam-card-meta">
-                                <span>📅 2025-06-07</span>
-                                <span>📊 2分</span>
-                            </div>
-                            <div class="exam-card-tags">
-                                <span class="exam-tag">合金</span>
-                                <span class="exam-tag">无机材料</span>
-                                <span class="exam-tag">物质分类</span>
-                            </div>
-                        </a>
-                        <a href="./exams/2025-gd-02.html" class="exam-card" data-type="xz">
-                            <div class="exam-card-top">
-                                <span class="exam-type-badge xz">选择题</span>
-                                <span class="exam-card-source">2025年广东卷</span>
-                            </div>
-                            <div class="exam-card-title">第2题 多烯环配合物的结构与性质</div>
-                            <div class="exam-card-meta">
-                                <span>📅 2025-06-07</span>
-                                <span>📊 2分</span>
-                            </div>
-                            <div class="exam-card-tags">
-                                <span class="exam-tag">共价键</span>
-                                <span class="exam-tag">有机化学</span>
-                                <span class="exam-tag">配合物</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== 实验题真题 · 占位 ===== -->
-            <div class="placeholder-panel" id="panel-sy">
-                <div class="placeholder-icon">🧪</div>
-                <div class="placeholder-title">实验题真题</div>
-                <div class="placeholder-desc">实验综合题精讲正在制作中，将涵盖实验方案设计、评价、定量测定等题型</div>
-                <div class="placeholder-badge">🔧 内容筹备中</div>
-            </div>
-
-            <!-- ===== 化工题真题 · 占位 ===== -->
-            <div class="placeholder-panel" id="panel-hg">
-                <div class="placeholder-icon">🏭</div>
-                <div class="placeholder-title">化工题真题</div>
-                <div class="placeholder-desc">无机化工流程题精讲正在制作中，将涵盖工艺流程分析、条件优化等题型</div>
-                <div class="placeholder-badge">🔧 内容筹备中</div>
-            </div>
-
-            <!-- ===== 原理题真题 · 占位 ===== -->
-            <div class="placeholder-panel" id="panel-yl">
-                <div class="placeholder-icon">⚗️</div>
-                <div class="placeholder-title">原理题真题</div>
-                <div class="placeholder-desc">化学反应原理综合大题精讲正在制作中，将涵盖速率、平衡、电离、水解等核心考点</div>
-                <div class="placeholder-badge">🔧 内容筹备中</div>
-            </div>
-
-            <!-- ===== 有机题真题 · 占位 ===== -->
-            <div class="placeholder-panel" id="panel-yj">
-                <div class="placeholder-icon">🧬</div>
-                <div class="placeholder-title">有机题真题</div>
-                <div class="placeholder-desc">有机化学综合大题精讲正在制作中，将涵盖合成路线设计、结构推断、同分异构体等</div>
-                <div class="placeholder-badge">🔧 内容筹备中</div>
-            </div>
-
-            <!-- ===== 模拟考试题 · 占位 ===== -->
-            <div class="placeholder-panel" id="panel-mn">
-                <div class="placeholder-icon">📋</div>
-                <div class="placeholder-title">模拟考试题</div>
-                <div class="placeholder-desc">模拟试卷精选精讲正在制作中，将提供完整的模拟考试训练与详细解析</div>
-                <div class="placeholder-badge">🔧 内容筹备中</div>
+                </a>
             </div>
         </div>
     </div>
@@ -1660,12 +1331,6 @@
     </footer>
 
     <script>
-        // ===== 状态变量 =====
-        let currentModule = 'xz';          // 当前选中的模块
-        let currentTag = '';               // 当前知识点标签
-        let searchTimer = null;            // 搜索防抖定时器
-
-        // ===== 标签页切换 =====
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach((btn, i) => {
                 btn.classList.toggle('active', (tab === 'review' && i === 0) || (tab === 'exam' && i === 1));
@@ -1673,116 +1338,6 @@
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById('tab-' + tab).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            // 切换到试题选讲时，动态生成知识点标签
-            if (tab === 'exam') buildTagFilter();
-        }
-
-        // ===== 试题选讲模块切换 =====
-        function switchModule(module) {
-            currentModule = module;
-            // 更新卡片状态
-            document.querySelectorAll('.module-card').forEach(card => {
-                card.classList.toggle('active', card.dataset.module === module);
-            });
-            // 更新面板显示
-            document.querySelectorAll('.sub-panel, .placeholder-panel').forEach(panel => {
-                panel.classList.remove('active');
-            });
-            const target = document.getElementById('panel-' + module);
-            if (target) {
-                target.classList.add('active');
-                setTimeout(() => {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 50);
-            }
-            applyFilters();
-        }
-
-        // ===== 搜索 =====
-        function onExamSearch() {
-            const input = document.getElementById('examSearchInput');
-            const clearBtn = document.getElementById('examSearchClear');
-            clearBtn.style.display = input.value ? 'block' : 'none';
-            clearTimeout(searchTimer);
-            searchTimer = setTimeout(applyFilters, 200);
-        }
-        function clearExamSearch() {
-            const input = document.getElementById('examSearchInput');
-            input.value = '';
-            document.getElementById('examSearchClear').style.display = 'none';
-            applyFilters();
-            input.focus();
-        }
-
-        // ===== 知识点标签筛选 =====
-        function buildTagFilter() {
-            const container = document.getElementById('examTagFilter');
-            if (!container) return;
-            const tags = new Set();
-            document.querySelectorAll('.exam-card .exam-tag').forEach(el => {
-                const t = el.textContent.trim();
-                if (t) tags.add(t);
-            });
-            const label = container.querySelector('.exam-tag-filter-label');
-            container.innerHTML = '';
-            container.appendChild(label);
-            if (tags.size === 0) {
-                container.style.display = 'none';
-                return;
-            }
-            container.style.display = 'flex';
-            const allChip = document.createElement('span');
-            allChip.className = 'tag-chip active';
-            allChip.textContent = '全部';
-            allChip.onclick = () => selectTag('');
-            container.appendChild(allChip);
-            [...tags].sort().forEach(tag => {
-                const chip = document.createElement('span');
-                chip.className = 'tag-chip';
-                chip.textContent = tag;
-                chip.onclick = () => selectTag(tag);
-                container.appendChild(chip);
-            });
-        }
-        function selectTag(tag) {
-            currentTag = tag;
-            document.querySelectorAll('.tag-chip').forEach(chip => {
-                chip.classList.toggle('active', chip.textContent === (tag || '全部'));
-            });
-            applyFilters();
-        }
-
-        // ===== 统一筛选（搜索+标签作用于已收录试题卡片） =====
-        function applyFilters() {
-            const keyword = (document.getElementById('examSearchInput')?.value || '').trim().toLowerCase();
-            const cards = document.querySelectorAll('.exam-card');
-            let visibleCount = 0;
-
-            cards.forEach(card => {
-                // 模块类型匹配
-                const typeMatch = currentModule === 'xz' || card.dataset.type === currentModule;
-                // 知识点标签匹配
-                const cardTags = [...card.querySelectorAll('.exam-tag')].map(el => el.textContent.trim());
-                const tagMatch = !currentTag || cardTags.includes(currentTag);
-                // 搜索关键词匹配
-                let searchMatch = true;
-                if (keyword) {
-                    const title = (card.querySelector('.exam-card-title')?.textContent || '').toLowerCase();
-                    const source = (card.querySelector('.exam-card-source')?.textContent || '').toLowerCase();
-                    const tagsText = cardTags.join(' ').toLowerCase();
-                    searchMatch = title.includes(keyword) || source.includes(keyword) || tagsText.includes(keyword);
-                }
-                const show = typeMatch && tagMatch && searchMatch;
-                card.style.display = show ? '' : 'none';
-                if (show) visibleCount++;
-            });
-
-            // 已收录区域显示/隐藏
-            const recentSections = document.querySelectorAll('.recent-section');
-            recentSections.forEach(sec => {
-                const vis = sec.querySelectorAll('.exam-card:not([style*="display: none"])');
-                sec.style.display = vis.length > 0 ? '' : 'none';
-            });
         }
     </script>
 </body>
