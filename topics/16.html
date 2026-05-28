@@ -35,7 +35,6 @@
             background: var(--bg); color: var(--text); line-height: 1.65;
         }
 
-        /* ===== 导航栏 ===== */
         .navbar {
             background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
             padding: 0 24px; height: 56px;
@@ -54,7 +53,6 @@
         }
         .navbar-links a:hover { color: var(--gold); }
 
-        /* ===== 页头 ===== */
         .page-header {
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
             color: #fff; padding: 32px 32px 28px; text-align: center;
@@ -69,10 +67,8 @@
         .page-header h1 em { font-style: normal; color: var(--gold); }
         .page-header p { font-size: 12px; opacity: 0.6; margin-top: 5px; }
 
-        /* ===== 主内容区 ===== */
         .content { max-width: 820px; margin: 0 auto; padding: 24px 18px 50px; }
 
-        /* --- 考点块 --- */
         .block {
             margin-bottom: 24px;
             border: 1px solid var(--border);
@@ -84,7 +80,7 @@
         }
         .block-head {
             padding: 13px 20px;
-            background: #eff6ff;
+            background: var(--accent-light);
             border-bottom: 1px solid var(--accent-border);
             display: flex; align-items: center; gap: 10px;
         }
@@ -97,7 +93,6 @@
         .must { font-size: 11px; color: var(--accent); font-weight: 600; background: #fff; padding: 2px 8px; border-radius: 10px; white-space: nowrap; border: 1px solid var(--accent-border); }
         .often { font-size: 11px; color: #d97706; font-weight: 600; background: var(--amber-bg); padding: 2px 8px; border-radius: 10px; white-space: nowrap; border: 1px solid var(--amber-border); }
 
-        /* --- 子区域 --- */
         .sub { padding: 14px 20px; border-bottom: 1px solid var(--border-light); }
         .sub:last-child { border-bottom: none; }
         .sub-title {
@@ -111,7 +106,6 @@
         .sub ul, .sub ol { padding-left: 20px; }
         .sub li { margin-bottom: 3px; }
 
-        /* --- 前测区域 --- */
         .pretest-box {
             background: #faf5ff; border: 1px solid var(--accent-border);
             border-radius: 10px; padding: 18px 20px; margin-bottom: 28px;
@@ -125,29 +119,6 @@
         .pt-q .q-label { font-size: 13px; font-weight: 700; color: var(--accent-dark); display: block; margin-bottom: 4px; }
         .pt-q .q-opts { font-size: 13px; color: #334155; line-height: 1.9; }
 
-        /* --- 角度总览 --- */
-        .angle-overview {
-            display: grid; grid-template-columns: repeat(6, 1fr);
-            gap: 8px; margin-bottom: 28px;
-        }
-        .angle-card {
-            background: var(--white); border: 1px solid var(--border);
-            border-radius: 8px; padding: 12px 6px; text-align: center;
-            cursor: pointer; transition: all 0.2s;
-            box-shadow: var(--shadow);
-        }
-        .angle-card:hover {
-            border-color: var(--accent);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        .ac-num {
-            display: block; font-size: 18px; font-weight: 800; color: var(--accent);
-            margin-bottom: 2px;
-        }
-        .ac-title { font-size: 11px; color: var(--text-light); line-height: 1.4; }
-
-        /* --- 题目框 --- */
         .q-box {
             background: var(--white); border: 1px solid var(--border);
             border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;
@@ -164,7 +135,6 @@
         }
         .q-text { font-size: 14px; color: var(--text); line-height: 1.75; }
 
-        /* --- 选项网格（2列） --- */
         .q-options-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0;
         }
@@ -176,15 +146,10 @@
             display: flex; align-items: flex-start; gap: 8px;
         }
         .opt-card:hover { border-color: var(--accent); background: var(--accent-light); }
-        .opt-label {
-            font-weight: 700; color: var(--accent); min-width: 20px;
-        }
-
-        /* --- 旧版选项兼容（普通p/div排列） --- */
+        .opt-label { font-weight: 700; color: var(--accent); min-width: 20px; }
         .q-options { margin: 10px 0; }
         .q-options p { font-size: 14px; color: #334155; line-height: 1.9; }
 
-        /* --- 表格 --- */
         .q-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12.5px; }
         .q-table thead th {
             background: var(--navy-dark); color: #fff; padding: 8px 11px;
@@ -196,52 +161,21 @@
         }
         .q-table tbody tr:nth-child(even) { background: #f8fafc; }
         .q-table tbody tr:hover { background: var(--accent-light); }
-        .q-table tbody tr.row-highlight td { background: #fff8e1; font-weight: 600; }
-        /* 兼容旧版表格写法 */
         .q-table th { background: var(--navy-dark); color: #fff; padding: 8px 11px; font-size: 12px; font-weight: 600; text-align: left; }
         .q-table td { padding: 7px 11px; border-bottom: 1px solid var(--border-light); }
 
-        /* --- 图片 --- */
         .q-img { max-width: 100%; height: auto; border-radius: 6px; margin: 8px 0; border: 1px solid var(--border); }
 
-        /* --- 步骤 --- */
-        .steps-box {
-            background: #f8fafc; border-radius: 8px; padding: 12px 16px;
-            border: 1px solid var(--border); margin: 8px 0;
-        }
-        .step-item {
-            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px;
-            position: relative;
-        }
-        .step-item:last-child { margin-bottom: 0; }
-        .step-num {
-            background: var(--navy-dark); color: #fff;
-            width: 20px; height: 20px; border-radius: 4px;
-            font-size: 11px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; margin-top: 2px;
-        }
-        .step-text { font-size: 13px; color: #475569; line-height: 1.7; }
-        .step-text strong { color: var(--navy-dark); }
-
-        /* --- 陷阱/避坑/答案展开框 --- */
         .trap-box, .tip-box, .q-answer-inner {
             padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.7;
             margin-top: 6px;
         }
-        .trap-box {
-            background: var(--red-bg); border-left: 3px solid #ef4444;
-        }
+        .trap-box { background: var(--red-bg); border-left: 3px solid #ef4444; }
         .trap-box p { margin-bottom: 4px; color: var(--red-text); }
-        .tip-box {
-            background: var(--green-bg); border-left: 3px solid #10b981;
-        }
+        .tip-box { background: var(--green-bg); border-left: 3px solid #10b981; }
         .tip-box p, .tip-box li { color: var(--green-text); }
-        .q-answer-inner {
-            background: var(--blue-bg); border-left: 3px solid #3b82f6;
-        }
+        .q-answer-inner { background: var(--blue-bg); border-left: 3px solid #3b82f6; }
 
-        /* --- 结论框 --- */
         .conclusion-box {
             background: var(--blue-bg); border: 1px solid var(--blue-border);
             border-radius: 8px; padding: 12px 16px; font-size: 14px;
@@ -249,13 +183,11 @@
             margin: 10px 0;
         }
 
-        /* --- 分隔线 --- */
         .divider {
             text-align: center; color: var(--text-muted);
             font-size: 13px; letter-spacing: 2px; margin: 10px 0;
         }
 
-        /* --- 可展开按钮 --- */
         .toggle-btn {
             background: #fff; border: 1px solid #cbd5e1;
             padding: 5px 12px; border-radius: 14px;
@@ -263,11 +195,10 @@
             transition: all 0.15s; margin-top: 6px;
         }
         .toggle-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-        .hidden-content, .collapsible { display: none; padding: 10px 0 0; }
-        .hidden-content.open, .collapsible.open { display: block; animation: fadeIn 0.25s; }
+        .collapsible { display: none; padding: 10px 0 0; }
+        .collapsible.open { display: block; animation: fadeIn 0.25s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ===== 底部导航 ===== */
         .nav-footer {
             max-width: 820px; margin: 0 auto; padding: 20px 18px;
             display: flex; justify-content: space-between; align-items: center; gap: 12px;
@@ -279,7 +210,6 @@
         }
         .nav-prev { background: #f1f5f9; color: var(--text); border: 1px solid #cbd5e1; }
         .nav-prev:hover { background: #e2e8f0; }
-        .nav-prev.disabled { opacity: 0.35; pointer-events: none; cursor: default; }
         .nav-next { background: var(--accent); color: #fff; }
         .nav-next:hover { filter: brightness(1.15); }
         .site-footer {
@@ -287,20 +217,18 @@
             color: var(--text-light); font-size: 12px;
         }
 
-        /* ===== 响应式 ===== */
         @media (max-width: 640px) {
             .page-header { padding: 24px 18px 20px; }
             .page-header h1 { font-size: 20px; }
             .content { padding: 18px 10px 36px; }
             .navbar { padding: 0 12px; }
             .navbar-links { gap: 10px; }
-            .angle-overview { grid-template-columns: repeat(3, 1fr); }
             .q-options-grid { grid-template-columns: 1fr; }
             .block-head { flex-wrap: wrap; }
             .nav-footer { flex-direction: column; gap: 8px; }
             .nav-footer a { width: 100%; justify-content: center; }
             .q-table { font-size: 11px; }
-            .q-table thead th, .q-table tbody td { padding: 5px 7px; }
+            .q-table th, .q-table td { padding: 5px 7px; }
         }
     </style>
 </head>
@@ -316,48 +244,514 @@
     <header class="page-header">
         <div class="header-badge">第16讲</div>
         <h1>第16讲 氯及其重要化合物</h1>
-        <p>步步高大一轮复习讲义 · 以考定教</p>
+        <p>步步高大一轮复习讲义 · 以考定教 · 氯气制备+性质+含氯化合物全梳理</p>
     </header>
 
     <main class="content">
-        <div style="text-align:center; padding: 80px 20px;">
-            <div style="font-size:60px; margin-bottom:20px;">🚧</div>
-            <h2 style="font-size:20px; color:#1a1a2e; margin-bottom:10px;">第16讲 氯及其重要化合物</h2>
-            <p style="font-size:14px; color:#64748b;">内容正在制作中，敬请期待...</p>
+<!-- 前测 -->
+<div class="pretest-box">
+    <div class="pt-title">⚡ 前测（5分钟）——氯，你搞清楚了吗？</div>
+    <div class="pt-sub">上一讲学了铜和金属冶炼，这一讲进入非金属板块，氯是高考出现频率最高的非金属元素之一</div>
+
+    <div class="pt-q">
+        <span class="q-label">1.</span> 实验室用MnO₂和浓盐酸反应制取Cl₂后，按净化→收集→性质检验→尾气处理顺序进行实验。其中不能达到实验目的的装置是（&emsp;&emsp;）<br>
+        <span class="q-opts">A. 用饱和食盐水除去HCl的装置 &emsp; B. 向上排空气法收集Cl₂的装置<br>
+        C. 将Cl₂通入KI-淀粉溶液检验氧化性的装置 &emsp; D. 用KOH溶液进行尾气处理的装置</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt1')">🔍 查看答案</span>
+        <div class="collapsible pt1"><div class="q-answer-inner">✅ <strong>D</strong>——用KOH溶液尾气处理本身可以，但若无水封防倒吸则不能达到目的。<br><br>
+        <strong>氯气实验装置四步流程：</strong><br>
+        ① 净化：饱和NaCl溶液除HCl → 浓H₂SO₄干燥<br>
+        ② 收集：<strong>向上排空气法</strong>（Cl₂密度比空气大，且不能用排水法——会溶于水）<br>
+        ③ 尾气处理：<strong>NaOH溶液</strong>（Cl₂+2NaOH=NaCl+NaClO+H₂O）<br>
+        <strong>💡 2022广东第8题、2024广东第8题都考了这个实验流程！</strong>
+        </div></div>
+    </div>
+
+    <div class="pt-q">
+        <span class="q-label">2.</span> 利用活性石墨电极电解饱和食盐水，闭合开关一段时间后，下列说法正确的是（&emsp;&emsp;）<br>
+        <span class="q-opts">A. U型管两侧均有气泡，分别是H₂和O₂<br>
+        B. a处布条褪色，说明Cl₂具有漂白性<br>
+        C. b处出现蓝色，说明还原性：Cl⁻＞I⁻<br>
+        D. 断开后立刻闭合另一回路，电流表发生偏转</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt2')">🔍 查看答案</span>
+        <div class="collapsible pt2"><div class="q-answer-inner">✅ <strong>D</strong>（2023广东第13题）<br><br>
+        <strong>电解饱和食盐水：</strong>阳极：2Cl⁻-2e⁻=Cl₂↑；阴极：2H⁺+2e⁻=H₂↑；总：2NaCl+2H₂O→2NaOH+H₂↑+Cl₂↑<br>
+        A ❌ 两侧是H₂（阴极）和<strong>Cl₂</strong>（阳极），不是O₂<br>
+        B ❌ a处布条褪色说明<strong>HClO</strong>具有漂白性（Cl₂+H₂O⇌HCl+HClO），不是Cl₂直接漂白<br>
+        C ❌ b处KI-淀粉出现蓝色，说明Cl₂+2KI=I₂+2KCl，即<strong>还原性：I⁻＞Cl⁻</strong>（被氧化的是I⁻）<br>
+        D ✅ 断开后，Cl₂和H₂形成<strong>氢氯燃料电池</strong>，形成电流，电流表偏转
+        </div></div>
+    </div>
+
+    <div class="pt-q">
+        <span class="q-label">3.</span> 2021年广东高考大题考查氯气制备实验，下列说法正确的是（&emsp;&emsp;）<br>
+        <span class="q-opts">A. 实验室制氯气的化学方程式：MnO₂+4HCl=MnCl₂+Cl₂↑+2H₂O<br>
+        B. 某氯水久置后不能使品红溶液褪色，说明Cl₂已全部散逸<br>
+        C. 检验久置氯水中Cl⁻的操作：加入稀硝酸酸化，再加入硝酸银溶液，产生白色沉淀<br>
+        D. 向Cl₂通入NaOH溶液中，发生：Cl₂+2OH⁻=Cl⁻+ClO⁻+H₂O</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt3')">🔍 查看答案</span>
+        <div class="collapsible pt3"><div class="q-answer-inner">✅ <strong>A和D</strong>都正确，但A缺条件（需要加热△）。<br><br>
+        完整方程式：MnO₂+4HCl(浓) <span style="font-style:normal">△</span> MnCl₂+Cl₂↑+2H₂O（必须加热，必须是浓盐酸）<br>
+        B ❌ 久置氯水褪色能力消失是因为<strong>HClO分解</strong>（HClO→HCl+[O]，[O]→½O₂），不是Cl₂散逸<br>
+        C ✅ 检验Cl⁻：加入<strong>稀硝酸</strong>酸化（排除CO₃²⁻等干扰）→加AgNO₃→白色沉淀（AgCl）不溶于硝酸<br>
+        D ✅ Cl₂通入NaOH：Cl₂+2OH⁻=Cl⁻+ClO⁻+H₂O（歧化反应，Cl₂既被氧化又被还原）
+        </div></div>
+    </div>
+
+    <div class="pt-q">
+        <span class="q-label">4.</span> 设NA为阿伏加德罗常数的值。标准状况下的22.4L Cl₂与足量H₂反应，形成的共价键数目为（&emsp;&emsp;）<br>
+        <span class="q-opts">A. NA &emsp; B. 2NA &emsp; C. 3NA &emsp; D. 4NA</span>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'pt4')">🔍 查看答案</span>
+        <div class="collapsible pt4"><div class="q-answer-inner">✅ <strong>B · 2NA</strong>（2025广东第10题D选项正确答案）<br><br>
+        <strong>分析：</strong>标准状况下22.4L Cl₂ = 1mol Cl₂<br>
+        H₂+Cl₂ <span style="font-style:normal">点燃</span> 2HCl<br>
+        1mol Cl₂与1mol H₂反应，生成2mol HCl<br>
+        每个HCl有1个H-Cl共价键，2mol HCl有<strong>2NA个共价键</strong><br><br>
+        <strong>💡 注意：</strong>2025广东第10题D选项表述是正确的，答案选的是D（D正确）。考生要注意"形成的共价键"是指生成的HCl中的键，不是反应物中的键数。
+        </div></div>
+    </div>
+    <p style="font-size:12px;color:#3b82f6;margin-top:8px;">⚠️ 第1题错 → 考点1：氯气制备与实验装置；第2题错 → 考点2：电解食盐水与氯水；第3题错 → 考点3：氯水久置与HClO性质；第4题错 → 考点4：NA中的氯气</p>
+</div>
+
+<!-- 考点1 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点1</span>
+    <h2>氯气的制备——实验室制法与装置设计</h2>
+    <span class="must">🔴 必考经典</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024·广东·第8题（戴维确认氯元素·实验装置）</div>
+        <div class="q-text">1810年，戴维首次确认氯是一种新元素组成的单质。兴趣小组仿照装置进行实验。其中不能达到实验目的的是<br>
+        <div class="q-options">
+          <p>A. 用MnO₂加浓盐酸反应生成Cl₂，因图中缺少加热装置，且导管口泡在酸液中，不能达到目的</p>
+          <p>B. 实验室制得的Cl₂中含HCl，通过饱和食盐水洗气除去HCl，再通过浓硫酸干燥，达到得到纯净干燥Cl₂的目的</p>
+          <p>C. Cl₂密度大于空气，用向上排空气法收集Cl₂，达到收集目的</p>
+          <p>D. H₂在纯Cl₂中燃烧产生苍白色火焰，能验证Cl₂的氧化性</p>
         </div>
+        （答案：A）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-1')">🔍 查看答案</span>
+        <div class="collapsible a1-1"><div class="q-answer-inner">
+          ✅ <strong>A不能达到目的</strong><br><br>
+          A ❌ 缺少<strong>加热装置</strong>（MnO₂+浓HCl需加热），且导管口浸入液面会<strong>防倒吸</strong>不当——应用球型安全瓶防倒吸，而不是导管口直接浸没<br>
+          B ✅ 饱和NaCl除HCl（NaCl饱和→不溶入Cl₂，但HCl溶于水被吸收）→浓H₂SO₄干燥（干燥剂不与Cl₂反应）<br>
+          C ✅ Cl₂密度约为空气2.5倍→向上排空气收集正确<br>
+          D ✅ H₂在Cl₂中燃烧：H₂+Cl₂→2HCl，H₂被Cl₂氧化→验证氧化性<br><br>
+          <strong>💡 Cl₂制备的关键：</strong>MnO₂+4HCl(浓)→△→MnCl₂+Cl₂↑+2H₂O<br>
+          注意：① 必须是<strong>浓盐酸</strong>（稀HCl不反应）② 必须加热 ③ 氧化剂MnO₂将HCl中Cl（-1价）氧化为Cl₂（0价）
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2022·广东·第8题（氯气净化收集性质检验尾气处理）</div>
+        <div class="q-text">实验室用MnO₂和浓盐酸反应生成Cl₂后，按照净化、收集、性质检验及尾气处理的顺序进行实验。下列装置（"→"表示气流方向）不能达到实验目的的是<br>
+        <div class="q-options">
+          <p>A. 饱和食盐水→浓硫酸，净化Cl₂（除HCl和水蒸气）</p>
+          <p>B. 向上排空气法收集Cl₂（导管伸入圆底烧瓶底部）</p>
+          <p>C. 将Cl₂通入KI-淀粉溶液检验Cl₂的氧化性（溶液变蓝）</p>
+          <p>D. 用NaOH溶液进行尾气处理（无防倒吸装置）</p>
+        </div>
+        （答案：D——没有防倒吸装置，NaOH液会倒流进入收集瓶）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-2')">🔍 查看答案</span>
+        <div class="collapsible a1-2"><div class="q-answer-inner">
+          ✅ <strong>D不能达到目的</strong>（导管直接插入碱液中，无防倒吸）<br><br>
+          <strong>Cl₂实验的"四步流程"详解：</strong>
+          <table class="q-table">
+            <tr><th>步骤</th><th>装置</th><th>目的</th><th>注意点</th></tr>
+            <tr><td><strong>①净化</strong></td><td>饱和NaCl→浓H₂SO₄</td><td>除HCl和H₂O</td><td>顺序不能颠倒</td></tr>
+            <tr><td><strong>②收集</strong></td><td>向上排空气法</td><td>收集Cl₂</td><td>导管插到底，出口收集</td></tr>
+            <tr><td><strong>③检验</strong></td><td>KI-淀粉/品红/AgNO₃等</td><td>验证性质</td><td>湿润的有色布条（HClO漂白性）</td></tr>
+            <tr><td><strong>④尾气</strong></td><td>NaOH溶液+防倒吸</td><td>吸收多余Cl₂</td><td><strong>必须有防倒吸装置！</strong></td></tr>
+          </table>
+          <p style="margin-top:8px;"><strong>💡 防倒吸的方法：</strong>球形安全瓶（圆底烧瓶中倒置小试管）或导管上方用倒置漏斗接在碱液液面处。</p>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2021·广东·第17题（含氯物质的重要性·大题）</div>
+        <div class="q-text">含氯物质在生产生活中有重要作用。1774年，舍勒在研究软锰矿（主要成分是MnO₂）的过程中，将它与浓盐酸混合加热，产生了一种黄绿色气体。1810年，戴维确认这是一种新元素组成的单质，命名为chlorine。<br><br>
+        （1）实验室沿用舍勒的方法制取Cl₂的化学方程式为_______。<br>
+        （2）实验室制取干燥Cl₂时，净化与收集所需装置的接口连接顺序为_______。<br>
+        （3）某氯水久置后不能使品红溶液褪色，可推测氯水中_______已分解。检验此久置氯水中存在Cl⁻的操作及现象是_______。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a1-3')">🔍 查看答案</span>
+        <div class="collapsible a1-3"><div class="q-answer-inner">
+          ✅ <strong>（1）</strong> MnO₂+4HCl(浓) <span style="font-style:normal">△</span> MnCl₂+Cl₂↑+2H₂O<br><br>
+          <strong>（2）</strong> 制取Cl₂→饱和食盐水（除HCl，a进b出）→浓硫酸（干燥，c进d出）→向上排空气收集（e进f出，e接圆底烧瓶底）<br><br>
+          <strong>（3）</strong> 久置氯水不褪色：<strong>HClO</strong>已分解（2HClO→2HCl+O₂↑，光照加速）<br>
+          检验Cl⁻：取氯水适量，加入适量<strong>稀硝酸</strong>酸化（排除CO₃²⁻等干扰），再加几滴<strong>硝酸银溶液</strong>，产生<strong>白色沉淀</strong>（AgCl），该沉淀不溶于稀硝酸，说明含有Cl⁻<br><br>
+          <strong>💡 为什么加稀硝酸酸化？</strong>防止溶液中CO₃²⁻、SO₄²⁻等也与Ag⁺生成沉淀，干扰Cl⁻的检验。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't1')">⚠️ 查看陷阱</span><div class="collapsible t1"><div class="trap-box">
+        <p><strong>① "稀盐酸也能与MnO₂反应制氯气"</strong>——❌ 必须是<strong>浓盐酸</strong>！原理上MnO₂氧化性不足以氧化稀HCl中的Cl⁻，只有浓HCl中高浓度Cl⁻才能被氧化。</p>
+        <p><strong>② "不加热也能制Cl₂"</strong>——❌ MnO₂与浓HCl的反应需要<strong>加热</strong>（△），常温下反应极慢。</p>
+        <p><strong>③ "用排水法收集Cl₂"</strong>——❌ Cl₂能溶于水且与水反应（Cl₂+H₂O⇌HCl+HClO），不能用排水法，只能用<strong>向上排空气法</strong>。</p>
+        <p><strong>④ "干燥Cl₂可用碱石灰"</strong>——❌ 碱石灰（NaOH+CaO）会与Cl₂反应，只能用<strong>浓硫酸</strong>干燥。</p>
+        <p><strong>⑤ "尾气处理用盐酸"</strong>——❌ 尾气用<strong>NaOH溶液</strong>（碱性物质）吸收；若用Na₂SO₃等还原性物质效果更佳，但考场默认用NaOH。</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g1')">✅ 查看指导</span><div class="collapsible g1"><div class="tip-box">
+        <p><strong>Cl₂制备实验一图通关：</strong></p>
+        <div class="conclusion-box">
+          制备：MnO₂+4HCl(浓) △ MnCl₂+Cl₂↑+2H₂O<br>
+          净化：① 饱和NaCl（除HCl）→ ② 浓H₂SO₄（干燥）<br>
+          收集：向上排空气（Cl₂比空气重约2.5倍）<br>
+          尾气：NaOH溶液吸收 + 防倒吸装置<br>
+          检验：湿润有色布条褪色 / KI-淀粉变蓝 / AgNO₃白色沉淀
+        </div>
+        <p><strong>高考常考实验装置细节：</strong></p>
+        <ul style="padding-left:18px;margin-top:8px;">
+          <li>净化顺序：<strong>先除HCl（饱和NaCl）再干燥（浓H₂SO₄）</strong>，不能颠倒</li>
+          <li>尾气处理：<strong>必须加防倒吸装置</strong>（广口瓶或球形安全瓶）</li>
+          <li>收集：导管伸入容器底部，气体从顶部出（向上排）</li>
+          <li>检验收集满：将湿润的淀粉-KI试纸放在瓶口，变蓝即满</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点2 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点2</span>
+    <h2>氯水的组成与性质——HClO的漂白性与弱酸性</h2>
+    <span class="must">🔴 核心考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023·广东·第13题（电解饱和食盐水·Cl₂/HClO/漂白性）</div>
+        <div class="q-text">利用活性石墨电极电解饱和食盐水，进行如图所示实验。闭合开关，一段时间后<br>
+        <div class="q-options">
+          <p>A. U型管两侧均有气泡冒出，分别是H₂和Cl₂（非O₂）</p>
+          <p>B. a处布条褪色，说明HClO具有漂白性</p>
+          <p>C. b处出现蓝色，说明还原性：I⁻＞Cl⁻（被氧化的是I⁻）</p>
+          <p>D. 断开，立刻闭合另一回路，电流表发生偏转（形成氢氯燃料电池）</p>
+        </div>
+        （答案：D）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-1')">🔍 查看答案</span>
+        <div class="collapsible a2-1"><div class="q-answer-inner">
+          ✅ <strong>D正确</strong><br><br>
+          <strong>电解饱和食盐水总反应：</strong>2NaCl+2H₂O <span style="font-style:normal">通电</span> 2NaOH+H₂↑+Cl₂↑<br>
+          阳极（活性石墨，失去Cl⁻，含Cl⁻多）：2Cl⁻-2e⁻=Cl₂↑<br>
+          阴极（含Na⁺，H⁺在此放电）：2H⁺+2e⁻=H₂↑<br><br>
+          A ❌ 两侧产生的是Cl₂（阳极）和H₂（阴极），不是O₂<br>
+          B ❌ a处布条褪色→说明<strong>HClO</strong>漂白性（Cl₂溶于水生成HClO，HClO才是漂白剂），不能说"Cl₂漂白"<br>
+          C ❌ b处KI-淀粉变蓝→Cl₂+2I⁻=I₂+2Cl⁻，说明<strong>还原性I⁻＞Cl⁻</strong>（I⁻被氧化，说明I⁻还原性更强），选项C表述相反！<br>
+          D ✅ 断开电源后，电极上残留H₂和Cl₂→构成<strong>氢氯燃料电池</strong>→形成电流→电流表偏转<br><br>
+          <strong>💡 关键区分：</strong>
+          <ul style="padding-left:16px;margin-top:6px;">
+            <li>Cl₂的漂白：通过<strong>HClO</strong>发挥作用，是化学漂白（氧化漂白，不可逆）</li>
+            <li>SO₂的漂白：直接与有色物质结合，是化学漂白（化合型，可逆，加热可恢复）</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025·广东·第17题(5)（测HClO的Ka·弱酸性）</div>
+        <div class="q-text">该小组尝试测弱酸HClO的Ka。<br>
+        ① 丙同学认为不宜按照中和滴定法进行实验，其原因之一是次氯酸易分解。该分解反应的离子方程式为_______。<br>
+        ② 小组讨论后，选用0.100mol/L NaClO溶液（含少量NaCl）进行实验，以获得HClO的Ka。简述该方案（包括所用仪器及数据处理思路）_______。</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-2')">🔍 查看答案</span>
+        <div class="collapsible a2-2"><div class="q-answer-inner">
+          ✅ <strong>（1）HClO分解的离子方程式：</strong><br>
+          2HClO <span style="font-style:normal">光照</span> 2HCl+O₂↑<br>
+          或：HClO <span style="font-style:normal">光照</span> HCl+[O] （即 2HClO=2HCl+O₂↑）<br><br>
+          <strong>（2）测HClO的Ka方案：</strong><br>
+          用pH计测定0.100mol/L NaClO溶液的pH，设pH=a，则溶液中c(OH⁻)=10^(a-14)（碱性，ClO⁻水解）<br>
+          根据水解常数Kh(ClO⁻)=Kw/Ka(HClO)，可通过pH推算Ka<br>
+          仪器：pH计、容量瓶、胶头滴管、烧杯<br><br>
+          <strong>氯水的成分（必背）：</strong>
+          <table class="q-table">
+            <tr><th>成分</th><th>来源</th><th>性质</th></tr>
+            <tr><td>Cl₂（分子）</td><td>溶解的Cl₂</td><td>氧化性（非漂白性）</td></tr>
+            <tr><td>HClO（分子）</td><td>Cl₂+H₂O⇌HCl+HClO</td><td><strong>漂白性</strong>（强）、弱酸性、强氧化性</td></tr>
+            <tr><td>H⁺、Cl⁻</td><td>HCl完全电离</td><td>酸性</td></tr>
+            <tr><td>ClO⁻、H⁺</td><td>HClO微弱电离</td><td>极少量</td></tr>
+            <tr><td>OH⁻</td><td>水的电离</td><td>极少量</td></tr>
+          </table>
+          <p style="margin-top:8px;"><strong>💡 酸性强弱：HCl＞HClO（HClO是弱酸）；氧化性：HClO＞Cl₂</strong></p>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023·广东·第12题（漂白粉久置·陈述因果关系判断）</div>
+        <div class="q-text">下列陈述Ⅰ与陈述Ⅱ均正确，且具有因果关系的是（节选漂白粉相关选项）<br>
+        <div class="q-options">
+          <p>C. <strong>陈述Ⅰ：</strong>久置空气中的漂白粉遇盐酸产生气泡<br>
+          <strong>陈述Ⅱ：</strong>漂白粉主要含Ca(ClO)₂</p>
+        </div>
+        （分析：C不正确——久置漂白粉产生气泡是因为Ca(ClO)₂与空气中CO₂反应生成CaCO₃，CaCO₃遇盐酸产生CO₂，而非因为"漂白粉含Ca(ClO)₂"导致）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a2-3')">🔍 查看答案</span>
+        <div class="collapsible a2-3"><div class="q-answer-inner">
+          ✅ <strong>C不具有正确因果关系</strong><br><br>
+          <strong>漂白粉的变质机理（高频考点！）：</strong><br>
+          漂白粉成分：Ca(ClO)₂（起漂白作用）+ CaCl₂（填充物）<br>
+          久置空气中：Ca(ClO)₂+CO₂+H₂O→CaCO₃↓+2HClO<br>
+          HClO继续：2HClO→2HCl+O₂↑（光照分解）<br>
+          最终剩余：CaCO₃（白色粉末）<br><br>
+          <strong>遇盐酸产生气泡的原因：</strong>CaCO₃+2HCl→CaCl₂+H₂O+CO₂↑（生成CO₂，不是Cl₂！）<br><br>
+          <strong>💡 漂白粉三要点：</strong><br>
+          ① 有效成分：Ca(ClO)₂（次氯酸钙）<br>
+          ② 漂白原理：Ca(ClO)₂+CO₂+H₂O→CaCO₃↓+2HClO，HClO漂白<br>
+          ③ 加盐酸反应：若未变质→先生成HClO（气味），久置变质后→生成CO₂（气泡）
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't2')">⚠️ 查看陷阱</span><div class="collapsible t2"><div class="trap-box">
+        <p><strong>① "氯气本身有漂白性"</strong>——❌ Cl₂<strong>没有漂白性</strong>！是Cl₂溶于水生成的<strong>HClO才有漂白性</strong>。干燥的Cl₂不能漂白有色布条，只有湿润布条才会褪色。</p>
+        <p><strong>② "氯水褪色 = HClO漂白"</strong>——❌ 氯水使品红褪色→是HClO的漂白（氧化）性；但氯水使酸碱指示剂褪色→是酸性（H⁺）使指示剂变色，再被HClO漂白。两种机理混淆！</p>
+        <p><strong>③ "HClO是强酸"</strong>——❌ HClO是<strong>弱酸</strong>（Ka极小约3×10⁻⁸），酸性远弱于HCl；但HClO的<strong>氧化性</strong>强于Cl₂。</p>
+        <p><strong>④ "漂白粉=次氯酸"</strong>——❌ 漂白粉的主要成分是<strong>Ca(ClO)₂和CaCl₂</strong>，不含HClO。</p>
+        <p><strong>⑤ "氯水久置后失效是因为Cl₂散逸"</strong>——❌ 是<strong>HClO分解</strong>（光照加速）导致失效：2HClO→2HCl+O₂↑。久置氯水中仍有大量Cl⁻（而非Cl₂减少）。</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g2')">✅ 查看指导</span><div class="collapsible g2"><div class="tip-box">
+        <p><strong>氯水三粒子·三性质速记：</strong></p>
+        <div class="conclusion-box">
+          分子：Cl₂（黄绿色，氧化性）+ HClO（无色，漂白+氧化）+ H₂O<br>
+          离子：H⁺（酸性）+ Cl⁻（鉴定）+ ClO⁻（碱性条件漂白）+ OH⁻<br><br>
+          酸性：H⁺（Cl⁻来自HCl的完全电离）<br>
+          氧化性：Cl₂ 和 HClO 均有（HClO更强）<br>
+          漂白性：只有 HClO（不是Cl₂！）
+        </div>
+        <p style="margin-top:8px;"><strong>含氯漂白剂对比：</strong></p>
+        <table class="q-table">
+          <tr><th>名称</th><th>有效成分</th><th>漂白原理</th><th>备注</th></tr>
+          <tr><td>氯水</td><td>HClO</td><td>HClO氧化有色物质</td><td>不稳定，久置失效</td></tr>
+          <tr><td>漂白粉</td><td>Ca(ClO)₂</td><td>Ca(ClO)₂+CO₂+H₂O→HClO</td><td>久置变质生成CaCO₃</td></tr>
+          <tr><td>84消毒液</td><td>NaClO</td><td>水解生成HClO</td><td>加酸会加速释放HClO；<strong>禁与酒精混用！</strong></td></tr>
+        </table>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点3 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点3</span>
+    <h2>Cl₂的氧化性与卤素比较——氧化性强弱的判断</h2>
+    <span class="often">🟡 高频考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2023·广东·第13题（Cl₂+KI-淀粉·还原性比较）</div>
+        <div class="q-text">电解饱和食盐水实验中，b处（含KI-淀粉溶液）出现蓝色，说明（&emsp;&emsp;）<br>
+        <div class="q-options">
+          <p>A. 说明Cl₂具有氧化性</p>
+          <p>B. 说明还原性：I⁻＜Cl⁻</p>
+          <p>C. 说明还原性：I⁻＞Cl⁻（即氧化性：Cl₂＞I₂）</p>
+          <p>D. 说明Cl₂不能使淀粉溶液变蓝</p>
+        </div>
+        （答案：C）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-1')">🔍 查看答案</span>
+        <div class="collapsible a3-1"><div class="q-answer-inner">
+          ✅ <strong>C正确</strong><br><br>
+          <strong>反应：Cl₂+2KI=I₂+2KCl</strong><br>
+          Cl₂将I⁻氧化为I₂ → I₂与淀粉反应→变蓝色<br>
+          被氧化的是I⁻（-1→0价），说明<strong>I⁻的还原性强于Cl⁻</strong>（即Cl₂是更强的氧化剂）<br><br>
+          <strong>卤素单质氧化性顺序（核心！）：</strong><br>
+          F₂＞Cl₂＞Br₂＞I₂<br>
+          对应的卤素离子还原性顺序：<br>
+          I⁻＞Br⁻＞Cl⁻＞F⁻<br><br>
+          <strong>实验验证方法：</strong>
+          <table class="q-table">
+            <tr><th>实验</th><th>现象</th><th>说明</th></tr>
+            <tr><td>Cl₂+KBr溶液</td><td>溶液变橙红色（Br₂）</td><td>氧化性Cl₂＞Br₂</td></tr>
+            <tr><td>Cl₂+KI-淀粉溶液</td><td>溶液变蓝色（I₂）</td><td>氧化性Cl₂＞I₂</td></tr>
+            <tr><td>Br₂+KI溶液</td><td>溶液变棕色（I₂）</td><td>氧化性Br₂＞I₂</td></tr>
+          </table>
+          <p style="margin-top:6px;"><strong>💡 氧化还原分析口诀：</strong>"谁被氧化（失电子），谁是还原剂（还原性强）"。I⁻被氧化→I⁻是还原剂→I⁻还原性最强！</p>
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2022·广东·第16题（新型氯流电池·应用拓展）</div>
+        <div class="q-text">科学家基于Cl₂易溶于某有机溶剂的性质，发展了一种无需离子交换膜的新型氯流电池，可作储能设备。充电时电极a的反应为：2Cl⁻-2e⁻=Cl₂↑。下列说法正确的是<br>
+        <div class="q-options">
+          <p>A. 充电时电极b是阴极</p>
+          <p>B. 放电时溶液的c(Cl⁻)减小</p>
+          <p>C. 放电时溶液的Cl₂浓度增大</p>
+          <p>D. 每生成1mol Cl₂，电极a质量理论上增加71g</p>
+        </div>
+        （答案：A）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a3-2')">🔍 查看答案</span>
+        <div class="collapsible a3-2"><div class="q-answer-inner">
+          ✅ <strong>A正确</strong><br><br>
+          <strong>充电时：</strong>a极：2Cl⁻-2e⁻=Cl₂↑（氧化，a为阳极）→b极为阴极<br>
+          <strong>放电时：</strong>a极（正极）：Cl₂+2e⁻=2Cl⁻（Cl₂被还原，获得电子）；b极（负极）被氧化<br>
+          A ✅ 充电时a为阳极，b为阴极，正确<br>
+          B ❌ 放电时a极Cl₂+2e⁻=2Cl⁻，Cl⁻增加；b极（负极）有氧化反应，消耗一定离子；整体来看<strong>c(Cl⁻)增大</strong>（Cl₂转化为Cl⁻）<br>
+          C ❌ 放电时Cl₂被还原为Cl⁻，<strong>Cl₂浓度减小</strong><br>
+          D ❌ 电极a是石墨（惰性），充电时质量不变（Cl₂从溶液中逸出，a自身质量不变）<br><br>
+          <strong>💡 新型电池解题策略：</strong>先判断充放电时的正负极（或阴阳极），再判断各极发生的反应类型，最后分析粒子浓度变化。
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't3')">⚠️ 查看陷阱</span><div class="collapsible t3"><div class="trap-box">
+        <p><strong>① "b处KI-淀粉变蓝，说明还原性Cl⁻＞I⁻"</strong>——❌ 恰好相反！I⁻被Cl₂氧化为I₂，说明<strong>I⁻的还原性强于Cl⁻</strong>，即Cl₂的氧化性强于I₂。</p>
+        <p><strong>② "Cl₂遇到淀粉会变蓝"</strong>——❌ 是I₂遇到淀粉变蓝，不是Cl₂！Cl₂与KI反应产生I₂，I₂才使淀粉变蓝。</p>
+        <p><strong>③ "新型电池充电时阳极是阴极"</strong>——❌ 充电：外加电源驱动，阳极发生氧化（失电子），阴极发生还原（得电子）。</p>
+        <p><strong>④ "卤素酸性：HF＞HCl＞HBr＞HI"</strong>——❌ 非含氧酸酸性恰好<strong>相反</strong>！HF是弱酸（最弱），HI是最强酸：HI＞HBr＞HCl＞HF。与含氧酸酸性规律不同！</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g3')">✅ 查看指导</span><div class="collapsible g3"><div class="tip-box">
+        <p><strong>卤素规律对比速记表（必背！）：</strong></p>
+        <table class="q-table">
+          <tr><th>性质</th><th>F</th><th>Cl</th><th>Br</th><th>I</th><th>规律</th></tr>
+          <tr><td>单质颜色</td><td>淡黄色气体</td><td>黄绿色气体</td><td>红棕色液体</td><td>紫黑色固体</td><td>颜色加深</td></tr>
+          <tr><td>氧化性</td><td>最强</td><td>强</td><td>较弱</td><td>弱</td><td>从上到下减弱</td></tr>
+          <tr><td>离子还原性</td><td>F⁻最弱</td><td>Cl⁻</td><td>Br⁻</td><td>I⁻最强</td><td>从上到下增强</td></tr>
+          <tr><td>非金属性</td><td>最强</td><td>强</td><td>较弱</td><td>弱</td><td>从上到下减弱</td></tr>
+          <tr><td>无氧酸酸性</td><td>HF（弱酸）</td><td>HCl（强酸）</td><td>HBr（强酸）</td><td>HI（最强）</td><td>从上到下增强（与非金属性相反！）</td></tr>
+        </table>
+        <div class="conclusion-box" style="margin-top:10px;">
+          🎯 高考规律：卤素氧化性 F₂＞Cl₂＞Br₂＞I₂<br>
+          对应的卤素离子还原性 I⁻＞Br⁻＞Cl⁻＞F⁻<br>
+          验证方法：强氧化剂把弱还原剂对应的阴离子氧化出单质（如Cl₂+2KI=I₂+2KCl）
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<!-- 考点4 -->
+<div class="block">
+  <div class="block-head">
+    <span class="block-num">考点4</span>
+    <h2>含氯化合物的转化——Na₂O₂、NaClO、ClO₂的综合应用</h2>
+    <span class="often">🟡 拓展考点</span>
+  </div>
+  <div class="block-body">
+    <div class="sub">
+      <div class="sub-title exam">📝 真题举例</div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2025·广东·第12题（CuCl在高Cl⁻浓度溶液中的平衡）</div>
+        <div class="q-text">CuCl微溶于水，但在Cl⁻浓度较高的溶液中因形成[CuCl₂]⁻和[CuCl₃]²⁻而溶解。将适量CuCl完全溶于盐酸，得到含[CuCl₂]⁻和[CuCl₃]²⁻的溶液，下列叙述正确的是<br>
+        <div class="q-options">
+          <p>A. 加水稀释，[CuCl₃]²⁻浓度一定下降</p>
+          <p>B. 向溶液中加入少量NaCl固体，[CuCl₂]⁻浓度一定上升</p>
+          <p>C. H[CuCl₂]的电离方程式为：H[CuCl₂]⇌H⁺+Cu⁺+2Cl⁻</p>
+          <p>D. 体系中，c(Cu⁺)+c(H⁺)=c(Cl⁻)+c([CuCl₂]⁻)+c([CuCl₃]²⁻)+c(OH⁻)</p>
+        </div>
+        （答案：A）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a4-1')">🔍 查看答案</span>
+        <div class="collapsible a4-1"><div class="q-answer-inner">
+          ✅ <strong>A正确</strong><br><br>
+          <strong>平衡分析：</strong>CuCl+Cl⁻⇌[CuCl₂]⁻；[CuCl₂]⁻+Cl⁻⇌[CuCl₃]²⁻<br>
+          A ✅ 加水稀释→溶液体积增大，Cl⁻浓度降低→平衡向逆方向移动→[CuCl₃]²⁻浓度<strong>一定下降</strong><br>
+          B ❌ 加NaCl→c(Cl⁻)↑→平衡正向→[CuCl₂]⁻转化为[CuCl₃]²⁻→[CuCl₂]⁻浓度变化不确定（增大趋势但又被消耗）<br>
+          C ❌ H[CuCl₂]是强酸，电离方程式应写为H[CuCl₂]=H⁺+[CuCl₂]⁻（完全电离，不写⇌；且[CuCl₂]⁻是络离子，不拆开）<br>
+          D ❌ 电荷守恒应为：c(Cu⁺)+c(H⁺)=c(Cl⁻)+c([CuCl₂]⁻)+2c([CuCl₃]²⁻)+c(OH⁻)（[CuCl₃]²⁻带2个负电荷，系数为2）<br><br>
+          <strong>💡 含氯配合物：</strong>高考越来越多出现如[CuCl₂]⁻、[GaCl₄]⁻等，本质是Cl⁻作为配体与金属离子形成配离子，平衡分析方法与水解/沉淀平衡相同。
+        </div></div>
+      </div>
+
+      <div class="q-box">
+        <div class="q-source"><span class="dot"></span>2024·广东·第8题（氯流电池储能·陈述选项判断）</div>
+        <div class="q-text">下列关于氯的化合物或相关实验，选项判断正确的是（节选相关选项）<br>
+        <div class="q-options">
+          <p>A. 饱和食盐水中加入Na₂O₂，NaCl会析出（正确—Na₂O₂+H₂O→NaOH+H₂O₂，NaOH增多盐析）</p>
+          <p>B. 向NaHCO₃溶液中通入Cl₂：HCO₃⁻+Cl₂+H₂O→Cl⁻+HClO+CO₂↑+H⁺（不正确，产物应考虑Cl₂与水反应）</p>
+          <p>C. 配制FeCl₃溶液时加盐酸（正确——抑制Fe³⁺水解）</p>
+        </div>
+        （答案：C）</div>
+        <span class="toggle-btn answer-btn" data-show-text="🔍 查看答案" data-hide-text="🔒 隐藏答案" onclick="toggleCollapsible(this, 'a4-2')">🔍 查看答案</span>
+        <div class="collapsible a4-2"><div class="q-answer-inner">
+          ✅ <strong>含氯化合物综合知识总结：</strong><br><br>
+          <strong>常见含氯物质的转化关系：</strong>
+          <table class="q-table">
+            <tr><th>物质</th><th>化学式</th><th>Cl化合价</th><th>重要性质/反应</th></tr>
+            <tr><td>氯气</td><td>Cl₂</td><td>0</td><td>与NaOH歧化→Cl⁻+ClO⁻；与水歧化→Cl⁻+HClO</td></tr>
+            <tr><td>氯化氢</td><td>HCl</td><td>-1</td><td>强酸，与MnO₂（浓）加热→Cl₂（HCl被氧化）</td></tr>
+            <tr><td>次氯酸</td><td>HClO</td><td>+1</td><td>弱酸，漂白性，见光分解：2HClO→2HCl+O₂</td></tr>
+            <tr><td>次氯酸钠</td><td>NaClO</td><td>+1</td><td>84消毒液有效成分，水解碱性，加酸释放HClO</td></tr>
+            <tr><td>次氯酸钙</td><td>Ca(ClO)₂</td><td>+1</td><td>漂白粉有效成分，加CO₂+H₂O→CaCO₃+HClO</td></tr>
+            <tr><td>氯酸</td><td>HClO₃</td><td>+5</td><td>强酸，强氧化性</td></tr>
+            <tr><td>高氯酸</td><td>HClO₄</td><td>+7</td><td>最强无机酸</td></tr>
+          </table>
+          <p style="margin-top:8px;"><strong>💡 Cl在各价态间转化：</strong>-1(HCl)→0(Cl₂)→+1(HClO/NaClO)→+3(NaClO₂)→+5(KClO₃)→+7(HClO₄)</p>
+        </div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title trap">⚠️ 陷阱</div><span class="toggle-btn trap-btn" data-show-text="⚠️ 查看陷阱" data-hide-text="🔒 隐藏陷阱" onclick="toggleCollapsible(this, 't4')">⚠️ 查看陷阱</span><div class="collapsible t4"><div class="trap-box">
+        <p><strong>① "84消毒液+酒精可以增强消毒效果"</strong>——❌ 极度危险！NaClO+乙醇→ClCH₂CH₂OH（氯乙醇，有毒）或发生爆炸，严禁混用。</p>
+        <p><strong>② "NaClO溶液显酸性"</strong>——❌ NaClO是强碱弱酸盐，ClO⁻水解：ClO⁻+H₂O⇌HClO+OH⁻，溶液<strong>显碱性</strong>！</p>
+        <p><strong>③ "电荷守恒写配离子时忘计算电荷数"</strong>——❌ [CuCl₃]²⁻带2个负电荷，电荷守恒时系数是2，不能写成1。</p>
+        <p><strong>④ "加稀盐酸就能将NaClO溶液漂白效果增强"</strong>——❌ 确实加酸→HCl→HClO增多；但若加过量强酸→Cl₂逸出，且HClO不稳定分解。合理的做法是微弱酸性环境，而不是大量加盐酸。</p>
+      </div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title tip">✅ 避坑指导</div><span class="toggle-btn tip-btn" data-show-text="✅ 查看指导" data-hide-text="🔒 隐藏指导" onclick="toggleCollapsible(this, 'g4')">✅ 查看指导</span><div class="collapsible g4"><div class="tip-box">
+        <p><strong>氯的重要方程式速记（高考必背）：</strong></p>
+        <ul style="padding-left:18px;margin-top:6px;">
+          <li>制备：MnO₂+4HCl(浓) △ MnCl₂+Cl₂↑+2H₂O</li>
+          <li>与水歧化：Cl₂+H₂O⇌HCl+HClO（可逆，不完全）</li>
+          <li>与NaOH歧化：Cl₂+2NaOH=NaCl+NaClO+H₂O（冷稀碱）</li>
+          <li>与Ca(OH)₂歧化：2Cl₂+2Ca(OH)₂=Ca(ClO)₂+CaCl₂+2H₂O（漂白粉制备）</li>
+          <li>电解食盐水：2NaCl+2H₂O <span style="font-style:normal">通电</span> 2NaOH+H₂↑+Cl₂↑</li>
+          <li>HClO分解：2HClO <span style="font-style:normal">光照</span> 2HCl+O₂↑</li>
+          <li>漂白粉变质：Ca(ClO)₂+CO₂+H₂O→CaCO₃↓+2HClO</li>
+          <li>Cl₂+2KI=I₂+2KCl（置换反应，验证氧化性）</li>
+        </ul>
+        <div class="conclusion-box" style="margin-top:10px;">
+          🎯 记忆口诀：<br>
+          "氯气黄绿有刺激，入水歧化酸次酸<br>
+           遇碱再歧化，漂白靠HClO<br>
+           食盐水电解，阳极氯气阴极氢"
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
     </main>
 
     <nav class="nav-footer">
-        <a href="./15.html" class="nav-prev">← 上一讲 | 第15讲 金属材料与金属冶炼 铜</a>
-        <a href="./17.html" class="nav-next">下一讲 | 第17讲 卤素 氯及其化合物的转化关系 →</a>
+        <a href="15.html" class="nav-prev">← 第15讲 | 金属材料与金属冶炼</a>
+        <a href="17.html" class="nav-next">第17讲 | 卤素·氯及其化合物转化 →</a>
     </nav>
 
     <footer class="site-footer">
-        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+        化学不难学 · 步步高大一轮复习 · 第16讲 · 以考定教
     </footer>
 
     <script>
-function toggleCollapsible(btn, targetClass) {
-  var content = null;
-  var el = btn.nextElementSibling;
-  while (el) {
-    if (el.classList) {
-      if (el.classList.contains(targetClass.replace(/^\./, ""))) { content = el; break; }
-      if (el.classList.contains("answer-content") || el.classList.contains("trap-content") || el.classList.contains("tip-content")) { content = el; break; }
-    }
-    el = el.nextElementSibling;
-  }
-  if (!content) {
-    var parent = btn.parentElement;
-    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible");
-  }
-  if (!content) return;
-  var isOpen = content.classList.contains("open");
-  content.classList.toggle("open");
-  if (btn.dataset.showText && btn.dataset.hideText) {
-    btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
-  }
-}
+        function toggleCollapsible(btn, id) {
+            const targets = document.querySelectorAll('.' + id);
+            const showText = btn.getAttribute('data-show-text') || btn.textContent.trim();
+            const hideText = btn.getAttribute('data-hide-text');
+            let isAnyOpen = false;
+            targets.forEach(t => { if (t.classList.contains('open')) isAnyOpen = true; });
+            targets.forEach(t => { t.classList.toggle('open', !isAnyOpen); });
+            if (hideText) btn.textContent = isAnyOpen ? showText : hideText;
+        }
     </script>
 </body>
 </html>
