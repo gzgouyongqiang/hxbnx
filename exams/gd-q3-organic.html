@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>广东卷第3类·有机化学基础 | 2021-2025五年真题专讲</title>
+<title>广东卷第3类·有机化学基础 | ²⁰²¹⁻2025五年真题专讲</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -13,30 +13,30 @@
   .container { max-width: 900px; margin: 0 auto; padding: 20px 16px 60px; }
 
   /* 顶部导航 */
-  .top-nav { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#D97706; color:#fff; border-radius:12px; margin-bottom:24px; font-size:15px; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#D₉₇₇₀₆; color:#fff; border-radius:12px; margin-bottom:24px; font-size:15px; }
   .top-nav a { color:#fff; text-decoration:none; opacity:0.9; }
   .top-nav a:hover { opacity:1; }
 
   /* 页头 */
-  .header { text-align:center; padding:32px 24px; background:linear-gradient(135deg,#D97706,#B45309); color:#fff; border-radius:16px; margin-bottom:28px; }
+  .header { text-align:center; padding:32px 24px; background:linear-gradient(135deg,#D₉₇₇₀₆,#B₄₅₃₀₉); color:#fff; border-radius:16px; margin-bottom:28px; }
   .header h1 { font-size:26px; font-weight:700; margin-bottom:8px; }
   .header p { font-size:15px; opacity:0.9; }
   .header .emoji { font-size:40px; margin-bottom:8px; }
 
   /* 规律总结卡片 */
-  .law-card { background:#fff; border-radius:14px; padding:24px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-left:5px solid #D97706; }
-  .law-card h2 { color:#D97706; font-size:20px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .law-card { background:#fff; border-radius:14px; padding:24px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-left:5px solid #D₉₇₇₀₆; }
+  .law-card h2 { color:#D₉₇₇₀₆; font-size:20px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
   .law-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin-top:14px; }
-  .law-item { background:#FFF7ED; padding:14px; border-radius:10px; font-size:14px; }
-  .law-item strong { color:#D97706; }
+  .law-item { background:#FFF₇ED; padding:14px; border-radius:10px; font-size:14px; }
+  .law-item strong { color:#D₉₇₇₀₆; }
 
   /* 方法卡片 */
   .method-card { background:#fff; border-radius:14px; padding:24px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
   .method-card h2 { color:#059669; font-size:19px; margin-bottom:12px; }
   .step-list { counter-reset:step; }
   .step { position:relative; padding-left:48px; margin-bottom:14px; }
-  .step::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; width:30px;height:30px;background:#D97706;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px; }
-  .step strong { color:#D97706; }
+  .step::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; width:30px;height:30px;background:#D₉₇₇₀₆;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px; }
+  .step strong { color:#D₉₇₇₀₆; }
 
   /* 陷阱卡片 */
   .trap-card { background:linear-gradient(135deg,#fef2f2,#fee2e2); border-radius:14px; padding:20px 24px; margin-bottom:24px; border:1px solid #fecaca; }
@@ -44,13 +44,13 @@
 
   /* 真题区域 */
   .exam-section { margin-bottom:28px; }
-  .year-badge { display:inline-block; background:#D97706; color:#fff; padding:4px 14px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:10px; }
+  .year-badge { display:inline-block; background:#D₉₇₇₀₆; color:#fff; padding:4px 14px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:10px; }
   .year-badge.new { background:#059669; }
 
   .question-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); margin-bottom:18px; }
-  .q-header { background:#FFF7ED; padding:14px 20px; border-bottom:2px solid #FEF3C7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
-  .q-header .q-title { font-weight:700; font-size:16px; color:#D97706; }
-  .q-header .answer-tag { background:#D97706; color:#fff; padding:3px 12px; border-radius:12px; font-size:13px; font-weight:600; }
+  .q-header { background:#FFF₇ED; padding:14px 20px; border-bottom:2px solid #FEF₃C₇; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  .q-header .q-title { font-weight:700; font-size:16px; color:#D₉₇₇₀₆; }
+  .q-header .answer-tag { background:#D₉₇₇₀₆; color:#fff; padding:3px 12px; border-radius:12px; font-size:13px; font-weight:600; }
 
   .q-body { padding:20px; }
   .q-stem { font-size:15px; font-weight:600; margin-bottom:14px; line-height:1.8; }
@@ -58,8 +58,8 @@
   /* 选项网格 */
   .options-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
   .option-item { background:#f8fafc; border:2px solid #e2e8f0; border-radius:10px; padding:12px 14px; font-size:14px; transition:all 0.2s; cursor:default; }
-  .option-item:hover { border-color:#D97706; background:#FFF7ED; }
-  .option-item .opt-letter { font-weight:700; color:#D97706; margin-right:6px; }
+  .option-item:hover { border-color:#D₉₇₇₀₆; background:#FFF₇ED; }
+  .option-item .opt-letter { font-weight:700; color:#D₉₇₇₀₆; margin-right:6px; }
   .option-item.correct { border-color:#059669; background:#ecfdf5; }
   .option-item.wrong { border-color:#ef4444; background:#fef2f2; opacity:0.7; }
 
@@ -69,7 +69,7 @@
 
   /* 可展开区块 */
   .toggle-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border:none; border-radius:20px; font-size:14px; font-weight:600; cursor:pointer; margin:4px 4px 4px 0; transition:all 0.25s; color:#fff; }
-  .btn-analysis { background:#D97706; }
+  .btn-analysis { background:#D₉₇₇₀₆; }
   .btn-trap { background:#dc2626; }
   .btn-tip { background:#059669; }
   .toggle-btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
@@ -89,7 +89,7 @@
   /* 底部导航 */
   .bottom-nav { text-align:center; padding:20px; background:#fff; border-radius:12px; margin-top:28px; font-size:15px; }
   .bottom-nav a { color:#475569; text-decoration:none; margin:0 12px; }
-  .bottom-nav a:hover { color:#D97706; }
+  .bottom-nav a:hover { color:#D₉₇₇₀₆; }
 
   @media(max-width:600px){
     .options-grid { grid-template-columns:1fr; }
@@ -111,7 +111,7 @@
 <header class="header">
   <div class="emoji">⚗️🧬</div>
   <h1>广东卷第3类·有机化学基础</h1>
-  <p>2021-2025五年真题规律总结与解题方法专讲</p>
+  <p>²⁰²¹⁻2025五年真题规律总结与解题方法专讲</p>
 </header>
 
 <!-- 规律总结 -->
@@ -121,9 +121,9 @@
     有机化学基础是广东卷选择题的<strong>常客</strong>，每年1~2道。命题呈现三大方向：
   </div>
   <div class="law-grid">
-    <div class="law-item"><strong>方向一：官能团与性质判断</strong><br>给定有机物结构（含结构简式或3D图），判断能发生的反应类型、与试剂的定量关系等。<br><span style="color:#64748b;font-size:13px;">2021-Q5 信息素 / 2023-Q8 点击化学 / 2024-Q9 柳珊瑚酸</span></div>
-    <div class="law-item"><strong>方向二：有机概念辨析</strong><br>考查同分异构体、烃vs烃的衍生物、高分子单体判断、聚合反应类型等基础概念。<br><span style="color:#64748b;font-size:13px;">2022-Q9 碳循环（糖类/烃） / 2025-Q5 音乐存储材料</span></div>
-    <div class="law-item"><strong>方向三：结构与空间</strong><br>涉及原子共面判断、杂化方式确定、手性识别等结构化学内容（近年比重上升）。<br><span style="color:#64748b;font-size:13px;">2024-Q9 五元环共面 / 2025-Q3 结构与性质</span></div>
+    <div class="law-item"><strong>方向一：官能团与性质判断</strong><br>给定有机物结构（含结构简式或3D图），判断能发生的反应类型、与试剂的定量关系等。<br><span style="color:#64748b;font-size:13px;">²⁰²¹⁻Q₅ 信息素 / ²⁰²³⁻Q₈ 点击化学 / ²⁰²⁴⁻Q₉ 柳珊瑚酸</span></div>
+    <div class="law-item"><strong>方向二：有机概念辨析</strong><br>考查同分异构体、烃vs烃的衍生物、高分子单体判断、聚合反应类型等基础概念。<br><span style="color:#64748b;font-size:13px;">²⁰²²⁻Q₉ 碳循环（糖类/烃） / ²⁰²⁵⁻Q₅ 音乐存储材料</span></div>
+    <div class="law-item"><strong>方向三：结构与空间</strong><br>涉及原子共面判断、杂化方式确定、手性识别等结构化学内容（近年比重上升）。<br><span style="color:#64748b;font-size:13px;">²⁰²⁴⁻Q₉ 五元环共面 / ²⁰²⁵⁻Q₃ 结构与性质</span></div>
   </div>
   <div style="margin-top:16px;padding:14px;background:#FEF3C7;border-radius:10px;font-size:14px;">
     <strong>💡 核心发现：</strong>广东卷有机选择题越来越倾向于<strong>「真实情境+结构图+综合判断」</strong>模式。
@@ -135,7 +135,7 @@
 <div class="method-card">
   <h2>🎯 四步解题法</h2>
   <div class="step-list">
-    <div class="step"><strong>看结构</strong> — 找出所有官能团（双键、叁键、-OH、-CHO、-COOH、-COO-、苯环等），标注杂化方式</div>
+    <div class="step"><strong>看结构</strong> — 找出所有官能团（双键、叁键、-OH、-CHO、-COOH、-COO⁻、苯环等），标注杂化方式</div>
     <div class="step"><strong>标特性</strong> — 每个官能团能发生什么反应？与什么试剂？定量关系如何？</div>
     <div class="step"><strong>逐项排</strong> — 用排除法优先排除明显错误选项（如"属于烃"但含O元素）</div>
     <div class="step"><strong>二审题</strong> — 最后确认题目问的是"正确"还是"不正确"，别犯审题低级错误</div>
@@ -190,10 +190,10 @@
       <!-- 解析 -->
       <div class="toggle-content" id="ana_2021">
         <p><strong>答案：C</strong></p>
-<p><strong>结构分析：</strong>从题图可知，该信息素分子中含有碳碳双键(C=C)、酯基(-COO-)和环状结构。</p>
+<p><strong>结构分析：</strong>从题图可知，该信息素分子中含有碳碳双键(C=C)、酯基(-COO⁻)和环状结构。</p>
 <ul>
 <li><strong>A项 ✓</strong>：烷烃只含C、H两种元素且只有单键。该分子含O元素且有双键/酯基，<strong>不属于烷烃</strong>。→ A说法本身错误，但题目问"不正确的是"，所以A是<strong>错误的陈述</strong>。</li>
-<li><strong>B项 ✗</strong>：该分子含酯基(-COO-)，可以发生水解反应。B说法正确。</li>
+<li><strong>B项 ✗</strong>：该分子含酯基(-COO⁻)，可以发生水解反应。B说法正确。</li>
 <li><strong>C项 ✓</strong>：分子中有碳碳双键，理论上可发生加成反应，但<strong>"加聚反应"</strong>要求有多个双键或特定官能团排列。该信息素只有一个双键且位置特殊，通常不能发生加聚反应。→ C说法错误，即为答案。</li>
 <li><strong>D项 ✗</strong>：作为昆虫信息素（挥发性化学信号物质），具有一定的挥发性是其基本性质。D说法正确。</li>
 </ul>
@@ -252,7 +252,7 @@
 <ul>
 <li><strong>A项 ✗</strong>：淀粉是多糖，能水解成葡萄糖——这个陈述本身<strong>正确</strong>。但结合题图碳循环背景，如果图中未体现此过程则可能不完全对应。实际上A的化学知识本身是对的。</li>
 <li><strong>B项 ✗</strong>：葡萄糖(C₆H₁₂O₆)与果糖(C₆H₁₂O₆)确实互为同分异构体，但它们<strong>含氧元素，属于烃的衍生物（糖类），不是烃</strong>。"烃"只含C、H。这是经典陷阱！</li>
-<li><strong>C项 ✗</strong>：CO₂的电子数 = C(6) + O×2(8×2) = 6+16 = <strong>22个电子</strong>。这个计算正确，但需确认题图中具体指代。</li>
+<li><strong>C项 ✗</strong>：CO₂的电子数 = C(⁶) + O×2(8×2) = ⁶⁺16 = <strong>22个电子</strong>。这个计算正确，但需确认题图中具体指代。</li>
 <li><strong>D项 ✓</strong>：CO₂中C为+4价（最高价态），被还原时化合价降低，可生成CO(+2价)。这是碳循环中的关键步骤（如光合作用逆过程、高温还原等）。D正确。</li>
 </ul>
 <p><strong>核心考点：</strong>糖类分类与概念辨析（烃 vs 烃的衍生物）、氧化还原反应在碳循环中的应用。</p>
@@ -307,7 +307,7 @@
       <!-- 解析 -->
       <div class="toggle-content" id="ana_2023">
         <p><strong>答案：B</strong></p>
-<p><strong>结构解读：</strong>点击化学常用分子通常含叠氮基(-N₃)和炔基(-C≡CH)，通过1,3-偶极环加成反应高效连接分子。</p>
+<p><strong>结构解读：</strong>点击化学常用分子通常含叠氮基(-N₃)和炔基(-C≡CH)，通过1,³⁻偶极环加成反应高效连接分子。</p>
 <ul>
 <li><strong>A项 ✓</strong>：分子中含碳碳叁键(或叠氮基)，能与H₂、X₂等发生加成反应。正确。</li>
 <li><strong>B项 ✗（答案）</strong>：该分子中能与NaOH反应的基团数量需要仔细数。如果有羧基(-COOH)，1mol-COOH消耗1mol NaOH。如果有酚羟基或酯基，也消耗NaOH。<strong>关键是实际可反应位点数 ≠ 表面看到的等量关系。</strong></li>
@@ -424,9 +424,9 @@
         <p><strong>答案：D</strong></p>
 <p><strong>情境背景：</strong>以声波封印/音乐存储技术为载体，考查材料成分、聚合反应原理、半导体物理化学基础知识。</p>
 <ul>
-<li><strong>A项 ✓</strong>：PVC的单体确实是氯乙烯(CH₂=CHCl)。通过加聚反应生成聚氯乙烯链：-[-CH₂-CHCl-]-ₙ。正确。</li>
+<li><strong>A项 ✓</strong>：PVC的单体确实是氯乙烯(CH₂=CHCl)。通过加聚反应生成聚氯乙烯链：-[-CH₂-CHCl⁻]-ₙ。正确。</li>
 <li><strong>B项 ✓</strong>：传统磁带的磁性涂层为Fe₃O₄（磁赤铁矿）或CrO₂，基底为聚酯薄膜（如PET）。正确。</li>
-<li><strong>C项 ✓</strong>：CD-RW等可擦写光碟利用相变材料（如Ge-Sb-Te合金）在晶态（高反射率）和非晶态（低反射率）之间的可逆转换存储数据。正确。</li>
+<li><strong>C项 ✓</strong>：CD⁻RW等可擦写光碟利用相变材料（如Ge⁻Sb⁻Te合金）在晶态（高反射率）和非晶态（低反射率）之间的可逆转换存储数据。正确。</li>
 <li><strong>D项 ✗（答案）</strong>：半导体激光头的工作原理正是基于<strong>电子跃迁</strong>！激光产生于半导体能带间的受激辐射（电子从导带跃迁到价带释放光子）；读取时光碟反射的光信号也被光电探测器转换为电信号（内光电效应=电子跃迁）。所以说"不涉及电子跃迁"是完全错误的。</li>
 </ul>
 <p><strong>考点：</strong>高分子材料（聚合单体）、磁性材料、相变材料、半导体激光原理的综合。</p>
