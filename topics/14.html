@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第14讲 铝、镁及其化合物 | 化学不难学</title>
+    <title>第14练功房 · 铝、镁及其化合物 | 化学不难学</title>
+    <link rel="stylesheet" href="../assets/game.css">
     <style>
         :root {
             --accent: #4f46e5;
@@ -249,21 +250,41 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
-        <div class="navbar-links">
-            <a href="../index.html">📚 全部专题</a>
-            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+    <nav class="game-navbar">
+        <a href="../index.html" class="game-navbar-brand">⚔️ 炼金主城</a>
+        <div class="game-navbar-links">
+            <a href="../index.html">🏰 主城</a>
+            <a href="../index.html">⚔️ 修炼之路</a>
         </div>
+        <div class="game-navbar-status" id="nav-status">Lv.1 · 炼丹学徒</div>
     </nav>
 
     <header class="page-header">
-        <div class="header-badge">第14讲</div>
-        <h1>第14讲 铝、镁及其<em>化合物</em></h1>
+        <div class="header-badge">⚔️ 练功房 · 第14练功房</div>
+        <h1>第14练功房</h1>
         <p>步步高大一轮复习讲义 · 以考定教 · 两性物质全掌握</p>
     </header>
 
     <main class="content">
+    <!-- 游戏信息栏 -->
+    <div class="game-topic-panel" id="game-topic-panel">
+        <div class="game-topic-left">
+            <div class="game-topic-icon">⚔️</div>
+            <div class="game-topic-info">
+                <div class="game-topic-name">第14练功房 · 铝、镁及其化合物</div>
+                <div class="game-topic-exp" id="topic-exp-bar">
+                    <div class="game-topic-exp-fill" id="topic-exp-fill" style="width:0%"></div>
+                </div>
+                <div class="game-topic-exp-text" id="topic-exp-text">EXP 0/100</div>
+            </div>
+        </div>
+        <div class="game-topic-right">
+            <div class="game-topic-status" id="topic-status">
+                <span class="game-topic-undone">⚡ 未通关</span>
+            </div>
+        </div>
+    </div>
+
 <!-- 前测 -->
 <div class="pretest-box">
     <div class="pt-title">⚡ 前测（5分钟）——你搞清楚铝的"两性"了吗？</div>
@@ -652,38 +673,41 @@
     </div>
   </div>
 </div>
+    
+<!-- ===== 通关文牒 ===== -->
+<div class="game-quiz-section" id="quiz-section">
+    <div class="game-quiz-header">
+        <div class="game-quiz-icon" id="quiz-icon">📜</div>
+        <div>
+            <div class="game-quiz-title" id="quiz-title">通关文牒</div>
+            <div class="game-quiz-subtitle">来源：前测改编</div>
+        </div>
+        <div class="game-quiz-attempts" id="quiz-attempts">剩余 4 次</div>
+    </div>
+    <div class="game-quiz-question">
+        向AlCl₃溶液中逐渐滴加NaOH溶液至过量，<strong>描述正确的是</strong>
+    </div>
+    <div class="game-quiz-options" id="quiz-options">
+        <button class="game-quiz-opt" onclick="submitAnswer(0)" data-idx="0">
+            <span class="opt-letter">A</span>
+            <span>一开始产生白色沉淀，沉淀逐渐增多后不再变化</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(1)" data-idx="1">
+            <span class="opt-letter">B</span>
+            <span>先产生白色沉淀，沉淀量先增后减，最终完全消失</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(2)" data-idx="2">
+            <span class="opt-letter">C</span>
+            <span>溶液始终保持无色透明（有沉淀时不是透明）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(3)" data-idx="3">
+            <span class="opt-letter">D</span>
+            <span>最终溶液中Al元素以Al(OH)₃形式存在（以AlO₂⁻存在）</span>
+        </button>
+    </div>
+    <div class="game-quiz-wrong-hint" id="quiz-hint" style="display:none"></div>
+    <div class="game-quiz-result" id="quiz-result" style="display:none"></div>
+</div>
     </main>
 
-    <nav class="nav-footer">
-        <a href="./13.html" class="nav-prev">← 上一讲 | 第13讲 铁及其化合物转化关系</a>
-        <a href="./15.html" class="nav-next">下一讲 | 第15讲 金属材料与金属冶炼 铜 →</a>
-    </nav>
-
-    <footer class="site-footer">
-        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
-    </footer>
-
-    <script>
-function toggleCollapsible(btn, targetClass) {
-  var content = null;
-  var el = btn.nextElementSibling;
-  while (el) {
-    if (el.classList) {
-      if (el.classList.contains(targetClass.replace(/^\./, ""))) { content = el; break; }
-    }
-    el = el.nextElementSibling;
-  }
-  if (!content) {
-    var parent = btn.parentElement;
-    content = parent.querySelector(".collapsible");
-  }
-  if (!content) return;
-  var isOpen = content.classList.contains("open");
-  content.classList.toggle("open");
-  if (btn.dataset.showText && btn.dataset.hideText) {
-    btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
-  }
-}
-    </script>
-</body>
-</html>
+    

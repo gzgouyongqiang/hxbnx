@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第16讲 氯及其重要化合物 | 化学不难学</title>
+    <title>第16练功房 · 氯及其重要化合物 | 化学不难学</title>
+    <link rel="stylesheet" href="../assets/game.css">
     <style>
         :root {
             --accent: #3b82f6;
@@ -233,21 +234,41 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
-        <div class="navbar-links">
-            <a href="../index.html">📚 全部专题</a>
-            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+    <nav class="game-navbar">
+        <a href="../index.html" class="game-navbar-brand">⚔️ 炼金主城</a>
+        <div class="game-navbar-links">
+            <a href="../index.html">🏰 主城</a>
+            <a href="../index.html">⚔️ 修炼之路</a>
         </div>
+        <div class="game-navbar-status" id="nav-status">Lv.1 · 炼丹学徒</div>
     </nav>
 
     <header class="page-header">
-        <div class="header-badge">第16讲</div>
-        <h1>第16讲 氯及其重要化合物</h1>
+        <div class="header-badge">⚔️ 练功房 · 第16练功房</div>
+        <h1>第16练功房</h1>
         <p>步步高大一轮复习讲义 · 以考定教 · 氯气制备+性质+含氯化合物全梳理</p>
     </header>
 
     <main class="content">
+    <!-- 游戏信息栏 -->
+    <div class="game-topic-panel" id="game-topic-panel">
+        <div class="game-topic-left">
+            <div class="game-topic-icon">⚔️</div>
+            <div class="game-topic-info">
+                <div class="game-topic-name">第16练功房 · 氯及其重要化合物</div>
+                <div class="game-topic-exp" id="topic-exp-bar">
+                    <div class="game-topic-exp-fill" id="topic-exp-fill" style="width:0%"></div>
+                </div>
+                <div class="game-topic-exp-text" id="topic-exp-text">EXP 0/100</div>
+            </div>
+        </div>
+        <div class="game-topic-right">
+            <div class="game-topic-status" id="topic-status">
+                <span class="game-topic-undone">⚡ 未通关</span>
+            </div>
+        </div>
+    </div>
+
 <!-- 前测 -->
 <div class="pretest-box">
     <div class="pt-title">⚡ 前测（5分钟）——氯，你搞清楚了吗？</div>
@@ -731,27 +752,41 @@
   </div>
 </div>
 
+    
+<!-- ===== 通关文牒 ===== -->
+<div class="game-quiz-section" id="quiz-section">
+    <div class="game-quiz-header">
+        <div class="game-quiz-icon" id="quiz-icon">📜</div>
+        <div>
+            <div class="game-quiz-title" id="quiz-title">通关文牒</div>
+            <div class="game-quiz-subtitle">来源：2023·广东·第13题</div>
+        </div>
+        <div class="game-quiz-attempts" id="quiz-attempts">剩余 4 次</div>
+    </div>
+    <div class="game-quiz-question">
+        利用活性石墨电极电解饱和食盐水，闭合开关一段时间后，下列说法<strong>正确的是</strong>
+    </div>
+    <div class="game-quiz-options" id="quiz-options">
+        <button class="game-quiz-opt" onclick="submitAnswer(0)" data-idx="0">
+            <span class="opt-letter">A</span>
+            <span>U型管两侧均有气泡，分别是H₂和O₂（实际是H₂和Cl₂）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(1)" data-idx="1">
+            <span class="opt-letter">B</span>
+            <span>a处布条褪色，说明Cl₂具有漂白性（实际是HClO漂白）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(2)" data-idx="2">
+            <span class="opt-letter">C</span>
+            <span>b处出现蓝色，说明还原性Cl⁻>I⁻（Cl₂氧化I⁻得I₂）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(3)" data-idx="3">
+            <span class="opt-letter">D</span>
+            <span>断开后立刻闭合另一回路，电流表发生偏转（原电池效应）</span>
+        </button>
+    </div>
+    <div class="game-quiz-wrong-hint" id="quiz-hint" style="display:none"></div>
+    <div class="game-quiz-result" id="quiz-result" style="display:none"></div>
+</div>
     </main>
 
-    <nav class="nav-footer">
-        <a href="15.html" class="nav-prev">← 第15讲 | 金属材料与金属冶炼</a>
-        <a href="17.html" class="nav-next">第17讲 | 卤素·氯及其化合物转化 →</a>
-    </nav>
-
-    <footer class="site-footer">
-        化学不难学 · 步步高大一轮复习 · 第16讲 · 以考定教
-    </footer>
-
-    <script>
-        function toggleCollapsible(btn, id) {
-            const targets = document.querySelectorAll('.' + id);
-            const showText = btn.getAttribute('data-show-text') || btn.textContent.trim();
-            const hideText = btn.getAttribute('data-hide-text');
-            let isAnyOpen = false;
-            targets.forEach(t => { if (t.classList.contains('open')) isAnyOpen = true; });
-            targets.forEach(t => { t.classList.toggle('open', !isAnyOpen); });
-            if (hideText) btn.textContent = isAnyOpen ? showText : hideText;
-        }
-    </script>
-</body>
-</html>
+    
