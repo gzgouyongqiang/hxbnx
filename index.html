@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>决胜高考 | 高三化学备考导航</title>
+    <title>炼金主城 | 化学不难学</title>
+    <link rel="stylesheet" href="./assets/game.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -21,76 +22,7 @@
             line-height: 1.6;
         }
 
-        /* ===== Hero区域 ===== */
-        .hero {
-            background: linear-gradient(135deg, #e0f2fe 0%, #fef9c3 50%, #d1fae5 100%);
-            padding: 90px 20px 70px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(52,211,153,0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(167,139,250,0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 20% 20%, rgba(96,165,250,0.06) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 24px;
-            border: 2px solid rgba(249,115,22,0.4);
-            border-radius: 25px;
-            color: #ea580c;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 28px;
-            position: relative;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(8px);
-        }
-        .hero-title {
-            font-size: 56px;
-            font-weight: 800;
-            color: #ea580c;
-            letter-spacing: 6px;
-            margin-bottom: 16px;
-            position: relative;
-            text-shadow: 0 2px 12px rgba(234,88,12,0.25);
-        }
-        .hero-subtitle {
-            font-size: 18px;
-            color: #94a3b8;
-            font-weight: 400;
-            position: relative;
-        }
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 50px;
-            position: relative;
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-num {
-            font-size: 36px;
-            font-weight: 800;
-            color: #ea580c;
-        }
-        .stat-label {
-            font-size: 13px;
-            color: #475569;
-            margin-top: 4px;
-            font-weight: 500;
-        }
+        /* Hero区域已由 game.css 接管 */
 
         /* ===== 标签页切换 ===== */
         .tab-bar {
@@ -687,26 +619,57 @@
     </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-badge">高三化学一轮复习</div>
-        <h1 class="hero-title">决胜高考</h1>
-        <p class="hero-subtitle">考点导航系统 · 精准突破 · 高效备考</p>
-        <div class="hero-stats">
-            <div class="stat-item">
-                <div class="stat-num">6</div>
-                <div class="stat-label">大单元</div>
+    <!-- ===== 炼金主城 Hero ===== -->
+    <header class="game-hero" id="game-hero">
+        <div class="game-hero-inner">
+            <div class="game-hero-top">
+                <div class="game-hero-avatar">⚗️</div>
+                <div class="game-hero-identity">
+                    <h1 id="game-hero-title">炼金主城</h1>
+                    <p id="game-hero-subtitle">高三化学 · 以考定教 · 步步通关</p>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-num">16</div>
-                <div class="stat-label">章节</div>
+
+            <!-- 等级进度条 -->
+            <div id="game-progress-bar"></div>
+
+            <!-- 数据统计 -->
+            <div class="game-hero-stats" id="game-hero-stats">
+                <div class="game-hero-stat game-hero-topics">
+                    <div class="game-hero-stat-num" id="stat-topics">0</div>
+                    <div class="game-hero-stat-label">练功房已通关</div>
+                </div>
+                <div class="game-hero-stat game-hero-streak">
+                    <div class="game-hero-stat-num" id="stat-streak">0</div>
+                    <div class="game-hero-stat-label">连修天数</div>
+                </div>
+                <div class="game-hero-stat game-hero-achievements">
+                    <div class="game-hero-stat-num" id="stat-ach">0</div>
+                    <div class="game-hero-stat-label">成就已解锁</div>
+                </div>
+                <div class="game-hero-stat game-hero-exams">
+                    <div class="game-hero-stat-num" id="stat-exams">0</div>
+                    <div class="game-hero-stat-label">真题已浏览</div>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-num">99</div>
-                <div class="stat-label">个考点</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num">67</div>
-                <div class="stat-label">讲次</div>
+
+            <!-- 进度总览 -->
+            <div class="game-progress-panel" style="margin-top:18px;">
+                <div class="game-progress-title">修炼进度</div>
+                <div class="game-progress-row">
+                    <div class="game-progress-label">练功房</div>
+                    <div class="game-progress-track"><div class="game-progress-fill topics" id="prog-topics" style="width:0%"></div></div>
+                    <div class="game-progress-count" id="prog-topics-txt">0/67</div>
+                </div>
+                <div class="game-progress-row">
+                    <div class="game-progress-label">近14天打卡</div>
+                    <div class="game-calendar" id="game-calendar"></div>
+                </div>
+                <div class="game-save-btns">
+                    <button class="game-save-btn" onclick="HXBNX_GAME.exportSave()">📦 导出存档</button>
+                    <button class="game-save-btn" onclick="document.getElementById('game-import-file').click()">📥 导入存档</button>
+                    <input type="file" id="game-import-file" accept=".json" style="display:none" onchange="handleImport(this)">
+                </div>
             </div>
         </div>
     </header>
@@ -715,14 +678,14 @@
     <nav class="tab-bar">
         <div class="tab-inner">
             <button class="tab-btn active" onclick="switchTab('review')">
-                <span class="tab-icon">📚</span>
-                <span>高考一轮复习</span>
-                <span class="tab-count">99个考点</span>
+                <span class="tab-icon">⚔️</span>
+                <span>修炼之路</span>
+                <span class="tab-count">67个练功房</span>
             </button>
             <button class="tab-btn" onclick="switchTab('exam')">
-                <span class="tab-icon">📝</span>
-                <span>试题选讲</span>
-                <span class="tab-count">6大模块</span>
+                <span class="tab-icon">🗼</span>
+                <span>试炼之塔</span>
+                <span class="tab-count">6大训练场</span>
             </button>
         </div>
     </nav>
@@ -1313,8 +1276,8 @@
     <!-- ====== Tab 2: 试题选讲 ====== -->
     <div id="tab-exam" class="tab-content">
         <div class="exam-hero">
-            <div class="exam-hero-title">📝 试题选讲</div>
-            <div class="exam-hero-desc">按题型分类 · 精选真题 · 逐题精讲 · 高效提分</div>
+            <div class="exam-hero-title">🗼 试炼之塔</div>
+            <div class="exam-hero-desc">精选高考真题 · 分类逐题精讲 · 陷阱全面拆解 · 高效提分</div>
         </div>
 
         <div class="module-container">
@@ -1331,7 +1294,7 @@
                 <a href="./exams/sy.html" class="module-card" style="--mod-color: #10b981">
                     <div class="module-icon">🧪</div>
                     <div class="module-info">
-                        <div class="module-name">实验题真题</div>
+                        <div class="module-name">实验题训练场</div>
                         <div class="module-desc">实验综合题深度解析与突破</div>
                     </div>
                     <div class="module-status">敬请期待</div>
@@ -1340,7 +1303,7 @@
                 <a href="./exams/hg.html" class="module-card" style="--mod-color: #f59e0b">
                     <div class="module-icon">🏭</div>
                     <div class="module-info">
-                        <div class="module-name">化工题真题</div>
+                        <div class="module-name">化工题训练场</div>
                         <div class="module-desc">无机化工流程题解题策略</div>
                     </div>
                     <div class="module-status">敬请期待</div>
@@ -1349,7 +1312,7 @@
                 <a href="./exams/yl.html" class="module-card" style="--mod-color: #8b5cf6">
                     <div class="module-icon">⚗️</div>
                     <div class="module-info">
-                        <div class="module-name">原理题真题</div>
+                        <div class="module-name">原理题训练场</div>
                         <div class="module-desc">化学反应原理综合大题精讲</div>
                     </div>
                     <div class="module-status">敬请期待</div>
@@ -1358,7 +1321,7 @@
                 <a href="./exams/yj.html" class="module-card" style="--mod-color: #ec4899">
                     <div class="module-icon">🧬</div>
                     <div class="module-info">
-                        <div class="module-name">有机题真题</div>
+                        <div class="module-name">有机题训练场</div>
                         <div class="module-desc">有机化学综合大题突破</div>
                     </div>
                     <div class="module-status">敬请期待</div>
@@ -1367,7 +1330,7 @@
                 <a href="./exams/mn.html" class="module-card" style="--mod-color: #ef4444">
                     <div class="module-icon">📋</div>
                     <div class="module-info">
-                        <div class="module-name">模拟考试题</div>
+                        <div class="module-name">模拟题训练场</div>
                         <div class="module-desc">模拟试卷精选与精讲</div>
                     </div>
                     <div class="module-status">敬请期待</div>
@@ -1377,11 +1340,12 @@
     </div>
 
     <footer class="footer">
-        <p>决胜高考 · 高三化学备考导航系统</p>
-        <p style="margin-top:8px;opacity:0.7;">内容持续更新中，建议收藏本页以便随时复习</p>
+        <p>炼金主城 · 高三化学备考</p>
+        <p style="margin-top:8px;opacity:0.7;">内容持续更新中，建议收藏本页以便随时练功</p>
         <p style="margin-top:12px;font-size:12px;color:#94a3b8;">© gzgouyongqiang@dingtalk.com</p>
     </footer>
 
+    <script src="./assets/game.js"></script>
     <script>
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach((btn, i) => {
@@ -1391,6 +1355,106 @@
             document.getElementById('tab-' + tab).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // 导入存档
+        function handleImport(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => HXBNX_GAME.importSave(e.target.result);
+            reader.readAsText(file);
+            input.value = '';
+        }
+
+        // 初始化游戏化面板
+        function initGameUI() {
+            HXBNX_GAME.renderProgressBar('#game-progress-bar');
+            const status = HXBNX_GAME.getStatus();
+            const s = status.state;
+
+            // 数字更新
+            document.getElementById('stat-topics').textContent = status.completedCount;
+            document.getElementById('stat-streak').textContent = status.currentStreak;
+            document.getElementById('stat-ach').textContent = status.achievementsCount;
+            document.getElementById('stat-exams').textContent = s.viewedExams || 0;
+
+            // 进度条
+            const topicPct = Math.round(status.completedCount / 67 * 100);
+            document.getElementById('prog-topics').style.width = topicPct + '%';
+            document.getElementById('prog-topics-txt').textContent = status.completedCount + '/67';
+
+            // 近14天打卡日历
+            const calEl = document.getElementById('game-calendar');
+            const today = new Date();
+            const checkinSet = new Set(s.checkinDates || []);
+            let calHTML = '';
+            for (let i = 13; i >= 0; i--) {
+                const d = new Date(today);
+                d.setDate(d.getDate() - i);
+                const ds = d.toISOString().slice(0, 10);
+                const day = d.getDate();
+                const checked = checkinSet.has(ds);
+                const isToday = (i === 0);
+                calHTML += `<div class="game-cal-day ${checked ? 'checked' : ''} ${isToday ? 'today' : ''}" title="${ds}">${day}</div>`;
+            }
+            calEl.innerHTML = calHTML;
+
+            // 给已通关的卡片加标记 + 锁门逻辑
+            document.querySelectorAll('.topic-card').forEach(card => {
+                const href = card.getAttribute('href');
+                if (!href) return;
+                const filename = href.split('/').pop();
+
+                // 提取编号（只处理 NN.html 格式的正课练功房）
+                const numMatch = filename.match(/^(\d+)\.html$/);
+                const topicNum = numMatch ? parseInt(numMatch[1]) : null;
+
+                // 锁门：非01且前一个练功房未通关
+                if (topicNum !== null && !HXBNX_GAME.canAccessTopic(topicNum)) {
+                    card.classList.add('locked');
+                    card.removeAttribute('href');  // 禁用链接
+                    card.style.cursor = 'default';
+                    card.title = '需要先通关前一练功房';
+                    const titleEl = card.querySelector('.card-title');
+                    if (titleEl && !titleEl.querySelector('.lock-badge')) {
+                        const badge = document.createElement('span');
+                        badge.className = 'lock-badge';
+                        badge.textContent = '🔒 未解锁';
+                        titleEl.appendChild(badge);
+                    }
+                    return; // 已锁的卡片跳过通关标记
+                }
+
+                // 已通关标记
+                if (HXBNX_GAME.isCompleted(filename)) {
+                    card.style.opacity = '0.75';
+                    const titleEl = card.querySelector('.card-title');
+                    if (titleEl && !titleEl.querySelector('.done-badge')) {
+                        const badge = document.createElement('span');
+                        badge.className = 'done-badge';
+                        badge.style.cssText = 'display:inline-block;font-size:10px;background:#10b981;color:#fff;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;';
+                        badge.textContent = '✓';
+                        titleEl.appendChild(badge);
+                    }
+                }
+            });
+
+            // 更新通关计数（包含 quizResults 中有 exp>0 的）
+            var s2 = HXBNX_GAME.getStatus().state;
+            var quizPassed = 0;
+            if (s2.quizResults) {
+                for (var k in s2.quizResults) {
+                    if (s2.quizResults[k].exp > 0) quizPassed++;
+                }
+            }
+            var totalDone = Math.max(status.completedCount, quizPassed);
+            document.getElementById('stat-topics').textContent = totalDone;
+            var topicPct2 = Math.round(totalDone / 67 * 100);
+            document.getElementById('prog-topics').style.width = topicPct2 + '%';
+            document.getElementById('prog-topics-txt').textContent = totalDone + '/67';
+        }
+
+        document.addEventListener('DOMContentLoaded', initGameUI);
     </script>
 </body>
 </html>

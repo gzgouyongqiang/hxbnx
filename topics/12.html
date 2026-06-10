@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第12讲 铁及其重要化合物 | 化学不难学</title>
+    <title>第12练功房 铁及其重要化合物 | 化学不难学</title>
+    <link rel="stylesheet" href="../assets/game.css">
     <style>
         :root {
             --accent: #b45309;
@@ -249,12 +250,14 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
-        <div class="navbar-links">
-            <a href="../index.html">📚 全部专题</a>
-            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+    <nav class="game-navbar">
+        <a href="../index.html" class="game-navbar-brand">⚔️ 炼金主城</a>
+        <div class="game-navbar-links">
+            <a href="../index.html">🏰 主城</a>
+            <a href="../index.html" onclick="event.preventDefault();document.querySelector('.tab-btn').click();">⚔️ 修炼之路</a>
+            <a href="../index.html" onclick="event.preventDefault();document.querySelectorAll('.tab-btn')[1].click();">🗼 试炼之塔</a>
         </div>
+        <div class="game-navbar-status" id="nav-status">Lv.1 · 炼丹学徒</div>
     </nav>
 
     <header class="page-header">
@@ -264,6 +267,26 @@
     </header>
 
     <main class="content">
+
+    <!-- 游戏信息栏 -->
+    <div class="game-topic-panel" id="game-topic-panel">
+        <div class="game-topic-left">
+            <div class="game-topic-icon">⚔️</div>
+            <div class="game-topic-info">
+                <div class="game-topic-name">第12练功房 · 铁及其重要化合物</div>
+                <div class="game-topic-exp" id="topic-exp-bar">
+                    <div class="game-topic-exp-fill" id="topic-exp-fill" style="width:0%"></div>
+                </div>
+                <div class="game-topic-exp-text" id="topic-exp-text">EXP 0/100</div>
+            </div>
+        </div>
+        <div class="game-topic-right">
+            <div class="game-topic-status" id="topic-status">
+                <span class="game-topic-undone">⚡ 未通关</span>
+            </div>
+        </div>
+    </div>
+
 <!-- 前测 -->
 <div class="pretest-box">
     <div class="pt-title">⚡ 前测（5分钟）——暴露薄弱点</div>
@@ -714,17 +737,162 @@
     </div>
   </div>
 </div>
+<!-- ===== 通关文牒 ===== -->
+<div class="game-quiz-section" id="quiz-section">
+    <div class="game-quiz-header">
+        <div class="game-quiz-icon" id="quiz-icon">📜</div>
+        <div>
+            <div class="game-quiz-title" id="quiz-title">通关文牒</div>
+            <div class="game-quiz-subtitle">答对一题，即刻通关</div>
+        </div>
+        <div class="game-quiz-attempts" id="quiz-attempts">剩余 4 次</div>
+    </div>
+    <div class="game-quiz-question">
+        关于铁及其化合物的说法，<strong>正确的是</strong>
+    </div>
+    <div class="game-quiz-options" id="quiz-options">
+        <button class="game-quiz-opt" onclick="submitAnswer(0)" data-idx="0">
+            <span class="opt-letter">A</span>
+            <span>铁与水蒸气高温反应生成 Fe₂O₃ 和 H₂</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(1)" data-idx="1">
+            <span class="opt-letter">B</span>
+            <span>1mol Fe 与水蒸气完全反应，生成约 1.33mol H₂</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(2)" data-idx="2">
+            <span class="opt-letter">C</span>
+            <span>Fe₃O₄ 与盐酸反应只生成 FeCl₃</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(3)" data-idx="3">
+            <span class="opt-letter">D</span>
+            <span>KSCN 溶液可用于检验 Fe²⁺</span>
+        </button>
+    </div>
+    <div class="game-quiz-wrong-hint" id="quiz-hint" style="display:none"></div>
+    <div class="game-quiz-result" id="quiz-result" style="display:none"></div>
+</div>
     </main>
 
     <nav class="nav-footer">
-        <a href="./11.html" class="nav-prev">← 上一讲 | 第11讲 碱金属 钠及其重要化合物的转化</a>
-        <a href="./13.html" class="nav-next">下一讲 | 第13讲 铁及其化合物转化关系 →</a>
+        <a href="./11.html" class="nav-prev">← 第11练功房 | 碱金属</a>
+        <a href="./13.html" class="nav-next">第13练功房 | 铝 →</a>
     </nav>
 
     <footer class="site-footer">
-        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
+        <p>炼金主城 · 第12练功房 · 铁及其重要化合物</p>
+        <p style="margin-top:6px;font-size:11px;color:#94a3b8;">通关打卡后自动记录进度，EXP+20</p>
     </footer>
 
+    <script src="../assets/game.js"></script>
+    <script>
+    var QUIZ_FILENAME = '12.html';
+    var QUIZ_CORRECT = 1;  // B 是正确答案（0-indexed）
+    var QUIZ_NEXT = './13.html';
+    var QUIZ_DONE = false; // 防止重复提交
+
+    // 更新导航栏状态
+    function updateNavStatus() {
+        var st = HXBNX_GAME.getStatus();
+        document.getElementById('nav-status').textContent = 'Lv.' + st.level.lv + ' · ' + st.level.name;
+    }
+
+    // 更新顶部经验条
+    function updateTopicPanel() {
+        var st = HXBNX_GAME.getStatus();
+        var lvlExp = st.level.progress;
+        document.getElementById('topic-exp-fill').style.width = lvlExp + '%';
+        document.getElementById('topic-exp-text').textContent = 'EXP ' + st.state.totalExp;
+
+        // 检查是否已通关
+        var qr = HXBNX_GAME.getQuizResult(QUIZ_FILENAME);
+        if (qr && qr.passed) {
+            document.getElementById('topic-status').innerHTML = '<span class="game-topic-done">✅ 已通关 · +' + qr.exp + ' EXP</span>';
+        }
+    }
+
+    // 答题
+    function submitAnswer(idx) {
+        if (QUIZ_DONE) return;
+        var result = HXBNX_GAME.quizSubmit(QUIZ_FILENAME, idx, QUIZ_CORRECT);
+        var opts = document.querySelectorAll('#quiz-options .game-quiz-opt');
+
+        if (result.correct) {
+            QUIZ_DONE = true;
+            // 标记正确答案
+            opts[QUIZ_CORRECT].classList.add('correct');
+            // 禁用所有选项
+            opts.forEach(function (o) { o.classList.add('disabled'); });
+            // 隐藏错误提示
+            document.getElementById('quiz-hint').style.display = 'none';
+            // 更新剩余次数
+            document.getElementById('quiz-attempts').textContent = '✅ 通关！';
+            // 更新图标和标题
+            document.getElementById('quiz-icon').textContent = '🏆';
+            document.getElementById('quiz-title').textContent = '通关文牒 · 已通过';
+            document.getElementById('quiz-section').classList.add('passed');
+            // 显示结果
+            showQuizResult(result);
+            // 更新面板
+            updateTopicPanel();
+            updateNavStatus();
+        } else {
+            // 答错了
+            opts[idx].classList.add('wrong');
+            // 显示剩余次数
+            var remaining = result.remaining;
+            document.getElementById('quiz-attempts').textContent = '剩余 ' + remaining + ' 次';
+            var hint = document.getElementById('quiz-hint');
+            hint.style.display = 'block';
+            if (remaining === 0) {
+                hint.innerHTML = '<strong>❌ 最后一次机会！</strong> 只剩1个选项了，仔细想想';
+            } else {
+                hint.innerHTML = '<strong>❌ 答错了！</strong> 还剩 ' + remaining + ' 次机会，仔细分析每个选项的陷阱';
+            }
+        }
+    }
+
+    // 显示答题结果
+    function showQuizResult(result) {
+        var div = document.getElementById('quiz-result');
+        var expEmoji = result.exp >= 20 ? '🎉' : result.exp >= 10 ? '👍' : result.exp >= 5 ? '💪' : '📖';
+        var expClass = result.exp === 0 ? ' zero' : '';
+        var attemptText = result.attempts === 1 ? '一次答对！完美！' :
+                          result.attempts === 2 ? '两次答对，不错！' :
+                          result.attempts === 3 ? '三次答对，继续加油！' : '四次答对，下次争取一次过！';
+
+        div.style.display = 'block';
+        div.innerHTML =
+            '<div class="game-quiz-result-icon">' + expEmoji + '</div>' +
+            '<div class="game-quiz-result-title">' + attemptText + '</div>' +
+            '<div class="game-quiz-result-exp' + expClass + '">' + (result.exp > 0 ? '+' + result.exp + ' EXP' : '不计分') + '</div>' +
+            '<div class="game-quiz-result-detail">第' + result.attempts + '次答对 · 解锁下一练功房</div>' +
+            '<a href="' + QUIZ_NEXT + '" class="game-quiz-next-btn">⚔️ 进入下一练功房 →</a>';
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', function () {
+        updateNavStatus();
+        updateTopicPanel();
+
+        // 检查是否已通关
+        var qr = HXBNX_GAME.getQuizResult(QUIZ_FILENAME);
+        if (qr && qr.passed) {
+            QUIZ_DONE = true;
+            document.getElementById('quiz-attempts').textContent = '✅ 已通关';
+            document.getElementById('quiz-icon').textContent = '🏆';
+            document.getElementById('quiz-title').textContent = '通关文牒 · 已通过';
+            document.getElementById('quiz-section').classList.add('passed');
+
+            // 高亮正确答案，禁用所有
+            var opts = document.querySelectorAll('#quiz-options .game-quiz-opt');
+            opts[QUIZ_CORRECT].classList.add('correct');
+            opts.forEach(function (o) { o.classList.add('disabled'); });
+
+            // 显示历史结果
+            showQuizResult({ attempts: qr.attempts, exp: qr.exp });
+        }
+    });
+    </script>
     <script>
 function toggleCollapsible(btn, targetClass) {
   var content = null;

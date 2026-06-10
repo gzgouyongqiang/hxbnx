@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>热点强化3 Na₂CO₃、NaHCO₃含量测定的思维方法 | 化学不难学</title>
+    <title>热点强化 · Na₂CO₃、NaHCO₃含量测定 | 化学不难学</title>
+    <link rel="stylesheet" href="../assets/game.css">
     <style>
         :root {
             --accent: #f97316;
@@ -111,19 +112,38 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
-        <div class="navbar-links">
-            <a href="../index.html">📚 全部专题</a>
-            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+    <nav class="game-navbar">
+        <a href="../index.html" class="game-navbar-brand">⚔️ 炼金主城</a>
+        <div class="game-navbar-links">
+            <a href="../index.html">🏰 主城</a>
+            <a href="../index.html">⚔️ 修炼之路</a>
         </div>
+        <div class="game-navbar-status" id="nav-status">Lv.1 · 炼丹学徒</div>
     </nav>
     <header class="page-header">
-        <div class="header-badge">热点强化3</div>
-        <h1>Na₂CO₃、NaHCO₃ <em>含量测定</em>的思维方法</h1>
+        <div class="header-badge">⚔️ 练功房 · 热点强化3</div>
+        <h1>热点强化3</h1>
         <p>步步高大一轮复习讲义 · 以考定教 · 广东真题</p>
     </header>
     <main class="content">
+    <!-- 游戏信息栏 -->
+    <div class="game-topic-panel" id="game-topic-panel">
+        <div class="game-topic-left">
+            <div class="game-topic-icon">⚔️</div>
+            <div class="game-topic-info">
+                <div class="game-topic-name">热点强化 · Na₂CO₃、NaHCO₃含量测定</div>
+                <div class="game-topic-exp" id="topic-exp-bar">
+                    <div class="game-topic-exp-fill" id="topic-exp-fill" style="width:0%"></div>
+                </div>
+                <div class="game-topic-exp-text" id="topic-exp-text">EXP 0/100</div>
+            </div>
+        </div>
+        <div class="game-topic-right">
+            <div class="game-topic-status" id="topic-status">
+                <span class="game-topic-undone">⚡ 未通关</span>
+            </div>
+        </div>
+    </div>
 
         <!-- 方法总览 -->
         <div class="block">
@@ -370,40 +390,40 @@
                 </table>
             </div>
         </div>
+    
+<!-- ===== 通关文牒 ===== -->
+<div class="game-quiz-section" id="quiz-section">
+    <div class="game-quiz-header">
+        <div class="game-quiz-icon" id="quiz-icon">📜</div>
+        <div>
+            <div class="game-quiz-title" id="quiz-title">通关文牒</div>
+            <div class="game-quiz-subtitle">来源：2023·广东·第11题</div>
+        </div>
+        <div class="game-quiz-attempts" id="quiz-attempts">剩余 4 次</div>
+    </div>
+    <div class="game-quiz-question">
+        设N<sub>A</sub>为阿伏加德罗常数的值。侯氏制碱法涉及NH₄HCO₃和NaHCO₃等物质。<strong>下列叙述正确的是</strong>
+    </div>
+    <div class="game-quiz-options" id="quiz-options">
+        <button class="game-quiz-opt" onclick="submitAnswer(0)" data-idx="0">
+            <span class="opt-letter">A</span>
+            <span>1mol NH₄HCO₃中含有的共价键数目为8N<sub>A</sub></span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(1)" data-idx="1">
+            <span class="opt-letter">B</span>
+            <span>1mol NaHCO₃完全分解得到的CO₂分子数目为N<sub>A</sub>（实际0.5mol）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(2)" data-idx="2">
+            <span class="opt-letter">C</span>
+            <span>1L 0.1mol/L NaHCO₃溶液中HCO₃⁻数目为0.1N<sub>A</sub>（水解+电离）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(3)" data-idx="3">
+            <span class="opt-letter">D</span>
+            <span>NaCl和NH₄Cl混合物中含1mol Cl⁻，则质子数为28N<sub>A</sub></span>
+        </button>
+    </div>
+    <div class="game-quiz-wrong-hint" id="quiz-hint" style="display:none"></div>
+    <div class="game-quiz-result" id="quiz-result" style="display:none"></div>
+</div>
     </main>
-    <nav class="nav-footer">
-        <a href="./11.html" class="nav-prev">← 上一讲 | 第11讲 碱金属 钠及其重要化合物的转化</a>
-        <a href="./12.html" class="nav-next">下一讲 | 第12讲 铁及其重要化合物 →</a>
-    </nav>
-
-    <footer class="site-footer">
-        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
-    </footer>
-    <script>
-
-function toggleCollapsible(btn, cls) {
-    var content = null;
-    var el = btn.nextElementSibling;
-    while (el) {
-        if (el.classList && (
-            el.classList.contains('answer-content') ||
-            el.classList.contains('trap-content') ||
-            el.classList.contains('tip-content')
-        )) { content = el; break; }
-        el = el.nextElementSibling;
-    }
-    if (!content) {
-        var p = btn.parentElement;
-        content = p.querySelector('.answer-content,.trap-content,.tip-content');
-    }
-    if (!content) return;
-    var isOpen = content.classList.contains('open');
-    content.classList.toggle('open');
-    if (btn.dataset.showText && btn.dataset.hideText) {
-        btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
-    }
-}
-
-    </script>
-</body>
-</html>
+    

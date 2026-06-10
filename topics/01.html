@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <title>第1讲 物质的组成、性质和转化 | 化学不难学</title>
+    <title>第1练功房 · 物质的组成、性质和转化 | 化学不难学</title>
+    <link rel="stylesheet" href="../assets/game.css">
     <style>
         :root {
             --accent: #3b82f6;
@@ -305,21 +306,41 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="../index.html" class="navbar-brand">🧪 化学不难学</a>
-        <div class="navbar-links">
-            <a href="../index.html">📚 全部专题</a>
-            <a href="../exams/2025-gd-01.html">📝 试题选讲</a>
+    <nav class="game-navbar">
+        <a href="../index.html" class="game-navbar-brand">⚔️ 炼金主城</a>
+        <div class="game-navbar-links">
+            <a href="../index.html">🏰 主城</a>
+            <a href="../index.html">⚔️ 修炼之路</a>
         </div>
+        <div class="game-navbar-status" id="nav-status">Lv.1 · 炼丹学徒</div>
     </nav>
 
     <header class="page-header">
-        <div class="header-badge">第1讲</div>
-        <h1>第1讲 物质的组成、性质和转化</h1>
+        <div class="header-badge">⚔️ 练功房 · 第1练功房</div>
+        <h1>第1练功房</h1>
         <p>步步高大一轮复习讲义 · 以考定教</p>
     </header>
 
     <main class="content">
+    <!-- 游戏信息栏 -->
+    <div class="game-topic-panel" id="game-topic-panel">
+        <div class="game-topic-left">
+            <div class="game-topic-icon">⚔️</div>
+            <div class="game-topic-info">
+                <div class="game-topic-name">第1练功房 · 物质的组成、性质和转化</div>
+                <div class="game-topic-exp" id="topic-exp-bar">
+                    <div class="game-topic-exp-fill" id="topic-exp-fill" style="width:0%"></div>
+                </div>
+                <div class="game-topic-exp-text" id="topic-exp-text">EXP 0/100</div>
+            </div>
+        </div>
+        <div class="game-topic-right">
+            <div class="game-topic-status" id="topic-status">
+                <span class="game-topic-undone">⚡ 未通关</span>
+            </div>
+        </div>
+    </div>
+
 <!-- 考点1 -->
 <div class="block">
   <div class="block-head">
@@ -610,39 +631,41 @@
     </div>
   </div>
 </div>
+    
+<!-- ===== 通关文牒 ===== -->
+<div class="game-quiz-section" id="quiz-section">
+    <div class="game-quiz-header">
+        <div class="game-quiz-icon" id="quiz-icon">📜</div>
+        <div>
+            <div class="game-quiz-title" id="quiz-title">通关文牒</div>
+            <div class="game-quiz-subtitle">来源：2024·广东·第1题</div>
+        </div>
+        <div class="game-quiz-attempts" id="quiz-attempts">剩余 4 次</div>
+    </div>
+    <div class="game-quiz-question">
+        龙是中华民族重要的精神象征和文化符号。下列与龙有关的历史文物中，<strong>主要材质为有机高分子</strong>的是
+    </div>
+    <div class="game-quiz-options" id="quiz-options">
+        <button class="game-quiz-opt" onclick="submitAnswer(0)" data-idx="0">
+            <span class="opt-letter">A</span>
+            <span>红山玉龙（硅酸盐材质）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(1)" data-idx="1">
+            <span class="opt-letter">B</span>
+            <span>鎏金铁芯铜龙（金属材质）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(2)" data-idx="2">
+            <span class="opt-letter">C</span>
+            <span>云龙纹丝绸（蛋白质，有机高分子）</span>
+        </button>
+        <button class="game-quiz-opt" onclick="submitAnswer(3)" data-idx="3">
+            <span class="opt-letter">D</span>
+            <span>云龙纹瓷瓶（硅酸盐材质）</span>
+        </button>
+    </div>
+    <div class="game-quiz-wrong-hint" id="quiz-hint" style="display:none"></div>
+    <div class="game-quiz-result" id="quiz-result" style="display:none"></div>
+</div>
     </main>
 
-    <nav class="nav-footer">
-        <a class="nav-prev disabled">← 已是第一讲</a>
-        <a href="./02.html" class="nav-next">下一讲 | 第2讲 离子反应 离子方程式 →</a>
-    </nav>
-
-    <footer class="site-footer">
-        <p>化学不难学 · 高三第一轮复习 · 以考定教</p>
-    </footer>
-
-    <script>
-function toggleCollapsible(btn, targetClass) {
-  var content = null;
-  var el = btn.nextElementSibling;
-  while (el) {
-    if (el.classList) {
-      if (el.classList.contains(targetClass.replace(/^\./, ""))) { content = el; break; }
-      if (el.classList.contains("answer-content") || el.classList.contains("trap-content") || el.classList.contains("tip-content")) { content = el; break; }
-    }
-    el = el.nextElementSibling;
-  }
-  if (!content) {
-    var parent = btn.parentElement;
-    content = parent.querySelector(".answer-content, .trap-content, .tip-content, .hidden-content, .collapsible");
-  }
-  if (!content) return;
-  var isOpen = content.classList.contains("open");
-  content.classList.toggle("open");
-  if (btn.dataset.showText && btn.dataset.hideText) {
-    btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
-  }
-}
-    </script>
-</body>
-</html>
+    
