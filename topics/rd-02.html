@@ -881,4 +881,92 @@
 </div>
     </main>
 
-    
+    <script src="../assets/game.js"></script>
+    <script>
+    var QUIZ_FILENAME = 'rd-02.html';
+    var QUIZ_CORRECT = 1;
+    var QUIZ_NEXT = '';
+    var QUIZ_DONE = false;
+
+    function updateNavStatus() {
+        var st = HXBNX_GAME.getStatus();
+        document.getElementById('nav-status').textContent = 'Lv.' + st.level.lv + ' · ' + st.level.name;
+    }
+
+    function updateTopicPanel() {
+        var st = HXBNX_GAME.getStatus();
+        var lvlExp = st.level.progress;
+        document.getElementById('topic-exp-fill').style.width = lvlExp + '%';
+        document.getElementById('topic-exp-text').textContent = '总EXP: ' + st.state.totalExp;
+        var qr = HXBNX_GAME.getQuizResult(QUIZ_FILENAME);
+        if (qr && qr.passed) {
+            document.getElementById('topic-status').innerHTML = '<span class="game-topic-done">✅ 已通关 · +' + qr.exp + ' EXP</span>';
+        }
+    }
+
+    function submitAnswer(idx) {
+        if (QUIZ_DONE) return;
+        var result = HXBNX_GAME.quizSubmit(QUIZ_FILENAME, idx, QUIZ_CORRECT);
+        var opts = document.querySelectorAll('#quiz-options .game-quiz-opt');
+        if (result.correct) {
+            QUIZ_DONE = true;
+            opts[QUIZ_CORRECT].classList.add('correct');
+            opts.forEach(function(o) { o.classList.add('disabled'); });
+            document.getElementById('quiz-hint').style.display = 'none';
+            document.getElementById('quiz-attempts').textContent = '✅ 通关！';
+            document.getElementById('quiz-icon').textContent = '🏆';
+            document.getElementById('quiz-title').textContent = '通关文牒 · 已通过';
+            document.getElementById('quiz-section').classList.add('passed');
+            showQuizResult(result);
+            updateTopicPanel();
+            updateNavStatus();
+        } else {
+            opts[idx].classList.add('wrong');
+            var remaining = result.remaining;
+            document.getElementById('quiz-attempts').textContent = '剩余 ' + remaining + ' 次';
+            var hint = document.getElementById('quiz-hint');
+            hint.style.display = 'block';
+            if (remaining === 0) {
+                hint.innerHTML = '<strong>❌ 最后一次机会！</strong> 只剩1个选项了，仔细想想';
+            } else {
+                hint.innerHTML = '<strong>❌ 答错了！</strong> 还剩 ' + remaining + ' 次机会，仔细分析每个选项的陷阱';
+            }
+        }
+    }
+
+    function showQuizResult(result) {
+        var div = document.getElementById('quiz-result');
+        var expEmoji = result.exp >= 20 ? '🎉' : result.exp >= 10 ? '👍' : result.exp >= 5 ? '💪' : '📖';
+        var expClass = result.exp === 0 ? ' zero' : '';
+        var attemptText = result.attempts === 1 ? '一次答对！完美！' :
+                          result.attempts === 2 ? '两次答对，不错！' :
+                          result.attempts === 3 ? '三次答对，继续加油！' : '四次答对，下次争取一次过！';
+        div.style.display = 'block';
+        var nextBtn = QUIZ_NEXT ? '<a href="' + QUIZ_NEXT + '" class="game-quiz-next-btn">⚔️ 进入下一练功房 →</a>' : '<button class="game-quiz-next-btn" onclick="window.location.href=\'../index.html\'">🏰 返回炼金主城</button>';
+        div.innerHTML =
+            '<div class="game-quiz-result-icon">' + expEmoji + '</div>' +
+            '<div class="game-quiz-result-title">' + attemptText + '</div>' +
+            '<div class="game-quiz-result-exp' + expClass + '">' + (result.exp > 0 ? '+' + result.exp + ' EXP' : '不计分') + '</div>' +
+            '<div class="game-quiz-result-detail">第' + result.attempts + '次答对 · 已解锁</div>' +
+            nextBtn;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateNavStatus();
+        updateTopicPanel();
+        var qr = HXBNX_GAME.getQuizResult(QUIZ_FILENAME);
+        if (qr && qr.passed) {
+            QUIZ_DONE = true;
+            document.getElementById('quiz-attempts').textContent = '✅ 已通关';
+            document.getElementById('quiz-icon').textContent = '🏆';
+            document.getElementById('quiz-title').textContent = '通关文牒 · 已通过';
+            document.getElementById('quiz-section').classList.add('passed');
+            var opts = document.querySelectorAll('#quiz-options .game-quiz-opt');
+            opts[QUIZ_CORRECT].classList.add('correct');
+            opts.forEach(function(o) { o.classList.add('disabled'); });
+            showQuizResult({ attempts: qr.attempts, exp: qr.exp });
+        }
+    });
+    </script>
+</body>
+</html>
