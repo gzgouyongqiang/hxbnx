@@ -849,7 +849,28 @@
 
     <script src="../assets/game.js"></script>
     <script>
-    var QUIZ_FILENAME = 'rd-01.html';
+    var
+function toggleCollapsible(btn, targetClass) {
+  var content = null;
+  var el = btn.nextElementSibling;
+  while (el) {
+    if (el.classList) {
+      if (el.classList.contains(targetClass.replace(/^\./, ""))) { content = el; break; }
+    }
+    el = el.nextElementSibling;
+  }
+  if (!content) {
+    var parent = btn.parentElement;
+    content = parent.querySelector(".collapsible");
+  }
+  if (!content) return;
+  var isOpen = content.classList.contains("open");
+  content.classList.toggle("open");
+  if (btn.dataset.showText && btn.dataset.hideText) {
+    btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
+  }
+}
+ QUIZ_FILENAME = 'rd-01.html';
     var QUIZ_CORRECT = 0;
     var QUIZ_NEXT = './05.html';
     var QUIZ_DONE = false;
