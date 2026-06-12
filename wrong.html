@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>错题收藏夹 | 化学不难学</title>
+    <link rel="stylesheet" href="./assets/game.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #fefcf6; --card: #ffffff; --text: #1e293b; --text-light: #64748b; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .page-header {
+            background: linear-gradient(135deg, #0a0a14 0%, #0f172a 50%, #0a0a14 100%);
+            padding: 28px 24px 22px;
+            color: #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: "";
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 15% 50%, rgba(239,68,68,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(251,191,36,0.08) 0%, transparent 45%);
+            pointer-events: none;
+        }
+        .header-inner {
+            max-width: 900px; margin: 0 auto; position: relative;
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+        }
+        .header-back {
+            color: #a78bfa; font-size: 14px; font-weight: 700; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .header-back:hover { color: #c4b5fd; }
+        .header-title { font-size: 20px; font-weight: 800; color: #f0abfc; }
+        .header-sub { font-size: 13px; color: #64748b; margin-left: auto; }
+        .header-stat {
+            background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);
+            color: #fca5a5; padding: 4px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center; padding: 80px 20px; color: var(--text-light);
+        }
+        .empty-icon { font-size: 56px; margin-bottom: 16px; opacity: 0.5; }
+        .empty-title { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+        .empty-hint { font-size: 14px; max-width: 360px; margin: 0 auto; }
+
+        /* 错题卡片 */
+        .wrong-card {
+            background: #0f172a; border: 1px solid #1e293b; border-radius: 14px;
+            padding: 20px 22px; margin-bottom: 16px; position: relative;
+            transition: border-color 0.2s;
+        }
+        .wrong-card:hover { border-color: #334155; }
+        .wrong-card-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+        }
+        .wrong-card-icon {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: rgba(239,68,68,0.15); display: flex; align-items: center;
+            justify-content: center; font-size: 16px; flex-shrink: 0;
+        }
+        .wrong-card-topic { font-size: 13px; font-weight: 700; color: #94a3b8; }
+        .wrong-card-date { font-size: 11px; color: #475569; margin-left: auto; }
+        .wrong-card-question {
+            font-size: 14px; color: #e2e8f0; line-height: 1.7;
+            padding: 12px 14px; background: #1a1a2e; border-radius: 10px;
+            border-left: 3px solid #ef4444; margin-bottom: 14px;
+        }
+        .wrong-card-options {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px;
+        }
+        .wrong-opt {
+            padding: 8px 12px; border-radius: 8px; font-size: 13px;
+            border: 1px solid #1e293b; background: #1a1a2e; color: #94a3b8;
+        }
+        .wrong-opt.is-wrong {
+            border-color: #ef4444; background: rgba(239,68,68,0.08); color: #fca5a5;
+        }
+        .wrong-opt.is-correct {
+            border-color: #10b981; background: rgba(16,185,129,0.08); color: #6ee7b7;
+        }
+        .wrong-card-footer {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .wrong-btn-remove {
+            padding: 8px 18px; border-radius: 8px; border: 1px solid #10b981;
+            background: rgba(16,185,129,0.08); color: #10b981; font-size: 13px;
+            font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .wrong-btn-remove:hover {
+            background: #10b981; color: #fff; transform: translateY(-1px);
+        }
+        .wrong-btn-review {
+            padding: 8px 18px; border-radius: 8px; border: 1px solid #7c3aed;
+            background: rgba(124,58,237,0.08); color: #a78bfa; font-size: 13px;
+            font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s;
+        }
+        .wrong-btn-review:hover {
+            background: #7c3aed; color: #fff; transform: translateY(-1px);
+        }
+        .wrong-btn-clearall {
+            padding: 8px 18px; border-radius: 8px; border: 1px solid #334155;
+            background: #1e293b; color: #94a3b8; font-size: 13px;
+            font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .wrong-btn-clearall:hover { border-color: #ef4444; color: #ef4444; }
+
+        /* 统计栏 */
+        .stats-bar {
+            display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .stats-chip {
+            background: #0f172a; border: 1px solid #1e293b; border-radius: 8px;
+            padding: 8px 16px; font-size: 13px; color: #94a3b8;
+        }
+        .stats-chip strong { color: #22d3ee; font-weight: 700; }
+
+        .footer { text-align: center; padding: 20px 16px 28px; color: #64748b; font-size: 12px; }
+
+        @media (max-width: 640px) {
+            .wrong-card-options { grid-template-columns: 1fr; }
+            .header-inner { gap: 10px; }
+            .header-title { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-inner">
+            <a href="./index.html" class="header-back">⚔️ 炼金主城</a>
+            <span class="header-title">📖 错题收藏夹</span>
+            <span class="header-stat" id="wrong-count">0 道错题</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats-bar" id="stats-bar"></div>
+        <div id="wrong-list"></div>
+    </div>
+
+    <footer class="footer">
+        <p>错题收藏夹 · 化学不难学</p>
+    </footer>
+
+    <script src="./assets/game.js"></script>
+    <script>
+    function renderWrongList() {
+        var list = HXBNX_GAME.getWrongQuestions();
+        var countEl = document.getElementById('wrong-count');
+        var listEl = document.getElementById('wrong-list');
+        var statsEl = document.getElementById('stats-bar');
+
+        countEl.textContent = list.length + ' 道错题';
+
+        if (list.length === 0) {
+            statsEl.innerHTML = '';
+            listEl.innerHTML = '<div class="empty-state">' +
+                '<div class="empty-icon">🎉</div>' +
+                '<div class="empty-title">错题本是空的！</div>' +
+                '<div class="empty-hint">答题时选错会自动收入错题本，回来复习巩固吧</div>' +
+                '</div>';
+            return;
+        }
+
+        // 按练功房分组统计
+        var topicCount = {};
+        list.forEach(function(q) {
+            var t = q.topicName || q.filename;
+            topicCount[t] = (topicCount[t] || 0) + 1;
+        });
+
+        statsEl.innerHTML = '<div class="stats-chip">共 <strong>' + list.length + '</strong> 道错题</div>' +
+            '<div class="stats-chip">涉及 <strong>' + Object.keys(topicCount).length + '</strong> 个练功房</div>' +
+            '<button class="wrong-btn-clearall" onclick="clearAll()" style="margin-left:auto;">🗑️ 清空全部</button>';
+
+        var html = '';
+        for (var i = 0; i < list.length; i++) {
+            var q = list[i];
+            html += '<div class="wrong-card" id="wrong-' + i + '">';
+            html += '<div class="wrong-card-header">';
+            html += '<div class="wrong-card-icon">❌</div>';
+            html += '<div class="wrong-card-topic">' + (q.topicName || q.filename) + '</div>';
+            html += '<div class="wrong-card-date">' + q.date + '</div>';
+            html += '</div>';
+            html += '<div class="wrong-card-question">' + (q.questionText || '（题目详情请回练功房查看）') + '</div>';
+
+            // 选项
+            if (q.options && q.options.length > 0) {
+                html += '<div class="wrong-card-options">';
+                var letters = ['A', 'B', 'C', 'D'];
+                for (var j = 0; j < q.options.length; j++) {
+                    var cls = '';
+                    if (j === q.correctIndex) cls = 'is-correct';
+                    else if (j === q.wrongIndex) cls = 'is-wrong';
+                    html += '<div class="wrong-opt ' + cls + '">' + letters[j] + '. ' + q.options[j] + '</div>';
+                }
+                html += '</div>';
+            }
+
+            html += '<div class="wrong-card-footer">';
+            html += '<button class="wrong-btn-remove" onclick="removeWrong(' + i + ')">✅ 已掌握，移除</button>';
+            if (q.filename) {
+                html += '<a href="./topics/' + q.filename + '" class="wrong-btn-review">⚔️ 回练功房复习</a>';
+            }
+            html += '</div>';
+            html += '</div>';
+        }
+        listEl.innerHTML = html;
+    }
+
+    function removeWrong(index) {
+        var card = document.getElementById('wrong-' + index);
+        if (card) {
+            card.style.transition = 'all 0.3s ease';
+            card.style.opacity = '0';
+            card.style.transform = 'translateX(40px)';
+        }
+        setTimeout(function() {
+            HXBNX_GAME.removeWrongQuestion(index);
+            renderWrongList();
+        }, 300);
+    }
+
+    function clearAll() {
+        if (!confirm('确定清空所有错题？此操作不可恢复！')) return;
+        var list = HXBNX_GAME.getWrongQuestions();
+        // 逐个移除（计算clearedWrong）
+        for (var i = list.length - 1; i >= 0; i--) {
+            HXBNX_GAME.removeWrongQuestion(i);
+        }
+        renderWrongList();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderWrongList);
+    </script>
+</body>
+</html>

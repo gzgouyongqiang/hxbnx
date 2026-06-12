@@ -42,12 +42,17 @@ const HXBNX_GAME = (function () {
     // ===== 成就配置 =====
     const ACHIEVEMENTS = [
         { id: 'first_step',   name: '初入江湖',   desc: '完成第一个练功房',            icon: '⚗️',  exp: 10,  check: s => s.completedTopics.length >= 1 },
+        { id: 'first_quiz',   name: '初试锋芒',   desc: '首次答题通关',                icon: '🗡️',  exp: 10,  check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=1; } },
+        { id: 'perfect5',     name: '五连绝杀',   desc: '5次一次答对',                 icon: '🎯',  exp: 30,  check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)n++;} return n>=5; } },
         { id: 'combo7',       name: '七日炼丹',   desc: '连续打卡7天',                 icon: '🔥',  exp: 50,  check: s => s.maxStreak >= 7  },
         { id: 'combo30',      name: '月圆炼金',   desc: '连续打卡30天',                icon: '🌕',  exp: 200, check: s => s.maxStreak >= 30 },
         { id: 'half_way',     name: '半途不废',   desc: '完成34个练功房',              icon: '⚡',  exp: 100, check: s => s.completedTopics.length >= 34 },
         { id: 'all_topics',   name: '通关大师',   desc: '完成全部67个练功房',          icon: '👑',  exp: 500, check: s => s.completedTopics.length >= 67 },
-        { id: 'exam_start',   name: '踏入训练场', desc: '在试炼之塔查看第一道真题',    icon: '🗡️', exp: 10,  check: s => s.viewedExams >= 1  },
-        { id: 'exam10',       name: '百战老兵',   desc: '查看10道以上真题',            icon: '🛡️', exp: 50,  check: s => s.viewedExams >= 10 },
+        { id: 'exam_start',   name: '踏入训练场', desc: '在试炼之塔查看第一道真题',    icon: '🏹',  exp: 10,  check: s => s.viewedExams >= 1  },
+        { id: 'exam10',       name: '百战老兵',   desc: '查看10道以上真题',            icon: '🛡️',  exp: 50,  check: s => s.viewedExams >= 10 },
+        { id: 'wrong5',       name: '败而不馁',   desc: '收藏5道错题',                 icon: '📖',  exp: 15,  check: s => (s.wrongQuestions || []).length >= 5 },
+        { id: 'wrong20',      name: '知错能改',   desc: '收藏20道错题',                icon: '📚',  exp: 40,  check: s => (s.wrongQuestions || []).length >= 20 },
+        { id: 'wrong_clear5', name: '亡羊补牢',   desc: '从错题本移除5道已掌握的题',   icon: '✨',  exp: 30,  check: s => (s.clearedWrong || 0) >= 5 },
         { id: 'export',       name: '传承有序',   desc: '导出过存档',                  icon: '📦',  exp: 5,   check: s => s.hasExported === true },
     ];
 
@@ -66,6 +71,8 @@ const HXBNX_GAME = (function () {
             unlockedAchievements: [],
             viewedExams: 0,
             hasExported: false,
+            wrongQuestions: [],    // 错题收藏 [{ filename, topicName, questionText, correctIndex, wrongIndex, date }]
+            clearedWrong: 0,       // 已移除的错题计数（用于成就统计）
             createdAt: new Date().toISOString(),
         };
     }
@@ -265,6 +272,67 @@ const HXBNX_GAME = (function () {
                 save(s);
                 return { correct: false, attempts: qr.attempts, remaining: 4 - qr.attempts };
             }
+        },
+
+        // ===== 错题收藏夹 =====
+
+        // 添加错题
+        addWrongQuestion(data) {
+            var s = load();
+            if (!s.wrongQuestions) s.wrongQuestions = [];
+            // 去重：同文件同题不重复加
+            var exists = s.wrongQuestions.some(function(q) {
+                return q.filename === data.filename && q.questionText === data.questionText;
+            });
+            if (!exists) {
+                s.wrongQuestions.push({
+                    filename: data.filename,
+                    topicName: data.topicName || '',
+                    questionText: data.questionText || '',
+                    options: data.options || [],
+                    correctIndex: data.correctIndex,
+                    wrongIndex: data.wrongIndex,
+                    date: todayStr(),
+                });
+                var newAch = checkAchievements(s);
+                save(s);
+                showToast('📖 <strong>已收入错题本</strong>', 'info');
+                if (newAch.length > 0) {
+                    setTimeout(function() {
+                        newAch.forEach(function(a) {
+                            showToast(a.icon + ' <strong>成就解锁：' + a.name + '</strong><br><small>' + a.desc + '</small>', 'achievement', 5000);
+                        });
+                    }, 1000);
+                }
+            }
+        },
+
+        // 获取全部错题
+        getWrongQuestions() {
+            var s = load();
+            return s.wrongQuestions || [];
+        },
+
+        // 移除错题（已掌握）
+        removeWrongQuestion(index) {
+            var s = load();
+            if (!s.wrongQuestions) return;
+            s.wrongQuestions.splice(index, 1);
+            if (!s.clearedWrong) s.clearedWrong = 0;
+            s.clearedWrong++;
+            var newAch = checkAchievements(s);
+            save(s);
+            if (newAch.length > 0) {
+                newAch.forEach(function(a) {
+                    showToast(a.icon + ' <strong>成就解锁：' + a.name + '</strong>', 'achievement', 5000);
+                });
+            }
+        },
+
+        // 获取错题数量
+        getWrongCount() {
+            var s = load();
+            return (s.wrongQuestions || []).length;
         },
 
         // 判断练功房是否可进入（按编号，01.html 永远开放）

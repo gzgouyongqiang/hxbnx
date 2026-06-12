@@ -643,13 +643,13 @@
                     <div class="game-hero-stat-num" id="stat-streak">0</div>
                     <div class="game-hero-stat-label">连修天数</div>
                 </div>
-                <div class="game-hero-stat game-hero-achievements">
+                <div class="game-hero-stat game-hero-achievements" style="cursor:pointer" onclick="location.href='./achievements.html'" title="查看成就徽章墙">
                     <div class="game-hero-stat-num" id="stat-ach">0</div>
-                    <div class="game-hero-stat-label">成就已解锁</div>
+                    <div class="game-hero-stat-label">🏅 成就已解锁</div>
                 </div>
-                <div class="game-hero-stat game-hero-exams">
-                    <div class="game-hero-stat-num" id="stat-exams">0</div>
-                    <div class="game-hero-stat-label">真题已浏览</div>
+                <div class="game-hero-stat game-hero-exams" style="cursor:pointer" onclick="location.href='./wrong.html'" title="查看错题收藏夹">
+                    <div class="game-hero-stat-num" id="stat-wrong">0</div>
+                    <div class="game-hero-stat-label">📖 错题收藏</div>
                 </div>
             </div>
 
@@ -1377,6 +1377,7 @@
             document.getElementById('stat-streak').textContent = status.currentStreak;
             document.getElementById('stat-ach').textContent = status.achievementsCount;
             document.getElementById('stat-exams').textContent = s.viewedExams || 0;
+            document.getElementById('stat-wrong').textContent = HXBNX_GAME.getWrongCount();
 
             // 进度条
             const topicPct = Math.round(status.completedCount / 67 * 100);

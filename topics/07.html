@@ -715,6 +715,22 @@ function toggleCollapsible(btn, targetClass) {
             updateNavStatus();
         } else {
             opts[idx].classList.add('wrong');
+            // 错题收藏
+            var qText = '';
+            var qEl = document.querySelector('#quiz-section .game-quiz-question');
+            if (qEl) qText = qEl.textContent.trim().substring(0, 120);
+            var optEls = document.querySelectorAll('#quiz-options .game-quiz-opt span:last-child');
+            var optTexts = [];
+            optEls.forEach(function(el) { optTexts.push(el.textContent.trim()); });
+            HXBNX_GAME.addWrongQuestion({
+                filename: QUIZ_FILENAME,
+                topicName: document.querySelector('.game-topic-name') ? document.querySelector('.game-topic-name').textContent : '',
+                questionText: qText,
+                options: optTexts,
+                correctIndex: QUIZ_CORRECT,
+                wrongIndex: idx
+            });
+
             var remaining = result.remaining;
             document.getElementById('quiz-attempts').textContent = '剩余 ' + remaining + ' 次';
             var hint = document.getElementById('quiz-hint');
