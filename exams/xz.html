@@ -804,7 +804,10 @@
         }
 
         // 初始化
-        buildTagFilter();
+        document.addEventListener('DOMContentLoaded', function() {
+            buildTagFilter();
+            applyFilters();
+        });
     </script>
 </body>
 </html>
