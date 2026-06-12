@@ -679,6 +679,10 @@
                     <div class="game-hero-stat-num" id="stat-wrong">0</div>
                     <div class="game-hero-stat-label">📖 错题收藏</div>
                 </div>
+                <div class="game-hero-stat game-hero-elements" style="cursor:pointer" onclick="location.href='./element.html'" title="元素盲盒抽卡">
+                    <div class="game-hero-stat-num" id="stat-elem">0</div>
+                    <div class="game-hero-stat-label">🧪 元素卡</div>
+                </div>
             </div>
 
             <!-- 进度总览 -->
@@ -1406,6 +1410,7 @@
             document.getElementById('stat-ach').textContent = status.achievementsCount;
             document.getElementById('stat-exams').textContent = s.viewedExams || 0;
             document.getElementById('stat-wrong').textContent = HXBNX_GAME.getWrongCount();
+            document.getElementById('stat-elem').textContent = HXBNX_GAME.getElementCards().length;
 
             // 进度条
             const topicPct = Math.round(status.completedCount / 67 * 100);
