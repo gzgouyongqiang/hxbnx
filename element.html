@@ -334,6 +334,17 @@
 
     var currentFilter = 0; // 0=全部
 
+    /* 族名格式化：VIII族和0族不加"族"后缀的特殊处理 */
+    function formatGroup(g) {
+        if (g === '0') return '0族';
+        if (g === 'VIII') return 'VIII族';
+        if (g === '镧系' || g === '锕系') return g;
+        // IA~VIIA 主族，IB~VIIB 副族
+        if (g.indexOf('A') > 0) return g + '（主族）';
+        if (g.indexOf('B') > 0) return g + '（副族）';
+        return g + '族';
+    }
+
     /* ===== 抽卡逻辑 ===== */
     function weightedRandomStar() {
         var total = 0;
@@ -388,7 +399,7 @@
             '<div class="reveal-stars">' + starsHtml + '</div>' +
             '<div class="reveal-sym">' + elem.sym + '</div>' +
             '<div class="reveal-name">' + elem.name + '</div>' +
-            '<div class="reveal-pos">第' + elem.period + '周期 · ' + elem.group + '族</div>' +
+            '<div class="reveal-pos">第' + elem.period + '周期 · ' + formatGroup(elem.group) + '</div>' +
             '<div class="reveal-val">' + elem.valence + '</div>' +
             '<div class="reveal-cat">' + (CAT_NAMES[elem.cat] || elem.cat) + '</div>' +
             '<div class="reveal-fact">' + elem.fact + '</div>' +
@@ -477,7 +488,7 @@
             gridHtml += '<div class="elem-card-sym">' + (owned ? e.sym : '?') + '</div>';
             gridHtml += '<div class="elem-card-name">' + (owned ? e.name : '???') + '</div>';
             if (owned) {
-                gridHtml += '<div class="elem-card-pos">第' + e.period + '周期 · ' + e.group + '族</div>';
+                gridHtml += '<div class="elem-card-pos">第' + e.period + '周期 · ' + formatGroup(e.group) + '</div>';
                 gridHtml += '<div class="elem-card-val">' + e.valence + '</div>';
             }
             gridHtml += '<div class="elem-card-cat">' + (owned ? CAT_NAMES[e.cat] : '未发现') + '</div>';
