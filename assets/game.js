@@ -40,20 +40,55 @@ const HXBNX_GAME = (function () {
     ];
 
     // ===== 成就配置 =====
+    // tier: 'bronze'铜 / 'silver'银 / 'gold'金 / 'diamond'钻 / 'legendary'传说
+    // 隐藏成就: hidden=true, 在解锁前只显示???
     const ACHIEVEMENTS = [
-        { id: 'first_step',   name: '初入江湖',   desc: '完成第一个练功房',            icon: '⚗️',  exp: 10,  check: s => s.completedTopics.length >= 1 },
-        { id: 'first_quiz',   name: '初试锋芒',   desc: '首次答题通关',                icon: '🗡️',  exp: 10,  check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=1; } },
-        { id: 'perfect5',     name: '五连绝杀',   desc: '5次一次答对',                 icon: '🎯',  exp: 30,  check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)n++;} return n>=5; } },
-        { id: 'combo7',       name: '七日炼丹',   desc: '连续打卡7天',                 icon: '🔥',  exp: 50,  check: s => s.maxStreak >= 7  },
-        { id: 'combo30',      name: '月圆炼金',   desc: '连续打卡30天',                icon: '🌕',  exp: 200, check: s => s.maxStreak >= 30 },
-        { id: 'half_way',     name: '半途不废',   desc: '完成34个练功房',              icon: '⚡',  exp: 100, check: s => s.completedTopics.length >= 34 },
-        { id: 'all_topics',   name: '通关大师',   desc: '完成全部67个练功房',          icon: '👑',  exp: 500, check: s => s.completedTopics.length >= 67 },
-        { id: 'exam_start',   name: '踏入训练场', desc: '在试炼之塔查看第一道真题',    icon: '🏹',  exp: 10,  check: s => s.viewedExams >= 1  },
-        { id: 'exam10',       name: '百战老兵',   desc: '查看10道以上真题',            icon: '🛡️',  exp: 50,  check: s => s.viewedExams >= 10 },
-        { id: 'wrong5',       name: '败而不馁',   desc: '收藏5道错题',                 icon: '📖',  exp: 15,  check: s => (s.wrongQuestions || []).length >= 5 },
-        { id: 'wrong20',      name: '知错能改',   desc: '收藏20道错题',                icon: '📚',  exp: 40,  check: s => (s.wrongQuestions || []).length >= 20 },
-        { id: 'wrong_clear5', name: '亡羊补牢',   desc: '从错题本移除5道已掌握的题',   icon: '✨',  exp: 30,  check: s => (s.clearedWrong || 0) >= 5 },
-        { id: 'export',       name: '传承有序',   desc: '导出过存档',                  icon: '📦',  exp: 5,   check: s => s.hasExported === true },
+        // ===== 铜级：入门引导（10-30 EXP）=====
+        { id: 'first_step',   name: '初入江湖',   desc: '完成第一个练功房',                icon: '⚗️',  exp: 10,  tier: 'bronze',   check: s => s.completedTopics.length >= 1 },
+        { id: 'first_quiz',   name: '初试锋芒',   desc: '首次答题通关',                    icon: '🗡️',  exp: 10,  tier: 'bronze',   check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=1; } },
+        { id: 'quiz5',        name: '小试牛刀',   desc: '通关5个练功房答题',               icon: '📝',  exp: 20,  tier: 'bronze',   check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=5; } },
+        { id: 'quiz10',       name: '勤修苦练',   desc: '通关10个练功房答题',              icon: '💪',  exp: 30,  tier: 'bronze',   check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=10; } },
+        { id: 'exam_start',   name: '踏入训练场', desc: '在试炼之塔查看第一道真题',        icon: '🏹',  exp: 10,  tier: 'bronze',   check: s => s.viewedExams >= 1 },
+        { id: 'combo3',       name: '三昧真火',   desc: '连续打卡3天',                     icon: '🔥',  exp: 15,  tier: 'bronze',   check: s => s.maxStreak >= 3 },
+        { id: 'exp100',       name: '聚气初成',   desc: '累计经验值达到100',               icon: '💨',  exp: 15,  tier: 'bronze',   check: s => s.totalExp >= 100 },
+        { id: 'wrong_first',  name: '初尝败绩',   desc: '第一次答错收入错题本',            icon: '💧',  exp: 5,   tier: 'bronze',   check: s => (s.wrongQuestions || []).length >= 1 },
+        { id: 'export',       name: '传承有序',   desc: '导出过存档',                      icon: '📦',  exp: 5,   tier: 'bronze',   check: s => s.hasExported === true },
+
+        // ===== 银级：稳步提升（30-80 EXP）=====
+        { id: 'perfect5',     name: '五连绝杀',   desc: '5次一次答对',                     icon: '🎯',  exp: 30,  tier: 'silver',   check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)n++;} return n>=5; } },
+        { id: 'combo7',       name: '七日炼丹',   desc: '连续打卡7天',                     icon: '🔥',  exp: 50,  tier: 'silver',   check: s => s.maxStreak >= 7 },
+        { id: 'quiz20',       name: '百步穿杨',   desc: '通关20个练功房答题',              icon: '🏹',  exp: 50,  tier: 'silver',   check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=20; } },
+        { id: 'half_way',     name: '半途不废',   desc: '完成34个练功房',                  icon: '⚡',  exp: 60,  tier: 'silver',   check: s => s.completedTopics.length >= 34 },
+        { id: 'wrong5',       name: '败而不馁',   desc: '收藏5道错题',                     icon: '📖',  exp: 15,  tier: 'silver',   check: s => (s.wrongQuestions || []).length >= 5 },
+        { id: 'wrong_clear5', name: '亡羊补牢',   desc: '从错题本移除5道已掌握的题',       icon: '✨',  exp: 30,  tier: 'silver',   check: s => (s.clearedWrong || 0) >= 5 },
+        { id: 'exam10',       name: '百战老兵',   desc: '查看10道以上真题',                icon: '🛡️',  exp: 50,  tier: 'silver',   check: s => s.viewedExams >= 10 },
+        { id: 'exp500',       name: '灵气充盈',   desc: '累计经验值达到500',               icon: '🔮',  exp: 40,  tier: 'silver',   check: s => s.totalExp >= 500 },
+        { id: 'no_wrong_10',  name: '十面埋伏',   desc: '连续10题一次答对（无错题）',      icon: '🏅',  exp: 60,  tier: 'silver',   check: s => { var c=0,mx=0; var ks=Object.keys(s.quizResults||{}).sort(); for(var i=0;i<ks.length;i++){var q=s.quizResults[ks[i]]; if(q.attempts===1&&q.passed){c++;if(c>mx)mx=c;}else{c=0;}} return mx>=10; } },
+        { id: 'wrong_clear10',name: '知耻后勇',   desc: '从错题本移除10道已掌握的题',      icon: '💫',  exp: 50,  tier: 'silver',   check: s => (s.clearedWrong || 0) >= 10 },
+
+        // ===== 金级：实力证明（80-200 EXP）=====
+        { id: 'perfect15',    name: '弹无虚发',   desc: '15次一次答对',                    icon: '🎖️',  exp: 80,  tier: 'gold',     check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)n++;} return n>=15; } },
+        { id: 'combo14',      name: '半月修炼',   desc: '连续打卡14天',                    icon: '🌙',  exp: 100, tier: 'gold',     check: s => s.maxStreak >= 14 },
+        { id: 'wrong20',      name: '知错能改',   desc: '收藏20道错题',                    icon: '📚',  exp: 40,  tier: 'gold',     check: s => (s.wrongQuestions || []).length >= 20 },
+        { id: 'wrong_clear20',name: '浴火重生',   desc: '从错题本移除20道已掌握的题',      icon: '🦅',  exp: 80,  tier: 'gold',     check: s => (s.clearedWrong || 0) >= 20 },
+        { id: 'quiz30',       name: '炉火纯青',   desc: '通关30个练功房答题',              icon: '🔥',  exp: 100, tier: 'gold',     check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].passed)n++;} return n>=30; } },
+        { id: 'exp2000',      name: '金丹初成',   desc: '累计经验值达到2000',              icon: '💊',  exp: 100, tier: 'gold',     check: s => s.totalExp >= 2000 },
+        { id: 'exam30',       name: '沙场老将',   desc: '查看30道以上真题',                icon: '⚔️',  exp: 80,  tier: 'gold',     check: s => s.viewedExams >= 30 },
+        { id: 'combo30',      name: '月圆炼金',   desc: '连续打卡30天',                    icon: '🌕',  exp: 200, tier: 'gold',     check: s => s.maxStreak >= 30 },
+
+        // ===== 钻级：高阶挑战（200-500 EXP）=====
+        { id: 'perfect30',    name: '百发百中',   desc: '30次一次答对',                    icon: '💎',  exp: 200, tier: 'diamond',  check: s => { var n=0; for(var k in s.quizResults){if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)n++;} return n>=30; } },
+        { id: 'all_topics',   name: '通关大师',   desc: '完成全部67个练功房',              icon: '👑',  exp: 500, tier: 'diamond',  check: s => s.completedTopics.length >= 67 },
+        { id: 'exp5000',      name: '元婴大成',   desc: '累计经验值达到5000',              icon: '🌀',  exp: 300, tier: 'diamond',  check: s => s.totalExp >= 5000 },
+        { id: 'wrong_clear50',name: '脱胎换骨',   desc: '从错题本移除50道已掌握的题',      icon: '🦋',  exp: 200, tier: 'diamond',  check: s => (s.clearedWrong || 0) >= 50 },
+        { id: 'exam100',      name: '身经百战',   desc: '查看100道以上真题',               icon: '🏛️',  exp: 200, tier: 'diamond',  check: s => s.viewedExams >= 100 },
+        { id: 'no_wrong_30',  name: '三十天罡',   desc: '连续30题一次答对',                icon: '⭐',  exp: 300, tier: 'diamond',  check: s => { var c=0,mx=0; var ks=Object.keys(s.quizResults||{}).sort(); for(var i=0;i<ks.length;i++){var q=s.quizResults[ks[i]]; if(q.attempts===1&&q.passed){c++;if(c>mx)mx=c;}else{c=0;}} return mx>=30; } },
+
+        // ===== 传说级：终极徽章（1000+ EXP）=====
+        { id: 'exp10000',     name: '大道至简',   desc: '累计经验值超过10000',             icon: '🌟',  exp: 1000,tier: 'legendary', check: s => s.totalExp >= 10000 },
+        { id: 'perfect_all',  name: '满分神话',   desc: '所有已答题目全部一次答对',        icon: '🏆',  exp: 2000,tier: 'legendary', hidden: true, check: s => { var t=0,p=0; for(var k in s.quizResults){t++;if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)p++;} return t>=20 && t===p; } },
+        { id: 'combo100',     name: '百日筑基',   desc: '连续打卡100天',                   icon: '🏮',  exp: 1000,tier: 'legendary', check: s => s.maxStreak >= 100 },
+        { id: 'collector',    name: '收藏大师',   desc: '收藏50道错题并全部移除',          icon: '🗝️',  exp: 1500,tier: 'legendary', check: s => (s.wrongQuestions||[]).length + (s.clearedWrong||0) >= 50 && (s.clearedWrong||0) >= 50 },
     ];
 
     // ===== 存储Key =====
