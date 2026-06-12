@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>元素盲盒 | 化学不难学</title>
+    <link rel="stylesheet" href="./assets/game.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #0a0a14; color: #e2e8f0; line-height: 1.6; }
+
+        .page-header {
+            background: linear-gradient(135deg, #0a0a14, #1a0a2e, #0a0a14);
+            padding: 20px 24px; position: relative; border-bottom: 1px solid #1e1b4b;
+        }
+        .header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .header-back { color: #a78bfa; font-size: 14px; font-weight: 700; text-decoration: none; }
+        .header-back:hover { color: #c4b5fd; }
+        .header-title { font-size: 20px; font-weight: 800; }
+        .header-title span { background: linear-gradient(90deg, #fbbf24, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-badge {
+            background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3);
+            color: #fbbf24; padding: 3px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px 16px 60px; }
+
+        /* 抽卡区 */
+        .draw-section {
+            background: linear-gradient(180deg, #1a0a2e 0%, #0f172a 100%);
+            border: 1px solid #312e81; border-radius: 16px;
+            padding: 30px 24px; text-align: center; margin-bottom: 24px; position: relative; overflow: hidden;
+        }
+        .draw-section::before {
+            content: ""; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+            width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(251,191,36,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .draw-title { font-size: 14px; color: #94a3b8; margin-bottom: 8px; position: relative; }
+        .draw-count { font-size: 28px; font-weight: 800; color: #fbbf24; margin-bottom: 16px; position: relative; }
+        .draw-count span { font-size: 14px; color: #94a3b8; font-weight: 400; }
+
+        .draw-btn {
+            display: inline-block; padding: 14px 48px; font-size: 18px; font-weight: 800;
+            color: #0f172a; background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border: none; border-radius: 12px; cursor: pointer; position: relative;
+            transition: all 0.3s; box-shadow: 0 4px 20px rgba(251,191,36,0.3);
+        }
+        .draw-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(251,191,36,0.4); }
+        .draw-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; transform: none; }
+        .draw-hint { font-size: 12px; color: #475569; margin-top: 12px; }
+
+        /* 抽卡动画覆盖层 */
+        .draw-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85); z-index: 999; justify-content: center; align-items: center;
+            flex-direction: column;
+        }
+        .draw-overlay.active { display: flex; }
+
+        .reveal-card {
+            width: 240px; height: 320px; perspective: 1200px;
+            animation: cardAppear 0.5s ease;
+        }
+        @keyframes cardAppear { from { transform: scale(0.3) translateY(100px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+
+        .reveal-card-inner {
+            width: 100%; height: 100%; transition: transform 0.8s ease; transform-style: preserve-3d;
+            position: relative;
+        }
+        .reveal-card.flipped .reveal-card-inner { transform: rotateY(180deg); }
+
+        .reveal-front, .reveal-back {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 16px; overflow: hidden;
+        }
+        .reveal-back {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; border: 2px solid #4338ca;
+        }
+        .reveal-back-symbol { font-size: 64px; opacity: 0.15; }
+        .reveal-back-text { font-size: 16px; color: #818cf8; font-weight: 700; margin-top: 8px; }
+
+        .reveal-front {
+            transform: rotateY(180deg);
+            background: #0f172a; border: 2px solid #334155; padding: 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .reveal-front.tier-1 { border-color: #6b7280; }
+        .reveal-front.tier-2 { border-color: #22c55e; }
+        .reveal-front.tier-3 { border-color: #3b82f6; }
+        .reveal-front.tier-4 { border-color: #a855f7; }
+        .reveal-front.tier-5 { border-color: #f59e0b; box-shadow: 0 0 40px rgba(245,158,11,0.3); }
+
+        .reveal-num { font-size: 12px; color: #64748b; position: absolute; top: 12px; left: 16px; }
+        .reveal-stars { position: absolute; top: 10px; right: 12px; font-size: 10px; }
+        .reveal-sym { font-size: 56px; font-weight: 800; margin: 8px 0 4px; }
+        .reveal-front.tier-1 .reveal-sym { color: #9ca3af; }
+        .reveal-front.tier-2 .reveal-sym { color: #4ade80; }
+        .reveal-front.tier-3 .reveal-sym { color: #60a5fa; }
+        .reveal-front.tier-4 .reveal-sym { color: #c084fc; }
+        .reveal-front.tier-5 .reveal-sym { color: #fbbf24; animation: mythicGlow 2s infinite; }
+        @keyframes mythicGlow { 0%,100%{ text-shadow: 0 0 10px rgba(251,191,36,0.3); } 50%{ text-shadow: 0 0 30px rgba(251,191,36,0.8); } }
+
+        .reveal-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .reveal-cat { font-size: 11px; color: #64748b; padding: 2px 10px; border-radius: 4px; background: #1e293b; margin-bottom: 12px; }
+        .reveal-fact { font-size: 12px; color: #94a3b8; text-align: center; line-height: 1.5; font-style: italic; padding: 0 4px; }
+        .reveal-badge {
+            margin-top: 14px; padding: 4px 16px; border-radius: 8px; font-size: 13px; font-weight: 700;
+        }
+        .reveal-badge.new { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); animation: badgePop 0.5s ease; }
+        .reveal-badge.dup { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid #334155; }
+        @keyframes badgePop { from { transform: scale(0); } 50% { transform: scale(1.2); } to { transform: scale(1); } }
+
+        .draw-close {
+            margin-top: 24px; padding: 8px 32px; background: #1e293b; color: #94a3b8;
+            border: 1px solid #334155; border-radius: 8px; cursor: pointer; font-size: 14px;
+        }
+        .draw-close:hover { background: #334155; color: #e2e8f0; }
+
+        /* 统计区 */
+        .stats-row {
+            display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .stat-card {
+            flex: 1; min-width: 80px; background: #0f172a; border: 1px solid #1e293b;
+            border-radius: 10px; padding: 10px 14px; text-align: center;
+        }
+        .stat-num { font-size: 20px; font-weight: 800; }
+        .stat-num.c1 { color: #9ca3af; }
+        .stat-num.c2 { color: #4ade80; }
+        .stat-num.c3 { color: #60a5fa; }
+        .stat-num.c4 { color: #c084fc; }
+        .stat-num.c5 { color: #fbbf24; }
+        .stat-label { font-size: 11px; color: #64748b; }
+
+        /* 筛选栏 */
+        .filter-bar {
+            display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 5px 14px; border-radius: 8px; border: 1px solid #1e293b;
+            background: #0f172a; color: #64748b; cursor: pointer; font-size: 12px; font-weight: 600;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover { border-color: #334155; color: #94a3b8; }
+        .filter-btn.active { border-color: #fbbf24; color: #fbbf24; background: rgba(251,191,36,0.08); }
+
+        /* 卡牌网格 */
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .elem-card {
+            background: #0f172a; border: 1px solid #1e293b; border-radius: 12px;
+            padding: 14px 12px; text-align: center; position: relative; overflow: hidden;
+            transition: all 0.3s;
+        }
+        .elem-card:hover { transform: translateY(-2px); }
+        .elem-card.locked { opacity: 0.35; }
+        .elem-card.tier-1.unlocked { border-color: #4b5563; }
+        .elem-card.tier-2.unlocked { border-color: #16a34a; }
+        .elem-card.tier-3.unlocked { border-color: #2563eb; }
+        .elem-card.tier-4.unlocked { border-color: #7c3aed; }
+        .elem-card.tier-5.unlocked { border-color: #d97706; box-shadow: 0 0 16px rgba(217,119,6,0.15); }
+
+        .elem-card-num { font-size: 10px; color: #475569; position: absolute; top: 6px; left: 8px; }
+        .elem-card-stars { position: absolute; top: 5px; right: 6px; font-size: 8px; }
+        .elem-card-sym { font-size: 32px; font-weight: 800; margin: 4px 0 2px; }
+        .elem-card.locked .elem-card-sym { color: #1e293b; }
+        .elem-card.tier-1.unlocked .elem-card-sym { color: #9ca3af; }
+        .elem-card.tier-2.unlocked .elem-card-sym { color: #4ade80; }
+        .elem-card.tier-3.unlocked .elem-card-sym { color: #60a5fa; }
+        .elem-card.tier-4.unlocked .elem-card-sym { color: #c084fc; }
+        .elem-card.tier-5.unlocked .elem-card-sym { color: #fbbf24; }
+
+        .elem-card-name { font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 4px; }
+        .elem-card.locked .elem-card-name { color: #334155; }
+        .elem-card-cat { font-size: 10px; color: #475569; margin-bottom: 6px; }
+        .elem-card-fact { font-size: 10px; color: #64748b; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .elem-card.locked .elem-card-fact { display: none; }
+
+        .footer { text-align: center; padding: 20px 16px; color: #334155; font-size: 12px; }
+
+        @media (max-width: 640px) {
+            .card-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+            .elem-card { padding: 10px 8px; }
+            .elem-card-sym { font-size: 26px; }
+            .reveal-card { width: 200px; height: 270px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-inner">
+            <a href="./index.html" class="header-back">⚔️ 炼金主城</a>
+            <span class="header-title"><span>🧪 元素盲盒</span></span>
+            <span class="header-badge" id="elem-badge">0/55</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 抽卡区 -->
+        <div class="draw-section">
+            <div class="draw-title">可用抽卡次数</div>
+            <div class="draw-count" id="draw-count">0 <span>次</span></div>
+            <button class="draw-btn" id="draw-btn" onclick="doDraw()">🧪 开启元素盲盒</button>
+            <div class="draw-hint">通关练功房答题 +1次 | 每日首次访问免费 +1次</div>
+        </div>
+
+        <!-- 稀有度统计 -->
+        <div class="stats-row" id="stats-row"></div>
+
+        <!-- 筛选 -->
+        <div class="filter-bar" id="filter-bar"></div>
+
+        <!-- 卡牌网格 -->
+        <div class="card-grid" id="card-grid"></div>
+    </div>
+
+    <div class="draw-overlay" id="draw-overlay">
+        <div class="reveal-card" id="reveal-card">
+            <div class="reveal-card-inner" id="reveal-inner">
+                <div class="reveal-back">
+                    <div class="reveal-back-symbol">⚛</div>
+                    <div class="reveal-back-text">元素盲盒</div>
+                </div>
+                <div class="reveal-front" id="reveal-front"></div>
+            </div>
+        </div>
+        <button class="draw-close" id="draw-close" onclick="closeReveal()">收下</button>
+    </div>
+
+    <footer class="footer">元素盲盒 · 化学不难学</footer>
+
+    <script src="./assets/game.js"></script>
+    <script>
+    /* ===== 元素数据库 ===== */
+    /* [符号, 中文名, 原子序数, 类别, 星级, 奇闻] */
+    /* 类别: am碱金属 ae碱土 tm过渡 pm后过渡 me类金属 nm非金属 ha卤素 ng稀有气体 la镧系 ac锕系 */
+    var CAT_NAMES = { am:'碱金属', ae:'碱土金属', tm:'过渡金属', pm:'后过渡金属', me:'类金属', nm:'非金属', ha:'卤素', ng:'稀有气体', la:'镧系', ac:'锕系' };
+    var STAR_NAMES = { 1:'普通', 2:'稀有', 3:'珍贵', 4:'史诗', 5:'传说' };
+    var STAR_COLORS = { 1:'#9ca3af', 2:'#4ade80', 3:'#60a5fa', 4:'#c084fc', 5:'#fbbf24' };
+
+    var DB = [
+        // ⭐ 普通（常见元素，生活中耳熟能详）
+        ['H','氢',1,'nm',1,'宇宙中90%的原子都是氢，太阳每秒烧掉6亿吨'],
+        ['He','氦',2,'ng',1,'在太阳上发现的第一个元素，吸入后说话变唐老鸭'],
+        ['C','碳',6,'nm',1,'钻石和铅笔芯都是碳，只是排列方式不同'],
+        ['N','氮',7,'nm',1,'液氮-196°C，一滴能让玫瑰碎成粉末'],
+        ['O','氧',8,'nm',1,'地壳含量第一的元素，你每口呼吸21%是它'],
+        ['Na','钠',11,'am',1,'扔进水里会爆炸，但在食盐中安分守己'],
+        ['Mg','镁',12,'ae',1,'烟花的白色光芒就是镁在燃烧'],
+        ['Al','铝',13,'pm',1,'曾比黄金还贵，拿破仑用铝盘招待贵客'],
+        ['Si','硅',14,'me',1,'芯片之王，沙子的灵魂'],
+        ['P','磷',15,'nm',1,'白磷在空气中自燃，曾被做成燃烧弹'],
+        ['S','硫',16,'nm',1,'火山口的黄色结晶，古称"石硫磺"'],
+        ['Cl','氯',17,'ha',1,'一战曾是化学武器，如今是泳池消毒剂'],
+        ['K','钾',19,'am',1,'香蕉富含钾，但要吃10万根才会钾中毒'],
+        ['Ca','钙',20,'ae',1,'你体内99%的钙在骨骼里，缺了会抽筋'],
+        ['Fe','铁',26,'tm',1,'你血液中的铁来自远古恒星的死亡爆炸'],
+        ['Cu','铜',29,'tm',1,'人类最早使用的金属，已超过一万年'],
+
+        // ⭐⭐ 稀有（有故事的元素）
+        ['Li','锂',3,'am',2,'锂盐能稳定情绪，是全球最常用的躁郁症药物'],
+        ['F','氟',9,'ha',2,'牙膏防蛀的功臣，但纯氟气能腐蚀几乎一切'],
+        ['Ti','钛',22,'tm',2,'强度比钢高但轻一半，太空旅行的首选金属'],
+        ['Cr','铬',24,'tm',2,'镀铬永远不生锈，闪耀背后的抗氧化秘密'],
+        ['Mn','锰',25,'tm',2,'二氧化锰能让绿色玻璃变成无色透明'],
+        ['Zn','锌',30,'tm',2,'伽伐尼用锌和铜让青蛙腿抽搐，发现了生物电'],
+        ['Br','溴',35,'ha',2,'名字来自希腊语"恶臭"，唯二常温液态元素之一'],
+        ['Ag','银',47,'tm',2,'银离子能杀650种细菌，罗马人用银币保鲜水'],
+        ['Sn','锡',50,'pm',2,'拿破仑大军的锡扣在俄国寒冬碎裂，成为败因之一'],
+        ['I','碘',53,'ha',2,'拿破仑远征时碘酒救了无数伤兵的命'],
+        ['Ba','钡',56,'ae',2,'硫酸钡是X光造影剂，喝下去能看清你的肠胃'],
+        ['W','钨',74,'tm',2,'熔点3422°C，钨丝灯泡照亮了世界一个世纪'],
+        ['Au','金',79,'tm',2,'所有金子都来自超新星爆发，炼金术士的终极梦想'],
+        ['Hg','汞',80,'tm',2,'秦始皇陵中用水银模拟了江河大海'],
+        ['Pb','铅',82,'pm',2,'罗马帝国用铅做水管，有人认为铅中毒加速了帝国衰亡'],
+
+        // ⭐⭐⭐ 珍贵（奇特性质的元素）
+        ['V','钒',23,'tm',3,'以北欧女神凡娜迪丝命名，发现过程曲折离奇'],
+        ['Se','硒',34,'me',3,'马吃了富硒植物会掉蹄子，"疯狂病"的元凶'],
+        ['As','砷',33,'me',3,'砒霜主角，拿破仑之死至今有人怀疑是砷中毒'],
+        ['Be','铍',4,'ae',3,'唯一尝起来甜的金属，但吸入粉尘会致命'],
+        ['Rn','氡',86,'ng',3,'肺癌第二大诱因，无声无色潜伏在地下室'],
+        ['Xe','氙',54,'ng',3,'第一个被逼反应的惰性气体，改写了化学教科书'],
+        ['Cs','铯',55,'am',3,'铯原子钟300万年误差不到1秒，定义了"秒"'],
+        ['Ra','镭',88,'ae',3,'居里夫人的镭发出幽幽蓝光，她却不知这是致命辐射'],
+        ['U','铀',92,'ac',3,'铀裂变释放的能量是燃烧煤的250万倍'],
+        ['Pu','钚',94,'ac',3,'以冥王星命名，1克钚足以制造微型核弹'],
+
+        // ⭐⭐⭐⭐ 史诗（戏剧性历史的元素）
+        ['Tc','锝',43,'tm',4,'第一个人造元素，在自然界中几乎不存在'],
+        ['Pm','钷',61,'la',4,'唯一没有稳定同位素的镧系元素，永远在衰变'],
+        ['At','砹',85,'ha',4,'全球自然存在仅约25克，最稀少的天然元素之一'],
+        ['Fr','钫',87,'am',4,'地壳中最稀有的天然元素，全球仅存约25克'],
+        ['Ac','锕',89,'ac',4,'居里夫妇以"射线"命名，他们的手稿至今仍有放射性'],
+        ['Th','钍',90,'ac',4,'以雷神托尔命名，钍核电站可能是未来能源'],
+        ['Po','钋',84,'pm',4,'2006年利特维年科在伦敦被钋-210毒杀，仅1微克致命'],
+
+        // ⭐⭐⭐⭐⭐ 传说（近乎神话的元素）
+        ['Cn','鿔',112,'tm',5,'以哥白尼命名，推翻了炼金术的理论基础'],
+        ['Nh','鿭',113,'tm',5,'日本获得首个元素命名权，亚洲之光'],
+        ['Fl','𫓧',114,'tm',5,'半衰期突然变长，"稳定岛"的第一个线索'],
+        ['Mc','镆',115,'pm',5,'以中国古代名剑命名，51区外星人传闻的主角'],
+        ['Lv','鉝',116,'pm',5,'以核武器实验室命名，可能位于"稳定岛"边缘'],
+        ['Ts','鿬',117,'ha',5,'2016年命名，人工合成的最重卤素'],
+        ['Og','鿫',118,'ng',5,'元素周期表的尽头，存在不到1毫秒就消失']
+    ];
+
+    var ELEMENTS = DB.map(function(d) {
+        return { sym: d[0], name: d[1], num: d[2], cat: d[3], stars: d[4], fact: d[5] };
+    });
+
+    /* 按星级分组的抽卡权重 */
+    var DRAW_WEIGHTS = [
+        { stars: 1, weight: 35 },
+        { stars: 2, weight: 28 },
+        { stars: 3, weight: 20 },
+        { stars: 4, weight: 12 },
+        { stars: 5, weight: 5 }
+    ];
+
+    var currentFilter = 0; // 0=全部
+
+    /* ===== 抽卡逻辑 ===== */
+    function weightedRandomStar() {
+        var total = 0;
+        DRAW_WEIGHTS.forEach(function(w) { total += w.weight; });
+        var r = Math.random() * total;
+        var cum = 0;
+        for (var i = 0; i < DRAW_WEIGHTS.length; i++) {
+            cum += DRAW_WEIGHTS[i].weight;
+            if (r < cum) return DRAW_WEIGHTS[i].stars;
+        }
+        return 1;
+    }
+
+    function pickRandomElement(stars) {
+        var pool = ELEMENTS.filter(function(e) { return e.stars === stars; });
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function doDraw() {
+        if (HXBNX_GAME.getElementDrawCount() <= 0) return;
+
+        // 选星级再选元素
+        var stars = weightedRandomStar();
+        var elem = pickRandomElement(stars);
+
+        // 记录到 game state
+        var result = HXBNX_GAME.drawElementCard(elem.sym, elem.stars);
+
+        if (!result.ok) return;
+
+        // 显示开卡动画
+        showReveal(elem, result.isNew, result.newAch);
+    }
+
+    function showReveal(elem, isNew, newAch) {
+        var overlay = document.getElementById('draw-overlay');
+        var card = document.getElementById('reveal-card');
+        var inner = document.getElementById('reveal-inner');
+        var front = document.getElementById('reveal-front');
+
+        // 重置动画状态
+        card.classList.remove('flipped');
+        inner.style.transform = '';
+
+        // 构建正面
+        var starsHtml = '';
+        for (var i = 0; i < elem.stars; i++) starsHtml += '⭐';
+
+        front.className = 'reveal-front tier-' + elem.stars;
+        front.innerHTML =
+            '<div class="reveal-num">#' + elem.num + '</div>' +
+            '<div class="reveal-stars">' + starsHtml + '</div>' +
+            '<div class="reveal-sym">' + elem.sym + '</div>' +
+            '<div class="reveal-name">' + elem.name + '</div>' +
+            '<div class="reveal-cat">' + (CAT_NAMES[elem.cat] || elem.cat) + '</div>' +
+            '<div class="reveal-fact">' + elem.fact + '</div>' +
+            '<div class="reveal-badge ' + (isNew ? 'new' : 'dup') + '">' +
+            (isNew ? '✨ 新发现！' : '已拥有 +3 EXP') + '</div>';
+
+        // 显示覆盖层
+        overlay.classList.add('active');
+
+        // 延迟翻转
+        setTimeout(function() {
+            card.classList.add('flipped');
+        }, 600);
+
+        // 成就通知
+        if (newAch && newAch.length > 0) {
+            setTimeout(function() {
+                newAch.forEach(function(a) {
+                    showToast(a.icon + ' <strong>成就解锁：' + a.name + '</strong><br><small>' + a.desc + '</small>', 'achievement', 5000);
+                });
+            }, 2500);
+        }
+    }
+
+    function closeReveal() {
+        var overlay = document.getElementById('draw-overlay');
+        overlay.classList.remove('active');
+        renderAll();
+    }
+
+    /* ===== 渲染 ===== */
+    function renderAll() {
+        var collected = HXBNX_GAME.getElementCards();
+        var drawCount = HXBNX_GAME.getElementDrawCount();
+
+        // 每日免费抽卡
+        if (HXBNX_GAME.claimFreeDraw()) {
+            drawCount = HXBNX_GAME.getElementDrawCount();
+            setTimeout(function() { showToast('🎁 <strong>每日免费抽卡 +1</strong>', 'info'); }, 500);
+        }
+
+        // 抽卡区
+        document.getElementById('draw-count').innerHTML = drawCount + ' <span>次</span>';
+        document.getElementById('draw-btn').disabled = drawCount <= 0;
+
+        // 头部徽章
+        document.getElementById('elem-badge').textContent = collected.length + '/' + ELEMENTS.length;
+
+        // 统计行
+        var tierCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        var tierTotal = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        ELEMENTS.forEach(function(e) { tierTotal[e.stars]++; });
+        collected.forEach(function(c) { if (tierCounts[c.t] !== undefined) tierCounts[c.t]++; });
+
+        var statsHtml = '';
+        [1,2,3,4,5].forEach(function(t) {
+            var stars = '';
+            for (var i = 0; i < t; i++) stars += '⭐';
+            statsHtml += '<div class="stat-card"><div class="stat-num c' + t + '">' + tierCounts[t] + '/' + tierTotal[t] + '</div><div class="stat-label">' + stars + ' ' + STAR_NAMES[t] + '</div></div>';
+        });
+        document.getElementById('stats-row').innerHTML = statsHtml;
+
+        // 筛选栏
+        var filterHtml = '<button class="filter-btn ' + (currentFilter === 0 ? 'active' : '') + '" onclick="setFilter(0)">全部</button>';
+        [1,2,3,4,5].forEach(function(t) {
+            filterHtml += '<button class="filter-btn ' + (currentFilter === t ? 'active' : '') + '" onclick="setFilter(' + t + ')">' + STAR_NAMES[t] + '</button>';
+        });
+        document.getElementById('filter-bar').innerHTML = filterHtml;
+
+        // 卡牌网格
+        var collectedSyms = {};
+        collected.forEach(function(c) { collectedSyms[c.s] = true; });
+
+        var filtered = currentFilter === 0 ? ELEMENTS : ELEMENTS.filter(function(e) { return e.stars === currentFilter; });
+
+        var gridHtml = '';
+        filtered.forEach(function(e) {
+            var owned = collectedSyms[e.sym];
+            var cls = (owned ? 'unlocked' : 'locked') + ' tier-' + e.stars;
+            var starsHtml = '';
+            for (var i = 0; i < e.stars; i++) starsHtml += '⭐';
+
+            gridHtml += '<div class="elem-card ' + cls + '">';
+            gridHtml += '<div class="elem-card-num">' + (owned ? '#' + e.num : '') + '</div>';
+            gridHtml += '<div class="elem-card-stars">' + (owned ? starsHtml : '') + '</div>';
+            gridHtml += '<div class="elem-card-sym">' + (owned ? e.sym : '?') + '</div>';
+            gridHtml += '<div class="elem-card-name">' + (owned ? e.name : '???') + '</div>';
+            gridHtml += '<div class="elem-card-cat">' + (owned ? CAT_NAMES[e.cat] : '未发现') + '</div>';
+            if (owned) {
+                gridHtml += '<div class="elem-card-fact">' + e.fact + '</div>';
+            }
+            gridHtml += '</div>';
+        });
+        document.getElementById('card-grid').innerHTML = gridHtml;
+    }
+
+    function setFilter(f) {
+        currentFilter = f;
+        renderAll();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAll);
+    </script>
+</body>
+</html>

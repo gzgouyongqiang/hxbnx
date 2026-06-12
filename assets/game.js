@@ -89,6 +89,12 @@ const HXBNX_GAME = (function () {
         { id: 'perfect_all',  name: '满分神话',   desc: '所有已答题目全部一次答对',        icon: '🏆',  exp: 2000,tier: 'legendary', hidden: true, check: s => { var t=0,p=0; for(var k in s.quizResults){t++;if(s.quizResults[k].attempts===1&&s.quizResults[k].passed)p++;} return t>=20 && t===p; } },
         { id: 'combo100',     name: '百日筑基',   desc: '连续打卡100天',                   icon: '🏮',  exp: 1000,tier: 'legendary', check: s => s.maxStreak >= 100 },
         { id: 'collector',    name: '收藏大师',   desc: '收藏50道错题并全部移除',          icon: '🗝️',  exp: 1500,tier: 'legendary', check: s => (s.wrongQuestions||[]).length + (s.clearedWrong||0) >= 50 && (s.clearedWrong||0) >= 50 },
+
+        // ===== 元素盲盒成就 =====
+        { id: 'elem10',       name: '元素学徒',   desc: '收集10种不同元素卡',              icon: '🔬',  exp: 30,  tier: 'silver',   check: s => (s.elementCards || []).length >= 10 },
+        { id: 'elem30',       name: '元素猎人',   desc: '收集30种不同元素卡',              icon: '🔭',  exp: 100, tier: 'gold',     check: s => (s.elementCards || []).length >= 30 },
+        { id: 'elem50',       name: '周期表征服者', desc: '收集50种不同元素卡',            icon: '🌌',  exp: 300, tier: 'diamond',  check: s => (s.elementCards || []).length >= 50 },
+        { id: 'mythic_elem',  name: '神话降临',   desc: '获得1张⭐⭐⭐⭐⭐传说元素卡',       icon: '💫',  exp: 200, tier: 'legendary', hidden: true, check: s => (s.elementCards || []).some(function(c) { return c.t >= 5; }) },
     ];
 
     // ===== 存储Key =====
@@ -108,6 +114,9 @@ const HXBNX_GAME = (function () {
             hasExported: false,
             wrongQuestions: [],    // 错题收藏 [{ filename, topicName, questionText, correctIndex, wrongIndex, date }]
             clearedWrong: 0,       // 已移除的错题计数（用于成就统计）
+            elementCards: [],      // 元素卡收藏 [{ s: 'H', t: 1 }, ...]  s=symbol, t=stars
+            elementDraws: 0,       // 可用抽卡次数
+            lastFreeDrawDate: '',  // 上次免费抽卡日期
             createdAt: new Date().toISOString(),
         };
     }
@@ -281,6 +290,7 @@ const HXBNX_GAME = (function () {
                 if (qr.exp > 0 && !s.completedTopics.includes(filename)) {
                     s.completedTopics.push(filename);
                 }
+                s.elementDraws = (s.elementDraws || 0) + 1;
                 updateStreak(s);
                 const newAch = checkAchievements(s);
                 s.quizResults[filename] = qr;
@@ -292,6 +302,7 @@ const HXBNX_GAME = (function () {
                 if (qr.exp > 0) msg += ' +' + qr.exp + ' EXP（第' + qr.attempts + '次答对）';
                 else msg += ' 不计分（第4次答对）';
                 showToast(msg, qr.exp > 0 ? 'success' : 'info');
+                setTimeout(function() { showToast('🧪 <strong>获得1次元素抽卡机会！</strong>', 'info'); }, 1500);
 
                 if (newAch.length > 0) {
                     setTimeout(function () {
@@ -368,6 +379,50 @@ const HXBNX_GAME = (function () {
         getWrongCount() {
             var s = load();
             return (s.wrongQuestions || []).length;
+        },
+
+        // ===== 元素盲盒抽卡 =====
+
+        // 抽卡（传入元素符号和星级）
+        drawElementCard(sym, stars) {
+            var s = load();
+            if (!s.elementCards) s.elementCards = [];
+            if ((s.elementDraws || 0) <= 0) return { ok: false };
+            var isNew = !s.elementCards.some(function(c) { return c.s === sym; });
+            if (isNew) {
+                s.elementCards.push({ s: sym, t: stars });
+            } else {
+                s.totalExp += 3; // 重复卡补偿
+            }
+            s.elementDraws = Math.max(0, (s.elementDraws || 0) - 1);
+            var newAch = checkAchievements(s);
+            save(s);
+            return { ok: true, isNew: isNew, newAch: newAch };
+        },
+
+        // 获取已收藏元素
+        getElementCards() {
+            var s = load();
+            return s.elementCards || [];
+        },
+
+        // 获取可用抽卡次数
+        getElementDrawCount() {
+            var s = load();
+            return s.elementDraws || 0;
+        },
+
+        // 每日免费抽卡（每天1次）
+        claimFreeDraw() {
+            var s = load();
+            var today = todayStr();
+            if (s.lastFreeDrawDate !== today) {
+                s.lastFreeDrawDate = today;
+                s.elementDraws = (s.elementDraws || 0) + 1;
+                save(s);
+                return true;
+            }
+            return false;
         },
 
         // 判断练功房是否可进入（按编号，01.html 永远开放）
