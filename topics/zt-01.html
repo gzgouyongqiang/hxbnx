@@ -931,23 +931,8 @@ function toggleCollapsible(btn, targetClass) {
   }
 }
     </script>
-
     <script>
-    }
-    el = el.nextElementSibling;
-  }
-  if (!content) {
-    var parent = btn.parentElement;
-    content = parent.querySelector(".collapsible");
-  }
-  if (!content) return;
-  var isOpen = content.classList.contains("open");
-  content.classList.toggle("open");
-  if (btn.dataset.showText && btn.dataset.hideText) {
-    btn.textContent = isOpen ? btn.dataset.showText : btn.dataset.hideText;
-  }
-}
- QUIZ_FILENAME = 'zt-01.html';
+    var QUIZ_FILENAME = 'zt-01.html';
     var QUIZ_CORRECT = 3;
     var QUIZ_NEXT = './nd-01.html';
     var QUIZ_DONE = false;

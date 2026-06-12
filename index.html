@@ -472,6 +472,34 @@
             background: linear-gradient(180deg, #f97316, #fbbf24);
             width: 5px;
         }
+        /* 章节锁样式 */
+        .topic-card.locked {
+            opacity: 0.45;
+            filter: grayscale(0.6);
+            pointer-events: none;
+            cursor: not-allowed !important;
+        }
+        .topic-card.locked::before {
+            background: #94a3b8;
+        }
+        .topic-card.locked:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .lock-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 1px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .topic-card.locked .card-title {
+            color: #94a3b8;
+        }
         .card-type {
             display: inline-block;
             font-size: 11px;
