@@ -1,1494 +1,317 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>炼金主城 | 化学不难学</title>
-    <link rel="stylesheet" href="./assets/game.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #fefcf6;
-            --card: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #f1f5f9;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* Hero区域已由 game.css 接管 */
-
-        /* ===== 标签页切换 ===== */
-        .tab-bar {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        .tab-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0;
-            padding: 0 20px;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 18px 24px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: #64748b;
-            position: relative;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .tab-btn:hover { color: #475569; background: #f0f9ff; }
-        .tab-btn.active { color: #0284c7; }
-        .tab-btn.active::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 20%; right: 20%;
-            height: 3px;
-            background: linear-gradient(90deg, #22d3ee, #3b82f6);
-            border-radius: 3px 3px 0 0;
-        }
-        .tab-icon {
-            width: 40px; height: 40px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-        .tab-btn:nth-child(1) .tab-icon { 
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #86efac 100%);
-            transform: rotate(0deg);
-        }
-        .tab-btn:nth-child(1).active .tab-icon { 
-            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%); 
-            color: white; 
-            transform: rotate(15deg) scale(1.05);
-            box-shadow: 0 6px 16px rgba(59,130,246,0.4);
-        }
-        .tab-btn:nth-child(2) .tab-icon { 
-            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
-        }
-        .tab-btn:nth-child(2).active .tab-icon { 
-            background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); 
-            color: white; 
-            transform: rotate(-10deg) scale(1.05);
-            box-shadow: 0 6px 16px rgba(236,72,153,0.4);
-        }
-        .tab-count {
-            font-size: 12px; padding: 3px 10px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #fef9c3, #fde68a); 
-            color: #92400e; font-weight: 600;
-            box-shadow: 0 2px 6px rgba(253,230,138,0.4);
-        }
-        .tab-btn.active .tab-count { 
-            background: linear-gradient(135deg, #22d3ee, #3b82f6); 
-            color: white; 
-            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        /* ===== 试题选讲板块 ===== */
-        .exam-hero {
-            background: linear-gradient(135deg, #831843 0%, #701a75 50%, #4a044e 100%);
-            padding: 40px 20px 32px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        .exam-hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(236,72,153,0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 30%, rgba(168,85,247,0.1) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        .exam-hero-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; position: relative; }
-        .exam-hero-desc { font-size: 14px; color: #d1d5db; position: relative; }
-        .exam-filter {
-            background: white;
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .filter-chip {
-            padding: 8px 18px; border-radius: 20px;
-            border: 1px solid #e2e8f0; background: white;
-            font-size: 13px; font-weight: 500; color: #475569;
-            cursor: pointer; transition: all 0.2s;
-        }
-        .filter-chip:hover { border-color: #ec4899; color: #ec4899; }
-        .filter-chip.active {
-            background: linear-gradient(135deg, #ec4899, #be185d);
-            color: white; border-color: transparent;
-        }
-        .exam-container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
-        .exam-year-section { margin-bottom: 40px; }
-        .exam-year-header {
-            display: flex; align-items: center; gap: 12px;
-            margin-bottom: 20px; padding-bottom: 12px;
-            border-bottom: 2px solid #fce7f3;
-        }
-        .exam-year-badge {
-            font-size: 20px; font-weight: 800; color: #be185d;
-            background: linear-gradient(135deg, #fce7f3, #fdf2f8);
-            padding: 6px 16px; border-radius: 8px;
-        }
-        .exam-year-info { font-size: 13px; color: #64748b; }
-        .exam-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-        }
-        .exam-card {
-            display: block; background: white;
-            border: 1px solid #e2e8f0; border-radius: 14px;
-            padding: 20px; text-decoration: none; color: inherit;
-            transition: all 0.25s; position: relative; overflow: hidden;
-        }
-        .exam-card::before {
-            content: ""; position: absolute;
-            top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #ec4899, #a855f7);
-            opacity: 0; transition: opacity 0.2s;
-        }
-        .exam-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px -5px rgba(236,72,153,0.12);
-            border-color: #fbcfe8;
-        }
-        .exam-card:hover::before { opacity: 1; }
-        .exam-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .exam-type-badge {
-            display: inline-block; font-size: 11px; font-weight: 600;
-            padding: 3px 10px; border-radius: 6px;
-        }
-        .exam-type-badge.xz { background: #dbeafe; color: #1d4ed8; }
-        .exam-type-badge.sy { background: #d1fae5; color: #047857; }
-        .exam-type-badge.hg { background: #fef3c7; color: #b45309; }
-        .exam-type-badge.yl { background: #ede9fe; color: #7c3aed; }
-        .exam-type-badge.yj { background: #fce7f3; color: #be185d; }
-        .exam-type-badge.jg { background: #e0e7ff; color: #4338ca; }
-        .exam-card-source { font-size: 12px; color: #94a3b8; }
-        .exam-card-title {
-            font-size: 16px; font-weight: 600; color: #1e293b;
-            margin-bottom: 8px; line-height: 1.5;
-        }
-        .exam-card-meta { display: flex; gap: 16px; font-size: 12px; color: #94a3b8; }
-        .exam-card-meta span { display: flex; align-items: center; gap: 4px; }
-        .exam-card-tags { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
-        .exam-tag {
-            font-size: 11px; padding: 2px 8px; border-radius: 4px;
-            background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;
-        }
-
-        /* ===== 搜索框 ===== */
-        .exam-search {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 12px;
-        }
-        .exam-search-box {
-            display: flex;
-            align-items: center;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 0 16px;
-            transition: all 0.2s;
-        }
-        .exam-search-box:focus-within {
-            border-color: #ec4899;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(236,72,153,0.1);
-        }
-        .exam-search-icon {
-            font-size: 18px;
-            color: #94a3b8;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-        .exam-search-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            font-size: 15px;
-            padding: 14px 0;
-            outline: none;
-            color: #1e293b;
-            font-family: inherit;
-        }
-        .exam-search-input::placeholder { color: #94a3b8; }
-        .exam-search-clear {
-            display: none;
-            cursor: pointer;
-            font-size: 14px;
-            color: #94a3b8;
-            padding: 4px 8px;
-            border-radius: 6px;
-            background: #e2e8f0;
-            border: none;
-            flex-shrink: 0;
-        }
-        .exam-search-clear:hover { color: #475569; background: #cbd5e1; }
-
-        /* ===== 知识点标签筛选栏 ===== */
-        .exam-tag-filter {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 16px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .exam-tag-filter-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #64748b;
-            margin-right: 4px;
-            flex-shrink: 0;
-        }
-        .tag-chip {
-            padding: 5px 12px; border-radius: 14px;
-            border: 1px solid #e2e8f0; background: white;
-            font-size: 12px; font-weight: 500; color: #475569;
-            cursor: pointer; transition: all 0.2s;
-        }
-        .tag-chip:hover { border-color: #a855f7; color: #a855f7; }
-        .tag-chip.active {
-            background: linear-gradient(135deg, #a855f7, #7c3aed);
-            color: white; border-color: transparent;
-        }
-
-        /* ===== 空结果提示 ===== */
-        .exam-no-result {
-            text-align: center;
-            padding: 60px 20px;
-            display: none;
-        }
-        .exam-no-result.show { display: block; }
-        .exam-no-result-icon { font-size: 48px; margin-bottom: 12px; }
-        .exam-no-result-text { font-size: 15px; color: #64748b; margin-bottom: 6px; }
-        .exam-no-result-hint { font-size: 13px; color: #94a3b8; }
-
-        /* ===== 快捷导航 ===== */
-        .quick-nav {
-            background: linear-gradient(135deg, rgba(254,252,246,0.95), rgba(255,255,255,0.9));
-            padding: 28px 20px;
-            border-bottom: 2px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
-        .quick-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .quick-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #334155;
-            font-size: 14px;
-            font-weight: 600;
-            background: white;
-            border: 2px solid transparent;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .quick-btn:hover {
-            border-color: var(--btn-color);
-            background: var(--btn-color)10;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px -5px color-mix(in srgb, var(--btn-color) 30%, transparent);
-        }
-        .quick-num {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--btn-color), color-mix(in srgb, var(--btn-color) 80%, white));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-            box-shadow: 0 2px 6px color-mix(in srgb, var(--btn-color) 40%, transparent);
-        }
-
-        /* ===== 主体内容 ===== */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .unit-section {
-            margin-bottom: 48px;
-        }
-        .unit-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 24px 28px;
-            background: linear-gradient(135deg, var(--unit-color)10, var(--unit-color)05);
-            border-left: 5px solid var(--unit-color);
-            border-radius: 16px;
-            margin-bottom: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            position: relative;
-            overflow: hidden;
-        }
-        .unit-header::before {
-            content: "";
-            position: absolute;
-            top: 0; right: 0;
-            width: 150px; height: 150px;
-            background: radial-gradient(circle at 100% 0%, var(--unit-color)10 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .unit-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--unit-color), color-mix(in srgb, var(--unit-color) 70%, white));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 800;
-            flex-shrink: 0;
-            box-shadow: 0 6px 16px var(--unit-color)40;
-            position: relative;
-        }
-        .unit-info {
-            flex: 1;
-        }
-        .unit-name {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--unit-color);
-            margin-bottom: 2px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .unit-title {
-            font-size: 15px;
-            color: #475569;
-            font-weight: 500;
-        }
-        .unit-count {
-            font-size: 15px;
-            color: #ffffff;
-            background: linear-gradient(135deg, var(--unit-color), color-mix(in srgb, var(--unit-color) 80%, white));
-            padding: 8px 20px;
-            border-radius: 24px;
-            font-weight: 700;
-            border: none;
-            box-shadow: 0 4px 12px var(--unit-color)30;
-        }
-
-        /* ===== 章节 ===== */
-        .chapter {
-            margin-bottom: 28px;
-        }
-        .chapter-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #475569;
-            padding: 8px 12px;
-            background: #f1f5f9;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-
-        /* ===== 卡片网格 ===== */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 14px;
-        }
-        .topic-card {
-            display: block;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 18px 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .topic-card::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, #22d3ee, #3b82f6);
-            transition: all 0.3s;
-        }
-        .topic-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px -6px rgba(0,0,0,0.1), 0 6px 12px -4px rgba(0,0,0,0.06);
-            border-color: #cbd5e1;
-        }
-        .topic-card:hover::before {
-            background: linear-gradient(180deg, #f97316, #fbbf24);
-            width: 5px;
-        }
-        /* 章节锁样式 */
-        .topic-card.locked {
-            opacity: 0.45;
-            filter: grayscale(0.6);
-            pointer-events: none;
-            cursor: not-allowed !important;
-        }
-        .topic-card.locked::before {
-            background: #94a3b8;
-        }
-        .topic-card.locked:hover {
-            transform: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .lock-badge {
-            display: inline-block;
-            font-size: 10px;
-            font-weight: 600;
-            background: #f1f5f9;
-            color: #64748b;
-            padding: 1px 8px;
-            border-radius: 4px;
-            margin-left: 6px;
-            vertical-align: middle;
-        }
-        .topic-card.locked .card-title {
-            color: #94a3b8;
-        }
-        .card-type {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            color: #475569;
-            background: #f1f5f9;
-            letter-spacing: 0.5px;
-        }
-        .card-type.tag-hot { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #b45309; }
-        .card-type.tag-hard { background: linear-gradient(135deg, #fee2e2, #fecaca); color: #b91c1c; }
-        .card-type.tag-key { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1d4ed8; }
-        .card-type.tag-answer { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #047857; }
-        .card-type.tag-special { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); color: #3730a3; }
-        .card-type.tag-extend { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #be185d; }
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        /* ===== 页脚 ===== */
-        .footer {
-            text-align: center;
-            padding: 48px 20px;
-            color: #64748b;
-            font-size: 13px;
-            border-top: 2px solid var(--border);
-            margin-top: 40px;
-            background: linear-gradient(180deg, rgba(226,232,240,0.1), rgba(226,232,240,0.3));
-        }
-
-        /* ===== 试题选讲模块导航 ===== */
-        .module-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 32px 20px;
-        }
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 8px;
-        }
-        .module-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 22px 24px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .module-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; bottom: 0;
-            width: 5px;
-            background: var(--mod-color);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px -6px rgba(0,0,0,0.1), 0 6px 12px -4px rgba(0,0,0,0.06);
-            border-color: var(--mod-color);
-        }
-        .module-card:hover::before { opacity: 1; }
-        .module-icon {
-            width: 52px; height: 52px;
-            border-radius: 14px;
-            background: rgba(59, 130, 246, 0.1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px; flex-shrink: 0;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .module-card[data-module="sy"] .module-icon { background: rgba(16, 185, 129, 0.1); }
-        .module-card[data-module="hg"] .module-icon { background: rgba(245, 158, 11, 0.1); }
-        .module-card[data-module="yl"] .module-icon { background: rgba(139, 92, 246, 0.1); }
-        .module-card[data-module="yj"] .module-icon { background: rgba(236, 72, 153, 0.1); }
-        .module-card[data-module="mn"] .module-icon { background: rgba(239, 68, 68, 0.1); }
-        .module-card:hover .module-icon {
-            background: var(--mod-color);
-            transform: scale(1.05);
-        }
-        .module-info { flex: 1; min-width: 0; }
-        .module-name {
-            font-size: 18px; font-weight: 700; color: #1e293b;
-            margin-bottom: 4px;
-            transition: color 0.3s;
-        }
-        .module-card:hover .module-name { 
-            color: var(--mod-color);
-            text-shadow: 0 2px 8px color-mix(in srgb, var(--mod-color) 20%, transparent);
-        }
-        .module-desc {
-            font-size: 13px; color: #64748b; line-height: 1.45;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
-        .module-count {
-            font-size: 13px; font-weight: 700; color: #ffffff;
-            background: linear-gradient(135deg, var(--mod-color), color-mix(in srgb, var(--mod-color) 85%, white));
-            padding: 6px 16px; border-radius: 20px; flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .module-status {
-            font-size: 12px; font-weight: 500; color: #94a3b8;
-            padding: 4px 12px; border-radius: 20px;
-            background: #f1f5f9; flex-shrink: 0;
-        }
-
-        /* ===== 响应式 ===== */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 36px; letter-spacing: 4px; }
-            .hero-stats { gap: 24px; }
-            .stat-num { font-size: 24px; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .quick-inner { gap: 8px; }
-            .quick-btn { padding: 8px 12px; font-size: 12px; }
-            .quick-text { display: none; }
-            .unit-header { flex-wrap: wrap; }
-            .module-grid { grid-template-columns: 1fr; }
-            .xz-grid { grid-template-columns: 1fr; }
-            .module-desc { white-space: normal; }
-        }
-        @media (max-width: 480px) {
-            .hero { padding: 50px 16px 40px; }
-            .hero-title { font-size: 28px; }
-            .hero-subtitle { font-size: 15px; }
-        }
-
-        /* ===== 平滑滚动 ===== */
-        html { scroll-behavior: smooth; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>炼金试炼 · 关卡总图 | 化学不难学</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0e17;--card:#1a1a2e;--card2:#16213e;--gold:#f0c040;--gold-dim:#c9a020;--silver:#c0c8d8;--bronze:#d4a574;--purple:#a78bfa;--green:#6ee7b7;--blue:#67e8f9;--rose:#f472b6;--text:#e2e8f0;--text-dim:#94a3b8;--red:#f87171;--border:#2d2d44}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;overflow-x:hidden}
+.bg-particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bg-particles .p{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);animation:floatUp 6s ease-in infinite;opacity:0}
+.bg-particles .p:nth-child(odd){background:var(--purple)}
+.bg-particles .p:nth-child(3n){background:var(--blue)}
+@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:0.6}90%{opacity:0.6}100%{transform:translateY(-10vh) scale(1.5);opacity:0}}
+.wrapper{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 20px 60px}
+.hero{text-align:center;padding:60px 20px 36px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(240,192,64,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-title{font-size:40px;font-weight:800;background:linear-gradient(135deg,var(--gold) 0%,var(--purple) 50%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;position:relative}
+.hero-sub{color:var(--text-dim);font-size:15px;margin-bottom:28px}
+.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.hero-stat{background:linear-gradient(135deg,rgba(26,26,46,0.8),rgba(22,33,62,0.8));border:1px solid var(--border);border-radius:16px;padding:16px 28px;min-width:120px;backdrop-filter:blur(12px)}
+.hero-stat-num{font-size:28px;font-weight:800;color:var(--gold)}
+.hero-stat-label{font-size:12px;color:var(--text-dim);margin-top:4px}
+.legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:0 0 40px;padding:14px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-dim)}
+.legend-dot{width:12px;height:12px;border-radius:4px;flex-shrink:0}
+.legend-dot.bronze-g{background:linear-gradient(135deg,#d4a574,#b8865e);box-shadow:0 0 8px rgba(212,165,116,0.3)}
+.legend-dot.silver-g{background:linear-gradient(135deg,#c0c8d8,#9aa0b0);box-shadow:0 0 8px rgba(192,200,216,0.3)}
+.legend-dot.gold-g{background:linear-gradient(135deg,#f0c040,#c9a020);box-shadow:0 0 12px rgba(240,192,64,0.4)}
+.legend-dot.locked-g{background:var(--border);border:1px dashed var(--text-dim)}
+.legend-dot.side-g{background:linear-gradient(135deg,#e94560,#c0392b);box-shadow:0 0 8px rgba(233,69,96,0.3)}
+.course-section{margin-bottom:36px}
+.course-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;padding:0 4px}
+.course-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;border:1.5px solid}
+.course-info{flex:1}
+.course-name{font-size:20px;font-weight:700;color:var(--text);margin-bottom:2px}
+.course-desc{font-size:13px;color:var(--text-dim)}
+.course-meta{font-size:12px;color:var(--text-dim);margin-top:2px}
+.level-row{display:flex;gap:16px;position:relative}
+.level-row::before{content:"";position:absolute;top:50%;left:30px;right:30px;height:2px;background:var(--border);z-index:0}
+.level-card{flex:1;background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px;text-decoration:none;color:var(--text);transition:all .3s ease;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer}
+.level-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.4)}
+.level-card.locked{opacity:0.4;cursor:not-allowed}
+.level-card.locked:hover{transform:none;box-shadow:none}
+.level-card.bronze{border-color:rgba(212,165,116,0.25)}.level-card.bronze:hover{border-color:var(--bronze);box-shadow:0 12px 32px rgba(212,165,116,0.15)}
+.level-card.silver{border-color:rgba(192,200,216,0.25)}.level-card.silver:hover{border-color:var(--silver);box-shadow:0 12px 32px rgba(192,200,216,0.15)}
+.level-card.gold{border-color:rgba(240,192,64,0.3);background:linear-gradient(135deg,rgba(240,192,64,0.04),rgba(26,26,46,0.8))}.level-card.gold:hover{border-color:var(--gold);box-shadow:0 12px 32px rgba(240,192,64,0.2)}
+.level-medal{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:all .3s}
+.level-card:hover .level-medal{transform:scale(1.1)}
+.level-medal.bronze-m{background:linear-gradient(135deg,#d4a574,#b8865e);box-shadow:0 4px 16px rgba(212,165,116,0.3);color:#fff}
+.level-medal.silver-m{background:linear-gradient(135deg,#c0c8d8,#9aa0b0);box-shadow:0 4px 16px rgba(192,200,216,0.3);color:#1a1a2e}
+.level-medal.gold-m{background:linear-gradient(135deg,#f0c040,#c9a020);box-shadow:0 4px 20px rgba(240,192,64,0.4);color:#1a1a2e;animation:medalGlow 2s ease-in-out infinite}
+.level-medal.locked-m{background:var(--card2);border:2px dashed var(--border);color:var(--text-dim);box-shadow:none}
+@keyframes medalGlow{0%,100%{box-shadow:0 4px 20px rgba(240,192,64,0.3)}50%{box-shadow:0 4px 28px rgba(240,192,64,0.6)}}
+.level-tier{font-size:13px;font-weight:700}
+.level-points{font-size:12px;color:var(--text-dim)}
+.level-status{font-size:11px;padding:2px 10px;border-radius:10px;margin-top:4px}
+.level-status.cleared{background:rgba(110,231,183,0.15);color:var(--green)}
+.level-status.waiting{background:rgba(148,163,184,0.1);color:var(--text-dim)}
+.level-status.new{background:rgba(167,139,250,0.15);color:var(--purple);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+/* Side quest section */
+.side-section{margin-top:48px;padding-top:32px;border-top:2px solid var(--border)}
+.side-section h2{font-size:18px;font-weight:700;color:var(--gold);margin-bottom:16px;text-align:center}
+.side-board{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.side-card{background:linear-gradient(135deg,rgba(233,69,96,0.08),rgba(26,26,46,0.9));border:1.5px solid #e94560;border-radius:16px;padding:20px;width:280px;text-decoration:none;color:var(--text);transition:all .3s;position:relative;overflow:hidden}
+.side-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(233,69,96,0.2)}
+.side-card.locked-side{opacity:0.5;border-color:var(--border);background:var(--card);cursor:not-allowed}
+.side-card.locked-side:hover{transform:none;box-shadow:none}
+.side-card.expired-side{opacity:0.3;border-color:var(--border);background:var(--card);filter:grayscale(0.6)}
+.side-card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.side-card-icon{font-size:24px}
+.side-card-title{font-size:16px;font-weight:700}
+.side-card-sub{font-size:12px;color:var(--text-dim);margin-bottom:6px}
+.side-card-reward{font-size:12px;color:var(--gold)}
+.side-card-badge{position:absolute;top:10px;right:10px;font-size:10px;padding:2px 8px;border-radius:8px}
+.side-card-badge.urgent{background:#e94560;color:#fff;animation:pulse 1.5s ease-in-out infinite}
+.side-card-badge.locked-tag{background:var(--border);color:var(--text-dim)}
+.side-card-badge.done{background:rgba(110,231,183,0.2);color:var(--green)}
+/* Bottom board */
+.board-section{margin-top:24px;text-align:center}
+.board-section summary{display:inline-block;color:var(--text-dim);font-size:13px;cursor:pointer;padding:8px 20px;border:1px dashed var(--border);border-radius:10px;transition:all .2s;list-style:none}
+.board-section summary:hover{color:var(--text);border-color:var(--text-dim)}
+.board-section summary::-webkit-details-marker{display:none}
+.board-hidden{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.board-hidden .side-card{width:220px;padding:14px;font-size:13px}
+.footer{text-align:center;padding:40px 20px;color:var(--text-dim);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
+</style>
+<script src="assets/game.js"></script>
 </head>
 <body>
-    <!-- ===== 炼金主城 Hero ===== -->
-    <header class="game-hero" id="game-hero">
-        <div class="game-hero-inner">
-            <div class="game-hero-top">
-                <div class="game-hero-avatar">⚗️</div>
-                <div class="game-hero-identity">
-                    <h1 id="game-hero-title">炼金主城</h1>
-                    <p id="game-hero-subtitle">高三化学 · 以考定教 · 步步通关</p>
-                </div>
-            </div>
 
-            <!-- 等级进度条 -->
-            <div id="game-progress-bar"></div>
+<div class="bg-particles" id="bgParts"></div>
 
-            <!-- 数据统计 -->
-            <div class="game-hero-stats" id="game-hero-stats">
-                <div class="game-hero-stat game-hero-topics">
-                    <div class="game-hero-stat-num" id="stat-topics">0</div>
-                    <div class="game-hero-stat-label">练功房已通关</div>
-                </div>
-                <div class="game-hero-stat game-hero-streak">
-                    <div class="game-hero-stat-num" id="stat-streak">0</div>
-                    <div class="game-hero-stat-label">连修天数</div>
-                </div>
-                <div class="game-hero-stat game-hero-achievements" style="cursor:pointer" onclick="location.href='./achievements.html'" title="查看成就徽章墙">
-                    <div class="game-hero-stat-num" id="stat-ach">0</div>
-                    <div class="game-hero-stat-label">🏅 成就已解锁</div>
-                </div>
-                <div class="game-hero-stat game-hero-exams" style="cursor:pointer" onclick="location.href='./wrong.html'" title="查看错题收藏夹">
-                    <div class="game-hero-stat-num" id="stat-wrong">0</div>
-                    <div class="game-hero-stat-label">📖 错题收藏</div>
-                </div>
-                <div class="game-hero-stat game-hero-elements" style="cursor:pointer" onclick="location.href='./element.html'" title="元素盲盒抽卡">
-                    <div class="game-hero-stat-num" id="stat-elem">0</div>
-                    <div class="game-hero-stat-label">🧪 元素卡</div>
-                </div>
-            </div>
+<div class="wrapper">
 
-            <!-- 进度总览 -->
-            <div class="game-progress-panel" style="margin-top:18px;">
-                <div class="game-progress-title">修炼进度</div>
-                <div class="game-progress-row">
-                    <div class="game-progress-label">练功房</div>
-                    <div class="game-progress-track"><div class="game-progress-fill topics" id="prog-topics" style="width:0%"></div></div>
-                    <div class="game-progress-count" id="prog-topics-txt">0/67</div>
-                </div>
-                <div class="game-progress-row">
-                    <div class="game-progress-label">近14天打卡</div>
-                    <div class="game-calendar" id="game-calendar"></div>
-                </div>
-                <div class="game-save-btns">
-                    <button class="game-save-btn" onclick="HXBNX_GAME.exportSave()">📦 导出存档</button>
-                    <button class="game-save-btn" onclick="document.getElementById('game-import-file').click()">📥 导入存档</button>
-                    <input type="file" id="game-import-file" accept=".json" style="display:none" onchange="handleImport(this)">
-                </div>
-            </div>
-        </div>
-    </header>
+<div class="hero">
+  <div class="hero-title">⚗️ 炼金试炼</div>
+  <div class="hero-sub">关卡总图 · 自由选择你的试炼之路</div>
+  <div class="hero-stats" id="heroStats">
+    <div class="hero-stat"><div class="hero-stat-num" id="totalScore">0</div><div class="hero-stat-label">💎 总积分</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="clearedCount">0</div><div class="hero-stat-label">🏆 已通关</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="totalLevels">15</div><div class="hero-stat-label">🗺️ 总关卡</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="badgeCount">0</div><div class="hero-stat-label">🏅 徽章数</div></div>
+  </div>
+</div>
 
-    <!-- 大标签页切换 -->
-    <nav class="tab-bar">
-        <div class="tab-inner">
-            <button class="tab-btn active" onclick="switchTab('review')">
-                <span class="tab-icon">⚔️</span>
-                <span>修炼之路</span>
-                <span class="tab-count">67个练功房</span>
-            </button>
-            <button class="tab-btn" onclick="switchTab('exam')">
-                <span class="tab-icon">🗼</span>
-                <span>试炼之塔</span>
-                <span class="tab-count">6大训练场</span>
-            </button>
-        </div>
-    </nav>
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot bronze-g"></span>铜牌 10分</div>
+  <div class="legend-item"><span class="legend-dot silver-g"></span>银牌 50分</div>
+  <div class="legend-item"><span class="legend-dot gold-g"></span>金牌 100分</div>
+  <div class="legend-item"><span class="legend-dot locked-g"></span>待解锁</div>
+  <div class="legend-item"><span class="legend-dot side-g"></span>分支副本</div>
+</div>
 
-    <!-- ====== Tab 1: 高考一轮复习 ====== -->
-    <div id="tab-review" class="tab-content active">
-    <nav class="quick-nav">
-        <div class="quick-inner">
-            <a href="#大单元一" class="quick-btn" style="--btn-color: #3b82f6"><span class="quick-num">01</span><span class="quick-text">化学基本概念与化学实验基础知识</span></a><a href="#大单元二" class="quick-btn" style="--btn-color: #06b6d4"><span class="quick-num">02</span><span class="quick-text">元素及其化合物</span></a><a href="#大单元三" class="quick-btn" style="--btn-color: #8b5cf6"><span class="quick-num">03</span><span class="quick-text">物质结构与性质 元素周期律</span></a><a href="#大单元四" class="quick-btn" style="--btn-color: #ef4444"><span class="quick-num">04</span><span class="quick-text">化学反应原理</span></a><a href="#大单元五" class="quick-btn" style="--btn-color: #10b981"><span class="quick-num">05</span><span class="quick-text">有机化学基础</span></a><a href="#大单元六" class="quick-btn" style="--btn-color: #f59e0b"><span class="quick-num">06</span><span class="quick-text">化学实验综合应用</span></a>
-        </div>
-    </nav>
+<!-- Dynamic content -->
+<div id="mainQuests"></div>
+<div id="sideSection"></div>
 
-    <main class="container">
-        
-        <section class="unit-section" id="大单元一">
-            <div class="unit-header" style="--unit-color: #3b82f6">
-                <div class="unit-icon">01</div>
-                <div class="unit-info">
-                    <h2 class="unit-name">大单元一</h2>
-                    <p class="unit-title">化学基本概念与化学实验基础知识</p>
-                </div>
-                <div class="unit-count">16个考点</div>
-            </div>
-            <div class="unit-content">
-                
-            <div class="chapter">
-                <div class="chapter-title">第一章 化学物质及其变化</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/01.html" class="topic-card">
-                    <div class="card-type ">第1讲</div>
-                    <div class="card-title">物质的组成、性质和转化</div>
-                </a>
-                <a href="./topics/02.html" class="topic-card">
-                    <div class="card-type ">第2讲</div>
-                    <div class="card-title">离子反应 离子方程式</div>
-                </a>
-                <a href="./topics/zt-01.html" class="topic-card">
-                    <div class="card-type tag-key">专项突破1</div>
-                    <div class="card-title">六角度判断离子方程式正误</div>
-                </a>
-                <a href="./topics/nd-01.html" class="topic-card">
-                    <div class="card-type tag-hard">难点突破1</div>
-                    <div class="card-title">与量有关的离子方程式书写技巧</div>
-                </a>
-                <a href="./topics/03.html" class="topic-card">
-                    <div class="card-type ">第3讲</div>
-                    <div class="card-title">氧化还原反应的概念和规律</div>
-                </a>
-                <a href="./topics/04.html" class="topic-card">
-                    <div class="card-type ">第4讲</div>
-                    <div class="card-title">氧化还原反应方程式的配平与书写</div>
-                </a>
-                <a href="./topics/rd-01.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化1</div>
-                    <div class="card-title">陌生情境下氧化还原方程式的书写</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第二章 化学计量与简单计算</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/05.html" class="topic-card">
-                    <div class="card-type ">第5讲</div>
-                    <div class="card-title">物质的量 气体摩尔体积</div>
-                </a>
-                <a href="./topics/06.html" class="topic-card">
-                    <div class="card-type ">第6讲</div>
-                    <div class="card-title">物质的量浓度及溶液配制</div>
-                </a>
-                <a href="./topics/rd-02.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化2</div>
-                    <div class="card-title">阿伏加德罗常数(N<sub>A</sub>)应用判断</div>
-                </a>
-                <a href="./topics/nd-02.html" class="topic-card">
-                    <div class="card-type tag-hard">难点突破2</div>
-                    <div class="card-title">化学计算的常用方法</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第三章 化学实验基础知识</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/07.html" class="topic-card">
-                    <div class="card-type ">第7讲</div>
-                    <div class="card-title">化学实验基础知识与技能</div>
-                </a>
-                <a href="./topics/df-01.html" class="topic-card">
-                    <div class="card-type tag-answer">答题规范1</div>
-                    <div class="card-title">装置的气密性检验</div>
-                </a>
-                <a href="./topics/08.html" class="topic-card">
-                    <div class="card-type ">第8讲</div>
-                    <div class="card-title">仪器的组合与气体体积的测定</div>
-                </a>
-                <a href="./topics/09.html" class="topic-card">
-                    <div class="card-type ">第9讲</div>
-                    <div class="card-title">物质的分离与提纯</div>
-                </a>
-                <a href="./topics/df-02.html" class="topic-card">
-                    <div class="card-type tag-answer">答题规范2</div>
-                    <div class="card-title">物质的分离提纯操作规范</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-        <section class="unit-section" id="大单元二">
-            <div class="unit-header" style="--unit-color: #06b6d4">
-                <div class="unit-icon">02</div>
-                <div class="unit-info">
-                    <h2 class="unit-name">大单元二</h2>
-                    <p class="unit-title">元素及其化合物</p>
-                </div>
-                <div class="unit-count">18个考点</div>
-            </div>
-            <div class="unit-content">
-                
-            <div class="chapter">
-                <div class="chapter-title">第四章 金属及其化合物</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/10.html" class="topic-card">
-                    <div class="card-type ">第10讲</div>
-                    <div class="card-title">钠及其重要化合物</div>
-                </a>
-                <a href="./topics/11.html" class="topic-card">
-                    <div class="card-type ">第11讲</div>
-                    <div class="card-title">碱金属 钠及其重要化合物的转化</div>
-                </a>
-                <a href="./topics/rd-03.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化3</div>
-                    <div class="card-title">Na<sub>2</sub>CO<sub>3</sub>、NaHCO<sub>3</sub>含量测定的思维方法</div>
-                </a>
-                <a href="./topics/12.html" class="topic-card">
-                    <div class="card-type ">第12讲</div>
-                    <div class="card-title">铁及其重要化合物</div>
-                </a>
-                <a href="./topics/13.html" class="topic-card">
-                    <div class="card-type ">第13讲</div>
-                    <div class="card-title">铁及其化合物转化关系</div>
-                </a>
-                <a href="./topics/14.html" class="topic-card">
-                    <div class="card-type ">第14讲</div>
-                    <div class="card-title">铝、镁及其化合物</div>
-                </a>
-                <a href="./topics/15.html" class="topic-card">
-                    <div class="card-type ">第15讲</div>
-                    <div class="card-title">金属材料与金属冶炼 铜</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第五章 非金属及其化合物</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/16.html" class="topic-card">
-                    <div class="card-type ">第16讲</div>
-                    <div class="card-title">氯及其重要化合物</div>
-                </a>
-                <a href="./topics/17.html" class="topic-card">
-                    <div class="card-type ">第17讲</div>
-                    <div class="card-title">卤素 氯及其化合物的转化关系</div>
-                </a>
-                <a href="./topics/rd-04.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化4</div>
-                    <div class="card-title">海洋资源的综合利用——氯、溴、碘的提取</div>
-                </a>
-                <a href="./topics/18.html" class="topic-card">
-                    <div class="card-type ">第18讲</div>
-                    <div class="card-title">硫及其化合物</div>
-                </a>
-                <a href="./topics/rd-05.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化5</div>
-                    <div class="card-title">SO<sub>2</sub>的测定及治理</div>
-                </a>
-                <a href="./topics/19.html" class="topic-card">
-                    <div class="card-type ">第19讲</div>
-                    <div class="card-title">硫及其化合物的相互转化</div>
-                </a>
-                <a href="./topics/rd-06.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化6</div>
-                    <div class="card-title">陌生含硫化合物的制备</div>
-                </a>
-                <a href="./topics/20.html" class="topic-card">
-                    <div class="card-type ">第20讲</div>
-                    <div class="card-title">氮及其氧化物 硝酸</div>
-                </a>
-                <a href="./topics/21.html" class="topic-card">
-                    <div class="card-type ">第21讲</div>
-                    <div class="card-title">氨 铵盐</div>
-                </a>
-                <a href="./topics/rd-07.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化7</div>
-                    <div class="card-title">氮及其化合物转化关系的应用</div>
-                </a>
-                <a href="./topics/22.html" class="topic-card">
-                    <div class="card-type ">第22讲</div>
-                    <div class="card-title">碳、硅 无机非金属材料</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-        <section class="unit-section" id="大单元三">
-            <div class="unit-header" style="--unit-color: #8b5cf6">
-                <div class="unit-icon">03</div>
-                <div class="unit-info">
-                    <h2 class="unit-name">大单元三</h2>
-                    <p class="unit-title">物质结构与性质 元素周期律</p>
-                </div>
-                <div class="unit-count">21个考点</div>
-            </div>
-            <div class="unit-content">
-                
-            <div class="chapter">
-                <div class="chapter-title">第六章 化学与可持续发展</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/23.html" class="topic-card">
-                    <div class="card-type ">第23讲</div>
-                    <div class="card-title">化学与STSE 化学与中华文明</div>
-                </a>
-                <a href="./topics/24.html" class="topic-card">
-                    <div class="card-type ">第24讲</div>
-                    <div class="card-title">常见气体的实验室制备</div>
-                </a>
-                <a href="./topics/jc-01.html" class="topic-card">
-                    <div class="card-type tag-extend">教材延伸1</div>
-                    <div class="card-title">Be、Sn、Pb、Cr、V等金属元素及其化合物</div>
-                </a>
-                <a href="./topics/jc-02.html" class="topic-card">
-                    <div class="card-type tag-extend">教材延伸2</div>
-                    <div class="card-title">Sc、Ti、Pd、As、B等非金属元素及其化合物</div>
-                </a>
-                <a href="./topics/zt-02.html" class="topic-card">
-                    <div class="card-type tag-special">专项突破2</div>
-                    <div class="card-title">常见无机物的转化关系及应用</div>
-                </a>
-                <a href="./topics/zt-03.html" class="topic-card">
-                    <div class="card-type tag-special">专项突破3</div>
-                    <div class="card-title">劳动项目与化学知识</div>
-                </a>
-                <a href="./topics/zt-04.html" class="topic-card">
-                    <div class="card-type tag-special">专项突破4</div>
-                    <div class="card-title">陈述Ⅰ和陈述Ⅱ因果关系判断</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第七章 原子结构与性质</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/25.html" class="topic-card">
-                    <div class="card-type ">第25讲</div>
-                    <div class="card-title">原子结构 核外电子排布规律</div>
-                </a>
-                <a href="./topics/26.html" class="topic-card">
-                    <div class="card-type ">第26讲</div>
-                    <div class="card-title">元素周期表 元素的性质</div>
-                </a>
-                <a href="./topics/df-03.html" class="topic-card">
-                    <div class="card-type tag-answer">答题规范3</div>
-                    <div class="card-title">电离能大小比较</div>
-                </a>
-                <a href="./topics/zt-05.html" class="topic-card">
-                    <div class="card-type tag-special">专项突破5</div>
-                    <div class="card-title">元素综合推断</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第八章 分子结构与性质</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/27.html" class="topic-card">
-                    <div class="card-type ">第27讲</div>
-                    <div class="card-title">化学键及分类</div>
-                </a>
-                <a href="./topics/28.html" class="topic-card">
-                    <div class="card-type ">第28讲</div>
-                    <div class="card-title">价层电子对互斥模型 杂化轨道理论</div>
-                </a>
-                <a href="./topics/rd-08.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化8</div>
-                    <div class="card-title">键角大小比较的两种模型</div>
-                </a>
-                <a href="./topics/tz-01.html" class="topic-card">
-                    <div class="card-type tag-extend">拓展延伸9</div>
-                    <div class="card-title">等电子原理 大π键</div>
-                </a>
-                <a href="./topics/29.html" class="topic-card">
-                    <div class="card-type ">第29讲</div>
-                    <div class="card-title">分子的性质 配位键与超分子</div>
-                </a>
-                <a href="./topics/zt-06.html" class="topic-card">
-                    <div class="card-type tag-special">专项突破6</div>
-                    <div class="card-title">元素综合推断选择排除</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第九章 晶体结构与性质</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/30.html" class="topic-card">
-                    <div class="card-type ">第30讲</div>
-                    <div class="card-title">晶体的聚集状态 常见晶体类型</div>
-                </a>
-                <a href="./topics/df-04.html" class="topic-card">
-                    <div class="card-type tag-answer">答题规范4</div>
-                    <div class="card-title">晶体熔、沸点比较及归因分析</div>
-                </a>
-                <a href="./topics/31.html" class="topic-card">
-                    <div class="card-type ">第31讲</div>
-                    <div class="card-title">晶胞中粒子数及晶胞参数计算</div>
-                </a>
-                <a href="./topics/zt-07.html" class="topic-card">
-                    <div class="card-type tag-special">专项突破7</div>
-                    <div class="card-title">物质结构与性质原理填空词</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-        <section class="unit-section" id="大单元四">
-            <div class="unit-header" style="--unit-color: #ef4444">
-                <div class="unit-icon">04</div>
-                <div class="unit-info">
-                    <h2 class="unit-name">大单元四</h2>
-                    <p class="unit-title">化学反应原理</p>
-                </div>
-                <div class="unit-count">16个考点</div>
-            </div>
-            <div class="unit-content">
-                
-            <div class="chapter">
-                <div class="chapter-title">第十章 化学反应与能量转化</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/32.html" class="topic-card">
-                    <div class="card-type ">第32讲</div>
-                    <div class="card-title">反应热 热化学方程式</div>
-                </a>
-                <a href="./topics/33.html" class="topic-card">
-                    <div class="card-type ">第33讲</div>
-                    <div class="card-title">盖斯定律及应用</div>
-                </a>
-                <a href="./topics/34.html" class="topic-card">
-                    <div class="card-type ">第34讲</div>
-                    <div class="card-title">原电池 常见化学电源</div>
-                </a>
-                <a href="./topics/rd-09.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化9</div>
-                    <div class="card-title">新型化学电源变式实验</div>
-                </a>
-                <a href="./topics/35.html" class="topic-card">
-                    <div class="card-type ">第35讲</div>
-                    <div class="card-title">电解原理及其应用</div>
-                </a>
-                <a href="./topics/rd-10.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化10</div>
-                    <div class="card-title">电解原理的创新应用</div>
-                </a>
-                <a href="./topics/36.html" class="topic-card">
-                    <div class="card-type ">第36讲</div>
-                    <div class="card-title">多池、多室电化学装置</div>
-                </a>
-                <a href="./topics/37.html" class="topic-card">
-                    <div class="card-type ">第37讲</div>
-                    <div class="card-title">金属的腐蚀与防护</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第十一章 化学反应速率与化学平衡</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/38.html" class="topic-card">
-                    <div class="card-type ">第38讲</div>
-                    <div class="card-title">化学反应速率及影响因素</div>
-                </a>
-                <a href="./topics/39.html" class="topic-card">
-                    <div class="card-type ">第39讲</div>
-                    <div class="card-title">外因对化学反应速率影响的理论解释</div>
-                </a>
-                <a href="./topics/40.html" class="topic-card">
-                    <div class="card-type ">第40讲</div>
-                    <div class="card-title">化学平衡状态与化学平衡常数</div>
-                </a>
-                <a href="./topics/41.html" class="topic-card">
-                    <div class="card-type ">第41讲</div>
-                    <div class="card-title">化学平衡常数与平衡转化率的相关计算</div>
-                </a>
-                <a href="./topics/nd-03.html" class="topic-card">
-                    <div class="card-type tag-hard">难点突破3</div>
-                    <div class="card-title">多平衡体系中平衡常数的计算</div>
-                </a>
-                <a href="./topics/42.html" class="topic-card">
-                    <div class="card-type ">第42讲</div>
-                    <div class="card-title">影响化学平衡的因素</div>
-                </a>
-                <a href="./topics/nd-04.html" class="topic-card">
-                    <div class="card-type tag-hard">难点突破4</div>
-                    <div class="card-title">化学反应速率和化学平衡常规图像</div>
-                </a>
-                <a href="./topics/43.html" class="topic-card">
-                    <div class="card-type ">第43讲</div>
-                    <div class="card-title">化学反应的方向与调控</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-        <section class="unit-section" id="大单元五">
-            <div class="unit-header" style="--unit-color: #10b981">
-                <div class="unit-icon">05</div>
-                <div class="unit-info">
-                    <h2 class="unit-name">大单元五</h2>
-                    <p class="unit-title">有机化学基础</p>
-                </div>
-                <div class="unit-count">23个考点</div>
-            </div>
-            <div class="unit-content">
-                
-            <div class="chapter">
-                <div class="chapter-title">第十二章 水溶液中的离子反应与平衡</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/44.html" class="topic-card">
-                    <div class="card-type ">第44讲</div>
-                    <div class="card-title">弱电解质的电离平衡</div>
-                </a>
-                <a href="./topics/45.html" class="topic-card">
-                    <div class="card-type ">第45讲</div>
-                    <div class="card-title">水的电离和溶液的pH</div>
-                </a>
-                <a href="./topics/nd-05.html" class="topic-card">
-                    <div class="card-type tag-hard">难点突破5</div>
-                    <div class="card-title">强酸(碱)与弱酸(碱)比较问题</div>
-                </a>
-                <a href="./topics/46.html" class="topic-card">
-                    <div class="card-type ">第46讲</div>
-                    <div class="card-title">酸碱中和滴定拓展应用</div>
-                </a>
-                <a href="./topics/df-05.html" class="topic-card">
-                    <div class="card-type tag-answer">答题规范5</div>
-                    <div class="card-title">滴定终点判断</div>
-                </a>
-                <a href="./topics/47.html" class="topic-card">
-                    <div class="card-type ">第47讲</div>
-                    <div class="card-title">盐类的水解及影响因素</div>
-                </a>
-                <a href="./topics/48.html" class="topic-card">
-                    <div class="card-type ">第48讲</div>
-                    <div class="card-title">溶液中三大守恒 水解常数及应用</div>
-                </a>
-                <a href="./topics/49.html" class="topic-card">
-                    <div class="card-type ">第49讲</div>
-                    <div class="card-title">沉淀溶解平衡及应用</div>
-                </a>
-                <a href="./topics/nd-06.html" class="topic-card">
-                    <div class="card-type tag-hard">难点突破6</div>
-                    <div class="card-title">溶液中粒子平衡的常见类型及应用</div>
-                </a>
-                <a href="./topics/50.html" class="topic-card">
-                    <div class="card-type ">第50讲</div>
-                    <div class="card-title">液相平衡体系的综合分析</div>
-                </a>
-                <a href="./topics/51.html" class="topic-card">
-                    <div class="card-type ">第51讲</div>
-                    <div class="card-title">无机化工流程题的解题策略(一)</div>
-                </a>
-                <a href="./topics/52.html" class="topic-card">
-                    <div class="card-type ">第52讲</div>
-                    <div class="card-title">无机化工流程题的解题策略(二)</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第十三章 有机化合物的结构 烃</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/53.html" class="topic-card">
-                    <div class="card-type ">第53讲</div>
-                    <div class="card-title">有机化合物的分类、命名及研究方法</div>
-                </a>
-                <a href="./topics/54.html" class="topic-card">
-                    <div class="card-type ">第54讲</div>
-                    <div class="card-title">有机化合物的空间结构 同系物 同分异构体</div>
-                </a>
-                <a href="./topics/55.html" class="topic-card">
-                    <div class="card-type ">第55讲</div>
-                    <div class="card-title">烃 化石燃料</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第十四章 烃的衍生物</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/56.html" class="topic-card">
-                    <div class="card-type ">第56讲</div>
-                    <div class="card-title">卤代烃 醇 酚</div>
-                </a>
-                <a href="./topics/57.html" class="topic-card">
-                    <div class="card-type ">第57讲</div>
-                    <div class="card-title">醛 酮</div>
-                </a>
-                <a href="./topics/58.html" class="topic-card">
-                    <div class="card-type ">第58讲</div>
-                    <div class="card-title">羧酸 酯 酰胺</div>
-                </a>
-                <a href="./topics/59.html" class="topic-card">
-                    <div class="card-type ">第59讲</div>
-                    <div class="card-title">生物大分子 合成高分子</div>
-                </a>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="chapter-title">第十五章 有机化合物的综合应用</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/60.html" class="topic-card">
-                    <div class="card-type ">第60讲</div>
-                    <div class="card-title">官能团与有机物的性质 有机反应类型</div>
-                </a>
-                <a href="./topics/61.html" class="topic-card">
-                    <div class="card-type ">第61讲</div>
-                    <div class="card-title">限定条件下有机物的同分异构体</div>
-                </a>
-                <a href="./topics/62.html" class="topic-card">
-                    <div class="card-type ">第62讲</div>
-                    <div class="card-title">有机合成与有机合成路线的设计</div>
-                </a>
-                <a href="./topics/63.html" class="topic-card">
-                    <div class="card-type ">第63讲</div>
-                    <div class="card-title">有机化学综合大题突破</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-        <section class="unit-section" id="大单元六">
-            <div class="unit-header" style="--unit-color: #f59e0b">
-                <div class="unit-icon">06</div>
-                <div class="unit-info">
-                    <h2 class="unit-name">大单元六</h2>
-                    <p class="unit-title">化学实验综合应用</p>
-                </div>
-                <div class="unit-count">5个考点</div>
-            </div>
-            <div class="unit-content">
-                
-            <div class="chapter">
-                <div class="chapter-title">第十六章 化学实验综合应用</div>
-                <div class="cards-grid">
-                    
-                <a href="./topics/64.html" class="topic-card">
-                    <div class="card-type ">第64讲</div>
-                    <div class="card-title">简单实验方案的设计与评价</div>
-                </a>
-                <a href="./topics/rd-11.html" class="topic-card">
-                    <div class="card-type tag-hot">热点强化11</div>
-                    <div class="card-title">创新型微探究实验</div>
-                </a>
-                <a href="./topics/65.html" class="topic-card">
-                    <div class="card-type ">第65讲</div>
-                    <div class="card-title">以定量测定为主的综合实验</div>
-                </a>
-                <a href="./topics/66.html" class="topic-card">
-                    <div class="card-type ">第66讲</div>
-                    <div class="card-title">以反应原理、物质性质探究为主的综合实验</div>
-                </a>
-                <a href="./topics/67.html" class="topic-card">
-                    <div class="card-type ">第67讲</div>
-                    <div class="card-title">以物质制备为主的综合实验</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-    </main>
-    </div><!-- /tab-review -->
+<div class="footer">炼金试炼 · 化学不难学 | 坚持修炼，终成炼金大师 ⚗️</div>
 
-    <!-- ====== Tab 2: 试题选讲 ====== -->
-    <div id="tab-exam" class="tab-content">
-        <div class="exam-hero">
-            <div class="exam-hero-title">🗼 试炼之塔</div>
-            <div class="exam-hero-desc">精选高考真题 · 分类逐题精讲 · 陷阱全面拆解 · 高效提分</div>
-        </div>
+</div>
 
-        <div class="module-container">
-            <div class="module-grid">
-                <a href="./exams/xz.html" class="module-card" style="--mod-color: #3b82f6">
-                    <div class="module-icon">🔘</div>
-                    <div class="module-info">
-                        <div class="module-name">选择题训练场</div>
-                        <div class="module-desc">高考选择题15类专题精讲，逐题突破</div>
-                    </div>
-                    <div class="module-count">15个专题</div>
-                </a>
+<script>
+(function(){
+  /* bg particles */
+  var pContainer=document.getElementById('bgParts');
+  for(var i=0;i<30;i++){
+    var p=document.createElement('div');p.className='p';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDelay=Math.random()*6+'s';
+    p.style.animationDuration=(4+Math.random()*8)+'s';
+    pContainer.appendChild(p);
+  }
 
-                <a href="./exams/sy.html" class="module-card" style="--mod-color: #10b981">
-                    <div class="module-icon">🧪</div>
-                    <div class="module-info">
-                        <div class="module-name">实验题训练场</div>
-                        <div class="module-desc">实验综合题深度解析与突破</div>
-                    </div>
-                    <div class="module-status">敬请期待</div>
-                </a>
+  var G = HXBNX_GAME;
+  var courseIcons = {1:'🧪',2:'⚡',3:'📜',4:'🔥',5:'💎'};
+  var tierNames = {bronze:'铜牌关',silver:'银牌关',gold:'金牌关'};
+  var tierMedals = {bronze:'🟤',silver:'⚪',gold:'🟡'};
+  var tierMedalClass = {bronze:'bronze-m',silver:'silver-m',gold:'gold-m'};
 
-                <a href="./exams/hg.html" class="module-card" style="--mod-color: #f59e0b">
-                    <div class="module-icon">🏭</div>
-                    <div class="module-info">
-                        <div class="module-name">化工题训练场</div>
-                        <div class="module-desc">无机化工流程题解题策略</div>
-                    </div>
-                    <div class="module-status">敬请期待</div>
-                </a>
+  // Load quest registry
+  fetch('data/quests.json').then(function(r){return r.json()}).then(function(reg){
+    var s = JSON.parse(localStorage.getItem('hxbnx_game_v2') || '{}');
+    var cleared = s.clearedQuests || [];
+    var score = s.score || 0;
+    var questBadges = s.questBadges || {};
+    var badgeCount = Object.keys(questBadges).length;
 
-                <a href="./exams/yl.html" class="module-card" style="--mod-color: #8b5cf6">
-                    <div class="module-icon">⚗️</div>
-                    <div class="module-info">
-                        <div class="module-name">原理题训练场</div>
-                        <div class="module-desc">化学反应原理综合大题精讲</div>
-                    </div>
-                    <div class="module-status">敬请期待</div>
-                </a>
+    document.getElementById('totalScore').textContent = score;
+    document.getElementById('clearedCount').textContent = cleared.length;
+    document.getElementById('badgeCount').textContent = badgeCount;
 
-                <a href="./exams/yj.html" class="module-card" style="--mod-color: #ec4899">
-                    <div class="module-icon">🧬</div>
-                    <div class="module-info">
-                        <div class="module-name">有机题训练场</div>
-                        <div class="module-desc">有机化学综合大题突破</div>
-                    </div>
-                    <div class="module-status">敬请期待</div>
-                </a>
+    // Separate main vs side
+    var mainQuests = {};
+    var sideQuests = [];
 
-                <a href="./exams/mn.html" class="module-card" style="--mod-color: #ef4444">
-                    <div class="module-icon">📋</div>
-                    <div class="module-info">
-                        <div class="module-name">模拟题训练场</div>
-                        <div class="module-desc">模拟试卷精选与精讲</div>
-                    </div>
-                    <div class="module-status">敬请期待</div>
-                </a>
-            </div>
-        </div>
-    </div>
+    // Main quests from reg.quests
+    for (var qid in reg.quests) {
+      if (!reg.quests.hasOwnProperty(qid)) continue;
+      var q = reg.quests[qid];
+      if (q.type === 'main') {
+        if (!mainQuests[q.course]) mainQuests[q.course] = {};
+        mainQuests[q.course][q.tier] = { questId: qid, def: q };
+      }
+    }
 
-    <footer class="footer">
-        <p>炼金主城 · 高三化学备考</p>
-        <p style="margin-top:8px;opacity:0.7;">内容持续更新中，建议收藏本页以便随时练功</p>
-        <p style="margin-top:12px;font-size:12px;color:#94a3b8;">© gzgouyongqiang@dingtalk.com</p>
-    </footer>
+    // Side quests from reg.sideQuests
+    if (reg.sideQuests) {
+      for (var sqid in reg.sideQuests) {
+        if (!reg.sideQuests.hasOwnProperty(sqid)) continue;
+        sideQuests.push({ questId: sqid, def: reg.sideQuests[sqid] });
+      }
+    }
 
-    <script src="./assets/game.js"></script>
-    <script>
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', (tab === 'review' && i === 0) || (tab === 'exam' && i === 1));
-            });
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-' + tab).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Render main quests
+    var mainHtml = '';
+    var totalCleared = 0;
+    for (var course = 1; course <= 5; course++) {
+      var cm = reg.courses[course] || {};
+      var icon = courseIcons[course] || '📚';
+      var clearedThisCourse = 0;
+
+      mainHtml += '<div class="course-section"><div class="course-header">';
+      mainHtml += '<div class="course-icon">' + icon + '</div>';
+      mainHtml += '<div class="course-info">';
+      mainHtml += '<div class="course-name">第' + course + '课时 · ' + (cm.title || '待定') + '</div>';
+      mainHtml += '<div class="course-desc">' + (cm.subtitle || '') + '</div>';
+      mainHtml += '</div></div><div class="level-row">';
+
+      var tiers = ['bronze', 'silver', 'gold'];
+      for (var ti = 0; ti < tiers.length; ti++) {
+        var tier = tiers[ti];
+        var qid = 'main-' + course + '-' + tier;
+        var isCleared = cleared.indexOf(qid) >= 0;
+        var isUnlocked = (ti === 0) || cleared.indexOf('main-' + course + '-' + tiers[ti-1]) >= 0;
+        var points = tier === 'bronze' ? 10 : tier === 'silver' ? 50 : 100;
+
+        if (isCleared) {
+          clearedThisCourse++;
+          totalCleared++;
         }
 
-        // 导入存档
-        function handleImport(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = e => HXBNX_GAME.importSave(e.target.result);
-            reader.readAsText(file);
-            input.value = '';
-        }
+        var cardClass = tier + (isUnlocked ? '' : ' locked');
+        var medalClass = isUnlocked ? tierMedalClass[tier] : 'locked-m';
+        var statusClass = isCleared ? 'cleared' : 'waiting';
+        var statusText = isCleared ? '✓ 已通关' : (isUnlocked ? '待挑战' : '待解锁');
 
-        // 初始化游戏化面板
-        function initGameUI() {
-            HXBNX_GAME.renderProgressBar('#game-progress-bar');
-            const status = HXBNX_GAME.getStatus();
-            const s = status.state;
+        mainHtml += '<a href="level.html?q=' + qid + '" class="level-card ' + cardClass + '" data-qid="' + qid + '">';
+        mainHtml += '<div class="level-medal ' + medalClass + '">' + tierMedals[tier] + '</div>';
+        mainHtml += '<div class="level-tier">' + tierNames[tier] + '</div>';
+        mainHtml += '<div class="level-points">通关 +' + points + ' 积分</div>';
+        mainHtml += '<div class="level-status ' + statusClass + '">' + statusText + '</div>';
+        mainHtml += '</a>';
+      }
+      mainHtml += '</div></div>';
+    }
 
-            // 数字更新
-            document.getElementById('stat-topics').textContent = status.completedCount;
-            document.getElementById('stat-streak').textContent = status.currentStreak;
-            document.getElementById('stat-ach').textContent = status.achievementsCount;
-            document.getElementById('stat-exams').textContent = s.viewedExams || 0;
-            document.getElementById('stat-wrong').textContent = HXBNX_GAME.getWrongCount();
-            document.getElementById('stat-elem').textContent = HXBNX_GAME.getElementCards().length;
+    document.getElementById('mainQuests').innerHTML = mainHtml;
+    document.getElementById('totalLevels').textContent = '15';
+    document.getElementById('clearedCount').textContent = totalCleared;
 
-            // 进度条
-            const topicPct = Math.round(status.completedCount / 67 * 100);
-            document.getElementById('prog-topics').style.width = topicPct + '%';
-            document.getElementById('prog-topics-txt').textContent = status.completedCount + '/67';
+    // Render side quests
+    if (sideQuests.length === 0) return;
 
-            // 近14天打卡日历
-            const calEl = document.getElementById('game-calendar');
-            const today = new Date();
-            const checkinSet = new Set(s.checkinDates || []);
-            let calHTML = '';
-            for (let i = 13; i >= 0; i--) {
-                const d = new Date(today);
-                d.setDate(d.getDate() - i);
-                const ds = d.toISOString().slice(0, 10);
-                const day = d.getDate();
-                const checked = checkinSet.has(ds);
-                const isToday = (i === 0);
-                calHTML += `<div class="game-cal-day ${checked ? 'checked' : ''} ${isToday ? 'today' : ''}" title="${ds}">${day}</div>`;
-            }
-            calEl.innerHTML = calHTML;
+    var activeQuests = [];
+    var boardQuests = [];
+    for (var si = 0; si < sideQuests.length; si++) {
+      var sq = sideQuests[si];
+      var state = calcSideState(sq, cleared, new Date());
+      if (state === 'unlocked' || state === 'cleared' || state === 'in_progress') {
+        activeQuests.push({ questId: sq.questId, def: sq.def, state: state });
+      } else {
+        boardQuests.push({ questId: sq.questId, def: sq.def, state: state });
+      }
+    }
 
-            // 给已通关的卡片加标记 + 锁门逻辑
-            document.querySelectorAll('.topic-card').forEach(card => {
-                const href = card.getAttribute('href');
-                if (!href) return;
-                const filename = href.split('/').pop();
+    var sideHtml = '';
 
-                // 提取编号（只处理 NN.html 格式的正课练功房）
-                const numMatch = filename.match(/^(\d+)\.html$/);
-                const topicNum = numMatch ? parseInt(numMatch[1]) : null;
+    // Active side quests
+    if (activeQuests.length > 0) {
+      sideHtml += '<div class="side-section"><h2>📜 分支副本</h2><div class="side-board">';
+      for (var ai = 0; ai < activeQuests.length; ai++) {
+        var aq = activeQuests[ai];
+        sideHtml += renderSideCard(aq.questId, aq.def, aq.state);
+      }
+      sideHtml += '</div></div>';
+    }
 
-                // 锁门：非01且前一个练功房未通关
-                if (topicNum !== null && !HXBNX_GAME.canAccessTopic(topicNum)) {
-                    card.classList.add('locked');
-                    card.removeAttribute('href');  // 禁用链接
-                    card.style.cursor = 'default';
-                    card.title = '需要先通关前一练功房';
-                    const titleEl = card.querySelector('.card-title');
-                    if (titleEl && !titleEl.querySelector('.lock-badge')) {
-                        const badge = document.createElement('span');
-                        badge.className = 'lock-badge';
-                        badge.textContent = '🔒 未解锁';
-                        titleEl.appendChild(badge);
-                    }
-                    return; // 已锁的卡片跳过通关标记
-                }
+    // Board quests (locked/expired/hidden)
+    if (boardQuests.length > 0) {
+      sideHtml += '<div class="board-section"><details><summary>📋 悬赏任务板 (' + boardQuests.length + ')</summary><div class="board-hidden">';
+      for (var bi = 0; bi < boardQuests.length; bi++) {
+        var bq = boardQuests[bi];
+        sideHtml += renderSideCard(bq.questId, bq.def, bq.state);
+      }
+      sideHtml += '</div></details></div>';
+    }
 
-                // 已通关标记
-                if (HXBNX_GAME.isCompleted(filename)) {
-                    card.style.opacity = '0.75';
-                    const titleEl = card.querySelector('.card-title');
-                    if (titleEl && !titleEl.querySelector('.done-badge')) {
-                        const badge = document.createElement('span');
-                        badge.className = 'done-badge';
-                        badge.style.cssText = 'display:inline-block;font-size:10px;background:#10b981;color:#fff;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;';
-                        badge.textContent = '✓';
-                        titleEl.appendChild(badge);
-                    }
-                }
-            });
+    document.getElementById('sideSection').innerHTML = sideHtml;
+  }).catch(function(err){
+    document.getElementById('mainQuests').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-dim)">加载关卡数据失败: ' + err.message + '</div>';
+  });
 
-            // 更新通关计数（包含 quizResults 中有 exp>0 的）
-            var s2 = HXBNX_GAME.getStatus().state;
-            var quizPassed = 0;
-            if (s2.quizResults) {
-                for (var k in s2.quizResults) {
-                    if (s2.quizResults[k].exp > 0) quizPassed++;
-                }
-            }
-            var totalDone = Math.max(status.completedCount, quizPassed);
-            document.getElementById('stat-topics').textContent = totalDone;
-            var topicPct2 = Math.round(totalDone / 67 * 100);
-            document.getElementById('prog-topics').style.width = topicPct2 + '%';
-            document.getElementById('prog-topics-txt').textContent = totalDone + '/67';
-        }
+  function calcSideState(sq, cleared, now) {
+    var qid = sq.questId, def = sq.def;
+    if (def.validUntil && new Date(def.validUntil) < now) return 'expired';
+    if (cleared.indexOf(qid) >= 0) return 'cleared';
+    if (def.unlock) {
+      var u = def.unlock;
+      if (u.minCourse !== undefined && u.minTier !== undefined) {
+        var prereq = 'main-' + u.minCourse + '-' + u.minTier;
+        if (cleared.indexOf(prereq) < 0) return 'locked';
+      }
+      if (u.triggerAchievement) return 'locked'; // Simplified
+    }
+    return 'unlocked';
+  }
 
-        document.addEventListener('DOMContentLoaded', initGameUI);
-    </script>
+  function renderSideCard(qid, def, state) {
+    var isLocked = (state === 'locked' || state === 'expired');
+    var cls = 'side-card';
+    var badgeCls = '';
+    var badgeText = '';
+    if (state === 'unlocked') { cls += ''; badgeCls = 'urgent'; badgeText = 'NEW'; }
+    else if (state === 'cleared') { cls += ''; badgeCls = 'done'; badgeText = '✓'; }
+    else if (state === 'expired') { cls += ' expired-side'; badgeCls = 'locked-tag'; badgeText = '已过期'; }
+    else { cls += ' locked-side'; badgeCls = 'locked-tag'; badgeText = '未解锁'; }
+
+    var icon = (def.theme && def.theme.icon) || '📜';
+    var href = isLocked ? 'javascript:void(0)' : 'level.html?q=' + qid;
+    var title = state === 'expired' ? (def.title + ' (已过期)') : def.title;
+
+    var h = '<a href="' + href + '" class="' + cls + '" data-qid="' + qid + '">';
+    if (badgeText) h += '<div class="side-card-badge ' + badgeCls + '">' + badgeText + '</div>';
+    h += '<div class="side-card-header"><span class="side-card-icon">' + icon + '</span>';
+    h += '<span class="side-card-title">' + title + '</span></div>';
+    h += '<div class="side-card-sub">' + (def.subtitle || '') + '</div>';
+    h += '<div class="side-card-reward">⭐ ' + (def.baseScore || 0) + ' 积分' + (def.xpMultiplier ? ' (+' + Math.round((def.xpMultiplier-1)*100) + '% XP)' : '') + '</div>';
+
+    if (def.validUntil && state !== 'expired') {
+      var days = Math.ceil((new Date(def.validUntil) - new Date()) / 86400000);
+      if (days > 0) h += '<div style="font-size:11px;color:#e94560;margin-top:4px">⏳ 剩余 ' + days + ' 天</div>';
+    }
+    if (def.unlock && state === 'locked') {
+      h += '<div style="font-size:11px;color:var(--text-dim);margin-top:4px">🔒 </div>';
+    }
+    h += '</a>';
+    return h;
+  }
+})();
+</script>
+
 </body>
 </html>

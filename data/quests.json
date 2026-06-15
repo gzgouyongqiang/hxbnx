@@ -1,0 +1,218 @@
+{
+  "version": 2,
+  "description": "quest registry  mission map  all quests listed here automatically rendered on index.html",
+
+  "quests": {
+    "main-1-bronze": {
+      "type": "main",
+      "course": 1,
+      "tier": "bronze",
+      "title": "1",
+      "subtitle": "",
+      "prevQuest": null,
+      "nextQuest": "main-1-silver",
+      "baseScore": 10,
+      "badgeTriggers": ["first_clear", "speed_120s", "zero_error", "first_card"],
+      "contentFile": "data/levels/main-1-bronze.json"
+    },
+
+    "main-1-silver": {
+      "type": "main",
+      "course": 1,
+      "tier": "silver",
+      "title": "1",
+      "subtitle": "",
+      "prevQuest": "main-1-bronze",
+      "nextQuest": "main-1-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-1-silver.json"
+    },
+
+    "main-1-gold": {
+      "type": "main",
+      "course": 1,
+      "tier": "gold",
+      "title": "1",
+      "subtitle": "",
+      "prevQuest": "main-1-silver",
+      "nextQuest": "main-2-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-1-gold.json"
+    },
+
+    "main-2-bronze": {
+      "type": "main",
+      "course": 2,
+      "tier": "bronze",
+      "title": "2",
+      "subtitle": "",
+      "prevQuest": "main-1-gold",
+      "nextQuest": "main-2-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-2-silver": {
+      "type": "main",
+      "course": 2,
+      "tier": "silver",
+      "title": "2",
+      "subtitle": "",
+      "prevQuest": "main-2-bronze",
+      "nextQuest": "main-2-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-2-gold": {
+      "type": "main",
+      "course": 2,
+      "tier": "gold",
+      "title": "2",
+      "subtitle": "",
+      "prevQuest": "main-2-silver",
+      "nextQuest": "main-3-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+
+    "main-3-bronze": {
+      "type": "main",
+      "course": 3,
+      "tier": "bronze",
+      "title": "3",
+      "subtitle": "",
+      "prevQuest": "main-2-gold",
+      "nextQuest": "main-3-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-3-silver": {
+      "type": "main",
+      "course": 3,
+      "tier": "silver",
+      "title": "3",
+      "subtitle": "",
+      "prevQuest": "main-3-bronze",
+      "nextQuest": "main-3-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-3-gold": {
+      "type": "main",
+      "course": 3,
+      "tier": "gold",
+      "title": "3",
+      "subtitle": "",
+      "prevQuest": "main-3-silver",
+      "nextQuest": "main-4-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+
+    "main-4-bronze": {
+      "type": "main",
+      "course": 4,
+      "tier": "bronze",
+      "title": "4",
+      "subtitle": "",
+      "prevQuest": "main-3-gold",
+      "nextQuest": "main-4-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-4-silver": {
+      "type": "main",
+      "course": 4,
+      "tier": "silver",
+      "title": "4",
+      "subtitle": "",
+      "prevQuest": "main-4-bronze",
+      "nextQuest": "main-4-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-4-gold": {
+      "type": "main",
+      "course": 4,
+      "tier": "gold",
+      "title": "4",
+      "subtitle": "",
+      "prevQuest": "main-4-silver",
+      "nextQuest": "main-5-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+
+    "main-5-bronze": {
+      "type": "main",
+      "course": 5,
+      "tier": "bronze",
+      "title": "5",
+      "subtitle": "",
+      "prevQuest": "main-4-gold",
+      "nextQuest": "main-5-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-5-silver": {
+      "type": "main",
+      "course": 5,
+      "tier": "silver",
+      "title": "5",
+      "subtitle": "",
+      "prevQuest": "main-5-bronze",
+      "nextQuest": "main-5-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": null
+    },
+    "main-5-gold": {
+      "type": "main",
+      "course": 5,
+      "tier": "gold",
+      "title": "5",
+      "subtitle": "",
+      "prevQuest": "main-5-silver",
+      "nextQuest": null,
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": null
+    }
+  },
+
+  "sideQuests": {
+    "side-exam-2024gd": {
+      "type": "side",
+      "category": "exam",
+      "title": "2024广东高考化学真题挑战",
+      "subtitle": "限时副本 · 30分钟模拟战",
+      "unlock": { "minCourse": 3, "minTier": "silver" },
+      "validFrom": "2026-06-01",
+      "validUntil": "2026-07-10",
+      "baseScore": 200,
+      "xpMultiplier": 1.5,
+      "badgeTriggers": ["exam_warrior"],
+      "theme": { "icon": "📜" },
+      "contentFile": null
+    }
+  },
+
+  "courses": {
+    "1": { "title": "物质的组成、性质和转化", "subtitle": "分散系 · 丁达尔效应 · 电泳 · 胶体" },
+    "2": { "title": "待定", "subtitle": "" },
+    "3": { "title": "待定", "subtitle": "" },
+    "4": { "title": "待定", "subtitle": "" },
+    "5": { "title": "待定", "subtitle": "" }
+  }
+}

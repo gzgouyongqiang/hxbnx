@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>化学不难学 · 练功关卡</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0e17;--card:#1a1a2e;--card2:#16213e;--gold:#f0c040;--gold-dim:#c9a020;--purple:#a78bfa;--green:#6ee7b7;--blue:#67e8f9;--text:#e2e8f0;--text-dim:#94a3b8;--red:#f87171;--border:#2d2d44}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;min-height:100vh}
+.topbar{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:999}
+.topbar a{color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .2s}
+.topbar a:hover{color:var(--gold)}
+.topbar .sep{color:var(--border);font-size:12px}
+.topbar .cur{color:var(--gold);font-weight:600}
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#0f0e17 100%);border-bottom:2px solid var(--gold-dim);padding:40px 24px 32px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(240,192,64,0.05) 0%,transparent 50%),radial-gradient(circle at 70% 50%,rgba(167,139,250,0.05) 0%,transparent 50%);animation:heroGlow 8s ease-in-out infinite alternate;pointer-events:none}
+@keyframes heroGlow{0%{transform:translate(0,0)}100%{transform:translate(-20px,20px)}}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,#f0c040,#c9a020);color:#1a1a2e;font-weight:800;font-size:13px;padding:4px 16px;border-radius:20px;margin-bottom:12px;letter-spacing:1px}
+.hero h1{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;position:relative}
+.hero p{color:var(--text-dim);font-size:15px;position:relative}
+.hero-stats{display:flex;justify-content:center;gap:32px;margin-top:20px;position:relative}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:24px;font-weight:800;color:var(--gold)}
+.hero-stat-label{font-size:12px;color:var(--text-dim);margin-top:2px}
+.container{max-width:800px;margin:0 auto;padding:32px 24px 80px}
+.level-num{text-align:center;font-size:13px;color:var(--text-dim);margin-bottom:6px;letter-spacing:2px}
+.level-title{text-align:center;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:28px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:24px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(240,192,64,0.08)}
+.card-header{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.card-num{width:36px;height:36px;background:linear-gradient(135deg,var(--gold-dim),#a08010);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#1a1a2e;flex-shrink:0}
+.card-header h3{font-size:15px;font-weight:600;color:var(--text);flex:1}
+.card-arrow{color:var(--text-dim);font-size:18px;transition:transform .3s}
+.card.open .card-arrow{transform:rotate(180deg)}
+.card-body{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.card.open .card-body{max-height:5000px;padding:16px 20px}
+.secret{background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(167,139,250,0.08));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 18px;margin-bottom:18px}
+.secret-tag{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:#1a1a2e;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px}
+.symptom{background:rgba(248,113,113,0.06);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:14px 18px;margin-bottom:18px}
+.symptom-tag{display:inline-block;background:linear-gradient(135deg,#f87171,#dc2626);color:white;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px}
+.path{background:rgba(110,231,183,0.06);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:14px 18px;margin-bottom:18px}
+.path-tag{display:inline-block;background:linear-gradient(135deg,#6ee7b7,#34d399);color:#1a1a2e;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px}
+.path-step{background:rgba(110,231,183,0.08);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:14px}
+.path-step-num{display:inline-block;width:22px;height:22px;background:var(--green);color:#1a1a2e;border-radius:50%;font-size:12px;font-weight:700;text-align:center;line-height:22px;margin-right:8px;vertical-align:middle}
+.analogy{background:rgba(103,232,249,0.06);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:14px 18px;margin-bottom:18px}
+.analogy-tag{display:inline-block;background:linear-gradient(135deg,#67e8f9,#22d3ee);color:#1a1a2e;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px}
+.quiz{background:linear-gradient(135deg,rgba(167,139,250,0.1),rgba(240,192,64,0.08));border:1px solid var(--purple);border-radius:12px;padding:16px 18px;margin-top:18px}
+.quiz-tag{display:inline-block;background:linear-gradient(135deg,var(--purple),#7c3aed);color:white;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;margin-bottom:10px;letter-spacing:1px}
+.quiz-q{font-size:14.5px;margin-bottom:12px;font-weight:500}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.quiz-opt{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:14px;cursor:pointer;transition:all .2s}
+.quiz-opt:hover{border-color:var(--purple);background:rgba(167,139,250,0.08)}
+.quiz-opt.correct{border-color:var(--green);background:rgba(110,231,183,0.1)}
+.quiz-opt.wrong{border-color:var(--red);background:rgba(248,113,113,0.1)}
+.quiz-btn{background:linear-gradient(135deg,var(--purple),#7c3aed);color:white;border:none;padding:8px 20px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .2s}
+.quiz-btn:hover{opacity:0.85}
+.quiz-answer{margin-top:12px;font-size:13.5px;display:none}
+.quiz-answer.show{display:block}
+.quiz-answer .explain{color:var(--text-dim);margin-top:6px;font-size:13px;line-height:1.8}
+.cert-section{margin-top:48px;background:linear-gradient(135deg,#1a1a2e,#16213e);border:2px solid var(--gold-dim);border-radius:20px;padding:32px 24px;text-align:center;position:relative;overflow:hidden}
+.cert-section::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 50% 50%,rgba(240,192,64,0.06) 0%,transparent 70%);pointer-events:none}
+.cert-title{font-size:22px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;position:relative}
+.cert-sub{color:var(--text-dim);font-size:13px;margin-bottom:24px;position:relative}
+.badge-row{display:flex;justify-content:center;gap:12px;margin-top:16px;position:relative;flex-wrap:wrap}
+.badge-item{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;transition:all .4s;position:relative;cursor:pointer}
+.badge-earned{background:linear-gradient(135deg,rgba(240,192,64,0.2),rgba(110,231,183,0.15));border:2px solid var(--gold);box-shadow:0 0 16px rgba(240,192,64,0.25);animation:badgeGlow 2s ease-in-out infinite}
+.badge-locked{background:rgba(45,45,68,0.5);border:1.5px dashed var(--border);filter:grayscale(1);opacity:0.4}
+@keyframes badgeGlow{0%,100%{box-shadow:0 0 12px rgba(240,192,64,0.2)}50%{box-shadow:0 0 24px rgba(240,192,64,0.45)}}
+.badge-tip{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text-dim);white-space:nowrap;opacity:0;transition:opacity .3s}
+.badge-item:hover .badge-tip{opacity:1}
+.badge-earned .badge-tip{color:var(--gold)}
+.badge-story-overlay{position:fixed;inset:0;background:rgba(15,14,23,0.94);z-index:10000;display:none;align-items:center;justify-content:center}
+.badge-story-overlay.show{display:flex}
+.badge-story-card{background:linear-gradient(160deg,#1e1b2e,#15132a);border:1.5px solid var(--gold-dim);border-radius:20px;padding:32px 28px;max-width:420px;width:90%;text-align:center;animation:storyPop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes storyPop{0%{transform:scale(0.5);opacity:0}100%{transform:scale(1);opacity:1}}
+.badge-story-icon{font-size:56px;margin-bottom:8px}
+.badge-story-name{font-size:20px;font-weight:800;color:var(--gold);margin-bottom:4px}
+.badge-story-formula{font-size:13px;color:var(--text-dim);margin-bottom:16px}
+.badge-story-text{font-size:14px;color:var(--text);line-height:1.8;text-align:left;margin-bottom:20px}
+.badge-story-from{font-size:11px;color:var(--text-dim);margin-bottom:20px}
+.badge-story-close{display:inline-block;padding:8px 28px;border:1px solid var(--gold-dim);color:var(--gold);border-radius:10px;cursor:pointer;font-size:14px;font-weight:600;transition:all .3s}
+.badge-story-close:hover{background:rgba(240,192,64,0.1);box-shadow:0 0 16px rgba(240,192,64,0.2)}
+.combo-pop{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;z-index:9999;pointer-events:none;transition:transform .15s ease-out;text-align:center;line-height:1.4}
+.gacha-overlay{position:fixed;inset:0;background:rgba(15,14,23,0.92);z-index:9998;display:none;align-items:center;justify-content:center}
+.gacha-overlay.show{display:flex}
+.gacha-card{width:200px;height:280px;perspective:800px;cursor:pointer}
+.gacha-inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.gacha-card.flip .gacha-inner{transform:rotateY(180deg)}
+.gacha-face,.gacha-back{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gacha-face{background:linear-gradient(135deg,#1a1a2e,#16213e);border:2px solid var(--gold-dim);font-size:56px}
+.gacha-back{transform:rotateY(180deg);border:2px solid var(--gold);padding:16px}
+.gacha-back.common{background:linear-gradient(135deg,#2d2d3d,#1a1a2e);border-color:#888}
+.gacha-back.rare{background:linear-gradient(135deg,#1a3a5c,#102048);border-color:var(--blue)}
+.gacha-back.epic{background:linear-gradient(135deg,#3d1a4a,#1a1038);border-color:var(--purple);box-shadow:0 0 32px rgba(167,139,250,0.4)}
+.gacha-back.legend{background:linear-gradient(135deg,#4a3510,#2a1a05);border-color:var(--gold);box-shadow:0 0 40px rgba(240,192,64,0.5)}
+.gacha-name{font-size:18px;font-weight:700;margin-bottom:4px}
+.gacha-name.common-name{color:#aaa}
+.gacha-name.rare-name{color:var(--blue)}
+.gacha-name.epic-name{color:var(--purple)}
+.gacha-name.legend-name{color:var(--gold)}
+.gacha-rarity{font-size:12px;padding:2px 10px;border-radius:10px;margin-bottom:12px}
+.gacha-rarity.common{background:#8885;color:#aaa}
+.gacha-rarity.rare{background:rgba(103,232,249,.15);color:var(--blue)}
+.gacha-rarity.epic{background:rgba(167,139,250,.15);color:var(--purple)}
+.gacha-rarity.legend{background:rgba(240,192,64,.15);color:var(--gold)}
+.gacha-msg{font-size:14px;color:var(--text);text-align:center;margin-top:20px}
+.cert-quiz .quiz{background:rgba(0,0,0,0.2);border-color:var(--gold-dim)}
+.nav-bar{display:none;justify-content:center;align-items:center;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.nav-bar.show{display:flex}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .3s}
+.nav-btn.prev{background:var(--card);border:1px solid var(--border);color:var(--text-dim)}
+.nav-btn.prev:hover{color:var(--text);border-color:var(--text-dim)}
+.nav-btn.next{background:linear-gradient(135deg,rgba(110,231,183,0.15),rgba(103,232,249,0.1));border:1.5px solid var(--green);color:var(--green)}
+.nav-btn.next:hover{box-shadow:0 0 20px rgba(110,231,183,0.3);transform:translateY(-2px)}
+.nav-btn.map{background:linear-gradient(135deg,rgba(240,192,64,0.15),rgba(167,139,250,0.1));border:1.5px solid var(--gold);color:var(--gold)}
+.nav-btn.map:hover{box-shadow:0 0 20px rgba(240,192,64,0.3);transform:translateY(-2px)}
+.nav-btn.disabled{opacity:0.3;pointer-events:none;cursor:not-allowed}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:13px;border-top:1px solid var(--border)}
+/* table */
+.data-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+.data-table th{background:rgba(110,231,183,0.1);padding:8px;border:1px solid var(--border);font-weight:600;text-align:center}
+.data-table td{padding:8px;border:1px solid var(--border);text-align:center}
+@media(max-width:600px){.hero h1{font-size:22px}.hero-stats{gap:20px}.hero-stat-num{font-size:20px}.container{padding:24px 16px 60px}}
+</style>
+<script src="assets/game.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html">🏠 炼金主城</a>
+  <span class="sep">›</span>
+  <a href="index.html">关卡地图</a>
+  <span class="sep">›</span>
+  <span class="cur" id="topbarCur">加载中...</span>
+</div>
+
+<!-- Hero -->
+<div class="hero" id="heroSection">
+  <div class="hero-badge" id="heroBadge">🥉 铜牌关卡</div>
+  <h1 id="heroTitle">加载中...</h1>
+  <p id="heroSub">加载中...</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num" id="passedNum">0</div><div class="hero-stat-label">已通关</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="totalStages">0</div><div class="hero-stat-label">总卡点</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="scoreNum">0</div><div class="hero-stat-label">当前积分</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="comboNum" style="color:var(--purple)">0</div><div class="hero-stat-label">当前连击</div></div>
+  </div>
+  <div class="badge-row" id="badgeRow"></div>
+</div>
+
+<!-- COMBO popup -->
+<div class="combo-pop" id="comboPop"></div>
+
+<!-- Gacha overlay -->
+<div class="gacha-overlay" id="gachaOverlay">
+  <div style="text-align:center">
+    <div class="gacha-card" id="gachaCard">
+      <div class="gacha-inner">
+        <div class="gacha-face">⚗️</div>
+        <div class="gacha-back common" id="gachaBack">
+          <span id="gachaSymbol" style="font-size:56px;margin-bottom:8px">🧪</span>
+          <span class="gacha-name common-name" id="gachaName">元素卡</span>
+          <span class="gacha-rarity common" id="gachaRarity">普通</span>
+        </div>
+      </div>
+    </div>
+    <div class="gacha-msg" id="gachaMsg"></div>
+    <button class="quiz-btn" id="gachaClose" style="margin-top:20px;display:none;font-size:14px;padding:10px 28px">🏠 返回</button>
+  </div>
+</div>
+
+<!-- Badge story overlay -->
+<div class="badge-story-overlay" id="badgeStoryOverlay">
+  <div class="badge-story-card">
+    <div class="badge-story-icon" id="badgeStoryIcon"></div>
+    <div class="badge-story-name" id="badgeStoryName"></div>
+    <div class="badge-story-formula" id="badgeStoryFormula"></div>
+    <div class="badge-story-text" id="badgeStoryText"></div>
+    <div class="badge-story-from" id="badgeStoryFrom"></div>
+    <button class="badge-story-close" onclick="document.getElementById('badgeStoryOverlay').classList.remove('show')">✨ 收入囊中</button>
+  </div>
+</div>
+
+<div class="container" id="stageContainer"></div>
+
+<div class="footer">
+  化学不难学 · 炼金术士的修炼场<br>
+  <span style="font-size:11px;color:var(--border)">v2.0 · 考点精析认知路径版</span>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // Parse questId from URL
+  var params = new URLSearchParams(window.location.search);
+  var questId = params.get('q') || 'main-1-bronze';
+  var G = HXBNX_GAME;
+
+  var levelData = null;
+  var questDef = null;
+  var questMeta = null;
+  var allQuests = null;
+  var certCleared = false;
+
+  // Load all data
+  Promise.all([
+    fetch('data/quests.json').then(function(r){return r.json()}),
+    fetch('data/badges.json').then(function(r){return r.json()}),
+    fetch('data/cards.json').then(function(r){return r.json()})
+  ]).then(function(results){
+    allQuests = results[0];
+    var badgeData = results[1];
+    var cardData = results[2];
+
+    G.registerBadgeData(badgeData);
+
+    // Find quest def
+    questDef = allQuests.quests[questId];
+    if (!questDef) {
+      document.getElementById('heroTitle').textContent = '关卡不存在: ' + questId;
+      return;
+    }
+
+    // Find course meta
+    var courseMeta = allQuests.courses[questDef.course] || {title:'未知课时', subtitle:''};
+
+    // Load level content
+    if (questDef.contentFile) {
+      return fetch(questDef.contentFile).then(function(r){return r.json()}).then(function(data){
+        levelData = data;
+        questMeta = data.meta;
+        initRender(courseMeta, badgeData, cardData);
+      });
+    } else {
+      // No content yet - show placeholder
+      questMeta = { title: courseMeta.title, subtitle: '内容制作中...', totalStages: 0, tierLabel: (questDef.tier==='bronze'?'铜牌':questDef.tier==='silver'?'银牌':'金牌') + '关卡', tierEmoji: questDef.tier==='bronze'?'🥉':questDef.tier==='silver'?'🥈':'🥇' };
+      initRender(courseMeta, badgeData, cardData);
+    }
+  }).catch(function(err){
+    document.getElementById('heroTitle').textContent = '加载失败: ' + err.message;
+  });
+
+  function initRender(courseMeta, badgeData, cardData) {
+    var tierEmoji = questMeta ? (questMeta.tierEmoji || '🥉') : (questDef.tier==='bronze'?'🥉':questDef.tier==='silver'?'🥈':'🥇');
+    var tierLabel = questMeta ? (questMeta.tierLabel || '铜牌关卡') : (questDef.tier==='bronze'?'铜牌':questDef.tier==='silver'?'银牌':'金牌') + '关卡';
+    var title = questMeta ? questMeta.title : courseMeta.title;
+    var subtitle = questMeta ? questMeta.subtitle : courseMeta.subtitle;
+    var totalStages = questMeta ? questMeta.totalStages : 0;
+    var activeStages = questMeta ? (questMeta.activeStages || 0) : 0;
+
+    document.title = '第' + questDef.course + '课时 · ' + tierLabel + ' | 化学不难学';
+    document.getElementById('topbarCur').textContent = '第' + questDef.course + '课时 · ' + tierLabel;
+    document.getElementById('heroBadge').textContent = tierEmoji + ' ' + tierLabel;
+    document.getElementById('heroTitle').textContent = '第' + questDef.course + '课时　' + title;
+    document.getElementById('heroSub').textContent = totalStages + '个微卡点 · 逐一突破 · 通关积分 ' + questDef.baseScore + '分';
+    document.getElementById('totalStages').textContent = activeStages || totalStages;
+
+    // Check if already cleared
+    if (G.isQuestCleared(questId)) {
+      document.getElementById('passedNum').textContent = '1';
+      var prog = G.getQuestProgress(questId);
+      if (prog) document.getElementById('scoreNum').textContent = prog.score || 0;
+      certCleared = true;
+    }
+
+    // Register card pool
+    if (cardData && cardData.cards) {
+      G.registerCardPool(cardData.cards);
+    }
+
+    // Start quest
+    G.startQuest(questId);
+
+    // Render badges
+    renderBadges(badgeData);
+
+    // Render stages
+    if (levelData) {
+      renderStages();
+    } else {
+      document.getElementById('stageContainer').innerHTML =
+        '<div style="text-align:center;padding:60px 20px;color:var(--text-dim);font-size:15px;border:1px dashed var(--border);border-radius:16px">' +
+        '🔧 课时内容制作中...<br><span style="font-size:12px;margin-top:8px;display:inline-block">打通当前关卡后自动解锁下一关</span></div>';
+    }
+  }
+
+  function renderBadges(badgeData) {
+    var triggers = questDef.badgeTriggers || [];
+    var row = document.getElementById('badgeRow');
+    row.innerHTML = '';
+
+    for (var i = 0; i < triggers.length; i++) {
+      var bid = triggers[i];
+      var bd = badgeData.badges[bid];
+      if (!bd) continue;
+
+      var s = JSON.parse(localStorage.getItem('hxbnx_game_v2') || '{}');
+      var earned = s.questBadges && s.questBadges[bid];
+      var cls = earned ? 'badge-earned' : 'badge-locked';
+
+      var item = document.createElement('div');
+      item.className = 'badge-item ' + cls;
+      item.setAttribute('data-badge', bid);
+      item.innerHTML = '<span>' + bd.icon + '</span><span class="badge-tip">' + bd.elem + ' ' + bd.formula + '</span>';
+
+      item.addEventListener('click', function(){
+        if (this.classList.contains('badge-earned')) {
+          showBadgeStory(this.getAttribute('data-badge'));
+        }
+      });
+      row.appendChild(item);
+    }
+  }
+
+  function showBadgeStory(badgeId) {
+    var story = G.getBadgeStory(badgeId);
+    if (!story) return;
+    document.getElementById('badgeStoryIcon').textContent = G.getBadgeDef(badgeId).icon;
+    document.getElementById('badgeStoryName').textContent = story.title;
+    document.getElementById('badgeStoryFormula').textContent = G.getBadgeDef(badgeId).formula;
+    document.getElementById('badgeStoryText').innerHTML = story.text;
+    document.getElementById('badgeStoryFrom').textContent = story.source;
+    document.getElementById('badgeStoryOverlay').classList.add('show');
+  }
+
+  function unlockBadgeUI(badgeId) {
+    var el = document.querySelector('.badge-item[data-badge="' + badgeId + '"]');
+    if (!el || el.classList.contains('badge-earned')) return;
+    el.classList.remove('badge-locked');
+    el.classList.add('badge-earned');
+    var rect = el.getBoundingClientRect();
+    G.spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2, 20, ['#f0c040','#6ee7b7','#a78bfa']);
+    setTimeout(function(){ showBadgeStory(badgeId); }, 600);
+  }
+
+  // Render stages from levelData
+  function renderStages() {
+    var container = document.getElementById('stageContainer');
+    var html = '';
+
+    html += '<div class="level-num">─ 第 ' + questDef.course + ' 关 ─</div>';
+    html += '<div class="level-title">🔍 分散系辨析 · 丁达尔效应</div>';
+
+    var stages = levelData.stages || [];
+    for (var si = 0; si < stages.length; si++) {
+      var stage = stages[si];
+
+      if (stage.type === 'placeholder') {
+        html += stage.html;
+        continue;
+      }
+
+      if (stage.type === 'microcard') {
+        html += '<div class="card' + (stage.defaultOpen ? ' open' : '') + '" id="' + stage.stageId + '">';
+        html += '<div class="card-header" onclick="document.getElementById(\'' + stage.stageId + '\').classList.toggle(\'open\')">';
+        html += '<div class="card-num">' + (stage.num < 10 ? '0' : '') + stage.num + '</div>';
+        html += '<h3>' + stage.icon + ' ' + stage.title + '</h3>';
+        html += '<span class="card-arrow">▼</span></div>';
+        html += '<div class="card-body">';
+
+        var blocks = stage.blocks || [];
+        for (var bi = 0; bi < blocks.length; bi++) {
+          var b = blocks[bi];
+          html += renderBlock(b, stage.stageId + '-b' + bi);
+        }
+
+        html += '</div></div>';
+      }
+    }
+
+    // Cert section
+    html += renderCertSection();
+
+    container.innerHTML = html;
+
+    // Bind quiz option clicks
+    var opts = document.querySelectorAll('.quiz-opt');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener('click', handleQuizOptClick);
+    }
+
+    // Bind pass button
+    var passBtn = document.getElementById('passBtn');
+    if (passBtn) passBtn.addEventListener('click', handlePassLevel);
+
+    // Bind gacha close
+    var gachaClose = document.getElementById('gachaClose');
+    if (gachaClose) gachaClose.addEventListener('click', closeGacha);
+
+    // Bind gacha card click
+    var gachaCard = document.getElementById('gachaCard');
+    if (gachaCard) gachaCard.addEventListener('click', function(){ this.classList.add('flip'); });
+
+    // Set nav links
+    var prevBtn = document.getElementById('navPrev');
+    if (questDef.prevQuest && allQuests.quests[questDef.prevQuest]) {
+      prevBtn.classList.remove('disabled');
+      prevBtn.href = 'level.html?q=' + questDef.prevQuest;
+    }
+    var nextBtn = document.getElementById('navNext');
+    if (questDef.nextQuest && allQuests.quests[questDef.nextQuest]) {
+      nextBtn.href = 'level.html?q=' + questDef.nextQuest;
+    }
+
+    // If already cleared, show nav
+    if (certCleared) {
+      document.getElementById('navBar').classList.add('show');
+    }
+  }
+
+  function renderBlock(b, blockId) {
+    switch (b.type) {
+      case 'secret':
+        return '<div class="secret"><div class="secret-tag">' + b.tag + '</div>' + b.html + '</div>';
+      case 'symptom':
+        return '<div class="symptom"><div class="symptom-tag">' + b.tag + '</div>' + b.html + '</div>';
+      case 'path':
+        var h = '<div class="path"><div class="path-tag">' + b.tag + '</div>';
+        if (b.steps) {
+          for (var i = 0; i < b.steps.length; i++) {
+            h += '<div class="path-step"><span class="path-step-num">' + (i+1) + '</span>' + b.steps[i] + '</div>';
+          }
+        }
+        if (b.table) {
+          h += '<table class="data-table"><tr>';
+          for (var j = 0; j < b.table.headers.length; j++) {
+            h += '<th>' + b.table.headers[j] + '</th>';
+          }
+          h += '</tr>';
+          for (var r = 0; r < b.table.rows.length; r++) {
+            h += '<tr>';
+            for (var c = 0; c < b.table.rows[r].length; c++) {
+              h += '<td>' + b.table.rows[r][c] + '</td>';
+            }
+            h += '</tr>';
+          }
+          h += '</table>';
+        }
+        h += '</div>';
+        return h;
+      case 'analogy':
+        return '<div class="analogy"><div class="analogy-tag">' + b.tag + '</div>' + b.html + '</div>';
+      case 'quiz':
+        var qh = '<div class="quiz" id="' + blockId + '"><div class="quiz-tag">' + b.tag + '</div>';
+        qh += '<div class="quiz-q">' + b.question + '</div>';
+        qh += '<div class="quiz-opts">';
+        for (var oi = 0; oi < b.options.length; oi++) {
+          qh += '<div class="quiz-opt" data-correct="' + b.options[oi].correct + '" data-stage="' + blockId + '" data-idx="' + oi + '">' + b.options[oi].label + '. ' + b.options[oi].text + '</div>';
+        }
+        qh += '</div>';
+        qh += '<div class="quiz-answer"><strong style="color:var(--green)">✅ 答案：' + (function(){
+          for (var ai = 0; ai < b.options.length; ai++) { if (b.options[ai].correct) return b.options[ai].label; }
+          return '?';
+        })() + '</strong>';
+        if (b.explanation) qh += '<div class="explain">' + b.explanation + '</div>';
+        qh += '</div></div>';
+        return qh;
+      default:
+        return b.html || '';
+    }
+  }
+
+  function renderCertSection() {
+    var certQuizzes = levelData.certQuiz || [];
+    var h = '<div class="cert-section"><div class="cert-title">📜 通关文牒</div>';
+    h += '<div class="cert-sub">完成以下题目，即可通关获得 ' + questDef.baseScore + ' 积分！</div>';
+    h += '<div class="cert-quiz">';
+
+    for (var i = 0; i < certQuizzes.length; i++) {
+      var q = certQuizzes[i];
+      h += '<div class="quiz" style="text-align:left;margin-top:' + (i>0?'16px':'0') + '" id="' + q.stageId + '">';
+      h += '<div class="quiz-tag">' + q.tag + '</div>';
+      h += '<div class="quiz-q">' + (i+1) + '. ' + q.question + '</div>';
+      h += '<div class="quiz-opts">';
+      for (var oi = 0; oi < q.options.length; oi++) {
+        h += '<div class="quiz-opt" data-correct="' + q.options[oi].correct + '" data-stage="' + q.stageId + '" data-idx="' + oi + '" data-cert="true">' + q.options[oi].label + '. ' + q.options[oi].text + '</div>';
+      }
+      h += '</div>';
+      h += '<div class="quiz-answer"><strong style="color:var(--green)">✅ 答案：' + (function(){
+        for (var ai = 0; ai < q.options.length; ai++) { if (q.options[ai].correct) return q.options[ai].label; }
+        return '?';
+      })() + '</strong></div>';
+      h += '</div>';
+    }
+
+    h += '<div style="margin-top:20px;text-align:center"><button class="quiz-btn" id="passBtn" style="font-size:15px;padding:12px 32px">🏆 提交通关文牒</button></div>';
+    h += '<div id="passMsg" style="margin-top:16px;font-size:15px;font-weight:700;display:none"></div>';
+    h += '</div>';
+
+    // Nav bar
+    h += '<div class="nav-bar" id="navBar">';
+    h += '<a class="nav-btn prev disabled" id="navPrev">← 上一关</a>';
+    h += '<a class="nav-btn map" href="index.html">🗺️ 关卡地图</a>';
+    h += '<a class="nav-btn next" id="navNext">下一关 →</a>';
+    h += '</div>';
+
+    h += '</div>';
+    return h;
+  }
+
+  // Quiz option click handler
+  function handleQuizOptClick(e) {
+    var el = e.currentTarget;
+    if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
+
+    var isCorrect = el.getAttribute('data-correct') === 'true';
+    var stageId = el.getAttribute('data-stage');
+    var optionIdx = parseInt(el.getAttribute('data-idx'));
+    var isCert = el.getAttribute('data-cert') === 'true';
+
+    // Find correct index from options in this quiz
+    var quizEl = el.closest('.quiz');
+    var allOpts = quizEl.querySelectorAll('.quiz-opt');
+    var correctIdx = -1;
+    for (var i = 0; i < allOpts.length; i++) {
+      if (allOpts[i].getAttribute('data-correct') === 'true') { correctIdx = i; break; }
+    }
+
+    if (isCert) {
+      // Cert quiz: track wrong answers for penalty
+      if (isCorrect) {
+        el.classList.add('correct');
+        el.innerHTML += ' <span style="color:#6ee7b7;font-weight:700">✅</span>';
+      } else {
+        el.classList.add('wrong');
+        el.innerHTML += ' <span style="color:#f87171;font-weight:700">❌</span>';
+        var result = G.recordCertWrong(stageId);
+        showPenaltyPop(el, result.penalty);
+        G.showComboBreak();
+        document.getElementById('comboNum').textContent = '0';
+      }
+    } else {
+      // Practice quiz: use engine
+      if (isCorrect) {
+        el.classList.add('correct');
+        el.innerHTML += ' <span style="color:#6ee7b7;font-weight:700">✅</span>';
+        var combo = G.getQuestCombo() + 1;
+        document.getElementById('comboNum').textContent = combo;
+        if (combo >= 3) G.showComboPopup(combo, '连击加成中！');
+      } else {
+        el.classList.add('wrong');
+        el.innerHTML += ' <span style="color:#f87171;font-weight:700">❌</span>';
+        G.showComboBreak();
+        document.getElementById('comboNum').textContent = '0';
+      }
+      // Submit to engine
+      G.submitQuizOption(stageId, optionIdx, correctIdx);
+    }
+
+    // Show answer
+    var answer = quizEl.querySelector('.quiz-answer');
+    if (answer) answer.classList.add('show');
+  }
+
+  function showPenaltyPop(el, penalty) {
+    var rect = el.getBoundingClientRect();
+    var p = document.createElement('div');
+    p.textContent = '-' + penalty + '分';
+    p.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;left:' + (rect.left+rect.width/2-30) + 'px;top:' + (rect.top-10) + 'px;font-size:20px;font-weight:800;color:#f87171;animation:penFloat 1.5s ease-out forwards';
+    document.body.appendChild(p);
+    setTimeout(function(){ p.remove(); }, 1600);
+  }
+
+  function handlePassLevel() {
+    // Check all cert quizzes answered correctly
+    var certQuizzes = document.querySelectorAll('.cert-quiz .quiz');
+    var allCorrect = true;
+    for (var i = 0; i < certQuizzes.length; i++) {
+      var opts = certQuizzes[i].querySelectorAll('.quiz-opt');
+      var hasCorrect = false;
+      for (var j = 0; j < opts.length; j++) {
+        if (opts[j].classList.contains('correct')) { hasCorrect = true; break; }
+      }
+      if (!hasCorrect) { allCorrect = false; break; }
+    }
+
+    var msg = document.getElementById('passMsg');
+    if (!allCorrect) {
+      msg.style.display = 'block';
+      msg.innerHTML = '⚠️ 请先答对全部通关考题再提交！';
+      msg.style.color = '#f87171';
+      return;
+    }
+
+    var result = G.submitCert(questId, questDef.baseScore);
+    if (!result.success) {
+      msg.style.display = 'block';
+      msg.innerHTML = result.msg;
+      msg.style.color = '#f87171';
+      return;
+    }
+
+    document.getElementById('passedNum').textContent = '1';
+    document.getElementById('scoreNum').textContent = (G.getQuestProgress(questId) || {}).score || result.score;
+
+    var bonusMsg = result.bonus > 1 ? '<br><span style="color:#a78bfa;font-size:13px">🔥 连击×' + result.combo + '奖励！积分×' + result.bonus + '</span>' : '';
+    var penaltyMsg = result.totalPenalty > 0 ? '<br><span style="color:#f87171;font-size:13px">⚠️ 通关文牒选错扣 ' + result.totalPenalty + ' 分</span>' : '';
+
+    msg.style.display = 'block';
+    msg.style.color = '#f0c040';
+    msg.innerHTML = '🎉 恭喜通关！<br>获得 <span style="color:#f0c040;font-size:24px;font-weight:800">' + result.score + '</span> 积分！' + bonusMsg + penaltyMsg;
+
+    // Unlock badges
+    if (result.unlockedBadges) {
+      for (var bi = 0; bi < result.unlockedBadges.length; bi++) {
+        unlockBadgeUI(result.unlockedBadges[bi]);
+      }
+    }
+
+    // Trigger card draw
+    setTimeout(function(){ triggerCardDraw(); }, 800);
+
+    // Disable pass button
+    var btn = document.getElementById('passBtn');
+    if (btn) { btn.disabled = true; btn.style.opacity = '0.5'; btn.style.pointerEvents = 'none'; }
+
+    certCleared = true;
+  }
+
+  function triggerCardDraw() {
+    var card = G.drawCard();
+    if (!card) return;
+
+    var backEl = document.getElementById('gachaBack');
+    backEl.className = 'gacha-back ' + card.rarity;
+    document.getElementById('gachaSymbol').textContent = card.symbol || '🧪';
+    document.getElementById('gachaName').textContent = card.name;
+    document.getElementById('gachaName').className = 'gacha-name ' + card.rarity + '-name';
+    document.getElementById('gachaRarity').textContent = card.rarityLabel || card.rarity;
+    document.getElementById('gachaRarity').className = 'gacha-rarity ' + card.rarity;
+    document.getElementById('gachaMsg').textContent = card.message || '';
+
+    var overlay = document.getElementById('gachaOverlay');
+    var cardEl = document.getElementById('gachaCard');
+    cardEl.classList.remove('flip');
+    overlay.classList.add('show');
+
+    setTimeout(function(){
+      cardEl.classList.add('flip');
+      var rect = cardEl.getBoundingClientRect();
+      var cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
+      var colors = {common:['#aaa'],rare:['#67e8f9'],epic:['#a78bfa','#f0c040'],legend:['#f0c040','#a78bfa','#6ee7b7']};
+      G.spawnParticles(cx, cy, 30, colors[card.rarity] || ['#aaa']);
+      setTimeout(function(){
+        document.getElementById('gachaClose').style.display = 'inline-block';
+      }, 1000);
+    }, 300);
+
+    // First card badge
+    unlockBadgeUI('first_card');
+  }
+
+  function closeGacha() {
+    document.getElementById('gachaOverlay').classList.remove('show');
+    document.getElementById('gachaClose').style.display = 'none';
+    document.getElementById('navBar').classList.add('show');
+    document.getElementById('navBar').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+})();
+</script>
+
+</body>
+</html>

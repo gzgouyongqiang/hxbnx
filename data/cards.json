@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "description": "Card gacha pool. Each card = a piece of chemical knowledge. Rarity tied to knowledge depth/obscurity.",
+
+  "cards": [
+    {
+      "id": "card-nacl",
+      "symbol": "盐",
+      "name": "氯化钠",
+      "rarity": "common",
+      "rarityLabel": "普通",
+      "probability": 0.50,
+      "category": "化合物",
+      "message": "餐桌上的化学，海洋的味道——生命离不开盐。",
+      "knowledge": "NaCl是离子化合物，面心立方结构，Na⁺:Cl⁻ = 6:6配位。海水含盐约3.5%。"
+    },
+    {
+      "id": "card-ethanol",
+      "symbol": "醇",
+      "name": "乙醇",
+      "rarity": "rare",
+      "rarityLabel": "稀有",
+      "probability": 0.30,
+      "category": "有机物",
+      "message": "从古埃及的啤酒到现代消毒剂，人类最老的朋友！",
+      "knowledge": "C₂H₅OH，沸点78.3°C，能与水以任意比例互溶。发酵法：C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂"
+    },
+    {
+      "id": "card-nitroglycerin",
+      "symbol": "爆",
+      "name": "硝酸甘油",
+      "rarity": "epic",
+      "rarityLabel": "史诗",
+      "probability": 0.15,
+      "category": "有机物",
+      "message": "既是炸药也是救心药——诺贝尔的传奇分子！",
+      "knowledge": "C₃H₅(ONO₂)₃，极不稳定，撞击即爆。4C₃H₅N₃O₉ → 12CO₂ + 10H₂O + 6N₂ + O₂。微量可扩张血管治心绞痛。"
+    },
+    {
+      "id": "card-c60",
+      "symbol": "球",
+      "name": "富勒烯 C₆₀",
+      "rarity": "legend",
+      "rarityLabel": "传说",
+      "probability": 0.05,
+      "category": "单质",
+      "message": "1985年发现的足球分子，碳的第三种同素异形体！",
+      "knowledge": "C₆₀由60个碳原子组成截角二十面体（足球状），含12个五元环和20个六元环。1996年诺贝尔化学奖。"
+    }
+  ]
+}
