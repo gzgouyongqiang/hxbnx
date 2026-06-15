@@ -2,102 +2,428 @@
   "meta": {
     "questId": "main-1-silver",
     "title": "第1课时：物质的组成、性质和转化",
-    "subtitle": "更多微卡点 · 逐一突破 · 通关积分 50分",
+    "subtitle": "银牌关卡 · 6个进阶微卡点 · 通关积分 50分",
     "course": 1,
     "tier": "silver",
     "tierLabel": "银牌关卡",
     "tierEmoji": "🥈",
     "knowledgeTags": [
-      "分散系",
-      "胶体",
-      "丁达尔效应",
-      "电泳",
-      "布朗运动",
-      "电解质",
-      "物理变化",
-      "化学变化"
+      "弱电解质",
+      "单质",
+      "难溶盐",
+      "混合物",
+      "次氯酸",
+      "高分子"
     ],
-    "totalStages": 5,
-    "activeStages": 5
+    "totalStages": 6,
+    "activeStages": 6
   },
   "stages": [
     {
-      "stageId": "card-1",
+      "stageId": "card-7",
       "type": "microcard",
-      "num": 1,
+      "num": 7,
       "icon": "🧩",
-      "title": "物理变化 vs 化学变化",
+      "title": "水是弱电解质",
       "defaultOpen": true,
       "blocks": [
         {
-          "blockId": "card-1-secret",
+          "blockId": "card-7-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>H₂O是最常见的弱电解质——它也能电离，只是极其微弱。</p>"
+        },
+        {
+          "blockId": "card-7-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小丽说：\"水嘛，普普通通的，不是电解质。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：觉得水太常见了、太\"弱\"了，不像\"电解质\"——忘了弱电解质也是电解质。</span></p>"
+        },
+        {
+          "blockId": "card-7-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "电解质判断三步法水（H₂O）是化合物吗？→ 是 ✅ 水自身能电离吗？→ 能！H₂O⇌H⁺+OH⁻（极微弱，但确实存在） 水完全电离吗？→ 不，电离极其微弱 结论：水是弱电解质 ✅",
+            "常见\"弱电解质\"有哪些",
+            "常见\"弱电解质\"有哪些类别例子电离特点弱酸CH₃COOH、HClO、H₂CO₃、HF部分电离弱碱NH₃·H₂O、Fe(OH)₃等难溶碱部分电离水H₂O极微弱电离",
+            "别把\"水\"和\"水溶液\"搞混物质是不是电解质？水（H₂O）✅ 弱电解质——H₂O自身电离盐酸（HCl水溶液）❌ 不是电解质——混合物氨水（NH₃水溶液）❌ 不是电解质——混合物"
+          ]
+        },
+        {
+          "blockId": "card-7-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>水的电离就像\"每家每户都有人在自言自语\"——声音很小，但确实存在。 弱电解质就是这种\"声音小但存在\"的，水也不例外。</p>"
+        },
+        {
+          "blockId": "card-7-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质中属于弱电解质的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "水",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "盐酸",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "氨水",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "氯化钠",
+              "correct": false
+            }
+          ],
+          "explanation": "A：水 ✅<br>B：盐酸 ❌<br>C：氨水 ❌<br>D：氯化钠 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·浙江选考·第4题B选项 极致课堂：第1课时·第4题B</span>"
         }
       ]
     },
     {
-      "stageId": "card-2",
+      "stageId": "card-8",
       "type": "microcard",
-      "num": 2,
+      "num": 8,
       "icon": "🧩",
-      "title": "电解质与非电解质",
+      "title": "单质不是电解质也不是非电解质",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-2-secret",
+          "blockId": "card-8-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>电解质和非电解质的研究对象是化合物。单质（Fe、Cl₂、Cu等）不属于这个分类体系。</p>"
+        },
+        {
+          "blockId": "card-8-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小明说：\"Fe是金属，能导电，所以Fe是电解质。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：看到\"能导电\"就往电解质归类——忘了电解质的前提是\"化合物\"。小华说：\"Cl₂不导电，所以Cl₂是非电解质。\"错误根源：同样忘了Cl₂是单质，不在这个分类范围内。</span></p>"
+        },
+        {
+          "blockId": "card-8-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "明确分类范围化合物    ├── 电解质（自身能电离）    │     ├── 强电解质（完全电离）    │     └── 弱电解质（部分电离）    └── 非电解质（自身不能电离）  单质（Fe、Cl₂、Cu、O₂等）→ 不在此分类中 混合物（盐酸、氨水、漂白粉等）→ 不在此分类中",
+            "常见\"假装是电解质\"的单质",
+            "常见\"假装是电解质\"的单质单质能导电吗？是电解质吗？为什么？Fe（铁）✅ 金属导电❌ 不是单质，不是化合物Cu（铜）✅ 金属导电❌ 不是单质，不是化合物Cl₂（氯气）❌ 不导电❌ 不是单质，不是化合物O₂（氧气）❌ 不导电❌ 不是单质，不是化合物关键：能导电≠电解质。铁能导电但它是单质，不是电解质。",
+            "对比记忆物质分类属于电解质吗？Fe单质❌Cl₂单质❌NaCl化合物（盐）✅ 强电解质HCl气体化合物（酸）✅ 强电解质CH₃COOH化合物（酸）✅ 弱电解质"
+          ]
+        },
+        {
+          "blockId": "card-8-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>\"单质是不是电解质\"就像问\"苹果是不是水果\"——前提就错了。 电解质/非电解质是\"化合物世界\"的分类，单质是另一个世界的东西。</p>"
+        },
+        {
+          "blockId": "card-8-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列说法正确的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "铁是电解质",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "氯气是非电解质",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "单质既不是电解质也不是非电解质",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "铜能导电，所以铜是电解质",
+              "correct": false
+            }
+          ],
+          "explanation": "A：铁是电解质 ❌<br>B：氯气是非电解质 ❌<br>C：单质既不是电解质也不是非电解质 ✅<br>D：铜能导电，所以铜是电解质 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2018·浙江选考·第5题C/D选项 极致课堂：第1课时·第5题C/D</span>"
         }
       ]
     },
     {
-      "stageId": "card-3",
+      "stageId": "card-9",
       "type": "microcard",
-      "num": 3,
+      "num": 9,
       "icon": "🧩",
-      "title": "胶体的聚沉",
+      "title": "难溶盐是强电解质",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-3-secret",
+          "blockId": "card-9-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>难溶于水≠不是电解质。BaSO₄、AgCl、CaCO₃等难溶盐，在熔融态完全电离，属于强电解质。</p>"
+        },
+        {
+          "blockId": "card-9-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰说：\"BaSO₄难溶于水，水溶液几乎不导电，所以BaSO₄是非电解质。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：用\"水溶液是否导电\"代替了\"自身能否电\"——忘了电解质判断有\"熔融态\"这条标准。</span></p>"
+        },
+        {
+          "blockId": "card-9-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "电解质的两个\"导电场景\"电解质的判断标准只有一个：自身能否电离       ↓ 能不能导电不重要，重要的是\"能不能自己产生离子\"  自身能电离 → 电解质。无论它在水里还是熔融状态。",
+            "BaSO₄为什么是强电解质？BaSO₄在水中的情况：溶解度极小，几乎不溶 → 水溶液几乎不导电           ↓ 但这不代表BaSO₄不能电离！  BaSO₄在熔融态：离子键断裂 → Ba²⁺ + SO₄²⁻（完全电离）           ↓ BaSO₄是强电解质！",
+            "常见难溶盐的电解质归类",
+            "常见难溶盐的电解质归类难溶盐水溶性熔融态电解质类型BaSO₄（硫酸钡）难溶完全电离✅ 强电解质AgCl（氯化银）难溶完全电离✅ 强电解质CaCO₃（碳酸钙）难溶完全电离✅ 强电解质Fe(OH)₃（氢氧化铁）难溶部分电离✅ 弱电解质（不是盐，是碱）"
+          ]
+        },
+        {
+          "blockId": "card-9-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>难溶盐就像\"装在保险柜里的钻石\"——在水里拿不出来（不溶），但熔了它（熔融态）就出来了。 不能因为\"拿不出来\"就说\"不存在\"。</p>"
+        },
+        {
+          "blockId": "card-9-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质中属于强电解质的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "硫酸钡",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "二氧化碳",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "铁",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "蔗糖",
+              "correct": false
+            }
+          ],
+          "explanation": "A：硫酸钡 ✅<br>B：二氧化碳 ❌<br>C：铁 ❌<br>D：蔗糖 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2024·浙江选考·第3题D选项 极致课堂：第1课时·第3题D</span>"
         }
       ]
     },
     {
-      "stageId": "card-4",
+      "stageId": "card-10",
       "type": "microcard",
-      "num": 4,
+      "num": 10,
       "icon": "🧩",
-      "title": "电离与导电",
+      "title": "漂白粉是混合物",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-4-secret",
+          "blockId": "card-10-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>漂白粉不是纯净物，它是CaCl₂和Ca(ClO)₂的混合物。名字听起来像\"粉\"，但成分不止一种。</p>"
+        },
+        {
+          "blockId": "card-10-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小美说：\"漂白粉，粉嘛，应该是一种纯净物。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：被\"粉\"这个名字迷惑了，以为是一种物质。</span></p>"
+        },
+        {
+          "blockId": "card-10-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "漂白粉是怎么来的？Cl₂ + Ca(OH)₂（石灰乳）     ↓ 产物：CaCl₂ + Ca(ClO)₂ + H₂O（混合物！）     ↓ 这就是漂白粉的主要成分漂白粉 = CaCl₂（氯化钙）+ Ca(ClO)₂（次氯酸钙）的混合物",
+            "同类\"名字像纯净物其实是混合物\"的坑",
+            "同类\"名字像纯净物其实是混合物\"的坑物质你以为实际是漂白粉一种粉CaCl₂+Ca(ClO)₂的混合物漂白液一种液体NaCl+NaClO的混合物盐酸一种酸HCl的水溶液（混合物）氨水一种碱NH₃的水溶液（混合物）福尔马林一种物质甲醛的水溶液（混合物）",
+            "快速判断——\"水溶液\"或\"工业产品\"多半是混合物工业产品名称中有\"粉\"\"液\"\"水\"字样的，要警惕它是混合物。但反过来，石英（SiO₂）虽然名字有\"石\"但反而是纯净物——需要具体情况具体分析。"
+          ]
+        },
+        {
+          "blockId": "card-10-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>漂白粉就像\"水果拼盘\"——名字叫\"拼盘\"，里面有好几种水果。 不能说\"它叫粉\"就以为是一种物质。</p>"
+        },
+        {
+          "blockId": "card-10-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质属于纯净物的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "漂白粉",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "石英",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "盐酸",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "氨水",
+              "correct": false
+            }
+          ],
+          "explanation": "A：漂白粉 ❌<br>B：石英 ✅<br>C：盐酸 ❌<br>D：氨水 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·第6题B选项 极致课堂：第1课时·第6题B</span>"
         }
       ]
     },
     {
-      "stageId": "card-5",
+      "stageId": "card-11",
       "type": "microcard",
-      "num": 5,
+      "num": 11,
       "icon": "🧩",
-      "title": "综合辨析",
+      "title": "次氯酸是弱酸",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-5-secret",
+          "blockId": "card-11-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>HClO（次氯酸）是弱酸，部分电离，属于弱电解质。不能因为名字带\"酸\"就以为它很强。</p>"
+        },
+        {
+          "blockId": "card-11-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰说：\"次氯酸是酸，应该像HCl一样完全电离吧？\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：看到\"酸\"字就默认是强酸——忘了有些酸是弱的。</span></p>"
+        },
+        {
+          "blockId": "card-11-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "酸的电离程度分两类强酸：完全电离 HCl = H⁺ + Cl⁻（完全） H₂SO₄ = 2H⁺ + SO₄²⁻（完全） HNO₃ = H⁺ + NO₃⁻（完全）  弱酸：部分电离（可逆） CH₃COOH ⇌ H⁺ + CH₃COO⁻（部分） HClO ⇌ H⁺ + ClO⁻（部分） H₂CO₃ ⇌ H⁺ + HCO₃⁻（部分）",
+            "常见强酸vs弱酸速查",
+            "常见强酸vs弱酸速查强酸（完全电离）弱酸（部分电离）HCl（盐酸）CH₃COOH（醋酸）H₂SO₄（硫酸）HClO（次氯酸）HNO₃（硝酸）H₂CO₃（碳酸）HBr（氢溴酸）H₂SO₃（亚硫酸）HI（氢碘酸）HF（氢氟酸）HClO₄（高氯酸）H₂SiO₃（硅酸）强酸只有上面6种（中学阶段），其余都是弱酸！",
+            "为什么次氯酸是弱酸？HClO的结构：H—O—Cl O的吸电子能力弱于Cl？ 不，关键是HClO分子中，O-H键极性不够强 → H⁺不容易电离出来 → 只有极少数HClO分子电离 → 弱酸！"
+          ]
+        },
+        {
+          "blockId": "card-11-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>强酸就像\"敞开的门\"——H⁺随便往外走（完全电离）。 弱酸就像\"关着大半的门\"——只有少数H⁺能挤出来（部分电离）。 次氯酸就是这种\"半掩的门\"。</p>"
+        },
+        {
+          "blockId": "card-11-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质中属于弱电解质的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "盐酸",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "次氯酸",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "硫酸",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "硝酸",
+              "correct": false
+            }
+          ],
+          "explanation": "A：盐酸 ❌<br>B：次氯酸 ✅<br>C：硫酸 ❌<br>D：硝酸 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·第6题C选项 极致课堂：第1课时·第6题C</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-12",
+      "type": "microcard",
+      "num": 12,
+      "icon": "🧩",
+      "title": "葡萄糖不是高分子化合物",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-12-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>高分子化合物的分子量通常在10⁴以上。葡萄糖（C₆H₁₂O₆）分子量只有180，完全不够格。</p>"
+        },
+        {
+          "blockId": "card-12-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小华说：\"葡萄糖是大分子，应该属于高分子化合物吧？\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：把\"大分子\"和\"高分子\"混为一谈——\"大\"也要大到一定程度才算高分子。</span></p>"
+        },
+        {
+          "blockId": "card-12-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "什么是高分子化合物？高分子化合物（又称聚合物）     ↓ 分子量很大的化合物（一般 &gt; 10⁴）     ↓ 由许多重复结构单元（单体）通过共价键连接而成     ↓ 常见例子：淀粉、纤维素、蛋白质、聚乙烯、聚氯乙烯",
+            "分子量对比",
+            "分子量对比物质分子式相对分子量是高分子吗？葡萄糖C₆H₁₂O₆180❌ 太小了蔗糖C₁₂H₂₂O₁₁342❌ 太小了油脂甘油三酯~800-900❌ 不到一万淀粉(C₆H₁₀O₅)ₙ数万~数十万✅ 是纤维素(C₆H₁₀O₅)ₙ数十万~数百万✅ 是蛋白质多种氨基酸聚合数万~数百万✅ 是聚乙烯(C₂H₄)ₙ数万~数十万✅ 是",
+            "几个容易混淆的\"不是高分子\"的物质物质你以为实际葡萄糖大分子→高分子❌ 单糖，分子量180蔗糖甜的→糖类→高分子❌ 二糖，分子量342油脂油→有机大分子❌ 甘油三酯，不到一万一句话区分：能水解成多个单体的才是高分子。葡萄糖本身就是单体，没法再拆了。"
+          ]
+        },
+        {
+          "blockId": "card-12-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>高分子就像\"串串\"——很多个小球（单体）串在一起。 葡萄糖只是一个\"小球\"，连串都没串，怎么能叫串串呢？</p>"
+        },
+        {
+          "blockId": "card-12-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质属于高分子化合物的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "葡萄糖",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "油脂",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "淀粉",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "蔗糖",
+              "correct": false
+            }
+          ],
+          "explanation": "A：葡萄糖 ❌<br>B：油脂 ❌<br>C：淀粉 ✅<br>D：蔗糖 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·第6题D选项 极致课堂：第1课时·第6题D</span>"
         }
       ]
     }
@@ -107,16 +433,26 @@
       "stageId": "cert-1",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "本关考题即将开放，敬请期待！",
+      "question": "下列关于弱电解质的说法正确的是：",
       "options": [
         {
           "label": "A",
-          "text": "即将开放",
-          "correct": true
+          "text": "水是非电解质",
+          "correct": false
         },
         {
           "label": "B",
-          "text": "即将开放",
+          "text": "HClO是强酸",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "BaSO4虽难溶但是强电解质",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "单质Fe是电解质",
           "correct": false
         }
       ]
