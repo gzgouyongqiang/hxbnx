@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "questId": "main-3-gold",
+    "title": "第3课时：氧化还原反应",
+    "subtitle": "🥇 金牌关卡 · 通关积分 100分",
+    "course": 3,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": [],
+    "totalStages": 1,
+    "activeStages": 1
+  },
+  "stages": [
+    {
+      "stageId": "card-placeholder",
+      "type": "placeholder",
+      "html": "<div style=\"text-align:center;padding:40px 20px;color:var(--text-dim);font-size:15px;border:1px dashed var(--border);border-radius:16px;margin-bottom:24px\">\n  <div style=\"font-size:48px;margin-bottom:12px\">🥇</div>\n  <strong>金牌关卡 · 第3课时</strong><br>\n  <span style=\"font-size:13px;margin-top:8px;display:inline-block;color:var(--gold-dim)\">氧化还原反应</span><br>\n  <span style=\"font-size:12px;margin-top:12px;display:inline-block\">🔮 关卡内容正在炼制中，敬请期待…</span><br>\n  <a href=\"index.html\" style=\"display:inline-block;margin-top:16px;background:linear-gradient(135deg,var(--gold-dim),#a08010);color:#1a1a2e;padding:8px 20px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600\">← 返回练功地图</a>\n</div>"
+    }
+  ],
+  "certQuiz": []
+}

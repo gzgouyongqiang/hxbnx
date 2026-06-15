@@ -1,7 +1,6 @@
 {
   "version": 2,
   "description": "quest registry  mission map  all quests listed here automatically rendered on index.html",
-
   "quests": {
     "main-1-bronze": {
       "type": "main",
@@ -12,10 +11,14 @@
       "prevQuest": null,
       "nextQuest": "main-1-silver",
       "baseScore": 10,
-      "badgeTriggers": ["first_clear", "speed_120s", "zero_error", "first_card"],
+      "badgeTriggers": [
+        "first_clear",
+        "speed_120s",
+        "zero_error",
+        "first_card"
+      ],
       "contentFile": "data/levels/main-1-bronze.json"
     },
-
     "main-1-silver": {
       "type": "main",
       "course": 1,
@@ -28,7 +31,6 @@
       "badgeTriggers": [],
       "contentFile": "data/levels/main-1-silver.json"
     },
-
     "main-1-gold": {
       "type": "main",
       "course": 1,
@@ -41,7 +43,6 @@
       "badgeTriggers": [],
       "contentFile": "data/levels/main-1-gold.json"
     },
-
     "main-2-bronze": {
       "type": "main",
       "course": 2,
@@ -52,7 +53,7 @@
       "nextQuest": "main-2-silver",
       "baseScore": 10,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-2-bronze.json"
     },
     "main-2-silver": {
       "type": "main",
@@ -64,7 +65,7 @@
       "nextQuest": "main-2-gold",
       "baseScore": 50,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-2-silver.json"
     },
     "main-2-gold": {
       "type": "main",
@@ -76,9 +77,8 @@
       "nextQuest": "main-3-bronze",
       "baseScore": 100,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-2-gold.json"
     },
-
     "main-3-bronze": {
       "type": "main",
       "course": 3,
@@ -89,7 +89,7 @@
       "nextQuest": "main-3-silver",
       "baseScore": 10,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-3-bronze.json"
     },
     "main-3-silver": {
       "type": "main",
@@ -101,7 +101,7 @@
       "nextQuest": "main-3-gold",
       "baseScore": 50,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-3-silver.json"
     },
     "main-3-gold": {
       "type": "main",
@@ -113,9 +113,8 @@
       "nextQuest": "main-4-bronze",
       "baseScore": 100,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-3-gold.json"
     },
-
     "main-4-bronze": {
       "type": "main",
       "course": 4,
@@ -126,7 +125,7 @@
       "nextQuest": "main-4-silver",
       "baseScore": 10,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-4-bronze.json"
     },
     "main-4-silver": {
       "type": "main",
@@ -138,7 +137,7 @@
       "nextQuest": "main-4-gold",
       "baseScore": 50,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-4-silver.json"
     },
     "main-4-gold": {
       "type": "main",
@@ -150,9 +149,8 @@
       "nextQuest": "main-5-bronze",
       "baseScore": 100,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-4-gold.json"
     },
-
     "main-5-bronze": {
       "type": "main",
       "course": 5,
@@ -163,7 +161,7 @@
       "nextQuest": "main-5-silver",
       "baseScore": 10,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-5-bronze.json"
     },
     "main-5-silver": {
       "type": "main",
@@ -175,7 +173,7 @@
       "nextQuest": "main-5-gold",
       "baseScore": 50,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-5-silver.json"
     },
     "main-5-gold": {
       "type": "main",
@@ -187,32 +185,52 @@
       "nextQuest": null,
       "baseScore": 100,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-5-gold.json"
     }
   },
-
   "sideQuests": {
     "side-exam-2024gd": {
       "type": "side",
       "category": "exam",
       "title": "2024广东高考化学真题挑战",
       "subtitle": "限时副本 · 30分钟模拟战",
-      "unlock": { "minCourse": 3, "minTier": "silver" },
+      "unlock": {
+        "minCourse": 3,
+        "minTier": "silver"
+      },
       "validFrom": "2026-06-01",
       "validUntil": "2026-07-10",
       "baseScore": 200,
       "xpMultiplier": 1.5,
-      "badgeTriggers": ["exam_warrior"],
-      "theme": { "icon": "📜" },
+      "badgeTriggers": [
+        "exam_warrior"
+      ],
+      "theme": {
+        "icon": "📜"
+      },
       "contentFile": null
     }
   },
-
   "courses": {
-    "1": { "title": "物质的组成、性质和转化", "subtitle": "分散系 · 丁达尔效应 · 电泳 · 胶体" },
-    "2": { "title": "待定", "subtitle": "" },
-    "3": { "title": "待定", "subtitle": "" },
-    "4": { "title": "待定", "subtitle": "" },
-    "5": { "title": "待定", "subtitle": "" }
+    "1": {
+      "title": "物质的组成、性质和转化",
+      "subtitle": "分散系 · 丁达尔效应 · 电泳 · 胶体"
+    },
+    "2": {
+      "title": "离子反应 离子方程式",
+      "subtitle": "电解质 · 离子共存 · 离子方程式"
+    },
+    "3": {
+      "title": "氧化还原反应",
+      "subtitle": "化合价 · 电子转移 · 配平"
+    },
+    "4": {
+      "title": "物质的量",
+      "subtitle": "摩尔 · NA · 气体摩尔体积"
+    },
+    "5": {
+      "title": "化学实验基础",
+      "subtitle": "仪器 · 操作 · 安全"
+    }
   }
 }
