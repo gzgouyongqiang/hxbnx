@@ -99,7 +99,7 @@
           "tag": "🗺️ 修炼路径",
           "steps": [
             "通电 → 溶液中有电场 → 只有<strong>带电荷的粒子</strong>才受电场力",
-            "阳离子→向负极移动；阴离子→向正极移动；不带电分子→不动"
+            "阳离子→向阴极移动；阴离子→向阳极移动；不带电分子→不动"
           ],
           "table": {
             "headers": ["溶质类型", "例子", "通电后"],
@@ -193,7 +193,7 @@
     {
       "stageId": "card-placeholder",
       "type": "placeholder",
-      "html": "<div style=\"text-align:center;padding:32px 20px;color:var(--text-dim);font-size:14px;border:1px dashed var(--border);border-radius:16px;margin-bottom:24px\">🔓 微卡点 04~17 将在完整版中呈现<br><span style=\"font-size:12px;margin-top:6px;display:inline-block\">当前 demo 展示前3个微卡点的完整交互效果</span></div>"
+      "html": ""
     }
   ],
 
