@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "questId": "main-1-bronze",
+    "title": "第1课时：物质的组成、性质和转化",
+    "subtitle": "17个微卡点 · 逐一突破 · 通关积分 10分",
+    "course": 1,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": ["分散系", "胶体", "丁达尔效应", "电泳", "布朗运动"],
+    "totalStages": 17,
+    "activeStages": 3
+  },
+
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "丁达尔效应 · 胶体专属",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>丁达尔效应是胶体的<strong>「身份证」</strong>——溶液没有，浊液也没有，<strong>只有胶体才有</strong>。判断分散系，先看粒子大小：&lt;1nm 是溶液，1~100nm 是胶体，&gt;100nm 是浊液。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰说：</strong>「稀硫酸也是液体，应该也能产生丁达尔效应吧？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：把「液体」和「胶体」混为一谈。稀硫酸中 H₂SO₄ 以离子形式存在，粒子直径 &lt;1nm，是<strong>溶液</strong>，无丁达尔效应。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "看到「丁达尔效应」→ 大脑立刻反应：这是<strong>胶体专属</strong>",
+            "判断分散系类型：溶液（无）/ 胶体（有）/ 浊液（无）",
+            "自检三问：是胶体？→ 有；是溶液？→ 无；是浊液？→ 无"
+          ],
+          "table": {
+            "headers": ["分散系", "粒子直径", "丁达尔效应"],
+            "rows": [
+              ["溶液", "&lt;1 nm", "❌ 无"],
+              ["胶体", "1~100 nm", "✅ 有"],
+              ["浊液", "&gt;100 nm", "❌ 无"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>溶液是「散兵游勇」，每个兵太小，光线穿过看不到路径；胶体是「整齐方阵」，方阵刚好能让光线散射出通路；浊液是「大块巨石」，光线直接被挡住了。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列分散系中，能产生丁达尔效应的是：",
+          "options": [
+            { "label": "A", "text": "氯化钠溶液", "correct": false },
+            { "label": "B", "text": "氢氧化铁胶体", "correct": true },
+            { "label": "C", "text": "泥水", "correct": false },
+            { "label": "D", "text": "酒精溶液", "correct": false }
+          ],
+          "explanation": "A：氯化钠溶液——Na⁺和Cl⁻粒子直径 &lt;1nm，是溶液，无丁达尔效应<br>B：氢氧化铁胶体——Fe(OH)₃粒子直径在1~100nm，是胶体，有丁达尔效应 ✅<br>C：泥水——粒子直径 &gt;100nm，是浊液，无丁达尔效应<br>D：酒精溶液——酒精分子直径 &lt;1nm，是溶液，无丁达尔效应"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "通电 · 只有带电粒子才跑",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>通电时，<strong>只有带电的粒子</strong>才会向两极移动。不带电的粒子（如蔗糖分子、酒精分子）不会动。判断粒子是否移动，先看它<strong>带不带电</strong>。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>「通电时，溶液中的溶质粒子都分别向两极移动。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：以为所有「溶质粒子」都带电。实际上，非电解质（如蔗糖、酒精）的分子不带电，通电后不会发生电泳。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "通电 → 溶液中有电场 → 只有<strong>带电荷的粒子</strong>才受电场力",
+            "阳离子→向负极移动；阴离子→向正极移动；不带电分子→不动"
+          ],
+          "table": {
+            "headers": ["溶质类型", "例子", "通电后"],
+            "rows": [
+              ["电解质", "NaCl、HCl", "✅ 移动"],
+              ["非电解质", "蔗糖、酒精", "❌ 不移动"],
+              ["胶体", "Fe(OH)₃胶体", "✅ 电泳"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>电场就像「磁铁」——只吸铁（带电粒子），不吸木头（不带电分子）。溶液中什么都有，但只有「带电的」才会被电场吸引着跑。</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "通电时，下列溶液中的粒子会向两极移动的是：",
+          "options": [
+            { "label": "A", "text": "蔗糖溶液中的蔗糖分子", "correct": false },
+            { "label": "B", "text": "NaCl溶液中的Na⁺和Cl⁻", "correct": true },
+            { "label": "C", "text": "酒精溶液中的酒精分子", "correct": false }
+          ],
+          "explanation": "A：蔗糖是非电解质，分子不带电 ❌<br>B：NaCl是强电解质，Na⁺和Cl⁻带电 ✅<br>C：酒精是非电解质，分子不带电 ❌"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "布朗运动 · 粒子都在做无规则运动",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>溶液中溶质粒子和胶体中分散质粒子<strong>都在做无规则布朗运动</strong>——不是「溶液有规律、胶体无规律」。只要粒子足够小（&lt;100nm），就会被溶剂分子撞击做无规则运动。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美说：</strong>「溶液中溶质粒子的运动有规律，胶体中分散质粒子的运动无规律（布朗运动）。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：把布朗运动当作胶体的「特有现象」，以为溶液粒子运动是「有序」的。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "布朗运动本质：溶剂分子不断撞击粒子 → 撞击力不均匀 → 粒子做无规则运动",
+            "三种分散系都有布朗运动（粒子 &lt;100nm 的都有）"
+          ],
+          "table": {
+            "headers": ["分散系", "粒子大小", "布朗运动"],
+            "rows": [
+              ["溶液", "&lt;1nm", "✅ 有"],
+              ["胶体", "1~100nm", "✅ 有"],
+              ["浊液", "&gt;100nm", "❌ 无"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>布朗运动就像「乒乓球在弹球盘里」——不管球大球小（只要不是太大），都会被撞得东倒西歪。溶液粒子小，被撞得乱跑；胶体粒子大一点，同样被撞得乱跑。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于布朗运动的说法正确的是：",
+          "options": [
+            { "label": "A", "text": "只有胶体中的分散质粒子才做布朗运动", "correct": false },
+            { "label": "B", "text": "溶液中的溶质粒子运动有规律", "correct": false },
+            { "label": "C", "text": "布朗运动是胶体的特征性质", "correct": false },
+            { "label": "D", "text": "溶液中溶质粒子也在做无规则的布朗运动", "correct": true }
+          ],
+          "explanation": "A：错误，溶液中粒子也做布朗运动<br>B：错误，溶液中粒子同样做无规则运动<br>C：错误，布朗运动不是胶体的特征性质（丁达尔效应才是）<br>D：正确 ✅"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-placeholder",
+      "type": "placeholder",
+      "html": "<div style=\"text-align:center;padding:32px 20px;color:var(--text-dim);font-size:14px;border:1px dashed var(--border);border-radius:16px;margin-bottom:24px\">🔓 微卡点 04~17 将在完整版中呈现<br><span style=\"font-size:12px;margin-top:6px;display:inline-block\">当前 demo 展示前3个微卡点的完整交互效果</span></div>"
+    }
+  ],
+
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列分散系中，能产生丁达尔效应的是（　　）",
+      "options": [
+        { "label": "A", "text": "氯化钠溶液", "correct": false },
+        { "label": "B", "text": "氢氧化铁胶体", "correct": true },
+        { "label": "C", "text": "泥水", "correct": false }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "通电时，下列粒子会向两极移动的是（　　）",
+      "options": [
+        { "label": "A", "text": "蔗糖溶液中的蔗糖分子", "correct": false },
+        { "label": "B", "text": "NaCl溶液中的Na⁺和Cl⁻", "correct": true }
+      ]
+    }
+  ]
+}
