@@ -2,102 +2,359 @@
   "meta": {
     "questId": "main-1-gold",
     "title": "第1课时：物质的组成、性质和转化",
-    "subtitle": "终极挑战 · 逐一突破 · 通关积分 100分",
+    "subtitle": "金牌关卡 · 5个终极微卡点 · 通关积分 100分",
     "course": 1,
     "tier": "gold",
     "tierLabel": "金牌关卡",
     "tierEmoji": "🥇",
     "knowledgeTags": [
-      "分散系",
-      "胶体",
-      "丁达尔效应",
-      "电泳",
-      "布朗运动",
-      "电解质",
-      "物理变化",
-      "化学变化"
+      "混合物与纯净物",
+      "氧化物",
+      "定义别名",
+      "高分子",
+      "电解质判断"
     ],
     "totalStages": 5,
     "activeStages": 5
   },
   "stages": [
     {
-      "stageId": "card-1",
+      "stageId": "card-13",
       "type": "microcard",
-      "num": 1,
+      "num": 13,
       "icon": "🧩",
-      "title": "物理变化 vs 化学变化",
+      "title": "含氧化合物≠氧化物",
       "defaultOpen": true,
       "blocks": [
         {
-          "blockId": "card-1-secret",
+          "blockId": "card-13-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>氧化物必须由两种元素组成，其中一种是氧。含氧但不只两种元素的化合物（如HClO、K₂CO₃），不是氧化物。</p>"
+        },
+        {
+          "blockId": "card-13-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小明说：\"HClO含有氧元素，所以它是氧化物。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：看到\"含氧\"就当成了\"氧化物\"——忘了氧化物必须是\"两种元素\"。</span></p>"
+        },
+        {
+          "blockId": "card-13-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "氧化物的严格定义氧化物 = 由两种元素组成的化合物 + 其中一种是氧元素      ↓ 两个条件必须同时满足： ① 两种元素（只有两种！） ② 其中一种是氧",
+            "几个\"含氧但不是氧化物\"的典型",
+            "几个\"含氧但不是氧化物\"的典型物质含氧吗？几种元素？是氧化物吗？HClO（次氯酸）✅ 含氧3种（H、Cl、O）❌ 不是K₂CO₃（碳酸钾）✅ 含氧3种（K、C、O）❌ 不是Ca(OH)₂（氢氧化钙）✅ 含氧3种（Ca、O、H）❌ 不是H₂SO₄（硫酸）✅ 含氧3种（H、S、O）❌ 不是H₂O（水）✅ 含氧2种（H、O）✅ 是氧化物CO₂（二氧化碳）✅ 含氧2种（C、O）✅ 是氧化物",
+            "快速判断法看到化学式，先数元素种类： 2种元素 + 含氧 → 氧化物 ≥3种元素 → 肯定不是氧化物（不管含不含氧）"
+          ]
+        },
+        {
+          "blockId": "card-13-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>含氧化合物就像\"家里有小孩\"——很多家庭都有小孩（含氧），但\"两口之家有一小孩\"才算小家庭（氧化物）。 三口之家、四口之家（三种以上元素）——再怎么说也不叫\"小家庭\"了。</p>"
+        },
+        {
+          "blockId": "card-13-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质属于氧化物的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "Na₂O",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Ca(OH)₂",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "HClO",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "K₂CO₃",
+              "correct": false
+            }
+          ],
+          "explanation": "A：Na₂O ✅<br>B：Ca(OH)₂ ❌<br>C：HClO ❌<br>D：K₂CO₃ ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2018·浙江选考·变式1 极致课堂：第1课时·变式1</span>"
         }
       ]
     },
     {
-      "stageId": "card-2",
+      "stageId": "card-14",
       "type": "microcard",
-      "num": 2,
+      "num": 14,
       "icon": "🧩",
-      "title": "电解质与非电解质",
+      "title": "冰水混合物是纯净物",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-2-secret",
+          "blockId": "card-14-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>冰和水是同一物质（H₂O）的不同状态。冰水混合物中只有一种物质，所以是纯净物。</p>"
+        },
+        {
+          "blockId": "card-14-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰说：\"冰水混合物里面有冰和水两种东西，所以是混合物。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：看到\"两种状态\"就以为是\"两种物质\"——状态≠物质种类。</span></p>"
+        },
+        {
+          "blockId": "card-14-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "纯净物vs混合物的判断标准纯净物：只有一种物质（分子式唯一） 混合物：有两种或以上的物质  冰水混合物： 冰 → H₂O 水 → H₂O 分子式一样 → 只有一种物质 → 纯净物！",
+            "几个\"看起来像混合物但其实是纯净物\"的例子",
+            "几个\"看起来像混合物但其实是纯净物\"的例子物质你以为实际是为什么冰水混合物混合物✅ 纯净物都是H₂O干冰混合物✅ 纯净物固态CO₂液氧混合物✅ 纯净物液态O₂金刚石、石墨都是C，是纯净物✅ 但它们是不同物质（同素异形体）→ 混合了是混合物注意：金刚石和石墨虽然都由C元素组成，但它们是不同的物质（结构不同）。所以金刚石和石墨混在一起是混合物！",
+            "两种判断角度看分子式（物质种类）→ H₂O只有一种 → 纯净物 看状态 → 有固态+液态 → 看起来像两种 以分子式为准！不看状态！"
+          ]
+        },
+        {
+          "blockId": "card-14-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>冰水混合物就像\"同样的人穿着冬装和夏装\"——衣服不同（状态不同），但人还是同一个人（同一种物质）。</p>"
+        },
+        {
+          "blockId": "card-14-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质中属于纯净物的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "冰水混合物",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "盐酸",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "漂白粉",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "食醋",
+              "correct": false
+            }
+          ],
+          "explanation": "A：冰水混合物 ✅<br>B：盐酸 ❌<br>C：漂白粉 ❌<br>D：食醋 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·变式3A选项 极致课堂：第1课时·变式3A</span>"
         }
       ]
     },
     {
-      "stageId": "card-3",
+      "stageId": "card-15",
       "type": "microcard",
-      "num": 3,
+      "num": 15,
       "icon": "🧩",
-      "title": "胶体的聚沉",
+      "title": "纯碱不是碱",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-3-secret",
+          "blockId": "card-15-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>纯碱（Na₂CO₃）是盐，不是碱。名字带\"碱\"不等于化学分类是碱。</p>"
+        },
+        {
+          "blockId": "card-15-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小美说：\"纯碱嘛，名字都叫'碱'了，肯定是碱。\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：用名字判断物质分类——化学分类看组成和结构，不看名字。</span></p>"
+        },
+        {
+          "blockId": "card-15-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "什么叫\"碱\"？碱 = 电离出的阴离子全部是OH⁻的化合物     ↓ NaOH = Na⁺ + OH⁻ → 阴离子全部是OH⁻ → 是碱     ↓ Na₂CO₃ = 2Na⁺ + CO₃²⁻ → 阴离子是CO₃²⁻，不是OH⁻ → 不是碱！",
+            "什么叫\"盐\"？盐 = 由金属阳离子（或NH₄⁺）和酸根阴离子组成的化合物     ↓ Na₂CO₃ → Na⁺（金属阳离子）+ CO₃²⁻（碳酸根）→ 盐！",
+            "容易被名字误导的物质",
+            "容易被名字误导的物质物质名字带什么实际分类纯碱（Na₂CO₃）\"碱\"字盐（碳酸钠）烧碱（NaOH）\"碱\"字✅ 碱（氢氧化钠）苛性钠（NaOH）\"钠\"字✅ 碱小苏打（NaHCO₃）\"苏打\"盐（碳酸氢钠）大苏打（Na₂S₂O₃）\"苏打\"盐（硫代硫酸钠）胆矾（CuSO₄·5H₂O）\"矾\"字盐（结晶水合物）分类看化学式，不看名字！"
+          ]
+        },
+        {
+          "blockId": "card-15-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>纯碱就像\"外号叫'大个子'但实际身高只有1米6的人\"——名字和实际情况不符。 化学分类只看化学式的\"真面目\"（构成），不看\"外号\"（俗名）。</p>"
+        },
+        {
+          "blockId": "card-15-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质中属于碱的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "纯碱（Na₂CO₃）",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "烧碱（NaOH）",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "小苏打（NaHCO₃）",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "胆矾（CuSO₄·5H₂O）",
+              "correct": false
+            }
+          ],
+          "explanation": "A：纯碱（Na₂CO₃） ❌<br>B：烧碱（NaOH） ✅<br>C：小苏打（NaHCO₃） ❌<br>D：胆矾（CuSO₄·5H₂O） ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·变式3B选项 极致课堂：第1课时·变式3B</span>"
         }
       ]
     },
     {
-      "stageId": "card-4",
+      "stageId": "card-16",
       "type": "microcard",
-      "num": 4,
+      "num": 16,
       "icon": "🧩",
-      "title": "电离与导电",
+      "title": "固体不导电≠非电解质",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-4-secret",
+          "blockId": "card-16-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>固体状态不导电不代表它不是电解质。电解质判断看熔融态或水溶液能否电离，不是看固体状态。</p>"
+        },
+        {
+          "blockId": "card-16-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>小明说：\"SiO₂固体不导电，所以SiO₂是非电解质。\"第一个错误：固体不导电→非电解质（忘了熔融态）但SiO₂固体不导电，熔融态也不导电 → 它确实是\"不是电解质\"不过判断依据是\"自身不能电离\"，不是\"固体不导电\"阿杰说：\"NaCl固体不导电，所以NaCl是非电解质。\"第二个错误（严重）：NaCl固体不导电，但熔融态能导电且完全电离→NaCl是强电解质！</p>"
+        },
+        {
+          "blockId": "card-16-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "固体导电≠电解质，固体不导电≠非电解质固体能导电 → 不一定是电解质（Fe、Cu是单质） 固体不导电 → 不一定是非电解质（NaCl固体不导电但熔融态导电）  关键是：它自身能不能电离？不是看它固体的导电性。",
+            "常见物质的固体vs熔融态导电性",
+            "常见物质的固体vs熔融态导电性物质固体导电吗？熔融态导电吗？是电解质吗？NaCl❌ 不导电✅ 导电✅ 强电解质BaSO₄❌ 不导电✅ 导电✅ 强电解质Fe✅ 导电✅ 导电❌ 单质SiO₂❌ 不导电❌ 不导电❌ 非电解质蔗糖❌ 不导电❌ 不导电❌ 非电解质",
+            "正确的判断思路以NaCl为例： 看到NaCl固体不导电 → 别急着下结论 再问：NaCl是化合物吗？→ 是 NaCl自身能电离吗？→ 能（熔融态Na⁺和Cl⁻分开） NaCl完全电离吗？→ 是 结论：NaCl是强电解质"
+          ]
+        },
+        {
+          "blockId": "card-16-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>固体不导电就像\"睡着的人不动\"——不能说\"这个人不会动\"，他只是现在没动。 电解质判断要看\"他醒了能不能动\"（熔融态能否电离），不是看\"他睡着时动不动\"（固体是否导电）。</p>"
+        },
+        {
+          "blockId": "card-16-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于电解质判断的说法正确的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "固体不导电的就是非电解质",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NaCl固体不导电，所以NaCl是非电解质",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "判断电解质要看熔融态或水溶液能否自身电离",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "SiO₂是固体，但不导电，所以SiO₂是电解质",
+              "correct": false
+            }
+          ],
+          "explanation": "A：固体不导电的就是非电解质 ❌<br>B：NaCl固体不导电，所以NaCl是非电解质 ❌<br>C：判断电解质要看熔融态或水溶液能否自身电离 ✅<br>D：SiO₂是固体，但不导电，所以SiO₂是电解质 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·变式3C选项 极致课堂：第1课时·变式3C</span>"
         }
       ]
     },
     {
-      "stageId": "card-5",
+      "stageId": "card-17",
       "type": "microcard",
-      "num": 5,
+      "num": 17,
       "icon": "🧩",
-      "title": "综合辨析",
+      "title": "油脂不是高分子化合物",
       "defaultOpen": false,
       "blocks": [
         {
-          "blockId": "card-5-secret",
+          "blockId": "card-17-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p>本关内容即将开放，敬请期待！</p>"
+          "html": "<p>油脂是甘油三酯，分子量在800-900左右，远低于高分子化合物10⁴的门槛。</p>"
+        },
+        {
+          "blockId": "card-17-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰说：\"油脂是大分子，应该属于高分子化合物吧？\"<br><span style=\"color:var(--red);font-size:13.5px\">错误根源：油脂分子比普通小分子（如水、乙醇）大一些，但\"大\"≠\"高分子\"。高分子有严格的分子量门槛。</span></p>"
+        },
+        {
+          "blockId": "card-17-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "油脂的结构油脂 = 甘油 + 3分子高级脂肪酸     ↓ 甘油三酯     ↓ 分子量 ≈ 800-900     ↓ 远小于高分子化合物的标准（10⁴以上）",
+            "哪些是天然高分子？天然高分子：   淀粉 (C₆H₁₀O₅)ₙ  → 分子量数万   纤维素 (C₆H₁₀O₅)ₙ → 分子量数十万   蛋白质              → 分子量数万~数百万   天然橡胶            → 分子量数万  看起来\"大\"但不是高分子的：   油脂（甘油三酯）   → 分子量~900   葡萄糖             → 分子量180   蔗糖               → 分子量342   维生素             → 分子量几百",
+            "哪些是天然高分子？天然高分子：   淀粉 (C₆H₁₀O₅)ₙ  → 分子量数万   纤维素 (C₆H₁₀O₅)ₙ → 分子量数十万   蛋白质              → 分子量数万~数百万   天然橡胶            → 分子量数万  看起来\"大\"但不是高分子的：   油脂（甘油三酯）   → 分子量~900   葡萄糖             → 分子量180   蔗糖               → 分子量342   维生素             → 分子量几百",
+            "\"高分子\"的两个必备特征① 分子量大（&gt;10⁴） ② 由重复结构单元（单体）聚合而成  油脂有\"重复单元\"吗？→ 没有！它是三个脂肪酸连在一个甘油上 油脂分子量大吗？→ 不到900，太小  两个条件都不满足 → 不是高分子"
+          ]
+        },
+        {
+          "blockId": "card-17-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>高分子就像\"火车\"——很多节车厢连在一起（重复单元）。 油脂就像\"三轮车\"——三个轮子装在一个车架上，但只有三个轮（没有重复的很多节），所以不是火车。</p>"
+        },
+        {
+          "blockId": "card-17-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质属于高分子化合物的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "油脂",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "蛋白质",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "葡萄糖",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "蔗糖",
+              "correct": false
+            }
+          ],
+          "explanation": "A：油脂 ❌<br>B：蛋白质 ✅<br>C：葡萄糖 ❌<br>D：蔗糖 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·四川卷·变式3D选项 极致课堂：第1课时·变式3D</span>"
         }
       ]
     }
@@ -107,16 +364,26 @@
       "stageId": "cert-1",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "本关考题即将开放，敬请期待！",
+      "question": "下列属于纯净物的是：",
       "options": [
         {
           "label": "A",
-          "text": "即将开放",
-          "correct": true
+          "text": "冰水混合物",
+          "correct": false
         },
         {
           "label": "B",
-          "text": "即将开放",
+          "text": "纯碱",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "浆糊",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "油脂",
           "correct": false
         }
       ]
