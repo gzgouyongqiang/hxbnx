@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "questId": "main-1-gold",
+    "title": "第1课时：物质的组成、性质和转化",
+    "subtitle": "终极挑战 · 逐一突破 · 通关积分 100分",
+    "course": 1,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": [
+      "分散系",
+      "胶体",
+      "丁达尔效应",
+      "电泳",
+      "布朗运动",
+      "电解质",
+      "物理变化",
+      "化学变化"
+    ],
+    "totalStages": 5,
+    "activeStages": 5
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "物理变化 vs 化学变化",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>本关内容即将开放，敬请期待！</p>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "电解质与非电解质",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>本关内容即将开放，敬请期待！</p>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "胶体的聚沉",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>本关内容即将开放，敬请期待！</p>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "电离与导电",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>本关内容即将开放，敬请期待！</p>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "综合辨析",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>本关内容即将开放，敬请期待！</p>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "本关考题即将开放，敬请期待！",
+      "options": [
+        {
+          "label": "A",
+          "text": "即将开放",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "即将开放",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
