@@ -369,21 +369,49 @@
         {
           "label": "A",
           "text": "冰水混合物",
-          "correct": false
-        },
-        {
-          "label": "B",
-          "text": "纯碱",
           "correct": true
         },
         {
+          "label": "B",
+          "text": "漂白粉",
+          "correct": false
+        },
+        {
           "label": "C",
-          "text": "浆糊",
+          "text": "盐酸",
           "correct": false
         },
         {
           "label": "D",
-          "text": "油脂",
+          "text": "食醋",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列说法正确的是：",
+      "options": [
+        {
+          "label": "A",
+          "text": "纯碱（Na₂CO₃）是碱",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "纯碱（Na₂CO₃）是盐",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "纯碱（Na₂CO₃）是混合物",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "纯碱（Na₂CO₃）是弱电解质",
           "correct": false
         }
       ]
