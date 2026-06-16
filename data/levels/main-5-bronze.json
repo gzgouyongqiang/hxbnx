@@ -1,22 +1,647 @@
 {
   "meta": {
     "questId": "main-5-bronze",
-    "title": "第5课时：化学实验基础",
-    "subtitle": "🥉 铜牌关卡 · 通关积分 10分",
+    "title": "第5课时：氧化还原配平与综合应用",
+    "subtitle": "🥉 铜牌关卡 · 6个微卡点 · 通关积分 10分",
     "course": 5,
     "tier": "bronze",
     "tierLabel": "铜牌关卡",
     "tierEmoji": "🥉",
-    "knowledgeTags": [],
-    "totalStages": 1,
-    "activeStages": 1
+    "knowledgeTags": [
+      "化合价升降法",
+      "歧化反应",
+      "归中反应",
+      "缺项配平",
+      "信息提取",
+      "有机物配平"
+    ],
+    "totalStages": 6,
+    "activeStages": 6
   },
   "stages": [
     {
-      "stageId": "card-placeholder",
-      "type": "placeholder",
-      "html": "<div style=\"text-align:center;padding:40px 20px;color:var(--text-dim);font-size:15px;border:1px dashed var(--border);border-radius:16px;margin-bottom:24px\">\n  <div style=\"font-size:48px;margin-bottom:12px\">🥉</div>\n  <strong>铜牌关卡 · 第5课时</strong><br>\n  <span style=\"font-size:13px;margin-top:8px;display:inline-block;color:var(--gold-dim)\">化学实验基础</span><br>\n  <span style=\"font-size:12px;margin-top:12px;display:inline-block\">🔮 关卡内容正在炼制中，敬请期待…</span><br>\n  <a href=\"index.html\" style=\"display:inline-block;margin-top:16px;background:linear-gradient(135deg,var(--gold-dim),#a08010);color:#1a1a2e;padding:8px 20px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600\">← 返回练功地图</a>\n</div>"
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "化合价升降法 · 升降相等是王道",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>氧化还原配平的核心是<strong>化合价升降总数相等</strong>：标价→画桥→最小公倍数→配系数，四步搞定。不标化合价就配平，系数全错！</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰说：</strong>「Cu₂O+H₂O₂+H₂SO₄→CuSO₄+H₂O，我直接看原子个数配就完了。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：H₂O₂中的O是<strong>-1价</strong>（过氧键），不是常规的-2价。没标化合价就配，系数全错！Cu从+1→+2升1价，O从-1→-2降1价，升降必须守恒。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：标化合价→找出所有变价元素",
+            "第二步：画双线桥→标升降总数",
+            "第三步：最小公倍数→确定变价物质系数",
+            "第四步：原子守恒→补全非变价物质系数",
+            "第五步：电荷守恒→检查离子方程式"
+          ],
+          "table": {
+            "headers": [
+              "步骤",
+              "操作",
+              "要点"
+            ],
+            "rows": [
+              [
+                "① 标价",
+                "标出所有元素化合价",
+                "注意特殊价态：H₂O₂中O为-1"
+              ],
+              [
+                "② 画桥",
+                "画双线桥标升降",
+                "升降总数必须相等"
+              ],
+              [
+                "③ 公倍数",
+                "取升降数的最小公倍数",
+                "确定变价物质系数"
+              ],
+              [
+                "④ 原子守恒",
+                "补全非变价原子",
+                "从一种原子开始逐个配"
+              ],
+              [
+                "⑤ 电荷守恒",
+                "检查左右电荷",
+                "仅离子方程式需要"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>化合价升降配平就像「跷跷板」——左边升了多少，右边就必须降多少，否则跷跷板不平衡。不标化合价就配，就像闭着眼坐跷跷板，根本不知道谁重谁轻。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "配平氧化还原方程式时，第一步必须做的是：",
+          "options": [
+            {
+              "label": "A",
+              "text": "直接看原子个数配系数",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "标出所有元素的化合价",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "先配H和O原子",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "先配电荷守恒",
+              "correct": false
+            }
+          ],
+          "explanation": "A：错误，不标化合价直接配，可能忽略特殊价态（如H₂O₂中O为-1）<br>B：正确 ✅——第一步永远是标化合价，找出变价元素<br>C：错误，非变价原子在升降法配完后再补<br>D：错误，电荷守恒是最后检查步骤"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "同物变价型 · 歧化与归中",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>同一种元素的原子在反应中<strong>既有升高又有降低</strong>，分两类——<strong>歧化</strong>（同种元素从同一价态向两边走）和<strong>归中</strong>（同种元素从不同价态向中间靠拢）。配平时<strong>只算单向电子转移</strong>，不重复计数。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>「Cl₂+NaOH→NaCl+NaClO+H₂O，电子转移数是1+1=2。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：歧化/归中反应中得失电子不能两边都算，<strong>只算单向</strong>！Cl从0→-1降1价（得1e⁻），Cl从0→+1升1价（失1e⁻），电子转移数为1，不是2。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：标价→找同一元素是否既升又降",
+            "第二步：判断类型——歧化（中间→高低）或归中（高低→中间）",
+            "第三步：只算单向电子转移，不重复计数"
+          ],
+          "table": {
+            "headers": [
+              "类型",
+              "起点价态",
+              "终点价态",
+              "典型反应"
+            ],
+            "rows": [
+              [
+                "歧化",
+                "同一价态",
+                "向高低两端",
+                "Cl₂+NaOH→NaCl+NaClO+H₂O"
+              ],
+              [
+                "归中",
+                "不同价态",
+                "向中间靠拢",
+                "SO₂+2H₂S→3S+2H₂O"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>歧化就像「分家」——一笔财产从一个人手里分成两份，一份多一份少。归中就像「合家」——两个人各拿一部分凑到一起。但不管分家还是合家，钱的总量不能重复算——给出去多少就是多少，不能收和发各算一遍。</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "反应3Cl₂+6NaOH→5NaCl+NaClO₃+3H₂O中，被氧化与被还原的氯原子个数比为：",
+          "options": [
+            {
+              "label": "A",
+              "text": "1:5",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "5:1",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "1:1",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "3:3",
+              "correct": false
+            }
+          ],
+          "explanation": "6个Cl原子中，1个Cl从0→+5（被氧化，升5价），5个Cl从0→-1（被还原，降1价×5=降5价）。被氧化:被还原 = 1:5 ✅<br>B：1:5反过来就是5:1，但被氧化只有1个Cl<br>C：不是1:1<br>D：3:3是按总Cl数平分，错误"
+        }
+      ]
+    },
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "异物变价型 · 各算各的账",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>反应中<strong>两种及以上不同元素</strong>同时变价时，需分别计算各元素的升降价总数，再整体取最小公倍数确定系数——「<strong>各算各的账，汇总取公倍</strong>」。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰说：</strong>「Fe₂O₃+CO→Fe+CO₂，Fe降3价×2=6价，C升2价，CO系数应该是6。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：阿杰算对了升降总数（Fe降6价，C升2价），但CO系数应该是最小公倍数6÷2=3，不是6。「各算各的账」后要取公倍数定系数。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：列出所有变价元素",
+            "第二步：分别算每个元素的升降总价",
+            "第三步：取所有升降值的最小公倍数→分配系数"
+          ],
+          "table": {
+            "headers": [
+              "反应",
+              "升价元素",
+              "降价元素",
+              "最小公倍数",
+              "配平结果"
+            ],
+            "rows": [
+              [
+                "Fe₂O₃+CO→Fe+CO₂",
+                "C:+2→+4 升2",
+                "Fe:+3→0 降3×2=6",
+                "6",
+                "Fe₂O₃+3CO→2Fe+3CO₂"
+              ],
+              [
+                "Cu+HNO₃→Cu(NO₃)₂+NO+H₂O",
+                "Cu:0→+2 升2",
+                "N:+5→+2 降3",
+                "6",
+                "3Cu+8HNO₃→3Cu(NO₃)₂+2NO+4H₂O"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>异物变价配平就像「AA制结账」——每个人算好自己的消费（各算升降），然后找一个大家都认可的汇率（最小公倍数）来结账。不能因为一个人花了6块另一个人花了2块，就让2块的人也付6块。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "配平Fe₂O₃+CO→Fe+CO₂时，CO的系数应为：",
+          "options": [
+            {
+              "label": "A",
+              "text": "1",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "2",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "3",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "6",
+              "correct": false
+            }
+          ],
+          "explanation": "Fe从+3→0降3价，Fe₂O₃中有2个Fe共降6价；C从+2→+4升2价。最小公倍数为6，CO系数=6÷2=3 ✅<br>A：1个CO只升2价，不够平衡6价<br>B：2个CO升4价，不够<br>D：6个CO升12价，超过了"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "缺项配平 · H⁺/H₂O/OH⁻补全",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>缺项配平就是在用化合价升降法确定变价物质系数后，再根据<strong>介质环境</strong>补全H⁺/OH⁻/H₂O——<strong>酸性补H⁺，碱性补OH⁻，中性反应物补H₂O、产物看情况</strong>。口诀：先配变价，再配电荷，最后补H和O。</p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>「MnO₄⁻+SO₃²⁻+H⁺→Mn²⁺+SO₄²⁻+H₂O，我配完变价就算搞定了。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 忘了检查电荷，也忘了补H和O。离子方程式必须<strong>三重守恒</strong>：化合价升降守恒+电荷守恒+原子守恒。口诀：先配变价，再配电荷，最后补H和O。</p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：用升降法配变价物质系数",
+            "第二步：算左右电荷差",
+            "第三步：酸性补H⁺/碱性补OH⁻平衡电荷",
+            "第四步：用H₂O补O原子"
+          ],
+          "table": {
+            "headers": [
+              "介质环境",
+              "补什么平衡电荷",
+              "补什么平衡O"
+            ],
+            "rows": [
+              [
+                "酸性",
+                "H⁺",
+                "H₂O"
+              ],
+              [
+                "碱性",
+                "OH⁻",
+                "H₂O"
+              ],
+              [
+                "中性（反应物侧）",
+                "H₂O",
+                "H₂O（产物侧）"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>缺项配平就像「填空题」——升降法帮你填好了大部分空，但H、O的空还空着。酸性和碱性就是填空的「提示」：酸性环境用H⁺填，碱性用OH⁻填，中性用水填。按提示走，空就能填对。</p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "在酸性介质中配平离子方程式时，缺项应优先补充：",
+          "options": [
+            {
+              "label": "A",
+              "text": "OH⁻",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "H⁺",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "H₂O",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "O₂",
+              "correct": false
+            }
+          ],
+          "explanation": "A：OH⁻是碱性介质中补充的 ❌<br>B：酸性介质中优先补充H⁺平衡电荷 ✅<br>C：H₂O用来补O原子，在H⁺之后补 ❌<br>D：O₂一般不会出现在缺项中 ❌"
+        }
+      ]
+    },
+    {
+      "stageId": "card-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "信息提取 · 陌生方程式先标化合价",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>遇到陌生方程式，第一步永远是<strong>标化合价</strong>——利用「常见元素固定价态」推「未知元素可变价态」，<strong>价态标对，配平就对</strong>。</p>"
+        },
+        {
+          "blockId": "card-5-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰说：</strong>「K₂H₃IO₆+HI→KI+I₂+H₂O，I应该是+5价吧？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 凭感觉猜化合价！K=+1×2=+2，H=+1×3=+3，O=-2×6=-12，设I为x：2+3+x-12=0→x=<strong>+7</strong>！价态猜错全盘皆输。</p>"
+        },
+        {
+          "blockId": "card-5-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：K=+1、H=+1、O=-2固定价→推I的化合价",
+            "第二步：标价→找变价→升降法配平"
+          ],
+          "table": {
+            "headers": [
+              "常见固定价态",
+              "例子"
+            ],
+            "rows": [
+              [
+                "碱金属=+1",
+                "Na、K"
+              ],
+              [
+                "碱土金属=+2",
+                "Mg、Ca"
+              ],
+              [
+                "H=+1（金属氢化物除外）",
+                "H₂O、HCl"
+              ],
+              [
+                "O=-2（过氧化物除外）",
+                "H₂O、CO₂"
+              ],
+              [
+                "卤素=-1（无氧酸盐中）",
+                "NaCl、KBr"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-5-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>陌生方程式就像「密室逃脱」——你知道一些固定线索（K=+1、O=-2），用这些线索就能推出未知线索（I=?）。不推就猜，就像闭着眼按密码，大概率按错。</p>"
+        },
+        {
+          "blockId": "card-5-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "K₂H₃IO₆中I的化合价为：",
+          "options": [
+            {
+              "label": "A",
+              "text": "+5",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "+7",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "+3",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "+1",
+              "correct": false
+            }
+          ],
+          "explanation": "K=+1×2=+2，H=+1×3=+3，O=-2×6=-12，设I为x：2+3+x-12=0→x=+7 ✅<br>A：+5是常见高价碘，但本题不是<br>C：+3太低<br>D：+1不符合"
+        }
+      ]
+    },
+    {
+      "stageId": "card-6",
+      "type": "microcard",
+      "num": 6,
+      "icon": "🧩",
+      "title": "有机物配平 · C/H/O整体升降",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-6-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>有机物中碳的化合价用<strong>平均法</strong>计算：C价=(总价-已知元素价)÷C原子数。配平时把有机物当作<strong>一个整体</strong>算出C的平均升降值。</p>"
+        },
+        {
+          "blockId": "card-6-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>「CH₃OH+NO₃⁻+H⁺→CO₂+N₂+H₂O，C应该是+4价吧？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 瞎猜C的化合价！有机物中的C必须列方程算：CH₃OH中H=+1×4=+4，O=-2，设C为x→x+4-2=0→x=<strong>-2价</strong>。CO₂中C=+4价，C从-2→+4升了<strong>6价</strong>！</p>"
+        },
+        {
+          "blockId": "card-6-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：用「总价为零」算有机物中C的平均化合价",
+            "第二步：把有机物当整体算升降",
+            "第三步：取公倍数配系数"
+          ],
+          "table": {
+            "headers": [
+              "有机物",
+              "C的平均化合价",
+              "推算过程"
+            ],
+            "rows": [
+              [
+                "CH₃OH",
+                "-2",
+                "x+4×(+1)+(-2)=0→x=-2"
+              ],
+              [
+                "C₂H₅OH",
+                "-2",
+                "2x+6×(+1)+(-2)=0→x=-2"
+              ],
+              [
+                "CH₄",
+                "-4",
+                "x+4×(+1)=0→x=-4"
+              ],
+              [
+                "C₆H₁₂O₆",
+                "0",
+                "6x+12×(+1)+6×(-2)=0→x=0"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-6-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>有机物中C的化合价就像「公司里员工的平均工资」——每个员工（每个C原子）工资可能不同，但只要知道公司总支出（总价=0）和其他员工工资（H=+1、O=-2），就能算出平均工资。不求每个人精确，但求平均数正确。</p>"
+        },
+        {
+          "blockId": "card-6-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "C₂H₅OH中C的平均化合价为：",
+          "options": [
+            {
+              "label": "A",
+              "text": "+2",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "-2",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "0",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "+4",
+              "correct": false
+            }
+          ],
+          "explanation": "2x+6×(+1)+(-2)=0→2x=-4→x=-2 ✅<br>A：+2算反了<br>C：0是葡萄糖中C的化合价<br>D：+4是CO₂中C的化合价"
+        }
+      ]
     }
   ],
-  "certQuiz": []
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于氧化还原配平的说法正确的是：",
+      "options": [
+        {
+          "label": "A",
+          "text": "配平时不需要标化合价，看原子个数即可",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "歧化反应中电子转移数应将升降两边的值相加",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "化合价升降法配平的核心是升降总数相等",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "有机物中C的化合价固定为+4",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "在酸性介质中配平离子方程式MnO₄⁻+SO₃²⁻+?→Mn²⁺+SO₄²⁻+H₂O时，缺项应补充：",
+      "options": [
+        {
+          "label": "A",
+          "text": "H⁺",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "OH⁻",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O₂",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "H₂",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }
