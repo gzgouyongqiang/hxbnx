@@ -2,21 +2,557 @@
   "meta": {
     "questId": "main-3-gold",
     "title": "氧化还原反应",
-    "subtitle": "🥇 金牌关卡 · 通关积分 100分",
+    "subtitle": "金牌关卡 · 5个微卡点 · 通关积分 100分",
     "course": 3,
     "tier": "gold",
     "tierLabel": "金牌关卡",
     "tierEmoji": "🥇",
-    "knowledgeTags": [],
-    "totalStages": 1,
-    "activeStages": 1
+    "knowledgeTags": [
+      "HNO₃氧化性",
+      "浓H₂SO₄",
+      "H₂O₂",
+      "Fe价态规律",
+      "综合推断"
+    ],
+    "totalStages": 5,
+    "activeStages": 5
   },
   "stages": [
     {
-      "stageId": "card-placeholder",
-      "type": "placeholder",
-      "html": "<div style=\"text-align:center;padding:40px 20px;color:var(--text-dim);font-size:15px;border:1px dashed var(--border);border-radius:16px;margin-bottom:24px\">\n  <div style=\"font-size:48px;margin-bottom:12px\">🥇</div>\n  <strong>金牌关卡 · 第3课时</strong><br>\n  <span style=\"font-size:13px;margin-top:8px;display:inline-block;color:var(--gold-dim)\">氧化还原反应</span><br>\n  <span style=\"font-size:12px;margin-top:12px;display:inline-block\">🔮 关卡内容正在炼制中，敬请期待…</span><br>\n  <a href=\"index.html\" style=\"display:inline-block;margin-top:16px;background:linear-gradient(135deg,var(--gold-dim),#a08010);color:#1a1a2e;padding:8px 20px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600\">← 返回练功地图</a>\n</div>"
+      "stageId": "card-13",
+      "type": "microcard",
+      "num": 13,
+      "icon": "🧩",
+      "title": "HNO₃的氧化性 · 浓稀产物不同",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-13-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>HNO₃是强氧化性酸，与金属反应<strong>不产生H₂</strong>！浓HNO₃→NO₂（+5→+4，降1价），稀HNO₃→NO（+5→+2，降3价）。浓HNO₃常温下使Fe、Al钝化（生成致密氧化膜阻止反应），加热才能继续反应。</p>"
+        },
+        {
+          "blockId": "card-13-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰写：</strong>「Cu+2HNO₃(稀)=Cu(NO₃)₂+H₂↑」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 严重错误！HNO₃是氧化性酸，与金属反应绝不产生H₂！稀HNO₃还原产物是NO，不是H₂。</p>"
+        },
+        {
+          "blockId": "card-13-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "浓HNO₃：Cu+4HNO₃(浓)=Cu(NO₃)₂+2NO₂↑+2H₂O",
+            "稀HNO₃：3Cu+8HNO₃(稀)=3Cu(NO₃)₂+2NO↑+4H₂O",
+            "钝化：Fe/Al+浓HNO₃(常温)→表面生成致密氧化膜→反应停止（加热则继续）"
+          ],
+          "table": {
+            "headers": [
+              "HNO₃浓度",
+              "还原产物",
+              "N价态变化",
+              "每mol HNO₃得电子"
+            ],
+            "rows": [
+              [
+                "浓HNO₃",
+                "NO₂",
+                "+5→+4(降1)",
+                "1mol e⁻"
+              ],
+              [
+                "稀HNO₃",
+                "NO",
+                "+5→+2(降3)",
+                "3mol e⁻"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-13-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>浓HNO₃像「快刀斩乱麻」——氧化性极强但只降1价（NO₂），效率不高；稀HNO₃像「慢工出细活」——氧化性稍弱但降3价（NO），每分子HNO₃得更多电子。</p>"
+        },
+        {
+          "blockId": "card-13-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于HNO₃与金属反应的说法正确的是：",
+          "options": [
+            {
+              "label": "A",
+              "text": "稀HNO₃与Fe反应产生H₂",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "浓HNO₃与Cu反应生成NO",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "常温下浓HNO₃使Al钝化",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "稀HNO₃与Cu不反应",
+              "correct": false
+            }
+          ],
+          "explanation": "A：HNO₃是氧化性酸，不产生H₂ ❌<br>B：浓HNO₃与Cu生成NO₂，不是NO ❌<br>C：常温下浓HNO₃使Fe、Al钝化 ✅<br>D：稀HNO₃能与Cu反应生成NO ❌"
+        }
+      ]
+    },
+    {
+      "stageId": "card-14",
+      "type": "microcard",
+      "num": 14,
+      "icon": "🧩",
+      "title": "浓H₂SO₄的强氧化性 · 三大特性联动",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-14-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>浓H₂SO₄的三大特性：吸水性、脱水性、强氧化性。与金属反应时，<strong>还原产物是SO₂</strong>（S从+6→+4），不产生H₂。与Cu反应：Cu+2H₂SO₄(浓)=CuSO₄+SO₂↑+2H₂O。<strong>浓H₂SO₄也会使Fe、Al钝化</strong>。</p>"
+        },
+        {
+          "blockId": "card-14-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>「浓H₂SO₄和NaCl反应制HCl，利用的是浓H₂SO₄的强氧化性。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误！制HCl利用的是浓H₂SO₄的<strong>难挥发性（高沸点）</strong>和酸性，不是强氧化性！NaCl+H₂SO₄(浓)=NaHSO₄+HCl↑，S价态不变。</p>"
+        },
+        {
+          "blockId": "card-14-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "浓H₂SO₄做氧化剂时：S(+6)→SO₂(+4)，降2价，每mol浓H₂SO₄得2mol e⁻",
+            "区分三大特性何时起作用：①吸水→干燥剂 ②脱水→使蔗糖变黑 ③强氧化→与金属/还原性物质反应"
+          ],
+          "table": {
+            "headers": [
+              "反应",
+              "利用的性质",
+              "S价态变化"
+            ],
+            "rows": [
+              [
+                "Cu+2H₂SO₄(浓)",
+                "强氧化性+酸性",
+                "+6→+4(变)"
+              ],
+              [
+                "NaCl+H₂SO₄(浓)",
+                "难挥发性+酸性",
+                "+6→+6(不变)"
+              ],
+              [
+                "蔗糖+H₂SO₄(浓)变黑",
+                "脱水性",
+                "不变"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-14-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>浓H₂SO₄像「多面手特工」——有时当干燥剂（吸水），有时当烧烤师傅（脱水），有时当抢劫犯（抢电子=强氧化性）。搞清它这次执行什么任务，看反应类型和S的价态变化就知道了。</p>"
+        },
+        {
+          "blockId": "card-14-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "浓H₂SO₄与Cu反应时，表现出的性质是：",
+          "options": [
+            {
+              "label": "A",
+              "text": "只有强氧化性",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "只有酸性",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "强氧化性和酸性",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "吸水性和强氧化性",
+              "correct": false
+            }
+          ],
+          "explanation": "Cu+2H₂SO₄(浓)=CuSO₄+SO₂↑+2H₂O<br>一半H₂SO₄将Cu氧化（S+6→+4，强氧化性），另一半提供SO₄²⁻与Cu²⁺结合（酸性）<br>所以同时表现强氧化性和酸性 ✅"
+        }
+      ]
+    },
+    {
+      "stageId": "card-15",
+      "type": "microcard",
+      "num": 15,
+      "icon": "🧩",
+      "title": "H₂O₂的歧化 · 既氧化又还原",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-15-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>H₂O₂中O为-1价（中间价态），既能做氧化剂（O从-1→-2，得电子），又能做还原剂（O从-1→0，失电子）。做氧化剂时还原产物是H₂O（无污染！绿色氧化剂），做还原剂时氧化产物是O₂。</p>"
+        },
+        {
+          "blockId": "card-15-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰说：</strong>「H₂O₂做氧化剂时还原产物是O₂。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错！H₂O₂做氧化剂时，O从-1→-2（H₂O），不是-1→0（O₂）。O₂是H₂O₂做还原剂时的氧化产物！</p>"
+        },
+        {
+          "blockId": "card-15-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "做氧化剂：H₂O₂+2e⁻+2H⁺=2H₂O（O从-1→-2，还原产物H₂O）",
+            "做还原剂：H₂O₂-2e⁻=O₂↑+2H⁺（O从-1→0，氧化产物O₂）",
+            "⚠️ 绿色氧化剂：H₂O₂做氧化剂的还原产物是H₂O，无污染，比Cl₂、KMnO₄更环保"
+          ],
+          "table": {
+            "headers": [
+              "角色",
+              "O价态变化",
+              "产物",
+              "典型反应"
+            ],
+            "rows": [
+              [
+                "氧化剂",
+                "-1→-2(降1)",
+                "H₂O",
+                "H₂O₂+2Fe²⁺+2H⁺=2Fe³⁺+2H₂O"
+              ],
+              [
+                "还原剂",
+                "-1→0(升1)",
+                "O₂",
+                "2MnO₄⁻+5H₂O₂+6H⁺=2Mn²⁺+5O₂↑+8H₂O"
+              ],
+              [
+                "歧化",
+                "部分→-2，部分→0",
+                "H₂O+O₂",
+                "2H₂O₂=2H₂O+O₂↑"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-15-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>H₂O₂就像「两面派」——看对面是谁就变哪副面孔。遇到弱者（Fe²⁺），它当霸主（氧化剂）；遇到强者（KMnO₄），它当小弟（还原剂）；没人的时候，它自己跟自己打（歧化分解）。</p>"
+        },
+        {
+          "blockId": "card-15-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "H₂O₂被称为绿色氧化剂，原因是：",
+          "options": [
+            {
+              "label": "A",
+              "text": "H₂O₂氧化性最强",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "H₂O₂做氧化剂时还原产物是H₂O，无污染",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "H₂O₂不能做还原剂",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "H₂O₂做还原剂时氧化产物是O₂",
+              "correct": false
+            }
+          ],
+          "explanation": "A：H₂O₂氧化性不是最强的（KMnO₄、Cl₂更强） ❌<br>B：正确 ✅——还原产物H₂O无污染<br>C：H₂O₂也能做还原剂 ❌<br>D：说法正确但不是「绿色氧化剂」的原因 ❌"
+        }
+      ]
+    },
+    {
+      "stageId": "card-16",
+      "type": "microcard",
+      "num": 16,
+      "icon": "🧩",
+      "title": "Fe的价态规律 · 强弱氧化剂决定产物",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-16-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Fe遇<strong>强氧化剂</strong>（Cl₂、Br₂、浓HNO₃、稀HNO₃）→Fe³⁺；遇<strong>弱氧化剂</strong>（S、I₂、H⁺、Cu²⁺、Fe³⁺）→Fe²⁺。记住：不是所有酸都能把Fe氧化到+3价！盐酸、稀H₂SO₄只能到+2价。</p>"
+        },
+        {
+          "blockId": "card-16-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明写：</strong>「Fe+S=Fe₂S₃」——认为S像Cl₂一样能把Fe氧化到+3价。</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ S是弱氧化剂，只能把Fe氧化到+2价！Fe+S=FeS。</p><p><strong>阿杰写：</strong>「2Fe+6HCl=2FeCl₃+3H₂↑」</p><p style=\"color:var(--red);font-size:13.5px\">❌ HCl中H⁺氧化性弱，只能到+2价：Fe+2HCl=FeCl₂+H₂↑</p>"
+        },
+        {
+          "blockId": "card-16-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "强氧化剂→Fe³⁺：Cl₂、Br₂、浓HNO₃、稀HNO₃、浓H₂SO₄",
+            "弱氧化剂→Fe²⁺：S、I₂、H⁺(盐酸/稀H₂SO₄)、Cu²⁺、Fe³⁺"
+          ],
+          "table": {
+            "headers": [
+              "氧化剂",
+              "强弱",
+              "Fe产物",
+              "反应示例"
+            ],
+            "rows": [
+              [
+                "Cl₂",
+                "强",
+                "Fe³⁺",
+                "2Fe+3Cl₂=2FeCl₃"
+              ],
+              [
+                "S",
+                "弱",
+                "Fe²⁺",
+                "Fe+S=FeS"
+              ],
+              [
+                "HCl(H⁺)",
+                "弱",
+                "Fe²⁺",
+                "Fe+2HCl=FeCl₂+H₂↑"
+              ],
+              [
+                "稀HNO₃",
+                "强",
+                "Fe³⁺",
+                "Fe+4HNO₃(稀)=Fe(NO₃)₃+NO↑+2H₂O"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-16-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>Fe就像「打工人」——遇到大老板（强氧化剂Cl₂），被迫加班到最高效（Fe³⁺）；遇到小老板（弱氧化剂S），只需要正常上班（Fe²⁺）。老板的「大小」决定了你的「加班程度」。</p>"
+        },
+        {
+          "blockId": "card-16-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列反应中，Fe被氧化为Fe³⁺的是：",
+          "options": [
+            {
+              "label": "A",
+              "text": "Fe+I₂",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Fe+HCl",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Fe+Cl₂",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Fe+CuSO₄",
+              "correct": false
+            }
+          ],
+          "explanation": "A：I₂弱氧化剂→FeI₂(Fe²⁺) ❌<br>B：HCl弱氧化剂→FeCl₂(Fe²⁺) ❌<br>C：Cl₂强氧化剂→FeCl₃(Fe³⁺) ✅<br>D：Cu²⁺弱氧化剂→FeSO₄(Fe²⁺)+Cu ❌"
+        }
+      ]
+    },
+    {
+      "stageId": "card-17",
+      "type": "microcard",
+      "num": 17,
+      "icon": "🧩",
+      "title": "综合推断 · 氧化还原全链条思维",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-17-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>氧化还原综合推断三步法：①标化合价→找变价元素→定氧还角色；②用守恒关系→列电子转移等式→配平；③结合反应条件→判断产物→写出完整方程式。遇到陌生反应不要慌，标化合价是万能第一步。</p>"
+        },
+        {
+          "blockId": "card-17-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美做工业题：</strong>「用NaClO₃氧化I₂制备HIO₃」，她不知道怎么写方程式。</p><p style=\"color:var(--red);font-size:13.5px\">错误根源：不敢动手标化合价！NaClO₃中Cl为+5价（可降），I₂中I为0价（可升）。Cl(+5)→降低→做氧化剂→I(0)→升高→做还原剂→配平即可！</p>"
+        },
+        {
+          "blockId": "card-17-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：标化合价——NaClO₃(Cl+5)、I₂(I0)、HIO₃(I+5)、NaCl(Cl-1)",
+            "第二步：找变化——Cl从+5→-1降6价(得6e⁻)，I从0→+5升5价(失5e⁻×2=10e⁻)... 等等这是错的分析",
+            "第三步重新来：Cl(+5→-1)降6价，I(0→+5)升5价，最小公倍数30，5Cl降30价对应6I升30价→10NaClO₃+3I₂"
+          ],
+          "table": {
+            "headers": [
+              "步骤",
+              "操作",
+              "结果"
+            ],
+            "rows": [
+              [
+                "①标化合价",
+                "标所有元素化合价",
+                "Cl(+5)↓，I(0)↑"
+              ],
+              [
+                "②找变化",
+                "算升降价数",
+                "Cl降6，I升5"
+              ],
+              [
+                "③配平",
+                "最小公倍数配系数",
+                "10NaClO₃+3I₂"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-17-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>综合推断就像「侦探破案」——第一步：找到嫌疑人（变价元素）；第二步：确定谁干了什么（氧化/还原）；第三步：还原犯罪现场（配平）。标化合价就是「查指纹」，永远从这步开始。</p>"
+        },
+        {
+          "blockId": "card-17-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "NaClO₃与I₂在酸性条件下反应制备HIO₃，配平后NaClO₃与I₂的系数比为：",
+          "options": [
+            {
+              "label": "A",
+              "text": "2:1",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "5:3",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "1:1",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "3:2",
+              "correct": false
+            }
+          ],
+          "explanation": "Cl从+5→-1降6价，I从0→+5升5价<br>最小公倍数30：5个Cl降30价(5NaClO₃)，6个I升30价(3I₂)<br>5NaClO₃+3I₂+3H₂O=5NaCl+6HIO₃<br>NaClO₃:I₂=5:3 ✅"
+        }
+      ]
     }
   ],
-  "certQuiz": []
+  "certQuiz": [
+    {
+      "stageId": "cert-6",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "浓HNO₃与Cu反应的还原产物是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "H₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "NO",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "NO₂",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "stageId": "cert-7",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "H₂O₂被称为绿色氧化剂，原因是其还原产物为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "O₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "H₂O",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "OH⁻",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-8",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "Fe与Cl₂反应的产物是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "FeCl₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "FeCl₃",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "FeCl₂和FeCl₃混合物",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }
