@@ -2,21 +2,701 @@
   "meta": {
     "questId": "main-2-bronze",
     "title": "离子反应 离子方程式",
-    "subtitle": "🥉 铜牌关卡 · 通关积分 10分",
+    "subtitle": "6个基础微卡点 · 逐一突破 · 通关积分 10分",
     "course": 2,
     "tier": "bronze",
     "tierLabel": "铜牌关卡",
     "tierEmoji": "🥉",
-    "knowledgeTags": [],
-    "totalStages": 1,
-    "activeStages": 1
+    "knowledgeTags": [
+      "离子反应",
+      "离子方程式",
+      "弱电解质",
+      "电离",
+      "电荷守恒",
+      "拆不拆",
+      "量不同产物不同",
+      "中和反应"
+    ],
+    "totalStages": 6,
+    "activeStages": 6
   },
   "stages": [
     {
-      "stageId": "card-placeholder",
-      "type": "placeholder",
-      "html": "<div style=\"text-align:center;padding:40px 20px;color:var(--text-dim);font-size:15px;border:1px dashed var(--border);border-radius:16px;margin-bottom:24px\">\n  <div style=\"font-size:48px;margin-bottom:12px\">🥉</div>\n  <strong>铜牌关卡 · 第2课时</strong><br>\n  <span style=\"font-size:13px;margin-top:8px;display:inline-block;color:var(--gold-dim)\">离子反应 离子方程式</span><br>\n  <span style=\"font-size:12px;margin-top:12px;display:inline-block\">🔮 关卡内容正在炼制中，敬请期待…</span><br>\n  <a href=\"index.html\" style=\"display:inline-block;margin-top:16px;background:linear-gradient(135deg,var(--gold-dim),#a08010);color:#1a1a2e;padding:8px 20px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600\">← 返回练功地图</a>\n</div>"
+      "stageId": "card-2-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "弱电解质 vs 非电解质",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-2-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>弱电解质能<strong>自身部分电离</strong>（如H₂O、CH₃COOH），非电解质<strong>自身不能电离</strong>（如CO₂、蔗糖）——别被“水溶液能导电”骗了。</p>"
+        },
+        {
+          "blockId": "card-2-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美说：</strong>“CO₂的水溶液能导电，所以CO₂是弱电解质。”</p><p style=\"color:var(--red);font-size:13.5px;margin-top:8px\">❌ 错误根源：把“水溶液导电”等同于“物质自身能电离”。CO₂自身不电离，是CO₂与H₂O反应生成的H₂CO₃电离出离子才导电——CO₂是非电解质！</p>"
+        },
+        {
+          "blockId": "card-2-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "判断物质是不是电解质 → 两步走：①是化合物吗？→ ②自身能电离吗？",
+            "强电解质（完全电离）：强酸、强碱、大部分盐（BaSO₄难溶但熔融态完全电离→强电解质！）",
+            "弱电解质（部分电离）：弱酸（CH₃COOH、HClO）、弱碱（NH₃·H₂O）、水（H₂O）",
+            "非电解质（自身不电离）：CO₂、SO₂、NH₃、蔗糖、酒精（水溶液能导电≠自身能电离！）"
+          ],
+          "table": {
+            "headers": [
+              "类型",
+              "判断标准",
+              "常见代表",
+              "易错警示"
+            ],
+            "rows": [
+              [
+                "强电解质",
+                "完全电离（等号）",
+                "强酸、强碱、大部分盐",
+                "BaSO₄难溶但熔融态完全电离"
+              ],
+              [
+                "弱电解质",
+                "部分电离（可逆号）",
+                "弱酸、弱碱、水",
+                "H₂O电离极微弱"
+              ],
+              [
+                "非电解质",
+                "自身不能电离",
+                "CO₂、SO₂、NH₃、蔗糖、酒精",
+                "水溶液能导电≠自身能电离"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>弱电解质像<strong>半瓶水</strong>——瓶子里既有水分子，也有少量H⁺和OH⁻。非电解质像<strong>一块木头</strong>——泡在水里还是木头。强电解质像<strong>一包盐倒进水里</strong>——全溶了、全电离了。</p>"
+        },
+        {
+          "blockId": "card-2-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "（2021·浙江选考改编）下列物质属于弱电解质的是（  ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "CO₂",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "H₂O",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "HNO₃",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "NaOH",
+              "correct": false
+            }
+          ],
+          "explanation": "A❌ CO₂：水溶液导电是因为生成了H₂CO₃，自身不能电离→非电解质<br>B✅ H₂O：极微弱电离→弱电解质<br>C❌ HNO₃：强酸，完全电离<br>D❌ NaOH：强碱，完全电离"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "电离 vs 电解",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>电离是<strong>物理过程</strong>——物质溶于水或熔融时自发离解成离子；电解是<strong>化学变化</strong>——通电使物质分解。两个“长得像”的概念，本质完全不同。</p>"
+        },
+        {
+          "blockId": "card-2-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>“NaCl溶于水是电解过程，因为产生了Na⁺和Cl⁻。”</p><p style=\"color:var(--red);font-size:13.5px;margin-top:8px\">❌ 错误根源：看到“产生了离子”就以为是电解。NaCl溶于水自发离解，没有发生化学反应，这是电离（物理过程）。电解必须通电，且发生了氧化还原反应。</p>"
+        },
+        {
+          "blockId": "card-2-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "判断是电离还是电解 → 先问“通不通电？”",
+            "不通电 → 电离（物理过程，自发离解）；通电 → 电解（化学变化，强制分解）"
+          ],
+          "table": {
+            "headers": [
+              "对比项",
+              "电离",
+              "电解"
+            ],
+            "rows": [
+              [
+                "条件",
+                "溶于水或熔融（自发）",
+                "通直流电（外加）"
+              ],
+              [
+                "本质",
+                "物理过程，无新物质生成",
+                "化学变化，有新物质生成"
+              ],
+              [
+                "是否需要通电",
+                "❌ 不需要",
+                "✅ 必须通电"
+              ],
+              [
+                "典型例子",
+                "NaCl = Na⁺ + Cl⁻",
+                "Cu²⁺ + 2Cl⁻ →通电→ Cu + Cl₂↑"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>电离像<strong>一包糖倒进水里</strong>——糖自己就散开了（自发），不需要外力。电解像<strong>用电把水分开</strong>——水自己不会变成H₂和O₂，得通电才分解（强制）。一个是“自己散开”，一个是“被电拆开”。</p>"
+        },
+        {
+          "blockId": "card-2-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "（2019·北京卷改编）下列化学用语表述不正确的是（  ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "NaCl溶于水：NaCl = Na⁺ + Cl⁻",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "电解CuCl₂溶液：CuCl₂ = Cu²⁺ + 2Cl⁻",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "CH₃COOH电离：CH₃COOH ⇌ CH₃COO⁻ + H⁺",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "H₂(g)+Cl₂(g)=2HCl(g) ΔH=−183kJ·mol⁻¹",
+              "correct": false
+            }
+          ],
+          "explanation": "A✅ NaCl强电解质，溶于水完全电离，电离方程式正确<br>B❌ 电解是化学反应（通电分解），不是电离方程！正确：Cu²⁺+2Cl⁻→通电→Cu+Cl₂↑<br>C✅ CH₃COOH弱酸，部分电离，可逆号正确<br>D✅ 热化学方程式，表述正确"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "离子方程式·难溶/弱电解质不能拆",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>写离子方程式时，<strong>难溶物、弱电解质、气体、单质、氧化物必须写化学式</strong>，不能拆成离子。只有<strong>强酸、强碱、可溶性盐</strong>可以拆。</p>"
+        },
+        {
+          "blockId": "card-2-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰写：</strong>大理石与醋酸反应——“CO₃²⁻ + 2CH₃COOH = 2CH₃COO⁻ + H₂O + CO₂↑”</p><p style=\"color:var(--red);font-size:13.5px;margin-top:8px\">❌ 错误根源：大理石（CaCO₃）是难溶物，不能拆成CO₃²⁻！正确为：CaCO₃ + 2CH₃COOH = Ca²⁺ + 2CH₃COO⁻ + H₂O + CO₂↑</p>"
+        },
+        {
+          "blockId": "card-2-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "写离子方程式前→先判断“拆不拆”：是强酸/强碱/可溶性盐→拆成离子；否则→写化学式不改",
+            "不能拆的五大类：难溶物（CaCO₃、BaSO₄）、弱电解质（H₂O、CH₃COOH）、气体（CO₂、SO₂）、单质（Fe、Cu）、氧化物（Na₂O、CuO）"
+          ],
+          "table": {
+            "headers": [
+              "类别",
+              "常见代表",
+              "错误拆法❌",
+              "正确写法✅"
+            ],
+            "rows": [
+              [
+                "难溶物",
+                "CaCO₃、BaSO₄",
+                "CO₃²⁻、SO₄²⁻",
+                "写化学式"
+              ],
+              [
+                "弱酸",
+                "CH₃COOH、H₂CO₃",
+                "CH₃COO⁻+H⁺",
+                "写化学式"
+              ],
+              [
+                "弱碱",
+                "NH₃·H₂O",
+                "NH₄⁺+OH⁻",
+                "写化学式"
+              ],
+              [
+                "水",
+                "H₂O",
+                "H⁺+OH⁻",
+                "写H₂O"
+              ],
+              [
+                "气体",
+                "CO₂、SO₂",
+                "拆成离子",
+                "写化学式"
+              ],
+              [
+                "单质",
+                "Fe、Cu",
+                "拆成离子",
+                "写化学式"
+              ],
+              [
+                "氧化物",
+                "Na₂O、CuO",
+                "Na⁺+O²⁻",
+                "写化学式"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>拆与不拆就像<strong>过安检</strong>——强酸、强碱、可溶性盐 = 普通乘客 ✅ 可以拆开行李。难溶物、弱电解质、气体、单质、氧化物 = 特殊物品 ❌ 整件过，不能拆。</p>"
+        },
+        {
+          "blockId": "card-2-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列离子方程式正确的是（  ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "大理石与盐酸：CO₃²⁻+2H⁺=H₂O+CO₂↑",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "醋酸与NaOH：CH₃COOH+OH⁻=CH₃COO⁻+H₂O",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "铁与稀硫酸：2Fe+6H⁺=2Fe³⁺+3H₂↑",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "碳酸钠与盐酸：CO₃²⁻+2H⁺=H₂O+CO₂↑",
+              "correct": false
+            }
+          ],
+          "explanation": "A❌ CaCO₃难溶不能拆，正确：CaCO₃+2H⁺=Ca²⁺+H₂O+CO₂↑<br>B✅ CH₃COOH弱酸不拆，NaOH强碱拆，正确<br>C❌ Fe与稀硫酸生成Fe²⁺不是Fe³⁺<br>D✅ Na₂CO₃可溶可拆，但选B"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "离子方程式·电荷守恒",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>离子方程式除了原子守恒，还<strong>必须电荷守恒</strong>（左右两边总电荷代数和相等）。两个守恒都满足，才算配平！</p>"
+        },
+        {
+          "blockId": "card-2-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明写：</strong>MnO₄⁻ + 4Cl⁻ + 8H⁺ = Mn²⁺ + 2Cl₂↑ + 4H₂O</p><p style=\"color:var(--red);font-size:13.5px;margin-top:8px\">❌ 左边电荷：(+3)，右边：(+2)——不守恒！正确：2MnO₄⁻+10Cl⁻+16H⁺=2Mn²⁺+5Cl₂↑+8H₂O</p>"
+        },
+        {
+          "blockId": "card-2-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "写完离子方程式 → 数左边总电荷（正负相加）→ 数右边总电荷 → 相等吗？",
+            "电荷守恒检查示例：2MnO₄⁻(−2)+10Cl⁻(−10)+16H⁺(+16)=+4；右边 2Mn²⁺(+4)=+4 ✅",
+            "写完必查三问：①左右电荷相等？②原子个数相等？③系数能约分吗？"
+          ],
+          "table": {
+            "headers": [
+              "检查项",
+              "操作",
+              "常见错误"
+            ],
+            "rows": [
+              [
+                "电荷守恒",
+                "左边总电荷=右边总电荷",
+                "漏算某个离子的电荷"
+              ],
+              [
+                "原子守恒",
+                "左右各原子个数相等",
+                "H和O最容易漏"
+              ],
+              [
+                "系数最简",
+                "能约分的要约分",
+                "2:4:2→1:2:1"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>写离子方程式就像<strong>做买卖</strong>——原子守恒 = 进出货对得上（货要对），电荷守恒 = 收入和支出对得上（账要平）。货对了但账不对，这笔买卖还是做不成！</p>"
+        },
+        {
+          "blockId": "card-2-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列离子方程式正确的是（  ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "Fe + Fe³⁺ = 2Fe²⁺",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "2Fe³⁺ + Cu = 2Fe²⁺ + Cu²⁺",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Al + 2H⁺ = Al³⁺ + H₂↑",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "3Cu+8H⁺+2NO₃⁻=3Cu²⁺+2NO↑+4H₂O",
+              "correct": true
+            }
+          ],
+          "explanation": "A❌ 左+3右+4——不守恒，正确Fe+2Fe³⁺=3Fe²⁺<br>B✅ 左+6右+6✅<br>C❌ 左+2右+3——不守恒<br>D✅ 左+6右+6✅ 选D"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "离子方程式·量不同产物不同",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p><strong>少量/过量、足量/不足</strong>——反应物的量比不同，产物就不同。写离子方程式前，<strong>先看清谁少量、谁过量，以少量者为基准</strong>。</p>"
+        },
+        {
+          "blockId": "card-2-5-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美写：</strong>NaOH与过量Ca(HCO₃)₂反应——“OH⁻+Ca²⁺+2HCO₃⁻=CaCO₃↓+CO₃²⁻+2H₂O”</p><p style=\"color:var(--red);font-size:13.5px;margin-top:8px\">❌ Ca(HCO₃)₂过量，NaOH少量，HCO₃⁻远多于OH⁻。正确：OH⁻+Ca²⁺+HCO₃⁻=CaCO₃↓+H₂O（1:1:1）</p>"
+        },
+        {
+          "blockId": "card-2-5-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "看到“少量/过量/足量”→先定“主角”：谁少量，以谁为1份基准",
+            "CO₂通入碱液：少量→CO₃²⁻；过量→HCO₃⁻",
+            "酸式盐+碱：酸式盐过量→以碱为基准产正盐；碱过量→以酸式盐为基准产正盐+CO₃²⁻"
+          ],
+          "table": {
+            "headers": [
+              "反应类型",
+              "少量/过量",
+              "产物差异"
+            ],
+            "rows": [
+              [
+                "CO₂通入碱液",
+                "少量CO₂",
+                "CO₃²⁻（CO₂+2OH⁻=CO₃²⁻+H₂O）"
+              ],
+              [
+                "",
+                "过量CO₂",
+                "HCO₃⁻（CO₂+OH⁻=HCO₃⁻）"
+              ],
+              [
+                "NaOH+Ca(HCO₃)₂",
+                "NaOH少量",
+                "CaCO₃↓+H₂O（简式）"
+              ],
+              [
+                "",
+                "NaOH过量",
+                "CaCO₃↓+CO₃²⁻+2H₂O（复式）"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-5-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>量不同产物不同就像<strong>请客吃饭</strong>——少量客人→一碟小菜就够了；大量客人→得满汉全席。关键是<strong>谁请客谁做客——少量那个说了算</strong>！</p>"
+        },
+        {
+          "blockId": "card-2-5-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列离子方程式正确的是（  ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "少量CO₂通入NaOH：CO₂+OH⁻=HCO₃⁻",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "过量CO₂通入NaOH：CO₂+2OH⁻=CO₃²⁻+H₂O",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "NaOH少量+Ca(HCO₃)₂：Ca²⁺+2HCO₃⁻+2OH⁻=CaCO₃↓+CO₃²⁻+2H₂O",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "NaOH少量+过量Ca(HCO₃)₂：OH⁻+Ca²⁺+HCO₃⁻=CaCO₃↓+H₂O",
+              "correct": true
+            }
+          ],
+          "explanation": "A❌ 少量CO₂→CO₃²⁻，正确：CO₂+2OH⁻=CO₃²⁻<br>B❌ 过量CO₂→HCO₃⁻<br>C✅ 正确但NaOH过量情况<br>D✅ 正确！"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2-6",
+      "type": "microcard",
+      "num": 6,
+      "icon": "🧩",
+      "title": "H⁺+OH⁻=H₂O 的适用范围",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-6-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>“H⁺ + OH⁻ = H₂O”这个离子方程式<strong>只适用于强酸与强碱生成可溶性盐的反应</strong>——如果有沉淀、弱碱、弱酸、酸式盐参与，就不能这么简化！</p>"
+        },
+        {
+          "blockId": "card-2-6-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>“所有酸碱中和反应都可以写成H⁺ + OH⁻ = H₂O。”</p><p style=\"color:var(--red);font-size:13.5px;margin-top:8px\">❌ 错误根源：高一背的“万能公式”被打脸了——只有强酸+强碱→可溶性盐+水才能这么写。</p>"
+        },
+        {
+          "blockId": "card-2-6-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "H⁺+OH⁻=H₂O能用的条件：酸是强酸？+ 碱是强碱？+ 生成的盐是可溶性盐？— 全部是→✅可用；任一不符合→❌不能简化",
+            "不能写的典型场景：有沉淀（H₂SO₄+Ba(OH)₂→还有BaSO₄↓）、弱碱参与（NH₃·H₂O不拆）、酸式盐+碱（HCO₃⁻+OH⁻不是H⁺+OH⁻）"
+          ],
+          "table": {
+            "headers": [
+              "场景",
+              "典型反应",
+              "正确写法"
+            ],
+            "rows": [
+              [
+                "有沉淀",
+                "H₂SO₄+Ba(OH)₂",
+                "2H⁺+SO₄²⁻+Ba²⁺+2OH⁻=BaSO₄↓+2H₂O"
+              ],
+              [
+                "弱碱参与",
+                "HCl+NH₃·H₂O",
+                "H⁺+NH₃·H₂O=NH₄⁺+H₂O"
+              ],
+              [
+                "弱酸参与",
+                "CH₃COOH+NaOH",
+                "CH₃COOH+OH⁻=CH₃COO⁻+H₂O"
+              ],
+              [
+                "酸式盐+碱",
+                "NaHCO₃+NaOH",
+                "HCO₃⁻+OH⁻=CO₃²⁻+H₂O"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-6-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>H⁺+OH⁻=H₂O像<strong>“纯友谊”</strong>——只有两个人（H⁺和OH⁻），没有第三者。一旦有第三者插足（沉淀、弱碱、酸式盐等），就得把第三者写进去！</p>"
+        },
+        {
+          "blockId": "card-2-6-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "（2016·海南卷）下列可用“H⁺+OH⁻=H₂O”表示的是（  ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "NaHSO₄溶液与Ba(OH)₂混合",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NH₄Cl溶液与Ca(OH)₂混合",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "HNO₃溶液与KOH溶液混合",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Na₂HPO₄溶液与NaOH溶液混合",
+              "correct": false
+            }
+          ],
+          "explanation": "A❌ 还有BaSO₄↓<br>B❌ NH₄⁺+OH⁻→NH₃·H₂O<br>C✅ HNO₃强酸+KOH强碱→KNO₃可溶盐 ✅<br>D❌ HPO₄²⁻+OH⁻=PO₄³⁻+H₂O"
+        }
+      ]
     }
   ],
-  "certQuiz": []
+  "certQuiz": [
+    {
+      "stageId": "cert-（2021·浙江",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "（2021·浙江选考）下列物质属于弱电解质的是（  ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "CO₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "H₂O",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "HNO₃",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "NaOH",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-下列离子方程式书",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列离子方程式书写正确的是（  ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "大理石与盐酸：CO₃²⁻+2H⁺=H₂O+CO₂↑",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "醋酸与NaOH：CH₃COOH+OH⁻=CH₃COO⁻+H₂O",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "铁与稀硫酸：2Fe+6H⁺=2Fe³⁺+3H₂↑",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Fe+Fe³⁺=2Fe²⁺",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-下列可用H⁺+O",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列可用H⁺+OH⁻=H₂O表示的是（  ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "H₂SO₄+Ba(OH)₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "HCl+NH₃·H₂O",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "HNO₃+KOH",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "NaHCO₃+NaOH",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }
