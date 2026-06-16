@@ -1,0 +1,409 @@
+{
+  "version": 1,
+  "description": "网站课程编号 → IMA知识库课时编号 映射表",
+  "kbId": "7471821603473877",
+  "kbName": "考点精析·认知路径库",
+  "lastUpdated": "2026-06-16",
+  "mapping": {
+    "1": {
+      "kbLesson": 1,
+      "note": "物质的分类、分散系与胶体"
+    },
+    "2": {
+      "kbLesson": 2,
+      "note": "离子反应·离子方程式书写"
+    },
+    "3": {
+      "kbLesson": 4,
+      "note": "氧化还原反应基础（知识库第4课时）"
+    },
+    "4": {
+      "kbLesson": null,
+      "note": "物质的量——知识库待补充"
+    },
+    "5": {
+      "kbLesson": null,
+      "note": "氧化还原配平与综合——知识库待补充"
+    },
+    "6": {
+      "kbLesson": null,
+      "note": "NA计算专题——知识库待补充"
+    },
+    "7": {
+      "kbLesson": null,
+      "note": "气体摩尔体积·NA推论——知识库待补充"
+    },
+    "8": {
+      "kbLesson": null,
+      "note": "溶液配制与误差分析——知识库待补充"
+    },
+    "9": {
+      "kbLesson": null,
+      "note": "化学计算方法——知识库待补充"
+    },
+    "10": {
+      "kbLesson": null,
+      "note": "化学计算综合应用——知识库待补充"
+    },
+    "11": {
+      "kbLesson": 15,
+      "note": "Na₂O₂/钠的化合物（知识库第15课时）"
+    },
+    "12": {
+      "kbLesson": 15,
+      "note": "过氧化钠与钠的氧化物（与第11课时共用知识库第15课时）"
+    },
+    "13": {
+      "kbLesson": 16,
+      "note": "侯氏制碱法（知识库第16课时）"
+    },
+    "14": {
+      "kbLesson": null,
+      "note": "碱金属元素规律——知识库待补充"
+    },
+    "15": {
+      "kbLesson": null,
+      "note": "焰色反应——知识库待补充"
+    },
+    "16": {
+      "kbLesson": 19,
+      "note": "铁及其化合物（知识库第19课时）"
+    },
+    "17": {
+      "kbLesson": 19,
+      "note": "铁的转化·配合物（与课程16共用知识库第19课时）"
+    },
+    "18": {
+      "kbLesson": null,
+      "note": "铝及其化合物——知识库待补充"
+    },
+    "19": {
+      "kbLesson": null,
+      "note": "金属材料——知识库待补充"
+    },
+    "20": {
+      "kbLesson": 20,
+      "note": "金属冶炼与回收（知识库第20课时）"
+    },
+    "21": {
+      "kbLesson": 17,
+      "note": "氯及其化合物（知识库第17课时）"
+    },
+    "22": {
+      "kbLesson": 18,
+      "note": "卤族元素拓展·卤代烃（知识库第18课时）"
+    },
+    "23": {
+      "kbLesson": 17,
+      "note": "氯气制备（知识库第17课时相关）"
+    },
+    "24": {
+      "kbLesson": null,
+      "note": "氯碱工业——知识库待补充"
+    },
+    "25": {
+      "kbLesson": 18,
+      "note": "卤化物综合（知识库第18课时相关）"
+    },
+    "26": {
+      "kbLesson": 22,
+      "note": "硫及其化合物（知识库第22课时）"
+    },
+    "27": {
+      "kbLesson": 22,
+      "note": "SO₂的性质（知识库第22课时相关）"
+    },
+    "28": {
+      "kbLesson": 22,
+      "note": "硫酸·浓硫酸（知识库第22课时相关）"
+    },
+    "29": {
+      "kbLesson": null,
+      "note": "SO₂的测定及治理——知识库待补充"
+    },
+    "30": {
+      "kbLesson": null,
+      "note": "硫酸盐·硫化物——知识库待补充"
+    },
+    "31": {
+      "kbLesson": null,
+      "note": "氮气与氮的固定——知识库待补充"
+    },
+    "32": {
+      "kbLesson": null,
+      "note": "氨气·铵盐——知识库待补充"
+    },
+    "33": {
+      "kbLesson": null,
+      "note": "硝酸·氮氧化物——知识库待补充"
+    },
+    "34": {
+      "kbLesson": null,
+      "note": "氮的氧化物与环保——知识库待补充"
+    },
+    "35": {
+      "kbLesson": null,
+      "note": "氮族元素综合——知识库待补充"
+    },
+    "36": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "37": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "38": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "39": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "40": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "41": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "42": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "43": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "44": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "45": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "46": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "47": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "48": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "49": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "50": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "51": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "52": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "53": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "54": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "55": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "56": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "57": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "58": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "59": {
+      "kbLesson": 3,
+      "note": "离子方程式正误判断（知识库第3课时）"
+    },
+    "60": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "61": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "62": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "63": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "64": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "65": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "66": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "67": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "68": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "69": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "70": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "71": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "72": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "73": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "74": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "75": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "76": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "77": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "78": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "79": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "80": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "81": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "82": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "83": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "84": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "85": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "86": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "87": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "88": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "89": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "90": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "91": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "92": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "93": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "94": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "95": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "96": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "97": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "98": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "99": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    },
+    "100": {
+      "kbLesson": null,
+      "note": "知识库待补充"
+    }
+  }
+}
