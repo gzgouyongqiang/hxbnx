@@ -341,7 +341,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
     var html = '';
 
     html += '<div class="level-num">─ 第 ' + questDef.course + ' 关 ─</div>';
-    html += '<div class="level-title">🔍 分散系辨析 · 丁达尔效应</div>';
+    html += '<div class="level-title">' + (questMeta ? questMeta.title : courseMeta.title) + '</div>';
 
     var stages = levelData.stages || [];
     for (var si = 0; si < stages.length; si++) {
