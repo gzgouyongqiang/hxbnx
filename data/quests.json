@@ -76,8 +76,24 @@
     },
     "main-5-gold": {
       "type": "main", "course": 5, "tier": "gold", "title": "5", "subtitle": "",
-      "prevQuest": "main-5-silver", "nextQuest": null, "baseScore": 100,
+      "prevQuest": "main-5-silver", "nextQuest": "main-6-bronze", "baseScore": 100,
       "badgeTriggers": [], "contentFile": "data/levels/main-5-gold.json"
+    },
+    "main-6-bronze": {
+      "type": "main", "course": 6, "tier": "bronze", "title": "6", "subtitle": "",
+      "prevQuest": "main-5-gold", "nextQuest": "main-6-silver", "baseScore": 10,
+      "badgeTriggers": ["first_clear","speed_120s","zero_error"],
+      "contentFile": "data/levels/main-6-bronze.json"
+    },
+    "main-6-silver": {
+      "type": "main", "course": 6, "tier": "silver", "title": "6", "subtitle": "",
+      "prevQuest": "main-6-bronze", "nextQuest": "main-6-gold", "baseScore": 50,
+      "badgeTriggers": [], "contentFile": "data/levels/main-6-silver.json"
+    },
+    "main-6-gold": {
+      "type": "main", "course": 6, "tier": "gold", "title": "6", "subtitle": "",
+      "prevQuest": "main-6-silver", "nextQuest": "main-7-bronze", "baseScore": 100,
+      "badgeTriggers": [], "contentFile": "data/levels/main-6-gold.json"
     }
   },
   "sideQuests": {
