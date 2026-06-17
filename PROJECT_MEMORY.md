@@ -47,12 +47,15 @@
 ```
 hxbnx-repo/
 ├── index.html              # 主页：世界地图/关卡总图
+├── profile.html            # 角色面板：等级/成就/徽章/抽卡
 ├── level.html              # 关卡页：微卡点展示+答题+通关
 ├── achievements.html       # 成就徽章墙
 ├── element.html            # 元素周期表
 ├── assets/
 │   ├── game.js             # 核心游戏引擎（等级/成就/存储/粒子）
-│   └── game.css            # 共享样式
+│   ├── game.css            # 共享样式
+│   ├── profile.css         # 角色面板专属样式
+│   └── profile.js          # 角色面板交互逻辑
 ├── data/
 │   ├── quests.json         # 关卡注册表（68关）
 │   ├── course-mapping.json # 网站课时→ima知识库课时映射
@@ -123,7 +126,7 @@ hxbnx-repo/
 | F4 关卡详情 | ✅ 完成 | 铜牌/银牌/金牌卡片 + 解锁逻辑 |
 | F5 答题引擎 | ✅ 完成 | 选择题+通关文牒+连击系统+错题惩罚 |
 | F6 积分与等级系统 | ✅ 完成 | 经验值+30级+LocalStorage存储 |
-| F7 角色面板 | ⏳ 待开发 | |
+| F7 角色面板 | ✅ 完成 | profile.html + profile.css + profile.js，五大核心区域：角色卡片、等级进化时间轴、成就殿堂、徽章展示墙、炼金抽卡系统 |
 | F8 徽章系统 | ✅ 完成 | 7枚徽章+科学史故事+解锁动画 |
 | F9 每日任务 | ⏳ 待开发 | |
 | F10 错题本 | ⏳ 待开发 | |
