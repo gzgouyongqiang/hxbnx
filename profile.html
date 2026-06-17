@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>角色面板 | 炼金试炼</title>
+<link rel="stylesheet" href="assets/profile.css">
+<script src="assets/game.js"></script>
+</head>
+<body>
+<div class="profile-bg-particles" id="profileBgParts"></div>
+<div class="profile-wrapper">
+  <div class="profile-nav">
+    <a href="index.html" class="profile-nav-back">返回关卡总图</a>
+    <div class="profile-nav-title">角色面板</div>
+  </div>
+  <div class="profile-hero" id="profileHero">
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar-ring" id="avatarRing">
+        <div class="profile-avatar-glow"></div>
+        <div class="profile-avatar-level" id="avatarLv">1</div>
+      </div>
+      <div class="profile-avatar-name" id="avatarLvName">初入江湖</div>
+    </div>
+    <div class="profile-hero-info">
+      <div class="profile-hero-title">
+        <span id="heroTitle">炼气初阶</span>
+        <span class="profile-hero-tier" id="heroTier">LV.1</span>
+      </div>
+      <div class="profile-exp-wrap">
+        <div class="profile-exp-track">
+          <div class="profile-exp-fill" id="expFill"></div>
+          <div class="profile-exp-shine"></div>
+        </div>
+        <div class="profile-exp-nums">
+          <span id="expCurrent">0</span> / <span id="expNext">50</span> EXP
+          <span class="profile-exp-remain">（还需 <span id="expRemain">50</span> EXP）</span>
+        </div>
+      </div>
+      <div class="profile-stats-row">
+        <div class="profile-stat-card"><div class="profile-stat-icon">💎</div><div class="profile-stat-num" id="statScore">0</div><div class="profile-stat-label">总积分</div></div>
+        <div class="profile-stat-card"><div class="profile-stat-icon">🔥</div><div class="profile-stat-num" id="statStreak">0</div><div class="profile-stat-label">最高连击</div></div>
+        <div class="profile-stat-card"><div class="profile-stat-icon">🎯</div><div class="profile-stat-num" id="statAccuracy">0%</div><div class="profile-stat-label">正确率</div></div>
+        <div class="profile-stat-card"><div class="profile-stat-icon">🏆</div><div class="profile-stat-num" id="statCleared">0</div><div class="profile-stat-label">已通关</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="profile-section">
+    <div class="profile-section-header">
+      <span class="profile-section-icon">📈</span>
+      <span class="profile-section-title">等级进化</span>
+      <span class="profile-section-sub" id="levelProgressText">1 / 30</span>
+    </div>
+    <div class="profile-level-timeline" id="levelTimeline"></div>
+  </div>
+  <div class="profile-section">
+    <div class="profile-section-header">
+      <span class="profile-section-icon">🏛️</span>
+      <span class="profile-section-title">成就殿堂</span>
+      <span class="profile-section-sub" id="achProgressText">0 / 0</span>
+    </div>
+    <div class="profile-ach-filter" id="achFilter">
+      <button class="profile-filter-btn active" data-filter="all">全部</button>
+      <button class="profile-filter-btn" data-filter="bronze">铜</button>
+      <button class="profile-filter-btn" data-filter="silver">银</button>
+      <button class="profile-filter-btn" data-filter="gold">金</button>
+      <button class="profile-filter-btn" data-filter="diamond">钻</button>
+      <button class="profile-filter-btn" data-filter="legendary">传说</button>
+    </div>
+    <div class="profile-ach-grid" id="achGrid"></div>
+  </div>
+  <div class="profile-section">
+    <div class="profile-section-header">
+      <span class="profile-section-icon">🎖️</span>
+      <span class="profile-section-title">徽章展示墙</span>
+      <span class="profile-section-sub" id="badgeProgressText">0 / 7</span>
+    </div>
+    <div class="profile-badge-wall" id="badgeWall"></div>
+  </div>
+  <div class="profile-section">
+    <div class="profile-section-header">
+      <span class="profile-section-icon">🎴</span>
+      <span class="profile-section-title">炼金抽卡</span>
+      <span class="profile-section-sub" id="cardCountText">0 张卡牌</span>
+    </div>
+    <div class="profile-card-stats" id="cardStats"></div>
+    <div class="profile-draw-btn-wrap">
+      <button class="profile-draw-btn" id="drawBtn" onclick="doDrawCard()">
+        <span class="profile-draw-btn-icon">🔥</span>
+        <span class="profile-draw-btn-text">炼金抽卡</span>
+        <span class="profile-draw-btn-sub">消耗 100 积分</span>
+      </button>
+    </div>
+    <div class="profile-card-collection" id="cardCollection"></div>
+  </div>
+  <div class="profile-footer">炼金试炼 · 化学不难学</div>
+</div>
+<div class="profile-modal" id="badgeModal">
+  <div class="profile-modal-overlay" onclick="closeBadgeModal()"></div>
+  <div class="profile-modal-content">
+    <button class="profile-modal-close" onclick="closeBadgeModal()">×</button>
+    <div class="profile-modal-body" id="badgeModalBody"></div>
+  </div>
+</div>
+<div class="profile-modal" id="drawModal">
+  <div class="profile-modal-overlay" onclick="closeDrawModal()"></div>
+  <div class="profile-modal-content draw-modal-content">
+    <div class="draw-animation" id="drawAnimation">
+      <div class="draw-card-flip" id="drawCardFlip">
+        <div class="draw-card-front">?</div>
+        <div class="draw-card-back" id="drawCardBack"></div>
+      </div>
+    </div>
+    <div class="draw-result" id="drawResult"></div>
+  </div>
+</div>
+<script src="assets/profile.js"></script>
+</body>
+</html>
