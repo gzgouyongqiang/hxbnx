@@ -103,12 +103,20 @@ const HXBNX_GAME = (function () {
       elementCards: [],
       elementDraws: 0,
       lastFreeDrawDate: '',
+      elemPity: 0,
+      elemEssence: 0,
       createdAt: new Date().toISOString(),
       // v2: quest-level progress
       clearedQuests: [],
       questProgress: {},
       score: 0,
-      gachaCards: [],
+      gachaCards: [],       // { id, rarity, name, date }
+      cardCollection: {},   // { cardId: { stars:1, count:1 } }
+      gachaEssence: 0,      // 化学精华
+      gachaPity: 0,         // 保底计数器
+      gachaDrawsToday: 0,    // 今日已用积分抽卡次数
+      gachaLastDrawDate: '', // 上次积分抽卡日期
+      gachaFreeUsed: false,  // 今日免费抽卡是否已用
       questBadges: {},
       version: 2
     };
@@ -399,31 +407,175 @@ const HXBNX_GAME = (function () {
     };
   }
 
-  // ===== v2: Card Draw =====
+  // ===== v2: Card Draw (v2 — pity, essence, upgrade, daily limit) =====
+
+  var _cardPool = [];
+  var _cardConfig = { pityConfig: {}, essenceValues: {}, upgradeCosts: [] };
 
   function registerCardPool(pool) {
     _cardPool = pool || [];
   }
 
-  function drawCard() {
-    if (_cardPool.length === 0) return null;
-    var r = Math.random();
-    var card = null;
-    // Sort by probability desc
-    var cumulative = 0;
-    for (var i = 0; i < _cardPool.length; i++) {
-      cumulative += (_cardPool[i].probability || 0.25);
-      if (r < cumulative) { card = _cardPool[i]; break; }
+  function registerCardConfig(config) {
+    if (config) {
+      _cardConfig.pityConfig = config.pityConfig || {};
+      _cardConfig.essenceValues = config.essenceValues || { common:1, rare:3, epic:10, legend:30 };
+      _cardConfig.upgradeCosts = config.upgradeCosts || [0, 3, 8, 20, 50];
     }
-    if (!card) card = _cardPool[_cardPool.length - 1];
+  }
+
+  function _resetDailyDraws(s) {
+    var today = todayStr();
+    if (s.gachaLastDrawDate !== today) {
+      s.gachaDrawsToday = 0;
+      s.gachaLastDrawDate = today;
+      s.gachaFreeUsed = false;
+    }
+  }
+
+  function canDrawFree(s) {
+    _resetDailyDraws(s);
+    return !s.gachaFreeUsed;
+  }
+
+  function canDrawPaid(s) {
+    _resetDailyDraws(s);
+    return (s.score || 0) >= 100 && s.gachaDrawsToday < 3;
+  }
+
+  function drawCard(mode) {
+    // mode: 'free' or 'paid'
+    if (_cardPool.length === 0) return null;
 
     var s = load();
-    s.gachaCards.push({ rarity: card.rarity, name: card.name, date: todayStr() });
+    _resetDailyDraws(s);
+
+    if (mode === 'free') {
+      if (s.gachaFreeUsed) return { error: '今日免费抽卡已使用' };
+      s.gachaFreeUsed = true;
+    } else {
+      if ((s.score || 0) < 100) return { error: '积分不足！需要 100 积分' };
+      if (s.gachaDrawsToday >= 3) return { error: '今日积分抽卡次数已用完（3/3），明天再来吧！' };
+      s.score -= 100;
+      s.gachaDrawsToday++;
+    }
+
+    // Pity system
+    s.gachaPity = (s.gachaPity || 0) + 1;
+    var pity = s.gachaPity;
+    var pityCfg = _cardConfig.pityConfig;
+    var minRarity = null;
+
+    if (pityCfg.hardPity && pity >= pityCfg.hardPity) {
+      minRarity = pityCfg.hardPityMinRarity || 'epic';
+      s.gachaPity = 0;
+    }
+
+    // Weighted random draw
+    var card = null;
+    var r = Math.random();
+    var cumulative = 0;
+
+    // Build effective pool with pity boost
+    var effectivePool = [];
+    for (var i = 0; i < _cardPool.length; i++) {
+      var c = _cardPool[i];
+      var prob = c.probability || 0.25;
+
+      // Soft pity boost
+      if (pityCfg.softPity && pity >= pityCfg.softPity && (c.rarity === 'rare' || c.rarity === 'epic' || c.rarity === 'legend')) {
+        prob *= (pityCfg.softPityBoost || 2.0);
+      }
+
+      // Hard pity filter
+      if (minRarity) {
+        var rarityOrder = { common: 0, rare: 1, epic: 2, legend: 3 };
+        if ((rarityOrder[c.rarity] || 0) < (rarityOrder[minRarity] || 0)) continue;
+      }
+
+      effectivePool.push({ card: c, prob: prob });
+    }
+
+    // Normalize
+    var totalProb = 0;
+    for (var j = 0; j < effectivePool.length; j++) totalProb += effectivePool[j].prob;
+    if (totalProb === 0) totalProb = 1;
+
+    cumulative = 0;
+    for (var k = 0; k < effectivePool.length; k++) {
+      cumulative += effectivePool[k].prob / totalProb;
+      if (r < cumulative) { card = effectivePool[k].card; break; }
+    }
+    if (!card) card = effectivePool[effectivePool.length - 1].card;
+
+    // Check if duplicate
+    var collection = s.cardCollection || {};
+    var cardInfo = collection[card.id];
+    var isNew = !cardInfo;
+    var essenceGained = 0;
+
+    if (isNew) {
+      collection[card.id] = { stars: 1, count: 1 };
+    } else {
+      cardInfo.count++;
+      // Convert duplicate to essence
+      var ev = _cardConfig.essenceValues[card.rarity] || 1;
+      essenceGained = ev;
+      s.gachaEssence = (s.gachaEssence || 0) + essenceGained;
+    }
+
+    s.cardCollection = collection;
+    s.gachaCards.push({ id: card.id, rarity: card.rarity, name: card.name, date: todayStr() });
+
+    // Badge check
     if (s.questBadges['first_card'] !== true) {
       s.questBadges['first_card'] = true;
     }
+
     save(s);
-    return card;
+    return { card: card, isNew: isNew, essenceGained: essenceGained, pity: s.gachaPity, collection: collection };
+  }
+
+  function upgradeCard(cardId) {
+    var s = load();
+    var collection = s.cardCollection || {};
+    var info = collection[cardId];
+    if (!info) return { error: '未拥有此卡牌' };
+    if (info.stars >= 5) return { error: '已达最高星级' };
+
+    var costs = _cardConfig.upgradeCosts || [0, 3, 8, 20, 50];
+    var cost = costs[info.stars] || 999;
+    if ((s.gachaEssence || 0) < cost) return { error: '精华不足！需要 ' + cost + ' 精华' };
+
+    s.gachaEssence -= cost;
+    info.stars++;
+    s.cardCollection = collection;
+    save(s);
+    return { stars: info.stars, cost: cost, remaining: s.gachaEssence };
+  }
+
+  function getGachaStatus() {
+    var s = load();
+    _resetDailyDraws(s);
+    var collection = s.cardCollection || {};
+    var totalCards = _cardPool.length;
+    var collected = 0;
+    for (var k in collection) {
+      if (collection[k]) collected++;
+    }
+    return {
+      essence: s.gachaEssence || 0,
+      pity: s.gachaPity || 0,
+      drawsToday: s.gachaDrawsToday || 0,
+      maxDrawsPerDay: 3,
+      freeUsed: s.gachaFreeUsed,
+      canDrawFree: !s.gachaFreeUsed,
+      canDrawPaid: (s.score || 0) >= 100 && s.gachaDrawsToday < 3,
+      collection: collection,
+      collected: collected,
+      totalCards: totalCards,
+      score: s.score || 0
+    };
   }
 
   // ===== v2: Badge Story =====
@@ -562,7 +714,10 @@ const HXBNX_GAME = (function () {
     recordCertWrong: recordCertWrong,
     submitCert: submitCert,
     registerCardPool: registerCardPool,
+    registerCardConfig: registerCardConfig,
     drawCard: drawCard,
+    upgradeCard: upgradeCard,
+    getGachaStatus: getGachaStatus,
     registerBadgeData: registerBadgeData,
     getBadgeStory: getBadgeStory,
     getBadgeDef: getBadgeDef,
@@ -751,12 +906,19 @@ const HXBNX_GAME = (function () {
       if (isNew) {
         s.elementCards.push({ s: sym, t: stars });
       } else {
+        // 重复元素 → 元素精华
+        var essenceVal = stars || 1;
+        s.elemEssence = (s.elemEssence || 0) + essenceVal;
         s.totalExp += 3;
       }
       s.elementDraws = Math.max(0, (s.elementDraws || 0) - 1);
       var newAch = checkAchievements(s);
       save(s);
       return { ok: true, isNew: isNew, newAch: newAch };
+    },
+
+    _saveState: function(s) {
+      save(s);
     },
 
     getElementCards: function () {

@@ -33,6 +33,7 @@
     fetch("data/cards.json").then(function(r){return r.json()}).then(function(data){
       cardsData = data;
       G.registerCardPool(data.cards);
+      G.registerCardConfig(data);
       renderCards();
     }).catch(function(e){
       console.log("cards load failed:", e);
@@ -246,16 +247,28 @@
     document.getElementById("badgeModal").classList.remove("active");
   };
 
-  // ===== 抽卡系统 =====
-  function renderCards(){
-    var gachaCards = state.gachaCards || [];
-    document.getElementById("cardCountText").textContent = gachaCards.length + " 张卡牌";
+  // ===== 抽卡系统 (v2) =====
+  var _currentCollectionFilter = 'all';
 
-    // 统计各稀有度
+  function renderCards(){
+    var gachaStatus = G.getGachaStatus();
+    var collection = gachaStatus.collection;
+    var gachaCards = state.gachaCards || [];
+
+    // 收集进度
+    document.getElementById("cardCountText").textContent = gachaStatus.collected + " / " + gachaStatus.totalCards;
+
+    // 精华 & 保底信息
+    var infoHtml = "";
+    infoHtml += "<div class=\"gacha-info-item\"><span class=\"gacha-info-icon\">💎</span><span class=\"gacha-info-label\">化学精华</span><span class=\"gacha-info-num\">" + gachaStatus.essence + "</span></div>";
+    infoHtml += "<div class=\"gacha-info-item\"><span class=\"gacha-info-icon\">🎯</span><span class=\"gacha-info-label\">保底计数</span><span class=\"gacha-info-num\">" + gachaStatus.pity + " / 10</span></div>";
+    infoHtml += "<div class=\"gacha-info-item\"><span class=\"gacha-info-icon\">🎫</span><span class=\"gacha-info-label\">今日已抽</span><span class=\"gacha-info-num\">" + gachaStatus.drawsToday + " / " + gachaStatus.maxDrawsPerDay + "</span></div>";
+    document.getElementById("gachaInfo").innerHTML = infoHtml;
+
+    // 各稀有度统计
     var counts = {common:0, rare:0, epic:0, legend:0};
-    for(var i=0;i<gachaCards.length;i++){
-      var r = gachaCards[i].rarity;
-      if(counts[r] !== undefined) counts[r]++;
+    for(var cid in collection){
+      if(collection[cid]) counts[collection[cid].rarity || 'common']++;
     }
 
     var statsHtml = "";
@@ -265,56 +278,231 @@
     statsHtml += "<div class=\"profile-card-stat\"><div class=\"profile-card-stat-num legend\">" + counts.legend + "</div><div class=\"profile-card-stat-label\">传说</div></div>";
     document.getElementById("cardStats").innerHTML = statsHtml;
 
-    // 卡牌收藏展示
-    var collection = document.getElementById("cardCollection");
-    var colHtml = "";
-    for(var j=gachaCards.length-1;j>=Math.max(0,gachaCards.length-12);j--){
-      var c = gachaCards[j];
-      colHtml += "<div class=\"profile-card-item " + c.rarity + "\">";
-      colHtml += "<div class=\"card-rarity\">" + (c.rarity === "common" ? "普通" : c.rarity === "rare" ? "稀有" : c.rarity === "epic" ? "史诗" : "传说") + "</div>";
-      colHtml += "<div>" + c.name + "</div>";
-      colHtml += "</div>";
+    // 按钮状态
+    var freeBtn = document.getElementById("freeDrawBtn");
+    var paidBtn = document.getElementById("paidDrawBtn");
+    var paidSub = document.getElementById("paidDrawSub");
+
+    if(gachaStatus.canDrawFree){
+      freeBtn.classList.remove("disabled");
+      freeBtn.classList.add("available");
+    } else {
+      freeBtn.classList.remove("available");
+      freeBtn.classList.add("disabled");
+      freeBtn.querySelector(".profile-draw-btn-sub").textContent = "今日已使用";
     }
-    collection.innerHTML = colHtml;
+
+    if(gachaStatus.canDrawPaid){
+      paidBtn.classList.remove("disabled");
+      paidBtn.classList.add("available");
+      paidSub.textContent = "消耗 100 积分 (" + gachaStatus.drawsToday + "/3)";
+    } else {
+      paidBtn.classList.remove("available");
+      paidBtn.classList.add("disabled");
+      if(gachaStatus.drawsToday >= 3){
+        paidSub.textContent = "今日次数已用完 (3/3)";
+      } else {
+        paidSub.textContent = "积分不足 (需要100)";
+      }
+    }
+
+    // 卡牌图鉴
+    renderCardCollection(collection);
   }
 
-  window.doDrawCard = function(){
-    var currentScore = state.score || 0;
-    if(currentScore < 100){
-      G.toaster("积分不足！需要 100 积分", "error");
+  function renderCardCollection(collection){
+    var container = document.getElementById("cardCollection");
+    if(!cardsData || !cardsData.cards) return;
+
+    var cards = cardsData.cards;
+    var html = "";
+    var filter = _currentCollectionFilter;
+
+    for(var i=0;i<cards.length;i++){
+      var c = cards[i];
+      if(filter !== 'all' && c.rarity !== filter) continue;
+
+      var info = collection[c.id];
+      var owned = !!info;
+      var stars = info ? info.stars : 0;
+      var count = info ? info.count : 0;
+
+      var cls = "profile-card-item " + c.rarity;
+      if(owned) cls += " owned";
+      else cls += " unowned";
+
+      html += "<div class=\"" + cls + "\" data-card-id=\"" + c.id + "\" onclick=\"showCardDetail('" + c.id + "')\">";
+      html += "<div class=\"card-rarity\">" + (c.rarity === "common" ? "普通" : c.rarity === "rare" ? "稀有" : c.rarity === "epic" ? "史诗" : "传说") + "</div>";
+      html += "<div class=\"card-symbol\">" + (owned ? c.symbol : "?") + "</div>";
+      html += "<div class=\"card-item-name\">" + (owned ? c.name : "???") + "</div>";
+      if(owned && stars > 0){
+        html += "<div class=\"card-stars\">";
+        for(var s=0;s<5;s++){
+          html += s < stars ? "★" : "☆";
+        }
+        html += "</div>";
+      }
+      if(owned && count > 1){
+        html += "<div class=\"card-count\">×" + count + "</div>";
+      }
+      html += "</div>";
+    }
+
+    container.innerHTML = html;
+
+    // 筛选事件
+    var filters = document.querySelectorAll(".coll-filter-btn");
+    for(var j=0;j<filters.length;j++){
+      filters[j].onclick = function(){
+        for(var k=0;k<filters.length;k++) filters[k].classList.remove("active");
+        this.classList.add("active");
+        _currentCollectionFilter = this.dataset.filter;
+        var gs = G.getGachaStatus();
+        renderCardCollection(gs.collection);
+      };
+    }
+  }
+
+  window.showCardDetail = function(cardId){
+    if(!cardsData || !cardsData.cards) return;
+    var card = null;
+    for(var i=0;i<cardsData.cards.length;i++){
+      if(cardsData.cards[i].id === cardId){ card = cardsData.cards[i]; break; }
+    }
+    if(!card) return;
+
+    var gs = G.getGachaStatus();
+    var info = gs.collection[cardId];
+    var owned = !!info;
+    var stars = info ? info.stars : 0;
+    var count = info ? info.count : 0;
+    var essence = gs.essence;
+    var costs = cardsData.upgradeCosts || [0, 3, 8, 20, 50];
+
+    var rarityColors = {common:"#94a3b8", rare:"#67e8f9", epic:"#a78bfa", legend:"#f0c040"};
+    var rarityLabels = {common:"普通", rare:"稀有", epic:"史诗", legend:"传说"};
+
+    var html = "";
+    html += "<div class=\"card-detail-header " + card.rarity + "\">";
+    html += "<div class=\"card-detail-symbol\">" + (owned ? card.symbol : "?") + "</div>";
+    html += "<div class=\"card-detail-title\">" + (owned ? card.name : "???") + "</div>";
+    html += "<div class=\"card-detail-rarity\" style=\"color:" + rarityColors[card.rarity] + "\">[" + rarityLabels[card.rarity] + "]</div>";
+    if(owned){
+      html += "<div class=\"card-detail-stars\">";
+      for(var s=0;s<5;s++) html += s < stars ? "★" : "☆";
+      html += "</div>";
+      if(count > 1) html += "<div class=\"card-detail-count\">已获得 " + count + " 张</div>";
+    }
+    html += "</div>";
+
+    if(owned){
+      html += "<div class=\"card-detail-section\">";
+      html += "<div class=\"card-detail-section-title\">📖 基础知识</div>";
+      html += "<p>" + card.knowledge + "</p>";
+      html += "</div>";
+
+      // 星级解锁的知识
+      if(card.starUp && card.starUp.length > 0){
+        html += "<div class=\"card-detail-section\">";
+        html += "<div class=\"card-detail-section-title\">⭐ 星级知识</div>";
+        for(var j=0;j<card.starUp.length;j++){
+          var unlocked = j < stars;
+          html += "<div class=\"star-knowledge " + (unlocked ? "unlocked" : "locked") + "\">";
+          html += "<span class=\"star-knowledge-star\">" + (j+2) + "★</span>";
+          html += "<span class=\"star-knowledge-text\">" + (unlocked ? card.starUp[j] : "升级至" + (j+2) + "星解锁") + "</span>";
+          html += "</div>";
+        }
+        html += "</div>";
+      }
+
+      // 升级按钮
+      if(stars < 5){
+        var nextCost = costs[stars] || 999;
+        var canUpgrade = essence >= nextCost;
+        html += "<div class=\"card-detail-upgrade\">";
+        html += "<button class=\"upgrade-btn " + (canUpgrade ? "available" : "disabled") + "\" onclick=\"doUpgradeCard('" + cardId + "')\">";
+        html += "升级至 " + (stars+1) + "★";
+        html += "<span class=\"upgrade-cost\">需要 " + nextCost + " 精华 (当前 " + essence + ")</span>";
+        html += "</button>";
+        html += "</div>";
+      } else {
+        html += "<div class=\"card-detail-upgrade\"><div class=\"upgrade-max\">已达最高星级 ★★★★★</div></div>";
+      }
+    } else {
+      html += "<div class=\"card-detail-section locked-section\">";
+      html += "<p>尚未获得此卡牌，快去抽卡吧！</p>";
+      html += "</div>";
+    }
+
+    document.getElementById("cardDetailBody").innerHTML = html;
+    document.getElementById("cardDetailModal").classList.add("active");
+  };
+
+  window.doUpgradeCard = function(cardId){
+    var result = G.upgradeCard(cardId);
+    if(result.error){
+      G.toaster(result.error, "error");
+      return;
+    }
+    G.toaster("⬆️ 卡牌升级成功！当前 " + result.stars + "★", "success");
+    state = G.getStatus().state;
+    renderCards();
+    // 刷新详情
+    showCardDetail(cardId);
+  };
+
+  window.closeCardDetail = function(){
+    document.getElementById("cardDetailModal").classList.remove("active");
+  };
+
+  window.doDrawCard = function(mode){
+    var result = G.drawCard(mode);
+    if(!result) return;
+    if(result.error){
+      G.toaster(result.error, "error");
       return;
     }
 
-    // 扣除积分
-    state.score = currentScore - 100;
-    G.toaster("🔥 炼金抽卡中...", "info");
+    var card = result.card;
+    state = G.getStatus().state;
 
     // 显示抽卡动画
     document.getElementById("drawModal").classList.add("active");
     var flip = document.getElementById("drawCardFlip");
     flip.classList.remove("flipped");
     document.getElementById("drawResult").innerHTML = "";
+    document.getElementById("drawPityInfo").innerHTML = "";
 
     // 延迟翻转
     setTimeout(function(){
-      var card = G.drawCard();
-      if(card){
-        flip.classList.add("flipped");
+      flip.classList.add("flipped");
 
-        var rarityColors = {common:"#94a3b8", rare:"#67e8f9", epic:"#a78bfa", legend:"#f0c040"};
-        var rarityLabels = {common:"普通", rare:"稀有", epic:"史诗", legend:"传说"};
-        var back = document.getElementById("drawCardBack");
-        back.innerHTML = "<div style=\"font-size:14px;color:" + rarityColors[card.rarity] + ";margin-bottom:8px\">[" + rarityLabels[card.rarity] + "]</div><div style=\"font-size:20px;font-weight:800;color:var(--gold);margin-bottom:8px\">" + card.name + "</div><div style=\"font-size:11px;color:var(--text-dim)\">" + card.message + "</div>";
+      var rarityColors = {common:"#94a3b8", rare:"#67e8f9", epic:"#a78bfa", legend:"#f0c040"};
+      var rarityLabels = {common:"普通", rare:"稀有", epic:"史诗", legend:"传说"};
+      var back = document.getElementById("drawCardBack");
+      back.innerHTML = "<div style=\"font-size:14px;color:" + rarityColors[card.rarity] + ";margin-bottom:8px\">[" + rarityLabels[card.rarity] + "]</div><div style=\"font-size:20px;font-weight:800;color:var(--gold);margin-bottom:8px\">" + card.symbol + " " + card.name + "</div><div style=\"font-size:11px;color:var(--text-dim)\">" + card.message + "</div>";
 
-        setTimeout(function(){
-          document.getElementById("drawResult").innerHTML = "<div class=\"draw-name\">" + card.name + "</div><div class=\"draw-rarity\" style=\"color:" + rarityColors[card.rarity] + "\">[" + rarityLabels[card.rarity] + "]</div><div class=\"draw-msg\">" + card.message + "</div>";
+      setTimeout(function(){
+        var resultHtml = "";
+        if(result.isNew){
+          resultHtml += "<div class=\"draw-new-tag\">✨ 新卡牌！</div>";
+        } else {
+          resultHtml += "<div class=\"draw-dup-tag\">重复卡牌 → +" + result.essenceGained + " 精华</div>";
+        }
+        resultHtml += "<div class=\"draw-name\">" + card.name + "</div>";
+        resultHtml += "<div class=\"draw-rarity\" style=\"color:" + rarityColors[card.rarity] + "\">[" + rarityLabels[card.rarity] + "]</div>";
+        resultHtml += "<div class=\"draw-msg\">" + card.message + "</div>";
+        document.getElementById("drawResult").innerHTML = resultHtml;
 
-          // 更新显示
-          state = G.getStatus().state;
-          renderHero();
-          renderCards();
-        }, 600);
-      }
+        // 保底计数
+        var pityHtml = "<span class=\"pity-counter\">保底计数: " + result.pity + "/10</span>";
+        if(result.pity >= 5) pityHtml += " <span class=\"pity-boost\">已触发软保底加成！</span>";
+        document.getElementById("drawPityInfo").innerHTML = pityHtml;
+
+        // 更新显示
+        renderHero();
+        renderCards();
+      }, 600);
     }, 1200);
   };
 

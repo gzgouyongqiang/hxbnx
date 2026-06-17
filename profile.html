@@ -44,6 +44,9 @@
         <div class="profile-stat-card"><div class="profile-stat-icon">🎯</div><div class="profile-stat-num" id="statAccuracy">0%</div><div class="profile-stat-label">正确率</div></div>
         <div class="profile-stat-card"><div class="profile-stat-icon">🏆</div><div class="profile-stat-num" id="statCleared">0</div><div class="profile-stat-label">已通关</div></div>
       </div>
+      <div class="profile-quick-links" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <a href="element.html" class="quick-link-btn">🧪 元素周期表收集</a>
+      </div>
     </div>
   </div>
   <div class="profile-section">
@@ -82,15 +85,31 @@
     <div class="profile-section-header">
       <span class="profile-section-icon">🎴</span>
       <span class="profile-section-title">炼金抽卡</span>
-      <span class="profile-section-sub" id="cardCountText">0 张卡牌</span>
+      <span class="profile-section-sub" id="cardCountText">0 / 0</span>
     </div>
+    <div class="profile-gacha-info" id="gachaInfo"></div>
     <div class="profile-card-stats" id="cardStats"></div>
-    <div class="profile-draw-btn-wrap">
-      <button class="profile-draw-btn" id="drawBtn" onclick="doDrawCard()">
+    <div class="profile-draw-btns" id="drawBtns">
+      <button class="profile-draw-btn free-draw-btn" id="freeDrawBtn" onclick="doDrawCard('free')">
+        <span class="profile-draw-btn-icon">🎁</span>
+        <span class="profile-draw-btn-text">每日免费</span>
+        <span class="profile-draw-btn-sub">每天1次免费抽卡</span>
+      </button>
+      <button class="profile-draw-btn paid-draw-btn" id="paidDrawBtn" onclick="doDrawCard('paid')">
         <span class="profile-draw-btn-icon">🔥</span>
         <span class="profile-draw-btn-text">炼金抽卡</span>
-        <span class="profile-draw-btn-sub">消耗 100 积分</span>
+        <span class="profile-draw-btn-sub" id="paidDrawSub">消耗 100 积分 (0/3)</span>
       </button>
+    </div>
+    <div class="profile-collection-header">
+      <span>卡牌图鉴</span>
+      <div class="profile-collection-filter" id="collectionFilter">
+        <button class="coll-filter-btn active" data-filter="all">全部</button>
+        <button class="coll-filter-btn" data-filter="common">普通</button>
+        <button class="coll-filter-btn" data-filter="rare">稀有</button>
+        <button class="coll-filter-btn" data-filter="epic">史诗</button>
+        <button class="coll-filter-btn" data-filter="legend">传说</button>
+      </div>
     </div>
     <div class="profile-card-collection" id="cardCollection"></div>
   </div>
@@ -113,6 +132,15 @@
       </div>
     </div>
     <div class="draw-result" id="drawResult"></div>
+    <div class="draw-pity-info" id="drawPityInfo"></div>
+    <button class="draw-close-btn" onclick="closeDrawModal()">收下</button>
+  </div>
+</div>
+<div class="profile-modal" id="cardDetailModal">
+  <div class="profile-modal-overlay" onclick="closeCardDetail()"></div>
+  <div class="profile-modal-content card-detail-content">
+    <button class="profile-modal-close" onclick="closeCardDetail()">×</button>
+    <div class="card-detail-body" id="cardDetailBody"></div>
   </div>
 </div>
 <script src="assets/profile.js"></script>

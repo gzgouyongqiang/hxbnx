@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>元素盲盒 | 化学不难学</title>
+    <title>元素周期表收集 | 炼金试炼</title>
     <link rel="stylesheet" href="./assets/game.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,6 +41,16 @@
         .draw-title { font-size: 14px; color: #94a3b8; margin-bottom: 8px; position: relative; }
         .draw-count { font-size: 28px; font-weight: 800; color: #fbbf24; margin-bottom: 16px; position: relative; }
         .draw-count span { font-size: 14px; color: #94a3b8; font-weight: 400; }
+        .draw-info-row {
+            display: flex; gap: 16px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; position: relative;
+        }
+        .draw-info-item {
+            display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+            background: rgba(15,23,42,0.6); border: 1px solid #1e293b; border-radius: 10px; font-size: 12px;
+        }
+        .draw-info-icon { font-size: 16px; }
+        .draw-info-label { color: #64748b; }
+        .draw-info-num { font-weight: 700; color: #fbbf24; }
 
         .draw-btn {
             display: inline-block; padding: 14px 48px; font-size: 18px; font-weight: 800;
@@ -115,6 +125,7 @@
         }
         .reveal-badge.new { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); animation: badgePop 0.5s ease; }
         .reveal-badge.dup { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid #334155; }
+        .reveal-badge.essence { background: rgba(167,139,250,0.15); color: #c084fc; border: 1px solid rgba(167,139,250,0.3); animation: badgePop 0.5s ease; }
         @keyframes badgePop { from { transform: scale(0); } 50% { transform: scale(1.2); } to { transform: scale(1); } }
 
         .draw-close {
@@ -139,6 +150,24 @@
         .stat-num.c5 { color: #fbbf24; }
         .stat-label { font-size: 11px; color: #64748b; }
 
+        /* 族收集进度 */
+        .group-progress-section {
+            background: #0f172a; border: 1px solid #1e293b; border-radius: 12px;
+            padding: 16px; margin-bottom: 20px;
+        }
+        .group-progress-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: #e2e8f0; }
+        .group-progress-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px;
+        }
+        .group-progress-item {
+            padding: 8px 10px; background: rgba(30,41,59,0.5); border-radius: 8px;
+            font-size: 11px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .group-progress-item.completed { border: 1px solid rgba(251,191,36,0.3); background: rgba(251,191,36,0.06); }
+        .group-progress-name { color: #94a3b8; }
+        .group-progress-count { font-weight: 700; color: #fbbf24; }
+        .group-progress-item.completed .group-progress-name { color: #fbbf24; }
+
         /* 筛选栏 */
         .filter-bar {
             display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
@@ -160,10 +189,11 @@
         .elem-card {
             background: #0f172a; border: 1px solid #1e293b; border-radius: 12px;
             padding: 14px 12px 12px; text-align: center; position: relative; overflow: hidden;
-            transition: all 0.3s; min-height: 140px;
+            transition: all 0.3s; min-height: 140px; cursor: pointer;
         }
         .elem-card:hover { transform: translateY(-2px); }
-        .elem-card.locked { opacity: 0.35; }
+        .elem-card.locked { opacity: 0.35; cursor: default; }
+        .elem-card.locked:hover { transform: none; }
         .elem-card.tier-1.unlocked { border-color: #4b5563; }
         .elem-card.tier-2.unlocked { border-color: #16a34a; }
         .elem-card.tier-3.unlocked { border-color: #2563eb; }
@@ -190,6 +220,40 @@
         .elem-card-fact { font-size: 10px; color: #64748b; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .elem-card.locked .elem-card-fact { display: none; }
 
+        /* 元素详情弹窗 */
+        .elem-detail-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 998;
+            justify-content: center; align-items: center;
+        }
+        .elem-detail-overlay.active { display: flex; }
+        .elem-detail-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e); border: 1px solid #2d2d44;
+            border-radius: 20px; padding: 28px; max-width: 420px; width: 90%;
+            max-height: 80vh; overflow-y: auto; position: relative;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .elem-detail-close {
+            position: absolute; top: 12px; right: 16px; background: none; border: none;
+            color: #94a3b8; font-size: 24px; cursor: pointer;
+        }
+        .elem-detail-close:hover { color: #e2e8f0; }
+        .elem-detail-header { text-align: center; padding: 16px; margin-bottom: 16px; border-radius: 12px; }
+        .elem-detail-header.tier-1 { background: linear-gradient(135deg, rgba(107,114,128,0.1), rgba(107,114,128,0.05)); border: 1px solid rgba(107,114,128,0.2); }
+        .elem-detail-header.tier-2 { background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05)); border: 1px solid rgba(34,197,94,0.2); }
+        .elem-detail-header.tier-3 { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.2); }
+        .elem-detail-header.tier-4 { background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(168,85,247,0.05)); border: 1px solid rgba(168,85,247,0.2); }
+        .elem-detail-header.tier-5 { background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.05)); border: 1px solid rgba(245,158,11,0.25); }
+        .elem-detail-sym { font-size: 48px; font-weight: 800; }
+        .elem-detail-name { font-size: 20px; font-weight: 700; margin-top: 4px; }
+        .elem-detail-stars { font-size: 16px; margin-top: 4px; }
+        .elem-detail-section { margin-bottom: 14px; }
+        .elem-detail-section-title { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #1e293b; }
+        .elem-detail-section p { font-size: 12px; color: #94a3b8; line-height: 1.8; }
+        .elem-detail-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .elem-detail-meta-item { padding: 3px 10px; background: rgba(30,41,59,0.5); border-radius: 6px; font-size: 11px; color: #94a3b8; }
+
         .footer { text-align: center; padding: 20px 16px; color: #334155; font-size: 12px; }
 
         @media (max-width: 640px) {
@@ -204,7 +268,7 @@
     <header class="page-header">
         <div class="header-inner">
             <a href="./index.html" class="header-back">⚔️ 炼金主城</a>
-            <span class="header-title"><span>🧪 元素盲盒</span></span>
+            <span class="header-title"><span>🧪 元素周期表收集</span></span>
             <span class="header-badge" id="elem-badge">0/55</span>
         </div>
     </header>
@@ -214,12 +278,19 @@
         <div class="draw-section">
             <div class="draw-title">可用抽卡次数</div>
             <div class="draw-count" id="draw-count">0 <span>次</span></div>
+            <div class="draw-info-row" id="draw-info-row"></div>
             <button class="draw-btn" id="draw-btn" onclick="doDraw()">🧪 开启元素盲盒</button>
             <div class="draw-hint">通关练功房答题 +1次 | 每日首次访问免费 +1次</div>
         </div>
 
         <!-- 稀有度统计 -->
         <div class="stats-row" id="stats-row"></div>
+
+        <!-- 族收集进度 -->
+        <div class="group-progress-section" id="group-progress-section">
+            <div class="group-progress-title">📊 各族收集进度</div>
+            <div class="group-progress-grid" id="group-progress-grid"></div>
+        </div>
 
         <!-- 筛选 -->
         <div class="filter-bar" id="filter-bar"></div>
@@ -228,6 +299,7 @@
         <div class="card-grid" id="card-grid"></div>
     </div>
 
+    <!-- 抽卡动画 -->
     <div class="draw-overlay" id="draw-overlay">
         <div class="reveal-card" id="reveal-card">
             <div class="reveal-card-inner" id="reveal-inner">
@@ -241,7 +313,15 @@
         <button class="draw-close" id="draw-close" onclick="closeReveal()">收下</button>
     </div>
 
-    <footer class="footer">元素盲盒 · 化学不难学</footer>
+    <!-- 元素详情弹窗 -->
+    <div class="elem-detail-overlay" id="elem-detail-overlay" onclick="closeElemDetail(event)">
+        <div class="elem-detail-card" id="elem-detail-card" onclick="event.stopPropagation()">
+            <button class="elem-detail-close" onclick="closeElemDetail()">×</button>
+            <div id="elem-detail-content"></div>
+        </div>
+    </div>
+
+    <footer class="footer">元素周期表收集 · 化学不难学</footer>
 
     <script src="./assets/game.js"></script>
     <script>
@@ -332,28 +412,49 @@
         { stars: 5, weight: 5 }
     ];
 
+    /* 保底配置 */
+    var PITY_CONFIG = {
+        softPity: 5,
+        softPityBoost: 2.0,
+        hardPity: 10,
+        hardPityMinStars: 3
+    };
+
     var currentFilter = 0; // 0=全部
 
-    /* 族名格式化：VIII族和0族不加"族"后缀的特殊处理 */
+    /* 族名格式化 */
     function formatGroup(g) {
         if (g === '0') return '0族';
         if (g === 'VIII') return 'VIII族';
         if (g === '镧系' || g === '锕系') return g;
-        // IA~VIIA 主族，IB~VIIB 副族
         if (g.indexOf('A') > 0) return g + '（主族）';
         if (g.indexOf('B') > 0) return g + '（副族）';
         return g + '族';
     }
 
     /* ===== 抽卡逻辑 ===== */
-    function weightedRandomStar() {
+    function weightedRandomStar(pity) {
         var total = 0;
-        DRAW_WEIGHTS.forEach(function(w) { total += w.weight; });
+        var weights = DRAW_WEIGHTS.map(function(w) {
+            var prob = w.weight;
+            // 软保底：5次后稀有度概率翻倍
+            if (pity >= PITY_CONFIG.softPity && w.stars >= 2) {
+                prob *= PITY_CONFIG.softPityBoost;
+            }
+            return { stars: w.stars, weight: prob };
+        });
+
+        // 硬保底：10次后必出3星以上
+        if (pity >= PITY_CONFIG.hardPity) {
+            weights = weights.filter(function(w) { return w.stars >= PITY_CONFIG.hardPityMinStars; });
+        }
+
+        weights.forEach(function(w) { total += w.weight; });
         var r = Math.random() * total;
         var cum = 0;
-        for (var i = 0; i < DRAW_WEIGHTS.length; i++) {
-            cum += DRAW_WEIGHTS[i].weight;
-            if (r < cum) return DRAW_WEIGHTS[i].stars;
+        for (var i = 0; i < weights.length; i++) {
+            cum += weights[i].weight;
+            if (r < cum) return weights[i].stars;
         }
         return 1;
     }
@@ -366,8 +467,12 @@
     function doDraw() {
         if (HXBNX_GAME.getElementDrawCount() <= 0) return;
 
+        var s = HXBNX_GAME.getStatus().state;
+        var pity = s.elemPity || 0;
+        pity++;
+
         // 选星级再选元素
-        var stars = weightedRandomStar();
+        var stars = weightedRandomStar(pity);
         var elem = pickRandomElement(stars);
 
         // 记录到 game state
@@ -375,11 +480,15 @@
 
         if (!result.ok) return;
 
+        // 保存保底计数
+        s.elemPity = (result.isNew || stars >= 3) ? 0 : pity;
+        HXBNX_GAME._saveState(s);
+
         // 显示开卡动画
-        showReveal(elem, result.isNew, result.newAch);
+        showReveal(elem, result.isNew, result.newAch, pity);
     }
 
-    function showReveal(elem, isNew, newAch) {
+    function showReveal(elem, isNew, newAch, pity) {
         var overlay = document.getElementById('draw-overlay');
         var card = document.getElementById('reveal-card');
         var inner = document.getElementById('reveal-inner');
@@ -394,6 +503,13 @@
         for (var i = 0; i < elem.stars; i++) starsHtml += '⭐';
 
         front.className = 'reveal-front tier-' + elem.stars;
+        var badgeHtml = '';
+        if (isNew) {
+            badgeHtml = '<div class="reveal-badge new">✨ 新发现！</div>';
+        } else {
+            badgeHtml = '<div class="reveal-badge essence">💎 +3 元素精华</div>';
+        }
+
         front.innerHTML =
             '<div class="reveal-num">#' + elem.num + '</div>' +
             '<div class="reveal-stars">' + starsHtml + '</div>' +
@@ -403,8 +519,8 @@
             '<div class="reveal-val">' + elem.valence + '</div>' +
             '<div class="reveal-cat">' + (CAT_NAMES[elem.cat] || elem.cat) + '</div>' +
             '<div class="reveal-fact">' + elem.fact + '</div>' +
-            '<div class="reveal-badge ' + (isNew ? 'new' : 'dup') + '">' +
-            (isNew ? '✨ 新发现！' : '已拥有 +3 EXP') + '</div>';
+            badgeHtml +
+            '<div style="font-size:10px;color:#64748b;margin-top:6px">保底计数: ' + pity + '/10</div>';
 
         // 显示覆盖层
         overlay.classList.add('active');
@@ -430,10 +546,70 @@
         renderAll();
     }
 
+    /* ===== 元素详情弹窗 ===== */
+    function showElemDetail(sym) {
+        var elem = null;
+        for (var i = 0; i < ELEMENTS.length; i++) {
+            if (ELEMENTS[i].sym === sym) { elem = ELEMENTS[i]; break; }
+        }
+        if (!elem) return;
+
+        var collected = HXBNX_GAME.getElementCards();
+        var info = null;
+        for (var j = 0; j < collected.length; j++) {
+            if (collected[j].s === sym) { info = collected[j]; break; }
+        }
+        var owned = !!info;
+
+        var starsHtml = '';
+        for (var s = 0; s < elem.stars; s++) starsHtml += '⭐';
+
+        var html = '';
+        html += '<div class="elem-detail-header tier-' + elem.stars + '">';
+        html += '<div class="elem-detail-sym" style="color:' + STAR_COLORS[elem.stars] + '">' + (owned ? elem.sym : '?') + '</div>';
+        html += '<div class="elem-detail-name">' + (owned ? elem.name : '???') + '</div>';
+        html += '<div class="elem-detail-stars">' + starsHtml + '</div>';
+        html += '</div>';
+
+        if (owned) {
+            html += '<div class="elem-detail-meta">';
+            html += '<span class="elem-detail-meta-item">#' + elem.num + '</span>';
+            html += '<span class="elem-detail-meta-item">第' + elem.period + '周期</span>';
+            html += '<span class="elem-detail-meta-item">' + formatGroup(elem.group) + '</span>';
+            html += '<span class="elem-detail-meta-item">' + (CAT_NAMES[elem.cat] || elem.cat) + '</span>';
+            html += '</div>';
+
+            html += '<div class="elem-detail-section">';
+            html += '<div class="elem-detail-section-title">📖 价层电子排布</div>';
+            html += '<p>' + elem.valence + '</p>';
+            html += '</div>';
+
+            html += '<div class="elem-detail-section">';
+            html += '<div class="elem-detail-section-title">🔬 化学奇闻</div>';
+            html += '<p>' + elem.fact + '</p>';
+            html += '</div>';
+        } else {
+            html += '<div class="elem-detail-section" style="text-align:center;padding:20px;opacity:.5">';
+            html += '<p>尚未发现此元素，快去开启元素盲盒吧！</p>';
+            html += '</div>';
+        }
+
+        document.getElementById('elem-detail-content').innerHTML = html;
+        document.getElementById('elem-detail-overlay').classList.add('active');
+    }
+
+    function closeElemDetail(e) {
+        if (e && e.target !== document.getElementById('elem-detail-overlay')) return;
+        document.getElementById('elem-detail-overlay').classList.remove('active');
+    }
+
     /* ===== 渲染 ===== */
     function renderAll() {
         var collected = HXBNX_GAME.getElementCards();
         var drawCount = HXBNX_GAME.getElementDrawCount();
+        var s = HXBNX_GAME.getStatus().state;
+        var pity = s.elemPity || 0;
+        var elemEssence = s.elemEssence || 0;
 
         // 每日免费抽卡
         if (HXBNX_GAME.claimFreeDraw()) {
@@ -444,6 +620,12 @@
         // 抽卡区
         document.getElementById('draw-count').innerHTML = drawCount + ' <span>次</span>';
         document.getElementById('draw-btn').disabled = drawCount <= 0;
+
+        // 抽卡信息行
+        var infoHtml = '';
+        infoHtml += '<div class="draw-info-item"><span class="draw-info-icon">💎</span><span class="draw-info-label">元素精华</span><span class="draw-info-num">' + elemEssence + '</span></div>';
+        infoHtml += '<div class="draw-info-item"><span class="draw-info-icon">🎯</span><span class="draw-info-label">保底计数</span><span class="draw-info-num">' + pity + ' / 10</span></div>';
+        document.getElementById('draw-info-row').innerHTML = infoHtml;
 
         // 头部徽章
         document.getElementById('elem-badge').textContent = collected.length + '/' + ELEMENTS.length;
@@ -462,6 +644,34 @@
         });
         document.getElementById('stats-row').innerHTML = statsHtml;
 
+        // 族收集进度
+        var groupCounts = {};
+        var groupTotal = {};
+        ELEMENTS.forEach(function(e) {
+            var cat = CAT_NAMES[e.cat] || e.cat;
+            groupTotal[cat] = (groupTotal[cat] || 0) + 1;
+        });
+        var collectedSyms = {};
+        collected.forEach(function(c) { collectedSyms[c.s] = true; });
+        ELEMENTS.forEach(function(e) {
+            if (collectedSyms[e.sym]) {
+                var cat = CAT_NAMES[e.cat] || e.cat;
+                groupCounts[cat] = (groupCounts[cat] || 0) + 1;
+            }
+        });
+
+        var groupHtml = '';
+        for (var catName in groupTotal) {
+            var count = groupCounts[catName] || 0;
+            var total = groupTotal[catName];
+            var completed = count >= total;
+            groupHtml += '<div class="group-progress-item ' + (completed ? 'completed' : '') + '">';
+            groupHtml += '<span class="group-progress-name">' + catName + '</span>';
+            groupHtml += '<span class="group-progress-count">' + count + '/' + total + '</span>';
+            groupHtml += '</div>';
+        }
+        document.getElementById('group-progress-grid').innerHTML = groupHtml;
+
         // 筛选栏
         var filterHtml = '<button class="filter-btn ' + (currentFilter === 0 ? 'active' : '') + '" onclick="setFilter(0)">全部</button>';
         [1,2,3,4,5].forEach(function(t) {
@@ -470,9 +680,6 @@
         document.getElementById('filter-bar').innerHTML = filterHtml;
 
         // 卡牌网格
-        var collectedSyms = {};
-        collected.forEach(function(c) { collectedSyms[c.s] = true; });
-
         var filtered = currentFilter === 0 ? ELEMENTS : ELEMENTS.filter(function(e) { return e.stars === currentFilter; });
 
         var gridHtml = '';
@@ -482,7 +689,7 @@
             var starsHtml = '';
             for (var i = 0; i < e.stars; i++) starsHtml += '⭐';
 
-            gridHtml += '<div class="elem-card ' + cls + '">';
+            gridHtml += '<div class="elem-card ' + cls + '" onclick="' + (owned ? 'showElemDetail(\'' + e.sym + '\')' : '') + '">';
             gridHtml += '<div class="elem-card-num">' + (owned ? '#' + e.num : '') + '</div>';
             gridHtml += '<div class="elem-card-stars">' + (owned ? starsHtml : '') + '</div>';
             gridHtml += '<div class="elem-card-sym">' + (owned ? e.sym : '?') + '</div>';
