@@ -59,7 +59,7 @@
           "blockId": "card-5-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "题目1： （2024·广西·真题改编）下列能区分Fe₂(SO₄)₃和K₃[Fe(CN)₆]的试剂是？",
+          "question": "（2024·广西·真题改编）下列能区分Fe₂(SO₄)₃和K₃[Fe(CN)₆]的试剂是？",
           "options": [
             {
               "label": "A",
@@ -80,29 +80,9 @@
               "label": "D",
               "text": "以上都能",
               "correct": true
-            },
-            {
-              "label": "A",
-              "text": "NaOH",
-              "correct": false
-            },
-            {
-              "label": "B",
-              "text": "酸性KMnO₄",
-              "correct": false
-            },
-            {
-              "label": "C",
-              "text": "KSCN",
-              "correct": false
-            },
-            {
-              "label": "D",
-              "text": "苯酚",
-              "correct": true
             }
           ],
-          "explanation": "解析： A正确——KSCN与Fe₂(SO₄)₃变红，与K₃[Fe(CN)₆]不变红。B正确——NaOH与Fe₂(SO₄)₃生成红褐色沉淀，与K₃[Fe(CN)₆]无沉淀。C正确——K₃[Fe(CN)₆]含K⁺，焰色反应透过蓝色钴玻璃呈紫色，Fe₂(SO₄)₃无此现象。三种方法均可区分。题目2： （2015·上海·真题改编）检验硫酸铁中是否含有硫酸亚铁，可选用的试剂是？A. NaOHB. 酸性KMnO₄C. KSCND. 苯酚答案： B解析： Fe²⁺具有还原性，能使酸性KMnO₄褪色，而Fe³⁺不能，可用于检验Fe²⁺的存在。A中两者均产生沉淀，终态颜色相似不易区分。C和D只能检验Fe³⁺，无法检出Fe²⁺。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2024·广西（KSCN与K₃[Fe(CN)₆]鉴别）、2015·上海（KMnO₄检验Fe²⁺）、历年高考离子鉴别题改编</span>"
+          "explanation": "解析：A正确——KSCN与Fe₂(SO₄)₃变血红色，与K₃[Fe(CN)₆]不变红。B正确——NaOH与Fe₂(SO₄)₃生成红褐色Fe(OH)₃沉淀，与K₃[Fe(CN)₆]无沉淀。C正确——K₃[Fe(CN)₆]含K⁺，焰色反应透过蓝色钴玻璃呈紫色，Fe₂(SO₄)₃无此现象。三种方法均可区分。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2024·广西（KSCN与K₃[Fe(CN)₆]鉴别）</span>"
         }
       ]
     },
@@ -147,7 +127,7 @@
           "blockId": "card-6-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "题目1： （2021·广东·真题改编）下列含铁物质转化关系不合理的是？",
+          "question": "（2021·广东·真题改编）下列含铁物质转化关系不合理的是？",
           "options": [
             {
               "label": "A",
@@ -168,29 +148,9 @@
               "label": "D",
               "text": "FeCl₃ → Fe（通过Cu还原）",
               "correct": true
-            },
-            {
-              "label": "A",
-              "text": "Na⁺、Fe²⁺、SO₄²⁻、Cl⁻、OH⁻",
-              "correct": false
-            },
-            {
-              "label": "B",
-              "text": "Na⁺、Fe³⁺、SO₄²⁻、Cl⁻、NH₄⁺",
-              "correct": false
-            },
-            {
-              "label": "C",
-              "text": "Na⁺、Fe³⁺、SO₄²⁻、Cl⁻、OH⁻",
-              "correct": false
-            },
-            {
-              "label": "D",
-              "text": "Na⁺、Fe²⁺、SO₄²⁻、Cl⁻、NH₄⁺",
-              "correct": true
             }
           ],
-          "explanation": "解析： FeCl₃ + Cu → FeCl₂ + CuCl₂（Fe³⁺被还原为Fe²⁺，不是Fe），Cu还原性不足以将Fe³⁺还原为Fe单质。A正确：Fe + 2HCl = FeCl₂ + H₂↑。B正确：2FeCl₂ + Cl₂ = 2FeCl₃。C正确：2FeCl₃ + Fe = 3FeCl₂。题目2： （2016·江苏·真题改编）母液中含有NH₄⁺、Fe²⁺、H⁺、SO₄²⁻，加入过量NaClO和NaOH的混合溶液后，溶液中主要存在的一组离子是？A. Na⁺、Fe²⁺、SO₄²⁻、Cl⁻、OH⁻B. Na⁺、Fe³⁺、SO₄²⁻、Cl⁻、NH₄⁺C. Na⁺、Fe³⁺、SO₄²⁻、Cl⁻、OH⁻D. Na⁺、Fe²⁺、SO₄²⁻、Cl⁻、NH₄⁺答案： C解析： NaClO具有强氧化性，将Fe²⁺氧化为Fe³⁺，ClO⁻被还原为Cl⁻；过量NaOH使Fe³⁺沉淀为Fe(OH)₃，但溶液中仍含有Na⁺、SO₄²⁻、Cl⁻、OH⁻；NH₄⁺与OH⁻反应生成NH₃·H₂O。故溶液中主要存在Na⁺、SO₄²⁻、Cl⁻、OH⁻，Fe³⁺以沉淀形式存在，选项C中虽写了Fe³⁺但实际已沉淀。注意本题C是正确答案——出题意图是\"主要存在的一组离子\"，实际上Fe³⁺在强碱性中已沉淀，此题在当年高考中有争议，需注意Fe³⁺在强碱中不大量存在。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·广东（含铁物质循环转化图）、2016·江苏（Fe²⁺氧化与沉淀）、2016-2025各地高考题改编</span>"
+          "explanation": "解析：A合理——Fe + 2HCl = FeCl₂ + H₂↑。B合理——2FeCl₂ + Cl₂ = 2FeCl₃。C合理——2FeCl₃ + Fe = 3FeCl₂。D不合理——FeCl₃ + Cu → FeCl₂ + CuCl₂，Cu只能将Fe³⁺还原为Fe²⁺，还原性不足以将Fe³⁺还原为Fe单质。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·广东（含铁物质循环转化关系图）</span>"
         }
       ]
     }
@@ -200,7 +160,7 @@
       "stageId": "cert-5",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "题目1： （2024·广西·真题改编）下列能区分Fe₂(SO₄)₃和K₃[Fe(CN)₆]的试剂是？",
+      "question": "（2024·广西·真题改编）下列能区分Fe₂(SO₄)₃和K₃[Fe(CN)₆]的试剂是？",
       "options": [
         {
           "label": "A",
@@ -216,6 +176,11 @@
           "label": "C",
           "text": "焰色试验",
           "correct": false
+        },
+        {
+          "label": "D",
+          "text": "以上都能",
+          "correct": true
         }
       ]
     },
@@ -223,7 +188,7 @@
       "stageId": "cert-6",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "题目1： （2021·广东·真题改编）下列含铁物质转化关系不合理的是？",
+      "question": "（2021·广东·真题改编）下列含铁物质转化关系不合理的是？",
       "options": [
         {
           "label": "A",
@@ -239,6 +204,11 @@
           "label": "C",
           "text": "FeCl₃ → FeCl₂（通过Fe还原）",
           "correct": false
+        },
+        {
+          "label": "D",
+          "text": "FeCl₃ → Fe（通过Cu还原）",
+          "correct": true
         }
       ]
     }
