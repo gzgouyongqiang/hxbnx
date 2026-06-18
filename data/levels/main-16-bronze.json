@@ -8,11 +8,11 @@
     "tierLabel": "铜牌关卡",
     "tierEmoji": "🥉",
     "knowledgeTags": [
-      "O₃",
-      "Na₂C",
-      "NaH",
       "CaCl",
-      "CO"
+      "O₃",
+      "CO",
+      "NaH",
+      "Na₂C"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -30,20 +30,22 @@
           "blockId": "card-1-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p></p>"
+          "html": "<p>侯氏制碱法要先通NH₃再通CO₂，因为NH₃在水中溶解度极大，先通入使溶液呈碱性，能大量吸收后续的CO₂，促进NaHCO₃析出。</p>"
         },
         {
           "blockId": "card-1-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p></p>"
+          "html": "<p><strong>阿杰说：</strong>「侯氏制碱法的反应是NaCl+NH₃+CO₂+H₂O→NaHCO₃↓+NH₄Cl，NH₃和CO₂都是气体，先通哪个都一样。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
         },
         {
           "blockId": "card-1-path",
           "type": "path",
           "tag": "🗺️ 修炼路径",
           "steps": [
-            "详见知识点解析"
+            "第一步：记住核心反应方程式NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl此反应能发生的关键：NaHCO₃溶解度较小，在过饱和状态下析出晶体。",
+            "第二步：理解先通NH₃再通CO₂的原因如果先通CO₂（⛔ 错误顺序）：CO₂在水中的溶解度很小（约1:1），溶解后只生成少量H₂CO₃，溶液酸性弱，无法有效吸收后续的NH₃。如果先通NH₃（✅ 正确顺序）：NH₃在水中溶解度极大（约700:1），通入后生成大量NH₃·H₂O（氨水），溶液呈强碱性：NH₃ + H₂O ⇌ NH₃·H₂O ⇌ NH₄⁺ + OH⁻碱性溶液能大量吸收CO₂：CO₂ + 2OH⁻ → CO₃²⁻ + H₂O此时溶液中高浓度的Na⁺、NH₄⁺、CO₃²⁻、HCO₃⁻在低温下使NaHCO₃过饱和析出。",
+            "第三步：对比记忆顺序顺序现象能否析出NaHCO₃先NH₃后CO₂ ✅NH₃大量溶解→溶液强碱性→高效吸收CO₂→NaHCO₃过饱和析出✅ 能先CO₂后NH₃ ❌CO₂少量溶解→溶液微酸性→NH₃通入后局部反应→NaHCO₃产量极低❌ 不能"
           ],
           "table": null
         },
@@ -51,15 +53,36 @@
           "blockId": "card-1-analogy",
           "type": "analogy",
           "tag": "💡 仙人指路",
-          "html": "<p></p>"
+          "html": "<p>侯氏制碱法的气体通入顺序就像\"先铺底后倒水\"——先通NH₃（大溶解度）就像先铺一层厚厚的海绵垫，能吸收之后再来的大量CO₂（水）。如果你先倒水（先通CO₂），海绵垫还没铺好（NH₃还没溶），水很快就流走了——根本存不住！口诀：\"先氨后碳，碱性强；NaHCO₃先析出；先碳后氨白忙活，产量低得可怜。\"</p>"
         },
         {
           "blockId": "card-1-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "",
-          "options": [],
-          "explanation": ""
+          "question": "侯氏制碱法的核心反应为：NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl。下列关于该反应的说法正确的是（ ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "应先通入CO₂，再通入NH₃  —— 应反过来的",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "先通入NH₃使溶液呈碱性，有利于CO₂的吸收",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "CO₂溶解度大于NH₃  —— NH₃溶解度远大于CO₂",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "反应中NaHCO₃溶解度最大  —— NaHCO₃溶解度较小，所以先析出",
+              "correct": false
+            }
+          ],
+          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·广东卷·第1题A选项（侯氏制碱法先通NH₃再通CO₂✅）</span>"
         }
       ]
     },
@@ -75,20 +98,22 @@
           "blockId": "card-2-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p></p>"
+          "html": "<p>侯氏制碱法：副产物NH₄Cl（氯化铵）可作氮肥，原料利用率高、污染小；氨碱法：副产物CaCl₂（氯化钙）难利用，原料利用率低、污染大。</p>"
         },
         {
           "blockId": "card-2-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p></p>"
+          "html": "<p><strong>小明说：</strong>「侯氏制碱法和氨碱法的核心反应原理一样，都是NaCl+NH₃+CO₂+H₂O→NaHCO₃↓+NH₄Cl，所以副产物也一样。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
         },
         {
           "blockId": "card-2-path",
           "type": "path",
           "tag": "🗺️ 修炼路径",
           "steps": [
-            "详见知识点解析"
+            "第一步：氨碱法（索尔维法）完整流程① NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl② 2NaHCO₃ =△= Na₂CO₃ + CO₂↑ + H₂O③ CaCO₃ =高温= CaO + CO₂↑（提供CO₂和CaO）④ CaO + H₂O = Ca(OH)₂⑤ 2NH₄Cl + Ca(OH)₂ = 2NH₃↑ + CaCl₂ + 2H₂O（回收NH₃）氨碱法总反应：2NaCl + CaCO₃ = Na₂CO₃ + CaCl₂副产物：CaCl₂（大量堆积，难以利用，造成环境污染）",
+            "第二步：侯氏制碱法（联合制碱法）完整流程① NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl② 2NaHCO₃ =△= Na₂CO₃ + CO₂↑ + H₂O③ 母液加入NaCl粉末，冷却→NH₄Cl晶体析出（作氮肥）侯氏制碱法总反应：NaCl + NH₃ + CO₂ + H₂O = Na₂CO₃ + NH₄Cl副产物：NH₄Cl（可直接用作氮肥，无废渣）",
+            "第三步：优劣对比速查表对比项氨碱法（索尔维法）侯氏制碱法（联合制碱法）副产物CaCl₂（难利用，污染大）NH₄Cl（可作氮肥）原料利用率低（NaCl利用率约70%）高（NaCl利用率约96%）污染物CaCl₂废渣、废液污染小经济效益副产物无价值NH₄Cl是肥料，有产值发明时间1861年（索尔维）1943年（侯德榜）"
           ],
           "table": null
         },
@@ -96,18 +121,86 @@
           "blockId": "card-2-analogy",
           "type": "analogy",
           "tag": "💡 仙人指路",
-          "html": "<p></p>"
+          "html": "<p>氨碱法就像\"做一道菜只吃一半，另一半倒掉\"——用了大量原料，副产物CaCl₂没啥用还有污染。侯氏制碱法就像\"一鱼两吃\"——鱼头炖汤、鱼身红烧，每个部分都有用处。副产物NH₄Cl能当肥料卖钱，原料利用率更高。口诀：\"氨碱副产氯化钙，白白浪费有污染；侯氏副产氯化铵，加工肥料能赚钱。\"</p>"
         },
         {
           "blockId": "card-2-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "",
-          "options": [],
-          "explanation": ""
+          "question": "下列关于侯氏制碱法和氨碱法的说法错误的是（ ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "两者核心反应第一步相同，都生成NaHCO₃",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "氨碱法的副产物是CaCl₂",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "侯氏制碱法的副产物NH₄Cl可用作氮肥",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "氨碱法的原料利用率高于侯氏制碱法  —— 侯氏制碱法原料利用率更高",
+              "correct": true
+            }
+          ],
+          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·广东卷·第1题D选项（与氨碱法相比，原料利用率更低❌）2024·全国卷·第2题（侯氏制碱法与氨碱法副产物对比）</span>"
         }
       ]
     }
   ],
-  "certQuiz": []
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "侯氏制碱法的核心反应为：NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl。下列关于该反应的说法正确的是（ ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "应先通入CO₂，再通入NH₃  —— 应反过来的",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "先通入NH₃使溶液呈碱性，有利于CO₂的吸收",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "CO₂溶解度大于NH₃  —— NH₃溶解度远大于CO₂",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于侯氏制碱法和氨碱法的说法错误的是（ ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "两者核心反应第一步相同，都生成NaHCO₃",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "氨碱法的副产物是CaCl₂",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "侯氏制碱法的副产物NH₄Cl可用作氮肥",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }

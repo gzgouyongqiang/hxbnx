@@ -140,7 +140,7 @@ def get_note_content(notebook_id):
     return result.get("data", {}).get("content", "")
 
 def parse_microcard(content, card_num):
-    """解析微卡点内容，提取结构化数据"""
+    """解析微卡点内容，提取结构化数据（支持有换行和无换行两种格式）"""
     data = {
         "title": "",
         "secret": "",
@@ -156,63 +156,119 @@ def parse_microcard(content, card_num):
         "source": ""
     }
 
-    lines = content.split('\n')
-    current_section = None
-    buffer = []
+    # 检测内容格式：如果【】标记之间几乎没有换行，说明是无换行格式
+    # 先用正则按【】章节标记分割，再处理
+    section_markers = ['一句话本质', '典型症状', '认知路径', '类比记忆', '同类自测', '本题出处']
 
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
+    # 提取标题
+    title_match = re.search(rf'微卡点{card_num:02d}[：:](.+?)(?=【|$)', content)
+    if title_match:
+        data["title"] = title_match.group(1).strip()
+    else:
+        # 兜底：取第一行作为标题
+        data["title"] = content.split('\n')[0].strip()[:50]
 
-        # 识别标题
-        if f"微卡点{card_num:02d}" in line and '：' in line:
-            data["title"] = line.split('：', 1)[1].split('【')[0].strip()
-            continue
+    # 按【】标记分割各章节内容
+    sections = {}
+    for i, marker in enumerate(section_markers):
+        pattern = rf'【{marker}】(.+?)(?=【{"|".join(section_markers[i+1:])}】|$)'
+        match = re.search(pattern, content, re.DOTALL)
+        if match:
+            sections[marker] = match.group(1).strip()
 
-        # 识别章节
-        if '【一句话本质】' in line:
-            if buffer and current_section:
-                _save_section(data, current_section, buffer)
-            current_section = "secret"
-            buffer = [line.replace('【一句话本质】', '').strip()]
-            continue
-        elif '【典型症状】' in line:
-            if buffer and current_section:
-                _save_section(data, current_section, buffer)
-            current_section = "symptom"
-            buffer = []
-            continue
-        elif '【认知路径】' in line:
-            if buffer and current_section:
-                _save_section(data, current_section, buffer)
-            current_section = "path"
-            buffer = []
-            continue
-        elif '【类比记忆】' in line:
-            if buffer and current_section:
-                _save_section(data, current_section, buffer)
-            current_section = "analogy"
-            buffer = []
-            continue
-        elif '【同类自测】' in line:
-            if buffer and current_section:
-                _save_section(data, current_section, buffer)
-            current_section = "quiz"
-            buffer = []
-            continue
-        elif '【本题出处】' in line:
-            data["source"] = line.replace('【本题出处】', '').strip()
-            continue
+    # 填充数据
+    if '一句话本质' in sections:
+        data["secret"] = sections['一句话本质']
 
-        if current_section:
-            buffer.append(line)
+    if '典型症状' in sections:
+        text = sections['典型症状']
+        # 解析症状诊断
+        student_match = re.search(r'(.+?)[：:]\s*["""](.+?)["""]', text)
+        if student_match:
+            data["symptom_student"] = student_match.group(1).strip()
+            data["symptom_error"] = student_match.group(2).strip()
+        data["symptom"] = text
 
-    # 保存最后一个章节
-    if buffer and current_section:
-        _save_section(data, current_section, buffer)
+    if '认知路径' in sections:
+        text = sections['认知路径']
+        # 解析步骤（支持无换行格式：第一步：...第二步：...第三步：...）
+        steps = []
+        for step_match in re.finditer(r'(第[一二三]步[：:].+?)(?=第[一二三]步[：:]|$)', text):
+            steps.append(step_match.group(1).strip())
+        # 兜底：如果正则没匹配到，尝试按关键词分割
+        if not steps:
+            for keyword in ['第一步：', '第二步：', '第三步：']:
+                idx = text.find(keyword)
+                if idx != -1:
+                    # 找到这一步开始到下一步或结束
+                    end_idx = len(text)
+                    for next_kw in ['第一步：', '第二步：', '第三步：']:
+                        if next_kw != keyword:
+                            ni = text.find(next_kw, idx + len(keyword))
+                            if ni != -1 and ni < end_idx:
+                                end_idx = ni
+                    steps.append(text[idx:end_idx].strip())
+        data["path_steps"] = steps if steps else [text[:200]]
+
+    if '类比记忆' in sections:
+        data["analogy"] = sections['类比记忆']
+
+    if '同类自测' in sections:
+        _parse_quiz_from_text(data, sections['同类自测'])
+
+    if '本题出处' in sections:
+        data["source"] = sections['本题出处']
 
     return data
+
+def _parse_quiz_from_text(data, text):
+    """从纯文本解析选择题（支持无换行格式）"""
+    # 提取题目（到第一个A.或A、或(A)之前）
+    q_match = re.search(r'(.+?)(?=[A-D][.．、]|\([A-D]\)|答案[：:]|$)', text)
+    if q_match:
+        data["quiz_question"] = q_match.group(1).strip()
+
+    # 提取选项 A/B/C/D
+    options = []
+    for match in re.finditer(r'([A-D])[.．、]\s*(.+?)(?=(?:[A-D][.．、])|答案[：:]|【|$)', text):
+        label = match.group(1)
+        text_opt = match.group(2).strip()
+        # 清理标记
+        text_opt = re.sub(r'[✅❌]', '', text_opt).strip()
+        options.append({
+            "label": label,
+            "text": text_opt,
+            "correct": False
+        })
+
+    # 如果没有匹配到，尝试更宽松的模式
+    if not options:
+        for match in re.finditer(r'([A-D])[.．、]\s*([^A-D\n]+)', text):
+            label = match.group(1)
+            text_opt = match.group(2).strip()
+            text_opt = re.sub(r'[✅❌]', '', text_opt).strip()
+            options.append({
+                "label": label,
+                "text": text_opt,
+                "correct": False
+            })
+
+    # 提取正确答案
+    exp_match = re.search(r'答案[：:]\s*([A-D])', text)
+    if exp_match:
+        correct_label = exp_match.group(1)
+        for opt in options:
+            opt["correct"] = (opt["label"] == correct_label)
+
+    data["quiz_options"] = options
+
+    # 提取解析文本（答案之后的内容）
+    exp_text = ""
+    if '答案：' in text:
+        exp_text = text.split('答案：', 1)[-1].strip()
+        # 去掉答案字母本身
+        exp_text = re.sub(r'^[A-D]\s*', '', exp_text)
+    data["quiz_explanation"] = exp_text
 
 def _save_section(data, section, buffer):
     """保存解析的章节内容"""

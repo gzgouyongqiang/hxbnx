@@ -8,11 +8,11 @@
     "tierLabel": "银牌关卡",
     "tierEmoji": "🥈",
     "knowledgeTags": [
-      "O₃",
-      "Na₂C",
-      "NaH",
       "CaCl",
-      "CO"
+      "O₃",
+      "CO",
+      "NaH",
+      "Na₂C"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -30,20 +30,22 @@
           "blockId": "card-3-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p></p>"
+          "html": "<p>氨碱法（索尔维法）中，CaCO₃分解产生的CaO经过一系列反应后，最终与NH₄Cl反应生成CaCl₂——这是该法的必然副产物。</p>"
         },
         {
           "blockId": "card-3-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p></p>"
+          "html": "<p><strong>小美看氨碱法流程图，看到CaCO₃→CaO+CO₂，想：</strong>「CaO用来提供CO₂，那CaO去哪了？」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
         },
         {
           "blockId": "card-3-path",
           "type": "path",
           "tag": "🗺️ 修炼路径",
           "steps": [
-            "详见知识点解析"
+            "第一步：追踪Ca元素的\"旅行\"CaCO₃（石灰石）──→ CaO（生石灰）+ CO₂↑│↓   +H₂OCa(OH)₂（熟石灰）│↓   +NH₄ClCaCl₂（氯化钙，副产物）+ NH₃↑（回收）",
+            "第二步：理解为什么要加Ca(OH)₂在氨碱法中，NH₃是循环使用的。第一步反应生成了NH₄Cl，为了回收NH₃，需要用碱与NH₄Cl反应：2NH₄Cl + Ca(OH)₂ = 2NH₃↑ + CaCl₂ + 2H₂O用Ca(OH)₂的原因是它便宜——来自CaCO₃分解所得。但代价是产生了大量的CaCl₂废渣，每生产1吨纯碱约产生1吨CaCl₂废渣。",
+            "第三步：对比——侯氏制碱法怎么解决这个问题侯氏制碱法不回收NH₃，而是直接把NH₄Cl作为产品：母液（含NH₄Cl、NaCl等）──加入NaCl粉末、冷却──→ NH₄Cl晶体析出省去了加Ca(OH)₂回收NH₃的步骤，也就没有CaCl₂废渣产生。"
           ],
           "table": null
         },
@@ -51,15 +53,36 @@
           "blockId": "card-3-analogy",
           "type": "analogy",
           "tag": "💡 仙人指路",
-          "html": "<p></p>"
+          "html": "<p>氨碱法中Ca元素的旅程就像\"借东西还要还\"——CaCO₃是借来的\"工具\"（提供CO₂和CaO），用完后CaO变成Ca(OH)₂去\"还债\"（回收NH₃），最后变成CaCl₂废渣（\"债务还清\"但留下了没用的废料）。侯氏制碱法干脆\"不借工具\"（直接用NH₄Cl做产品），省去了整个过程，没有废渣产生。</p>"
         },
         {
           "blockId": "card-3-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "",
-          "options": [],
-          "explanation": ""
+          "question": "氨碱法生产纯碱的主要反应为：① NaCl+NH₃+CO₂+H₂O=NaHCO₃↓+NH₄Cl② 2NaHCO₃=△=Na₂CO₃+CO₂↑+H₂O③ CaCO₃=高温=CaO+CO₂↑④ CaO+H₂O=Ca(OH)₂⑤ 2NH₄Cl+Ca(OH)₂=2NH₃↑+CaCl₂+2H₂O下列说法错误的是（ ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "反应①中析出NaHCO₃利用了其溶解度较小的特点",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "反应⑤的目的是回收NH₃循环使用",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "氨碱法的副产物CaCl₂可用作氮肥  —— CaCl₂不含氮元素，不能作氮肥，是废渣",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "CO₂可部分循环使用",
+              "correct": false
+            }
+          ],
+          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2023·江苏卷·第3题（氨碱法反应原理和副产物）</span>"
         }
       ]
     },
@@ -75,20 +98,22 @@
           "blockId": "card-4-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p></p>"
+          "html": "<p>Na₂CO₃俗称\"纯碱\"，但按化学分类它属于盐（碳酸盐），不是碱。其水溶液呈碱性的原因是CO₃²⁻水解，而非本身电离出OH⁻。</p>"
         },
         {
           "blockId": "card-4-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p></p>"
+          "html": "<p><strong>阿杰说：</strong>「纯碱嘛，那就是碱啊！和烧碱一样，都能中和胃酸。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
         },
         {
           "blockId": "card-4-path",
           "type": "path",
           "tag": "🗺️ 修炼路径",
           "steps": [
-            "详见知识点解析"
+            "第一步：明确化学分类标准碱的定义：电离出的阴离子全部是OH⁻的化合物。NaOH → Na⁺ + OH⁻（阴离子全是OH⁻ ✅ → 是碱）Na₂CO₃ → 2Na⁺ + CO₃²⁻（阴离子是CO₃²⁻，没有OH⁻ ❌ → 不是碱，是盐）",
+            "第二步：理解Na₂CO₃溶液为什么呈碱性CO₃²⁻ + H₂O ⇌ HCO₃⁻ + OH⁻（水解产生OH⁻）也就是说，Na₂CO₃不是直接电离出OH⁻，而是其酸根CO₃²⁻与水反应\"偷\"了一个H⁺才产生OH⁻，所以它是盐不是碱。对比：NaOH直接电离出OH⁻（强碱），Na₂CO₃水解出少量OH⁻（弱碱性）。",
+            "第三步：常见易混淆的俗名俗名化学式分类水溶液酸碱性纯碱 / 苏打Na₂CO₃盐（碳酸盐）碱性（水解）小苏打NaHCO₃盐（酸式碳酸盐）弱碱性（水解）烧碱 / 火碱 / 苛性钠NaOH碱（强碱）强碱性苛性钾KOH碱（强碱）强碱性"
           ],
           "table": null
         },
@@ -96,18 +121,86 @@
           "blockId": "card-4-analogy",
           "type": "analogy",
           "tag": "💡 仙人指路",
-          "html": "<p></p>"
+          "html": "<p>纯碱就像\"假钞\"——名字叫\"碱\"，实际上是\"盐\"。就像有人说\"我是数学老师\"——实际上他是语文老师，只是教数学（做的事像碱而已，实际上不是）。Na₂CO₃：名字有\"碱\"，分类是\"盐\" ✅NaOH：名字有\"碱\"，分类是\"碱\" ✅判断口诀：\"纯碱不是碱，烧碱才是碱；小苏打不是碱，分类都是盐。\"</p>"
         },
         {
           "blockId": "card-4-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "",
-          "options": [],
-          "explanation": ""
+          "question": "下列关于纯碱的说法正确的是（ ）",
+          "options": [
+            {
+              "label": "A",
+              "text": "纯碱是碱  —— 纯碱是盐（碳酸钠）",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "纯碱水溶液呈碱性，可用于去除油污",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "纯碱可用于治疗胃酸过多  —— 碱性太强，治疗胃酸用NaHCO₃",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "纯碱与烧碱的化学成分相同  —— 纯碱是Na₂CO₃，烧碱是NaOH",
+              "correct": false
+            }
+          ],
+          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·山东卷·第4题A选项（纯碱和烧碱都是强碱❌）</span>"
         }
       ]
     }
   ],
-  "certQuiz": []
+  "certQuiz": [
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "氨碱法生产纯碱的主要反应为：① NaCl+NH₃+CO₂+H₂O=NaHCO₃↓+NH₄Cl② 2NaHCO₃=△=Na₂CO₃+CO₂↑+H₂O③ CaCO₃=高温=CaO+CO₂↑④ CaO+H₂O=Ca(OH)₂⑤ 2NH₄Cl+Ca(OH)₂=2NH₃↑+CaCl₂+2H₂O下列说法错误的是（ ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "反应①中析出NaHCO₃利用了其溶解度较小的特点",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "反应⑤的目的是回收NH₃循环使用",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "氨碱法的副产物CaCl₂可用作氮肥  —— CaCl₂不含氮元素，不能作氮肥，是废渣",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "stageId": "cert-4",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于纯碱的说法正确的是（ ）",
+      "options": [
+        {
+          "label": "A",
+          "text": "纯碱是碱  —— 纯碱是盐（碳酸钠）",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "纯碱水溶液呈碱性，可用于去除油污",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "纯碱可用于治疗胃酸过多  —— 碱性太强，治疗胃酸用NaHCO₃",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }
