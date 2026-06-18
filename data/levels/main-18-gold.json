@@ -132,12 +132,12 @@
             {
               "label": "A",
               "text": "(CN)₂ + 2NaBr → 2NaCN + Br₂",
-              "correct": false
+              "correct": true
             },
             {
               "label": "B",
               "text": "Br₂ + 2KCN → 2KBr + (CN)₂",
-              "correct": true
+              "correct": false
             },
             {
               "label": "C",
@@ -147,10 +147,10 @@
             {
               "label": "D",
               "text": "Cl₂ + 2NaCN → 2NaCl + (CN)₂",
-              "correct": false
+              "correct": true
             }
           ],
-          "explanation": "解析：氧化性(CN)₂ > Br₂，所以(CN)₂能氧化Br⁻（A反向不反应）；氧化性Br₂ < (CN)₂，Br₂不能氧化CN⁻生成(CN)₂（C同理I₂也不行）；Cl₂ > (CN)₂，Cl₂能氧化CN⁻生成(CN)₂（D正确）。但本题选能发生的，注意氧化性顺序：Cl₂ > (CN)₂ > Br₂，故Cl₂可氧化CN⁻生成(CN)₂（D成立），Br₂可氧化CN⁻吗？Br₂ < (CN)₂，不行。所以D正确。等等——重新分析：氧化性Cl₂ > (CN)₂ > Br₂ > I₂。 A：(CN)₂氧化Br⁻→Br₂？需要(CN)₂ > Br₂，成立。A能发生。 B：Br₂氧化CN⁻→(CN)₂？需要Br₂ > (CN)₂，不成立。B不能。 C：I₂氧化CN⁻→(CN)₂？需要I₂ > (CN)₂，不成立。C不能。 D：Cl₂氧化CN⁻→(CN)₂？需要Cl₂ > (CN)₂，成立。D能发生。 所以A和D都能发生。（出题时通常单选，此题修正：若单选题最可能选D，因(CN)₂与卤素置换优先考虑与Cl₂反应。） 最终答案（按常见命题）：D 解析：根据氧化性顺序Cl₂ > (CN)₂ > Br₂，氧化性强的单质可制取氧化性弱的，Cl₂ > (CN)₂，故Cl₂可氧化CN⁻生成(CN)₂。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】近年高考拓展考点（拟卤素与卤素互化物），人教版选修三物质结构与性质拓展材料</span>"
+          "explanation": "解析：根据氧化性顺序Cl₂ > (CN)₂ > Br₂ > I₂，氧化性强的单质可氧化氧化性弱的单质对应的阴离子。A：(CN)₂ > Br₂，(CN)₂可氧化Br⁻生成Br₂，能发生。B：Br₂ < (CN)₂，Br₂不能氧化CN⁻生成(CN)₂，不能发生。C：I₂ < (CN)₂，I₂不能氧化CN⁻，不能发生。D：Cl₂ > (CN)₂，Cl₂可氧化CN⁻生成(CN)₂，能发生。故A、D正确。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】近年高考拓展考点（拟卤素与卤素互化物），人教版选修三物质结构与性质拓展材料</span>"
         }
       ]
     }
@@ -188,12 +188,12 @@
         {
           "label": "A",
           "text": "(CN)₂ + 2NaBr → 2NaCN + Br₂",
-          "correct": false
+          "correct": true
         },
         {
           "label": "B",
           "text": "Br₂ + 2KCN → 2KBr + (CN)₂",
-          "correct": true
+          "correct": false
         },
         {
           "label": "C",
