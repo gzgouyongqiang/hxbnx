@@ -497,6 +497,83 @@ def generate_level_json(course_num, tier, card_indices, cards_data, all_cards):
 
     return level_json
 
+def validate_level_json(level_json, course_num, tier):
+    """生成后自动校验关卡JSON，发现问题时警告"""
+    errors = []
+    warnings = []
+    quest_id = level_json["meta"]["questId"]
+
+    # 1. 检查每个quiz的选项数是否为4（ABCD各一个）
+    for stage in level_json.get("stages", []):
+        for block in stage.get("blocks", []):
+            if block.get("type") == "quiz":
+                opts = block.get("options", [])
+                labels = [o["label"] for o in opts]
+                # 检查选项数
+                if len(opts) != 4:
+                    errors.append(f"{block['blockId']}: 选项数={len(opts)}（应为4个ABCD）")
+                # 检查是否有重复label
+                if len(labels) != len(set(labels)):
+                    dup = [l for l in labels if labels.count(l) > 1]
+                    errors.append(f"{block['blockId']}: 选项label重复 {dup}")
+                # 检查是否有且仅有一个correct
+                correct_count = sum(1 for o in opts if o.get("correct"))
+                if correct_count == 0:
+                    errors.append(f"{block['blockId']}: 没有正确答案！")
+                elif correct_count > 1:
+                    warnings.append(f"{block['blockId']}: 有{correct_count}个正确答案（多选题？）")
+                # 检查题目是否过长（可能混入多题）
+                q = block.get("question", "")
+                if len(q) > 200:
+                    warnings.append(f"{block['blockId']}: 题目长度{len(q)}字符，可能混入多题")
+                # 检查解析是否过长
+                exp = block.get("explanation", "")
+                if len(exp) > 500:
+                    warnings.append(f"{block['blockId']}: 解析长度{len(exp)}字符，可能混入多题解析")
+
+    # 2. 检查certQuiz
+    for cq in level_json.get("certQuiz", []):
+        opts = cq.get("options", [])
+        labels = [o["label"] for o in opts]
+        if len(opts) != 4:
+            errors.append(f"{cq['stageId']}: 通关考题选项数={len(opts)}（应为4个ABCD）")
+        if len(labels) != len(set(labels)):
+            dup = [l for l in labels if labels.count(l) > 1]
+            errors.append(f"{cq['stageId']}: 通关考题选项label重复 {dup}")
+        correct_count = sum(1 for o in opts if o.get("correct"))
+        if correct_count == 0:
+            errors.append(f"{cq['stageId']}: 通关考题没有正确答案！")
+
+    # 3. 检查每个card的title是否过长（可能解析失败，整段堆在title里）
+    for stage in level_json.get("stages", []):
+        for block in stage.get("blocks", []):
+            if block.get("type") == "microcard":
+                title = block.get("title", "")
+                if len(title) > 60:
+                    errors.append(f"{block['blockId']}: 标题过长({len(title)}字符)，可能解析失败")
+                # 检查secret/path/analogy是否为空
+                has_content = False
+                for b in stage.get("blocks", []):
+                    if b.get("type") in ("secret", "path", "analogy", "quiz"):
+                        has_content = True
+                        break
+                if not has_content:
+                    errors.append(f"{block['blockId']}: 微卡点没有任何内容block（secret/path/analogy/quiz全空）")
+
+    # 4. 输出结果
+    if errors:
+        print(f"\n❌ 校验发现 {len(errors)} 个错误：")
+        for e in errors:
+            print(f"   🔴 {e}")
+    if warnings:
+        print(f"\n⚠️  校验发现 {len(warnings)} 个警告：")
+        for w in warnings:
+            print(f"   🟡 {w}")
+    if not errors and not warnings:
+        print(f"\n✅ 校验通过，无错误无警告")
+
+    return len(errors) == 0  # 返回是否通过
+
 def _get_course_title(course_num):
     """获取课时标题"""
     try:
@@ -757,6 +834,18 @@ def main():
     bronze_json = generate_level_json(course_num, "bronze", bronze_indices, cards_data, cards_data)
     silver_json = generate_level_json(course_num, "silver", silver_indices, cards_data, cards_data)
     gold_json = generate_level_json(course_num, "gold", gold_indices, cards_data, cards_data)
+
+    # 4.5 校验生成的JSON
+    print("\n🔍 正在校验生成的关卡数据...")
+    all_pass = True
+    for tier_name, tier_json in [("bronze", bronze_json), ("silver", silver_json), ("gold", gold_json)]:
+        passed = validate_level_json(tier_json, course_num, tier_name)
+        if not passed:
+            all_pass = False
+
+    if not all_pass:
+        print("\n❌ 校验未通过！请检查上述错误后手动修复。")
+        print("   文件仍会保存，但建议修复后再推送。")
 
     # 5. 保存文件
     print("\n💾 正在保存文件...")
