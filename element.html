@@ -405,26 +405,32 @@
     function doDraw() {
         if (_isDrawing) return;
 
-        var s = HXBNX_GAME.getStatus().state;
-        if ((s.score || 0) < 50) {
-            if (typeof showToast === 'function') showToast('❌ 学分不足，需要50学分', 'error');
-            else alert('学分不足，需要50学分');
+        // 检查债务是否过期
+        var debtInfo = HXBNX_GAME.debtGetInfo();
+        if (debtInfo.debt > 0 && debtInfo.expired) {
+            if (typeof showToast === 'function') showToast('❌ 债务已逾期！请先答题还清 ' + debtInfo.debt + ' 学分', 'error');
+            else alert('债务已逾期！请先答题还清 ' + debtInfo.debt + ' 学分');
             return;
         }
 
         _isDrawing = true;
 
+        var s = HXBNX_GAME.getStatus().state;
         var pity = s.elemPity || 0;
         pity++;
 
         var stars = weightedRandomStar(pity);
         var elem = pickRandomElement(stars);
 
-        // drawElementCard 内部会扣50学分
+        // drawElementCard 内部会检查学分并扣50
         var result = HXBNX_GAME.drawElementCard(elem.sym, elem.stars);
 
         if (!result.ok) {
             _isDrawing = false;
+            if (result.error) {
+                if (typeof showToast === 'function') showToast(result.error, 'error');
+                else alert(result.error);
+            }
             return;
         }
 

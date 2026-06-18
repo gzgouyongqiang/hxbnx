@@ -302,14 +302,14 @@
     if(gachaStatus.canDrawPaid){
       paidBtn.classList.remove("disabled");
       paidBtn.classList.add("available");
-      paidSub.textContent = "消耗 100 积分 (" + gachaStatus.drawsToday + "/3)";
+      paidSub.textContent = "消耗 100 学分 (" + gachaStatus.drawsToday + "/3)";
     } else {
       paidBtn.classList.remove("available");
       paidBtn.classList.add("disabled");
       if(gachaStatus.drawsToday >= 3){
         paidSub.textContent = "今日次数已用完 (3/3)";
       } else {
-        paidSub.textContent = "积分不足 (需要100)";
+        paidSub.textContent = "学分不足 (需要100)";
       }
     }
 
@@ -507,8 +507,7 @@
         document.getElementById("drawPityInfo").innerHTML = pityHtml;
 
         // 更新显示
-        renderHero();
-        renderCards();
+        renderAll();
       }, 600);
     }, 1200);
   };

@@ -538,12 +538,18 @@ const HXBNX_GAME = (function () {
     var s = load();
     _resetDailyDraws(s);
 
+    // 检查债务是否过期
+    var debtInfo = api.debtGetInfo ? api.debtGetInfo() : { debt: 0, expired: false };
+    if (debtInfo.debt > 0 && debtInfo.expired) {
+      return { error: '债务已逾期！请先答题还清 ' + debtInfo.debt + ' 学分' };
+    }
+
     if (mode === 'free') {
       if (s.gachaFreeUsed) return { error: '今日免费抽卡已使用' };
       s.gachaFreeUsed = true;
     } else {
-      if ((s.score || 0) < 100) return { error: '积分不足！需要 100 积分' };
-      if (s.gachaDrawsToday >= 3) return { error: '今日积分抽卡次数已用完（3/3），明天再来吧！' };
+      if ((s.score || 0) < 100) return { error: '学分不足！需要 100 学分' };
+      if (s.gachaDrawsToday >= 3) return { error: '今日抽卡次数已用完（3/3），明天再来吧！' };
       s.score -= 100;
       s.gachaDrawsToday++;
     }
@@ -962,7 +968,7 @@ const HXBNX_GAME = (function () {
         else msg += ' +' + finalScore + ' 学分';
         if (debtPaid > 0) msg += ' 💳 还债' + debtPaid;
         TOAST(msg, 'success');
-        setTimeout(function() { TOAST('🧪 <strong>获得1次元素抽卡机会！</strong>', 'info'); }, 1500);
+        setTimeout(function() { TOAST('💎 <strong>学分已到账！</strong> 当前学分: ' + s.score, 'info'); }, 1500);
 
         if (newAch.length > 0) {
           setTimeout(function() {
@@ -1080,7 +1086,8 @@ const HXBNX_GAME = (function () {
       var today = todayStr();
       if (s.lastFreeDrawDate !== today) {
         s.lastFreeDrawDate = today;
-        s.elementDraws = (s.elementDraws || 0) + 1;
+        // v3: 每日免费给50学分（相当于一次免费元素抽卡）
+        s.score = (s.score || 0) + 50;
         save(s);
         return true;
       }
@@ -1129,8 +1136,8 @@ const HXBNX_GAME = (function () {
     // ===== v3: 学分银行 =====
     bankDeposit: function (amount) {
       var s = load();
-      amount = Math.max(100, Math.min(amount, s.score || 0));
-      if ((s.score || 0) < amount) return { error: '学分不足，至少存100' };
+      amount = amount || 100;
+      if ((s.score || 0) < amount) return { error: '学分不足，需要 ' + amount + ' 学分' };
       s.score -= amount;
       s.questBank = (s.questBank || 0) + amount;
       save(s);
