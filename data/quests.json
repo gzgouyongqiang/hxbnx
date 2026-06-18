@@ -403,7 +403,7 @@
       "title": "16",
       "subtitle": "",
       "prevQuest": "main-16-silver",
-      "nextQuest": "main-17-bronze",
+      "nextQuest": null,
       "baseScore": 100,
       "badgeTriggers": [],
       "contentFile": "data/levels/main-16-gold.json"
