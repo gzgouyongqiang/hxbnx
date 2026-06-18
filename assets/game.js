@@ -103,14 +103,32 @@ const HXBNX_GAME = (function () {
       elementCards: [],
       elementDraws: 0,
       lastFreeDrawDate: '',
+      elemPity: 0,
+      elemEssence: 0,
       createdAt: new Date().toISOString(),
       // v2: quest-level progress
       clearedQuests: [],
       questProgress: {},
       score: 0,
-      gachaCards: [],
+      gachaCards: [],       // { id, rarity, name, date }
+      cardCollection: {},   // { cardId: { stars:1, count:1 } }
+      gachaEssence: 0,      // 化学精华
+      gachaPity: 0,         // 保底计数器
+      gachaDrawsToday: 0,    // 今日已用积分抽卡次数
+      gachaLastDrawDate: '', // 上次积分抽卡日期
+      gachaFreeUsed: false,  // 今日免费抽卡是否已用
       questBadges: {},
-      version: 2
+      // v3: 学分 / 每日任务 / 银行 / 排行榜
+      dailyQuestDate: '',    // 每日任务刷新日期
+      dailyQuests: {},       // { 'login': false, 'quiz3': false, 'review': false }
+      questBank: 0,          // 学分银行存款
+      questDebt: 0,          // 学分债务
+      questDebtTime: 0,      // 债务产生时间戳
+      weeklyScore: 0,        // 本周获得学分
+      weeklyScoreWeek: '',   // 本周标识
+      scoreCombo: 0,         // 连续答题正确学分加成计数
+      maxScoreCombo: 0,      // 历史最高学分加成
+      version: 3
     };
   }
 
@@ -233,6 +251,84 @@ const HXBNX_GAME = (function () {
       }
     }
     return newlyUnlocked;
+  }
+
+  // ===== v3: 每日任务系统 =====
+  var DAILY_QUESTS = [
+    { id: 'login',   name: '每日签到',  desc: '今日登录签到',          icon: '🎁', reward: 10, check: function(s){ return true; } },
+    { id: 'quiz3',   name: '勤学苦练',  desc: '完成3次答题通关',       icon: '📝', reward: 15, check: function(s){ var n=0; for(var k in s.quizResults||{}){if(s.quizResults[k].passed)n++;} return n>=3; } },
+    { id: 'review',  name: '温故知新',  desc: '复习1道错题本题目',     icon: '📖', reward: 20, check: function(s){ return (s.clearedWrong||0) >= 1; } }
+  ];
+
+  function getDailyQuestDate() {
+    return todayStr();
+  }
+
+  function resetDailyQuestsIfNeeded(s) {
+    var today = getDailyQuestDate();
+    if (s.dailyQuestDate !== today) {
+      s.dailyQuestDate = today;
+      s.dailyQuests = {};
+      for (var i = 0; i < DAILY_QUESTS.length; i++) {
+        s.dailyQuests[DAILY_QUESTS[i].id] = false;
+      }
+    }
+    return s;
+  }
+
+  function updateDailyQuestProgress(s, type) {
+    s = resetDailyQuestsIfNeeded(s);
+    if (type === 'quiz') {
+      // quiz3 任务会在 checkDailyQuests 中自动检测
+    }
+    return s;
+  }
+
+  function claimDailyQuest(questId) {
+    var s = load();
+    s = resetDailyQuestsIfNeeded(s);
+    if (s.dailyQuests[questId] === true) return { error: '已完成' };
+
+    // 特别处理：login 任务直接可领
+    var quest = null;
+    for (var i = 0; i < DAILY_QUESTS.length; i++) {
+      if (DAILY_QUESTS[i].id === questId) { quest = DAILY_QUESTS[i]; break; }
+    }
+    if (!quest) return { error: '未知任务' };
+
+    // 检查条件
+    if (questId === 'login') {
+      // 登录任务直接完成
+    } else if (questId === 'quiz3') {
+      var qCount = 0;
+      for (var k in s.quizResults || {}) {
+        if (s.quizResults[k].passed) qCount++;
+      }
+      if (qCount < 3) return { error: '今日答题通关不足3次（当前' + qCount + '次）' };
+    } else if (questId === 'review') {
+      if (!s.clearedWrong || s.clearedWrong < 1) return { error: '今日尚未复习错题' };
+    }
+
+    // 发放奖励
+    s.score = (s.score || 0) + quest.reward;
+    s.totalExp = (s.totalExp || 0) + quest.reward;
+    s.dailyQuests[questId] = true;
+    save(s);
+    return { reward: quest.reward };
+  }
+
+  function getDailyQuestStatus() {
+    var s = load();
+    s = resetDailyQuestsIfNeeded(s);
+    var results = [];
+    for (var i = 0; i < DAILY_QUESTS.length; i++) {
+      var q = DAILY_QUESTS[i];
+      results.push({
+        id: q.id, name: q.name, desc: q.desc, icon: q.icon, reward: q.reward,
+        claimed: s.dailyQuests[q.id] === true
+      });
+    }
+    return results;
   }
 
   // ===== Toast / Visual Effects =====
@@ -399,31 +495,182 @@ const HXBNX_GAME = (function () {
     };
   }
 
-  // ===== v2: Card Draw =====
+  // ===== v2: Card Draw (v2 — pity, essence, upgrade, daily limit) =====
+
+  var _cardPool = [];
+  var _cardConfig = { pityConfig: {}, essenceValues: {}, upgradeCosts: [] };
 
   function registerCardPool(pool) {
     _cardPool = pool || [];
   }
 
-  function drawCard() {
-    if (_cardPool.length === 0) return null;
-    var r = Math.random();
-    var card = null;
-    // Sort by probability desc
-    var cumulative = 0;
-    for (var i = 0; i < _cardPool.length; i++) {
-      cumulative += (_cardPool[i].probability || 0.25);
-      if (r < cumulative) { card = _cardPool[i]; break; }
+  function registerCardConfig(config) {
+    if (config) {
+      _cardConfig.pityConfig = config.pityConfig || {};
+      _cardConfig.essenceValues = config.essenceValues || { common:1, rare:3, epic:10, legend:30 };
+      _cardConfig.upgradeCosts = config.upgradeCosts || [0, 3, 8, 20, 50];
     }
-    if (!card) card = _cardPool[_cardPool.length - 1];
+  }
+
+  function _resetDailyDraws(s) {
+    var today = todayStr();
+    if (s.gachaLastDrawDate !== today) {
+      s.gachaDrawsToday = 0;
+      s.gachaLastDrawDate = today;
+      s.gachaFreeUsed = false;
+    }
+  }
+
+  function canDrawFree(s) {
+    _resetDailyDraws(s);
+    return !s.gachaFreeUsed;
+  }
+
+  function canDrawPaid(s) {
+    _resetDailyDraws(s);
+    return (s.score || 0) >= 100 && s.gachaDrawsToday < 3;
+  }
+
+  function drawCard(mode) {
+    // mode: 'free' or 'paid'
+    if (_cardPool.length === 0) return { error: '卡牌数据加载中，请稍后再试' };
 
     var s = load();
-    s.gachaCards.push({ rarity: card.rarity, name: card.name, date: todayStr() });
+    _resetDailyDraws(s);
+
+    // 检查债务是否过期
+    var debtInfo = api.debtGetInfo ? api.debtGetInfo() : { debt: 0, expired: false };
+    if (debtInfo.debt > 0 && debtInfo.expired) {
+      return { error: '债务已逾期！请先答题还清 ' + debtInfo.debt + ' 学分' };
+    }
+
+    if (mode === 'free') {
+      if (s.gachaFreeUsed) return { error: '今日免费抽卡已使用' };
+      s.gachaFreeUsed = true;
+      s.gachaLastDrawDate = todayStr(); // 修复：免费抽卡也更新日期，防止无限重置
+    } else {
+      if ((s.score || 0) < 100) return { error: '学分不足！需要 100 学分' };
+      if (s.gachaDrawsToday >= 3) return { error: '今日抽卡次数已用完（3/3），明天再来吧！' };
+      s.score -= 100;
+      s.gachaDrawsToday++;
+    }
+
+    // Pity system
+    s.gachaPity = (s.gachaPity || 0) + 1;
+    var pity = s.gachaPity;
+    var pityCfg = _cardConfig.pityConfig;
+    var minRarity = null;
+
+    if (pityCfg.hardPity && pity >= pityCfg.hardPity) {
+      minRarity = pityCfg.hardPityMinRarity || 'epic';
+      s.gachaPity = 0;
+    }
+
+    // Weighted random draw
+    var card = null;
+    var r = Math.random();
+    var cumulative = 0;
+
+    // Build effective pool with pity boost
+    var effectivePool = [];
+    for (var i = 0; i < _cardPool.length; i++) {
+      var c = _cardPool[i];
+      var prob = c.probability || 0.25;
+
+      // Soft pity boost
+      if (pityCfg.softPity && pity >= pityCfg.softPity && (c.rarity === 'rare' || c.rarity === 'epic' || c.rarity === 'legend')) {
+        prob *= (pityCfg.softPityBoost || 2.0);
+      }
+
+      // Hard pity filter
+      if (minRarity) {
+        var rarityOrder = { common: 0, rare: 1, epic: 2, legend: 3 };
+        if ((rarityOrder[c.rarity] || 0) < (rarityOrder[minRarity] || 0)) continue;
+      }
+
+      effectivePool.push({ card: c, prob: prob });
+    }
+
+    // Normalize
+    var totalProb = 0;
+    for (var j = 0; j < effectivePool.length; j++) totalProb += effectivePool[j].prob;
+    if (totalProb === 0) totalProb = 1;
+
+    cumulative = 0;
+    for (var k = 0; k < effectivePool.length; k++) {
+      cumulative += effectivePool[k].prob / totalProb;
+      if (r < cumulative) { card = effectivePool[k].card; break; }
+    }
+    if (!card) card = effectivePool[effectivePool.length - 1].card;
+
+    // Check if duplicate
+    var collection = s.cardCollection || {};
+    var cardInfo = collection[card.id];
+    var isNew = !cardInfo;
+    var essenceGained = 0;
+
+    if (isNew) {
+      collection[card.id] = { stars: 1, count: 1 };
+    } else {
+      cardInfo.count++;
+      // Convert duplicate to essence
+      var ev = _cardConfig.essenceValues[card.rarity] || 1;
+      essenceGained = ev;
+      s.gachaEssence = (s.gachaEssence || 0) + essenceGained;
+    }
+
+    s.cardCollection = collection;
+    s.gachaCards.push({ id: card.id, rarity: card.rarity, name: card.name, date: todayStr() });
+
+    // Badge check
     if (s.questBadges['first_card'] !== true) {
       s.questBadges['first_card'] = true;
     }
+
     save(s);
-    return card;
+    return { card: card, isNew: isNew, essenceGained: essenceGained, pity: s.gachaPity, collection: collection };
+  }
+
+  function upgradeCard(cardId) {
+    var s = load();
+    var collection = s.cardCollection || {};
+    var info = collection[cardId];
+    if (!info) return { error: '未拥有此卡牌' };
+    if (info.stars >= 5) return { error: '已达最高星级' };
+
+    var costs = _cardConfig.upgradeCosts || [0, 3, 8, 20, 50];
+    var cost = costs[info.stars] || 999;
+    if ((s.gachaEssence || 0) < cost) return { error: '精华不足！需要 ' + cost + ' 精华' };
+
+    s.gachaEssence -= cost;
+    info.stars++;
+    s.cardCollection = collection;
+    save(s);
+    return { stars: info.stars, cost: cost, remaining: s.gachaEssence };
+  }
+
+  function getGachaStatus() {
+    var s = load();
+    _resetDailyDraws(s);
+    var collection = s.cardCollection || {};
+    var totalCards = _cardPool.length;
+    var collected = 0;
+    for (var k in collection) {
+      if (collection[k]) collected++;
+    }
+    return {
+      essence: s.gachaEssence || 0,
+      pity: s.gachaPity || 0,
+      drawsToday: s.gachaDrawsToday || 0,
+      maxDrawsPerDay: 3,
+      freeUsed: s.gachaFreeUsed,
+      canDrawFree: !s.gachaFreeUsed,
+      canDrawPaid: (s.score || 0) >= 100 && s.gachaDrawsToday < 3,
+      collection: collection,
+      collected: collected,
+      totalCards: totalCards,
+      score: s.score || 0
+    };
   }
 
   // ===== v2: Badge Story =====
@@ -562,7 +809,10 @@ const HXBNX_GAME = (function () {
     recordCertWrong: recordCertWrong,
     submitCert: submitCert,
     registerCardPool: registerCardPool,
+    registerCardConfig: registerCardConfig,
     drawCard: drawCard,
+    upgradeCard: upgradeCard,
+    getGachaStatus: getGachaStatus,
     registerBadgeData: registerBadgeData,
     getBadgeStory: getBadgeStory,
     getBadgeDef: getBadgeDef,
@@ -600,10 +850,12 @@ const HXBNX_GAME = (function () {
       if (s.completedTopics.indexOf(filename) === -1) {
         s.completedTopics.push(filename);
         s.totalExp += 20;
+        // v3: 首通+20学分
+        s.score = (s.score || 0) + 20;
         updateStreak(s);
         var newAch = checkAchievements(s);
         save(s);
-        TOAST('⚔️ <strong>通关！</strong> +20 EXP', 'success');
+        TOAST('⚔️ <strong>通关！</strong> +20 EXP +20 学分', 'success');
         if (newAch.length > 0) {
           setTimeout(function() {
             for (var i = 0; i < newAch.length; i++) {
@@ -614,8 +866,12 @@ const HXBNX_GAME = (function () {
         }
         return true;
       } else {
-        TOAST('✅ 本关已通关，继续保持', 'info');
-        return false;
+        // v3: 重复通关奖励
+        s.score = (s.score || 0) + 5;
+        s.totalExp = (s.totalExp || 0) + 3;
+        save(s);
+        TOAST('✅ <strong>复习通过！</strong> +5 学分 +3 EXP', 'info');
+        return true;
       }
     },
 
@@ -650,12 +906,56 @@ const HXBNX_GAME = (function () {
         if (qr.attempts === 1)      qr.exp = 20;
         else if (qr.attempts === 2)  qr.exp = 10;
         else if (qr.attempts === 3)  qr.exp = 5;
-        else                         qr.exp = 0;
+        else                         qr.exp = 2; // 改了！第4次+答对也给2 EXP
 
-        s.totalExp += qr.exp;
-        if (qr.exp > 0 && s.completedTopics.indexOf(filename) === -1) {
+        // ── v3: 学分系统 ──
+        var isFirstClear = (qr.exp > 0 && s.completedTopics.indexOf(filename) === -1);
+        var isRepeat = (s.completedTopics.indexOf(filename) >= 0);
+
+        // 计算基础学分
+        var baseScore = 0;
+        if (isFirstClear) {
+          baseScore = qr.exp; // 首通：学分=EXP
+        } else {
+          // 重复闯关：按答题次数给鼓励学分
+          if (qr.attempts === 1)      baseScore = 5;
+          else if (qr.attempts === 2) baseScore = 3;
+          else if (qr.attempts === 3) baseScore = 2;
+          else                        baseScore = 1;
+        }
+
+        // 学分加成：连续答对
+        var comboMult = 1.0;
+        s.scoreCombo = (s.scoreCombo || 0) + 1;
+        if (s.scoreCombo >= 10) comboMult = 1.5;
+        else if (s.scoreCombo >= 5) comboMult = 1.3;
+        else if (s.scoreCombo >= 3) comboMult = 1.2;
+        if (s.scoreCombo > (s.maxScoreCombo || 0)) s.maxScoreCombo = s.scoreCombo;
+
+        var finalScore = Math.round(baseScore * comboMult);
+
+        // 债务检查：有债务时50%学分用于还债
+        var debtPaid = 0;
+        if (s.questDebt && s.questDebt > 0) {
+          debtPaid = Math.min(Math.round(finalScore * 0.5), s.questDebt);
+          s.questDebt -= debtPaid;
+          if (s.questDebt <= 0) { s.questDebt = 0; s.questDebtTime = 0; }
+        }
+
+        s.score = (s.score || 0) + (finalScore - debtPaid);
+        s.totalExp = (s.totalExp || 0) + qr.exp;
+
+        if (isFirstClear) {
           s.completedTopics.push(filename);
         }
+
+        // 周学分统计
+        var weekKey = todayStr().slice(0, 7);
+        if (s.weeklyScoreWeek !== weekKey) { s.weeklyScoreWeek = weekKey; s.weeklyScore = 0; }
+        s.weeklyScore = (s.weeklyScore || 0) + finalScore;
+
+        // 每日任务进度
+        s = updateDailyQuestProgress(s, 'quiz');
         s.elementDraws = (s.elementDraws || 0) + 1;
         updateStreak(s);
         var newAch = checkAchievements(s);
@@ -664,10 +964,12 @@ const HXBNX_GAME = (function () {
 
         var emoji = qr.exp >= 20 ? '🎉' : qr.exp >= 10 ? '👍' : qr.exp >= 5 ? '💪' : '📖';
         var msg = emoji + ' <strong>通关文牒！</strong>';
-        if (qr.exp > 0) msg += ' +' + qr.exp + ' EXP（第' + qr.attempts + '次答对）';
-        else msg += ' 不计分（第4次答对）';
-        TOAST(msg, qr.exp > 0 ? 'success' : 'info');
-        setTimeout(function() { TOAST('🧪 <strong>获得1次元素抽卡机会！</strong>', 'info'); }, 1500);
+        msg += ' +' + qr.exp + ' EXP';
+        if (isRepeat) msg += ' +' + finalScore + ' 学分（复习奖励x' + comboMult + '）';
+        else msg += ' +' + finalScore + ' 学分';
+        if (debtPaid > 0) msg += ' 💳 还债' + debtPaid;
+        TOAST(msg, 'success');
+        setTimeout(function() { TOAST('💎 <strong>学分已到账！</strong> 当前学分: ' + s.score, 'info'); }, 1500);
 
         if (newAch.length > 0) {
           setTimeout(function() {
@@ -677,8 +979,10 @@ const HXBNX_GAME = (function () {
             }
           }, 1000);
         }
-        return { correct: true, attempts: qr.attempts, exp: qr.exp, newAch: newAch };
+        return { correct: true, attempts: qr.attempts, exp: qr.exp, score: finalScore, combo: comboMult, debtPaid: debtPaid, newAch: newAch };
       } else {
+        // 答错：学分加成中断
+        s.scoreCombo = 0;
         s.quizResults[filename] = qr;
         save(s);
         return { correct: false, attempts: qr.attempts, remaining: 4 - qr.attempts };
@@ -743,7 +1047,9 @@ const HXBNX_GAME = (function () {
     drawElementCard: function (sym, stars) {
       var s = load();
       if (!s.elementCards) s.elementCards = [];
-      if ((s.elementDraws || 0) <= 0) return { ok: false };
+      // v3: 消耗50学分（代替原来的elementDraws次数检查）
+      if ((s.score || 0) < 50) return { ok: false, error: '学分不足！需要50学分' };
+      s.score -= 50;
       var isNew = true;
       for (var i = 0; i < s.elementCards.length; i++) {
         if (s.elementCards[i].s === sym) { isNew = false; break; }
@@ -751,12 +1057,19 @@ const HXBNX_GAME = (function () {
       if (isNew) {
         s.elementCards.push({ s: sym, t: stars });
       } else {
+        var essenceVal = stars || 1;
+        s.elemEssence = (s.elemEssence || 0) + essenceVal;
         s.totalExp += 3;
       }
-      s.elementDraws = Math.max(0, (s.elementDraws || 0) - 1);
+      // 保留elementDraws不强制消耗（但可以通过答题获得）
+      s.elementDraws = Math.max(0, (s.elementDraws || 0));
       var newAch = checkAchievements(s);
       save(s);
       return { ok: true, isNew: isNew, newAch: newAch };
+    },
+
+    _saveState: function(s) {
+      save(s);
     },
 
     getElementCards: function () {
@@ -774,7 +1087,8 @@ const HXBNX_GAME = (function () {
       var today = todayStr();
       if (s.lastFreeDrawDate !== today) {
         s.lastFreeDrawDate = today;
-        s.elementDraws = (s.elementDraws || 0) + 1;
+        // v3: 每日免费给50学分（相当于一次免费元素抽卡）
+        s.score = (s.score || 0) + 50;
         save(s);
         return true;
       }
@@ -819,6 +1133,77 @@ const HXBNX_GAME = (function () {
         return false;
       }
     },
+
+    // ===== v3: 学分银行 =====
+    bankDeposit: function (amount) {
+      var s = load();
+      amount = amount || 100;
+      if ((s.score || 0) < amount) return { error: '学分不足，需要 ' + amount + ' 学分' };
+      s.score -= amount;
+      s.questBank = (s.questBank || 0) + amount;
+      save(s);
+      TOAST('🏦 <strong>存入 ' + amount + ' 学分</strong> 银行余额: ' + s.questBank, 'success');
+      return { ok: true, bank: s.questBank };
+    },
+
+    bankWithdraw: function (amount) {
+      var s = load();
+      amount = Math.min(amount, s.questBank || 0);
+      if (amount < 100) return { error: '至少取100学分' };
+      if ((s.questBank || 0) < amount) return { error: '银行存款不足' };
+      s.questBank -= amount;
+      s.score = (s.score || 0) + amount;
+      save(s);
+      TOAST('🏦 <strong>取出 ' + amount + ' 学分</strong> 银行余额: ' + s.questBank, 'info');
+      return { ok: true, bank: s.questBank };
+    },
+
+    bankGetInfo: function () {
+      var s = load();
+      return {
+        bank: s.questBank || 0,
+        score: s.score || 0,
+        totalBanked: (s.questBank || 0)
+      };
+    },
+
+    // ===== v3: 学分债务 =====
+    debtBorrow: function (amount) {
+      var s = load();
+      amount = Math.min(amount, 200);
+      if (s.questDebt && s.questDebt > 0) return { error: '已有未还清债务' };
+      s.questDebt = amount;
+      s.questDebtTime = Date.now();
+      s.score = (s.score || 0) + amount;
+      save(s);
+      TOAST('💳 <strong>赊账 ' + amount + ' 学分</strong> 24小时内答题还清，否则禁止抽卡', 'warning');
+      return { ok: true, debt: amount };
+    },
+
+    debtGetInfo: function () {
+      var s = load();
+      if (!s.questDebt || s.questDebt <= 0) return { debt: 0, expired: false };
+      var elapsed = Date.now() - (s.questDebtTime || Date.now());
+      var expired = elapsed > 24 * 60 * 60 * 1000;
+      return { debt: s.questDebt, expired: expired, remainingMs: Math.max(0, 24 * 60 * 60 * 1000 - elapsed) };
+    },
+
+    // ===== v3: 本地排行榜 =====
+    getLeaderboard: function () {
+      var s = load();
+      var weekKey = todayStr().slice(0, 7);
+      if (s.weeklyScoreWeek !== weekKey) { s.weeklyScoreWeek = weekKey; s.weeklyScore = 0; }
+      return {
+        weeklyScore: s.weeklyScore || 0,
+        maxCombo: s.maxScoreCombo || 0,
+        score: s.score || 0,
+        level: calcLevel(s.totalExp || 0)
+      };
+    },
+
+    // ===== v3: 每日任务 =====
+    claimDailyQuest: claimDailyQuest,
+    getDailyQuestStatus: getDailyQuestStatus,
 
     renderProgressBar: function (selector) {
       var el = document.querySelector(selector);
