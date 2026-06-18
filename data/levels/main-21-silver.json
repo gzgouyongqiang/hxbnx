@@ -33,7 +33,7 @@
           "blockId": "card-3-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「CO₂含量属于空气污染指数项目，CO₂也是造成酸雨的原因。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 两个都错！CO₂不是空气污染指数项目（API主要监测SO₂、NOₓ、PM等）；酸雨的主要成因是SO₂和NOₓ，不是CO₂。CO₂过量导致的是温室效应。</p>"
+          "html": "<p><strong>阿杰说：</strong>「CO₂含量属于空气污染指数项目，CO₂也是造成酸雨的原因。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：把CO₂与常见大气污染物混淆。CO₂不是空气污染指数监测项目（API监测SO₂、NOₓ、PM等），酸雨的主要成因是SO₂和NOₓ，CO₂过量导致的是温室效应而非酸雨。</p>"
         },
         {
           "blockId": "card-3-path",
@@ -101,7 +101,7 @@
           "blockId": "card-4-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「煤油是从石油中提炼的，是可再生能源。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 煤油是不可再生能源！石油、煤、天然气都是化石能源，属于不可再生资源，地球储量有限，用完就没了。</p>"
+          "html": "<p><strong>阿杰说：</strong>「煤油是从石油中提炼的，是可再生能源。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：把「提炼出来的」和「可再生」混淆。石油、煤、天然气都是化石能源，属于不可再生资源，地球储量有限，用完就没了。可再生指的是风能、太阳能等自然界持续补充的能源。</p>"
         },
         {
           "blockId": "card-4-path",

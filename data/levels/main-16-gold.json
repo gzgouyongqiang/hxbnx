@@ -36,7 +36,7 @@
           "blockId": "card-5-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>小明在整理用途表，把Na₂CO₃、NaHCO₃、NaOH的用途全混了。他说：</strong>「反正都是碱性物质，哪个都能用来做肥皂、治胃酸、做发酵粉。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 三者用途不同！治胃酸用NaHCO₃（弱碱安全）；发酵粉用NaHCO₃（加热产CO₂）；制肥皂用NaOH（强碱皂化）；制玻璃用Na₂CO₃；灭火器用NaHCO₃。不能混用！</p>"
+          "html": "<p><strong>小明在整理用途表，把Na₂CO₃、NaHCO₃、NaOH的用途全混了。他说：</strong>「反正都是碱性物质，哪个都能用来做肥皂、治胃酸、做发酵粉。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：只看到三者水溶液都呈碱性，忽略了碱性强弱和化学性质的本质差异。治胃酸用NaHCO₃（弱碱安全），发酵粉用NaHCO₃（加热产CO₂），制肥皂用NaOH（强碱皂化），制玻璃用Na₂CO₃——各有专长，不能混用。</p>"
         },
         {
           "blockId": "card-5-path",

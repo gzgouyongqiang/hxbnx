@@ -36,7 +36,7 @@
           "blockId": "card-3-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「84消毒液和洁厕灵一起用，消毒效果加倍！」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 绝对不能混用！84消毒液含NaClO，洁厕灵含HCl，混合后发生反应产生Cl₂有毒气体，严重可致中毒。同理，84消毒液也不能与盐酸混用。</p>"
+          "html": "<p><strong>阿杰说：</strong>「84消毒液和洁厕灵一起用，消毒效果加倍！」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：不知道两者混合会发生化学反应。84消毒液含NaClO，洁厕灵含HCl，混合后发生氧化还原反应产生Cl₂有毒气体，严重可致中毒——这是生活中的安全常识考点。</p>"
         },
         {
           "blockId": "card-3-path",
@@ -104,7 +104,7 @@
           "blockId": "card-4-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「铁丝在氯气中燃烧生成 FeCl₂。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 生成的是FeCl₃！Cl₂氧化性很强，与变价金属反应一律生成最高价。铁丝在Cl₂中点燃生成FeCl₃（棕褐色烟），而不是FeCl₂。</p>"
+          "html": "<p><strong>阿杰说：</strong>「铁丝在氯气中燃烧生成 FeCl₂。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：按Cl₂与金属反应生成低价氯化物的惯性思维作答。实际上Cl₂氧化性很强，与变价金属反应一律生成最高价态——铁在Cl₂中点燃生成FeCl₃（棕褐色烟），不是FeCl₂。</p>"
         },
         {
           "blockId": "card-4-path",

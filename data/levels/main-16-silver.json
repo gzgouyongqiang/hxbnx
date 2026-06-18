@@ -36,7 +36,7 @@
           "blockId": "card-3-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>小美看氨碱法流程图，看到CaCO₃→CaO+CO₂，想：</strong>「CaO用来提供CO₂，那CaO去哪了？」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ CaO没有消失！CaO与水反应生成Ca(OH)₂，再与NH₄Cl反应回收NH₃，同时产生CaCl₂废渣。侯氏制碱法省去了这一步，直接将NH₄Cl结晶析出作为产品。</p>"
+          "html": "<p><strong>小美看氨碱法流程图，看到CaCO₃→CaO+CO₂，想：</strong>「CaO用来提供CO₂，那CaO去哪了？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：只关注了CaCO₃分解的CO₂用途，忽略了CaO的去向。CaO与水反应生成Ca(OH)₂，再与NH₄Cl反应回收NH₃，同时产生CaCl₂废渣——这正是氨碱法的缺点。</p>"
         },
         {
           "blockId": "card-3-path",
@@ -104,7 +104,7 @@
           "blockId": "card-4-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「纯碱嘛，那就是碱啊！和烧碱一样，都能中和胃酸。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 纯碱（Na₂CO₃）是盐不是碱！虽然水溶液因水解呈碱性，但本质是碳酸盐。烧碱（NaOH）才是真正的碱。治疗胃酸应用NaHCO₃（弱碱性，更安全）。</p>"
+          "html": "<p><strong>阿杰说：</strong>「纯碱嘛，那就是碱啊！和烧碱一样，都能中和胃酸。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：被「纯碱」的名字误导，以为带「碱」字就是碱。Na₂CO₃本质是碳酸盐（盐），水溶液因CO₃²⁻水解才呈碱性；NaOH才是真正的碱，碱性远强于Na₂CO₃，不能用来治胃酸。</p>"
         },
         {
           "blockId": "card-4-path",

@@ -36,7 +36,7 @@
           "blockId": "card-1-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「新制氯水有漂白性，但放久了漂白性反而变强了。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 恰恰相反！新制氯水含HClO有漂白性；久置后HClO分解（2HClO→2HCl+O₂↑），漂白性消失，溶液变为稀盐酸，颜色也从浅黄绿色变为无色。</p>"
+          "html": "<p><strong>阿杰说：</strong>「新制氯水有漂白性，但放久了漂白性反而变强了。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：搞反了HClO的分解趋势。新制氯水含HClO有漂白性；久置后HClO见光分解（2HClO→2HCl+O₂↑），漂白性消失，溶液变为稀盐酸，颜色也从浅黄绿色变为无色。</p>"
         },
         {
           "blockId": "card-1-path",
@@ -104,7 +104,7 @@
           "blockId": "card-2-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「新制氯水能使红色布条褪色，因为 Cl₂ 有漂白性。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 真正起漂白作用的是HClO，不是Cl₂！干燥的Cl₂不能使干燥的红色布条褪色。必须是湿润条件下的Cl₂与水反应生成HClO才有漂白性。</p>"
+          "html": "<p><strong>阿杰说：</strong>「新制氯水能使红色布条褪色，因为 Cl₂ 有漂白性。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：把漂白作用归因于Cl₂本身。真正起漂白作用的是HClO，不是Cl₂。干燥的Cl₂不能使干燥红色布条褪色，必须是湿润条件下Cl₂与水反应生成HClO才有漂白性。</p>"
         },
         {
           "blockId": "card-2-path",
