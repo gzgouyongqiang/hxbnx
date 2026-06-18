@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="profile-stats-row">
-        <div class="profile-stat-card"><div class="profile-stat-icon">💎</div><div class="profile-stat-num" id="statScore">0</div><div class="profile-stat-label">总积分</div></div>
+        <div class="profile-stat-card"><div class="profile-stat-icon">💎</div><div class="profile-stat-num" id="statScore">0</div><div class="profile-stat-label">总学分</div></div>
         <div class="profile-stat-card"><div class="profile-stat-icon">🔥</div><div class="profile-stat-num" id="statStreak">0</div><div class="profile-stat-label">最高连击</div></div>
         <div class="profile-stat-card"><div class="profile-stat-icon">🎯</div><div class="profile-stat-num" id="statAccuracy">0%</div><div class="profile-stat-label">正确率</div></div>
         <div class="profile-stat-card"><div class="profile-stat-icon">🏆</div><div class="profile-stat-num" id="statCleared">0</div><div class="profile-stat-label">已通关</div></div>
@@ -48,6 +48,20 @@
         <a href="element.html" class="quick-link-btn">🧪 元素周期表收集</a>
       </div>
     </div>
+  </div>
+  <div class="profile-daily-section" id="dailyQuestSection">
+    <div class="profile-daily-title">📋 每日任务</div>
+    <div class="daily-quest-list" id="dailyQuestList"></div>
+  </div>
+  <div class="profile-bank-section" id="bankSection">
+    <div class="bank-title">🏦 学分银行</div>
+    <div class="bank-info-row" id="bankInfoRow"></div>
+    <div class="bank-actions" id="bankActions"></div>
+    <div class="bank-hint">💰 存入银行每日赚1%利息 | 💳 可赊账最多200学分（24小时还清）</div>
+  </div>
+  <div class="profile-leaderboard" id="leaderboardSection">
+    <div class="leaderboard-title">🏆 本周排行</div>
+    <div class="leaderboard-grid" id="leaderboardGrid"></div>
   </div>
   <div class="profile-section">
     <div class="profile-section-header">
@@ -98,7 +112,7 @@
       <button class="profile-draw-btn paid-draw-btn" id="paidDrawBtn" onclick="doDrawCard('paid')">
         <span class="profile-draw-btn-icon">🔥</span>
         <span class="profile-draw-btn-text">炼金抽卡</span>
-        <span class="profile-draw-btn-sub" id="paidDrawSub">消耗 100 积分 (0/3)</span>
+        <span class="profile-draw-btn-sub" id="paidDrawSub">消耗 100 学分 (0/3)</span>
       </button>
     </div>
     <div class="profile-collection-header">
