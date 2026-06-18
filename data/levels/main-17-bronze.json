@@ -8,11 +8,11 @@
     "tierLabel": "铜牌关卡",
     "tierEmoji": "🥉",
     "knowledgeTags": [
-      "O₃",
-      "Cl₂",
       "MnO",
+      "O₃",
       "H₂O",
-      "CaC"
+      "CaC",
+      "Cl₂"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -59,8 +59,23 @@
           "blockId": "card-1-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "解析：CaCO₃ 消耗 H⁺（CaCO₃+2H⁺→Ca²⁺+CO₂↑+H₂O），使 Cl₂+H₂O⇌H⁺+Cl⁻+HClO 平衡正向移动，HClO 浓度增大。NaOH 会中和 H⁺和 HClO；NaCl 增加 Cl⁻浓度抑制平衡；盐酸增加 H⁺浓度抑制平衡。",
+          "question": "题1：向新制氯水中加入下列哪种物质，可以增强其漂白性？",
           "options": [
+            {
+              "label": "A",
+              "text": "NaOH 溶液",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "CaCO₃ 粉末",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "NaCl 固体",
+              "correct": false
+            },
             {
               "label": "D",
               "text": "盐酸",
@@ -112,11 +127,41 @@
           "blockId": "card-2-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "解析：HClO 具有漂白性，可使红色布条褪色。AgNO₃ 检验 Cl⁻；石蕊检验 H⁺ 和 HClO（但 H⁺ 会先使石蕊变红，再褪色是 HClO 作用，不够直接）；Na₂CO₃ 检验 H⁺。",
+          "question": "题2：关于新制氯水的说法正确的是（ ）",
           "options": [
+            {
+              "label": "A",
+              "text": "新制氯水是纯净物",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "新制氯水中滴加紫色石蕊试液，先变红后褪色",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "新制氯水和久置氯水中均含有 Cl₂",
+              "correct": false
+            },
             {
               "label": "D",
               "text": "新制氯水中加入 AgNO₃ 溶液，无明显现象",
+              "correct": false
+            },
+            {
+              "label": "A",
+              "text": "硝酸银溶液",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "紫色石蕊试液",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "红色布条",
               "correct": false
             },
             {
@@ -125,7 +170,7 @@
               "correct": false
             }
           ],
-          "explanation": "解析：A 错，新制氯水是混合物；C 错，久置氯水中 HClO 分解，Cl₂ 耗尽；D 错，新制氯水含 Cl⁻，加 AgNO₃ 产生白色沉淀。B 正确，H⁺ 使石蕊先变红，HClO 强氧化性使其褪色。题3：证明新制氯水中含有 HClO，可选用的试剂是（ ）\nA. 硝酸银溶液\nB. 紫色石蕊试液\nC. 红色布条\nD. 碳酸钠溶液答案：C\n解析：HClO 具有漂白性，可使红色布条褪色。AgNO₃ 检验 Cl⁻；石蕊检验 H⁺ 和 HClO（但 H⁺ 会先使石蕊变红，再褪色是 HClO 作用，不够直接）；Na₂CO₃ 检验 H⁺。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·江苏（探究新制饱和氯水成分的实验）</span>"
+          "explanation": "解析：A 错，新制氯水是混合物；C 错，久置氯水中 HClO 分解，Cl₂ 耗尽；D 错，新制氯水含 Cl⁻，加 AgNO₃ 产生白色沉淀。B 正确，H⁺ 使石蕊先变红，HClO 强氧化性使其褪色。题3：证明新制氯水中含有 HClO，可选用的试剂是（ ） A. 硝酸银溶液 B. 紫色石蕊试液 C. 红色布条 D. 碳酸钠溶液答案：C 解析：HClO 具有漂白性，可使红色布条褪色。AgNO₃ 检验 Cl⁻；石蕊检验 H⁺ 和 HClO（但 H⁺ 会先使石蕊变红，再褪色是 HClO 作用，不够直接）；Na₂CO₃ 检验 H⁺。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·江苏（探究新制饱和氯水成分的实验）</span>"
         }
       ]
     }
@@ -135,11 +180,21 @@
       "stageId": "cert-1",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "解析：CaCO₃ 消耗 H⁺（CaCO₃+2H⁺→Ca²⁺+CO₂↑+H₂O），使 Cl₂+H₂O⇌H⁺+Cl⁻+HClO 平衡正向移动，HClO 浓度增大。NaOH 会中和 H⁺和 HClO；NaCl 增加 Cl⁻浓度抑制平衡；盐酸增加 H⁺浓度抑制平衡。",
+      "question": "题1：向新制氯水中加入下列哪种物质，可以增强其漂白性？",
       "options": [
         {
-          "label": "D",
-          "text": "盐酸",
+          "label": "A",
+          "text": "NaOH 溶液",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "CaCO₃ 粉末",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "NaCl 固体",
           "correct": false
         }
       ]
@@ -148,16 +203,21 @@
       "stageId": "cert-2",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "解析：HClO 具有漂白性，可使红色布条褪色。AgNO₃ 检验 Cl⁻；石蕊检验 H⁺ 和 HClO（但 H⁺ 会先使石蕊变红，再褪色是 HClO 作用，不够直接）；Na₂CO₃ 检验 H⁺。",
+      "question": "题2：关于新制氯水的说法正确的是（ ）",
       "options": [
         {
-          "label": "D",
-          "text": "新制氯水中加入 AgNO₃ 溶液，无明显现象",
+          "label": "A",
+          "text": "新制氯水是纯净物",
           "correct": false
         },
         {
-          "label": "D",
-          "text": "碳酸钠溶液",
+          "label": "B",
+          "text": "新制氯水中滴加紫色石蕊试液，先变红后褪色",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "新制氯水和久置氯水中均含有 Cl₂",
           "correct": false
         }
       ]

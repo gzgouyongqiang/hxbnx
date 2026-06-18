@@ -243,19 +243,24 @@ def parse_microcard(content, card_num):
     return data
 
 def _parse_quiz_from_text(data, text):
-    """从纯文本解析选择题（支持无换行格式）"""
+    """从纯文本解析选择题（支持无换行/有换行/混合格式）"""
+    # 先把所有换行替换成空格，统一成无换行格式处理
+    flat_text = text.replace('\n', ' ').replace('\r', ' ')
+    # 合并多余空格
+    flat_text = re.sub(r'\s+', ' ', flat_text).strip()
+
     # 提取题目：从开头到第一个 "A." / "A、" / "A．" 之前
     # 先尝试匹配 "题N：" 或 "题N." 开头的格式
-    q_match = re.search(r'(题\d+[：:.].+?)(?=A[.．、]|$)', text)
+    q_match = re.search(r'(题\d+[：:.].+?)(?=A[.．、]|$)', flat_text)
     if not q_match:
         # 兜底：从开头到第一个A.之前
-        q_match = re.search(r'(.+?)(?=A[.．、]|$)', text)
+        q_match = re.search(r'(.+?)(?=A[.．、]|$)', flat_text)
     if q_match:
         data["quiz_question"] = q_match.group(1).strip()
 
     # 提取选项 A/B/C/D
     options = []
-    for match in re.finditer(r'([A-D])[.．、]\s*(.+?)(?=(?:[A-D][.．、])|答案[：:]|$)', text):
+    for match in re.finditer(r'([A-D])[.．、]\s*(.+?)(?=(?:[A-D][.．、])|答案[：:]|$)', flat_text):
         label = match.group(1)
         text_opt = match.group(2).strip()
         # 清理标记
@@ -268,7 +273,7 @@ def _parse_quiz_from_text(data, text):
 
     # 如果没有匹配到，尝试更宽松的模式
     if not options:
-        for match in re.finditer(r'([A-D])[.．、]\s*([^A-D\n]+)', text):
+        for match in re.finditer(r'([A-D])[.．、]\s*([^A-D]+)', flat_text):
             label = match.group(1)
             text_opt = match.group(2).strip()
             text_opt = re.sub(r'[✅❌]', '', text_opt).strip()
@@ -279,7 +284,7 @@ def _parse_quiz_from_text(data, text):
             })
 
     # 提取正确答案
-    exp_match = re.search(r'答案[：:]\s*([A-D])', text)
+    exp_match = re.search(r'答案[：:]\s*([A-D])', flat_text)
     if exp_match:
         correct_label = exp_match.group(1)
         for opt in options:
@@ -289,8 +294,8 @@ def _parse_quiz_from_text(data, text):
 
     # 提取解析文本（答案之后的内容）
     exp_text = ""
-    if '答案：' in text:
-        exp_text = text.split('答案：', 1)[-1].strip()
+    if '答案：' in flat_text:
+        exp_text = flat_text.split('答案：', 1)[-1].strip()
         # 去掉答案字母本身
         exp_text = re.sub(r'^[A-D]\s*', '', exp_text)
     data["quiz_explanation"] = exp_text
