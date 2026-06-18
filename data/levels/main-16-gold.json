@@ -127,31 +127,26 @@
           "blockId": "card-6-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "下列实验操作能达到实验目的的是（ ）",
+          "question": "下列实验操作能达到实验目的的是？",
           "options": [
             {
               "label": "A",
               "text": "用加热法除去Na₂CO₃固体中的NaHCO₃",
-              "correct": false
+              "correct": true
             },
             {
               "label": "B",
-              "text": "用Ba(OH)₂溶液鉴别Na₂CO₃和NaHCO₃溶液  —— 两者都生成沉淀，无法鉴别",
+              "text": "用Ba(OH)₂溶液鉴别Na₂CO₃和NaHCO₃溶液",
               "correct": false
             },
             {
               "label": "C",
-              "text": "用NaOH溶液除去CO₂中的HCl  —— NaOH会与CO₂反应",
+              "text": "用NaOH溶液除去CO₂中的HCl",
               "correct": false
             },
             {
               "label": "D",
-              "text": "用加热法鉴别Na₂CO₃和NaHCO₃固体 答案（多选）：",
-              "correct": false
-            },
-            {
-              "label": "A",
-              "text": "D",
+              "text": "用加水溶解过滤法分离NaCl和Na₂CO₃固体",
               "correct": false
             }
           ],
@@ -165,11 +160,11 @@
       "stageId": "cert-5",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "下列生活应用中对应的钠化合物及说法正确的是（ ）",
+      "question": "下列生活应用中对应的钠化合物及说法正确的是？",
       "options": [
         {
           "label": "A",
-          "text": "治疗胃酸过多——用Na₂CO₃  —— 应使用NaHCO₃",
+          "text": "治疗胃酸过多——用Na₂CO₃",
           "correct": false
         },
         {
@@ -179,7 +174,12 @@
         },
         {
           "label": "C",
-          "text": "制作肥皂——用Na₂CO₃  —— 应用NaOH",
+          "text": "制作肥皂——用Na₂CO₃",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "灭火器原料——用NaOH",
           "correct": false
         }
       ]
@@ -188,21 +188,26 @@
       "stageId": "cert-6",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "下列实验操作能达到实验目的的是（ ）",
+      "question": "下列实验操作能达到实验目的的是？",
       "options": [
         {
           "label": "A",
           "text": "用加热法除去Na₂CO₃固体中的NaHCO₃",
-          "correct": false
+          "correct": true
         },
         {
           "label": "B",
-          "text": "用Ba(OH)₂溶液鉴别Na₂CO₃和NaHCO₃溶液  —— 两者都生成沉淀，无法鉴别",
+          "text": "用Ba(OH)₂溶液鉴别Na₂CO₃和NaHCO₃溶液",
           "correct": false
         },
         {
           "label": "C",
-          "text": "用NaOH溶液除去CO₂中的HCl  —— NaOH会与CO₂反应",
+          "text": "用NaOH溶液除去CO₂中的HCl",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "用加水溶解过滤法分离NaCl和Na₂CO₃固体",
           "correct": false
         }
       ]

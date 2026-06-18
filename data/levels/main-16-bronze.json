@@ -160,11 +160,11 @@
       "stageId": "cert-1",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "侯氏制碱法的核心反应为：NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl。下列关于该反应的说法正确的是（ ）",
+      "question": "侯氏制碱法的核心反应为：NaCl + NH₃ + CO₂ + H₂O = NaHCO₃↓ + NH₄Cl。下列关于该反应的说法正确的是？",
       "options": [
         {
           "label": "A",
-          "text": "应先通入CO₂，再通入NH₃  —— 应反过来的",
+          "text": "应先通入CO₂，再通入NH₃",
           "correct": false
         },
         {
@@ -174,7 +174,12 @@
         },
         {
           "label": "C",
-          "text": "CO₂溶解度大于NH₃  —— NH₃溶解度远大于CO₂",
+          "text": "CO₂溶解度大于NH₃",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "反应中NaHCO₃溶解度最大",
           "correct": false
         }
       ]
@@ -183,7 +188,7 @@
       "stageId": "cert-2",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "下列关于侯氏制碱法和氨碱法的说法错误的是（ ）",
+      "question": "下列关于侯氏制碱法和氨碱法的说法错误的是？",
       "options": [
         {
           "label": "A",
@@ -199,6 +204,11 @@
           "label": "C",
           "text": "侯氏制碱法的副产物NH₄Cl可用作氮肥",
           "correct": false
+        },
+        {
+          "label": "D",
+          "text": "氨碱法的原料利用率高于侯氏制碱法",
+          "correct": true
         }
       ]
     }
