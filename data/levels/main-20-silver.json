@@ -127,7 +127,28 @@
           "type": "quiz",
           "tag": "📝 同类自测",
           "question": "题目1： （2025·河南·真题改编）物质转化：固体X→Y（红棕色）→溶液Z（棕黄色）→溶液R（浅绿色）→固体Q（黑色）。Y、Z、R、Q分别是什么？答案： Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。解析： 红棕色固体→Fe₂O₃；棕黄色溶液→Fe³⁺（FeCl₃）；浅绿色溶液→Fe²⁺（FeCl₂）；黑色固体含铁→FeS或Fe₃O₄，根据转化链条FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS，Q为FeS。题目2： FeCl₃溶液与KSCN溶液反应的现象是______，FeCl₂溶液与KSCN溶液反应的现象是______。答案： FeCl₃+KSCN→溶液变血红色；FeCl₂+KSCN→无现象（不变色）。解析： Fe³⁺与SCN⁻反应生成血红色配合物Fe(SCN)₃，Fe²⁺不与SCN⁻反应。",
-          "options": [],
+          "options": [
+            {
+              "label": "A",
+              "text": "【填空题】答案：Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "（本题无选项，请查看解析）",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "—",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "—",
+              "correct": false
+            }
+          ],
           "explanation": "Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。解析： 红棕色固体→Fe₂O₃；棕黄色溶液→Fe³⁺（FeCl₃）；浅绿色溶液→Fe²⁺（FeCl₂）；黑色固体含铁→FeS或Fe₃O₄，根据转化链条FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS，Q为FeS。题目2： FeCl₃溶液与KSCN溶液反应的现象是______，FeCl₂溶液与KSCN溶液反应的现象是______。答案： FeCl₃+KSCN→溶液变血红色；FeCl₂+KSCN→无现象（不变色）。解析： Fe³⁺与SCN⁻反应生成血红色配合物Fe(SCN)₃，Fe²⁺不与SCN⁻反应。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·河南（FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS转化链）、历年高考含铁物质推断题改编</span>"
         }
       ]
@@ -158,6 +179,34 @@
         {
           "label": "D",
           "text": "适当降低硫酸浓度",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-4",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目1： （2025·河南·真题改编）物质转化：固体X→Y（红棕色）→溶液Z（棕黄色）→溶液R（浅绿色）→固体Q（黑色）。Y、Z、R、Q分别是什么？答案： Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。解析： 红棕色固体→Fe₂O₃；棕黄色溶液→Fe³⁺（FeCl₃）；浅绿色溶液→Fe²⁺（FeCl₂）；黑色固体含铁→FeS或Fe₃O₄，根据转化链条FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS，Q为FeS。题目2： FeCl₃溶液与KSCN溶液反应的现象是______，FeCl₂溶液与KSCN溶液反应的现象是______。答案： FeCl₃+KSCN→溶液变血红色；FeCl₂+KSCN→无现象（不变色）。解析： Fe³⁺与SCN⁻反应生成血红色配合物Fe(SCN)₃，Fe²⁺不与SCN⁻反应。",
+      "options": [
+        {
+          "label": "A",
+          "text": "【填空题】答案：Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "（本题无选项，请查看解析）",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "—",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "—",
           "correct": false
         }
       ]

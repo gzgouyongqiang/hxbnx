@@ -360,12 +360,37 @@ def _parse_quiz_from_text(data, text):
             print(f"   ⚠️  选项{opt['label']}重复，移除第二个")
     options = unique_options
 
-    # ========== 提取正确答案 ==========
-    exp_match = re.search(r'答案[：:]\s*([A-D])', flat_text)
-    if exp_match:
-        correct_label = exp_match.group(1)
-        for opt in options:
-            opt["correct"] = (opt["label"] == correct_label)
+    # ========== 处理非选择题（填空题/计算题） ==========
+    if not options:
+        # 没有A/B/C/D选项，可能是填空题或计算题
+        # 尝试提取答案和解析
+        answer_match = re.search(r'答案[：:]\s*(.+?)(?=解析[：:]|$)', flat_text)
+        if answer_match:
+            answer_text = answer_match.group(1).strip()
+            # 构造一个虚拟的"填空"选项
+            options = [
+                {"label": "A", "text": f"【填空题】答案：{answer_text[:100]}", "correct": True},
+                {"label": "B", "text": "（本题无选项，请查看解析）", "correct": False},
+                {"label": "C", "text": "—", "correct": False},
+                {"label": "D", "text": "—", "correct": False}
+            ]
+            print(f"   ⚠️  检测到非选择题（填空/计算），已构造虚拟选项")
+        else:
+            # 完全无法解析，给出兜底选项
+            options = [
+                {"label": "A", "text": "（题目解析见下方）", "correct": True},
+                {"label": "B", "text": "—", "correct": False},
+                {"label": "C", "text": "—", "correct": False},
+                {"label": "D", "text": "—", "correct": False}
+            ]
+            print(f"   ⚠️  无法解析题目类型，已给出兜底选项")
+    else:
+        # ========== 提取正确答案（选择题） ==========
+        exp_match = re.search(r'答案[：:]\s*([A-D])', flat_text)
+        if exp_match:
+            correct_label = exp_match.group(1)
+            for opt in options:
+                opt["correct"] = (opt["label"] == correct_label)
 
     data["quiz_options"] = options
 
@@ -373,9 +398,9 @@ def _parse_quiz_from_text(data, text):
     exp_text = ""
     if '答案：' in flat_text:
         exp_text = flat_text.split('答案：', 1)[-1].strip()
-        # 去掉答案字母本身
+        # 去掉答案字母本身（选择题）或答案内容（填空题）
         exp_text = re.sub(r'^[A-D]\s*', '', exp_text)
-        # 截断到合理长度（避免解析过长）
+        # 截断到合理长度
         if len(exp_text) > 300:
             exp_text = exp_text[:300] + "..."
     data["quiz_explanation"] = exp_text
