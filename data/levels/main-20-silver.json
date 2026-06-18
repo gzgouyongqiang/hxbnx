@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "questId": "main-20-silver",
+    "title": "铁及其化合物（二）",
+    "subtitle": "🥈 银牌关卡 · 2个微卡点 · 通关积分 50分",
+    "course": 20,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": [
+      "CO",
+      "K₂Cr",
+      "O",
+      "Fe"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "铁泥提纯——酸浸→还原→除杂→沉铁",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>铁泥（主要成分铁的氧化物）提纯制备α-Fe₂O₃的流程四步走：酸浸（H₂SO₄溶解铁元素）→还原（Fe粉将Fe³⁺还原为Fe²⁺）→除杂（NH₄F沉淀Ca²⁺）→沉铁（Fe²⁺与NH₄HCO₃/NH₃·H₂O反应生成FeCO₃沉淀，再煅烧得Fe₂O₃）。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰以为\"还原\"步骤加Fe粉只是为了除去过量酸——实际上加Fe粉有双重作用：将Fe³⁺还原为Fe²⁺（2Fe³⁺ + Fe = 3Fe²⁺）和与过量酸反应（Fe + 2H⁺ = Fe²⁺ + H₂↑）。小明做除杂时不知道pH为什么会影响CaF₂沉淀——pH偏低时H⁺与F⁻结合成弱酸HF，使F⁻浓度下降，不利于CaF₂沉淀。小美满心以为沉铁时加氨水就行，结果生成了Fe(OH)₂混在FeCO₃中——沉铁需控制pH≤6.5，防止Fe(OH)₂开始沉淀（Fe(OH)₂的Ksp较大，pH≥6.5开始沉淀）。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：酸浸——用稀H₂SO₄浸取铁泥中的铁元素。提高浸出率的措施：适当升温、加快搅拌速度、适当增加酸浓度；缩短时间是反效果。",
+            "第二步：还原+除杂——加过量铁粉：Fe + 2Fe³⁺ = 3Fe²⁺、Fe + 2H⁺ = Fe²⁺ + H₂↑。检验Fe³⁺是否除尽：取少量清液，滴加KSCN，不变红即Fe³⁺已被完全还原。再加NH₄F沉Ca²⁺为CaF₂沉淀。",
+            "第三步：沉铁——Fe²⁺ + HCO₃⁻ + NH₃·H₂O = FeCO₃↓ + NH₄⁺ + H₂O。控制pH≤6.5（防止Fe(OH)₂沉淀），FeCO₃沉淀需洗涤至无SO₄²⁻（用BaCl₂+HCl检验）。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>铁泥提纯就像\"铁元素的4S店服务\"：①酸浸（洗车——把铁元素从泥巴里洗出来）②还原（维修——把Fe³⁺修成稳定的Fe²⁺）③除杂（精洗——去除Ca²⁺杂质）④沉铁（镀膜——把Fe²⁺变成纯净的FeCO₃）。口诀：酸浸还原再除杂，沉铁pH要看好，Fe(OH)₂别掺和。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目1： （2020·江苏·真题改编）实验室由炼钢污泥（铁泥）制备α-Fe₂O₃的流程中，\"酸浸\"步骤能提高铁元素浸出率的措施是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "适当升高酸浸温度",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "适当加快搅拌速度",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "适当缩短酸浸时间",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "适当降低硫酸浓度",
+              "correct": false
+            }
+          ],
+          "explanation": "B解析： 升高温度加快反应速率，提高浸出率；加快搅拌使铁泥与酸充分接触，提高浸出率。缩短时间反而降低浸出率，降低酸浓度也降低浸出率。题目2： 沉铁步骤中，控制pH≤6.5的原因是______。答案： 防止Fe²⁺生成Fe(OH)₂沉淀（Fe(OH)₂开始沉淀的pH=6.5），以保证产物为纯净的FeCO₃。解析： Fe(OH)₂的Ksp ≈ 4.87×10⁻¹⁷，当c(Fe²⁺)=0.1 mol/L时，开始沉淀pH≈6.5。沉铁时若pH过高，Fe²⁺会同时生成Fe(OH)₂混入FeCO₃中，降低产品纯度。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2020·江苏（铁泥制备α-Fe₂O₃完整流程）、历年高考工业流程题改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "含铁物质\"颜色密码\"——察颜观色辨铁",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>含铁物质的颜色是推断铁存在形式的\"密码\"：Fe²⁺溶液浅绿色、Fe³⁺溶液棕黄色、Fe(OH)₂白色→灰绿→红褐、Fe(OH)₃红褐色、Fe₂O₃红棕色、FeO黑色、Fe₃O₄黑色、Fe(SCN)₃血红色、Fe(CO)₅黄色液体、Fe₂(SO₄)₃固体淡黄色。</p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰看到某溶液是浅绿色，直接说\"含Fe²⁺\"——但Cu²⁺溶液也是蓝色（不同浓度下偏蓝绿），Ni²⁺也是绿色，不能只看颜色下结论，需要结合其他信息印证。小明看到FeCl₃溶液是棕黄色，以为它应该是绿色（把Fe²⁺和Fe³⁺的颜色记反了）——Fe³⁺呈棕黄色，Fe²⁺呈浅绿色。小美做转化题：某溶液由无色变浅绿再变棕黄最后变红褐，她没反应过来这是Fe²⁺被O₂氧化为Fe³⁺然后水解为Fe(OH)₃的过程。</p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：颜色定价态——浅绿色溶液→Fe²⁺（亚铁盐）；棕黄色溶液→Fe³⁺（铁盐）；红褐色沉淀→Fe(OH)₃；白色迅速变色沉淀→Fe(OH)₂。",
+            "第二步：颜色定氧化物——黑色粉末（FeO/Fe₃O₄），红棕色粉末（Fe₂O₃），有磁性黑色（Fe₃O₄），无磁性黑色（FeO）。",
+            "第三步：反应中的颜色变化——Fe²⁺+KSCN不变色（无现象）、Fe³⁺+KSCN变血红色；Fe²⁺+K₃[Fe(CN)₆]生成蓝色沉淀（滕氏蓝）；Fe³⁺+苯酚显紫色；Fe²⁺+NaOH白色→灰绿→红褐。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>给铁元素配上\"色卡\"：Fe²⁺是\"浅绿小清新\"、Fe³⁺是\"棕黄大姐姐\"、Fe(OH)₃是\"红褐老奶奶\"、Fe(SCN)₃是\"血红斗士\"。颜色就是铁的\"身份证\"，看一眼猜七分。口诀：浅绿亚铁棕黄三价，红褐三价氢氧化，KSCN血红见三价，K₃[Fe(CN)₆]变蓝找二价。</p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目1： （2025·河南·真题改编）物质转化：固体X→Y（红棕色）→溶液Z（棕黄色）→溶液R（浅绿色）→固体Q（黑色）。Y、Z、R、Q分别是什么？答案： Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。解析： 红棕色固体→Fe₂O₃；棕黄色溶液→Fe³⁺（FeCl₃）；浅绿色溶液→Fe²⁺（FeCl₂）；黑色固体含铁→FeS或Fe₃O₄，根据转化链条FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS，Q为FeS。题目2： FeCl₃溶液与KSCN溶液反应的现象是______，FeCl₂溶液与KSCN溶液反应的现象是______。答案： FeCl₃+KSCN→溶液变血红色；FeCl₂+KSCN→无现象（不变色）。解析： Fe³⁺与SCN⁻反应生成血红色配合物Fe(SCN)₃，Fe²⁺不与SCN⁻反应。",
+          "options": [],
+          "explanation": "Y为Fe₂O₃，Z为Fe³⁺溶液（如FeCl₃），R为Fe²⁺溶液（如FeCl₂），Q为FeS。解析： 红棕色固体→Fe₂O₃；棕黄色溶液→Fe³⁺（FeCl₃）；浅绿色溶液→Fe²⁺（FeCl₂）；黑色固体含铁→FeS或Fe₃O₄，根据转化链条FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS，Q为FeS。题目2： FeCl₃溶液与KSCN溶液反应的现象是______，FeCl₂溶液与KSCN溶液反应的现象是______。答案： FeCl₃+KSCN→溶液变血红色；FeCl₂+KSCN→无现象（不变色）。解析： Fe³⁺与SCN⁻反应生成血红色配合物Fe(SCN)₃，Fe²⁺不与SCN⁻反应。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·河南（FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS转化链）、历年高考含铁物质推断题改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目1： （2020·江苏·真题改编）实验室由炼钢污泥（铁泥）制备α-Fe₂O₃的流程中，\"酸浸\"步骤能提高铁元素浸出率的措施是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "适当升高酸浸温度",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "适当加快搅拌速度",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "适当缩短酸浸时间",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "适当降低硫酸浓度",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

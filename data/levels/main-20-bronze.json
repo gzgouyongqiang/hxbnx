@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "questId": "main-20-bronze",
+    "title": "铁及其化合物（二）",
+    "subtitle": "🥉 铜牌关卡 · 2个微卡点 · 通关积分 10分",
+    "course": 20,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": [
+      "CO",
+      "K₂Cr",
+      "O",
+      "Fe"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "工业炼铁——CO还原与流程分析",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>工业炼铁的核心反应：3CO + Fe₂O₃ 高温 2Fe + 3CO₂。高炉中原料为铁矿石、焦炭、石灰石、空气，焦炭先燃烧生成CO₂，CO₂再与C反应生成CO，CO还原铁矿石得到生铁（含C、Si、Mn等杂质）。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰以为高炉炼铁是C直接还原Fe₂O₃的——实际主要还原剂是CO（C→CO₂→CO→Fe），不是C直接接触Fe₂O₃。小明写还原反应写成了CO + Fe₂O₃ → Fe + CO₂——没配平，正确是3CO + Fe₂O₃ → 2Fe + 3CO₂。小美说炼铁得到的是纯铁——不对，高炉产物是生铁（含碳约2%~4.5%），铁水出炉后还需炼钢除杂。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：高炉原料的作用——焦炭（提供热量和还原剂CO）、铁矿石（Fe₂O₃/Fe₃O₄提供铁元素）、石灰石（CaCO₃分解为CaO，用于除去SiO₂等酸性杂质，生成CaSiO₃炉渣）。",
+            "第二步：还原过程——C + O₂ → CO₂（放热），CO₂ + C → 2CO（吸热），3CO + Fe₂O₃ → 2Fe + 3CO₂（还原）。古代也有用C直接还原的，但现代高炉以CO为还原剂更高效。",
+            "第三步：产物处理——生铁（含杂质，硬度大）用于铸造；进一步通过炼钢（吹氧除碳）得到钢。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>高炉炼铁就像\"接力赛\"：焦炭先变CO₂（第一棒），CO₂遇C变CO（第二棒），CO把Fe₂O₃中的氧抢走（第三棒），最后铁出来了。石灰石是\"清道夫\"，专门去处理酸性的SiO₂杂质。口诀：焦炭供能又制气，CO还原是主力，石灰石除杂造炉渣，生铁还要再精炼。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目1： （2020·海南·真题改编）以黄铁矿（主要成分FeS₂）为原料生产硫酸，炉渣中主要成分是Fe₂O₃，由炉渣制备还原铁粉的化学方程式是______。答案： Fe₂O₃ + 3CO 高温 2Fe + 3CO₂解析： 炉渣Fe₂O₃用CO在高温下还原得到铁粉，这是炼铁的核心反应。题目2： 高炉炼铁中加入石灰石的作用是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "提供CO",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "除去SiO₂",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "提供铁元素",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "提供热量",
+              "correct": false
+            }
+          ],
+          "explanation": "Fe₂O₃ + 3CO 高温 2Fe + 3CO₂解析： 炉渣Fe₂O₃用CO在高温下还原得到铁粉，这是炼铁的核心反应。题目2： 高炉炼铁中加入石灰石的作用是？A. 提供COB. 除去SiO₂C. 提供铁元素D. 提供热量答案： B解析： 石灰石（CaCO₃）受热分解为CaO和CO₂，CaO与铁矿石中的SiO₂反应生成CaSiO₃炉渣，从而除去酸性杂质SiO₂。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2020·海南（Fe₂O₃+CO还原）、2021·河北（工业流程中铁的还原）、历年高考工业流程题改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "铁含量测定——K₂Cr₂O₇滴定法及计算",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>K₂Cr₂O₇滴定法测铁含量的核心反应：Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ = 2Cr³⁺ + 6Fe³⁺ + 7H₂O。关系式：6Fe ~ 6Fe²⁺ ~ Cr₂O₇²⁻，n(Fe) = 6 × n(K₂Cr₂O₇)，再通过质量分数公式计算。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰做题时，K₂Cr₂O₇消耗了0.001 mol，他直接算铁的含量用了n(Fe) = 0.001 mol——正确是6倍关系：n(Fe) = 6 × 0.001 = 0.006 mol。小明计算铁的质量分数忘了乘100%，直接写小数——扣分！铁含量% = (m(Fe)/m(样品)) × 100%。小美配平Cr₂O₇²⁻ + Fe²⁺ + H⁺ → Cr³⁺ + Fe³⁺ + H₂O时，半天没配平——Cr从+6降到+3（降3×2=6），Fe从+2升到+3（升1），最小公倍数6，Fe²⁺系数6，Cr₂O₇²⁻系数1。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：配平方程式——Cr₂O₇²⁻中Cr为+6价，产物Cr³⁺为+3价，一个Cr降3价，两个共降6价；Fe²⁺升1价。根据得失电子守恒：Cr₂O₇²⁻系数1，Fe²⁺系数6。电荷守恒得H⁺系数14，H₂O系数7。",
+            "第二步：建关系式——6Fe ~ 6Fe²⁺ ~ Cr₂O₇²⁻。n(Fe) = 6 × n(K₂Cr₂O₇) = 6 × c(K₂Cr₂O₇) × V(K₂Cr₂O₇)。",
+            "第三步：算质量分数——w(Fe) = [n(Fe) × 56] / m(样品) × 100%。注意单位统一（体积用L，质量用g）。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>K₂Cr₂O₇滴定Fe²⁺就像\"6打1\"：Fe²⁺是\"小偷\"（升1价），K₂Cr₂O₇是\"警察\"（Cr两个共降6价），一个警察能抓6个小偷（1:6关系）。配平时先把Cr降的6价和Fe升的1价找出来，6是1的6倍，Fe²⁺前面配6。口诀：Cr₂O₇铁六倍，滴定算铁不会废。</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目1： （2020·海南·真题改编）称取0.2800 g还原铁粉样品，用过量稀硫酸溶解，用0.03000 mol·L⁻¹ K₂Cr₂O₇标准溶液滴定其中的Fe²⁺，消耗25.10 mL。样品中铁含量为______%。答案： 90.36%解析： n(K₂Cr₂O₇) = 0.03000 × 0.02510 = 7.53 × 10⁻⁴ mol。n(Fe) = 6 × 7.53 × 10⁻⁴ = 4.518 × 10⁻³ mol。m(Fe) = 4.518 × 10⁻³ × 56 = 0.2530 g。w(Fe) = 0.2530 / 0.2800 × 100% = 90.36%。题目2： 配平离子方程式：__Cr₂O₇²⁻ + __Fe²⁺ + __H⁺ → __Cr³⁺ + __Fe³⁺ + __H₂O答案： 1 Cr₂O₇²⁻ + 6 Fe²⁺ + 14 H⁺ = 2 Cr³⁺ + 6 Fe³⁺ + 7 H₂O解析： Cr从+6→+3降3价，2个Cr共降6价；Fe从+2→+3升1价。最小公倍数6，Fe²⁺配6，Cr₂O₇²⁻配1。电荷守恒：左(-2+12+14=+24)，右(2×3+6×3=+24)。H守恒得H₂O配7。",
+          "options": [],
+          "explanation": "90.36%解析： n(K₂Cr₂O₇) = 0.03000 × 0.02510 = 7.53 × 10⁻⁴ mol。n(Fe) = 6 × 7.53 × 10⁻⁴ = 4.518 × 10⁻³ mol。m(Fe) = 4.518 × 10⁻³ × 56 = 0.2530 g。w(Fe) = 0.2530 / 0.2800 × 100% = 90.36%。题目2： 配平离子方程式：__Cr₂O₇²⁻ + __Fe²⁺ + __H⁺ → __Cr³⁺ + __Fe³⁺ + __H₂O答案： 1 Cr₂O₇²⁻ + 6 Fe²⁺ + 14 H⁺ = 2 Cr³⁺ + 6 Fe³⁺ + 7 H₂O解...<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2020·海南（K₂Cr₂O₇滴定测铁含量）、2016-2025各地高考氧化还原滴定计算题改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目1： （2020·海南·真题改编）以黄铁矿（主要成分FeS₂）为原料生产硫酸，炉渣中主要成分是Fe₂O₃，由炉渣制备还原铁粉的化学方程式是______。答案： Fe₂O₃ + 3CO 高温 2Fe + 3CO₂解析： 炉渣Fe₂O₃用CO在高温下还原得到铁粉，这是炼铁的核心反应。题目2： 高炉炼铁中加入石灰石的作用是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "提供CO",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "除去SiO₂",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "提供铁元素",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "提供热量",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
