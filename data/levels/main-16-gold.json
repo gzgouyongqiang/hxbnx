@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "questId": "main-16-gold",
+    "title": "钠及其化合物（二）+ 侯氏制碱法",
+    "subtitle": "🥇 金牌关卡 · 2个微卡点 · 通关积分 100分",
+    "course": 16,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": [
+      "O₃",
+      "Na₂C",
+      "NaH",
+      "CaCl",
+      "CO"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "NaHCO₃和Na₂CO₃的用途——各司其职不乱用",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-5-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-5-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "详见知识点解析"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-5-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-5-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "",
+          "options": [],
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "stageId": "card-6",
+      "type": "microcard",
+      "num": 6,
+      "icon": "🧩",
+      "title": "鉴别与除杂——Na₂CO₃和NaHCO₃实用技巧",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-6-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-6-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-6-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "详见知识点解析"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-6-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-6-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "",
+          "options": [],
+          "explanation": ""
+        }
+      ]
+    }
+  ],
+  "certQuiz": []
+}
