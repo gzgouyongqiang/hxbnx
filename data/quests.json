@@ -547,10 +547,46 @@
       "title": "20",
       "subtitle": "",
       "prevQuest": "main-20-silver",
-      "nextQuest": null,
+      "nextQuest": "main-21-bronze",
       "baseScore": 100,
       "badgeTriggers": [],
       "contentFile": "data/levels/main-20-gold.json"
+    },
+    "main-21-bronze": {
+      "type": "main",
+      "course": 21,
+      "tier": "bronze",
+      "title": "21",
+      "subtitle": "",
+      "prevQuest": "main-20-gold",
+      "nextQuest": "main-21-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-21-bronze.json"
+    },
+    "main-21-silver": {
+      "type": "main",
+      "course": 21,
+      "tier": "silver",
+      "title": "21",
+      "subtitle": "",
+      "prevQuest": "main-21-bronze",
+      "nextQuest": "main-21-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-21-silver.json"
+    },
+    "main-21-gold": {
+      "type": "main",
+      "course": 21,
+      "tier": "gold",
+      "title": "21",
+      "subtitle": "",
+      "prevQuest": "main-21-silver",
+      "nextQuest": null,
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-21-gold.json"
     }
   },
   "sideQuests": {

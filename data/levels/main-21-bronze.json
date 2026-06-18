@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "questId": "main-21-bronze",
+    "title": "元素化合物综合·STSE辨析",
+    "subtitle": "🥉 铜牌关卡 · 2个微卡点 · 通关积分 10分",
+    "course": 21,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": [
+      "材料分类",
+      "金属",
+      "食品添加剂"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "材料分类四大家族——金属/无机非金属/有机高分子/复合材料",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>材料按化学成分分为金属材料、无机非金属材料、有机高分子材料和复合材料四大类，各类之间有明确的划分标准。😖</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰看到钛合金说：</strong>「钛合金含有钛元素，肯定是无机非金属材料！」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：看主要成分含金属元素且以金属键结合 → 金属材料含硅、氧等非金属元素的传统无机物 → 无机非金属材料（陶瓷、玻璃、水泥）含C、H、O等的高分子化合物 → 有机高分子材料（塑料、橡胶、纤维）两种及以上不同性质材料复合 → 复合材料",
+            "第二步：排除干扰项\"钛合金\"\"铝合金\"等带\"合金\"字样的都是金属材料（合金是金属与金属/非金属熔合而成）\"光导纤维\"是SiO₂ → 无机非金属材料（不是金属、也不是有机高分子）\"聚乙烯\"\"聚氯乙烯\" → 有机高分子材料",
+            "第三步：核对易混点① 合金 ≠ 无机非金属材料（合金本质还是金属）② 有机高分子 ≠ 无机非金属（看是否含碳主链）③ 复合材料 ≠ 混合材料（复合材料有增强体和基体两相）🔗"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>材料家族就像四兄弟：大哥金属：钢铁、铝合金——硬朗有力二哥无机非金属：陶瓷、玻璃——耐高温古板三哥有机高分子：塑料、橡胶——柔软多变四弟复合材料：玻璃钢、碳纤维——取长补短口诀：\"金无有机复，四类记清楚；合金归金属，玻纤是复合\"✍️</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "（2024·贵州·高考真题） 下列物质属于复合材料的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "不锈钢",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "聚氯乙烯",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "玻璃钢",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "二氧化硅",
+              "correct": false
+            }
+          ],
+          "explanation": "玻璃钢是玻璃纤维增强塑料，属于复合材料。不锈钢是金属材料，聚氯乙烯是有机高分子材料，二氧化硅是无机非金属材料。"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "食品添加剂的\"功过是非\"——防腐剂/调味剂/抗氧化剂",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>食品添加剂按规定品种和用量使用可改善品质、延长保质期，但超范围超量使用或使用非法添加物会危害健康。😖</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美说：</strong>「天然药物无任何副作用，可以长期服用。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：识别添加剂的类别防腐剂：苯甲酸钠、山梨酸钾、亚硝酸盐（抑制微生物生长）抗氧化剂：维生素C（还原性，防止食品氧化变质）调味剂：谷氨酸钠（味精）、蔗糖、食盐膨松剂：小苏打（NaHCO₃）",
+            "第二步：判断是否合规允许使用的食品添加剂：按国家标准添加 → 安全禁止使用的物质：三聚氰胺、苏丹红、吊白块 → 有毒有害天然 ≠ 无毒（如某些天然生物碱也有毒）",
+            "第三步：辨析正误\"大量添加\" → 错误，必须按规定限量使用\"天然无副作用\" → 错误，天然≠安全\"零添加更好\" → 错误，合规防腐剂可防止食品变质🔗"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>食品添加剂就像厨房里的调味料：盐放一点点——菜好吃（防腐剂防变质）盐放一大把——咸死人（超量有害）放洗洁精代替盐——那是投毒（非法添加物）口诀：\"添加剂不可怕，合规剂量才是家；非法添加才要打，天然未必就无瑕\"✍️</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "（2023·海南·高考真题） 下列说法不合理的是",
+          "options": [
+            {
+              "label": "A",
+              "text": "为增强药效，多种处方药可随意叠加使用",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "现代化肥种类丰富，施用方法应依据对象营养状况而定",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "规范使用防腐剂可以减缓食物变质速度",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "在种植业中，植物浸取试剂类医药也应慎重选用",
+              "correct": false
+            }
+          ],
+          "explanation": "处方药不可随意叠加使用，须遵医嘱。"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "（2024·贵州·高考真题） 下列物质属于复合材料的是",
+      "options": [
+        {
+          "label": "A",
+          "text": "不锈钢",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "聚氯乙烯",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "玻璃钢",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "二氧化硅",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "（2023·海南·高考真题） 下列说法不合理的是",
+      "options": [
+        {
+          "label": "A",
+          "text": "为增强药效，多种处方药可随意叠加使用",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "现代化肥种类丰富，施用方法应依据对象营养状况而定",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "规范使用防腐剂可以减缓食物变质速度",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "在种植业中，植物浸取试剂类医药也应慎重选用",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
