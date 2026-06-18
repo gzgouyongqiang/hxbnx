@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "questId": "main-19-silver",
+    "title": "铁及其化合物（一）",
+    "subtitle": "🥈 银牌关卡 · 2个微卡点 · 通关积分 50分",
+    "course": 19,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": [
+      "OH",
+      "Fe",
+      "FeO",
+      "Fe₃O",
+      "Fe₂O"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "Fe(OH)₂制备——白色沉淀的\"变色瞬间\"",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Fe(OH)₂是白色沉淀，极易被空气中O₂氧化——白色→灰绿色→红褐色（Fe(OH)₃）。制备Fe(OH)₂必须隔绝氧气：煮沸除去水中溶氧、滴管伸入液面下、加有机溶剂液封。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰直接把NaOH滴入FeSO₄溶液中，看到先白色后迅速变灰绿再变红褐，问Fe(OH)₂是不是本来就灰绿色？不——纯Fe(OH)₂是白色的，变色是被O₂氧化了。小明做实验忘记煮沸FeSO₄溶液，结果刚滴进去就是灰绿色，以为自己做错了。其实没煮沸的水含溶解氧，瞬间就把Fe(OH)₂氧化了。小美设计实验说\"在空气中制备Fe(OH)₂\"，被老师扣分——Fe(OH)₂在空气中无法稳定存在。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：反应原理——Fe²⁺ + 2OH⁻ = Fe(OH)₂↓（白色），4Fe(OH)₂ + O₂ + 2H₂O = 4Fe(OH)₃（红褐色）。",
+            "第二步：操作规范——①煮沸溶液（去除水中溶解O₂）；②新制FeSO₄（防止Fe²⁺被氧化）；③长滴管伸入液面下滴加NaOH（减少接触O₂的机会）；④可在液面上加一层苯或煤油（液封隔绝空气）。",
+            "第三步：现象判断——白色→灰绿色→红褐色，速度越快说明O₂越多。如果直接出现灰绿色，说明已氧化严重。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>Fe(OH)₂就像\"白雪公主\"——纯白无瑕，但见不得\"氧气（小怪兽）\"，一见面就脸红（变灰绿），再气就红透了（红褐Fe(OH)₃）。口诀：白变灰绿再红褐，三步变色氧气惹的祸；制备隔离要做好，煮沸液封伸管角。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目1： 下列能较长时间观察到Fe(OH)₂白色沉淀的实验操作是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "将NaOH溶液直接滴入FeSO₄溶液",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "将FeSO₄溶液滴入NaOH溶液中",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "将NaOH溶液滴入煮沸后冷却的FeSO₄溶液中，滴管伸入液面下",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "在空气中放置FeSO₄溶液后再加NaOH",
+              "correct": false
+            }
+          ],
+          "explanation": "解析： 煮沸FeSO₄除去溶解氧，滴管伸入液面下避免滴入过程中接触O₂，能较长时间保持白色。A和B均接触大量O₂。D中Fe²⁺已被氧化为Fe³⁺，生成的Fe(OH)₃直接显红褐色。题目2： （2017·全国卷改编）在FeSO₄溶液中加入NaOH溶液时，生成的白色沉淀迅速变为灰绿色，最后变为红褐色。发生颜色变化的化学方程式为______。答案： 4Fe(OH)₂ + O₂ + 2H₂O = 4Fe(OH)₃<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2017·全国卷（Fe(OH)₂制备实验）、2016-2025各地高考实验题改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "Fe(OH)₃胶体制备——煮沸法vs碱液法",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Fe(OH)₃胶体的正确制法：向沸水中逐滴加入饱和FeCl₃溶液，继续煮沸至溶液呈红褐色，停止加热。将FeCl₃加入浓碱液得到的是Fe(OH)₃沉淀，不是胶体。</p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰写Fe(OH)₃胶体制备方程式：FeCl₃ + 3NaOH = Fe(OH)₃↓ + 3NaCl——这是沉淀的，不是胶体的。小明把饱和FeCl₃加入冷水中搅拌，半天没看到红褐色——因为胶体形成需要沸水条件（水解吸热，升温促进水解）。小美往沸水里滴了FeCl₃，看到红褐色就加NaOH想\"中和\"，结果胶体聚沉变成了沉淀——胶体怕电解质。</p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：正确操作——将饱和FeCl₃溶液逐滴滴入沸水中，继续煮沸至溶液呈红褐色（不要持续沸腾太久，否则胶体聚沉）。",
+            "第二步：化学原理——FeCl₃ + 3H₂O △ Fe(OH)₃(胶体) + 3HCl，这是一个水解反应，沸水促进水解。",
+            "第三步：错误对比——FeCl₃ + 浓NaOH → Fe(OH)₃↓（沉淀，立即产生红褐色沉淀）；FeCl₃ + 冷水 → 水解很弱，无法形成胶体。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>Fe(OH)₃胶体就像\"煮粥\"：沸水是必须的（温度够高水解才够猛），FeCl₃是米（一点点加进去），红褐色是粥煮好了（胶体成型）。如果把米直接倒进冷水（碱液法），得不到粥（沉淀）。口诀：沸水滴盐得胶体，浓碱加盐变沉淀。</p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目1： （2021·广东·真题改编）部分含铁物质分类图如下。下列推断不合理的是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "a可与e反应生成b",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "b既可被氧化也可被还原",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "可将e加入浓碱液中制得d的胶体",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "可存在b→d→e→b的循环转化",
+              "correct": false
+            }
+          ],
+          "explanation": "解析： a为Fe、b为Fe²⁺盐、c为Fe(OH)₂、d为Fe(OH)₃、e为Fe³⁺盐。将e（Fe³⁺盐）加入浓碱液得到Fe(OH)₃沉淀，不是胶体。胶体制备应取饱和FeCl₃滴入沸水中。A正确：Fe + 2Fe³⁺ = 3Fe²⁺。B正确：Fe²⁺处于中间价态。D正确：Fe²⁺→Fe(OH)₃→Fe³⁺→Fe²⁺可循环。题目2： 制备Fe(OH)₃胶体的正确操作是______。答案： 向沸水中逐滴加入5~6滴饱和FeCl₃溶液，继续煮沸至溶液呈红褐色，停止加热。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·广东（含铁物质分类转化）、2024·广东（加热铁盐饱和溶液）、历年高考胶体考点改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目1： 下列能较长时间观察到Fe(OH)₂白色沉淀的实验操作是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "将NaOH溶液直接滴入FeSO₄溶液",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "将FeSO₄溶液滴入NaOH溶液中",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "将NaOH溶液滴入煮沸后冷却的FeSO₄溶液中，滴管伸入液面下",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "stageId": "cert-4",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目1： （2021·广东·真题改编）部分含铁物质分类图如下。下列推断不合理的是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "a可与e反应生成b",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "b既可被氧化也可被还原",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "可将e加入浓碱液中制得d的胶体",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}
