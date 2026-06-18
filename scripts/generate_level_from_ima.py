@@ -465,6 +465,20 @@ def update_quests_json(course_num):
         if i == 0 and prev in quests["quests"]:
             quests["quests"][prev]["nextQuest"] = quest_id
 
+    # 修复关卡链：确保nextQuest指向的关卡真实存在
+    print("🔍 正在检查关卡链完整性...")
+    broken_links = 0
+    for qid, qdata in quests["quests"].items():
+        next_qid = qdata.get("nextQuest")
+        if next_qid and next_qid not in quests["quests"]:
+            print(f"   ⚠️  修复断裂链: {qid}.nextQuest = {next_qid} → null")
+            qdata["nextQuest"] = None
+            broken_links += 1
+    if broken_links == 0:
+        print("   ✅ 关卡链完整")
+    else:
+        print(f"   ✅ 已修复 {broken_links} 处断裂链")
+
     QUESTS_FILE.write_text(json.dumps(quests, ensure_ascii=False, indent=2))
     print("✅ quests.json 更新完成")
 
