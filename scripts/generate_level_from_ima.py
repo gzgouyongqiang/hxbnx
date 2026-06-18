@@ -502,7 +502,7 @@ def save_level_files(course_num, bronze_json, silver_json, gold_json):
         filepath.write_text(json.dumps(data, ensure_ascii=False, indent=2))
         print(f"✅ 已保存: {filepath}")
 
-def git_push():
+def git_push(course_num):
     """推送到GitHub"""
     print("🚀 正在推送到GitHub...")
 
@@ -595,10 +595,36 @@ def main():
     # 4. 生成关卡JSON
     print("\n🏗️  正在生成关卡JSON...")
 
-    # 分配微卡点到三个关卡（2+2+2）
-    bronze_indices = [0, 1] if len(cards_data) >= 2 else [0]
-    silver_indices = [2, 3] if len(cards_data) >= 4 else [1]
-    gold_indices = [4, 5] if len(cards_data) >= 6 else [2]
+    # 分配微卡点到三个关卡（2+2+2），不足时剩余全部放入金牌
+    total = len(cards_data)
+    if total >= 6:
+        bronze_indices = [0, 1]
+        silver_indices = [2, 3]
+        gold_indices = [4, 5]
+    elif total == 5:
+        bronze_indices = [0, 1]
+        silver_indices = [2]
+        gold_indices = [3, 4]
+    elif total == 4:
+        bronze_indices = [0, 1]
+        silver_indices = [2]
+        gold_indices = [3]
+    elif total == 3:
+        bronze_indices = [0]
+        silver_indices = [1]
+        gold_indices = [2]
+    elif total == 2:
+        bronze_indices = [0]
+        silver_indices = []
+        gold_indices = [1]
+    elif total == 1:
+        bronze_indices = []
+        silver_indices = []
+        gold_indices = [0]
+    else:
+        bronze_indices = []
+        silver_indices = []
+        gold_indices = []
 
     bronze_json = generate_level_json(course_num, "bronze", bronze_indices, cards_data, cards_data)
     silver_json = generate_level_json(course_num, "silver", silver_indices, cards_data, cards_data)
@@ -613,7 +639,7 @@ def main():
 
     # 7. 推送到GitHub
     print("\n" + "=" * 50)
-    git_push()
+    git_push(course_num)
 
     print("\n🎉 全部完成！")
     print(f"   关卡文件: data/levels/main-{course_num}-*.json")
