@@ -4,233 +4,932 @@
   "totalCourses": 100,
   "quests": {
     "main-1-bronze": {
-      "type": "main", "course": 1, "tier": "bronze", "title": "1", "subtitle": "",
-      "prevQuest": null, "nextQuest": "main-1-silver", "baseScore": 10,
-      "badgeTriggers": ["first_clear","speed_120s","zero_error","first_card"],
+      "type": "main",
+      "course": 1,
+      "tier": "bronze",
+      "title": "1",
+      "subtitle": "",
+      "prevQuest": null,
+      "nextQuest": "main-1-silver",
+      "baseScore": 10,
+      "badgeTriggers": [
+        "first_clear",
+        "speed_120s",
+        "zero_error",
+        "first_card"
+      ],
       "contentFile": "data/levels/main-1-bronze.json"
     },
     "main-1-silver": {
-      "type": "main", "course": 1, "tier": "silver", "title": "1", "subtitle": "",
-      "prevQuest": "main-1-bronze", "nextQuest": "main-1-gold", "baseScore": 50,
-      "badgeTriggers": [], "contentFile": "data/levels/main-1-silver.json"
+      "type": "main",
+      "course": 1,
+      "tier": "silver",
+      "title": "1",
+      "subtitle": "",
+      "prevQuest": "main-1-bronze",
+      "nextQuest": "main-1-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-1-silver.json"
     },
     "main-1-gold": {
-      "type": "main", "course": 1, "tier": "gold", "title": "1", "subtitle": "",
-      "prevQuest": "main-1-silver", "nextQuest": "main-2-bronze", "baseScore": 100,
-      "badgeTriggers": [], "contentFile": "data/levels/main-1-gold.json"
+      "type": "main",
+      "course": 1,
+      "tier": "gold",
+      "title": "1",
+      "subtitle": "",
+      "prevQuest": "main-1-silver",
+      "nextQuest": "main-2-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-1-gold.json"
     },
     "main-2-bronze": {
-      "type": "main", "course": 2, "tier": "bronze", "title": "2", "subtitle": "",
-      "prevQuest": "main-1-gold", "nextQuest": "main-2-silver", "baseScore": 10,
-      "badgeTriggers": [], "contentFile": "data/levels/main-2-bronze.json"
+      "type": "main",
+      "course": 2,
+      "tier": "bronze",
+      "title": "2",
+      "subtitle": "",
+      "prevQuest": "main-1-gold",
+      "nextQuest": "main-2-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-2-bronze.json"
     },
     "main-2-silver": {
-      "type": "main", "course": 2, "tier": "silver", "title": "2", "subtitle": "",
-      "prevQuest": "main-2-bronze", "nextQuest": "main-2-gold", "baseScore": 50,
-      "badgeTriggers": [], "contentFile": "data/levels/main-2-silver.json"
+      "type": "main",
+      "course": 2,
+      "tier": "silver",
+      "title": "2",
+      "subtitle": "",
+      "prevQuest": "main-2-bronze",
+      "nextQuest": "main-2-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-2-silver.json"
     },
     "main-2-gold": {
-      "type": "main", "course": 2, "tier": "gold", "title": "2", "subtitle": "",
-      "prevQuest": "main-2-silver", "nextQuest": "main-3-bronze", "baseScore": 100,
-      "badgeTriggers": [], "contentFile": "data/levels/main-2-gold.json"
+      "type": "main",
+      "course": 2,
+      "tier": "gold",
+      "title": "2",
+      "subtitle": "",
+      "prevQuest": "main-2-silver",
+      "nextQuest": "main-3-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-2-gold.json"
     },
     "main-3-bronze": {
-      "type": "main", "course": 3, "tier": "bronze", "title": "3", "subtitle": "",
-      "prevQuest": "main-2-gold", "nextQuest": "main-3-silver", "baseScore": 10,
-      "badgeTriggers": [], "contentFile": "data/levels/main-3-bronze.json"
+      "type": "main",
+      "course": 3,
+      "tier": "bronze",
+      "title": "3",
+      "subtitle": "",
+      "prevQuest": "main-2-gold",
+      "nextQuest": "main-3-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-3-bronze.json"
     },
     "main-3-silver": {
-      "type": "main", "course": 3, "tier": "silver", "title": "3", "subtitle": "",
-      "prevQuest": "main-3-bronze", "nextQuest": "main-3-gold", "baseScore": 50,
-      "badgeTriggers": [], "contentFile": "data/levels/main-3-silver.json"
+      "type": "main",
+      "course": 3,
+      "tier": "silver",
+      "title": "3",
+      "subtitle": "",
+      "prevQuest": "main-3-bronze",
+      "nextQuest": "main-3-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-3-silver.json"
     },
     "main-3-gold": {
-      "type": "main", "course": 3, "tier": "gold", "title": "3", "subtitle": "",
-      "prevQuest": "main-3-silver", "nextQuest": "main-4-bronze", "baseScore": 100,
-      "badgeTriggers": [], "contentFile": "data/levels/main-3-gold.json"
+      "type": "main",
+      "course": 3,
+      "tier": "gold",
+      "title": "3",
+      "subtitle": "",
+      "prevQuest": "main-3-silver",
+      "nextQuest": "main-4-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-3-gold.json"
     },
     "main-4-bronze": {
-      "type": "main", "course": 4, "tier": "bronze", "title": "4", "subtitle": "",
-      "prevQuest": "main-3-gold", "nextQuest": "main-4-silver", "baseScore": 10,
-      "badgeTriggers": [], "contentFile": "data/levels/main-4-bronze.json"
+      "type": "main",
+      "course": 4,
+      "tier": "bronze",
+      "title": "4",
+      "subtitle": "",
+      "prevQuest": "main-3-gold",
+      "nextQuest": "main-4-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-4-bronze.json"
     },
     "main-4-silver": {
-      "type": "main", "course": 4, "tier": "silver", "title": "4", "subtitle": "",
-      "prevQuest": "main-4-bronze", "nextQuest": "main-4-gold", "baseScore": 50,
-      "badgeTriggers": [], "contentFile": "data/levels/main-4-silver.json"
+      "type": "main",
+      "course": 4,
+      "tier": "silver",
+      "title": "4",
+      "subtitle": "",
+      "prevQuest": "main-4-bronze",
+      "nextQuest": "main-4-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-4-silver.json"
     },
     "main-4-gold": {
-      "type": "main", "course": 4, "tier": "gold", "title": "4", "subtitle": "",
-      "prevQuest": "main-4-silver", "nextQuest": "main-5-bronze", "baseScore": 100,
-      "badgeTriggers": [], "contentFile": "data/levels/main-4-gold.json"
+      "type": "main",
+      "course": 4,
+      "tier": "gold",
+      "title": "4",
+      "subtitle": "",
+      "prevQuest": "main-4-silver",
+      "nextQuest": "main-5-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-4-gold.json"
     },
     "main-5-bronze": {
-      "type": "main", "course": 5, "tier": "bronze", "title": "5", "subtitle": "",
-      "prevQuest": "main-4-gold", "nextQuest": "main-5-silver", "baseScore": 10,
-      "badgeTriggers": [], "contentFile": "data/levels/main-5-bronze.json"
+      "type": "main",
+      "course": 5,
+      "tier": "bronze",
+      "title": "5",
+      "subtitle": "",
+      "prevQuest": "main-4-gold",
+      "nextQuest": "main-5-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-5-bronze.json"
     },
     "main-5-silver": {
-      "type": "main", "course": 5, "tier": "silver", "title": "5", "subtitle": "",
-      "prevQuest": "main-5-bronze", "nextQuest": "main-5-gold", "baseScore": 50,
-      "badgeTriggers": [], "contentFile": "data/levels/main-5-silver.json"
+      "type": "main",
+      "course": 5,
+      "tier": "silver",
+      "title": "5",
+      "subtitle": "",
+      "prevQuest": "main-5-bronze",
+      "nextQuest": "main-5-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-5-silver.json"
     },
     "main-5-gold": {
-      "type": "main", "course": 5, "tier": "gold", "title": "5", "subtitle": "",
-      "prevQuest": "main-5-silver", "nextQuest": "main-6-bronze", "baseScore": 100,
-      "badgeTriggers": [], "contentFile": "data/levels/main-5-gold.json"
+      "type": "main",
+      "course": 5,
+      "tier": "gold",
+      "title": "5",
+      "subtitle": "",
+      "prevQuest": "main-5-silver",
+      "nextQuest": "main-6-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-5-gold.json"
     },
     "main-6-bronze": {
-      "type": "main", "course": 6, "tier": "bronze", "title": "6", "subtitle": "",
-      "prevQuest": "main-5-gold", "nextQuest": "main-6-silver", "baseScore": 10,
-      "badgeTriggers": ["first_clear","speed_120s","zero_error"],
+      "type": "main",
+      "course": 6,
+      "tier": "bronze",
+      "title": "6",
+      "subtitle": "",
+      "prevQuest": "main-5-gold",
+      "nextQuest": "main-6-silver",
+      "baseScore": 10,
+      "badgeTriggers": [
+        "first_clear",
+        "speed_120s",
+        "zero_error"
+      ],
       "contentFile": "data/levels/main-6-bronze.json"
     },
     "main-6-silver": {
-      "type": "main", "course": 6, "tier": "silver", "title": "6", "subtitle": "",
-      "prevQuest": "main-6-bronze", "nextQuest": "main-6-gold", "baseScore": 50,
-      "badgeTriggers": [], "contentFile": "data/levels/main-6-silver.json"
+      "type": "main",
+      "course": 6,
+      "tier": "silver",
+      "title": "6",
+      "subtitle": "",
+      "prevQuest": "main-6-bronze",
+      "nextQuest": "main-6-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-6-silver.json"
     },
     "main-6-gold": {
-      "type": "main", "course": 6, "tier": "gold", "title": "6", "subtitle": "",
-      "prevQuest": "main-6-silver", "nextQuest": "main-7-bronze", "baseScore": 100,
-      "badgeTriggers": [], "contentFile": "data/levels/main-6-gold.json"
+      "type": "main",
+      "course": 6,
+      "tier": "gold",
+      "title": "6",
+      "subtitle": "",
+      "prevQuest": "main-6-silver",
+      "nextQuest": "main-7-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-6-gold.json"
+    },
+    "main-7-bronze": {
+      "type": "main",
+      "course": 7,
+      "tier": "bronze",
+      "title": "7",
+      "subtitle": "",
+      "prevQuest": "main-6-gold",
+      "nextQuest": "main-7-silver",
+      "baseScore": 10,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-7-bronze.json"
+    },
+    "main-7-silver": {
+      "type": "main",
+      "course": 7,
+      "tier": "silver",
+      "title": "7",
+      "subtitle": "",
+      "prevQuest": "main-7-bronze",
+      "nextQuest": "main-7-gold",
+      "baseScore": 50,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-7-silver.json"
+    },
+    "main-7-gold": {
+      "type": "main",
+      "course": 7,
+      "tier": "gold",
+      "title": "7",
+      "subtitle": "",
+      "prevQuest": "main-7-silver",
+      "nextQuest": "main-8-bronze",
+      "baseScore": 100,
+      "badgeTriggers": [],
+      "contentFile": "data/levels/main-7-gold.json"
     }
   },
   "sideQuests": {
     "side-exam-2024gd": {
-      "type": "side", "category": "exam",
+      "type": "side",
+      "category": "exam",
       "title": "2024广东高考化学真题挑战",
       "subtitle": "限时副本 · 30分钟模拟战",
-      "unlock": { "minCourse": 3, "minTier": "silver" },
-      "validFrom": "2026-06-01", "validUntil": "2026-07-10",
-      "baseScore": 200, "xpMultiplier": 1.5,
-      "badgeTriggers": ["exam_warrior"],
-      "theme": { "icon": "📜" },
+      "unlock": {
+        "minCourse": 3,
+        "minTier": "silver"
+      },
+      "validFrom": "2026-06-01",
+      "validUntil": "2026-07-10",
+      "baseScore": 200,
+      "xpMultiplier": 1.5,
+      "badgeTriggers": [
+        "exam_warrior"
+      ],
+      "theme": {
+        "icon": "📜"
+      },
       "contentFile": null
     }
   },
   "chapters": [
-    { "id": "ch1", "title": "物质分类与基本概念", "icon": "🧪", "courses": [1,2,3,4,5] },
-    { "id": "ch2", "title": "氧化还原与化学计算", "icon": "⚡", "courses": [6,7,8,9,10] },
-    { "id": "ch3", "title": "碱金属及其化合物", "icon": "⚗️", "courses": [11,12,13,14,15] },
-    { "id": "ch4", "title": "铁·铝及其他金属", "icon": "🔩", "courses": [16,17,18,19,20] },
-    { "id": "ch5", "title": "卤素及其化合物", "icon": "💨", "courses": [21,22,23,24,25] },
-    { "id": "ch6", "title": "硫及其化合物", "icon": "🟡", "courses": [26,27,28,29,30] },
-    { "id": "ch7", "title": "氮及其化合物", "icon": "🫧", "courses": [31,32,33,34,35] },
-    { "id": "ch8", "title": "碳硅及其他非金属", "icon": "💎", "courses": [36,37,38,39,40] },
-    { "id": "ch9", "title": "热化学与反应历程", "icon": "🔥", "courses": [41,42,43,44,45] },
-    { "id": "ch10", "title": "化学反应速率与平衡", "icon": "⚖️", "courses": [46,47,48,49,50] },
-    { "id": "ch11", "title": "水溶液离子平衡", "icon": "💧", "courses": [51,52,53,54,55] },
-    { "id": "ch12", "title": "溶解平衡与离子反应", "icon": "🧊", "courses": [56,57,58,59,60] },
-    { "id": "ch13", "title": "电化学·原电池", "icon": "🔋", "courses": [61,62,63,64,65] },
-    { "id": "ch14", "title": "电化学·电解池", "icon": "🔌", "courses": [66,67,68,69,70] },
-    { "id": "ch15", "title": "有机化学·烃", "icon": "🛢️", "courses": [71,72,73,74,75] },
-    { "id": "ch16", "title": "烃的衍生物", "icon": "🧴", "courses": [76,77,78,79,80] },
-    { "id": "ch17", "title": "生物大分子与高分子", "icon": "🧬", "courses": [81,82,83,84,85] },
-    { "id": "ch18", "title": "有机合成与推断", "icon": "🧩", "courses": [86,87,88,89,90] },
-    { "id": "ch19", "title": "物质结构与性质", "icon": "🔬", "courses": [91,92,93,94,95] },
-    { "id": "ch20", "title": "实验综合", "icon": "🔭", "courses": [96,97,98,99,100] }
+    {
+      "id": "ch1",
+      "title": "物质分类与基本概念",
+      "icon": "🧪",
+      "courses": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "氧化还原与化学计算",
+      "icon": "⚡",
+      "courses": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "碱金属及其化合物",
+      "icon": "⚗️",
+      "courses": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "ch4",
+      "title": "铁·铝及其他金属",
+      "icon": "🔩",
+      "courses": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "id": "ch5",
+      "title": "卤素及其化合物",
+      "icon": "💨",
+      "courses": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "id": "ch6",
+      "title": "硫及其化合物",
+      "icon": "🟡",
+      "courses": [
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "id": "ch7",
+      "title": "氮及其化合物",
+      "icon": "🫧",
+      "courses": [
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    {
+      "id": "ch8",
+      "title": "碳硅及其他非金属",
+      "icon": "💎",
+      "courses": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    {
+      "id": "ch9",
+      "title": "热化学与反应历程",
+      "icon": "🔥",
+      "courses": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "id": "ch10",
+      "title": "化学反应速率与平衡",
+      "icon": "⚖️",
+      "courses": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    {
+      "id": "ch11",
+      "title": "水溶液离子平衡",
+      "icon": "💧",
+      "courses": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    {
+      "id": "ch12",
+      "title": "溶解平衡与离子反应",
+      "icon": "🧊",
+      "courses": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    {
+      "id": "ch13",
+      "title": "电化学·原电池",
+      "icon": "🔋",
+      "courses": [
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    {
+      "id": "ch14",
+      "title": "电化学·电解池",
+      "icon": "🔌",
+      "courses": [
+        66,
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    {
+      "id": "ch15",
+      "title": "有机化学·烃",
+      "icon": "🛢️",
+      "courses": [
+        71,
+        72,
+        73,
+        74,
+        75
+      ]
+    },
+    {
+      "id": "ch16",
+      "title": "烃的衍生物",
+      "icon": "🧴",
+      "courses": [
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "id": "ch17",
+      "title": "生物大分子与高分子",
+      "icon": "🧬",
+      "courses": [
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    {
+      "id": "ch18",
+      "title": "有机合成与推断",
+      "icon": "🧩",
+      "courses": [
+        86,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    {
+      "id": "ch19",
+      "title": "物质结构与性质",
+      "icon": "🔬",
+      "courses": [
+        91,
+        92,
+        93,
+        94,
+        95
+      ]
+    },
+    {
+      "id": "ch20",
+      "title": "实验综合",
+      "icon": "🔭",
+      "courses": [
+        96,
+        97,
+        98,
+        99,
+        100
+      ]
+    }
   ],
   "courses": {
-    "1":  { "title": "物质的组成、性质和转化", "subtitle": "分散系 · 丁达尔效应 · 胶体" },
-    "2":  { "title": "离子反应 离子方程式", "subtitle": "电解质 · 离子共存 · 离子方程式" },
-    "3":  { "title": "氧化还原反应", "subtitle": "化合价 · 电子转移 · 基本概念" },
-    "4":  { "title": "物质的量", "subtitle": "摩尔 · NA · 气体摩尔体积" },
-    "5":  { "title": "氧化还原配平与综合", "subtitle": "化合价升降法 · 歧化 · 归中 · 缺项配平" },
-    "6":  { "title": "NA计算专题", "subtitle": "微粒数 · 转移电子数 · 特殊物质" },
-    "7":  { "title": "气体摩尔体积·NA推论", "subtitle": "Vm · 气体密度 · 相对分子质量" },
-    "8":  { "title": "溶液配制与误差分析", "subtitle": "容量瓶 · 误差判断 · 稀释计算" },
-    "9":  { "title": "化学计算方法", "subtitle": "守恒法 · 关系式法 · 极值法" },
-    "10": { "title": "化学计算综合应用", "subtitle": "工业流程计算 · 滴定计算 · 综合推算" },
-    "11": { "title": "钠及其化合物", "subtitle": "Na₂O · Na₂O₂ · NaOH" },
-    "12": { "title": "过氧化钠与钠的氧化物", "subtitle": "Na₂O₂强氧化性 · 与水/CO₂反应" },
-    "13": { "title": "侯氏制碱法·NaHCO₃/Na₂CO₃", "subtitle": "侯德榜制碱 · 碳酸氢钠 · 碳酸钠" },
-    "14": { "title": "碱金属元素规律", "subtitle": "Li Na K Rb Cs · 递变规律" },
-    "15": { "title": "焰色反应", "subtitle": "K Na Li · 光谱分析" },
-    "16": { "title": "铁及其化合物（一）", "subtitle": "Fe²⁺/Fe³⁺ · 氧化铁 · 检验与转化" },
-    "17": { "title": "铁及其化合物（二）", "subtitle": "铁的冶炼 · 合金 · 配合物" },
-    "18": { "title": "铝及其化合物", "subtitle": "Al₂O₃两性 · Al(OH)₃ · 明矾" },
-    "19": { "title": "金属材料", "subtitle": "合金 · 金属腐蚀与防护" },
-    "20": { "title": "金属冶炼与回收", "subtitle": "热还原法 · 电解法 · 金属回收" },
-    "21": { "title": "氯及其化合物", "subtitle": "Cl₂ · HClO · 漂白粉" },
-    "22": { "title": "卤族元素拓展·卤代烃", "subtitle": "F Cl Br I · 递变规律 · 卤代烃" },
-    "23": { "title": "氯气制备与性质", "subtitle": "实验室制Cl₂ · 性质实验 · 尾气处理" },
-    "24": { "title": "氯碱工业", "subtitle": "电解食盐水 · 氯碱产品" },
-    "25": { "title": "卤化物综合", "subtitle": "HX · 卤化银 · 卤素互化物" },
-    "26": { "title": "硫及其化合物", "subtitle": "S · H₂S · SO₂ · SO₃" },
-    "27": { "title": "SO₂的性质与应用", "subtitle": "漂白 · 还原性 · 酸雨" },
-    "28": { "title": "硫酸·浓硫酸", "subtitle": "H₂SO₄性质 · 浓硫酸特性 · 稀释" },
-    "29": { "title": "SO₂的测定及治理", "subtitle": "环境监测 · 脱硫技术" },
-    "30": { "title": "硫酸盐·硫化物", "subtitle": "BaSO₄ · Na₂S · 硫酸根检验" },
-    "31": { "title": "氮气与氮的固定", "subtitle": "N₂ · 固氮反应 · 氮循环" },
-    "32": { "title": "氨气·铵盐", "subtitle": "NH₃性质 · 喷泉实验 · 铵盐" },
-    "33": { "title": "硝酸·氮氧化物", "subtitle": "HNO₃ · NO · NO₂ · 硝酸氧化性" },
-    "34": { "title": "氮的氧化物与环保", "subtitle": "NOx排放 · 光化学烟雾 · 尾气处理" },
-    "35": { "title": "氮族元素综合", "subtitle": "N P As · 磷酸 · 磷肥" },
-    "36": { "title": "碳硅及其化合物", "subtitle": "C · Si · CO · SiO₂ · 硅酸盐" },
-    "37": { "title": "硅酸盐·硅材料", "subtitle": "水泥 · 玻璃 · 陶瓷 · 硅晶片" },
-    "38": { "title": "碳的氧化物综合", "subtitle": "CO毒性 · CO₂性质 · 干冰" },
-    "39": { "title": "无机非金属材料", "subtitle": "新型陶瓷 · 光导纤维 · 纳米材料" },
-    "40": { "title": "非金属综合", "subtitle": "非金属元素对比 · 综合推断" },
-    "41": { "title": "反应热·焓变", "subtitle": "放热吸热 · 键能与焓变" },
-    "42": { "title": "热化学方程式", "subtitle": "书写规范 · 状态标注 · 正负号" },
-    "43": { "title": "盖斯定律", "subtitle": "反应热计算 · 循环图 · 路径法" },
-    "44": { "title": "反应历程·活化能", "subtitle": "基元反应 · 催化剂 · 能垒图" },
-    "45": { "title": "热化学综合", "subtitle": "热化学循环 · 自发反应判断" },
-    "46": { "title": "化学反应速率", "subtitle": "速率公式 · 影响因素 · 速率图像" },
-    "47": { "title": "化学平衡状态判断", "subtitle": "等价标志 · 动态平衡 · 平衡特征" },
-    "48": { "title": "平衡移动·勒夏特列", "subtitle": "温度·压强·浓度对平衡的影响" },
-    "49": { "title": "平衡常数·计算", "subtitle": "K/Kp · 转化率 · 三段式法" },
-    "50": { "title": "速率平衡图像分析", "subtitle": "v-t图 · 转化率-时间图 · 压强-温度图" },
-    "51": { "title": "弱电解质电离平衡", "subtitle": "弱酸弱碱 · 电离常数 · 多步电离" },
-    "52": { "title": "水的电离·pH", "subtitle": "Kw · pH计算 · 酸碱混合" },
-    "53": { "title": "盐类水解", "subtitle": "水解规律 · 离子浓度比较 · 应用" },
-    "54": { "title": "离子浓度大小比较", "subtitle": "守恒关系 · 溶液中的粒子浓度" },
-    "55": { "title": "缓冲溶液", "subtitle": "缓冲原理 · 缓冲对 · pH计算" },
-    "56": { "title": "沉淀溶解平衡", "subtitle": "Ksp · 沉淀转化 · 分步沉淀" },
-    "57": { "title": "溶度积计算", "subtitle": "Ksp应用 · 沉淀判断 · 离子除杂" },
-    "58": { "title": "离子共存", "subtitle": "共存条件 · 常见不共存组合" },
-    "59": { "title": "离子方程式正误判断", "subtitle": "书写规范 · 常见错误类型" },
-    "60": { "title": "溶液离子平衡综合", "subtitle": "多平衡体系 · 综合推断" },
-    "61": { "title": "原电池工作原理", "subtitle": "电极判断 · 电子流向 · 电流方向" },
-    "62": { "title": "电极反应式书写", "subtitle": "正极负极 · 离子迁移 · 介质配平" },
-    "63": { "title": "金属腐蚀与防护", "subtitle": "吸氧腐蚀 · 析氢腐蚀 · 防护方法" },
-    "64": { "title": "化学电源", "subtitle": "一次电池 · 二次电池 · 燃料电池" },
-    "65": { "title": "燃料电池", "subtitle": "氢氧燃料电池 · CH₄燃料电池 · 甲醇燃料电池" },
-    "66": { "title": "电解原理", "subtitle": "阴阳极判断 · 放电顺序 · 电解规律" },
-    "67": { "title": "电解池应用", "subtitle": "电镀 · 电解饱和食盐水 · 冶炼铝" },
-    "68": { "title": "电镀·电冶金", "subtitle": "电镀工艺 · 金属精炼 · 工业电解" },
-    "69": { "title": "电化学计算", "subtitle": "电子守恒 · 法拉第定律 · 定量计算" },
-    "70": { "title": "电化学综合", "subtitle": "多池串联 · 可逆电池 · 新型电池" },
-    "71": { "title": "甲烷·烷烃", "subtitle": "CH₄结构 · 烷烃命名 · 同系物" },
-    "72": { "title": "乙烯·烯烃", "subtitle": "C=C加成 · 加聚反应 · 高分子" },
-    "73": { "title": "乙炔·炔烃", "subtitle": "C≡C · 炔烃性质 · 碳化钙" },
-    "74": { "title": "苯·芳香烃", "subtitle": "苯环结构 · 取代反应 · 稠环芳烃" },
-    "75": { "title": "石油化工·煤化工", "subtitle": "分馏 · 裂化 · 裂解 · 干馏" },
-    "76": { "title": "卤代烃", "subtitle": "SN1/SN2 · 消除反应 · 亲核取代" },
-    "77": { "title": "醇·酚", "subtitle": "羟基结构 · 醇酚区别 · 显色反应" },
-    "78": { "title": "醛·酮", "subtitle": "羰基 · 银镜反应 · 斐林试剂" },
-    "79": { "title": "羧酸·酯", "subtitle": "羧基 · 酯化反应 · 油脂皂化" },
-    "80": { "title": "有机推断基础", "subtitle": "官能团转化 · 结构推断" },
-    "81": { "title": "糖类", "subtitle": "单糖 · 二糖 · 多糖 · 性质检验" },
-    "82": { "title": "蛋白质·氨基酸", "subtitle": "肽键 · 等电点 · 变性 · 显色反应" },
-    "83": { "title": "油脂", "subtitle": "油与脂 · 皂化值 · 碘值" },
-    "84": { "title": "高分子化合物", "subtitle": "加聚 · 缩聚 · 天然橡胶 · 合成纤维" },
-    "85": { "title": "合成材料", "subtitle": "塑料 · 纤维 · 橡胶 · 功能高分子" },
-    "86": { "title": "有机合成路线设计", "subtitle": "逆合成分析 · 官能团保护" },
-    "87": { "title": "有机推断技巧", "subtitle": "信息提取 · 结构确认 · 同分异构" },
-    "88": { "title": "官能团转化", "subtitle": "氧化还原 · 取代加成 · 消除水解" },
-    "89": { "title": "同分异构体", "subtitle": "碳链异构 · 位置异构 · 官能团异构" },
-    "90": { "title": "有机实验", "subtitle": "制备实验 · 分离提纯 · 官能团检验" },
-    "91": { "title": "原子结构·电子排布", "subtitle": "核外电子 · 电子云 · 轨道" },
-    "92": { "title": "元素周期律", "subtitle": "原子半径 · 电负性 · 金属性非金属性" },
-    "93": { "title": "化学键·分子结构", "subtitle": "共价键 · 离子键 · 金属键 · VSEPR" },
-    "94": { "title": "晶体结构", "subtitle": "离子晶体 · 原子晶体 · 金属晶体 · 分子晶体" },
-    "95": { "title": "物质结构综合", "subtitle": "杂化轨道 · 分子极性 · 晶胞计算" },
-    "96": { "title": "常见仪器与操作", "subtitle": "容量瓶 · 滴定管 · 分液漏斗" },
-    "97": { "title": "物质制备实验", "subtitle": "气体制备 · 纯化 · 收集 · 尾气处理" },
-    "98": { "title": "物质检验·分离提纯", "subtitle": "离子检验 · 有机鉴别 · 萃取蒸馏" },
-    "99": { "title": "实验方案设计", "subtitle": "探究性实验 · 对比实验 · 评价方案" },
-    "100": { "title": "实验综合探究", "subtitle": "实验流程 · 数据分析 · 异常处理" }
+    "1": {
+      "title": "物质的组成、性质和转化",
+      "subtitle": "分散系 · 丁达尔效应 · 胶体"
+    },
+    "2": {
+      "title": "离子反应 离子方程式",
+      "subtitle": "电解质 · 离子共存 · 离子方程式"
+    },
+    "3": {
+      "title": "氧化还原反应",
+      "subtitle": "化合价 · 电子转移 · 基本概念"
+    },
+    "4": {
+      "title": "物质的量",
+      "subtitle": "摩尔 · NA · 气体摩尔体积"
+    },
+    "5": {
+      "title": "氧化还原配平与综合",
+      "subtitle": "化合价升降法 · 歧化 · 归中 · 缺项配平"
+    },
+    "6": {
+      "title": "NA计算专题",
+      "subtitle": "微粒数 · 转移电子数 · 特殊物质"
+    },
+    "7": {
+      "title": "气体摩尔体积·NA推论",
+      "subtitle": "Vm · 气体密度 · 相对分子质量"
+    },
+    "8": {
+      "title": "溶液配制与误差分析",
+      "subtitle": "容量瓶 · 误差判断 · 稀释计算"
+    },
+    "9": {
+      "title": "化学计算方法",
+      "subtitle": "守恒法 · 关系式法 · 极值法"
+    },
+    "10": {
+      "title": "化学计算综合应用",
+      "subtitle": "工业流程计算 · 滴定计算 · 综合推算"
+    },
+    "11": {
+      "title": "钠及其化合物",
+      "subtitle": "Na₂O · Na₂O₂ · NaOH"
+    },
+    "12": {
+      "title": "过氧化钠与钠的氧化物",
+      "subtitle": "Na₂O₂强氧化性 · 与水/CO₂反应"
+    },
+    "13": {
+      "title": "侯氏制碱法·NaHCO₃/Na₂CO₃",
+      "subtitle": "侯德榜制碱 · 碳酸氢钠 · 碳酸钠"
+    },
+    "14": {
+      "title": "碱金属元素规律",
+      "subtitle": "Li Na K Rb Cs · 递变规律"
+    },
+    "15": {
+      "title": "焰色反应",
+      "subtitle": "K Na Li · 光谱分析"
+    },
+    "16": {
+      "title": "铁及其化合物（一）",
+      "subtitle": "Fe²⁺/Fe³⁺ · 氧化铁 · 检验与转化"
+    },
+    "17": {
+      "title": "铁及其化合物（二）",
+      "subtitle": "铁的冶炼 · 合金 · 配合物"
+    },
+    "18": {
+      "title": "铝及其化合物",
+      "subtitle": "Al₂O₃两性 · Al(OH)₃ · 明矾"
+    },
+    "19": {
+      "title": "金属材料",
+      "subtitle": "合金 · 金属腐蚀与防护"
+    },
+    "20": {
+      "title": "金属冶炼与回收",
+      "subtitle": "热还原法 · 电解法 · 金属回收"
+    },
+    "21": {
+      "title": "氯及其化合物",
+      "subtitle": "Cl₂ · HClO · 漂白粉"
+    },
+    "22": {
+      "title": "卤族元素拓展·卤代烃",
+      "subtitle": "F Cl Br I · 递变规律 · 卤代烃"
+    },
+    "23": {
+      "title": "氯气制备与性质",
+      "subtitle": "实验室制Cl₂ · 性质实验 · 尾气处理"
+    },
+    "24": {
+      "title": "氯碱工业",
+      "subtitle": "电解食盐水 · 氯碱产品"
+    },
+    "25": {
+      "title": "卤化物综合",
+      "subtitle": "HX · 卤化银 · 卤素互化物"
+    },
+    "26": {
+      "title": "硫及其化合物",
+      "subtitle": "S · H₂S · SO₂ · SO₃"
+    },
+    "27": {
+      "title": "SO₂的性质与应用",
+      "subtitle": "漂白 · 还原性 · 酸雨"
+    },
+    "28": {
+      "title": "硫酸·浓硫酸",
+      "subtitle": "H₂SO₄性质 · 浓硫酸特性 · 稀释"
+    },
+    "29": {
+      "title": "SO₂的测定及治理",
+      "subtitle": "环境监测 · 脱硫技术"
+    },
+    "30": {
+      "title": "硫酸盐·硫化物",
+      "subtitle": "BaSO₄ · Na₂S · 硫酸根检验"
+    },
+    "31": {
+      "title": "氮气与氮的固定",
+      "subtitle": "N₂ · 固氮反应 · 氮循环"
+    },
+    "32": {
+      "title": "氨气·铵盐",
+      "subtitle": "NH₃性质 · 喷泉实验 · 铵盐"
+    },
+    "33": {
+      "title": "硝酸·氮氧化物",
+      "subtitle": "HNO₃ · NO · NO₂ · 硝酸氧化性"
+    },
+    "34": {
+      "title": "氮的氧化物与环保",
+      "subtitle": "NOx排放 · 光化学烟雾 · 尾气处理"
+    },
+    "35": {
+      "title": "氮族元素综合",
+      "subtitle": "N P As · 磷酸 · 磷肥"
+    },
+    "36": {
+      "title": "碳硅及其化合物",
+      "subtitle": "C · Si · CO · SiO₂ · 硅酸盐"
+    },
+    "37": {
+      "title": "硅酸盐·硅材料",
+      "subtitle": "水泥 · 玻璃 · 陶瓷 · 硅晶片"
+    },
+    "38": {
+      "title": "碳的氧化物综合",
+      "subtitle": "CO毒性 · CO₂性质 · 干冰"
+    },
+    "39": {
+      "title": "无机非金属材料",
+      "subtitle": "新型陶瓷 · 光导纤维 · 纳米材料"
+    },
+    "40": {
+      "title": "非金属综合",
+      "subtitle": "非金属元素对比 · 综合推断"
+    },
+    "41": {
+      "title": "反应热·焓变",
+      "subtitle": "放热吸热 · 键能与焓变"
+    },
+    "42": {
+      "title": "热化学方程式",
+      "subtitle": "书写规范 · 状态标注 · 正负号"
+    },
+    "43": {
+      "title": "盖斯定律",
+      "subtitle": "反应热计算 · 循环图 · 路径法"
+    },
+    "44": {
+      "title": "反应历程·活化能",
+      "subtitle": "基元反应 · 催化剂 · 能垒图"
+    },
+    "45": {
+      "title": "热化学综合",
+      "subtitle": "热化学循环 · 自发反应判断"
+    },
+    "46": {
+      "title": "化学反应速率",
+      "subtitle": "速率公式 · 影响因素 · 速率图像"
+    },
+    "47": {
+      "title": "化学平衡状态判断",
+      "subtitle": "等价标志 · 动态平衡 · 平衡特征"
+    },
+    "48": {
+      "title": "平衡移动·勒夏特列",
+      "subtitle": "温度·压强·浓度对平衡的影响"
+    },
+    "49": {
+      "title": "平衡常数·计算",
+      "subtitle": "K/Kp · 转化率 · 三段式法"
+    },
+    "50": {
+      "title": "速率平衡图像分析",
+      "subtitle": "v-t图 · 转化率-时间图 · 压强-温度图"
+    },
+    "51": {
+      "title": "弱电解质电离平衡",
+      "subtitle": "弱酸弱碱 · 电离常数 · 多步电离"
+    },
+    "52": {
+      "title": "水的电离·pH",
+      "subtitle": "Kw · pH计算 · 酸碱混合"
+    },
+    "53": {
+      "title": "盐类水解",
+      "subtitle": "水解规律 · 离子浓度比较 · 应用"
+    },
+    "54": {
+      "title": "离子浓度大小比较",
+      "subtitle": "守恒关系 · 溶液中的粒子浓度"
+    },
+    "55": {
+      "title": "缓冲溶液",
+      "subtitle": "缓冲原理 · 缓冲对 · pH计算"
+    },
+    "56": {
+      "title": "沉淀溶解平衡",
+      "subtitle": "Ksp · 沉淀转化 · 分步沉淀"
+    },
+    "57": {
+      "title": "溶度积计算",
+      "subtitle": "Ksp应用 · 沉淀判断 · 离子除杂"
+    },
+    "58": {
+      "title": "离子共存",
+      "subtitle": "共存条件 · 常见不共存组合"
+    },
+    "59": {
+      "title": "离子方程式正误判断",
+      "subtitle": "书写规范 · 常见错误类型"
+    },
+    "60": {
+      "title": "溶液离子平衡综合",
+      "subtitle": "多平衡体系 · 综合推断"
+    },
+    "61": {
+      "title": "原电池工作原理",
+      "subtitle": "电极判断 · 电子流向 · 电流方向"
+    },
+    "62": {
+      "title": "电极反应式书写",
+      "subtitle": "正极负极 · 离子迁移 · 介质配平"
+    },
+    "63": {
+      "title": "金属腐蚀与防护",
+      "subtitle": "吸氧腐蚀 · 析氢腐蚀 · 防护方法"
+    },
+    "64": {
+      "title": "化学电源",
+      "subtitle": "一次电池 · 二次电池 · 燃料电池"
+    },
+    "65": {
+      "title": "燃料电池",
+      "subtitle": "氢氧燃料电池 · CH₄燃料电池 · 甲醇燃料电池"
+    },
+    "66": {
+      "title": "电解原理",
+      "subtitle": "阴阳极判断 · 放电顺序 · 电解规律"
+    },
+    "67": {
+      "title": "电解池应用",
+      "subtitle": "电镀 · 电解饱和食盐水 · 冶炼铝"
+    },
+    "68": {
+      "title": "电镀·电冶金",
+      "subtitle": "电镀工艺 · 金属精炼 · 工业电解"
+    },
+    "69": {
+      "title": "电化学计算",
+      "subtitle": "电子守恒 · 法拉第定律 · 定量计算"
+    },
+    "70": {
+      "title": "电化学综合",
+      "subtitle": "多池串联 · 可逆电池 · 新型电池"
+    },
+    "71": {
+      "title": "甲烷·烷烃",
+      "subtitle": "CH₄结构 · 烷烃命名 · 同系物"
+    },
+    "72": {
+      "title": "乙烯·烯烃",
+      "subtitle": "C=C加成 · 加聚反应 · 高分子"
+    },
+    "73": {
+      "title": "乙炔·炔烃",
+      "subtitle": "C≡C · 炔烃性质 · 碳化钙"
+    },
+    "74": {
+      "title": "苯·芳香烃",
+      "subtitle": "苯环结构 · 取代反应 · 稠环芳烃"
+    },
+    "75": {
+      "title": "石油化工·煤化工",
+      "subtitle": "分馏 · 裂化 · 裂解 · 干馏"
+    },
+    "76": {
+      "title": "卤代烃",
+      "subtitle": "SN1/SN2 · 消除反应 · 亲核取代"
+    },
+    "77": {
+      "title": "醇·酚",
+      "subtitle": "羟基结构 · 醇酚区别 · 显色反应"
+    },
+    "78": {
+      "title": "醛·酮",
+      "subtitle": "羰基 · 银镜反应 · 斐林试剂"
+    },
+    "79": {
+      "title": "羧酸·酯",
+      "subtitle": "羧基 · 酯化反应 · 油脂皂化"
+    },
+    "80": {
+      "title": "有机推断基础",
+      "subtitle": "官能团转化 · 结构推断"
+    },
+    "81": {
+      "title": "糖类",
+      "subtitle": "单糖 · 二糖 · 多糖 · 性质检验"
+    },
+    "82": {
+      "title": "蛋白质·氨基酸",
+      "subtitle": "肽键 · 等电点 · 变性 · 显色反应"
+    },
+    "83": {
+      "title": "油脂",
+      "subtitle": "油与脂 · 皂化值 · 碘值"
+    },
+    "84": {
+      "title": "高分子化合物",
+      "subtitle": "加聚 · 缩聚 · 天然橡胶 · 合成纤维"
+    },
+    "85": {
+      "title": "合成材料",
+      "subtitle": "塑料 · 纤维 · 橡胶 · 功能高分子"
+    },
+    "86": {
+      "title": "有机合成路线设计",
+      "subtitle": "逆合成分析 · 官能团保护"
+    },
+    "87": {
+      "title": "有机推断技巧",
+      "subtitle": "信息提取 · 结构确认 · 同分异构"
+    },
+    "88": {
+      "title": "官能团转化",
+      "subtitle": "氧化还原 · 取代加成 · 消除水解"
+    },
+    "89": {
+      "title": "同分异构体",
+      "subtitle": "碳链异构 · 位置异构 · 官能团异构"
+    },
+    "90": {
+      "title": "有机实验",
+      "subtitle": "制备实验 · 分离提纯 · 官能团检验"
+    },
+    "91": {
+      "title": "原子结构·电子排布",
+      "subtitle": "核外电子 · 电子云 · 轨道"
+    },
+    "92": {
+      "title": "元素周期律",
+      "subtitle": "原子半径 · 电负性 · 金属性非金属性"
+    },
+    "93": {
+      "title": "化学键·分子结构",
+      "subtitle": "共价键 · 离子键 · 金属键 · VSEPR"
+    },
+    "94": {
+      "title": "晶体结构",
+      "subtitle": "离子晶体 · 原子晶体 · 金属晶体 · 分子晶体"
+    },
+    "95": {
+      "title": "物质结构综合",
+      "subtitle": "杂化轨道 · 分子极性 · 晶胞计算"
+    },
+    "96": {
+      "title": "常见仪器与操作",
+      "subtitle": "容量瓶 · 滴定管 · 分液漏斗"
+    },
+    "97": {
+      "title": "物质制备实验",
+      "subtitle": "气体制备 · 纯化 · 收集 · 尾气处理"
+    },
+    "98": {
+      "title": "物质检验·分离提纯",
+      "subtitle": "离子检验 · 有机鉴别 · 萃取蒸馏"
+    },
+    "99": {
+      "title": "实验方案设计",
+      "subtitle": "探究性实验 · 对比实验 · 评价方案"
+    },
+    "100": {
+      "title": "实验综合探究",
+      "subtitle": "实验流程 · 数据分析 · 异常处理"
+    }
   }
 }

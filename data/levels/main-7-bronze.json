@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "questId": "main-7-bronze",
+    "title": "气体摩尔体积·NA推论",
+    "subtitle": "2个微卡点 · 逐一突破 · 通关积分 10分",
+    "course": 7,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": ["气体摩尔体积", "标况22.4L", "可逆反应", "NA计算"],
+    "totalStages": 2,
+    "activeStages": 2
+  },
+
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "气体摩尔体积——标况·气态缺一不可",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>气体摩尔体积<strong>22.4 L/mol只在标准状况（0℃，101 kPa）下成立</strong>，且仅适用于<strong>气态物质</strong>——标况+气态，缺一不可。用22.4之前先问三个问题：①是标况吗？②该物质在标况下是气体吗？③两个条件都满足才能用。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰：</strong>标准状况下，11.2 L CH₃CH₂OH（乙醇）中含有的分子数目为0.5Nₐ。标况下气体摩尔体积22.4 L/mol，11.2÷22.4=0.5mol，没毛病！</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ 乙醇在标准状况下是<strong>液体</strong>，不是气体！标况下只有气态物质才能用22.4 L/mol。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 常温常压（25℃, 101kPa）下 Vm≈24.5 L/mol，不是22.4！2.24 L气体物质的量＜0.1 mol。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：用22.4之前问三个问题——是标况吗（0℃,101kPa）？该物质标况下是气体吗？两个都满足才能用22.4",
+            "第二步：背下常见标况非气态物质——H₂O、乙醇、甲醇、CCl₄、SO₃（熔点16.8℃）、苯、Br₂（液态）",
+            "第三步：非标况处理——常温常压Vm≈24.5 L/mol（大于22.4），其他条件不可用22.4需另行计算"
+          ],
+          "table": {
+            "headers": ["气态（可用22.4）", "液态/固态（不可用22.4）"],
+            "rows": [
+              ["H₂、O₂、N₂、Cl₂、CO、CO₂", "H₂O、H₂O₂（水/冰）"],
+              ["CH₄、C₂H₄、C₂H₂", "CH₃OH、CH₃CH₂OH（醇类）"],
+              ["HCl、NH₃、NO、NO₂", "CCl₄、CHCl₃（氯代烃）"],
+              ["稀有气体（He、Ne、Ar）", "SO₃（固体）、HF（沸点19.5℃）"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>气体摩尔体积就像公交车——「标准状况」是线路号，「气态」是上车资格。上车（气态）+正确线路（标况）=可以刷卡乘车（用22.4换算）。没上车（液体/固体）或上错线路（非标况）→刷卡无效！</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "设Nₐ表示阿伏加德罗常数的值。下列说法正确的是（ ）",
+          "options": [
+            { "label": "A", "text": "常温常压下，18g H₂O中含有的原子总数为3Nₐ", "correct": true },
+            { "label": "B", "text": "标准状况下，0.1mol Cl₂溶于水，转移电子数目为0.1Nₐ", "correct": false },
+            { "label": "C", "text": "标准状况下，11.2L CH₃CH₂OH中含有的分子数目为0.5Nₐ", "correct": false },
+            { "label": "D", "text": "常温常压下，2.24L CO和CO₂混合气体中含碳原子数目为0.1Nₐ", "correct": false }
+          ],
+          "explanation": "A✅ 18g H₂O=1mol，含3mol原子=3Nₐ<br>B❌ Cl₂+H₂O⇌是可逆反应，转移电子数＜0.1Nₐ<br>C❌ 乙醇标况下是液体，不能用22.4 L/mol<br>D❌ 常温常压Vm＞22.4，2.24L气体物质的量＜0.1mol"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "Nₐ可逆反应陷阱——反应不彻底",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>可逆反应中反应物<strong>不能完全转化</strong>为生成物，涉及Nₐ计算时电子转移数、生成物分子数等均<strong>少于理论最大值</strong>。——见到可逆符号⇌，就要「打折」。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明：</strong>标准状况下，0.1mol Cl₂溶于水，转移电子数目为0.1Nₐ。Cl₂+H₂O=HCl+HClO，Cl从0→+1和0→-1，1mol Cl₂转移1mol e⁻=Nₐ，0.1mol就是0.1Nₐ！</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ Cl₂+H₂O⇌HCl+HClO是<strong>可逆反应</strong>！只有部分Cl₂反应，转移电子数远小于0.1Nₐ。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 合成氨N₂+3H₂⇌2NH₃也是可逆反应，1mol N₂不能完全转化，生成NH₃＜2Nₐ。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：识别高考常考可逆反应——Cl₂+H₂O、N₂+3H₂⇌2NH₃、2SO₂+O₂⇌2SO₃、2NO₂⇌N₂O₄、弱电解质电离、盐类水解",
+            "第二步：可逆反应「打折」原则——理论值×转化率=实际值，高考不给转化率→直接判断「小于理论值」",
+            "第三步：唯独H₂+I₂⇌2HI是例外——反应前后气体分子总数不变（1+1=2），分子总数仍等于起始分子数"
+          ],
+          "table": {
+            "headers": ["可逆反应", "Nₐ陷阱"],
+            "rows": [
+              ["Cl₂+H₂O⇌HCl+HClO", "转移电子数＜理论值"],
+              ["N₂+3H₂⇌2NH₃", "生成NH₃分子数＜理论值"],
+              ["2SO₂+O₂⇌2SO₃", "生成SO₃分子数＜理论值"],
+              ["2NO₂⇌N₂O₄", "NO₂分子数＜理论值"],
+              ["CH₃COOH⇌CH₃COO⁻+H⁺", "H⁺数＜理论值"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>可逆反应就像谈恋爱——双方看对眼了就在一起，但总有人单着。Cl₂溶解在水里，只有一部分「看对眼」了和水反应，剩下的Cl₂分子还是「单身汉」。所以不能用「全都在一起了」来算电子转移数！</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列说法正确的是（ ）",
+          "options": [
+            { "label": "A", "text": "标准状况下，0.1mol Cl₂溶于水，转移的电子数为0.1Nₐ", "correct": false },
+            { "label": "B", "text": "0.1mol H₂与0.1mol I₂于密闭容器中充分反应后，分子总数为0.2Nₐ", "correct": true },
+            { "label": "C", "text": "标准状况下，2.24L SO₃中含有的分子数为0.1Nₐ", "correct": false },
+            { "label": "D", "text": "0.1mol SO₂与0.05mol O₂混合充分反应，生成SO₃分子数为0.1Nₐ", "correct": false }
+          ],
+          "explanation": "A❌ Cl₂+H₂O可逆，转移电子数＜0.1Nₐ<br>B✅ H₂+I₂⇌2HI反应前后分子总数不变，仍为0.2Nₐ<br>C❌ 标况下SO₃是固体<br>D❌ 2SO₂+O₂⇌2SO₃可逆，SO₃＜0.1Nₐ"
+        }
+      ]
+    }
+  ],
+
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "设Nₐ为阿伏加德罗常数的值。下列说法正确的是（ ）",
+      "options": [
+        { "label": "A", "text": "标准状况下，22.4L CCl₄中含有的分子数为Nₐ", "correct": false },
+        { "label": "B", "text": "1mol N₂和3mol H₂充分反应，生成NH₃分子数为2Nₐ", "correct": false },
+        { "label": "C", "text": "常温常压下，18g H₂O中含有的原子总数为3Nₐ", "correct": true },
+        { "label": "D", "text": "标准状况下，11.2L乙醇中含有的分子数为0.5Nₐ", "correct": false }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "NA是阿伏加德罗常数的值。下列说法错误的是（ ）",
+      "options": [
+        { "label": "A", "text": "1mol Cl₂与足量H₂O反应，转移电子数小于Nₐ", "correct": false },
+        { "label": "B", "text": "标准状况下，2.24L HF所含原子数为0.2Nₐ", "correct": true },
+        { "label": "C", "text": "1L 1mol/L CH₃COOH溶液中，H⁺数目小于Nₐ", "correct": false },
+        { "label": "D", "text": "等质量的O₂和O₃所含氧原子数相同", "correct": false }
+      ]
+    }
+  ]
+}

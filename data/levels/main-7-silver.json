@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "questId": "main-7-silver",
+    "title": "气体摩尔体积·NA推论",
+    "subtitle": "2个微卡点 · 逐一突破 · 通关积分 50分",
+    "course": 7,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": ["阿伏加德罗定律", "气体体积", "理想气体状态方程", "pV=nRT"],
+    "totalStages": 2,
+    "activeStages": 2
+  },
+
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "阿伏加德罗定律——气体体积看分子数",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>同温同压下，气体体积由其<strong>物质的量（分子数）</strong>决定——分子数越多体积越大，<strong>与分子本身大小无关</strong>。气体分子间平均距离约是分子直径的10倍，分子大小可忽略。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰：</strong>一定温度压强下，气体体积由其分子的大小决定。分子越大占的地方越多，体积当然越大！</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ 气体分子间距离远大于分子本身大小，分子大小可忽略！气体体积只由分子数（物质的量）决定。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 小美：不同气体若体积不等，则分子数一定不等。错误！体积不等可能是温度压强不同导致的，不一定分子数不等。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：记住阿伏加德罗定律核心——同温同压下，相同体积的任何气体含相同数目的分子（V∝n）",
+            "第二步：理解微观本质——分子本身体积可忽略，分子间距离由T、p决定，T/p固定时间距固定→V只由n决定",
+            "第三步：四个「同」灵活运用——只有同温同压下，体积比才等于分子数比；不同T/p下体积不等不代表分子数不等"
+          ],
+          "table": {
+            "headers": ["条件", "结论", "变形应用"],
+            "rows": [
+              ["同T同p，V₁=V₂", "n₁=n₂（分子数相等）", "标况下22.4L任何气体均为1mol"],
+              ["同T同p，V₁<V₂", "n₁<n₂（分子数少）", "气体体积比=物质的量比=分子数比"],
+              ["同T同p，同n", "V₁=V₂", "等物质的量气体体积相等"],
+              ["不同T不同p，V不等", "不一定分子数不等", "可能T、p差异导致体积变化"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>气体分子就像操场上的同学——每个同学身体大小差别不大（分子大小可忽略），决定队伍占多大地方的是<strong>人数（分子数）</strong>和人与人之间的距离（温度/压强）。体育老师说「两人之间保持一臂距离」（固定T、p），那队伍长度就只由人数决定——和胖瘦无关！</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列叙述正确的是（ ）",
+          "options": [
+            { "label": "A", "text": "一定温度、压强下，气体体积由其分子的大小决定", "correct": false },
+            { "label": "B", "text": "一定温度、压强下，气体体积由其物质的量的多少决定", "correct": true },
+            { "label": "C", "text": "气体摩尔体积是指1mol任何气体所占的体积为22.4L", "correct": false },
+            { "label": "D", "text": "不同的气体，若体积不等，则它们所含的分子数一定不等", "correct": false }
+          ],
+          "explanation": "A❌ 分子大小可忽略，体积由分子数决定<br>B✅ 同温同压下V∝n<br>C❌ 未指明标况<br>D❌ 不同T/p下体积不等不代表分子数不等"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "阿伏加德罗定律推论——p与M的定量关系",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>从<strong>pV=nRT</strong>出发可推导阿伏加德罗定律的所有推论：同温同压下<strong>密度比=摩尔质量比</strong>；温度密度相同时<strong>压强与摩尔质量成反比</strong>（M越小p越大）。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰：</strong>三个密闭容器中分别充入Ne、H₂、O₂，当温度和密度都相同时，O₂密度最大所以O₂压强最大！</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ 错误！由p=ρRT/M，T、ρ相同时p∝1/M——摩尔质量越小压强越大。M(H₂)=2＜M(Ne)=20＜M(O₂)=32，所以p(H₂)＞p(Ne)＞p(O₂)。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：记住核心公式pV=nRT——所有推论的根都在这！n=m/M，所以pV=mRT/M",
+            "第二步：推导关键推论——同T同p时ρ∝M（密度比=摩尔质量比）；同T同ρ时p∝1/M（压强与M成反比）",
+            "第三步：灵活运用推论速查表——见到「同T同p比密度」「同T同ρ比压强」直接套公式"
+          ],
+          "table": {
+            "headers": ["条件", "比例关系", "公式"],
+            "rows": [
+              ["同T同p", "V∝n（体积比=物质的量比）", "V₁/V₂=n₁/n₂"],
+              ["同T同p", "ρ∝M（密度比=摩尔质量比）", "ρ₁/ρ₂=M₁/M₂"],
+              ["同T同V", "p∝n（压强比=物质的量比）", "p₁/p₂=n₁/n₂"],
+              ["同T同ρ", "p∝1/M（压强与M成反比）", "p₁/p₂=M₂/M₁"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>密度与摩尔质量的关系就像称重量——同样大小的箱子（同体积），装的乒乓球（M小）轻，装的铅球（M大）重，所以同温同压下密度比=摩尔质量比！压强与M的反比关系就像弹簧床——同样密度的人群，体重轻的人（M小）要达到相同密度需要更多人挤在一起（压强大）！</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "在三个密闭容器中分别充入Ne、H₂、O₂三种气体，当它们的温度和密度都相同时，这三种气体的压强（p）从大到小的顺序是（ ）",
+          "options": [
+            { "label": "A", "text": "p(Ne)＞p(H₂)＞p(O₂)", "correct": false },
+            { "label": "B", "text": "p(O₂)＞p(Ne)＞p(H₂)", "correct": false },
+            { "label": "C", "text": "p(H₂)＞p(O₂)＞p(Ne)", "correct": false },
+            { "label": "D", "text": "p(H₂)＞p(Ne)＞p(O₂)", "correct": true }
+          ],
+          "explanation": "由p=ρRT/M，T、ρ相同时p∝1/M。M(H₂)=2，M(Ne)=20，M(O₂)=32，摩尔质量越小压强越大，所以p(H₂)＞p(Ne)＞p(O₂)"
+        }
+      ]
+    }
+  ],
+
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "同温同压下，O₂和CO₂的密度之比为（ ）",
+      "options": [
+        { "label": "A", "text": "1:1", "correct": false },
+        { "label": "B", "text": "32:44", "correct": true },
+        { "label": "C", "text": "44:32", "correct": false },
+        { "label": "D", "text": "无法确定", "correct": false }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "同温同压下，等质量的CH₄和O₂，下列说法正确的是（ ）",
+      "options": [
+        { "label": "A", "text": "体积之比为2:1", "correct": true },
+        { "label": "B", "text": "分子数之比为1:2", "correct": false },
+        { "label": "C", "text": "密度之比为1:2", "correct": true },
+        { "label": "D", "text": "物质的量之比为1:2", "correct": false }
+      ]
+    }
+  ]
+}

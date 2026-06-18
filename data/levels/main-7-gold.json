@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "questId": "main-7-gold",
+    "title": "气体摩尔体积·NA推论",
+    "subtitle": "2个微卡点 · 逐一突破 · 通关积分 100分",
+    "course": 7,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": ["化学计量", "方程式系数", "同位素", "同分异构体", "酸元数"],
+    "totalStages": 2,
+    "activeStages": 2
+  },
+
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "化学计量全链条——方程式→Nₐ换算",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>从化学方程式出发，先确定各物质的<strong>计量数比</strong>，再按物质的量→质量/体积/粒子数的链条逐步换算——<strong>系数比错了全盘皆输</strong>。金属与酸反应时，化合价决定转移电子数，进而影响H₂产量。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰：</strong>光解0.02mol水，2H₂O→2H₂+O₂，水系数2氢气系数2，生成0.02mol H₂，标况体积=0.02×22.4=0.224L。</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ 0.02mol H₂标况体积=0.02×22.4=0.448L，不是0.224L！阿杰少乘了系数2（或者搞错了系数关系）。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 小美：0.04mol Na与水反应生成的H₂，比光解0.02mol水生成的H₂少。错误！2Na+2H₂O→H₂↑，0.04mol Na→0.02mol H₂；光解0.02mol水→0.02mol H₂，两者相等。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：化学计量换算「三阶链条」——先确定计量数比，再按n→m/V/N的链条换算，每一步都要检查单位",
+            "第二步：掌握四类常考换算模型——质量↔物质的量↔粒子数；气体体积↔物质的量（标况）；反应计量数比；金属化合价→电子转移→H₂体积",
+            "第三步：金属与酸反应核心——等物质的量时，Na/Mg/Al转移电子数比=1:2:3，生成H₂体积比=1:2:3"
+          ],
+          "table": {
+            "headers": ["金属", "化合价", "1mol金属转移电子", "生成H₂物质的量"],
+            "rows": [
+              ["Na", "+1", "1 mol e⁻", "0.5 mol H₂"],
+              ["Mg", "+2", "2 mol e⁻", "1 mol H₂"],
+              ["Al", "+3", "3 mol e⁻", "1.5 mol H₂"],
+              ["等物质的量时H₂体积比", "——", "1:2:3", "1:2:3"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>化学计量换算就像做蛋糕的配方——配方（化学方程式）写着：2个鸡蛋+1杯面粉→1个蛋糕。你拿了0.02个鸡蛋（已知量）→按比例→0.01个蛋糕（目标量）。不能跳过配方直接算——必须先看系数比！</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "利用太阳能分解制氢，若光解0.02mol水，下列说法正确的是（ ）",
+          "options": [
+            { "label": "A", "text": "可生成H₂的质量为0.02g", "correct": false },
+            { "label": "B", "text": "可生成H₂的原子数为2.408×10²³个", "correct": false },
+            { "label": "C", "text": "可生成H₂的体积为0.224L（标准状况）", "correct": false },
+            { "label": "D", "text": "生成H₂的量理论上等于0.04mol Na与水反应产生H₂的量", "correct": true }
+          ],
+          "explanation": "光解水2H₂O→2H₂+O₂，0.02mol水生成0.02mol H₂<br>A❌ m=0.02×2=0.04g<br>B❌ H原子数=0.02×2×6.02×10²³=2.408×10²²<br>C❌ V=0.02×22.4=0.448L<br>D✅ 0.04mol Na→0.02mol H₂，相等"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "多维综合对比——同位素·同分异构体·酸元数",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Nₐ计算中常将多个维度放在同一题中对比：<strong>同位素</strong>差异导致摩尔质量不同但质子数相同；<strong>同分异构体</strong>分子式相同键数相同；<strong>酸元数</strong>不同导致pH相同时浓度不同（一元酸浓度=c(H⁺)，二元酸浓度=½c(H⁺)）。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美：</strong>质量相同的H₂O和D₂O（重水）所含的原子数相同。H₂O和D₂O都是水，质量相同那原子数当然相同！</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ D是氘（²H），质量数2；H是氕（¹H），质量数1。M(H₂O)=18，M(D₂O)=20，质量相同时物质的量不同，原子数不同。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 阿杰：pH相同的盐酸和硫酸中，溶质的物质的量浓度相同。错误！HCl是一元强酸，H₂SO₄是二元强酸，pH相同时c(HCl)=c(H⁺)，c(H₂SO₄)=½c(H⁺)。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：同位素对比——质子数相同（化学性质相同），中子数不同（质量数不同），摩尔质量不同→等质量时物质的量不同",
+            "第二步：同分异构体对比——分子式相同，共价键数一般相同（乙醇和二甲醚 each 含8个共价键），物质的量相同时键数相同",
+            "第三步：酸元数对比——pH相同即c(H⁺)相同，一元强酸浓度=c(H⁺)，二元强酸浓度=½c(H⁺)"
+          ],
+          "table": {
+            "headers": ["对比维度", "关键结论", "高考陷阱"],
+            "rows": [
+              ["同位素（H₂O vs D₂O）", "质子数相同，中子数/摩尔质量不同", "等质量时物质的量不同→分子数不同"],
+              ["同分异构体", "分子式相同，共价键数一般相同", "等物质的量时键数相同"],
+              ["酸元数（HCl vs H₂SO₄）", "pH相同时浓度不同", "c(HCl)=c(H⁺)，c(H₂SO₄)=½c(H⁺)"],
+              ["等质量O₂和O₃", "氧原子总数相同→电子数相同", "容易忽略氧原子数相同"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>同位素就像双胞胎——长得像（化学性质相同），但体重不同（摩尔质量不同）。同样质量的双胞胎，体重轻的那个数量更多！同分异构体就像同样的乐高积木搭不同造型——用的积木块数相同（共价键数相同），但搭出来的样子不一样。酸元数就像发传单——HCl一个人发1张（1个H⁺），H₂SO₄一个人发2张（2个H⁺），要发的总数（pH）相同，需要的HCl人数是H₂SO₄的2倍！</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列说法正确的是（ ）",
+          "options": [
+            { "label": "A", "text": "质量相同的H₂O和D₂O（重水）所含的原子数相同", "correct": false },
+            { "label": "B", "text": "物质的量相同的CH₃CH₂OH和CH₃OCH₃所含共价键数相同", "correct": true },
+            { "label": "C", "text": "室温下，pH相同的盐酸和硫酸中，溶质的物质的量浓度相同", "correct": false },
+            { "label": "D", "text": "1mol重水与1mol水中，中子数比为2:1", "correct": false }
+          ],
+          "explanation": "A❌ M(H₂O)=18，M(D₂O)=20，等质量时n不同→原子数不同<br>B✅ 乙醇和二甲醚分子式均为C₂H₆O，每个分子均含8个共价键<br>C❌ pH相同→c(H⁺)相同，c(HCl)=c(H⁺)，c(H₂SO₄)=½c(H⁺)<br>D❌ 1mol D₂O中子数=10Nₐ，1mol H₂O中子数=8Nₐ，比例=5:4"
+        }
+      ]
+    }
+  ],
+
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "设Nₐ为阿伏加德罗常数的值。下列说法正确的是（ ）",
+      "options": [
+        { "label": "A", "text": "1mol H₂O和1mol D₂O所含质子数相同", "correct": true },
+        { "label": "B", "text": "等质量的O₂和O₃所含电子数相同", "correct": true },
+        { "label": "C", "text": "1mol乙烷和1mol乙烯所含化学键数相同", "correct": false },
+        { "label": "D", "text": "pH=2的盐酸和pH=2的硫酸，物质的量浓度相同", "correct": false }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "等物质的量的Na、Mg、Al分别与足量稀盐酸反应，产生H₂在标准状况下的体积比为（ ）",
+      "options": [
+        { "label": "A", "text": "1:1:1", "correct": false },
+        { "label": "B", "text": "1:2:3", "correct": true },
+        { "label": "C", "text": "3:2:1", "correct": false },
+        { "label": "D", "text": "2:3:6", "correct": false }
+      ]
+    },
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列说法正确的是（ ）",
+      "options": [
+        { "label": "A", "text": "同温同压下，相同体积的CO和CO₂所含氧原子数相同", "correct": false },
+        { "label": "B", "text": "1mol Na₂O₂与足量水反应，转移电子数为Nₐ", "correct": true },
+        { "label": "C", "text": "标准状况下，22.4L H₂O所含分子数为Nₐ", "correct": false },
+        { "label": "D", "text": "1mol He所含质子数为4Nₐ", "correct": false }
+      ]
+    }
+  ]
+}
