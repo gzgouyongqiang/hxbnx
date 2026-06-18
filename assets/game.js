@@ -463,6 +463,15 @@ const HXBNX_GAME = (function () {
       date: todayStr()
     };
 
+    // 同步更新 quizResults（供每日任务quiz3等检查）
+    if (!s.quizResults) s.quizResults = {};
+    s.quizResults[questId] = {
+      attempts: _questTotalWrong === 0 ? 1 : 2,
+      choices: [],
+      passed: true,
+      exp: points
+    };
+
     // Badge check
     var unlockedBadges = [];
     if (_questTotalWrong === 0 && s.questBadges['zero_error'] !== true) {
