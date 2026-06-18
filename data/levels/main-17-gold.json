@@ -10,9 +10,9 @@
     "knowledgeTags": [
       "O₃",
       "Cl₂",
+      "MnO",
       "H₂O",
-      "CaC",
-      "MnO"
+      "CaC"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -59,7 +59,7 @@
           "blockId": "card-5-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "D. 用排水法收集 Cl₂",
+          "question": "解析：饱和食盐水能吸收 HCl（HCl 极易溶于水），同时 Cl₂ 在饱和食盐水中的溶解度小（同离子效应）。NaOH 会吸收 Cl₂；NaHCO₃ 与 HCl 产生 CO₂ 引入新杂质；浓硫酸可干燥但不能除 HCl。",
           "options": [
             {
               "label": "D",
@@ -117,7 +117,7 @@
           "blockId": "card-6-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "D. 碘水是紫红色",
+          "question": "解析：Cl₂ 可置换出 Br₂（橙红色）和 I₂（紫红色）。A 错，橙红色为 Br₂，对应含 Br⁻；B 错，紫红色为 I₂，对应含 I⁻；C 错，Cl₂ 氧化后 Cl⁻ 不能置换出 Cl₂，且 Cl₂ 本身黄绿色在 CCl₄ 层，但原溶液含 Cl⁻ 不会有明显颜色变化。",
           "options": [
             {
               "label": "D",
@@ -140,7 +140,7 @@
       "stageId": "cert-5",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "D. 用排水法收集 Cl₂",
+      "question": "解析：饱和食盐水能吸收 HCl（HCl 极易溶于水），同时 Cl₂ 在饱和食盐水中的溶解度小（同离子效应）。NaOH 会吸收 Cl₂；NaHCO₃ 与 HCl 产生 CO₂ 引入新杂质；浓硫酸可干燥但不能除 HCl。",
       "options": [
         {
           "label": "D",
@@ -158,7 +158,7 @@
       "stageId": "cert-6",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "D. 碘水是紫红色",
+      "question": "解析：Cl₂ 可置换出 Br₂（橙红色）和 I₂（紫红色）。A 错，橙红色为 Br₂，对应含 Br⁻；B 错，紫红色为 I₂，对应含 I⁻；C 错，Cl₂ 氧化后 Cl⁻ 不能置换出 Cl₂，且 Cl₂ 本身黄绿色在 CCl₄ 层，但原溶液含 Cl⁻ 不会有明显颜色变化。",
       "options": [
         {
           "label": "D",

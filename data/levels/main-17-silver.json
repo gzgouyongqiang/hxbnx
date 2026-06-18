@@ -10,9 +10,9 @@
     "knowledgeTags": [
       "O₃",
       "Cl₂",
+      "MnO",
       "H₂O",
-      "CaC",
-      "MnO"
+      "CaC"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -59,7 +59,7 @@
           "blockId": "card-3-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "D. H₂",
+          "question": "解析：84 消毒液严禁与洁厕灵混用，否则会产生有毒 Cl₂。NaClO 有效杀菌消毒；见光或吸收 CO₂ 会分解失效，需避光密封保存。",
           "options": [
             {
               "label": "D",
@@ -117,7 +117,7 @@
           "blockId": "card-4-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "D. Cu + Cl₂ →点燃 Cu₂Cl₂",
+          "question": "解析：Cl₂ + 2Fe²⁺ → 2Cl⁻ + 2Fe³⁺，需遵循电荷守恒和质量守恒。A 未配平；C Cl⁻ 系数错误；D 溶液中不会生成 Fe(OH)₃。",
           "options": [
             {
               "label": "D",
@@ -140,7 +140,7 @@
       "stageId": "cert-3",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "D. H₂",
+      "question": "解析：84 消毒液严禁与洁厕灵混用，否则会产生有毒 Cl₂。NaClO 有效杀菌消毒；见光或吸收 CO₂ 会分解失效，需避光密封保存。",
       "options": [
         {
           "label": "D",
@@ -158,7 +158,7 @@
       "stageId": "cert-4",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "D. Cu + Cl₂ →点燃 Cu₂Cl₂",
+      "question": "解析：Cl₂ + 2Fe²⁺ → 2Cl⁻ + 2Fe³⁺，需遵循电荷守恒和质量守恒。A 未配平；C Cl⁻ 系数错误；D 溶液中不会生成 Fe(OH)₃。",
       "options": [
         {
           "label": "D",

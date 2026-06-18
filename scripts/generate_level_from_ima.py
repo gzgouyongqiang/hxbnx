@@ -244,14 +244,18 @@ def parse_microcard(content, card_num):
 
 def _parse_quiz_from_text(data, text):
     """从纯文本解析选择题（支持无换行格式）"""
-    # 提取题目（到第一个A.或A、或(A)之前）
-    q_match = re.search(r'(.+?)(?=[A-D][.．、]|\([A-D]\)|答案[：:]|$)', text)
+    # 提取题目：从开头到第一个 "A." / "A、" / "A．" 之前
+    # 先尝试匹配 "题N：" 或 "题N." 开头的格式
+    q_match = re.search(r'(题\d+[：:.].+?)(?=A[.．、]|$)', text)
+    if not q_match:
+        # 兜底：从开头到第一个A.之前
+        q_match = re.search(r'(.+?)(?=A[.．、]|$)', text)
     if q_match:
         data["quiz_question"] = q_match.group(1).strip()
 
     # 提取选项 A/B/C/D
     options = []
-    for match in re.finditer(r'([A-D])[.．、]\s*(.+?)(?=(?:[A-D][.．、])|答案[：:]|【|$)', text):
+    for match in re.finditer(r'([A-D])[.．、]\s*(.+?)(?=(?:[A-D][.．、])|答案[：:]|$)', text):
         label = match.group(1)
         text_opt = match.group(2).strip()
         # 清理标记
