@@ -310,7 +310,7 @@
       "nextQuest": "main-9-silver",
       "baseScore": 10,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-9-bronze.json"
     },
     "main-9-silver": {
       "type": "main",
@@ -322,7 +322,7 @@
       "nextQuest": "main-9-gold",
       "baseScore": 50,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-9-silver.json"
     },
     "main-9-gold": {
       "type": "main",
@@ -334,7 +334,7 @@
       "nextQuest": "main-15-bronze",
       "baseScore": 100,
       "badgeTriggers": [],
-      "contentFile": null
+      "contentFile": "data/levels/main-9-gold.json"
     },
     "main-15-bronze": {
       "type": "main",
