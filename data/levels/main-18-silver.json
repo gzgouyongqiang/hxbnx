@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "questId": "main-18-silver",
+    "title": "卤族元素拓展·卤代烃检验",
+    "subtitle": "🥈 银牌关卡 · 2个微卡点 · 通关积分 50分",
+    "course": 18,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": [
+      "Cl",
+      "Br",
+      "AgN",
+      "O₃",
+      "I"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "卤化银沉淀——颜色与溶解性鉴别",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>AgCl（白）↓、AgBr（浅黄）↓、AgI（黄）↓均不溶于稀硝酸；AgF无色可溶。沉淀颜色+是否溶于稀硝酸是卤素离子鉴别的核心。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰看到白色沉淀就认定是AgCl，忘了Ag₂SO₄、Ag₂CO₃也是白色——没加硝酸验证溶解性。小明把AgBr的浅黄色和AgI的黄色搞混，考试时对着沉淀纠结半天。小美误以为AgF也是不溶沉淀，其实AgF易溶于水，根本看不到沉淀。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：排除干扰——加稀硝酸。不溶于稀硝酸的白色/浅黄/黄色沉淀才是卤化银（Ag₂CO₃、Ag₃PO₄等遇酸溶解）。",
+            "第二步：看颜色辨卤素：沉淀AgClAgBrAgI颜色白色浅黄色黄色",
+            "第三步：记住例外——AgF无色可溶，F⁻不能用AgNO₃沉淀法检验（需用CaCl₂生成CaF₂↓白）。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>卤化银颜色就像\"交通灯升级版\"：\n白灯（AgCl）→ 黄灯浅（AgBr）→ 黄灯深（AgI）\n越往下（F→Cl→Br→I），沉淀颜色越深，溶解度越小。\n口诀：氟溶氯白溴浅黄，碘化银黄亮堂堂。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目：某无色溶液中加入AgNO₃溶液和稀硝酸，产生浅黄色沉淀，则该溶液中一定含有的离子是？",
+          "options": [
+            {
+              "label": "A",
+              "text": "Cl⁻",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Br⁻",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "I⁻",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "CO₃²⁻",
+              "correct": false
+            }
+          ],
+          "explanation": "解析：浅黄色沉淀且不溶于稀硝酸→AgBr，对应Br⁻。AgCl白色，AgI黄色，CO₃²⁻遇稀硝酸溶解不产生沉淀。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2024·重庆卷卤素鉴别相关题、人教版必修一卤素离子检验实验</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "卤素单质的歧化反应——温度决定产物",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Cl₂、Br₂、I₂与碱反应时，低温生成X⁻+XO⁻（次卤酸盐），加热生成X⁻+XO₃⁻（卤酸盐）。温度一变，产物就变。</p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p>阿杰把Cl₂通入冷的NaOH溶液，以为得到KClO₃，实际拿到的是NaCl和NaClO（漂白液）。小明加热条件下把Cl₂通入KOH，以为制漂白液，结果得到KClO₃（氯酸钾），反应物没错但温度条件没控制好。小美考试时把冷/热碱的产物写反了，被扣了送分题。</p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：判断温度——常温/冷→次卤酸盐；加热/热→卤酸盐。",
+            "第二步：写方程式（以Cl₂为例）：冷碱：Cl₂ + 2NaOH → NaCl + NaClO + H₂O（漂白液）热碱：3Cl₂ + 6KOH → 5KCl + KClO₃ + 3H₂O（氯酸钾）",
+            "第三步：延伸规律——Br₂、I₂同样适用，但I₂与碱反应产物更复杂（IO₃⁻为主，且歧化更彻底）。"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>卤素歧化就像\"做菜\"：\n冷锅（冷碱）→清炒（次氯酸盐，温和氧化性）\n热锅（热碱）→爆炒（氯酸盐，强氧化性）\n温度越高，卤素被氧化到的价态越高（+1→+5）。\n口诀：冷次热氯，温度是舵；冷出漂白，热出火药。</p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "题目：工业上用Cl₂和石灰乳（Ca(OH)₂）生产漂白粉，反应温度应控制在？",
+          "options": [
+            {
+              "label": "A",
+              "text": "高温加热",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "常温或低温",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "0℃以下冷冻",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "温度越高越好",
+              "correct": false
+            }
+          ],
+          "explanation": "解析：漂白粉有效成分为Ca(ClO)₂（次氯酸钙），需在常温或低温下反应。若加热则生成Ca(ClO₃)₂（氯酸钙），失去漂白作用。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2007·四川卷（制取氯酸钾和次氯酸钠比较）、人教版必修一氯气性质</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目：某无色溶液中加入AgNO₃溶液和稀硝酸，产生浅黄色沉淀，则该溶液中一定含有的离子是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cl⁻",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Br⁻",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "I⁻",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-4",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "题目：工业上用Cl₂和石灰乳（Ca(OH)₂）生产漂白粉，反应温度应控制在？",
+      "options": [
+        {
+          "label": "A",
+          "text": "高温加热",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "常温或低温",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "0℃以下冷冻",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
