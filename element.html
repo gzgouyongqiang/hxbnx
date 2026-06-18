@@ -277,11 +277,11 @@
     <div class="container">
         <!-- 抽卡区 -->
         <div class="draw-section">
-            <div class="draw-title">可用抽卡次数</div>
-            <div class="draw-count" id="draw-count">0 <span>次</span></div>
+            <div class="draw-title">可用学分</div>
+            <div class="draw-count" id="draw-count">0 <span>学分</span></div>
             <div class="draw-info-row" id="draw-info-row"></div>
-            <button class="draw-btn" id="draw-btn" onclick="doDraw()" disabled>🧪 开启元素盲盒</button>
-            <div class="draw-hint">通关练功房答题 +1次 | 每日首次访问免费 +1次</div>
+            <button class="draw-btn" id="draw-btn" onclick="doDraw()" disabled>🧪 开启元素盲盒（50学分）</button>
+            <div class="draw-hint">答题通关可获得学分 | 每日免费抽卡次数用完可消耗学分继续抽</div>
         </div>
 
         <!-- 稀有度统计 -->
@@ -403,21 +403,24 @@
     }
 
     function doDraw() {
-        // 防止重复点击
         if (_isDrawing) return;
 
-        var drawCount = HXBNX_GAME.getElementDrawCount();
-        if (drawCount <= 0) return;
+        var s = HXBNX_GAME.getStatus().state;
+        if ((s.score || 0) < 50) {
+            if (typeof showToast === 'function') showToast('❌ 学分不足，需要50学分', 'error');
+            else alert('学分不足，需要50学分');
+            return;
+        }
 
         _isDrawing = true;
 
-        var s = HXBNX_GAME.getStatus().state;
         var pity = s.elemPity || 0;
         pity++;
 
         var stars = weightedRandomStar(pity);
         var elem = pickRandomElement(stars);
 
+        // drawElementCard 内部会扣50学分
         var result = HXBNX_GAME.drawElementCard(elem.sym, elem.stars);
 
         if (!result.ok) {
@@ -425,7 +428,6 @@
             return;
         }
 
-        // 保存保底计数
         s.elemPity = (result.isNew || stars >= 3) ? 0 : pity;
         HXBNX_GAME._saveState(s);
 
@@ -551,14 +553,14 @@
     /* ===== 渲染（不再调用 claimFreeDraw） ===== */
     function renderAll() {
         var collected = HXBNX_GAME.getElementCards();
-        var drawCount = HXBNX_GAME.getElementDrawCount();
         var s = HXBNX_GAME.getStatus().state;
         var pity = s.elemPity || 0;
         var elemEssence = s.elemEssence || 0;
+        var currentScore = s.score || 0;
 
         // 抽卡区
-        document.getElementById('draw-count').innerHTML = drawCount + ' <span>次</span>';
-        document.getElementById('draw-btn').disabled = drawCount <= 0;
+        document.getElementById('draw-count').innerHTML = currentScore + ' <span>学分</span>';
+        document.getElementById('draw-btn').disabled = currentScore < 50;
 
         // 抽卡信息行
         var infoHtml = '';

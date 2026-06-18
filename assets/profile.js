@@ -18,6 +18,9 @@
     renderHero();
     renderLevelTimeline();
     renderAchievements();
+    renderDailyQuests();
+    renderBank();
+    renderLeaderboard();
 
     // 加载徽章数据
     fetch("data/badges.json").then(function(r){return r.json()}).then(function(data){
@@ -46,6 +49,10 @@
     renderLevelTimeline();
     renderAchievements();
     renderBadges();
+    renderCards();
+    renderDailyQuests();
+    renderBank();
+    renderLeaderboard();
   }
 
   // ===== 粒子背景 =====
@@ -509,6 +516,94 @@
   window.closeDrawModal = function(){
     document.getElementById("drawModal").classList.remove("active");
   };
+
+  // ===== v3: 每日任务 =====
+  function renderDailyQuests(){
+    var quests = G.getDailyQuestStatus();
+    var list = document.getElementById("dailyQuestList");
+    if(!list || !quests) return;
+    var html = "";
+    for(var i=0;i<quests.length;i++){
+      var q = quests[i];
+      var cls = "daily-quest-item" + (q.claimed ? " claimed" : "");
+      html += "<div class=\"" + cls + "\">";
+      html += "<div class=\"daily-quest-icon\">" + q.icon + "</div>";
+      html += "<div class=\"daily-quest-info\">";
+      html += "<div class=\"daily-quest-name\">" + q.name + "</div>";
+      html += "<div class=\"daily-quest-desc\">" + q.desc + "</div>";
+      html += "<div class=\"daily-quest-reward\">🎫 +" + q.reward + " 学分</div>";
+      html += "</div>";
+      if(q.claimed){
+        html += "<button class=\"daily-quest-btn done\" disabled>✓ 已领</button>";
+      } else {
+        html += "<button class=\"daily-quest-btn claim\" onclick=\"claimQuest('" + q.id + "')\">领取</button>";
+      }
+      html += "</div>";
+    }
+    list.innerHTML = html;
+  }
+
+  window.claimQuest = function(questId){
+    var result = G.claimDailyQuest(questId);
+    if(result.error){
+      G.toaster(result.error, "error");
+      return;
+    }
+    G.toaster("🎁 <strong>完成任务！</strong> +" + result.reward + " 学分", "success");
+    state = G.getStatus().state;
+    renderAll();
+  };
+
+  // ===== v3: 学分银行 =====
+  function renderBank(){
+    var info = G.bankGetInfo();
+    var debtInfo = G.debtGetInfo();
+    document.getElementById("bankInfoRow").innerHTML =
+      '<div class="bank-info-card"><div class="bank-info-num">' + info.score + '</div><div class="bank-info-label">可用学分</div></div>' +
+      '<div class="bank-info-card"><div class="bank-info-num" style="color:#4ade80">' + info.bank + '</div><div class="bank-info-label">银行存款</div></div>' +
+      '<div class="bank-info-card"><div class="bank-info-num" style="color:' + (debtInfo.debt > 0 ? '#f87171' : '#64748b') + '">' + debtInfo.debt + '</div><div class="bank-info-label">欠款</div></div>';
+
+    var actionsHtml = "";
+    if(debtInfo.debt > 0){
+      actionsHtml += '<button class="bank-btn debt" onclick="debtRepay()">💳 答题还债中... 已还清请刷新</button>';
+    } else {
+      actionsHtml += '<button class="bank-btn deposit" onclick="bankDeposit()">💰 存入 100</button>';
+      actionsHtml += '<button class="bank-btn withdraw" onclick="bankWithdraw()">🏧 取出 100</button>';
+      actionsHtml += '<button class="bank-btn debt" onclick="debtBorrow()">💳 赊账</button>';
+    }
+    document.getElementById("bankActions").innerHTML = actionsHtml;
+  }
+
+  window.bankDeposit = function(){
+    var r = G.bankDeposit(100);
+    if(r.error){ G.toaster(r.error, "error"); return; }
+    G.toaster("🏦 <strong>存入 100 学分</strong>", "success");
+    renderAll();
+  };
+
+  window.bankWithdraw = function(){
+    var r = G.bankWithdraw(100);
+    if(r.error){ G.toaster(r.error, "error"); return; }
+    G.toaster("🏦 <strong>取出 100 学分</strong>", "info");
+    renderAll();
+  };
+
+  window.debtBorrow = function(){
+    var r = G.debtBorrow(200);
+    if(r.error){ G.toaster(r.error, "error"); return; }
+    G.toaster("💳 <strong>赊账 200 学分</strong> 24小时内答题还清", "warning");
+    renderAll();
+  };
+
+  // ===== v3: 本地排行榜 =====
+  function renderLeaderboard(){
+    var lb = G.getLeaderboard();
+    document.getElementById("leaderboardGrid").innerHTML =
+      '<div class="leaderboard-item"><div class="leaderboard-stat-num gold">' + lb.weeklyScore + '</div><div class="leaderboard-stat-label">本周学分</div></div>' +
+      '<div class="leaderboard-item"><div class="leaderboard-stat-num purple">' + lb.maxCombo + '</div><div class="leaderboard-stat-label">最高连对</div></div>' +
+      '<div class="leaderboard-item"><div class="leaderboard-stat-num green">' + lb.score + '</div><div class="leaderboard-stat-label">当前学分</div></div>' +
+      '<div class="leaderboard-item"><div class="leaderboard-stat-num blue">LV.' + lb.level.lv + ' ' + lb.level.name + '</div><div class="leaderboard-stat-label">修为境界</div></div>';
+  }
 
   // ===== 启动 =====
   init();

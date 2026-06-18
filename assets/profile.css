@@ -279,3 +279,47 @@ body{
   .profile-level-node{width:30px;height:30px;font-size:10px}
 }
 
+/* ===== v3: 每日任务 ===== */
+.profile-daily-section{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px}
+.profile-daily-title{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.daily-quest-list{display:flex;flex-direction:column;gap:10px}
+.daily-quest-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:all .2s}
+.daily-quest-item.claimed{opacity:.5;border-color:rgba(74,222,128,.2)}
+.daily-quest-icon{font-size:20px;flex-shrink:0}
+.daily-quest-info{flex:1}
+.daily-quest-name{font-size:13px;font-weight:600;color:var(--text)}
+.daily-quest-desc{font-size:10px;color:var(--text-dim);margin-top:2px}
+.daily-quest-reward{font-size:10px;color:var(--gold);margin-top:2px}
+.daily-quest-btn{padding:6px 16px;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;flex-shrink:0}
+.daily-quest-btn.claim{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:#1a1a2e}
+.daily-quest-btn.claim:hover{transform:translateY(-1px);box-shadow:0 2px 12px rgba(240,192,64,.3)}
+.daily-quest-btn.done{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.2);cursor:default}
+.daily-quest-btn.locked{background:rgba(100,116,139,.1);color:#64748b;cursor:not-allowed}
+
+/* ===== v3: 学分银行 ===== */
+.profile-bank-section{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px}
+.bank-title{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.bank-info-row{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.bank-info-card{flex:1;min-width:80px;text-align:center;padding:10px;background:var(--card);border-radius:8px;border:1px solid var(--border)}
+.bank-info-num{font-size:18px;font-weight:800;color:var(--gold)}
+.bank-info-label{font-size:10px;color:var(--text-dim);margin-top:2px}
+.bank-actions{display:flex;gap:10px;flex-wrap:wrap}
+.bank-btn{flex:1;min-width:90px;padding:8px 12px;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.bank-btn.deposit{background:linear-gradient(135deg,#059669,#047857);color:#fff}
+.bank-btn.withdraw{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff}
+.bank-btn.debt{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;border:1px solid rgba(220,38,38,.3)}
+.bank-btn:hover{transform:translateY(-1px)}
+.bank-hint{font-size:10px;color:var(--text-dim);margin-top:8px;line-height:1.6}
+
+/* ===== v3: 本地排行榜 ===== */
+.profile-leaderboard{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px}
+.leaderboard-title{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.leaderboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.leaderboard-item{text-align:center;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.leaderboard-stat-num{font-size:20px;font-weight:800}
+.leaderboard-stat-num.gold{color:var(--gold)}
+.leaderboard-stat-num.purple{color:var(--purple)}
+.leaderboard-stat-num.green{color:#4ade80}
+.leaderboard-stat-num.blue{color:#60a5fa}
+.leaderboard-stat-label{font-size:10px;color:var(--text-dim);margin-top:4px}
+
