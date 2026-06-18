@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "questId": "main-8-bronze",
+    "title": "物质的量浓度·溶液配制",
+    "subtitle": "2个微卡点 · 逐一突破 · 通关积分 10分",
+    "course": 8,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": ["容量瓶规格", "就近选大", "定容误差", "俯视偏高", "仰视偏低"],
+    "totalStages": 2,
+    "activeStages": 2
+  },
+
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "容量瓶规格——「就近选大」定乾坤",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>容量瓶只有<strong>5个固定规格</strong>：50、100、250、500、1000 mL——<strong>没有中间规格</strong>（如230 mL、480 mL）。需要配制某体积溶液时，按「<strong>就近选大</strong>」原则选规格，并按所选规格体积计算溶质质量。核心公式：<strong>m(溶质) = c × V(所选规格/L) × M</strong>。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰：</strong>老师让我用无水 Na₂CO₃ 配制 230 mL 0.1000 mol/L 溶液，实验室没 230 mL 容量瓶，那我用量筒量 230 mL 水，在烧杯里配到 230 mL 就行了！</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ 错！容量瓶没有 230 mL 规格。正确做法：<strong>选 250 mL 容量瓶</strong>，按 0.25 L 计算所需 Na₂CO₃ 质量 = 0.1000 × 0.25 × 106 = 2.65 g。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 同理：需要 480 mL 溶液→ 选 500 mL 容量瓶，按 0.50 L 算料；需要 80 mL 溶液→ 选 100 mL 容量瓶，按 0.10 L 算料。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：背下5个固定规格——50、100、250、500、1000 mL（没有150、230、480、750等中间规格）",
+            "第二步：「就近选大」原则——所需体积介于两个规格之间时，选「稍大」的规格（如230 mL选250 mL）",
+            "第三步：按所选规格体积计算溶质——m = c × V(所选规格/L) × M，V用所选规格，不是原需求体积",
+            "第四步：常见例外——所需体积恰好等于某规格（如250 mL），直接选该规格；所需体积超过最大规格（如1200 mL），用1000 mL容量瓶多次配制"
+          ],
+          "table": {
+            "headers": ["需要体积", "应选容量瓶规格", "计算用V"],
+            "rows": [
+              ["80 mL", "100 mL", "0.10 L"],
+              ["230 mL", "250 mL", "0.25 L"],
+              ["480 mL", "500 mL", "0.50 L"],
+              ["250 mL", "250 mL", "0.25 L"],
+              ["800 mL", "1000 mL", "1.00 L"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>容量瓶规格就像买运动鞋——店员只有 41、42、43 码，没有 42.5 码。你平时穿 42 码，要找 42.5 码的鞋怎么办？——<strong>买 43 码（就近选大）</strong>！你不能因为没 42.5 码就不穿鞋，也不能硬塞进 41 码（太小穿不进）。容量瓶也是这道理：没有 230 mL 规格就选 250 mL，按 250 mL 算料。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "用无水 Na₂CO₃ 固体配制 230 mL 0.1000 mol/L 的溶液。下列说法正确的是（ ）",
+          "options": [
+            { "label": "A", "text": "应选用 230 mL 容量瓶，按 230 mL 计算 Na₂CO₃ 质量", "correct": false },
+            { "label": "B", "text": "应选用 250 mL 容量瓶，按 250 mL 计算 Na₂CO₃ 质量 = 2.65 g", "correct": true },
+            { "label": "C", "text": "可选用 500 mL 容量瓶，按 500 mL 计算 Na₂CO₃ 质量 = 5.30 g", "correct": false },
+            { "label": "D", "text": "没有 230 mL 容量瓶，可直接用 250 mL 烧杯配制", "correct": false }
+          ],
+          "explanation": "A❌ 没有 230 mL 容量瓶规格<br>B✅ 就近选大原则，m(Na₂CO₃) = 0.1000 × 0.25 × 106 = 2.65 g<br>C❌ 500 mL 不是「就近选大」，是「选太大」——原料浪费，浓度仍按目标配<br>D❌ 烧杯无法精确配制一定物质的量浓度"
+        }
+      ]
+    },
+
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "定容误差——俯视偏高仰视低",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>定容读数<strong>必须平视</strong>——视线与刻度线、凹液面最低处水平。<strong>俯视</strong>时视线斜向下，看到凹液面已到刻度线，实际液面在刻度线<strong>下方</strong>，V 偏小 → <strong>c 偏高</strong>；<strong>仰视</strong>时视线斜向上，看到凹液面已到刻度线，实际液面在刻度线<strong>上方</strong>，V 偏大 → <strong>c 偏低</strong>。口诀：<strong>俯高仰低</strong>。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰：</strong>定容时我特别认真，弯下腰俯视容量瓶刻度线，看到凹液面正好与刻度线相切，心想这下够准了！结果实验报告老师批注：浓度偏高。</p><p style='margin-top:8px;color:var(--red);font-size:13.5px'>❌ 俯视时视线斜向下 → 看到凹液面已到刻度线，但实际液面在刻度线<strong>下方</strong>，V 偏小 → c = n/V → <strong>c 偏高</strong>！</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 反之，仰视时视线斜向上 → 实际液面在刻度线上方，V 偏大 → <strong>c 偏低</strong>。</p><p style='margin-top:6px;color:var(--red);font-size:13.5px'>❌ 正确操作：<strong>平视</strong>——视线与刻度线、凹液面最低处保持水平，读数才准。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "第一步：判断视线方向——平视（✅正确）/ 俯视（视线斜向下）/ 仰视（视线斜向上）",
+            "第二步：判断实际液面与刻度线的关系——俯视时看到的「液面」其实是上方液面，实际液面在刻度线下方；仰视反之",
+            "第三步：判断V的变化——俯视→V偏小；仰视→V偏大",
+            "第四步：由c = n/V（n不变）推导c——V偏小→c偏高；V偏大→c偏低。口诀：「俯高仰低」"
+          ],
+          "table": {
+            "headers": ["视线方向", "看到的现象", "实际液面位置", "对V影响", "对c影响"],
+            "rows": [
+              ["平视", "凹液面与刻度线相切", "恰好在刻度线", "准确", "准确 ✅"],
+              ["俯视", "液面已到刻度线", "在刻度线下方", "V偏小", "c偏高 🔥"],
+              ["仰视", "液面已到刻度线", "在刻度线上方", "V偏大", "c偏低 🔥"]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>定容读数就像看透明水杯的「满杯线」——你俯视水杯（低头往下看），感觉水已经到线了，但其实水面还差一截，<strong>V 偏小</strong>，配出的溶液浓度<strong>偏高</strong>。反过来仰视（从下往上看），水还没到线就以为到了，结果加多了水，<strong>V 偏大</strong>，配出的溶液浓度<strong>偏低</strong>。所以一定要<strong>平视</strong>——眼睛和刻度线齐平！</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "用无水 Na₂CO₃ 固体配制 250 mL 0.1000 mol/L 溶液，定容时仰视容量瓶刻度线，所配溶液浓度将（ ）",
+          "options": [
+            { "label": "A", "text": "偏高", "correct": false },
+            { "label": "B", "text": "偏低", "correct": true },
+            { "label": "C", "text": "无影响", "correct": false },
+            { "label": "D", "text": "无法判断", "correct": false }
+          ],
+          "explanation": "仰视 → 实际液面在刻度线上方 → V 偏大 → c = n/V → <strong>c 偏低</strong> ✅"
+        }
+      ]
+    }
+  ],
+
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "实验室需要配制 480 mL 0.2 mol/L CuSO₄ 溶液，下列说法正确的是（ ）",
+      "options": [
+        { "label": "A", "text": "应选用 480 mL 容量瓶", "correct": false },
+        { "label": "B", "text": "需称取 CuSO₄·5H₂O 固体 25.0 g", "correct": true },
+        { "label": "C", "text": "称量时，将 CuSO₄·5H₂O 固体直接放在托盘上", "correct": false },
+        { "label": "D", "text": "定容时，若加水超过刻度线，应立即吸出多余的水", "correct": false }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "定容时俯视容量瓶刻度线，则所配溶液浓度（ ）",
+      "options": [
+        { "label": "A", "text": "偏高", "correct": true },
+        { "label": "B", "text": "偏低", "correct": false },
+        { "label": "C", "text": "不变", "correct": false },
+        { "label": "D", "text": "无法判断", "correct": false }
+      ]
+    }
+  ]
+}
