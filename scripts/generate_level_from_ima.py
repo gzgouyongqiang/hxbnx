@@ -18,6 +18,58 @@
     - Python 3.8+
     - 已配置 ~/.config/ima/client_id 和 api_key
     - 已配置 GitHub Token 在环境变量 GITHUB_TOKEN 中
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 历史错误清单 & 防护机制（务必阅读，避免重复犯错）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【错误1】ima返回内容格式不统一（有【】/无【】、有换行/无换行）
+  → 症状：章节标记无法识别，内容全部堆在title里，blocks全空
+  → 防护：parse_microcard() 自动检测是否有【】标记，两种格式都支持
+  → 校验：标题长度>60字符时报错
+
+【错误2】"同类自测"包含多道题，选项混在一起（8个选项A/B/C/D/A/B/C/D）
+  → 症状：quiz选项数≠4，label重复，没有正确答案
+  → 防护：_parse_quiz_from_text() 检测多题只保留第一道，选项去重
+  → 校验：选项数≠4报错，label重复报错，无正确答案报错
+
+【错误3】certQuiz只复制了3个选项（缺D），或正确答案标记错误
+  → 症状：通关考题选项不全，或没有可选的正确答案
+  → 防护：generate_level_json() cert_options[:4]保留最多4个选项
+  → 校验：certQuiz选项数≠4报错，无正确答案报错
+
+【错误4】关卡链断裂（nextQuest指向不存在的关卡）
+  → 症状：网站上关卡显示不全，后续关卡无法渲染
+  → 防护：update_quests_json() 遍历检查nextQuest指向的关卡是否存在
+  → 校验：自动修复为null并提示
+
+【错误5】微卡点不足6个时分配不合理
+  → 症状：高难度关卡（金牌）内容太少
+  → 防护：分配逻辑优先把剩余微卡点放入金牌关
+
+【错误6】解析文本混入多道题的解析，导致过长
+  → 症状：explanation包含其他题目的答案和解析
+  → 防护：多题拆分只保留第一道的解析
+  → 校验：解析长度>500字符时警告
+
+【错误7】选项文本中包含注释（如"—— 应使用NaHCO₃"）
+  → 症状：选项显示混乱，包含不应该出现的注释文字
+  → 防护：ima笔记中应避免在选项后加注释，注释应放在解析中
+  → 校验：选项文本长度>80字符时警告
+
+【错误8】题目编号前缀混乱（"题4："、"题目1："等）
+  → 症状：题目显示不统一，影响美观
+  → 防护：生成时自动去掉"题N："前缀，统一格式
+  → 校验：题目包含"题N："或"题目N："时警告
+
+【错误9】ima凭证丢失导致API调用失败
+  → 症状：脚本运行时401 Unauthorized
+  → 防护：脚本开头检查凭证，缺失时自动从配置文件读取
+
+【错误10】GitHub Token缺失导致推送失败
+  → 症状：git push时认证失败
+  → 防护：脚本检查GITHUB_TOKEN环境变量，缺失时提示
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
 import json
@@ -498,40 +550,62 @@ def generate_level_json(course_num, tier, card_indices, cards_data, all_cards):
     return level_json
 
 def validate_level_json(level_json, course_num, tier):
-    """生成后自动校验关卡JSON，发现问题时警告"""
+    """生成后自动校验关卡JSON，发现问题时警告
+
+    校验规则（基于历史错误清单）：
+    【错误1】ima格式不统一 → 标题长度>60报错
+    【错误2】多题混在一起 → 选项数≠4报错，label重复报错
+    【错误3】certQuiz缺选项/答案错 → 选项数≠4报错，无正确答案报错
+    【错误4】关卡链断裂 → 在update_quests_json中处理
+    【错误5】微卡点分配不合理 → 在分配逻辑中处理
+    【错误6】解析混入多题 → 解析长度>500警告
+    【错误7】选项含注释 → 选项文本>80警告
+    【错误8】题目前缀混乱 → 含"题N："或"题目N："警告
+    """
     errors = []
     warnings = []
     quest_id = level_json["meta"]["questId"]
 
-    # 1. 检查每个quiz的选项数是否为4（ABCD各一个）
+    # 1. 检查每个quiz
     for stage in level_json.get("stages", []):
         for block in stage.get("blocks", []):
             if block.get("type") == "quiz":
                 opts = block.get("options", [])
                 labels = [o["label"] for o in opts]
-                # 检查选项数
+
+                # 【错误2】选项数检查
                 if len(opts) != 4:
                     errors.append(f"{block['blockId']}: 选项数={len(opts)}（应为4个ABCD）")
-                # 检查是否有重复label
+                # 【错误2】label重复检查
                 if len(labels) != len(set(labels)):
                     dup = [l for l in labels if labels.count(l) > 1]
                     errors.append(f"{block['blockId']}: 选项label重复 {dup}")
-                # 检查是否有且仅有一个correct
+                # 【错误2/3】正确答案检查
                 correct_count = sum(1 for o in opts if o.get("correct"))
                 if correct_count == 0:
                     errors.append(f"{block['blockId']}: 没有正确答案！")
                 elif correct_count > 1:
                     warnings.append(f"{block['blockId']}: 有{correct_count}个正确答案（多选题？）")
-                # 检查题目是否过长（可能混入多题）
+
+                # 【错误2】题目长度检查（混入多题）
                 q = block.get("question", "")
                 if len(q) > 200:
                     warnings.append(f"{block['blockId']}: 题目长度{len(q)}字符，可能混入多题")
-                # 检查解析是否过长
+                # 【错误8】题目前缀检查
+                if re.search(r'题\d+[：:.]|题目\d+[：:.]', q):
+                    warnings.append(f"{block['blockId']}: 题目包含编号前缀（题N：/题目N：），建议去掉")
+
+                # 【错误6】解析长度检查
                 exp = block.get("explanation", "")
                 if len(exp) > 500:
                     warnings.append(f"{block['blockId']}: 解析长度{len(exp)}字符，可能混入多题解析")
 
-    # 2. 检查certQuiz
+                # 【错误7】选项文本长度检查（含注释）
+                for opt in opts:
+                    if len(opt.get("text", "")) > 80:
+                        warnings.append(f"{block['blockId']}: 选项{opt['label']}文本过长({len(opt['text'])}字符)，可能含注释")
+
+    # 2. 检查certQuiz 【错误3】
     for cq in level_json.get("certQuiz", []):
         opts = cq.get("options", [])
         labels = [o["label"] for o in opts]
@@ -543,22 +617,25 @@ def validate_level_json(level_json, course_num, tier):
         correct_count = sum(1 for o in opts if o.get("correct"))
         if correct_count == 0:
             errors.append(f"{cq['stageId']}: 通关考题没有正确答案！")
+        # 【错误8】题目前缀检查
+        q = cq.get("question", "")
+        if re.search(r'题\d+[：:.]|题目\d+[：:.]', q):
+            warnings.append(f"{cq['stageId']}: 通关考题包含编号前缀，建议去掉")
 
-    # 3. 检查每个card的title是否过长（可能解析失败，整段堆在title里）
+    # 3. 检查微卡点 【错误1】
     for stage in level_json.get("stages", []):
         for block in stage.get("blocks", []):
             if block.get("type") == "microcard":
                 title = block.get("title", "")
                 if len(title) > 60:
                     errors.append(f"{block['blockId']}: 标题过长({len(title)}字符)，可能解析失败")
-                # 检查secret/path/analogy是否为空
                 has_content = False
                 for b in stage.get("blocks", []):
                     if b.get("type") in ("secret", "path", "analogy", "quiz"):
                         has_content = True
                         break
                 if not has_content:
-                    errors.append(f"{block['blockId']}: 微卡点没有任何内容block（secret/path/analogy/quiz全空）")
+                    errors.append(f"{block['blockId']}: 微卡点没有任何内容block")
 
     # 4. 输出结果
     if errors:
