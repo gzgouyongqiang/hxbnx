@@ -63,7 +63,7 @@
           "options": [
             {
               "label": "A",
-              "text": "应先通入CO₂，再通入NH₃  —— 应反过来的",
+              "text": "应先通入CO₂，再通入NH₃",
               "correct": false
             },
             {
@@ -73,16 +73,16 @@
             },
             {
               "label": "C",
-              "text": "CO₂溶解度大于NH₃  —— NH₃溶解度远大于CO₂",
+              "text": "CO₂溶解度大于NH₃",
               "correct": false
             },
             {
               "label": "D",
-              "text": "反应中NaHCO₃溶解度最大  —— NaHCO₃溶解度较小，所以先析出",
+              "text": "反应中NaHCO₃溶解度最大",
               "correct": false
             }
           ],
-          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·广东卷·第1题A选项（侯氏制碱法先通NH₃再通CO₂✅）</span>"
+          "explanation": "<br><span style=\"color:var(--accent);font-size:13px\">A. 应反过来的；C. NH₃溶解度远大于CO₂；D. NaHCO₃溶解度较小，所以先析出</span><br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·广东卷·第1题A选项（侯氏制碱法先通NH₃再通CO₂✅）</span>"
         }
       ]
     },
@@ -146,11 +146,11 @@
             },
             {
               "label": "D",
-              "text": "氨碱法的原料利用率高于侯氏制碱法  —— 侯氏制碱法原料利用率更高",
+              "text": "氨碱法的原料利用率高于侯氏制碱法",
               "correct": true
             }
           ],
-          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·广东卷·第1题D选项（与氨碱法相比，原料利用率更低❌）2024·全国卷·第2题（侯氏制碱法与氨碱法副产物对比）</span>"
+          "explanation": "<br><span style=\"color:var(--accent);font-size:13px\">D. 侯氏制碱法原料利用率更高</span><br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·广东卷·第1题D选项（与氨碱法相比，原料利用率更低❌）2024·全国卷·第2题（侯氏制碱法与氨碱法副产物对比）</span>"
         }
       ]
     }

@@ -73,7 +73,7 @@
             },
             {
               "label": "C",
-              "text": "氨碱法的副产物CaCl₂可用作氮肥  —— CaCl₂不含氮元素，不能作氮肥，是废渣",
+              "text": "氨碱法的副产物CaCl₂可用作氮肥",
               "correct": true
             },
             {
@@ -82,7 +82,7 @@
               "correct": false
             }
           ],
-          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2023·江苏卷·第3题（氨碱法反应原理和副产物）</span>"
+          "explanation": "<br><span style=\"color:var(--accent);font-size:13px\">C. CaCl₂不含氮元素，不能作氮肥，是废渣</span><br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2023·江苏卷·第3题（氨碱法反应原理和副产物）</span>"
         }
       ]
     },
@@ -131,7 +131,7 @@
           "options": [
             {
               "label": "A",
-              "text": "纯碱是碱  —— 纯碱是盐（碳酸钠）",
+              "text": "纯碱是碱",
               "correct": false
             },
             {
@@ -141,16 +141,16 @@
             },
             {
               "label": "C",
-              "text": "纯碱可用于治疗胃酸过多  —— 碱性太强，治疗胃酸用NaHCO₃",
+              "text": "纯碱可用于治疗胃酸过多",
               "correct": false
             },
             {
               "label": "D",
-              "text": "纯碱与烧碱的化学成分相同  —— 纯碱是Na₂CO₃，烧碱是NaOH",
+              "text": "纯碱与烧碱的化学成分相同",
               "correct": false
             }
           ],
-          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·山东卷·第4题A选项（纯碱和烧碱都是强碱❌）</span>"
+          "explanation": "<br><span style=\"color:var(--accent);font-size:13px\">A. 纯碱是盐（碳酸钠）；C. 碱性太强，治疗胃酸用NaHCO₃；D. 纯碱是Na₂CO₃，烧碱是NaOH</span><br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·山东卷·第4题A选项（纯碱和烧碱都是强碱❌）</span>"
         }
       ]
     }

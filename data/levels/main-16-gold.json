@@ -63,26 +63,26 @@
           "options": [
             {
               "label": "A",
-              "text": "治疗胃酸过多——用Na₂CO₃  —— 应使用NaHCO₃",
+              "text": "治疗胃酸过多",
               "correct": false
             },
             {
               "label": "B",
-              "text": "制作发酵粉——用NaHCO₃",
+              "text": "制作发酵粉",
               "correct": true
             },
             {
               "label": "C",
-              "text": "制作肥皂——用Na₂CO₃  —— 应用NaOH",
+              "text": "制作肥皂",
               "correct": false
             },
             {
               "label": "D",
-              "text": "灭火器原料——用NaOH  —— 应用NaHCO₃",
+              "text": "灭火器原料",
               "correct": false
             }
           ],
-          "explanation": "<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·山东卷·第4题（纯碱和烧碱的用途区分）2020·浙江卷·第6题（钠的化合物用途）</span>"
+          "explanation": "<br><span style=\"color:var(--accent);font-size:13px\">A. 用Na₂CO₃  —— 应使用NaHCO₃；B. 用NaHCO₃；C. 用Na₂CO₃  —— 应用NaOH；D. 用NaOH  —— 应用NaHCO₃</span><br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·山东卷·第4题（纯碱和烧碱的用途区分）2020·浙江卷·第6题（钠的化合物用途）</span>"
         }
       ]
     },
@@ -164,22 +164,22 @@
       "options": [
         {
           "label": "A",
-          "text": "治疗胃酸过多——用Na₂CO₃",
+          "text": "治疗胃酸过多",
           "correct": false
         },
         {
           "label": "B",
-          "text": "制作发酵粉——用NaHCO₃",
+          "text": "制作发酵粉",
           "correct": true
         },
         {
           "label": "C",
-          "text": "制作肥皂——用Na₂CO₃",
+          "text": "制作肥皂",
           "correct": false
         },
         {
           "label": "D",
-          "text": "灭火器原料——用NaOH",
+          "text": "灭火器原料",
           "correct": false
         }
       ]
