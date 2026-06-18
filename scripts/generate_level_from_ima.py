@@ -243,13 +243,27 @@ def parse_microcard(content, card_num):
     return data
 
 def _parse_quiz_from_text(data, text):
-    """从纯文本解析选择题（支持无换行/有换行/混合格式）"""
+    """从纯文本解析选择题（支持无换行/有换行/混合格式，自动拆分多题只取第一道）"""
     # 先把所有换行替换成空格，统一成无换行格式处理
     flat_text = text.replace('\n', ' ').replace('\r', ' ')
     # 合并多余空格
     flat_text = re.sub(r'\s+', ' ', flat_text).strip()
 
-    # 提取题目：从开头到第一个 "A." / "A、" / "A．" 之前
+    # ========== 检测并拆分多题 ==========
+    # 如果文本中包含多个"题N："或"题N."标记，说明有多道题混在一起
+    # 只保留第一道题
+    multi_quiz = re.findall(r'题\d+[：:.]', flat_text)
+    if len(multi_quiz) > 1:
+        # 找到第二道题的开始位置，截取第一道题
+        second_quiz = re.search(r'(?=题\d+[：:.])', flat_text)
+        if second_quiz:
+            # 跳过第一个匹配（第一道题的开头），找第二个
+            all_starts = [m.start() for m in re.finditer(r'题\d+[：:.]', flat_text)]
+            if len(all_starts) >= 2:
+                flat_text = flat_text[:all_starts[1]].strip()
+                print(f"   ⚠️  检测到多道题混在一起，只保留第一道题")
+
+    # ========== 提取题目 ==========
     # 先尝试匹配 "题N：" 或 "题N." 开头的格式
     q_match = re.search(r'(题\d+[：:.].+?)(?=A[.．、]|$)', flat_text)
     if not q_match:
@@ -258,7 +272,7 @@ def _parse_quiz_from_text(data, text):
     if q_match:
         data["quiz_question"] = q_match.group(1).strip()
 
-    # 提取选项 A/B/C/D
+    # ========== 提取选项 A/B/C/D ==========
     options = []
     for match in re.finditer(r'([A-D])[.．、]\s*(.+?)(?=(?:[A-D][.．、])|答案[：:]|$)', flat_text):
         label = match.group(1)
@@ -283,7 +297,18 @@ def _parse_quiz_from_text(data, text):
                 "correct": False
             })
 
-    # 提取正确答案
+    # ========== 去重：同一label只保留第一个 ==========
+    seen_labels = set()
+    unique_options = []
+    for opt in options:
+        if opt["label"] not in seen_labels:
+            seen_labels.add(opt["label"])
+            unique_options.append(opt)
+        else:
+            print(f"   ⚠️  选项{opt['label']}重复，移除第二个")
+    options = unique_options
+
+    # ========== 提取正确答案 ==========
     exp_match = re.search(r'答案[：:]\s*([A-D])', flat_text)
     if exp_match:
         correct_label = exp_match.group(1)
@@ -292,12 +317,15 @@ def _parse_quiz_from_text(data, text):
 
     data["quiz_options"] = options
 
-    # 提取解析文本（答案之后的内容）
+    # ========== 提取解析文本 ==========
     exp_text = ""
     if '答案：' in flat_text:
         exp_text = flat_text.split('答案：', 1)[-1].strip()
         # 去掉答案字母本身
         exp_text = re.sub(r'^[A-D]\s*', '', exp_text)
+        # 截断到合理长度（避免解析过长）
+        if len(exp_text) > 300:
+            exp_text = exp_text[:300] + "..."
     data["quiz_explanation"] = exp_text
 
 def _save_section(data, section, buffer):
@@ -440,7 +468,7 @@ def generate_level_json(course_num, tier, card_indices, cards_data, all_cards):
 
         # 通关考题
         if card["quiz_question"] and card["quiz_options"]:
-            cert_options = [opt for opt in card["quiz_options"]][:3]  # 最多3个选项
+            cert_options = [opt for opt in card["quiz_options"]][:4]  # 最多4个选项
             cert_quiz.append({
                 "stageId": f"cert-{stage_num}",
                 "type": "cert",
