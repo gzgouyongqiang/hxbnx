@@ -59,7 +59,7 @@
           "blockId": "card-5-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "题8：实验室用 MnO₂ 和浓盐酸制取 Cl₂，下列说法正确的是（ ）",
+          "question": "实验室用MnO₂和浓盐酸制取Cl₂，下列说法正确的是？",
           "options": [
             {
               "label": "A",
@@ -68,41 +68,21 @@
             },
             {
               "label": "B",
-              "text": "反应中 HCl 既体现还原性又体现酸性",
+              "text": "反应中HCl既体现还原性又体现酸性",
               "correct": true
             },
             {
               "label": "C",
-              "text": "可用饱和 NaHCO₃ 溶液除去 Cl₂ 中的 HCl",
+              "text": "可用饱和NaHCO₃溶液除去Cl₂中的HCl",
               "correct": false
             },
             {
               "label": "D",
-              "text": "用排水法收集 Cl₂",
-              "correct": false
-            },
-            {
-              "label": "A",
-              "text": "NaOH 溶液",
-              "correct": false
-            },
-            {
-              "label": "B",
-              "text": "饱和 NaHCO₃ 溶液",
-              "correct": true
-            },
-            {
-              "label": "C",
-              "text": "饱和食盐水",
-              "correct": false
-            },
-            {
-              "label": "D",
-              "text": "浓硫酸",
+              "text": "用排水法收集Cl₂",
               "correct": false
             }
           ],
-          "explanation": "解析：A 错，稀盐酸还原性弱无法反应；C 错，NaHCO₃ 会与 HCl 反应产生 CO₂，且 Cl₂ 也会与水反应；D 错，Cl₂ 能溶于水，用向上排空气法。B 正确，HCl 被氧化为 Cl₂（还原性），生成 MnCl₂（酸性）。题9：实验室制取 Cl₂ 时，为除去 Cl₂ 中的 HCl 气体，应选用的试剂是（ ） A. NaOH 溶液 B. 饱和 NaHCO₃ 溶液 C. 饱和食盐水 D. 浓硫酸答案：C 解析：饱和食盐水能吸收 HCl（HCl 极易溶于水），同时 Cl₂ 在饱和食盐水中的溶解度小（同离子效应）。NaOH 会吸收 Cl₂；NaHCO₃ 与 HCl 产生 CO₂ 引入新杂质；浓硫酸可干燥但不能除 HCl。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2007·四川（制取氯酸钾装置），2021·辽宁（Cl₂ 实验室制法）</span>"
+          "explanation": "解析：A错，稀盐酸还原性弱无法反应；C错，NaHCO₃会与HCl反应产生CO₂引入杂质；D错，Cl₂能溶于水，应用向上排空气法。B正确，HCl被氧化为Cl₂（还原性），生成MnCl₂（酸性）。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·辽宁（Cl₂实验室制法）</span>"
         }
       ]
     },
@@ -147,7 +127,7 @@
           "blockId": "card-6-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "题10：下列有关卤素单质颜色说法正确的是（ ）",
+          "question": "下列有关卤素单质颜色说法正确的是？",
           "options": [
             {
               "label": "A",
@@ -168,29 +148,9 @@
               "label": "D",
               "text": "碘水是紫红色",
               "correct": false
-            },
-            {
-              "label": "A",
-              "text": "加入氯水和 CCl₄ 后，有机层为橙红色，原溶液含 I⁻",
-              "correct": false
-            },
-            {
-              "label": "B",
-              "text": "加入氯水和 CCl₄ 后，有机层为紫红色，原溶液含 Br⁻",
-              "correct": true
-            },
-            {
-              "label": "C",
-              "text": "加入氯水和 CCl₄ 后，有机层为黄绿色，原溶液含 Cl⁻",
-              "correct": false
-            },
-            {
-              "label": "D",
-              "text": "加入氯水和 CCl₄ 后，有机层为橙红色，原溶液含 Br⁻",
-              "correct": false
             }
           ],
-          "explanation": "解析：A 错，Cl₂ 是黄绿色气体；C 错，I₂ 是紫黑色固体；D 错，I₂ 水是棕黄色，I₂ 的 CCl₄ 溶液才是紫红色。题11：现有三瓶无色溶液，分别含有 Cl⁻、Br⁻、I⁻，用氯水和 CCl₄ 鉴别。下列现象与结论对应正确的是（ ） A. 加入氯水和 CCl₄ 后，有机层为橙红色，原溶液含 I⁻ B. 加入氯水和 CCl₄ 后，有机层为紫红色，原溶液含 Br⁻ C. 加入氯水和 CCl₄ 后，有机层为黄绿色，原溶液含 Cl⁻ D. 加入氯水和 CCl₄ 后，有机层为橙红色，原溶液含 Br⁻答案：D 解析：Cl₂ 可置换出 Br₂（橙红色）和 I₂（紫红色）。A 错，橙红色为 Br₂，对应含 Br⁻；B 错，紫红色为 I₂，对应含 I⁻；C 错，Cl₂ 氧化后 Cl⁻ 不能置换出 Cl₂，且 Cl₂ 本身黄绿色在 CCl₄ 层，但原溶液含 Cl⁻ 不会有明显颜色变化。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2012·上海（验证氯气性质的微型实验）</span>"
+          "explanation": "解析：A错，Cl₂是黄绿色气体（不是绿色）；C错，I₂是紫黑色固体（不是棕色）；D错，碘水是棕黄色，I₂的CCl₄溶液才是紫红色。B正确，Br₂是红棕色液体。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2012·上海（验证氯气性质的微型实验）</span>"
         }
       ]
     }
@@ -200,7 +160,7 @@
       "stageId": "cert-5",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "题8：实验室用 MnO₂ 和浓盐酸制取 Cl₂，下列说法正确的是（ ）",
+      "question": "实验室用MnO₂和浓盐酸制取Cl₂，下列说法正确的是？",
       "options": [
         {
           "label": "A",
@@ -209,12 +169,17 @@
         },
         {
           "label": "B",
-          "text": "反应中 HCl 既体现还原性又体现酸性",
+          "text": "反应中HCl既体现还原性又体现酸性",
           "correct": true
         },
         {
           "label": "C",
-          "text": "可用饱和 NaHCO₃ 溶液除去 Cl₂ 中的 HCl",
+          "text": "可用饱和NaHCO₃溶液除去Cl₂中的HCl",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "用排水法收集Cl₂",
           "correct": false
         }
       ]
@@ -223,7 +188,7 @@
       "stageId": "cert-6",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "题10：下列有关卤素单质颜色说法正确的是（ ）",
+      "question": "下列有关卤素单质颜色说法正确的是？",
       "options": [
         {
           "label": "A",
@@ -238,6 +203,11 @@
         {
           "label": "C",
           "text": "碘单质是棕色固体",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "碘水是紫红色",
           "correct": false
         }
       ]

@@ -59,7 +59,7 @@
           "blockId": "card-3-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "题4：洁厕灵（主要成分为盐酸）与 84 消毒液（主要成分为 NaClO）混合使用会产生有毒气体，该气体是（ ）",
+          "question": "洁厕灵（主要成分为盐酸）与84消毒液（主要成分为NaClO）混合使用会产生有毒气体，该气体是？",
           "options": [
             {
               "label": "A",
@@ -80,29 +80,9 @@
               "label": "D",
               "text": "H₂",
               "correct": false
-            },
-            {
-              "label": "A",
-              "text": "有效成分为 NaClO",
-              "correct": false
-            },
-            {
-              "label": "B",
-              "text": "可用于杀菌消毒",
-              "correct": true
-            },
-            {
-              "label": "C",
-              "text": "可与洁厕灵混合使用增强效果",
-              "correct": false
-            },
-            {
-              "label": "D",
-              "text": "需避光密封保存",
-              "correct": false
             }
           ],
-          "explanation": "解析：ClO⁻ + Cl⁻ + 2H⁺ → Cl₂↑ + H₂O，产生的黄绿色有毒气体是 Cl₂。题5：下列关于 84 消毒液的说法错误的是（ ） A. 有效成分为 NaClO B. 可用于杀菌消毒 C. 可与洁厕灵混合使用增强效果 D. 需避光密封保存答案：C 解析：84 消毒液严禁与洁厕灵混用，否则会产生有毒 Cl₂。NaClO 有效杀菌消毒；见光或吸收 CO₂ 会分解失效，需避光密封保存。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2015·北京（消毒液主要成分为 NaClO）、2024·浙江（漂白液）</span>"
+          "explanation": "解析：ClO⁻ + Cl⁻ + 2H⁺ → Cl₂↑ + H₂O，产生的黄绿色有毒气体是Cl₂。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2015·北京（消毒液主要成分为NaClO）</span>"
         }
       ]
     },
@@ -147,7 +127,7 @@
           "blockId": "card-4-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "题6：下列反应中，产物正确的是（ ）",
+          "question": "下列反应中，产物正确的是？",
           "options": [
             {
               "label": "A",
@@ -168,29 +148,9 @@
               "label": "D",
               "text": "Cu + Cl₂ →点燃 Cu₂Cl₂",
               "correct": false
-            },
-            {
-              "label": "A",
-              "text": "Cl₂ + Fe²⁺ → 2Cl⁻ + Fe³⁺",
-              "correct": false
-            },
-            {
-              "label": "B",
-              "text": "Cl₂ + 2Fe²⁺ → 2Cl⁻ + 2Fe³⁺",
-              "correct": false
-            },
-            {
-              "label": "C",
-              "text": "3Cl₂ + 2Fe²⁺ → 6Cl⁻ + 2Fe³⁺",
-              "correct": true
-            },
-            {
-              "label": "D",
-              "text": "Cl₂ + Fe²⁺ + 2H₂O → 2Cl⁻ + Fe(OH)₃ + 2H⁺",
-              "correct": false
             }
           ],
-          "explanation": "解析：Cl₂ 是强氧化剂，与变价金属反应生成最高价氯化物。Fe→FeCl₃，Cu→CuCl₂。题7：将 Cl₂ 通入 FeCl₂ 溶液中，溶液颜色由浅绿变为棕黄，发生反应的离子方程式正确的是（ ） A. Cl₂ + Fe²⁺ → 2Cl⁻ + Fe³⁺ B. Cl₂ + 2Fe²⁺ → 2Cl⁻ + 2Fe³⁺ C. 3Cl₂ + 2Fe²⁺ → 6Cl⁻ + 2Fe³⁺ D. Cl₂ + Fe²⁺ + 2H₂O → 2Cl⁻ + Fe(OH)₃ + 2H⁺答案：B 解析：Cl₂ + 2Fe²⁺ → 2Cl⁻ + 2Fe³⁺，需遵循电荷守恒和质量守恒。A 未配平；C Cl⁻ 系数错误；D 溶液中不会生成 Fe(OH)₃。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】真题汇编中 Cl₂ 与 Fe/Cu 反应相关题型</span>"
+          "explanation": "解析：Cl₂是强氧化剂，与变价金属反应生成最高价氯化物。Fe→FeCl₃（不是FeCl₂），Cu→CuCl₂（不是CuCl或Cu₂Cl₂）。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】真题汇编中Cl₂与Fe/Cu反应相关题型</span>"
         }
       ]
     }
@@ -200,7 +160,7 @@
       "stageId": "cert-3",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "题4：洁厕灵（主要成分为盐酸）与 84 消毒液（主要成分为 NaClO）混合使用会产生有毒气体，该气体是（ ）",
+      "question": "洁厕灵（主要成分为盐酸）与84消毒液（主要成分为NaClO）混合使用会产生有毒气体，该气体是？",
       "options": [
         {
           "label": "A",
@@ -216,6 +176,11 @@
           "label": "C",
           "text": "O₂",
           "correct": false
+        },
+        {
+          "label": "D",
+          "text": "H₂",
+          "correct": false
         }
       ]
     },
@@ -223,7 +188,7 @@
       "stageId": "cert-4",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "题6：下列反应中，产物正确的是（ ）",
+      "question": "下列反应中，产物正确的是？",
       "options": [
         {
           "label": "A",
@@ -239,6 +204,11 @@
           "label": "C",
           "text": "Fe + Cl₂ →点燃 FeCl₃",
           "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Cu + Cl₂ →点燃 Cu₂Cl₂",
+          "correct": false
         }
       ]
     }
