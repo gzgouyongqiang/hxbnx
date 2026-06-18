@@ -302,18 +302,15 @@ def _parse_quiz_from_text(data, text):
     flat_text = re.sub(r'\s+', ' ', flat_text).strip()
 
     # ========== 检测并拆分多题 ==========
-    # 如果文本中包含多个"题N："或"题N."标记，说明有多道题混在一起
+    # 如果文本中包含多个"题N："或"题目N："标记，说明有多道题混在一起
     # 只保留第一道题
-    multi_quiz = re.findall(r'题\d+[：:.]', flat_text)
+    multi_quiz = re.findall(r'(?:题目|题)\d+[：:.]', flat_text)
     if len(multi_quiz) > 1:
         # 找到第二道题的开始位置，截取第一道题
-        second_quiz = re.search(r'(?=题\d+[：:.])', flat_text)
-        if second_quiz:
-            # 跳过第一个匹配（第一道题的开头），找第二个
-            all_starts = [m.start() for m in re.finditer(r'题\d+[：:.]', flat_text)]
-            if len(all_starts) >= 2:
-                flat_text = flat_text[:all_starts[1]].strip()
-                print(f"   ⚠️  检测到多道题混在一起，只保留第一道题")
+        all_starts = [m.start() for m in re.finditer(r'(?:题目|题)\d+[：:.]', flat_text)]
+        if len(all_starts) >= 2:
+            flat_text = flat_text[:all_starts[1]].strip()
+            print(f"   ⚠️  检测到多道题混在一起，只保留第一道题")
 
     # ========== 提取题目 ==========
     # 先尝试匹配 "题N：" 或 "题N." 开头的格式

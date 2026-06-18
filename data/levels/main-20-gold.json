@@ -8,10 +8,10 @@
     "tierLabel": "金牌关卡",
     "tierEmoji": "🥇",
     "knowledgeTags": [
-      "CO",
-      "K₂Cr",
       "O",
-      "Fe"
+      "K₂Cr",
+      "Fe",
+      "CO"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -81,7 +81,7 @@
               "correct": false
             }
           ],
-          "explanation": "解析： 少量NaClO在酸性条件下（溶液含H⁺）将Fe²⁺氧化为Fe³⁺，ClO⁻被还原为Cl⁻。氧化后Fe³⁺存在于溶液中（酸性条件不沉淀），故主要离子为NH₄⁺、Fe³⁺、SO₄²⁻、H⁺、Cl⁻。A错在ClO⁻不会剩余且Fe²⁺已被氧化。题目2： FeSO₄溶液在空气中久置会变质，写出变质的离子方程式______。答案： 4Fe²⁺ + O₂ + 4H⁺ = 4Fe³⁺ + 2H₂O解析： FeSO₄溶液呈弱酸性（Fe²⁺水解），空气中O₂将Fe²⁺氧化为Fe³⁺，同时消耗H⁺，溶液pH略微升高。若变质严重，会产生Fe(OH)₃沉淀。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2016·江苏（Fe²⁺的氧化与沉淀）、2016-2025各地高考离子共存与氧化还原题改编</span>"
+          "explanation": "解析： 少量NaClO在酸性条件下（溶液含H⁺）将Fe²⁺氧化为Fe³⁺，ClO⁻被还原为Cl⁻。氧化后Fe³⁺存在于溶液中（酸性条件不沉淀），故主要离子为NH₄⁺、Fe³⁺、SO₄²⁻、H⁺、Cl⁻。A错在ClO⁻不会剩余且Fe²⁺已被氧化。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2016·江苏（Fe²⁺的氧化与沉淀）、2016-2025各地高考离子共存与氧化还原题改编</span>"
         }
       ]
     },
@@ -149,7 +149,7 @@
               "correct": false
             }
           ],
-          "explanation": "解析： 由转化推断X为FeS₂、Y为Fe₂O₃、Z为Fe³⁺溶液、R为Fe²⁺溶液、Q为FeS。A正确：Fe₂O₃是红色颜料。B正确：Fe³⁺溶液加热促进水解，形成Fe(OH)₃胶体，颜色变深或浑浊。C错误：FeS是弱酸盐沉淀，遇强酸会反应生成H₂S和Fe²⁺，故不能在强酸中制备或存在。D正确：Fe + S △ FeS。题目2： 某溶液由无色逐渐变为浅绿色，最终变为棕黄色且有红褐色沉淀，这个过程最可能涉及什么反应？答案： Fe²⁺开始存在于溶液中（无色到浅绿可能是Fe²⁺浓度增加），然后Fe²⁺被氧化为Fe³⁺（棕黄色），Fe³⁺水解生成Fe(OH)₃沉淀（红褐色）。或Fe最初以其他形式存在（...<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·河南（FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS完整转化链）、2016-2025各地高考综合推断题改编</span>"
+          "explanation": "解析： 由转化推断X为FeS₂、Y为Fe₂O₃、Z为Fe³⁺溶液、R为Fe²⁺溶液、Q为FeS。A正确：Fe₂O₃是红色颜料。B正确：Fe³⁺溶液加热促进水解，形成Fe(OH)₃胶体，颜色变深或浑浊。C错误：FeS是弱酸盐沉淀，遇强酸会反应生成H₂S和Fe²⁺，故不能在强酸中制备或存在。D正确：Fe + S △ FeS。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2025·河南（FeS₂→Fe₂O₃→Fe³⁺→Fe²⁺→FeS完整转化链）、2016-2025各地高考综合推断题改编</span>"
         }
       ]
     }
