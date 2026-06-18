@@ -36,7 +36,7 @@
           "blockId": "card-1-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「侯氏制碱法的反应是NaCl+NH₃+CO₂+H₂O→NaHCO₃↓+NH₄Cl，NH₃和CO₂都是气体，先通哪个都一样。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰说：</strong>「侯氏制碱法的反应是NaCl+NH₃+CO₂+H₂O→NaHCO₃↓+NH₄Cl，NH₃和CO₂都是气体，先通哪个都一样。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 通气顺序不能颠倒！必须先通NH₃再通CO₂。NH₃极易溶于水使溶液呈碱性，才能大量吸收CO₂生成NaHCO₃；若先通CO₂，溶液呈微酸性，NH₃溶解量极少，反应效率极低。</p>"
         },
         {
           "blockId": "card-1-path",
@@ -104,7 +104,7 @@
           "blockId": "card-2-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>小明说：</strong>「侯氏制碱法和氨碱法的核心反应原理一样，都是NaCl+NH₃+CO₂+H₂O→NaHCO₃↓+NH₄Cl，所以副产物也一样。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>小明说：</strong>「侯氏制碱法和氨碱法的核心反应原理一样，都是NaCl+NH₃+CO₂+H₂O→NaHCO₃↓+NH₄Cl，所以副产物也一样。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 副产物不同！氨碱法副产物是CaCl₂（难利用，污染大，NaCl利用率约70%）；侯氏制碱法副产物是NH₄Cl（可作氮肥，NaCl利用率约96%）。</p>"
         },
         {
           "blockId": "card-2-path",

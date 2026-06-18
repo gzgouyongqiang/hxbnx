@@ -36,7 +36,7 @@
           "blockId": "card-5-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「制 Cl₂ 时，稀盐酸也可以，反正都能反应。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰说：</strong>「制 Cl₂ 时，稀盐酸也可以，反正都能反应。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 必须用浓盐酸！MnO₂与稀盐酸反应速率极慢，且生成的Cl₂极易溶于水。浓盐酸被消耗后浓度降低，反应会自动停止，因此浓盐酸不能完全反应。</p>"
         },
         {
           "blockId": "card-5-path",
@@ -104,7 +104,7 @@
           "blockId": "card-6-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「溴水是红色的。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰说：</strong>「溴水是红色的。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 溴水是橙黄色的，不是红色！注意区分：氯水是浅黄绿色，溴水是橙黄色，碘水是棕黄色。碘遇淀粉变蓝是特征鉴别反应。</p>"
         },
         {
           "blockId": "card-6-path",

@@ -34,7 +34,7 @@
           "blockId": "card-1-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰看到钛合金说：</strong>「钛合金含有钛元素，肯定是无机非金属材料！」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰看到钛合金说：</strong>「钛合金含有钛元素，肯定是无机非金属材料！」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 钛合金是金属材料！合金本质仍然是金属，由金属与金属（或非金属）熔合而成。判断材料类别看主要成分和结合方式，不是看含什么元素。</p>"
         },
         {
           "blockId": "card-1-path",
@@ -102,7 +102,7 @@
           "blockId": "card-2-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>小美说：</strong>「天然药物无任何副作用，可以长期服用。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>小美说：</strong>「天然药物无任何副作用，可以长期服用。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 天然≠安全！许多天然物质也有毒（如河豚毒素、乌头碱）。药物是否有副作用取决于其化学成分和剂量，与天然或合成无关，任何药物都应遵医嘱使用。</p>"
         },
         {
           "blockId": "card-2-path",

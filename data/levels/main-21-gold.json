@@ -36,7 +36,7 @@
           "blockId": "card-5-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「铝热反应冶炼铁，Al作还原剂，属于电解法。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰说：</strong>「铝热反应冶炼铁，Al作还原剂，属于电解法。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 铝热反应属于热还原法，不是电解法！2Al+Fe₂O₃→2Fe+Al₂O₃，Al作还原剂在高温下还原Fe₂O₃，无需通电。电解法需要通电（如电解熔融Al₂O₃制Al）。</p>"
         },
         {
           "blockId": "card-5-path",
@@ -104,7 +104,7 @@
           "blockId": "card-6-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰看到\"北斗卫星搭载铷原子钟\"说：</strong>「铷(Rb)是非金属元素。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰看到\"北斗卫星搭载铷原子钟\"说：</strong>「铷(Rb)是非金属元素。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 铷(Rb)是碱金属元素，属于金属！铷位于第IA族第五周期，与Li、Na、K同族，性质活泼，是典型的金属元素。</p>"
         },
         {
           "blockId": "card-6-path",

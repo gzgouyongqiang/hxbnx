@@ -33,7 +33,7 @@
           "blockId": "card-3-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「CO₂含量属于空气污染指数项目，CO₂也是造成酸雨的原因。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰说：</strong>「CO₂含量属于空气污染指数项目，CO₂也是造成酸雨的原因。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 两个都错！CO₂不是空气污染指数项目（API主要监测SO₂、NOₓ、PM等）；酸雨的主要成因是SO₂和NOₓ，不是CO₂。CO₂过量导致的是温室效应。</p>"
         },
         {
           "blockId": "card-3-path",
@@ -101,7 +101,7 @@
           "blockId": "card-4-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p><strong>阿杰说：</strong>「煤油是从石油中提炼的，是可再生能源。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
+          "html": "<p><strong>阿杰说：</strong>「煤油是从石油中提炼的，是可再生能源。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 煤油是不可再生能源！石油、煤、天然气都是化石能源，属于不可再生资源，地球储量有限，用完就没了。</p>"
         },
         {
           "blockId": "card-4-path",
