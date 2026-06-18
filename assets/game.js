@@ -533,7 +533,7 @@ const HXBNX_GAME = (function () {
 
   function drawCard(mode) {
     // mode: 'free' or 'paid'
-    if (_cardPool.length === 0) return null;
+    if (_cardPool.length === 0) return { error: '卡牌数据加载中，请稍后再试' };
 
     var s = load();
     _resetDailyDraws(s);
@@ -547,6 +547,7 @@ const HXBNX_GAME = (function () {
     if (mode === 'free') {
       if (s.gachaFreeUsed) return { error: '今日免费抽卡已使用' };
       s.gachaFreeUsed = true;
+      s.gachaLastDrawDate = todayStr(); // 修复：免费抽卡也更新日期，防止无限重置
     } else {
       if ((s.score || 0) < 100) return { error: '学分不足！需要 100 学分' };
       if (s.gachaDrawsToday >= 3) return { error: '今日抽卡次数已用完（3/3），明天再来吧！' };
@@ -1196,7 +1197,7 @@ const HXBNX_GAME = (function () {
         weeklyScore: s.weeklyScore || 0,
         maxCombo: s.maxScoreCombo || 0,
         score: s.score || 0,
-        level: getLevelInfo(s.totalExp || 0)
+        level: calcLevel(s.totalExp || 0)
       };
     },
 

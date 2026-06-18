@@ -14,13 +14,13 @@
     // 粒子背景
     spawnParticles();
 
-    // 立即渲染不依赖外部数据的部分
-    renderHero();
-    renderLevelTimeline();
-    renderAchievements();
-    renderDailyQuests();
-    renderBank();
-    renderLeaderboard();
+    // 立即渲染不依赖外部数据的部分（逐个try-catch保护，互不影响）
+    try { renderHero(); } catch(e) { console.error('renderHero error:', e); }
+    try { renderLevelTimeline(); } catch(e) { console.error('renderLevelTimeline error:', e); }
+    try { renderAchievements(); } catch(e) { console.error('renderAchievements error:', e); }
+    try { renderDailyQuests(); } catch(e) { console.error('renderDailyQuests error:', e); }
+    try { renderBank(); } catch(e) { console.error('renderBank error:', e); }
+    try { renderLeaderboard(); } catch(e) { console.error('renderLeaderboard error:', e); }
 
     // 加载徽章数据
     fetch("data/badges.json").then(function(r){return r.json()}).then(function(data){
@@ -29,6 +29,7 @@
       renderBadges();
     }).catch(function(e){
       console.log("badges load failed:", e);
+      // 即使加载失败也尝试渲染（会显示空状态）
       renderBadges();
     });
 
@@ -40,6 +41,7 @@
       renderCards();
     }).catch(function(e){
       console.log("cards load failed:", e);
+      // 即使加载失败也尝试渲染（会显示空状态/提示）
       renderCards();
     });
   }
@@ -603,6 +605,20 @@
       '<div class="leaderboard-item"><div class="leaderboard-stat-num green">' + lb.score + '</div><div class="leaderboard-stat-label">当前学分</div></div>' +
       '<div class="leaderboard-item"><div class="leaderboard-stat-num blue">LV.' + lb.level.lv + ' ' + lb.level.name + '</div><div class="leaderboard-stat-label">修为境界</div></div>';
   }
+
+  // ===== 自动保存 =====
+  function autoSave(){
+    try {
+      var s = G.getStatus().state;
+      if(s) {
+        localStorage.setItem('hxbnx_game_v2_backup', JSON.stringify(s));
+      }
+    } catch(e) { console.error('autoSave failed', e); }
+  }
+  // 每30秒自动备份一次到localStorage
+  setInterval(autoSave, 30000);
+  // 页面卸载前自动备份
+  window.addEventListener('beforeunload', autoSave);
 
   // ===== 启动 =====
   init();

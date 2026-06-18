@@ -199,7 +199,7 @@ body{
 @keyframes legendGlow{0%,100%{box-shadow:0 2px 12px rgba(240,192,64,.1)}50%{box-shadow:0 4px 24px rgba(240,192,64,.25)}}
 
 /* 快捷链接 */
-.quick-link-btn{display:inline-block;padding:8px 16px;background:linear-gradient(135deg,rgba(167,139,250,.15),rgba(103,232,249,.1));border:1px solid rgba(167,139,250,.2);border-radius:10px;color:var(--text);text-decoration:none;font-size:13px;font-weight:600;transition:all .2s}
+.quick-link-btn{display:inline-block;padding:8px 16px;background:linear-gradient(135deg,rgba(167,139,250,.15),rgba(103,232,249,.1));border:1px solid rgba(167,139,250,.2);border-radius:10px;color:var(--text);text-decoration:none;font-size:13px;font-weight:600;transition:all .2s;cursor:pointer;font-family:inherit}
 .quick-link-btn:hover{border-color:rgba(167,139,250,.4);transform:translateY(-1px);box-shadow:0 2px 12px rgba(167,139,250,.1)}
 
 /* 抽卡弹窗 */
