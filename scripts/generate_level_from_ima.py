@@ -140,7 +140,7 @@ def get_note_content(notebook_id):
     return result.get("data", {}).get("content", "")
 
 def parse_microcard(content, card_num):
-    """解析微卡点内容，提取结构化数据（支持有换行和无换行两种格式）"""
+    """解析微卡点内容，提取结构化数据（支持有【】/无【】、有换行/无换行多种格式）"""
     data = {
         "title": "",
         "secret": "",
@@ -156,33 +156,53 @@ def parse_microcard(content, card_num):
         "source": ""
     }
 
-    # 检测内容格式：如果【】标记之间几乎没有换行，说明是无换行格式
-    # 先用正则按【】章节标记分割，再处理
     section_markers = ['一句话本质', '典型症状', '认知路径', '类比记忆', '同类自测', '本题出处']
 
-    # 提取标题
-    title_match = re.search(rf'微卡点{card_num:02d}[：:](.+?)(?=【|$)', content)
+    # ========== 提取标题 ==========
+    # 尝试匹配 "微卡点01：标题内容"（到下一个【或章节标记或结束）
+    title_match = re.search(rf'微卡点{card_num:02d}[：:](.+?)(?=【|{ "|".join(section_markers) }|$)', content)
     if title_match:
         data["title"] = title_match.group(1).strip()
     else:
-        # 兜底：取第一行作为标题
-        data["title"] = content.split('\n')[0].strip()[:50]
+        # 兜底：取第一行，去掉课时标记
+        first_line = content.split('\n')[0].strip()
+        data["title"] = re.sub(r'【第\d+课时】[🧩\s]*微卡点\d+[：:]', '', first_line)[:50]
 
-    # 按【】标记分割各章节内容
+    # ========== 按章节标记分割内容 ==========
+    # 先检测是否有【】包裹的标记
+    has_brackets = '【一句话本质】' in content or '【典型症状】' in content
+
     sections = {}
-    for i, marker in enumerate(section_markers):
-        pattern = rf'【{marker}】(.+?)(?=【{"|".join(section_markers[i+1:])}】|$)'
-        match = re.search(pattern, content, re.DOTALL)
-        if match:
-            sections[marker] = match.group(1).strip()
+    if has_brackets:
+        # 格式A：有【】标记
+        for i, marker in enumerate(section_markers):
+            next_markers = section_markers[i+1:]
+            if next_markers:
+                pattern = rf'【{marker}】(.+?)(?=【{"|".join(next_markers)}】|$)'
+            else:
+                pattern = rf'【{marker}】(.+)'
+            match = re.search(pattern, content, re.DOTALL)
+            if match:
+                sections[marker] = match.group(1).strip()
+    else:
+        # 格式B：无【】标记，直接用章节名作为分隔符
+        for i, marker in enumerate(section_markers):
+            next_markers = section_markers[i+1:]
+            if next_markers:
+                pattern = rf'{marker}(.+?)(?={"|".join(next_markers)}|$)'
+            else:
+                pattern = rf'{marker}(.+)'
+            match = re.search(pattern, content, re.DOTALL)
+            if match:
+                sections[marker] = match.group(1).strip()
 
-    # 填充数据
+    # ========== 填充数据 ==========
     if '一句话本质' in sections:
         data["secret"] = sections['一句话本质']
 
     if '典型症状' in sections:
         text = sections['典型症状']
-        # 解析症状诊断
+        # 解析症状诊断（阿杰说：「...」格式）
         student_match = re.search(r'(.+?)[：:]\s*["""](.+?)["""]', text)
         if student_match:
             data["symptom_student"] = student_match.group(1).strip()
@@ -191,16 +211,17 @@ def parse_microcard(content, card_num):
 
     if '认知路径' in sections:
         text = sections['认知路径']
-        # 解析步骤（支持无换行格式：第一步：...第二步：...第三步：...）
+        # 去掉可能的"三步"前缀
+        text = re.sub(r'^三步', '', text).strip()
+        # 解析步骤（支持无换行格式）
         steps = []
         for step_match in re.finditer(r'(第[一二三]步[：:].+?)(?=第[一二三]步[：:]|$)', text):
             steps.append(step_match.group(1).strip())
-        # 兜底：如果正则没匹配到，尝试按关键词分割
+        # 兜底：按关键词分割
         if not steps:
             for keyword in ['第一步：', '第二步：', '第三步：']:
                 idx = text.find(keyword)
                 if idx != -1:
-                    # 找到这一步开始到下一步或结束
                     end_idx = len(text)
                     for next_kw in ['第一步：', '第二步：', '第三步：']:
                         if next_kw != keyword:

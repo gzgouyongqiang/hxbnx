@@ -8,14 +8,11 @@
     "tierLabel": "铜牌关卡",
     "tierEmoji": "🥉",
     "knowledgeTags": [
-      "CaC",
-      "Na",
-      "H",
-      "MnO",
-      "Mn",
       "O₃",
+      "Cl₂",
       "H₂O",
-      "Cl₂"
+      "CaC",
+      "MnO"
     ],
     "totalStages": 6,
     "activeStages": 2
@@ -26,27 +23,29 @@
       "type": "microcard",
       "num": 1,
       "icon": "🧩",
-      "title": "【第17课时】🧩 微卡点01：Cl₂与H₂O的可逆反应——加CaCO₃增强漂白性一句话本质Cl₂与水",
+      "title": "Cl₂与H₂O的可逆反应——加CaCO₃增强漂白性",
       "defaultOpen": true,
       "blocks": [
         {
           "blockId": "card-1-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p></p>"
+          "html": "<p>Cl₂与水发生可逆反应 Cl₂+H₂O ⇌ H⁺+Cl⁻+HClO，加 CaCO₃ 消耗 H⁺ 使平衡正向移动，提高 HClO 浓度，从而增强漂白性。</p>"
         },
         {
           "blockId": "card-1-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p></p>"
+          "html": "<p><strong>阿杰说：</strong>「新制氯水有漂白性，但放久了漂白性反而变强了。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
         },
         {
           "blockId": "card-1-path",
           "type": "path",
           "tag": "🗺️ 修炼路径",
           "steps": [
-            "详见知识点解析"
+            "第一步：写出 Cl₂ 与 H₂O 的可逆反应方程式Cl₂ + H₂O ⇌ H⁺ + Cl⁻ + HClO注意：这是可逆反应，不是完全反应。",
+            "第二步：分析 CaCO₃ 的作用CaCO₃ + 2H⁺ → Ca²⁺ + CO₂↑ + H₂OH⁺ 被消耗 → 生成物浓度下降 → 平衡正向移动",
+            "第三步：判断结果更多 Cl₂ 转化为 HClO → HClO 浓度增大 → 漂白性增强 → 溶液黄绿色变浅"
           ],
           "table": null
         },
@@ -54,15 +53,21 @@
           "blockId": "card-1-analogy",
           "type": "analogy",
           "tag": "💡 仙人指路",
-          "html": "<p></p>"
+          "html": "<p>把反应想象成一个跷跷板：左边坐着 Cl₂+H₂O，右边坐着 H⁺+Cl⁻+HClOCaCO₃ 就像把右边座位上的 H⁺ 推下去了（消耗掉）右边变轻了（生成物浓度下降），跷跷板往右边倾斜（平衡正移）结果 HClO 更多了（漂白性增强）</p>"
         },
         {
           "blockId": "card-1-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "",
-          "options": [],
-          "explanation": ""
+          "question": "D. 盐酸",
+          "options": [
+            {
+              "label": "D",
+              "text": "盐酸",
+              "correct": false
+            }
+          ],
+          "explanation": "解析：CaCO₃ 消耗 H⁺（CaCO₃+2H⁺→Ca²⁺+CO₂↑+H₂O），使 Cl₂+H₂O⇌H⁺+Cl⁻+HClO 平衡正向移动，HClO 浓度增大。NaOH 会中和 H⁺和 HClO；NaCl 增加 Cl⁻浓度抑制平衡；盐酸增加 H⁺浓度抑制平衡。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2016·上海（向新制氯水中加 CaCO₃ 粉末增强漂白性）</span>"
         }
       ]
     },
@@ -71,27 +76,29 @@
       "type": "microcard",
       "num": 2,
       "icon": "🧩",
-      "title": "【第17课时】🧩 微卡点02：新制氯水的多重成分——三分子三离子一句话本质新制氯水中存在 Cl₂、H",
+      "title": "新制氯水的多重成分——三分子三离子",
       "defaultOpen": false,
       "blocks": [
         {
           "blockId": "card-2-secret",
           "type": "secret",
           "tag": "📜 通关秘籍",
-          "html": "<p></p>"
+          "html": "<p>新制氯水中存在 Cl₂、H₂O、HClO（三分子）和 H⁺、Cl⁻、ClO⁻（少量 OH⁻）（三离子），不同成分对应不同性质，久置后变为稀盐酸。</p>"
         },
         {
           "blockId": "card-2-symptom",
           "type": "symptom",
           "tag": "🩺 症状诊断",
-          "html": "<p></p>"
+          "html": "<p><strong>阿杰说：</strong>「新制氯水能使红色布条褪色，因为 Cl₂ 有漂白性。」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 详见认知路径分析</p>"
         },
         {
           "blockId": "card-2-path",
           "type": "path",
           "tag": "🗺️ 修炼路径",
           "steps": [
-            "详见知识点解析"
+            "第一步：写出新制氯水中的成分三分子：Cl₂、H₂O、HClO三离子：H⁺、Cl⁻、ClO⁻（还有少量 OH⁻）来源：Cl₂ + H₂O ⇌ H⁺ + Cl⁻ + HClO，HClO ⇌ H⁺ + ClO⁻",
+            "第二步：各成分对应的性质检验检验对象试剂/现象结论H⁺紫色石蕊变红有 H⁺（酸性）HClO红色布条褪色有 HClO（漂白性）Cl₂黄绿色有 Cl₂Cl⁻AgNO₃→白色沉淀有 Cl⁻",
+            "第三步：区分新制与久置氯水新制氯水：浅黄绿色，有漂白性（含 HClO），酸性较弱久置氯水：无色，无漂白性（HClO 已分解），酸性更强（HClO 分解生成 HCl）2HClO →光照 2HCl + O₂↑"
           ],
           "table": null
         },
@@ -99,18 +106,61 @@
           "blockId": "card-2-analogy",
           "type": "analogy",
           "tag": "💡 仙人指路",
-          "html": "<p></p>"
+          "html": "<p>新制氯水像一个\"多重身份特工\"：Cl₂ 是\"伪装色\"（黄绿色）H⁺ 是\"酸性攻击手\"（使石蕊变红）HClO 是\"漂白杀手\"（使布条褪色）Cl⁻ 是\"遗留痕迹\"（遇 Ag⁺ 留下白色证据）时间久了，HClO 特工自己分解了，只剩下 H⁺ 和 Cl⁻（变成稀盐酸）</p>"
         },
         {
           "blockId": "card-2-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "",
-          "options": [],
-          "explanation": ""
+          "question": "D. 新制氯水中加入 AgNO₃ 溶液，无明显现象",
+          "options": [
+            {
+              "label": "D",
+              "text": "新制氯水中加入 AgNO₃ 溶液，无明显现象",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "碳酸钠溶液",
+              "correct": false
+            }
+          ],
+          "explanation": "解析：A 错，新制氯水是混合物；C 错，久置氯水中 HClO 分解，Cl₂ 耗尽；D 错，新制氯水含 Cl⁻，加 AgNO₃ 产生白色沉淀。B 正确，H⁺ 使石蕊先变红，HClO 强氧化性使其褪色。题3：证明新制氯水中含有 HClO，可选用的试剂是（ ）\nA. 硝酸银溶液\nB. 紫色石蕊试液\nC. 红色布条\nD. 碳酸钠溶液答案：C\n解析：HClO 具有漂白性，可使红色布条褪色。AgNO₃ 检验 Cl⁻；石蕊检验 H⁺ 和 HClO（但 H⁺ 会先使石蕊变红，再褪色是 HClO 作用，不够直接）；Na₂CO₃ 检验 H⁺。<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2014·江苏（探究新制饱和氯水成分的实验）</span>"
         }
       ]
     }
   ],
-  "certQuiz": []
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "D. 盐酸",
+      "options": [
+        {
+          "label": "D",
+          "text": "盐酸",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "D. 新制氯水中加入 AgNO₃ 溶液，无明显现象",
+      "options": [
+        {
+          "label": "D",
+          "text": "新制氯水中加入 AgNO₃ 溶液，无明显现象",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "碳酸钠溶液",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }
