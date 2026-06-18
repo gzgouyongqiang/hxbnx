@@ -422,7 +422,7 @@
         var stars = weightedRandomStar(pity);
         var elem = pickRandomElement(stars);
 
-        // drawElementCard 内部会检查学分并扣50
+        // drawElementCard 内部会检查学分并扣50，并已save
         var result = HXBNX_GAME.drawElementCard(elem.sym, elem.stars);
 
         if (!result.ok) {
@@ -434,8 +434,10 @@
             return;
         }
 
-        s.elemPity = (result.isNew || stars >= 3) ? 0 : pity;
-        HXBNX_GAME._saveState(s);
+        // 重新读取最新状态（drawElementCard已扣学分并save），只更新pity
+        var s2 = HXBNX_GAME.getStatus().state;
+        s2.elemPity = (result.isNew || stars >= 3) ? 0 : pity;
+        HXBNX_GAME._saveState(s2);
 
         showReveal(elem, result.isNew, result.newAch, pity);
     }
