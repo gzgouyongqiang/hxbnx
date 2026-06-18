@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "questId": "main-17-silver",
+    "title": "氯及其化合物",
+    "subtitle": "🥈 银牌关卡 · 2个微卡点 · 通关积分 50分",
+    "course": 17,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": [
+      "Cl₃",
+      "H₂O",
+      "OCa",
+      "ClO",
+      "O₂",
+      "Cl",
+      "CO",
+      "Ag"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "84消毒液——有效成分与混用危险一句话本质84 消毒液有效成分为 NaClO（次氯酸钠），与洁厕灵（含 HCl）混用发生归中反应：ClO⁻+Cl⁻+2H⁺→Cl₂↑+H₂O，产生有毒 Cl₂。典型症状阿杰说：\"84消毒液和洁厕灵一起用，消毒效果加倍！\" —— ❌ 极度危险！两者混用会产生有毒 Cl₂ 气体，可能造成呼吸道损伤。小明说：\"84消毒液的有效成分是 NaClO，所以它属于盐类。\" —— ✅ 对！NaClO 是钠盐，具有强氧化性。小美说：\"84消毒液露置在空气中会变质，因为吸收 CO₂。\" —— ✅ 对！CO₂+H₂O+NaClO→NaHCO₃+HClO，HClO 见光分解失效。认知路径三步第一步：记住 84 消毒液的核心信息有效成分：NaClO（次氯酸钠）起效原理：NaClO + CO₂ + H₂O → NaHCO₃ + HClO，HClO 强氧化性杀菌消毒价态：Cl 为 +1 价（中间价态，既有氧化性又有还原性）第二步：理解混用产生 Cl₂ 的反应机制（归中反应）84 消毒液含 ClO⁻（Cl 为 +1 价，降价）洁厕灵含 HCl → H⁺ 和 Cl⁻（Cl 为 -1 价，升价）归中反应：ClO⁻ + Cl⁻ + 2H⁺ → Cl₂↑ + H₂O+1 价的 Cl 降到 0 价（Cl₂），-1 价的 Cl 升到 0 价（Cl₂）第三步：掌握使用注意事项❌ 严禁混用：84消毒液 + 洁厕灵 → Cl₂↑（有毒）❌ 严禁混用：84消毒液 + 盐酸 → Cl₂↑✅ 正确稀释：冷水稀释后使用，避光保存⚠️ 注意：NaClO 有强氧化性，勿与还原性物质混用类比记忆84消毒液像一个\"脾气暴躁的清洁工\"：单独工作时（NaClO）：温和高效，通过 HClO 杀菌遇到洁厕灵（HCl）：就像遇到了\"宿敌\"——ClO⁻ 和 Cl⁻ 打了起来，放出有毒的 Cl₂ 气体\"毒气弹\"记住口诀：\"84 遇盐酸，氯气满房间\"同类自测题4：洁厕灵（主要成分为盐酸）与 84 消毒液（主要成分为 NaClO）混合使用会产生有毒气体，该气体是（ ）",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "详见知识点解析"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "",
+          "options": [],
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "Cl₂与金属反应——产物价态判断一句话本质Cl₂ 是强氧化剂，与变价金属反应时直接生成最高价氯化物，如 Fe→FeCl₃（+3 价），Cu→CuCl₂（+2 价）。典型症状阿杰说：\"铁丝在氯气中燃烧生成 FeCl₂。\" —— ❌ 错！Cl₂ 氧化性很强，Fe 直接被氧化到 +3 价，生成 FeCl₃（棕褐色烟）。小明说：\"铜丝在氯气中燃烧生成 CuCl，因为 Cu 是 +1 价稳定。\" —— ❌ 错！生成的是 CuCl₂（棕黄色烟），不是 CuCl。小美说：\"铁和氯气反应生成 FeCl₃，铁和盐酸反应生成 FeCl₂。\" —— ✅ 对！Cl₂ 是强氧化剂推至最高价，盐酸中的 H⁺ 氧化性较弱只能到 +2 价。认知路径三步第一步：记住 Cl₂ 与常见金属反应的产物和现象金属反应方程式现象Na2Na + Cl₂ →点燃 2NaCl白烟Fe2Fe + 3Cl₂ →点燃 2FeCl₃棕褐色烟CuCu + Cl₂ →点燃 CuCl₂棕黄色烟第二步：价态判断最关键——Cl₂ vs 盐酸试剂与 Fe 反应产物原因Cl₂FeCl₃（+3 价）Cl₂ 氧化性极强，将 Fe 氧化至最高价盐酸FeCl₂（+2 价）H⁺ 氧化性较弱，只能将 Fe 氧化到 +2 价S（硫）FeS（+2 价）S 氧化性比 Cl₂ 弱第三步：判断技巧看氧化剂强度：Cl₂ > Br₂ > I₂ > S，Cl₂ 遇到变价金属一律最高价特殊注意：Fe 与 Cl₂ 点燃得到 FeCl₃，而非 FeCl₂溶液反应：Cl₂ 通入 FeCl₂ 溶液，也能把 Fe²⁺ 氧化为 Fe³⁺（Cl₂ + 2FeCl₂ = 2FeCl₃）类比记忆把 Cl₂ 想象成\"暴力教练\"：遇到学生（变价金属），不管原来水平如何，直接\"训练到最高段位\"Fe 原本可以是 +2 或 +3，Cl₂ 教练二话不说：\"给我到 +3！\"Cu 可以是 +1 或 +2，Cl₂ 教练：\"至少 +2！\"对比盐酸（温柔老师）：\"尽力就好，+2 也行\"——所以 Fe + 盐酸 = FeCl₂同类自测题6：下列反应中，产物正确的是（ ）",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "详见知识点解析"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "",
+          "options": [],
+          "explanation": ""
+        }
+      ]
+    }
+  ],
+  "certQuiz": []
+}

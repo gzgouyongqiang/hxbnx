@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "questId": "main-17-bronze",
+    "title": "氯及其化合物",
+    "subtitle": "🥉 铜牌关卡 · 2个微卡点 · 通关积分 10分",
+    "course": 17,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": [
+      "Cl₃",
+      "H₂O",
+      "OCa",
+      "ClO",
+      "O₂",
+      "Cl",
+      "CO",
+      "Ag"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "Cl₂与H₂O的可逆反应——加CaCO₃增强漂白性一句话本质Cl₂与水发生可逆反应 Cl₂+H₂O ⇌ H⁺+Cl⁻+HClO，加 CaCO₃ 消耗 H⁺ 使平衡正向移动，提高 HClO 浓度，从而增强漂白性。典型症状阿杰说：\"新制氯水有漂白性，但放久了漂白性反而变强了。\" —— ❌ 错！久置氯水 HClO 分解，漂白性减弱。小明说：\"往新制氯水里加 CaCO₃ 粉末，有气泡产生，漂白性增强。\" —— ✅ 对！CaCO₃ 与 H⁺ 反应生成 CO₂，H⁺浓度下降，平衡右移，HClO 增多。小美问：\"加 CaCO₃ 后氯水颜色变浅，是因为 Cl₂ 被消耗了吗？\" —— ✅ 是的，Cl₂ 浓度降低，黄绿色变浅。认知路径三步第一步：写出 Cl₂ 与 H₂O 的可逆反应方程式Cl₂ + H₂O ⇌ H⁺ + Cl⁻ + HClO注意：这是可逆反应，不是完全反应。第二步：分析 CaCO₃ 的作用CaCO₃ + 2H⁺ → Ca²⁺ + CO₂↑ + H₂OH⁺ 被消耗 → 生成物浓度下降 → 平衡正向移动第三步：判断结果更多 Cl₂ 转化为 HClO → HClO 浓度增大 → 漂白性增强 → 溶液黄绿色变浅类比记忆把反应想象成一个跷跷板：左边坐着 Cl₂+H₂O，右边坐着 H⁺+Cl⁻+HClOCaCO₃ 就像把右边座位上的 H⁺ 推下去了（消耗掉）右边变轻了（生成物浓度下降），跷跷板往右边倾斜（平衡正移）结果 HClO 更多了（漂白性增强）同类自测题1：向新制氯水中加入下列哪种物质，可以增强其漂白性？",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "详见知识点解析"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "",
+          "options": [],
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "新制氯水的多重成分——三分子三离子一句话本质新制氯水中存在 Cl₂、H₂O、HClO（三分子）和 H⁺、Cl⁻、ClO⁻（少量 OH⁻）（三离子），不同成分对应不同性质，久置后变为稀盐酸。典型症状阿杰说：\"新制氯水能使红色布条褪色，因为 Cl₂ 有漂白性。\" —— ❌ 错！漂白的是 HClO，不是 Cl₂，Cl₂ 干燥时无漂白性。小明说：\"新制氯水中加入 AgNO₃ 溶液产生白色沉淀，说明有 Cl⁻。\" —— ✅ 对！Ag⁺+Cl⁻→AgCl↓（白色）。小美说：\"新制氯水使石蕊试液先变红后褪色，变红是因为 H⁺，褪色是因为 HClO。\" —— ✅ 完美！H⁺ 显酸性使石蕊变红，HClO 强氧化性使其褪色。认知路径三步第一步：写出新制氯水中的成分三分子：Cl₂、H₂O、HClO三离子：H⁺、Cl⁻、ClO⁻（还有少量 OH⁻）来源：Cl₂ + H₂O ⇌ H⁺ + Cl⁻ + HClO，HClO ⇌ H⁺ + ClO⁻第二步：各成分对应的性质检验检验对象试剂/现象结论H⁺紫色石蕊变红有 H⁺（酸性）HClO红色布条褪色有 HClO（漂白性）Cl₂黄绿色有 Cl₂Cl⁻AgNO₃→白色沉淀有 Cl⁻第三步：区分新制与久置氯水新制氯水：浅黄绿色，有漂白性（含 HClO），酸性较弱久置氯水：无色，无漂白性（HClO 已分解），酸性更强（HClO 分解生成 HCl）2HClO →光照 2HCl + O₂↑类比记忆新制氯水像一个\"多重身份特工\"：Cl₂ 是\"伪装色\"（黄绿色）H⁺ 是\"酸性攻击手\"（使石蕊变红）HClO 是\"漂白杀手\"（使布条褪色）Cl⁻ 是\"遗留痕迹\"（遇 Ag⁺ 留下白色证据）时间久了，HClO 特工自己分解了，只剩下 H⁺ 和 Cl⁻（变成稀盐酸）同类自测题2：关于新制氯水的说法正确的是（ ）",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "详见知识点解析"
+          ],
+          "table": null
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p></p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "",
+          "options": [],
+          "explanation": ""
+        }
+      ]
+    }
+  ],
+  "certQuiz": []
+}
