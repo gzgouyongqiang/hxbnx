@@ -127,7 +127,8 @@
           "blockId": "card-6-quiz",
           "type": "quiz",
           "tag": "📝 同类自测",
-          "question": "（2021·广东·真题改编）下列含铁物质转化关系不合理的是？",
+          "question": "（2021·广东·真题改编）部分含铁物质的分类与相应化合价关系如图所示，下列说法不合理的是？<br><img src='assets/images/exams/2021-gd-fe-cycle.jpg' style='max-width:100%;border-radius:8px;margin:8px 0;'>",
+          "questionImage": "assets/images/exams/2021-gd-fe-cycle.jpg",
           "options": [
             {
               "label": "A",
@@ -188,7 +189,7 @@
       "stageId": "cert-6",
       "type": "cert",
       "tag": "🏆 通关考题",
-      "question": "（2021·广东·真题改编）下列含铁物质转化关系不合理的是？",
+      "question": "（2021·广东·真题改编）部分含铁物质的分类与相应化合价关系如图所示，下列说法不合理的是？<br><img src='assets/images/exams/2021-gd-fe-cycle.jpg' style='max-width:100%;border-radius:8px;margin:8px 0;'>",
       "options": [
         {
           "label": "A",
