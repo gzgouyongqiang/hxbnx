@@ -1,3 +1,4 @@
 .workbuddy/
 add_favicon.py
 generate_site.py
+__pycache__/
