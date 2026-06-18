@@ -63,7 +63,7 @@ hxbnx-repo/
 │   ├── cards.json          # 化学卡牌池（v2: 21张，含化学知识+星级知识）
 │   ├── elements.json       # 元素数据库（118个完整元素）
 │   └── levels/             # 题目数据JSON
-│       ├── main-1-bronze.json ~ main-6-gold.json  # 仅6课时有数据
+│       ├── main-1-bronze.json ~ main-15-gold.json  # 仅前15课时有数据
 ├── topics/                 # 知识点页面（约100个HTML）
 ├── exams/                  # 高考真题页面
 ├── PROJECT_MEMORY.md       # 项目记忆卡（本文件）
@@ -153,7 +153,7 @@ hxbnx-repo/
 - 当前学分/修为境界
 
 ### 4.10 已有关卡数据
-仅第1~6课时（18个小关）有实际题目数据，其余52大关（156小关）待补充。
+仅第1~15课时（45个小关）有实际题目数据，其余53大关（159小关）待补充。
 
 ---
 
