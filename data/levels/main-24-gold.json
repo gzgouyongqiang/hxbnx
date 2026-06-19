@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "questId": "main-24-gold",
+    "title": "氮及其化合物（二）",
+    "subtitle": "🥇 金牌关卡 · 2个微卡点 · 通关积分 100分",
+    "course": 24,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": [
+      "硝酸",
+      "见光分解",
+      "棕色瓶",
+      "王水",
+      "Pt",
+      "Au"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "硝酸的保存与分解——见光分解",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>浓硝酸不稳定，见光或受热分解产生NO₂和O₂，因此需用<strong>棕色细口瓶</strong>避光、阴凉保存。分解方程式：4HNO₃ →(光/△) 4NO₂↑ + O₂↑ + 2H₂O。</p>"
+        },
+        {
+          "blockId": "card-5-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美发现实验室一瓶浓硝酸的溶液是黄色的，惊慌失措：</strong>「这瓶硝酸是不是被污染了？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：浓硝酸久置变黄是正常的——硝酸分解产生的NO₂溶解在硝酸中所致。4HNO₃ →(光/△) 4NO₂↑ + O₂↑ + 2H₂O，NO₂溶于浓硝酸使溶液呈黄色。所以硝酸要装在棕色瓶里避光保存，用完后立即盖紧瓶塞。</p>"
+        },
+        {
+          "blockId": "card-5-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "分解反应：4HNO₃ →(光/△) 4NO₂↑ + O₂↑ + 2H₂O。现象：溶液变黄色（NO₂溶于硝酸）；条件：光照或加热均会加速分解",
+            "保存方法：棕色瓶（吸收紫外线，减缓光分解）+ 阴凉处（避免温度升高加速分解）+ 细口瓶（液体试剂方便倾倒，减少挥发）+ 玻璃塞（硝酸有强氧化性，会腐蚀橡胶塞）",
+            "常见见光分解物质总结：HNO₃(浓)→NO₂+O₂+H₂O；HClO→HCl+O₂；AgNO₃→Ag+NO₂+O₂；AgBr→Ag+Br₂；H₂O₂→H₂O+O₂"
+          ],
+          "table": {
+            "headers": [
+              "物质",
+              "分解产物",
+              "保存方式"
+            ],
+            "rows": [
+              [
+                "HNO₃(浓)",
+                "NO₂ + O₂ + H₂O",
+                "棕色瓶、阴凉"
+              ],
+              [
+                "HClO",
+                "HCl + O₂",
+                "棕色瓶、现用现配"
+              ],
+              [
+                "AgNO₃",
+                "Ag + NO₂ + O₂",
+                "棕色瓶"
+              ],
+              [
+                "AgBr",
+                "Ag + Br₂",
+                "避光保存"
+              ],
+              [
+                "H₂O₂",
+                "H₂O + O₂",
+                "棕色瓶（或避光容器）"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-5-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>硝酸像「吸血鬼」：怕光（光一照就分解）怕热（热一烤就散架）只能待在「暗无天日」的棕色瓶里。分解时呼出「红色的气」（NO₂）——所以瓶子里有「血迹」（变黄）。</p>"
+        },
+        {
+          "blockId": "card-5-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列物质中，见光不易分解的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "HClO",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NH₄Cl",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "HNO₃",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "AgNO₃",
+              "correct": false
+            }
+          ],
+          "explanation": "A：HClO见光分解：2HClO →(光) 2HCl + O₂↑ ❌<br>B：NH₄Cl受热分解，但光照下不分解 ✅<br>C：浓HNO₃见光分解：4HNO₃ →(光) 4NO₂↑ + O₂↑ + 2H₂O ❌<br>D：AgNO₃见光分解：2AgNO₃ →(光) 2Ag + 2NO₂↑ + O₂↑ ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2015·上海卷·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-6",
+      "type": "microcard",
+      "num": 6,
+      "icon": "🧩",
+      "title": "王水——溶解黄金的秘密",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-6-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>王水是浓HNO₃与浓HCl按体积比1:3混合而成，能溶解Au、Pt等不活泼金属。原理：HNO₃氧化Au生成Au³⁺，Cl⁻与Au³⁺形成稳定的[AuCl₄]⁻配离子，降低Au³⁺浓度，使反应持续进行。</p>"
+        },
+        {
+          "blockId": "card-6-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明问：</strong>「Au不与浓硝酸反应，也不与浓盐酸反应，为什么王水就能溶解Au？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：忽略了配位反应的作用！王水中HNO₃将Au氧化为Au³⁺，同时浓盐酸中的Cl⁻与Au³⁺形成稳定的[AuCl₄]⁻配离子，大大降低了溶液中Au³⁺的浓度，使氧化还原平衡持续向右移动，Au不断被溶解。</p>"
+        },
+        {
+          "blockId": "card-6-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "王水配制：浓HNO₃ : 浓HCl = 1 : 3（体积比）。注意：先加浓盐酸，再加浓硝酸，混合后溶液呈黄色（有NOCl和Cl₂生成）",
+            "溶解Au的方程式：Au + HNO₃ + 4HCl → HAuCl₄ + NO↑ + 2H₂O，或写成离子方程式：Au + 4H⁺ + NO₃⁻ + 4Cl⁻ → [AuCl₄]⁻ + NO↑ + 2H₂O",
+            "王水能溶解Pt：3Pt + 4HNO₃ + 18HCl → 3H₂PtCl₆ + 4NO↑ + 8H₂O。注意：王水需现配现用，可用玻璃瓶盛放"
+          ],
+          "table": {
+            "headers": [
+              "酸",
+              "能否溶解Au",
+              "原因"
+            ],
+            "rows": [
+              [
+                "浓HNO₃",
+                "❌ 不能",
+                "Au³⁺浓度高，氧化还原平衡不移动"
+              ],
+              [
+                "浓HCl",
+                "❌ 不能",
+                "HCl无氧化性，不能氧化Au"
+              ],
+              [
+                "王水",
+                "✅ 能",
+                "HNO₃氧化Au + Cl⁻配位降低Au³⁺浓度"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-6-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>王水溶解Au就像「抓娃娃机」：浓硝酸（爪子）把Au（娃娃）抓起来（氧化为Au³⁺）；浓盐酸（传送带）把Au³⁺运走（形成[AuCl₄]⁻配离子）。如果只有爪子（浓硝酸），抓起来又掉回去（Au³⁺浓度高，平衡左移）；有了传送带（Cl⁻），娃娃就被源源不断地运走了！</p>"
+        },
+        {
+          "blockId": "card-6-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "关于王水的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "王水是浓HNO₃与浓H₂SO₄的混合物",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "王水能溶解Au是因为浓HNO₃的氧化性极强",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "王水中Cl⁻与Au³⁺形成配离子，使Au持续溶解",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "王水可用玻璃容器盛放",
+              "correct": false
+            }
+          ],
+          "explanation": "A：王水是浓HNO₃与浓HCl的混合物（1:3），不是H₂SO₄ ❌<br>B：单靠浓HNO₃不能溶解Au，需要Cl⁻的配位作用 ❌<br>C：Cl⁻与Au³⁺形成[AuCl₄]⁻，降低Au³⁺浓度，使氧化还原持续进行 ✅<br>D：王水不腐蚀玻璃，可用玻璃瓶盛放 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】高考改编题</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-5",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列物质中，见光不易分解的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "HClO",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "NH₄Cl",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "HNO₃",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "AgNO₃",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-6",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "关于王水的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "王水是浓HNO₃与浓H₂SO₄的混合物",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "王水能溶解Au是因为浓HNO₃的氧化性极强",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "王水中Cl⁻与Au³⁺形成配离子，使Au持续溶解",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "王水可用玻璃容器盛放",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

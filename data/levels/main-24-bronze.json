@@ -1,0 +1,267 @@
+{
+  "meta": {
+    "questId": "main-24-bronze",
+    "title": "氮及其化合物（二）",
+    "subtitle": "🥉 铜牌关卡 · 2个微卡点 · 通关积分 10分",
+    "course": 24,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": [
+      "硝酸",
+      "强氧化性",
+      "浓硝酸",
+      "稀硝酸",
+      "NO₂",
+      "NO"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "硝酸的强氧化性——浓稀有别产气不同",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>硝酸是<strong>强氧化性酸</strong>，与金属反应不产生氢气。浓硝酸还原为<strong>NO₂</strong>（红棕色），稀硝酸还原为<strong>NO</strong>（无色，遇空气变红棕色）。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明信誓旦旦地写：</strong>Cu + 2HNO₃(稀) → Cu(NO₃)₂ + H₂↑</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：误以为稀硝酸是非氧化性酸！硝酸（无论浓稀）都是氧化性酸，与金属反应产物是氮氧化物，不是H₂。稀硝酸与Cu反应生成NO，不是H₂！</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "记住「硝酸不产氢气」铁律：硝酸与金属反应→氮氧化物，不是H₂。原因：HNO₃中N(+5价)的氧化性远强于H⁺，优先被还原",
+            "浓稀硝酸的还原产物对比：浓硝酸→NO₂（红棕色）；稀硝酸→NO（无色，遇空气变红棕）；极稀硝酸→N₂O/N₂/NH₄⁺",
+            "背熟经典方程式：Cu + 4HNO₃(浓) → Cu(NO₃)₂ + 2NO₂↑ + 2H₂O；3Cu + 8HNO₃(稀) → 3Cu(NO₃)₂ + 2NO↑ + 4H₂O"
+          ],
+          "table": {
+            "headers": [
+              "硝酸浓度",
+              "主要还原产物",
+              "现象"
+            ],
+            "rows": [
+              [
+                "浓硝酸（≥6 mol/L）",
+                "NO₂（红棕色）",
+                "剧烈反应，产生红棕色气泡"
+              ],
+              [
+                "稀硝酸（~2-6 mol/L）",
+                "NO（无色）",
+                "产生无色气泡，管口变红棕"
+              ],
+              [
+                "极稀硝酸（<2 mol/L）",
+                "N₂O/N₂/NH₄⁺",
+                "反应缓和"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>硝酸像「暴躁的保安」：浓硝酸（暴脾气）→ 出手就是「红色警报」（NO₂）；稀硝酸（温和点）→ 暗中使绊子「无色偷袭」（NO）。但不管浓稀，他从不踢「氢气」这个球——因为他的「氮手套」（+5价N）氧化性远强于「氢手套」（H⁺）。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "铜与浓硝酸反应时，产生的气体是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "H₂",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NO₂",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "NO",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "N₂",
+              "correct": false
+            }
+          ],
+          "explanation": "A：硝酸与金属反应不产生H₂ ❌<br>B：Cu + 4HNO₃(浓) → Cu(NO₃)₂ + 2NO₂↑ + 2H₂O ✅<br>C：NO是稀硝酸的还原产物 ❌<br>D：N₂不是硝酸与金属反应的产物 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2015·新课标Ⅰ·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "浓硝酸与金属——钝化vs反应",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Fe、Al在<strong>常温浓硝酸</strong>中发生钝化（表面形成致密氧化膜阻止反应），但加热后继续反应。其他金属（Cu、Ag等）常温下即与浓硝酸剧烈反应。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明说：</strong>「Fe与浓硝酸不反应，因为铁太老实了？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：不是不反应，是反应太快了——瞬间生成一层致密的Fe₃O₄氧化膜把Fe「保护」起来，这叫钝化。实际上发生了剧烈的氧化反应形成氧化膜，然后反应自动停止。加热后氧化膜被破坏，反应继续！</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "钝化本质：Fe、Al与浓硝酸反应生成致密氧化膜（Fe₂O₃或Al₂O₃），阻止内部金属进一步反应。钝化是化学变化（有新物质生成）",
+            "钝化的条件与打破：常温+浓硝酸→钝化；加热→剧烈反应产NO₂；加水稀释→继续反应产NO",
+            "与非钝化金属的反应：Cu + 4HNO₃(浓) → Cu(NO₃)₂ + 2NO₂↑ + 2H₂O（常温剧烈）；Au、Pt不与任何浓度硝酸反应（需用王水溶解）"
+          ],
+          "table": {
+            "headers": [
+              "金属",
+              "常温浓硝酸",
+              "加热浓硝酸",
+              "稀硝酸"
+            ],
+            "rows": [
+              [
+                "Fe、Al",
+                "钝化（无现象）",
+                "剧烈反应，产NO₂",
+                "反应，产NO"
+              ],
+              [
+                "Cu、Ag",
+                "剧烈反应，产NO₂",
+                "剧烈反应，产NO₂",
+                "反应，产NO"
+              ],
+              [
+                "Au、Pt",
+                "不反应",
+                "不反应",
+                "不反应"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>钝化就像「消防喷淋」：浓硝酸碰到Fe（火灾）→ 瞬间启动消防喷淋（生成氧化膜）；氧化膜（防火层）→ 暂时阻止了「火势」（反应停止）；加热（拔掉喷淋插头）→ 火势失控（反应继续）。所以钝化不是「没着火」，而是「火被快速扑灭了」！</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "Fe在常温下与浓硝酸剧烈反应",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Fe在常温浓硝酸中钝化，加热后反应",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Cu在常温浓硝酸中不反应",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Au可用浓硝酸溶解",
+              "correct": false
+            }
+          ],
+          "explanation": "A：Fe在常温浓硝酸中钝化，不剧烈反应 ❌<br>B：Fe常温钝化，加热后氧化膜被破坏，继续反应 ✅<br>C：Cu在常温浓硝酸中剧烈反应产NO₂ ❌<br>D：Au不与任何浓度硝酸反应，需王水溶解 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2015·北京卷·改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "铜与浓硝酸反应时，产生的气体是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "H₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "NO₂",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "NO",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "N₂",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "Fe在常温下与浓硝酸剧烈反应",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Fe在常温浓硝酸中钝化，加热后反应",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "Cu在常温浓硝酸中不反应",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Au可用浓硝酸溶解",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
