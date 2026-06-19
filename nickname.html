@@ -537,6 +537,11 @@ function showResult(success){
   gameState.scores.push({level:lv.id,score:gameState.score,maxCombo:gameState.maxCombo,date:new Date().toLocaleDateString()});
   localStorage.setItem('nickname_scores', JSON.stringify(gameState.scores));
 
+  // 同步积分到总积分系统
+  if(typeof HXBNX_GAME !== 'undefined' && gameState.score > 0){
+    HXBNX_GAME.addSideScore('side-nickname', gameState.score);
+  }
+
   document.getElementById('resultIcon').textContent = allCorrect ? '🎉' : gameState.life <= 0 ? '💔' : '⭐';
   document.getElementById('resultTitle').textContent = allCorrect ? '完美通关！' : gameState.life <= 0 ? '挑战失败' : '挑战完成';
   document.getElementById('resultSub').textContent = allCorrect

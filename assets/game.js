@@ -506,6 +506,33 @@ const HXBNX_GAME = (function () {
     };
   }
 
+  // ===== 分支副本积分同步 =====
+  function addSideScore(sideQuestId, points) {
+    var s = load();
+    // 债务扣减
+    var debtPaid = 0;
+    if (s.questDebt > 0) {
+      debtPaid = Math.min(Math.round(points * 0.5), s.questDebt);
+      s.questDebt -= debtPaid;
+      if (s.questDebt <= 0) s.questDebt = 0;
+    }
+    var finalScore = points - debtPaid;
+    s.score = (s.score || 0) + finalScore;
+    s.totalExp = (s.totalExp || 0) + finalScore;
+    // 本周学分
+    var weekId = todayStr().slice(0, 7);
+    if (s.weeklyScoreWeek !== weekId) { s.weeklyScoreWeek = weekId; s.weeklyScore = 0; }
+    s.weeklyScore = (s.weeklyScore || 0) + finalScore;
+    // 标记副本通关
+    if (s.clearedQuests.indexOf(sideQuestId) === -1) {
+      s.clearedQuests.push(sideQuestId);
+    }
+    updateStreak(s);
+    checkAchievements(s);
+    save(s);
+    return { score: finalScore, debtPaid: debtPaid };
+  }
+
   // ===== v2: Card Draw (v2 — pity, essence, upgrade, daily limit) =====
 
   var _cardPool = [];
@@ -819,6 +846,7 @@ const HXBNX_GAME = (function () {
     submitQuizOption: submitQuizOption,
     recordCertWrong: recordCertWrong,
     submitCert: submitCert,
+    addSideScore: addSideScore,
     registerCardPool: registerCardPool,
     registerCardConfig: registerCardConfig,
     drawCard: drawCard,

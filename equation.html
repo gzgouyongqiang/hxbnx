@@ -363,6 +363,11 @@ function showResult(){
   document.getElementById('statScore').textContent = gameState.score;
   document.getElementById('statCombo').textContent = gameState.maxCombo;
   document.getElementById('statCorrect').textContent = gameState.correctCount;
+
+  // 同步积分到总积分系统
+  if(typeof HXBNX_GAME !== 'undefined' && gameState.score > 0){
+    HXBNX_GAME.addSideScore('side-equation', gameState.score);
+  }
 }
 
 // ==================== 粒子背景 ====================
