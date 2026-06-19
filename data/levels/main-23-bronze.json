@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "questId": "main-23-bronze",
+    "title": "氮及其化合物（一）",
+    "subtitle": "🥉 铜牌关卡 · 2个微卡点 · 通关积分 10分",
+    "course": 23,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": [
+      "NH₃",
+      "碱性气体",
+      "NH₃·H₂O",
+      "实验室制法",
+      "向下排空气法"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "NH₃的碱性——唯一碱性气体",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>NH₃溶于水形成NH₃·H₂O（弱碱），电离出OH⁻使溶液显碱性，是中学化学中<strong>唯一的水溶液显碱性的气体</strong>。NH₃本身不是碱，NH₃·H₂O才是碱。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明脱口而出：</strong>「NH₃是弱碱，因为氨水能使酚酞变红。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：混淆了NH₃气体和NH₃·H₂O。NH₃本身是中性分子，不是碱；溶于水后与水反应生成NH₃·H₂O，NH₃·H₂O电离出OH⁻才显碱性。NH₃是「碱性气体」而非「碱」。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "区分NH₃气体与氨水：NH₃气体是中性分子，不含OH⁻；氨水（NH₃·H₂O）⇌ NH₄⁺ + OH⁻，弱碱性",
+            "记住NH₃的碱性反应：使湿润红色石蕊试纸变蓝（检验NH₃的方法）；与酸反应生成铵盐：NH₃ + HCl → NH₄Cl（白烟）",
+            "NH₃与HCl反应产生白烟——此反应用于检验NH₃或HCl"
+          ],
+          "table": {
+            "headers": [
+              "操作",
+              "现象",
+              "结论"
+            ],
+            "rows": [
+              [
+                "湿润红色石蕊试纸靠近",
+                "变蓝",
+                "证明是NH₃（碱性气体）"
+              ],
+              [
+                "干燥红色石蕊试纸靠近",
+                "不变色",
+                "NH₃气体本身不含OH⁻"
+              ],
+              [
+                "蘸浓盐酸的玻璃棒靠近",
+                "产生白烟",
+                "NH₃ + HCl → NH₄Cl"
+              ],
+              [
+                "NH₃通入酚酞溶液",
+                "变红",
+                "溶液显碱性"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>NH₃就像「快递小哥」——他本身不带「碱性包裹」（OH⁻），但到了水里（收货地址）就会变出「碱性包裹」来。所以NH₃是「送货渠道」，NH₃·H₂O才是真正的「产品」。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "NH₃是弱碱",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NH₃能使干燥的红色石蕊试纸变蓝",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "NH₃与HCl相遇产生白烟",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "NH₃溶于水后溶液显碱性，因此NH₃是电解质",
+              "correct": false
+            }
+          ],
+          "explanation": "A：NH₃本身不是碱，NH₃·H₂O才是弱碱 ❌<br>B：NH₃必须通过水才能使石蕊变蓝，干燥试纸不变色 ❌<br>C：NH₃ + HCl → NH₄Cl（白色固体小颗粒，即白烟） ✅<br>D：NH₃本身不是电解质，NH₃·H₂O才是电解质 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2015·广东卷·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "氨的实验室制法——固固加热与尾气处理",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>实验室用NH₄Cl与Ca(OH)₂固体混合加热制NH₃：2NH₄Cl + Ca(OH)₂ →(△) CaCl₂ + 2NH₃↑ + 2H₂O。采用<strong>向下排空气法</strong>收集，尾气用倒置漏斗吸收防倒吸。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美用NaOH代替Ca(OH)₂加热制NH₃，结果试管炸裂了。</strong></p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：NaOH易潮解，加热时与玻璃中的SiO₂反应（2NaOH + SiO₂ → Na₂SiO₃ + H₂O）腐蚀试管。必须用Ca(OH)₂（消石灰）才安全！</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "反应原理：2NH₄Cl + Ca(OH)₂ →(△) CaCl₂ + 2NH₃↑ + 2H₂O。不可用NaOH（腐蚀试管），不可用NH₄NO₃（爆炸危险）",
+            "收集与干燥：向下排空气法（NH₃密度 < 空气）；干燥用碱石灰（不可用浓H₂SO₄、P₂O₅等酸性干燥剂，不可用CaCl₂——CaCl₂与NH₃生成CaCl₂·8NH₃）",
+            "尾气处理：导管口接倒置漏斗浸入水面以下（防倒吸），吸收液为水或稀硫酸"
+          ],
+          "table": {
+            "headers": [
+              "干燥剂",
+              "能否干燥NH₃",
+              "原因"
+            ],
+            "rows": [
+              [
+                "碱石灰",
+                "✅ 能",
+                "碱性，不与NH₃反应"
+              ],
+              [
+                "浓H₂SO₄",
+                "❌ 不能",
+                "酸性，与NH₃反应生成(NH₄)₂SO₄"
+              ],
+              [
+                "P₂O₅",
+                "❌ 不能",
+                "酸性氧化物，与NH₃反应"
+              ],
+              [
+                "CaCl₂",
+                "❌ 不能",
+                "与NH₃生成CaCl₂·8NH₃络合物"
+              ],
+              [
+                "无水CaO",
+                "✅ 能",
+                "碱性，不与NH₃反应"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>做NH₃就像做馒头：NH₄Cl（面粉）+ Ca(OH)₂（酵母）→ 加热（发酵）→ NH₃（馒头）。不能用NaOH（强碱酵母会烧坏锅——腐蚀试管）；管口塞棉花（盖上锅盖防漏气）；向下排空气（馒头轻，往上飘）；倒置漏斗防倒吸（拿盘子接，不怕溢出来）。</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列实验室制取和收集NH₃的操作正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "用NH₄Cl和NaOH固体加热制NH₃",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "用P₂O₅干燥NH₃",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "用向下排空气法收集NH₃",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "用向上排空气法收集NH₃",
+              "correct": false
+            }
+          ],
+          "explanation": "A：NaOH腐蚀玻璃试管 ❌<br>B：P₂O₅是酸性干燥剂，与NH₃反应 ❌<br>C：NH₃密度小于空气，用向下排空气法 ✅<br>D：NH₃密度小于空气，不能用向上排空气法 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2023·广东卷·改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "NH₃是弱碱",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "NH₃能使干燥的红色石蕊试纸变蓝",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "NH₃与HCl相遇产生白烟",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "NH₃溶于水后溶液显碱性，因此NH₃是电解质",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列实验室制取和收集NH₃的操作正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "用NH₄Cl和NaOH固体加热制NH₃",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "用P₂O₅干燥NH₃",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "用向下排空气法收集NH₃",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "用向上排空气法收集NH₃",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

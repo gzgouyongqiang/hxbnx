@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "questId": "main-23-gold",
+    "title": "氮及其化合物（一）",
+    "subtitle": "🥇 金牌关卡 · 2个微卡点 · 通关积分 100分",
+    "course": 23,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": [
+      "NH₃催化氧化",
+      "工业制硝酸",
+      "NO",
+      "NO₂",
+      "红棕色",
+      "排水法收集"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "NH₃的催化氧化——工业制硝酸第一步",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>NH₃在催化剂（Pt-Rh合金网）作用下被O₂氧化为NO：4NH₃ + 5O₂ →(催化剂/△) 4NO + 6H₂O。这是工业制硝酸（氨氧化法）的第一步，NH₃中N从-3价升高到+2价，转移5mol电子。</p>"
+        },
+        {
+          "blockId": "card-5-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美写方程式：NH₃ + O₂ → N₂ + H₂O，心想「NH₃氧化不应该是生成稳定的N₂吗？」</strong></p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：催化氧化条件下产物是NO而不是N₂！4NH₃ + 5O₂ →(催化剂/△) 4NO + 6H₂O。如果生成了N₂，后面硝酸就无法制备了。NH₃的纯氧燃烧才生成N₂（4NH₃ + 3O₂ → 2N₂ + 6H₂O），但催化氧化条件不同。</p>"
+        },
+        {
+          "blockId": "card-5-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "催化氧化方程式：4NH₃ + 5O₂ →(催化剂/△) 4NO + 6H₂O。催化剂：Pt-Rh合金网，条件：加热（约800℃）",
+            "工业制硝酸三步：① NH₃催化氧化 → NO；② NO + O₂ → NO₂；③ 3NO₂ + H₂O → 2HNO₃ + NO（NO循环利用）",
+            "总反应：NH₃ + 2O₂ → HNO₃ + H₂O（理论上1mol NH₃生成1mol HNO₃）"
+          ],
+          "table": {
+            "headers": [
+              "步骤",
+              "反应方程式",
+              "N的化合价变化"
+            ],
+            "rows": [
+              [
+                "① 催化氧化",
+                "4NH₃ + 5O₂ → 4NO + 6H₂O",
+                "-3 → +2（升5价）"
+              ],
+              [
+                "② NO氧化",
+                "2NO + O₂ → 2NO₂",
+                "+2 → +4（升2价）"
+              ],
+              [
+                "③ NO₂吸收",
+                "3NO₂ + H₂O → 2HNO₃ + NO",
+                "+4 → +5（升1价）"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-5-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>氨催化氧化像「接力赛」：第一棒NH₃ → NO（不要直接到N₂，这是比赛规则！）；第二棒NO → NO₂（跑着跑着颜色变了）；第三棒NO₂ → HNO₃（终极目标——硝酸）。关键：第一棒必须递给NO，不能短路到N₂！</p>"
+        },
+        {
+          "blockId": "card-5-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "关于工业制硝酸的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "NH₃催化氧化的催化剂是MnO₂",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NH₃催化氧化产物为N₂",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "NO₂与水反应生成HNO₃和NO",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "尾气中的NOₓ不可用碱液吸收",
+              "correct": false
+            }
+          ],
+          "explanation": "A：催化剂是Pt-Rh合金网，不是MnO₂ ❌<br>B：催化氧化产物是NO，不是N₂ ❌<br>C：3NO₂ + H₂O → 2HNO₃ + NO ✅<br>D：尾气NOₓ可用NaOH碱液吸收 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2019·江苏卷·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-6",
+      "type": "microcard",
+      "num": 6,
+      "icon": "🧩",
+      "title": "NO与NO₂的循环——红棕色气体的秘密",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-6-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>NO是<strong>无色</strong>气体（遇O₂立即变红棕色NO₂），NO₂是<strong>红棕色</strong>气体（溶于水生成HNO₃ + NO），二者相互转化构成氮的氧化物循环。NO只能用排水法收集，NO₂只能用向上排空气法收集。</p>"
+        },
+        {
+          "blockId": "card-6-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明看到Fe与稀硝酸反应产生无色气体，到试管口变成红棕色，惊呼：</strong>「气体变色了，是不是有魔法？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：没有认识到NO和NO₂的转化关系！Fe与稀硝酸反应产生的是NO（无色），NO到试管口与空气中O₂反应生成NO₂（红棕色）。2NO + O₂ → 2NO₂，这是常温下就能发生的反应。</p>"
+        },
+        {
+          "blockId": "card-6-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "NO的「身份证」：无色、有毒、不溶于水（排水法收集）、不与碱反应（非酸性氧化物）、遇空气立即变红棕色",
+            "NO₂的「身份证」：红棕色、有毒、能与水反应（3NO₂ + H₂O → 2HNO₃ + NO）、能与碱反应、不能用排水法收集",
+            "NO与NO₂的转化：2NO + O₂ → 2NO₂（常温，无色→红棕色）；3NO₂ + H₂O → 2HNO₃ + NO（常温，红棕色→无色）"
+          ],
+          "table": {
+            "headers": [
+              "性质",
+              "NO",
+              "NO₂"
+            ],
+            "rows": [
+              [
+                "颜色",
+                "无色",
+                "红棕色"
+              ],
+              [
+                "溶解性",
+                "不溶于水",
+                "与水反应"
+              ],
+              [
+                "收集方法",
+                "排水法",
+                "向上排空气法"
+              ],
+              [
+                "与O₂反应",
+                "2NO + O₂ → 2NO₂",
+                "不反应"
+              ],
+              [
+                "与水反应",
+                "不反应",
+                "3NO₂ + H₂O → 2HNO₃ + NO"
+              ],
+              [
+                "是否酸性氧化物",
+                "不是",
+                "是"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-6-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>NO和NO₂就像「变色龙兄弟」：弟弟NO（无色）害羞胆小，见到O₂（空气）就脸红——变成红棕色哥哥NO₂；哥哥NO₂爱游泳，一沾水就变回弟弟 + 洗出「脏水」（硝酸）。兄弟俩都怕碱，遇到强碱就一起被收服。</p>"
+        },
+        {
+          "blockId": "card-6-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于NO和NO₂的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "NO可以用向上排空气法收集",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "NO₂可以用排水法收集",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "NO遇空气立即变红棕色",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "NO₂是红棕色气体，NO也是红棕色气体",
+              "correct": false
+            }
+          ],
+          "explanation": "A：NO与空气中的O₂反应，不能用排空气法收集，只能用排水法 ❌<br>B：NO₂与水反应（3NO₂ + H₂O → 2HNO₃ + NO），不能用排水法 ❌<br>C：2NO + O₂ → 2NO₂，NO遇空气变红棕色 ✅<br>D：NO是无色气体，NO₂才是红棕色 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·天津卷·改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-5",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "关于工业制硝酸的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "NH₃催化氧化的催化剂是MnO₂",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "NH₃催化氧化产物为N₂",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "NO₂与水反应生成HNO₃和NO",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "尾气中的NOₓ不可用碱液吸收",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-6",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于NO和NO₂的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "NO可以用向上排空气法收集",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "NO₂可以用排水法收集",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "NO遇空气立即变红棕色",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "NO₂是红棕色气体，NO也是红棕色气体",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

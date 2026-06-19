@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "questId": "main-23-silver",
+    "title": "氮及其化合物（一）",
+    "subtitle": "🥈 银牌关卡 · 2个微卡点 · 通关积分 50分",
+    "course": 23,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": [
+      "铵盐",
+      "NH₄⁺检验",
+      "受热分解",
+      "喷泉实验",
+      "压差驱动"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "铵盐特性——与碱反应、受热分解",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>铵盐的共同特点：① <strong>与碱反应放出NH₃</strong>（NH₄⁺检验原理）；② <strong>受热易分解</strong>，产物因酸根不同而异。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明取NH₄Cl固体加热，试管口出现白色固体，以为NH₃又变回去了。</strong></p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：NH₄Cl加热分解为NH₃和HCl气体，到管口温度降低又重新结合成NH₄Cl固体，不是NH₃「变回去」！这是升华和化合的连续过程，NH₃和HCl在冷处重新化合。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "NH₄⁺的检验：取样品加浓NaOH溶液加热，用湿润红色石蕊试纸检验产生的气体，变蓝则有NH₄⁺。离子方程式：NH₄⁺ + OH⁻ →(△) NH₃↑ + H₂O",
+            "铵盐受热分解——酸根决定产物：NH₄Cl → NH₃↑ + HCl↑（管口重新化合）；NH₄HCO₃ → NH₃↑ + CO₂↑ + H₂O↑（全部分解为气体）",
+            "注意：NH₄NO₃受热可能发生爆炸性分解，不可加热！"
+          ],
+          "table": {
+            "headers": [
+              "铵盐",
+              "加热分解产物",
+              "特点"
+            ],
+            "rows": [
+              [
+                "NH₄Cl",
+                "NH₃↑ + HCl↑",
+                "管口冷处重新化合为NH₄Cl"
+              ],
+              [
+                "NH₄HCO₃",
+                "NH₃↑ + CO₂↑ + H₂O↑",
+                "全部分解为气体，无残留"
+              ],
+              [
+                "(NH₄)₂CO₃",
+                "2NH₃↑ + CO₂↑ + H₂O↑",
+                "全部分解为气体"
+              ],
+              [
+                "NH₄NO₃",
+                "N₂O↑ + 2H₂O（或爆炸）",
+                "氧化还原反应，有爆炸危险"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>铵盐像「三明治」：面包1是NH₄⁺（永远一样），夹心是不同的酸根（决定分解产物），遇到碱就释放NH₃（就像三明治一挤，馅料出来）。NH₄Cl像「分分合合的情侣」——加热分开（NH₃和HCl），冷却又复合。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于铵盐的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "所有铵盐受热分解都只产生NH₃",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "检验NH₄⁺时可以不加碱直接加热",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "NH₄HCO₃受热分解产物全部为气体",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "NH₄Cl受热分解后试管底部有残留固体",
+              "correct": false
+            }
+          ],
+          "explanation": "A：NH₄NO₃受热分解不产生NH₃（氧化还原反应） ❌<br>B：必须加碱（NaOH）并加热才能产生NH₃ ❌<br>C：NH₄HCO₃ → NH₃↑ + CO₂↑ + H₂O↑，三种产物全是气体 ✅<br>D：NH₄Cl受热分解为气体，管口冷处才重新化合，试管底部无残留 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2016·浙江卷·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "喷泉实验——压差驱动",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>利用气体在液体中的<strong>极大溶解度</strong>或<strong>快速化学反应</strong>使烧瓶内压强骤降，形成内外压差，大气压将液体压入烧瓶形成喷泉。</p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明问：</strong>「为什么NH₃能做喷泉实验，H₂就不行？」</p>\n        <p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：不理解喷泉实验的本质条件。喷泉实验成功的关键是气体能被液体大量溶解或快速反应，使瓶内压强急剧下降。NH₃溶解度1:700（极易溶），H₂几乎不溶于水，无法形成足够压差。</p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "喷泉实验原理：烧瓶内气体迅速减少 → 内部压强急剧下降 → 外界大气压将液体压入烧瓶",
+            "成功条件：气体在液体中溶解度极大（如NH₃ 1:700）或气体与液体快速反应（如HCl + NaOH）",
+            "常见喷泉组合：NH₃ + 水（含酚酞）→ 红色喷泉；HCl + 水 → 无色喷泉；CO₂ + NaOH溶液 → 喷泉"
+          ],
+          "table": {
+            "headers": [
+              "气体",
+              "吸收液",
+              "喷泉颜色",
+              "原理"
+            ],
+            "rows": [
+              [
+                "NH₃",
+                "水（含酚酞）",
+                "红色",
+                "溶解度1:700，NH₃·H₂O显碱性"
+              ],
+              [
+                "HCl",
+                "水",
+                "无色",
+                "溶解度1:500"
+              ],
+              [
+                "CO₂",
+                "NaOH溶液",
+                "无色",
+                "CO₂ + 2NaOH → Na₂CO₃ + H₂O"
+              ],
+              [
+                "SO₂",
+                "NaOH溶液",
+                "无色",
+                "SO₂ + 2NaOH → Na₂SO₃ + H₂O"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>喷泉实验就像「吸管喝饮料」：烧瓶是饮料瓶，气体溶入水就像你吸了一口 → 瓶内压强降低 → 大气压把液体「压」上来形成喷泉。NH₃溶解度超大，像用粗吸管猛吸；H₂不溶，像吸管漏气，怎么吸都喝不到。</p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列组合中，能形成喷泉实验的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "NH₃与水（含酚酞）",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "N₂与水",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "H₂与水",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "O₂与水",
+              "correct": false
+            }
+          ],
+          "explanation": "A：NH₃极易溶于水（1:700），能形成喷泉 ✅<br>B：N₂难溶于水，不能形成喷泉 ❌<br>C：H₂难溶于水，不能形成喷泉 ❌<br>D：O₂难溶于水，不能形成喷泉 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2023·广东卷·改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于铵盐的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "所有铵盐受热分解都只产生NH₃",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "检验NH₄⁺时可以不加碱直接加热",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "NH₄HCO₃受热分解产物全部为气体",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "NH₄Cl受热分解后试管底部有残留固体",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-4",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列组合中，能形成喷泉实验的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "NH₃与水（含酚酞）",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "N₂与水",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "H₂与水",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O₂与水",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
