@@ -91,13 +91,74 @@ body{
 .sq-dot.g-on{background:var(--gold);box-shadow:0 0 4px rgba(240,192,64,.4)}
 
 /* Square states */
-.course-sq.all-cleared{border-color:rgba(110,231,183,.35)}
-.course-sq.all-cleared .sq-num{color:var(--green)}
-.course-sq.partial-cleared{border-color:rgba(240,192,64,.25)}
-.course-sq.has-content:not(.partial-cleared):not(.all-cleared){animation:sqGlow 3s ease-in-out infinite}
-.course-sq.no-content{opacity:.25;cursor:default}
-.course-sq.no-content:hover{transform:none;border-color:var(--border)}
-@keyframes sqGlow{0%,100%{border-color:rgba(167,139,250,.2)}50%{border-color:rgba(167,139,250,.45)}}
+/* 已通关 - 金色流光扫过 */
+.course-sq.all-cleared {
+  border-color: rgba(240,192,64,.45);
+  box-shadow: 0 0 12px rgba(240,192,64,.15), inset 0 0 8px rgba(240,192,64,.05);
+  overflow: hidden;
+}
+.course-sq.all-cleared::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(240,192,64,.12) 50%,
+    transparent 60%
+  );
+  animation: goldShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes goldShimmer {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(100%) translateY(100%); }
+}
+.course-sq.all-cleared .sq-num { color: var(--gold); text-shadow: 0 0 6px rgba(240,192,64,.3); }
+
+/* 进行中 - 呼吸灯 */
+.course-sq.partial-cleared {
+  border-color: rgba(110,231,183,.35);
+  animation: breathe 2.5s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 4px rgba(110,231,183,.1); border-color: rgba(110,231,183,.25); }
+  50% { box-shadow: 0 0 14px rgba(110,231,183,.25), 0 0 4px rgba(110,231,183,.15); border-color: rgba(110,231,183,.5); }
+}
+.course-sq.partial-cleared .sq-num { color: var(--green); }
+
+/* 未解锁 - 锁图标 */
+.course-sq.no-content {
+  opacity: .35;
+  cursor: default;
+  position: relative;
+}
+.course-sq.no-content::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 18px;
+  background: var(--text-dim);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E") no-repeat center;
+  mask-size: contain;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: contain;
+  opacity: .5;
+}
+.course-sq.no-content .sq-num { opacity: .3; }
+.course-sq.no-content:hover { transform: none; border-color: var(--border); }
+
+/* 有内容但未开始 - 微光 */
+.course-sq.has-content:not(.partial-cleared):not(.all-cleared) {
+  animation: sqGlow 3s ease-in-out infinite;
+}
+@keyframes sqGlow { 0%,100%{border-color:rgba(167,139,250,.2)} 50%{border-color:rgba(167,139,250,.45)} }
 
 /* ===== Course Detail ===== */
 .course-detail{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s;opacity:0}
