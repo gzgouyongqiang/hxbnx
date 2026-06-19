@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "questId": "main-22-silver",
+    "title": "硫及其化合物",
+    "subtitle": "🥈 银牌关卡 · 2个微卡点 · 通关积分 50分",
+    "course": 22,
+    "tier": "silver",
+    "tierLabel": "银牌关卡",
+    "tierEmoji": "🥈",
+    "knowledgeTags": [
+      "SO₄²⁻检验",
+      "BaCl₂",
+      "盐酸酸化",
+      "浓硫酸",
+      "吸水性",
+      "脱水性",
+      "强氧化性"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-3",
+      "type": "microcard",
+      "num": 3,
+      "icon": "🧩",
+      "title": "SO₄²⁻检验——先酸化后加钡盐",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-3-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>检验SO₄²⁻必须<strong>先用足量盐酸酸化</strong>（排除CO₃²⁻、SO₃²⁻、PO₄³⁻、Ag⁺干扰），若无沉淀和气体产生，再滴加BaCl₂溶液，产生白色沉淀则证明有SO₄²⁻。</p>"
+        },
+        {
+          "blockId": "card-3-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>阿杰直接用BaCl₂溶液检验某溶液中的SO₄²⁻，结果产生了白色沉淀。他高兴地宣布：</strong>「有SO₄²⁻！」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：未酸化排除干扰！溶液中若含CO₃²⁻、SO₃²⁻、Ag⁺等，直接加BaCl₂也会产生白色沉淀（BaCO₃、BaSO₃、AgCl），无法确定就是SO₄²⁻。必须先加盐酸酸化，排除干扰后再加BaCl₂。</p>"
+        },
+        {
+          "blockId": "card-3-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "加足量稀盐酸酸化，排除CO₃²⁻、SO₃²⁻等干扰",
+            "若无沉淀、无气体产生，排除Ag⁺（AgCl不溶于酸）",
+            "再加BaCl₂，有白色沉淀则证明有SO₄²⁻（BaSO₄不溶于酸）"
+          ],
+          "table": {
+            "headers": [
+              "操作",
+              "目的",
+              "排除的离子"
+            ],
+            "rows": [
+              [
+                "先加足量盐酸",
+                "酸化，观察现象",
+                "CO₃²⁻（气泡）、SO₃²⁻（气泡）、Ag⁺（白色沉淀）"
+              ],
+              [
+                "无沉淀无气体",
+                "确认无上述干扰",
+                "—"
+              ],
+              [
+                "再加BaCl₂溶液",
+                "检验SO₄²⁻",
+                "—"
+              ],
+              [
+                "白色沉淀",
+                "证明含SO₄²⁻",
+                "BaSO₄不溶于酸"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-3-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>验明正身前先「清场」——就好比你想在一个房间里找特定的人，但房间里还有其他长相类似的人，先把「干扰人员」（CO₃²⁻、SO₃²⁻、Ag⁺）赶出去，再叫你要找的人（SO₄²⁻）出来。口诀：「SO₄²⁻检验三步走，先加盐酸后钡盐；无气无沉再排除，白色沉淀才可信」。</p>"
+        },
+        {
+          "blockId": "card-3-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列检验SO₄²⁻的方法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "向溶液中滴加BaCl₂溶液，产生白色沉淀",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "向溶液中滴加Ba(NO₃)₂溶液，产生白色沉淀",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "向溶液中先加足量盐酸，无沉淀产生，再加BaCl₂溶液，产生白色沉淀",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "向溶液中先加足量HNO₃，再加BaCl₂溶液，产生白色沉淀",
+              "correct": false
+            }
+          ],
+          "explanation": "A：未酸化，CO₃²⁻、Ag⁺等会干扰 ❌<br>B：未酸化且NO₃⁻在酸性条件下可能氧化SO₃²⁻为SO₄²⁻，造成误判 ❌<br>C：先酸化排除干扰，再加BaCl₂检验 ✅<br>D：HNO₃具有强氧化性，会将SO₃²⁻氧化为SO₄²⁻，造成误判 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】经典高考实验题</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-4",
+      "type": "microcard",
+      "num": 4,
+      "icon": "🧩",
+      "title": "浓硫酸的三重性格——吸水性、脱水性、强氧化性",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-4-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>浓硫酸有三重性质：<strong>吸水性</strong>（物理变化，吸收游离H₂O分子）、<strong>脱水性</strong>（化学变化，按H:O=2:1比例脱去有机物中的H和O）、<strong>强氧化性</strong>（与Cu等金属加热反应生成SO₂，S⁺⁶→S⁺⁴）。</p>"
+        },
+        {
+          "blockId": "card-4-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明看到蔗糖中加入浓硫酸变黑说：</strong>「浓硫酸具有吸水性，把蔗糖里的水吸走了。」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：混淆了吸水性和脱水性！吸水性是吸收游离的水分子（物理变化）；脱水性是按2:1比例脱去有机物中的H和O（化学变化，生成C）。蔗糖变黑是脱水性，不是吸水性！</p>"
+        },
+        {
+          "blockId": "card-4-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "区分吸水性vs脱水性：吸水性吸收游离H₂O（物理变化），脱水性脱去化合物中H和O（化学变化）",
+            "判断强氧化性的表现：与Cu加热生成SO₂（不是H₂！），常温使Fe、Al钝化",
+            "辨析常见错误：蔗糖变黑是脱水性；Cu与浓硫酸反应需要加热；不可干燥H₂S等还原性气体"
+          ],
+          "table": {
+            "headers": [
+              "性质",
+              "作用对象",
+              "变化类型",
+              "典型实验"
+            ],
+            "rows": [
+              [
+                "吸水性",
+                "游离H₂O分子",
+                "物理变化",
+                "浓硫酸暴露在空气中增重、干燥气体"
+              ],
+              [
+                "脱水性",
+                "有机物中H和O（2:1）",
+                "化学变化",
+                "蔗糖变黑（生成C）、纸张变焦"
+              ],
+              [
+                "强氧化性",
+                "金属、非金属",
+                "化学变化",
+                "Cu + 2H₂SO₄(浓) → CuSO₄ + SO₂↑ + 2H₂O"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-4-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>浓硫酸就像霸道总裁：吸水性 = 看见水就收走（吸收游离水分子）；脱水性 = 按比例拆散H和O（蔗糖→黑炭）；强氧化性 = 把对手的电子抢走（Cu→Cu²⁺，S⁺⁶→S⁺⁴）。口诀：「吸水物理不变质，脱水变黑出炭渣；强氧加热铜稀化，钝化铁铝常温下」。</p>"
+        },
+        {
+          "blockId": "card-4-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于浓硫酸的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "浓硫酸使蔗糖变黑体现了吸水性",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Cu与浓硫酸在常温下剧烈反应",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "浓硫酸可用于干燥H₂S气体",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "常温下Fe和Al在浓硫酸中钝化",
+              "correct": true
+            }
+          ],
+          "explanation": "A：使蔗糖变黑是脱水性，不是吸水性 ❌<br>B：Cu与浓硫酸需要加热才反应 ❌<br>C：H₂S有强还原性，会被浓硫酸氧化 ❌<br>D：常温下Fe、Al在浓硫酸中表面形成致密氧化膜，发生钝化 ✅<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】高考改编题</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-3",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列检验SO₄²⁻的方法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "向溶液中滴加BaCl₂溶液，产生白色沉淀",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "向溶液中滴加Ba(NO₃)₂溶液，产生白色沉淀",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "向溶液中先加足量盐酸，无沉淀产生，再加BaCl₂溶液，产生白色沉淀",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "向溶液中先加足量HNO₃，再加BaCl₂溶液，产生白色沉淀",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-4",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于浓硫酸的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "浓硫酸使蔗糖变黑体现了吸水性",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Cu与浓硫酸在常温下剧烈反应",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "浓硫酸可用于干燥H₂S气体",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "常温下Fe和Al在浓硫酸中钝化",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}
