@@ -222,6 +222,7 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 <!-- 连击提示 -->
 <div class="combo-popup" id="comboPopup">🔥 连击 x3!</div>
 
+<script src="assets/game.js"></script>
 <script>
 // ==================== 数据 ====================
 const SUBSTANCES = {
@@ -239,7 +240,7 @@ const SUBSTANCES = {
     {formula:'SiO₂',name:'二氧化硅',nick:'石英、水晶',color:'无色透明',icon:'💎',type:'氧化物'}
   ],
   acid: [
-    {formula:'HCl',name:'盐酸',nick:'氢氯酸',color:'无色液体',icon:'🧪',type:'酸'},
+    {formula:'HCl',name:'盐酸',nick:'盐酸(氢氯酸)',color:'无色液体',icon:'🧪',type:'酸'},
     {formula:'H₂SO₄',name:'硫酸',nick:'磺镪水',color:'无色油状',icon:'🧪',type:'酸'},
     {formula:'HNO₃',name:'硝酸',nick:'硝镪水',color:'无色液体',icon:'🧪',type:'酸'},
     {formula:'CH₃COOH',name:'乙酸',nick:'醋酸',color:'无色液体',icon:'🍶',type:'酸'}
@@ -307,6 +308,20 @@ let gameState = {
   collection: JSON.parse(localStorage.getItem('nickname_collection') || '[]'),
   scores: JSON.parse(localStorage.getItem('nickname_scores') || '[]')
 };
+
+// ==================== 错题本 ====================
+function addToWrongBook(q, selected){
+  if(typeof HXBNX_GAME !== 'undefined' && HXBNX_GAME.addWrongQuestion){
+    HXBNX_GAME.addWrongQuestion({
+      filename: 'side-nickname',
+      topicName: '化学俗称大挑战 · ' + LEVELS[gameState.currentLevel].name,
+      questionText: q.text,
+      options: q.options,
+      correctIndex: q.options.indexOf(q.correct),
+      wrongIndex: q.options.indexOf(selected)
+    });
+  }
+}
 
 // ==================== 初始化 ====================
 function init(){
@@ -445,6 +460,7 @@ function selectOption(idx, selected){
   }else{
     gameState.combo = 0;
     gameState.life--;
+    addToWrongBook(q, selected);
     document.getElementById('questionBox').classList.add('shake');
     setTimeout(()=>document.getElementById('questionBox').classList.remove('shake'),400);
   }

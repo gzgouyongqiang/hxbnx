@@ -610,6 +610,27 @@
         "icon": "📜"
       },
       "contentFile": null
+    },
+    "side-nickname": {
+      "type": "side",
+      "category": "minigame",
+      "title": "化学俗称大挑战",
+      "subtitle": "副本游戏 · 掌握43个高考高频俗称",
+      "unlock": {
+        "minCourse": 1,
+        "minTier": "bronze"
+      },
+      "validFrom": "2026-06-01",
+      "validUntil": "2026-12-31",
+      "baseScore": 100,
+      "xpMultiplier": 1.0,
+      "badgeTriggers": [
+        "nickname_master"
+      ],
+      "theme": {
+        "icon": "🧪"
+      },
+      "contentFile": "nickname.html"
     }
   },
   "chapters": [
