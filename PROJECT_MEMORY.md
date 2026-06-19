@@ -1,7 +1,7 @@
 # 炼金试炼 · 化学不难学 — 项目记忆卡
 
 > 每次新开对话时，请先读取此文件！
-> 更新时间：2026-06-18
+> 更新时间：2026-06-19
 
 ---
 
@@ -51,21 +51,26 @@ hxbnx-repo/
 ├── level.html              # 关卡页：微卡点展示+答题+通关
 ├── achievements.html       # 成就徽章墙
 ├── element.html            # 元素周期表收集（118元素）
+├── wrong.html              # 错题本（支持旧topics/和新level.html?q=路由）
+├── nickname.html            # 副本：化学俗称大挑战（6级闯关模式）
+├── equation.html            # 副本：方程式正误判断（40题，20正确20错误）
 ├── assets/
 │   ├── game.js             # 核心游戏引擎（v3: 学分/任务/银行/排行榜/抽卡）
 │   ├── game.css            # 共享样式
-│   ├── profile.css         # 角色面板专属样式（v3含任务/银行/排行榜样式）
-│   └── profile.js          # 角色面板交互逻辑（v3含任务/银行/排行榜渲染）
+│   ├── profile.css         # 角色面板专属样式
+│   └── profile.js          # 角色面板交互逻辑
 ├── data/
-│   ├── quests.json         # 关卡注册表（68关）
+│   ├── quests.json         # 关卡注册表（68关，含sideQuests分支副本）
 │   ├── course-mapping.json # 网站课时→ima知识库课时映射
 │   ├── badges.json         # 徽章定义（7枚）
-│   ├── cards.json          # 化学卡牌池（v2: 21张，含化学知识+星级知识）
+│   ├── cards.json          # 化学卡牌池（v2: 21张）
 │   ├── elements.json       # 元素数据库（118个完整元素）
 │   └── levels/             # 题目数据JSON
-│       ├── main-1-bronze.json ~ main-15-gold.json  # 仅前15课时有数据
+│       ├── main-1-bronze.json ~ main-25-gold.json  # 第1~25课时（75个小关）
 ├── topics/                 # 知识点页面（约100个HTML）
 ├── exams/                  # 高考真题页面
+├── scripts/
+│   └── generate_level_from_ima.py  # IMA自动生成关卡脚本
 ├── PROJECT_MEMORY.md       # 项目记忆卡（本文件）
 └── CNAME                   # hxbnx.bbroot.com
 ```
@@ -122,18 +127,14 @@ hxbnx-repo/
 - **化学精华**：重复卡牌自动转化为精华
 - **卡牌升级**：1~5星，消耗精华解锁更多化学知识
 - **卡牌图鉴**：完整图鉴，支持按稀有度筛选
-- **卡牌详情**：点击查看化学知识+星级知识+升级按钮
-- **知识点**：21张卡牌 × 5级知识 = 105条化学知识
 
 ### 4.6 元素周期表收集系统（v2升级）
 - **118个完整元素**（1号氢到118号鿫）
 - **数据文件**：`data/elements.json`
-- **抽卡消耗**：50学分/次（不再用独立次数）
+- **抽卡消耗**：50学分/次
 - **保底系统**：5次软保底 + 10次硬保底
 - **元素精华**：重复元素按星级转化为精华
 - **族收集进度**：10个元素族实时进度
-- **星级分布**：30普通+30稀有+25珍贵+20史诗+13传说
-- **元素详情弹窗**：点击查看价层电子排布、化学奇闻等
 
 ### 4.7 每日任务系统（v3新增）
 | 任务 | 奖励 | 说明 |
@@ -152,8 +153,9 @@ hxbnx-repo/
 - 最高连对记录
 - 当前学分/修为境界
 
-### 4.10 已有关卡数据
-仅第1~15课时（45个小关）有实际题目数据，其余53大关（159小关）待补充。
+### 4.10 关卡数据进度
+- **第1~25课时**（75个小关）已有实际题目数据
+- **第26~68课时**（129个小关）待补充
 
 ---
 
@@ -175,41 +177,125 @@ hxbnx-repo/
 | F12 每日任务 | ✅ 完成 | 签到+答题+复习，角色面板展示 |
 | F13 学分银行 | ✅ 完成 | 存取+赊账+债务还清机制 |
 | F14 本地排行榜 | ✅ 完成 | 周学分+最高连对+修为境界 |
+| F15 错题本 | ✅ 完成 | wrong.html + level.html集成收集 + 每日任务复习联动 |
+| F16 分支副本系统 | ✅ 完成 | quests.json sideQuests + contentFile路由 + 统一入口 |
+| F17 化学俗称大挑战 | ✅ 完成 | nickname.html（6级闯关，43个物质） |
+| F18 方程式正误判断 | ✅ 完成 | equation.html（40题，20正确20错误） |
 
 ---
 
 ## 六、待开发功能（按优先级排序）
 
 ### 高优先级
-1. **错题本（F10）** — 自动记录答错题，支持反复练习和"已掌握"标记
-2. **关卡状态视觉升级** — 已通关金色流光、进行中呼吸灯、未解锁锁图标
-3. **ima知识库导入脚本** — 自动读取微卡点生成关卡JSON（补充剩余52关题目）
+1. **关卡状态视觉升级** — 已通关金色流光、进行中呼吸灯、未解锁锁图标
+2. **剩余关卡数据** — 第26~68课时（129个小关）待补充
 
 ### 中优先级
-4. **学习日历** — 显示每天学习记录，连续学习奖励
-5. **通关特效增强** — 粒子爆炸、数字弹跳等
-6. **知识巩固模式** — 限时速刷答题，快速复习
+3. **学习日历** — 显示每天学习记录，连续学习奖励
+4. **通关特效增强** — 粒子爆炸、数字弹跳等
+5. **知识巩固模式** — 限时速刷答题，快速复习
 
 ### 低优先级
-7. **主题切换** — 暗色/亮色模式
-8. **音效系统** — 答题正确/错误/通关音效
-9. **多学生本地排行榜** — 同设备多学生积分排名
+6. **主题切换** — 暗色/亮色模式
+7. **音效系统** — 答题正确/错误/通关音效
+8. **多学生本地排行榜** — 同设备多学生积分排名
 
 ---
 
-## 七、化学错误检查记录
+## 七、关卡制作经验总结（重要！必读）
 
-已检查第23、24、25课时的18篇微卡点，发现4处错误并通过`append_doc`追加修正说明到ima知识库笔记末尾。
+### 7.1 IMA自动生成脚本的质量问题
+
+**核心结论：IMA自动生成脚本生成的JSON质量很差，不能直接使用！**
+
+已知问题：
+1. **所有题目都没有正确答案**（所有选项correct都是false）
+2. **题目文本混乱**（把答案解析塞进题目文本，如"题1：B（NH₄Cl在加热时分解）"）
+3. **选项文本混入多道题**（D选项文本变成"题2（变式）：..."）
+4. **emoji未清理**（标题和内容中有🎯🚨😖等emoji）
+5. **"详见认知路径分析"占位符**（symptom中未填写真实错误分析）
+6. **table为null**（path中没有表格数据）
+7. **knowledgeTags不准确**
+8. **steps数组中有多余文本**（整段文字塞进一个step）
+
+**推荐做法：IMA脚本仅用于获取主题和参考内容，关卡JSON必须手动编写。**
+
+### 7.2 关卡JSON格式规范（严格参照第15关）
+
+每个关卡JSON必须满足以下规范：
+
+1. **meta结构**：questId、title、subtitle、course、tier、tierLabel、tierEmoji、knowledgeTags、totalStages(6)、activeStages(2)
+2. **stages结构**：每个stage包含5个block（secret、symptom、path、analogy、quiz）
+3. **symptom格式**：必须使用「❌ 错误根源：xxx」格式，不能用"详见认知路径分析"占位符
+4. **path.table**：必须有table，不能为null。table包含headers和rows
+5. **quiz选项**：必须有且仅有一个correct:true的选项
+6. **certQuiz**：必须有2道通关考题，与对应微卡点的quiz相同
+7. **emoji限制**：标题和内容中不使用emoji（tierEmoji除外）
+8. **HTML转义**：内容中的特殊字符需要HTML转义
+
+### 7.3 关卡制作流程（标准SOP）
+
+```
+1. 运行IMA脚本获取主题 → python3 scripts/generate_level_from_ima.py N
+2. 读取生成的JSON（仅作参考）
+3. 手动编写bronze/silver/gold三个JSON文件
+4. 验证JSON格式 → python3 -c "import json; json.load(open('xxx.json'))"
+5. 验证所有题目有正确答案
+6. 知识点正确性验证（使用Explore子代理逐一验证）
+7. 修正发现的知识点错误
+8. git add + commit + push
+```
+
+### 7.4 已完成关卡列表
+
+| 课时 | 主题 | 微卡点数 | 状态 |
+|------|------|----------|------|
+| 1~15 | 化学基本概念与计算 | 45个 | ✅ 早期完成 |
+| 16~21 | 元素化合物（前半） | 36个 | ✅ 已修复symptom格式 |
+| 22 | 硫及其化合物 | 6个 | ✅ 手动编写+验证 |
+| 23 | 氮及其化合物（一） | 6个 | ✅ 手动编写+验证 |
+| 24 | 氮及其化合物（二） | 6个 | ✅ 手动编写+验证，修正2处错误 |
+| 25 | 硅、铝、铜及其化合物 | 6个 | ✅ 手动编写+验证 |
+
+### 7.5 已发现并修正的知识点错误
+
+| 关卡 | 错误 | 修正 |
+|------|------|------|
+| 16~21 | 17处"详见认知路径分析"占位符 | 替换为"❌ 错误根源：xxx" |
+| 22 | IMA生成3处占位符+emoji+知识点错误 | 全部手动重写 |
+| 24 | Fe钝化膜写成Fe₃O₄（应为Fe₂O₃） | 改为"致密氧化膜"（不写具体成分） |
+| 24 | 王水腐蚀玻璃（实际不腐蚀） | 修正为"可用玻璃瓶盛放" |
+
+### 7.6 化学知识点注意事项
+
+- **钝化描述**：只说"生成致密氧化膜"，不要说具体成分（Fe₂O₃/Fe₃O₄有争议）
+- **王水**：不腐蚀玻璃，可用玻璃瓶盛放（腐蚀玻璃的是HF和强碱）
+- **Al与NaOH反应**：传统写法NaAlO₂，新版教材写Na[Al(OH)₄]，两种都接受
+- **NH₃**：本身不是碱也不是电解质，NH₃·H₂O才是弱碱和电解质
+- **干燥剂选择**：CaCl₂不能干燥NH₃（生成络合物CaCl₂·8NH₃）
 
 ---
 
-## 八、GitHub Token
+## 八、已修复的Bug记录
+
+| Bug | 原因 | 修复 |
+|-----|------|------|
+| 勤学苦练按钮失效 | submitCert未更新quizResults | game.js中submitCert添加quizResults同步 |
+| 通关文牒combo加分失效 | UI先increment combo再调engine，engine返回alreadyAnswered | 先调submitQuizOption，根据返回值更新UI |
+| 抽卡总显示试管 | triggerCardDraw用result而非result.card | 正确解构result.card |
+| 分支副本"关卡不存在" | index.html renderSideCard只链接level.html?q= | 检查def.contentFile，有则直接链接 |
+| 方程式副本只有20题 | shuffle后slice(0,20) | 去掉slice，使用全部40题 |
+| 方程式副本正确错误比31:9 | IMA生成时正确题太多 | 手动重写为20:20 |
+
+---
+
+## 九、GitHub Token
 
 Token已配置在git remote URL中（已缓存），可直接`git push`推送。如Token失效，需要强哥提供新Token。
 
 ---
 
-## 九、IMA微卡点自动生成关卡脚本
+## 十、IMA微卡点自动生成关卡脚本
 
 ### 脚本位置
 - `scripts/generate_level_from_ima.py` — 核心生成脚本
@@ -224,55 +310,37 @@ Token已配置在git remote URL中（已缓存），可直接`git push`推送。
 git clone https://github.com/gzgouyongqiang/hxbnx.git /workspace/hxbnx-repo
 cd /workspace/hxbnx-repo
 
-# 2. 配置GitHub Token（每次新对话都需要，请向强哥索取）
-export GITHUB_TOKEN=你的_GitHub_Token
+# 2. 配置IMA凭证（每次新对话都需要）
+mkdir -p ~/.config/ima
+echo "7f9f9268be2e59deadae578f372712e5" > ~/.config/ima/client_id
+echo "t5iT7Dep3I7nJQ+4sQSZObHaDRPD7ledZlPZNR3256T+Ny1rpqcuTCjFBzfscZuZ4DHTBlDZ1A==" > ~/.config/ima/api_key
 
-# 3. 确保IMA凭证已配置
-# 检查 ~/.config/ima/client_id 和 ~/.config/ima/api_key 是否存在
-# 如不存在，需重新配置（请向强哥索取凭证）：
-# mkdir -p ~/.config/ima
-# echo "你的_client_id" > ~/.config/ima/client_id
-# echo "你的_api_key" > ~/.config/ima/api_key
-
-# 4. 一键生成指定课时关卡
-./scripts/run_generate.sh 16   # 生成第16课时
+# 3. 一键生成指定课时关卡（仅获取主题参考，JSON需手动编写）
+python3 scripts/generate_level_from_ima.py N
 ```
 
-### 脚本功能
-1. 连接ima知识库，搜索指定课时的6个微卡点
-2. 读取每个微卡点的完整内容
-3. 解析微卡点结构（秘籍/症状/路径/类比/自测）
-4. 自动生成铜牌/银牌/金牌三个关卡JSON
-5. 自动更新quests.json注册关卡链
-6. 自动推送到GitHub
-
-### 前置条件
-- IMA凭证：`~/.config/ima/client_id` 和 `api_key`
-- GitHub Token：通过环境变量 `GITHUB_TOKEN` 传入
-- Python 3.8+
-
-### 注意事项
-- Token**不要硬编码**在脚本中，每次通过环境变量传入
-- 微卡点中的复杂表格需要手动补充
-- 生成后建议检查JSON质量，必要时手动微调
+### ⚠️ 重要提醒
+- IMA自动生成的JSON**不能直接使用**，必须手动编写
+- 脚本仅用于获取课时主题和微卡点参考内容
+- 手动编写后务必验证JSON格式和知识点正确性
 
 ---
 
-## 十、跨对话使用说明
+## 十一、跨对话使用说明
 
 **每次新开对话时，请执行以下步骤：**
 
 1. 克隆仓库：`git clone https://github.com/gzgouyongqiang/hxbnx.git /workspace/hxbnx-repo`
 2. 读取本文件：`PROJECT_MEMORY.md`
 3. 按记忆恢复项目上下文
-4. 确认当前开发进度（对照第五节已完成模块）
+4. 确认当前开发进度（对照第四节关卡数据进度）
 5. 继续推进待开发功能
 
 **不要重复已完成的工作！**
 
 ---
 
-## 十一、开发日志
+## 十二、开发日志
 
 ### 2026-06-17（第一天）
 - 克隆仓库，建立项目记忆
@@ -285,12 +353,19 @@ export GITHUB_TOKEN=你的_GitHub_Token
 - 修复元素盲盒无限抽卡bug（claimFreeDraw循环调用）
 - 元素数据库从55个扩充到完整118个
 - 元素数据改为外部JSON文件（data/elements.json）
-- 全面升级学分统一系统v3：
-  - 答题同时获得EXP和学分
-  - 重复闯关仍获学分（鼓励复习）
-  - 连续答对学分加成（1.2x/1.3x/1.5x）
-  - 每日任务系统（签到/答题/复习）
-  - 学分银行（存取/赊账/债务）
-  - 本地排行榜（周学分/连对/境界）
+- 全面升级学分统一系统v3
 - 元素抽卡改为消耗50学分
 - 推送所有改动到GitHub Pages
+
+### 2026-06-19（第三天）
+- 制作第21关（硫的初步认识），修复emoji和占位符问题
+- 修复3个关键bug：勤学苦练按钮、combo加分、抽卡显示
+- 实现错题本功能（wrong.html + level.html集成）
+- 创建化学俗称大挑战副本（nickname.html，6级闯关，43个物质）
+- 创建方程式正误判断副本（equation.html，40题，20正确20错误）
+- 修复分支副本入口路由问题
+- 制作第22关（硫及其化合物）— 手动编写+知识点验证
+- 制作第23关（氮及其化合物一）— 手动编写+知识点验证
+- 制作第24关（氮及其化合物二）— 手动编写+验证，修正2处错误
+- 制作第25关（硅铝铜及其化合物）— 手动编写+知识点验证
+- 更新PROJECT_MEMORY.md，总结经验教训
