@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "questId": "main-25-bronze",
+    "title": "硅、铝、铜及其化合物",
+    "subtitle": "🥉 铜牌关卡 · 2个微卡点 · 通关积分 10分",
+    "course": 25,
+    "tier": "bronze",
+    "tierLabel": "铜牌关卡",
+    "tierEmoji": "🥉",
+    "knowledgeTags": [
+      "SiO₂",
+      "酸性氧化物",
+      "不与酸反应",
+      "与HF反应",
+      "硅酸盐",
+      "光导纤维"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-1",
+      "type": "microcard",
+      "num": 1,
+      "icon": "🧩",
+      "title": "SiO₂的特殊性质——酸性氧化物的「叛逆」",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-1-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>SiO₂是<strong>酸性氧化物</strong>，但具有特殊性：①不与一般酸反应（如HCl、H₂SO₄、HNO₃）；②能与<strong>氢氟酸（HF）</strong>反应：SiO₂ + 4HF → SiF₄↑ + 2H₂O；③不溶于水，不能由水化合得到。</p>"
+        },
+        {
+          "blockId": "card-1-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明认为：</strong>「SiO₂是酸性氧化物，那肯定能溶于水生成硅酸，也能与所有酸反应吧？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：混淆了酸性氧化物的普遍性质和SiO₂的特殊性！SiO₂虽是酸性氧化物，但它不溶于水（不能与水反应生成H₂SiO₃），也不与一般酸反应。反而能与HF反应——这是SiO₂的「叛逆」之处。HF是唯一能与SiO₂反应的酸。</p>"
+        },
+        {
+          "blockId": "card-1-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "SiO₂的「四不」：不溶于水、不与水反应、不与一般酸反应（HCl/H₂SO₄/HNO₃）、不是非金属氧化物中唯一酸性氧化物",
+            "SiO₂的「两要」：能与HF反应（SiO₂ + 4HF → SiF₄↑ + 2H₂O）；能与强碱反应（SiO₂ + 2NaOH → Na₂SiO₃ + H₂O）",
+            "应用：HF雕刻玻璃（利用SiO₂+HF反应）；SiO₂制光导纤维；不能用玻璃瓶盛放HF"
+          ],
+          "table": {
+            "headers": [
+              "反应物",
+              "能否与SiO₂反应",
+              "方程式"
+            ],
+            "rows": [
+              [
+                "H₂O",
+                "❌ 不能",
+                "SiO₂不溶于水，不与水反应"
+              ],
+              [
+                "HCl / H₂SO₄ / HNO₃",
+                "❌ 不能",
+                "SiO₂不与一般酸反应"
+              ],
+              [
+                "HF（氢氟酸）",
+                "✅ 能",
+                "SiO₂ + 4HF → SiF₄↑ + 2H₂O"
+              ],
+              [
+                "NaOH（强碱）",
+                "✅ 能",
+                "SiO₂ + 2NaOH → Na₂SiO₃ + H₂O"
+              ],
+              [
+                "Na₂CO₃（高温）",
+                "✅ 能",
+                "SiO₂ + Na₂CO₃ →(高温) Na₂SiO₃ + CO₂↑"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-1-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>SiO₂像「叛逆的酸性氧化物」：身为酸性氧化物却「四不」（不溶于水、不与水反应、不与一般酸反应、不能由水制得），偏偏只和HF这个「异类」反应。就像一个自称素食主义者的人，什么菜都不吃，只吃一种特殊蘑菇（HF）。</p>"
+        },
+        {
+          "blockId": "card-1-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于SiO₂的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "SiO₂溶于水生成硅酸",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "SiO₂能与盐酸反应",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "SiO₂能与氢氟酸反应",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "SiO₂是碱性氧化物",
+              "correct": false
+            }
+          ],
+          "explanation": "A：SiO₂不溶于水，不与水反应 ❌<br>B：SiO₂不与一般酸（HCl等）反应 ❌<br>C：SiO₂ + 4HF → SiF₄↑ + 2H₂O ✅<br>D：SiO₂是酸性氧化物 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·全国卷Ⅰ·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-2",
+      "type": "microcard",
+      "num": 2,
+      "icon": "🧩",
+      "title": "硅酸盐与硅的用途——从沙子到芯片",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-2-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>硅酸盐是地壳中含量最多的矿物。SiO₂是制造<strong>光导纤维</strong>的原料；高纯硅是制造<strong>半导体芯片</strong>和<strong>太阳能电池</strong>的核心材料。硅的制备：SiO₂ + 2C →(高温) Si + 2CO↑（粗硅）。</p>"
+        },
+        {
+          "blockId": "card-2-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小美说：</strong>「硅不就是沙子吗？沙子能做芯片？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：沙子的主要成分是SiO₂（二氧化硅），不是硅单质！芯片用的是高纯度硅单质（纯度达99.9999%以上）。从SiO₂到Si需要高温碳还原（SiO₂+2C→Si+2CO↑），再经提纯才能得到半导体级硅。</p>"
+        },
+        {
+          "blockId": "card-2-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "硅的存在形式：硅在地壳中含量第二（仅次于氧），以SiO₂和硅酸盐形式存在，游离态硅极少",
+            "SiO₂的用途：光导纤维（通信）、玻璃原料、水晶、玛瑙",
+            "硅单质的用途：半导体芯片（高纯硅）、太阳能电池（硅光电池）、合金（含硅的钢）"
+          ],
+          "table": {
+            "headers": [
+              "物质",
+              "成分",
+              "主要用途"
+            ],
+            "rows": [
+              [
+                "沙子",
+                "SiO₂",
+                "建筑材料、玻璃原料"
+              ],
+              [
+                "光导纤维",
+                "SiO₂（高纯）",
+                "光纤通信"
+              ],
+              [
+                "水晶",
+                "SiO₂（结晶）",
+                "饰品、振荡器"
+              ],
+              [
+                "芯片",
+                "高纯硅单质",
+                "半导体、集成电路"
+              ],
+              [
+                "太阳能电池",
+                "硅（多晶/单晶）",
+                "光伏发电"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-2-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>从沙子到芯片就像「从土豆到薯片」：沙子（SiO₂）是「土豆」，要经过加工（碳还原→粗硅→提纯→高纯硅）才能变成「薯片」（芯片）。不能直接拿土豆当薯片吃，也不能直接拿沙子做芯片！</p>"
+        },
+        {
+          "blockId": "card-2-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于硅及其化合物的说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "沙子的主要成分是硅单质",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "高纯硅可用于制造半导体芯片",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "光导纤维的主要成分是硅单质",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "硅是地壳中含量最多的元素",
+              "correct": false
+            }
+          ],
+          "explanation": "A：沙子的主要成分是SiO₂，不是硅单质 ❌<br>B：高纯硅是半导体材料，用于制造芯片 ✅<br>C：光导纤维的主要成分是SiO₂，不是硅单质 ❌<br>D：地壳中含量最多的元素是O（氧），Si排第二 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2022·广东卷·改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-1",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于SiO₂的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "SiO₂溶于水生成硅酸",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "SiO₂能与盐酸反应",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "SiO₂能与氢氟酸反应",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "SiO₂是碱性氧化物",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-2",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于硅及其化合物的说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "沙子的主要成分是硅单质",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "高纯硅可用于制造半导体芯片",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "光导纤维的主要成分是硅单质",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "硅是地壳中含量最多的元素",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

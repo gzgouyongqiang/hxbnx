@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "questId": "main-25-gold",
+    "title": "硅、铝、铜及其化合物",
+    "subtitle": "🥇 金牌关卡 · 2个微卡点 · 通关积分 100分",
+    "course": 25,
+    "tier": "gold",
+    "tierLabel": "金牌关卡",
+    "tierEmoji": "🥇",
+    "knowledgeTags": [
+      "Cu",
+      "CuO",
+      "Cu(OH)₂",
+      "CuSO₄",
+      "蓝色沉淀",
+      "金属冶炼",
+      "热还原法",
+      "电解法"
+    ],
+    "totalStages": 6,
+    "activeStages": 2
+  },
+  "stages": [
+    {
+      "stageId": "card-5",
+      "type": "microcard",
+      "num": 5,
+      "icon": "🧩",
+      "title": "铜及其化合物——Cu²⁺的蓝色世界",
+      "defaultOpen": true,
+      "blocks": [
+        {
+          "blockId": "card-5-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>Cu在化合物中主要呈<strong>+2价</strong>（Cu²⁺），水溶液呈<strong>蓝色</strong>。CuO是黑色粉末，Cu(OH)₂是<strong>蓝色沉淀</strong>，CuSO₄·5H₂O是蓝色晶体（胆矾），无水CuSO₄是白色粉末（遇水变蓝，用于检验水的存在）。</p>"
+        },
+        {
+          "blockId": "card-5-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明看到无水CuSO₄是白色粉末，加了几滴水后变蓝了，惊呼：</strong>「硫酸铜变颜色了，是不是发生了化学反应？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：确实是化学反应！白色无水CuSO₄ + H₂O → 蓝色CuSO₄·5H₂O，这是化合反应（水合反应）。这个反应常用于检验水的存在——白色CuSO₄遇水变蓝，说明有水。</p>"
+        },
+        {
+          "blockId": "card-5-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "Cu的化合物颜色总结：Cu（紫红色固体）；CuO（黑色粉末）；Cu₂O（红色粉末）；Cu(OH)₂（蓝色沉淀）；CuSO₄·5H₂O（蓝色晶体）；无水CuSO₄（白色粉末）",
+            "Cu²⁺的检验：向溶液中加入NaOH溶液，产生蓝色沉淀Cu(OH)₂，加热后分解为黑色CuO：Cu(OH)₂ →(△) CuO + H₂O",
+            "无水CuSO₄的用途：检验水的存在（白色→蓝色）。注意：无水CuSO₄不能干燥气体（因为与水反应后失效）"
+          ],
+          "table": {
+            "headers": [
+              "铜的化合物",
+              "颜色",
+              "状态"
+            ],
+            "rows": [
+              [
+                "Cu（铜单质）",
+                "紫红色",
+                "固体"
+              ],
+              [
+                "CuO（氧化铜）",
+                "黑色",
+                "粉末"
+              ],
+              [
+                "Cu₂O（氧化亚铜）",
+                "红色",
+                "粉末"
+              ],
+              [
+                "Cu(OH)₂（氢氧化铜）",
+                "蓝色",
+                "沉淀"
+              ],
+              [
+                "CuSO₄·5H₂O（胆矾）",
+                "蓝色",
+                "晶体"
+              ],
+              [
+                "无水CuSO₄",
+                "白色",
+                "粉末"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-5-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>铜的化合物像「调色盘」：Cu单质穿紫红色衣服；CuO穿黑色外套；Cu₂O穿红色裙子；Cu(OH)₂是蓝色果冻；胆矾是蓝色冰糖；无水CuSO₄是白色面粉（一加水就变成蓝色面团）。口诀：「铜紫红，氧黑亚红，氢氧蓝沉，胆矾蓝晶，无水白粉」。</p>"
+        },
+        {
+          "blockId": "card-5-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列关于铜及其化合物的颜色说法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "CuO是红色粉末",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "无水CuSO₄是蓝色粉末",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Cu(OH)₂是蓝色沉淀",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Cu₂O是黑色粉末",
+              "correct": false
+            }
+          ],
+          "explanation": "A：CuO是黑色粉末，Cu₂O才是红色 ❌<br>B：无水CuSO₄是白色粉末，CuSO₄·5H₂O才是蓝色 ❌<br>C：Cu(OH)₂确实是蓝色沉淀 ✅<br>D：Cu₂O是红色粉末，CuO才是黑色 ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2021·浙江卷·改编</span>"
+        }
+      ]
+    },
+    {
+      "stageId": "card-6",
+      "type": "microcard",
+      "num": 6,
+      "icon": "🧩",
+      "title": "金属冶炼——从矿石到金属的路径",
+      "defaultOpen": false,
+      "blocks": [
+        {
+          "blockId": "card-6-secret",
+          "type": "secret",
+          "tag": "📜 通关秘籍",
+          "html": "<p>金属冶炼方法由金属活动性决定：<strong>热分解法</strong>（不活泼金属，如Hg、Ag）；<strong>热还原法</strong>（中等活泼金属，如Fe、Cu、Zn，用C/CO/H₂/Al还原）；<strong>电解法</strong>（活泼金属，如Na、Mg、Al，电解熔融盐/氧化物）。</p>"
+        },
+        {
+          "blockId": "card-6-symptom",
+          "type": "symptom",
+          "tag": "🩺 症状诊断",
+          "html": "<p><strong>小明认为：</strong>「所有金属都能用碳还原法治炼吧？」</p><p style=\"margin-top:8px;color:var(--red);font-size:13.5px\">❌ 错误根源：忽略了金属活动性差异！K、Ca、Na、Mg、Al等活泼金属的氧化物非常稳定，C无法还原它们（因为C与这些金属的氧化物反应生成的是金属碳化物或CO，且C的还原能力不够强）。这些活泼金属只能用电解熔融盐/氧化物的方法冶炼。</p>"
+        },
+        {
+          "blockId": "card-6-path",
+          "type": "path",
+          "tag": "🗺️ 修炼路径",
+          "steps": [
+            "判断冶炼方法：看金属活动性。不活泼（Hg以后）→ 热分解法；中等活泼（Zn~Cu）→ 热还原法（C/CO/H₂/Al）；活泼（Al以前）→ 电解熔融盐",
+            "热还原法举例：Fe——高炉炼铁（C还原Fe₂O₃）；Cu——火法炼铜（C还原CuO）；Zn——热还原法（C还原ZnO）",
+            "电解法举例：Na——电解熔融NaCl（2NaCl→(电解)2Na+Cl₂↑）；Mg——电解熔融MgCl₂；Al——电解熔融Al₂O₃（加入冰晶石Na₃AlF₆降低熔点）"
+          ],
+          "table": {
+            "headers": [
+              "冶炼方法",
+              "适用金属",
+              "举例"
+            ],
+            "rows": [
+              [
+                "热分解法",
+                "不活泼金属（Hg、Ag）",
+                "2HgO →(△) 2Hg + O₂↑"
+              ],
+              [
+                "热还原法（C/CO）",
+                "中等活泼（Fe、Cu、Zn）",
+                "Fe₂O₃ + 3CO →(高温) 2Fe + 3CO₂"
+              ],
+              [
+                "热还原法（H₂）",
+                "W、Mo等",
+                "WO₃ + 3H₂ →(高温) W + 3H₂O"
+              ],
+              [
+                "热还原法（Al）",
+                "Cr、Mn等难熔金属",
+                "2Al + Cr₂O₃ →(高温) Al₂O₃ + 2Cr"
+              ],
+              [
+                "电解法",
+                "活泼金属（Na、Mg、Al）",
+                "2Al₂O₃ →(电解) 4Al + 3O₂↑"
+              ]
+            ]
+          }
+        },
+        {
+          "blockId": "card-6-analogy",
+          "type": "analogy",
+          "tag": "💡 仙人指路",
+          "html": "<p>金属冶炼像「不同级别的监狱」：不活泼金属（Hg、Ag）关在「低安全级别」——轻轻一加热就出来了（热分解法）；中等活泼金属（Fe、Cu）关在「中安全级别」——需要C/CO/H₂帮忙「劫狱」（热还原法）；活泼金属（Na、Al）关在「最高安全级别」——只有用「电钻」（电解）才能救出来！</p>"
+        },
+        {
+          "blockId": "card-6-quiz",
+          "type": "quiz",
+          "tag": "📝 同类自测",
+          "question": "下列金属的冶炼方法正确的是（　　）",
+          "options": [
+            {
+              "label": "A",
+              "text": "Na用热还原法冶炼",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Fe用电解法冶炼",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Al用电解熔融Al₂O₃冶炼",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Hg用电解法冶炼",
+              "correct": false
+            }
+          ],
+          "explanation": "A：Na是活泼金属，用电解熔融NaCl冶炼 ❌<br>B：Fe是中等活泼金属，用热还原法（高炉炼铁） ❌<br>C：Al是活泼金属，电解熔融Al₂O₃（加冰晶石）冶炼 ✅<br>D：Hg是不活泼金属，用热分解法（2HgO→2Hg+O₂） ❌<br><span style=\"color:var(--ink-light);font-size:12px\">【出处】2019·北京卷·改编</span>"
+        }
+      ]
+    }
+  ],
+  "certQuiz": [
+    {
+      "stageId": "cert-5",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列关于铜及其化合物的颜色说法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "CuO是红色粉末",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "无水CuSO₄是蓝色粉末",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Cu(OH)₂是蓝色沉淀",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Cu₂O是黑色粉末",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "stageId": "cert-6",
+      "type": "cert",
+      "tag": "🏆 通关考题",
+      "question": "下列金属的冶炼方法正确的是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "Na用热还原法冶炼",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Fe用电解法冶炼",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Al用电解熔融Al₂O₃冶炼",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Hg用电解法冶炼",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
