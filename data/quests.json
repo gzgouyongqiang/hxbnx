@@ -631,6 +631,27 @@
         "icon": "🧪"
       },
       "contentFile": "nickname.html"
+    },
+    "side-equation": {
+      "type": "side",
+      "category": "minigame",
+      "title": "方程式正误判断",
+      "subtitle": "副本游戏 · 40道高考方程式专项训练",
+      "unlock": {
+        "minCourse": 1,
+        "minTier": "bronze"
+      },
+      "validFrom": "2026-06-01",
+      "validUntil": "2026-12-31",
+      "baseScore": 100,
+      "xpMultiplier": 1.0,
+      "badgeTriggers": [
+        "equation_master"
+      ],
+      "theme": {
+        "icon": "⚗️"
+      },
+      "contentFile": "equation.html"
     }
   },
   "chapters": [

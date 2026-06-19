@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方程式正误判断 | 炼金试炼副本</title>
+<style>
+:root{
+  --bg:#0a0e1a;--card:#11182b;--gold:#f0c040;--cyan:#67e8f9;--red:#f87171;
+  --green:#6ee7b7;--purple:#a78bfa;--orange:#fb923c;--text:#e2e8f0;
+  --muted:#94a3b8;--border:rgba(103,232,249,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+.header{position:relative;z-index:10;text-align:center;padding:24px 16px 12px}
+.header h1{font-size:26px;background:linear-gradient(90deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.header p{color:var(--muted);font-size:13px}
+
+.main{position:relative;z-index:10;max-width:720px;margin:0 auto;padding:0 16px 40px}
+
+/* 开始界面 */
+.start-screen{text-align:center;padding:40px 20px}
+.start-icon{font-size:64px;margin-bottom:16px}
+.start-title{font-size:22px;color:var(--gold);margin-bottom:8px}
+.start-desc{color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:24px;max-width:500px;margin-left:auto;margin-right:auto}
+.start-desc span{color:var(--cyan)}
+.start-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:400px;margin:0 auto 24px}
+.stat-box{padding:16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border)}
+.stat-num{font-size:28px;font-weight:700;color:var(--gold)}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* 游戏区域 */
+.game-area{display:none;background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;margin-top:16px}
+.game-area.active{display:block}
+.game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px}
+.game-title{font-size:16px;color:var(--gold)}
+.game-stats{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+.game-stats span{color:var(--cyan);font-weight:600}
+
+.progress-bar{height:6px;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));border-radius:3px;transition:width .5s}
+
+/* 方程式展示 */
+.eq-box{background:rgba(0,0,0,0.3);border-radius:12px;padding:20px;margin-bottom:16px;text-align:center;border:1px solid var(--border)}
+.eq-scenario{font-size:12px;color:var(--muted);margin-bottom:10px}
+.eq-formula{font-size:18px;line-height:1.8;font-family:'Courier New',monospace;word-break:break-all}
+.eq-formula .ion{color:var(--cyan)}
+.eq-formula .arrow{color:var(--gold)}
+.eq-formula .state{color:var(--green);font-size:14px}
+.eq-formula .delta{color:var(--orange)}
+
+/* 判断按钮 */
+.judge-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.judge-btn{padding:16px;border-radius:12px;border:2px solid var(--border);background:rgba(255,255,255,0.03);color:var(--text);font-size:16px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.judge-btn:hover:not(.disabled){border-color:var(--cyan);background:rgba(103,232,249,0.05);transform:translateY(-2px)}
+.judge-btn.correct{border-color:var(--green);background:rgba(110,231,183,0.1);color:var(--green)}
+.judge-btn.wrong{border-color:var(--red);background:rgba(248,113,113,0.1);color:var(--red)}
+.judge-btn.disabled{cursor:not-allowed;opacity:.7}
+
+/* 解析 */
+.explanation{display:none;margin-top:16px;padding:16px;border-radius:10px;background:rgba(103,232,249,0.05);border:1px solid rgba(103,232,249,0.15);font-size:14px;line-height:1.7}
+.explanation.show{display:block}
+.explanation .exp-title{color:var(--cyan);font-weight:600;margin-bottom:8px;font-size:15px}
+.explanation .exp-answer{color:var(--green);font-weight:600;margin-bottom:6px}
+.explanation .exp-answer.wrong{color:var(--red)}
+
+/* 操作按钮 */
+.action-btns{display:flex;gap:10px;margin-top:20px;justify-content:center}
+.action-btn{padding:12px 28px;border-radius:24px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s}
+.btn-primary{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000}
+.btn-secondary{background:rgba(255,255,255,0.08);color:var(--text);border:1px solid var(--border)}
+.action-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(240,192,64,0.2)}
+
+/* 结算 */
+.result-screen{display:none;text-align:center;padding:40px 20px}
+.result-screen.active{display:block}
+.result-icon{font-size:64px;margin-bottom:16px}
+.result-title{font-size:24px;margin-bottom:8px}
+.result-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:400px;margin:0 auto 24px}
+
+/* 连击 */
+.combo-popup{position:fixed;top:20%;left:50%;transform:translateX(-50%) scale(0);padding:12px 24px;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--orange));color:#000;font-size:18px;font-weight:700;z-index:50;transition:transform .3s;pointer-events:none}
+.combo-popup.show{transform:translateX(-50%) scale(1)}
+
+/* 动画 */
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.shake{animation:shake .4s}
+
+@media(max-width:480px){
+  .header h1{font-size:20px}
+  .eq-formula{font-size:15px}
+  .judge-btns{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="header">
+  <h1>⚗️ 方程式正误判断</h1>
+  <p>炼金试炼 · 副本模式 — 高考化学方程式专项训练</p>
+</div>
+
+<div class="main">
+  <!-- 开始界面 -->
+  <div id="startScreen" class="start-screen">
+    <div class="start-icon">🧪</div>
+    <div class="start-title">方程式正误判断</div>
+    <div class="start-desc">
+      判断给出的离子方程式或化学方程式是否正确。<br>
+      共 <span>40</span> 道精选题目，涵盖无机反应、有机反应、电化学及热化学。<br>
+      每题只有<span>一次</span>判断机会，答错扣生命，连对加分！
+    </div>
+    <div class="start-stats">
+      <div class="stat-box"><div class="stat-num">40</div><div class="stat-label">题目总数</div></div>
+      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">生命值</div></div>
+      <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label">挑战次数</div></div>
+    </div>
+    <div class="action-btns">
+      <button class="action-btn btn-primary" onclick="startGame()">开始挑战</button>
+      <button class="action-btn btn-secondary" onclick="location.href='index.html'">返回主城</button>
+    </div>
+  </div>
+
+  <!-- 游戏区域 -->
+  <div id="gameArea" class="game-area">
+    <div class="game-header">
+      <div class="game-title" id="gameTitle">第 1 题</div>
+      <div class="game-stats">
+        <div>⭐ 得分: <span id="scoreNum">0</span></div>
+        <div>🔥 连对: <span id="comboNum">0</span></div>
+        <div>❤️ 生命: <span id="lifeNum">3</span></div>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+    <div class="eq-box">
+      <div class="eq-scenario" id="eqScenario">向NaOH溶液中通入少量CO₂</div>
+      <div class="eq-formula" id="eqFormula">CO₂ + 2OH⁻ = CO₃²⁻ + H₂O</div>
+    </div>
+
+    <div class="judge-btns" id="judgeBtns">
+      <button class="judge-btn" id="btnCorrect" onclick="judge(true)">✅ 正确</button>
+      <button class="judge-btn" id="btnWrong" onclick="judge(false)">❌ 错误</button>
+    </div>
+
+    <div class="explanation" id="explanationBox"></div>
+    <div class="action-btns" id="actionBtns"></div>
+  </div>
+
+  <!-- 结算 -->
+  <div id="resultScreen" class="result-screen">
+    <div class="result-icon" id="resultIcon">🎉</div>
+    <div class="result-title" id="resultTitle">挑战完成！</div>
+    <div class="result-sub" id="resultSub">你的方程式判断能力如何？</div>
+    <div class="result-stats">
+      <div class="stat-box"><div class="stat-num" id="statScore">0</div><div class="stat-label">得分</div></div>
+      <div class="stat-box"><div class="stat-num" id="statCombo">0</div><div class="stat-label">最高连对</div></div>
+      <div class="stat-box"><div class="stat-num" id="statCorrect">0</div><div class="stat-label">正确数</div></div>
+    </div>
+    <div class="action-btns">
+      <button class="action-btn btn-primary" onclick="startGame()">再来一次</button>
+      <button class="action-btn btn-secondary" onclick="location.href='index.html'">返回主城</button>
+    </div>
+  </div>
+</div>
+
+<div class="combo-popup" id="comboPopup">🔥 连击 x3!</div>
+
+<script src="assets/game.js"></script>
+<script>
+// ==================== 题库 ====================
+const EQUATION_QUESTIONS = [
+  {eq:"CO₂ + 2OH⁻ = CO₃²⁻ + H₂O",scenario:"向NaOH溶液中通入少量CO₂",isCorrect:true,explanation:"少量CO₂生成正盐碳酸钠，OH⁻系数为2。"},
+  {eq:"CO₂ + OH⁻ = HCO₃⁻",scenario:"向NaOH溶液中通入过量CO₂",isCorrect:true,explanation:"过量CO₂生成酸式盐碳酸氢钠。"},
+  {eq:"CO₂ + Ca²⁺ + 2OH⁻ = CaCO₃↓ + H₂O",scenario:"澄清石灰水中通入过量CO₂",isCorrect:false,explanation:"CO₂过量时，生成的CaCO₃会继续反应生成可溶的Ca(HCO₃)₂，不应有沉淀。"},
+  {eq:"CaCO₃ + 2H⁺ = Ca²⁺ + CO₂↑ + H₂O",scenario:"用大理石与稀盐酸反应制CO₂",isCorrect:true,explanation:"大理石（难溶）写化学式，强酸拆成离子，配平正确。"},
+  {eq:"SiO₃²⁻ + 2H⁺ = H₂SiO₃↓",scenario:"向Na₂SiO₃溶液中滴加稀盐酸",isCorrect:true,explanation:"硅酸钠可溶拆开，硅酸是弱酸且难溶，写化学式并标沉淀。"},
+  {eq:"SiO₂ + 4HF = SiF₄↑ + 2H₂O",scenario:"用氢氟酸雕刻玻璃",isCorrect:true,explanation:"氢氟酸是弱酸不能拆，SiO₂也不拆，产物SiF₄是气体。"},
+  {eq:"2Fe³⁺ + Fe = 3Fe²⁺",scenario:"向FeCl₃溶液中加入过量铁粉",isCorrect:true,explanation:"铁粉过量将Fe³⁺完全还原为Fe²⁺，电子、电荷、原子均守恒。"},
+  {eq:"Al³⁺ + 3NH₃·H₂O = Al(OH)₃↓ + 3NH₄⁺",scenario:"向Al₂(SO₄)₃溶液中加入过量氨水",isCorrect:true,explanation:"氨水是弱电解质写化学式，Al(OH)₃不溶于过量氨水。"},
+  {eq:"AlO₂⁻ + CO₂ + 2H₂O = Al(OH)₃↓ + CO₃²⁻",scenario:"向NaAlO₂溶液中通入过量CO₂",isCorrect:false,explanation:"CO₂过量应生成HCO₃⁻，而非CO₃²⁻。"},
+  {eq:"3Cu + 8H⁺ + 2NO₃⁻ = 3Cu²⁺ + 2NO↑ + 4H₂O",scenario:"将铜片插入稀硝酸中",isCorrect:true,explanation:"稀硝酸还原产物为NO，气体标↑，满足守恒。"},
+  {eq:"Cu + 4H⁺ + 2NO₃⁻ = Cu²⁺ + 2NO₂↑ + 2H₂O",scenario:"将铜片插入浓硝酸中",isCorrect:true,explanation:"浓硝酸被还原为NO₂，满足三大守恒。"},
+  {eq:"2MnO₄⁻ + 16H⁺ + 10Cl⁻ = 2Mn²⁺ + 5Cl₂↑ + 8H₂O",scenario:"高锰酸钾与浓盐酸制氯气",isCorrect:true,explanation:"配平正确，Mn从+7→+2得5e⁻×2，Cl从-1→0失1e⁻×10。"},
+  {eq:"Ca²⁺ + 2ClO⁻ + SO₂ + H₂O = CaSO₄↓ + 2HClO",scenario:"漂白粉溶液吸收少量二氧化硫",isCorrect:false,explanation:"SO₂被ClO⁻氧化，CaSO₄微溶不应标↓，且HClO会进一步氧化。"},
+  {eq:"Cl₂ + 2OH⁻ = Cl⁻ + ClO⁻ + H₂O",scenario:"氯气与冷的NaOH溶液反应",isCorrect:true,explanation:"常温下歧化生成Cl⁻和ClO⁻，配平正确。"},
+  {eq:"CO₃²⁻ + 2H⁺ = CO₂↑ + H₂O",scenario:"向Na₂CO₃溶液中滴加盐酸至中性",isCorrect:false,explanation:"至中性时CO₃²⁻应先转化为HCO₃⁻，不能直接写2H⁺。"},
+  {eq:"NH₄⁺ + H₂O ⇌ NH₃·H₂O + H⁺",scenario:"氯化铵水解证明一水合氨是弱碱",isCorrect:true,explanation:"水解反应可逆，用可逆号，生成H⁺使溶液呈酸性。"},
+  {eq:"Al³⁺ + 3H₂O ⇌ Al(OH)₃(胶体) + 3H⁺",scenario:"明矾净水原理",isCorrect:true,explanation:"净水生成胶体，不写↓，写可逆号。"},
+  {eq:"Al³⁺ + 3HCO₃⁻ = Al(OH)₃↓ + 3CO₂↑",scenario:"泡沫灭火器原理",isCorrect:true,explanation:"双水解完全进行，生成沉淀和气体，用等号。"},
+  {eq:"CaSO₄(s) + CO₃²⁻ = CaCO₃↓ + SO₄²⁻",scenario:"用纯碱溶液处理水垢中的CaSO₄",isCorrect:false,explanation:"CaSO₄作为反应物应写CaSO₄(s)，不能拆成离子。"},
+  {eq:"2Cl⁻ + 2H₂O = Cl₂↑ + H₂↑ + 2OH⁻",scenario:"工业电解饱和食盐水",isCorrect:false,explanation:"水溶液中H⁺浓度极低，实际放电的是水分子，应写H₂O而非H⁺。"},
+  {eq:"2Fe³⁺ + Cu = 2Fe²⁺ + Cu²⁺",scenario:"用FeCl₃溶液刻蚀覆铜板",isCorrect:true,explanation:"Fe³⁺氧化Cu，电子转移守恒。"},
+  {eq:"2Fe²⁺ + H₂O₂ + 2H⁺ = 2Fe³⁺ + 2H₂O",scenario:"酸性条件下双氧水氧化亚铁离子",isCorrect:true,explanation:"H₂O₂作氧化剂被还原为H₂O，需在酸性条件下。"},
+  {eq:"Fe + Cu²⁺ = Fe³⁺ + Cu",scenario:"硫酸铜溶液中加少量铁粉",isCorrect:false,explanation:"Fe置换Cu时自身被氧化为Fe²⁺，不是Fe³⁺。"},
+  {eq:"TiCl₄ + 2H₂O = TiO₂↓ + 4HCl",scenario:"TiCl₄加入水中",isCorrect:true,explanation:"TiCl₄强烈水解生成钛酸沉淀和HCl。"},
+  {eq:"Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ = 2Cr³⁺ + 6Fe³⁺ + 7H₂O",scenario:"用绿矾处理酸性含铬废水",isCorrect:true,explanation:"Cr从+6→+3得6e⁻，Fe²⁺→Fe³⁺失1e⁻×6，电子守恒。"},
+  {eq:"2Na + 2H₂O = 2Na⁺ + 2OH⁻ + H₂↑",scenario:"钠与水反应",isCorrect:true,explanation:"Na不拆，H₂O不拆，产物NaOH拆成离子，H₂标↑。"},
+  {eq:"2Na₂O₂ + 2H₂O = 4Na⁺ + 4OH⁻ + O₂↑",scenario:"过氧化钠与水反应",isCorrect:true,explanation:"Na₂O₂固体不拆，H₂O不拆，生成NaOH拆成离子，O₂标↑。"},
+  {eq:"2Al + 2OH⁻ + 2H₂O = 2AlO₂⁻ + 3H₂↑",scenario:"用NaOH溶液除去镁粉中的铝",isCorrect:true,explanation:"Al与强碱反应生成偏铝酸根和H₂，Mg不反应。"},
+  {eq:"3Fe²⁺ + 2[Fe(CN)₆]³⁻ = Fe₃[Fe(CN)₆]₂↓",scenario:"K₃[Fe(CN)₆]溶液滴入FeCl₂溶液中",isCorrect:true,explanation:"生成滕氏蓝沉淀，配平正确。"},
+  {eq:"SO₃ + Ba²⁺ + H₂O = BaSO₄↓ + 2H⁺",scenario:"三氧化硫与氯化钡溶液反应",isCorrect:true,explanation:"SO₃先与H₂O生成H₂SO₄，再与Ba²⁺生成BaSO₄沉淀。"},
+  {eq:"SO₃²⁻ + Cl₂ + H₂O = SO₄²⁻ + 2Cl⁻ + 2H⁺",scenario:"向亚硫酸钠溶液中通入过量Cl₂",isCorrect:false,explanation:"氧原子和氢原子不守恒，应配平检查。"},
+  {eq:"CH₃COOH + HCO₃⁻ = CH₃COO⁻ + CO₂↑ + H₂O",scenario:"乙酸与碳酸氢钠溶液反应",isCorrect:true,explanation:"强酸制弱酸，CH₃COOH不拆，HCO₃⁻不拆，CO₂标↑。"},
+  {eq:"5CH₃CH₂OH + 4MnO₄⁻ + 12H⁺ = 5CH₃COOH + 4Mn²⁺ + 11H₂O",scenario:"乙醇与酸性高锰酸钾反应",isCorrect:true,explanation:"酸性KMnO₄将乙醇氧化为乙酸，Mn从+7→+2。"},
+  {eq:"CH₃CHO + 2[Ag(NH₃)₂]OH → CH₃COONH₄ + 2Ag↓ + 3NH₃ + H₂O",scenario:"乙醛的银镜反应",isCorrect:true,explanation:"银氨溶液写化学式，醛基被氧化为羧基（铵盐形式），Ag标↓。"},
+  {eq:"CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O",scenario:"乙酸与乙醇酯化反应",isCorrect:true,explanation:"酯化反应可逆，浓硫酸催化，用可逆号。"},
+  {eq:"CH₃COOCH₂CH₃ + OH⁻ = CH₃COO⁻ + CH₃CH₂OH",scenario:"酯在碱性条件下水解",isCorrect:true,explanation:"碱性下水解完全，用等号，不可逆。"},
+  {eq:"CH₂=CH₂ + Br₂ → CH₂BrCH₂Br",scenario:"乙烯通入溴水中",isCorrect:true,explanation:"加成反应，Br₂加到两个C上。"},
+  {eq:"2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂↑",scenario:"乙醇与金属钠反应",isCorrect:true,explanation:"乙醇中-OH的H被Na置换，生成乙醇钠和H₂。"},
+  {eq:"C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr",scenario:"苯酚与溴水反应",isCorrect:true,explanation:"生成2,4,6-三溴苯酚白色沉淀，必须标↓。"},
+  {eq:"C₆H₅OH + OH⁻ = C₆H₅O⁻ + H₂O",scenario:"苯酚与NaOH溶液反应",isCorrect:true,explanation:"苯酚有弱酸性，与强碱反应生成苯酚钠和水。"},
+  {eq:"2CH₃CHO + O₂ → 2CH₃COOH",scenario:"乙醛催化氧化",isCorrect:true,explanation:"催化剂加热条件下，醛基氧化为羧基。"},
+  {eq:"CH₃COOH ⇌ CH₃COO⁻ + H⁺",scenario:"乙酸使石蕊变红",isCorrect:true,explanation:"乙酸是弱电解质，电离可逆，用可逆号。"},
+  {eq:"CH₂OH(CHOH)₄CHO + 2[Ag(NH₃)₂]OH → CH₂OH(CHOH)₄COONH₄ + 2Ag↓ + 3NH₃ + H₂O",scenario:"葡萄糖与银氨溶液反应",isCorrect:true,explanation:"葡萄糖含醛基，发生银镜反应，醛基被氧化为羧基（铵盐形式）。"},
+  {eq:"(C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆",scenario:"淀粉水解",isCorrect:true,explanation:"酸催化下淀粉彻底水解为葡萄糖。"},
+  {eq:"C₆H₅O⁻ + CO₂ + H₂O = C₆H₅OH + HCO₃⁻",scenario:"苯酚钠溶液中通入少量CO₂",isCorrect:true,explanation:"苯酚酸性大于HCO₃⁻，无论CO₂多少都只生成HCO₃⁻。"},
+  {eq:"2MnO₂ + 2H₂O + 2e⁻ = 2MnOOH + 2OH⁻",scenario:"碱性锌锰电池正极反应",isCorrect:true,explanation:"MnO₂得电子，碱性条件下生成MnOOH和OH⁻。"},
+  {eq:"PbSO₄ + 2H₂O - 2e⁻ = PbO₂ + 4H⁺ + SO₄²⁻",scenario:"铅酸蓄电池充电时阳极反应",isCorrect:true,explanation:"充电是电解池，阳极失电子氧化，PbSO₄被氧化为PbO₂。"},
+  {eq:"O₂ + 2H₂O + 4e⁻ = 4OH⁻",scenario:"钢铁吸氧腐蚀正极反应",isCorrect:true,explanation:"中性或弱酸性条件下，O₂得电子生成OH⁻。"},
+  {eq:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)  ΔH = -92.4 kJ/mol",scenario:"表示合成氨反应的热化学方程式",isCorrect:true,explanation:"放热反应ΔH为负，注明聚集状态，可逆反应标可逆号。"},
+  {eq:"2H₂(g) + O₂(g) = 2H₂O(l)  ΔH = -571.6 kJ/mol",scenario:"已知键能计算氢气燃烧反应",isCorrect:true,explanation:"H₂燃烧放热，ΔH为负；生成液态水放热更多。"}
+];
+
+// ==================== 状态 ====================
+let gameState = {
+  score: 0, combo: 0, maxCombo: 0, life: 3,
+  currentQ: 0, questions: [], correctCount: 0
+};
+
+// ==================== 错题本 ====================
+function addToWrongBook(q, userJudge){
+  if(typeof HXBNX_GAME !== 'undefined' && HXBNX_GAME.addWrongQuestion){
+    HXBNX_GAME.addWrongQuestion({
+      filename: 'side-equation',
+      topicName: '方程式正误判断',
+      questionText: q.scenario + '：' + q.eq,
+      options: ['正确','错误'],
+      correctIndex: q.isCorrect ? 0 : 1,
+      wrongIndex: userJudge ? 0 : 1
+    });
+  }
+}
+
+// ==================== 游戏控制 ====================
+function startGame(){
+  gameState.score = 0; gameState.combo = 0; gameState.maxCombo = 0;
+  gameState.life = 3; gameState.currentQ = 0; gameState.correctCount = 0;
+  gameState.questions = shuffle([...EQUATION_QUESTIONS]).slice(0, 20);
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('resultScreen').classList.remove('active');
+  document.getElementById('gameArea').classList.add('active');
+  showQuestion();
+}
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return a;
+}
+
+function showQuestion(){
+  const q = gameState.questions[gameState.currentQ];
+  if(!q || gameState.life <= 0){showResult();return}
+
+  const progress = (gameState.currentQ / gameState.questions.length * 100);
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('scoreNum').textContent = gameState.score;
+  document.getElementById('comboNum').textContent = gameState.combo;
+  document.getElementById('lifeNum').textContent = gameState.life;
+  document.getElementById('gameTitle').textContent = `第 ${gameState.currentQ + 1} / ${gameState.questions.length} 题`;
+
+  document.getElementById('eqScenario').textContent = q.scenario;
+  document.getElementById('eqFormula').innerHTML = formatEquation(q.eq);
+
+  document.getElementById('btnCorrect').className = 'judge-btn';
+  document.getElementById('btnWrong').className = 'judge-btn';
+  document.getElementById('explanationBox').classList.remove('show');
+  document.getElementById('actionBtns').innerHTML = '';
+}
+
+function formatEquation(eq){
+  return eq
+    .replace(/(\w+\d*[\+\-])/g, '<span class="ion">$1</span>')
+    .replace(/(=|→|⇌)/g, '<span class="arrow">$1</span>')
+    .replace(/\((g|l|s|aq)\)/g, '<span class="state">($1)</span>')
+    .replace(/(ΔH)/g, '<span class="delta">$1</span>');
+}
+
+function judge(userSaysCorrect){
+  const q = gameState.questions[gameState.currentQ];
+  const isCorrect = userSaysCorrect === q.isCorrect;
+
+  document.getElementById('btnCorrect').classList.add('disabled');
+  document.getElementById('btnWrong').classList.add('disabled');
+
+  if(q.isCorrect){
+    document.getElementById('btnCorrect').classList.add('correct');
+  } else {
+    document.getElementById('btnWrong').classList.add('correct');
+  }
+
+  if(!isCorrect){
+    if(q.isCorrect) document.getElementById('btnWrong').classList.add('wrong');
+    else document.getElementById('btnCorrect').classList.add('wrong');
+  }
+
+  if(isCorrect){
+    gameState.combo++;
+    if(gameState.combo > gameState.maxCombo) gameState.maxCombo = gameState.combo;
+    const bonus = gameState.combo >= 3 ? Math.floor(gameState.combo * 0.5) : 0;
+    gameState.score += 10 + bonus;
+    gameState.correctCount++;
+    if(gameState.combo >= 3) showComboPopup(gameState.combo);
+  } else {
+    gameState.combo = 0;
+    gameState.life--;
+    addToWrongBook(q, userSaysCorrect);
+    document.querySelector('.eq-box').classList.add('shake');
+    setTimeout(()=>document.querySelector('.eq-box').classList.remove('shake'),400);
+  }
+
+  const exp = document.getElementById('explanationBox');
+  exp.innerHTML = `
+    <div class="exp-title">${isCorrect?'✅ 判断正确':'❌ 判断错误'}</div>
+    <div class="exp-answer ${q.isCorrect?'':'wrong'}">正确答案：${q.isCorrect?'正确':'错误'}</div>
+    <div>${q.explanation}</div>
+  `;
+  exp.classList.add('show');
+
+  document.getElementById('scoreNum').textContent = gameState.score;
+  document.getElementById('comboNum').textContent = gameState.combo;
+  document.getElementById('lifeNum').textContent = gameState.life;
+
+  if(gameState.life <= 0){
+    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult()">查看结果</button>`;
+  } else if(gameState.currentQ >= gameState.questions.length - 1){
+    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult()">完成挑战</button>`;
+  } else {
+    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+  }
+}
+
+function nextQuestion(){
+  gameState.currentQ++;
+  showQuestion();
+}
+
+function showComboPopup(combo){
+  const pop = document.getElementById('comboPopup');
+  pop.textContent = `🔥 连击 x${combo}! +${Math.floor(combo*0.5)}分`;
+  pop.classList.add('show');
+  setTimeout(()=>pop.classList.remove('show'),1200);
+}
+
+function showResult(){
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.add('active');
+
+  const pct = Math.round(gameState.correctCount / gameState.questions.length * 100);
+  document.getElementById('resultIcon').textContent = pct >= 80 ? '🎉' : pct >= 50 ? '⭐' : gameState.life <= 0 ? '💔' : '💪';
+  document.getElementById('resultTitle').textContent = pct >= 80 ? '太棒了！' : pct >= 50 ? '还不错！' : '继续加油！';
+  document.getElementById('resultSub').textContent = `答对 ${gameState.correctCount}/${gameState.questions.length} 题（${pct}%）`;
+  document.getElementById('statScore').textContent = gameState.score;
+  document.getElementById('statCombo').textContent = gameState.maxCombo;
+  document.getElementById('statCorrect').textContent = gameState.correctCount;
+}
+
+// ==================== 粒子背景 ====================
+(function initParticles(){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const particles = [];
+  for(let i=0;i<50;i++){
+    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-.5)*.3,dy:(Math.random()-.5)*.3,alpha:Math.random()*.5+.1});
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if(p.x<0||p.x>canvas.width) p.dx *= -1;
+      if(p.y<0||p.y>canvas.height) p.dy *= -1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = `rgba(103,232,249,${p.alpha})`; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+})();
+</script>
+</body>
+</html>
