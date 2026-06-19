@@ -207,8 +207,10 @@
 
             html += '<div class="wrong-card-footer">';
             html += '<button class="wrong-btn-remove" onclick="removeWrong(' + i + ')">✅ 已掌握，移除</button>';
-            if (q.filename) {
-                html += '<a href="./topics/' + q.filename + '" class="wrong-btn-review">⚔️ 回练功房复习</a>';
+            // 判断是新版关卡还是旧版topics
+            var reviewLink = buildReviewLink(q.filename);
+            if (reviewLink) {
+                html += '<a href="' + reviewLink + '" class="wrong-btn-review">⚔️ 回练功房复习</a>';
             }
             html += '</div>';
             html += '</div>';
@@ -237,6 +239,20 @@
             HXBNX_GAME.removeWrongQuestion(i);
         }
         renderWrongList();
+    }
+
+    function buildReviewLink(filename) {
+        if (!filename) return null;
+        // 新版关卡格式: main-N-tier-stageId 或 main-N-tier-cert-stageId
+        if (filename.indexOf('main-') === 0) {
+            var parts = filename.split('-');
+            if (parts.length >= 3) {
+                var questId = parts[0] + '-' + parts[1] + '-' + parts[2];
+                return './level.html?q=' + questId;
+            }
+        }
+        // 旧版topics格式
+        return './topics/' + filename;
     }
 
     document.addEventListener('DOMContentLoaded', renderWrongList);

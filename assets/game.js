@@ -121,6 +121,7 @@ const HXBNX_GAME = (function () {
       // v3: 学分 / 每日任务 / 银行 / 排行榜
       dailyQuestDate: '',    // 每日任务刷新日期
       dailyQuests: {},       // { 'login': false, 'quiz3': false, 'review': false }
+      dailyClearedWrong: 0,  // 今日已清除错题数（用于review任务）
       questBank: 0,          // 学分银行存款
       questDebt: 0,          // 学分债务
       questDebtTime: 0,      // 债务产生时间戳
@@ -269,6 +270,7 @@ const HXBNX_GAME = (function () {
     if (s.dailyQuestDate !== today) {
       s.dailyQuestDate = today;
       s.dailyQuests = {};
+      s.dailyClearedWrong = 0;
       for (var i = 0; i < DAILY_QUESTS.length; i++) {
         s.dailyQuests[DAILY_QUESTS[i].id] = false;
       }
@@ -306,7 +308,7 @@ const HXBNX_GAME = (function () {
       }
       if (qCount < 3) return { error: '今日答题通关不足3次（当前' + qCount + '次）' };
     } else if (questId === 'review') {
-      if (!s.clearedWrong || s.clearedWrong < 1) return { error: '今日尚未复习错题' };
+      if ((s.dailyClearedWrong || 0) < 1) return { error: '今日尚未复习错题（需从错题本移除1道已掌握的题）' };
     }
 
     // 发放奖励
@@ -1038,6 +1040,7 @@ const HXBNX_GAME = (function () {
       s.wrongQuestions.splice(index, 1);
       if (!s.clearedWrong) s.clearedWrong = 0;
       s.clearedWrong++;
+      s.dailyClearedWrong = (s.dailyClearedWrong || 0) + 1;
       var newAch = checkAchievements(s);
       save(s);
       if (newAch.length > 0) {

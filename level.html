@@ -530,6 +530,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
         showPenaltyPop(el, result.penalty);
         G.showComboBreak();
         document.getElementById('comboNum').textContent = '0';
+        // 收录错题
+        collectWrongQuestion(quizEl, stageId, optionIdx, correctIdx, true);
       }
     } else {
       // Practice quiz: use engine
@@ -554,12 +556,35 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
         el.innerHTML += ' <span style="color:#f87171;font-weight:700">❌</span>';
         G.showComboBreak();
         document.getElementById('comboNum').textContent = '0';
+        // 收录错题
+        collectWrongQuestion(quizEl, stageId, optionIdx, correctIdx, false);
       }
     }
 
     // Show answer
     var answer = quizEl.querySelector('.quiz-answer');
     if (answer) answer.classList.add('show');
+  }
+
+  // 收录错题到错题本
+  function collectWrongQuestion(quizEl, stageId, wrongIdx, correctIdx, isCert) {
+    var qTextEl = quizEl.querySelector('.quiz-q');
+    var questionText = qTextEl ? qTextEl.textContent.trim() : '';
+    var allOpts = quizEl.querySelectorAll('.quiz-opt');
+    var options = [];
+    for (var i = 0; i < allOpts.length; i++) {
+      options.push(allOpts[i].textContent.trim());
+    }
+    var topicName = questMeta ? questMeta.title : (questDef ? '第' + questDef.course + '课时' : '未知');
+    var filename = questId + (isCert ? '-cert' : '') + '-' + stageId;
+    G.addWrongQuestion({
+      filename: filename,
+      topicName: topicName + (isCert ? ' · 通关考题' : ''),
+      questionText: questionText.substring(0, 200),
+      options: options,
+      correctIndex: correctIdx,
+      wrongIndex: wrongIdx
+    });
   }
 
   function showPenaltyPop(el, penalty) {
