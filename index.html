@@ -563,7 +563,15 @@ body{
     else{cls += ' locked-side';badgeCls = 'locked-tag';badgeText = '未解锁';}
 
     var icon = (def.theme && def.theme.icon) || '📜';
-    var href = isLocked ? 'javascript:void(0)' : 'level.html?q=' + qid;
+    var href;
+    if(isLocked){
+      href = 'javascript:void(0)';
+    } else if(def.contentFile){
+      // 有独立页面（如副本游戏），直接链接
+      href = def.contentFile;
+    } else {
+      href = 'level.html?q=' + qid;
+    }
     var title = state === 'expired' ? (def.title + ' (已过期)') : def.title;
 
     var h = '<a href="' + href + '" class="' + cls + '" data-qid="' + qid + '">';
