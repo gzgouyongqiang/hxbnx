@@ -128,11 +128,21 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #8b4513, #6b3410);
+  background:
+    /* 皮革高光 */
+    radial-gradient(ellipse 80% 50% at 30% 20%, rgba(255,255,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 70% 80%, rgba(0,0,0,0.3) 0%, transparent 50%),
+    /* 皮革纹理 - 多层噪点模拟 */
+    repeating-linear-gradient(0deg, transparent 0px, rgba(0,0,0,0.03) 1px, transparent 2px),
+    repeating-linear-gradient(90deg, transparent 0px, rgba(0,0,0,0.03) 1px, transparent 2px),
+    /* 基础皮革色 */
+    linear-gradient(135deg, #7a3a1a 0%, #5a2810 30%, #4a2008 60%, #6b3410 100%);
+  background-size: 100% 100%, 100% 100%, 4px 4px, 4px 4px, 100% 100%;
   border-radius: 4px 8px 8px 4px;
   box-shadow:
     0 10px 40px var(--shadow),
-    inset 0 0 60px rgba(0,0,0,0.3);
+    inset 0 0 80px rgba(0,0,0,0.4),
+    inset 2px 2px 4px rgba(255,255,255,0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,17 +153,32 @@ body {
   border: 2px solid var(--gold-dim);
 }
 
+/* 皮革压纹边框 */
 .book-cover::before {
   content: '';
   position: absolute;
-  inset: 12px;
-  border: 1px solid var(--gold-dim);
+  inset: 14px;
+  border: 2px solid rgba(201,168,76,0.25);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 0 20px rgba(0,0,0,0.2),
+    0 0 10px rgba(201,168,76,0.1);
+}
+
+/* 皮革缝线效果 */
+.book-cover::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(201,168,76,0.15);
   border-radius: 2px;
-  opacity: 0.5;
 }
 
 .book-cover:hover {
-  box-shadow: 0 15px 50px var(--shadow), inset 0 0 60px rgba(0,0,0,0.3);
+  box-shadow:
+    0 15px 50px var(--shadow),
+    inset 0 0 80px rgba(0,0,0,0.4),
+    inset 2px 2px 4px rgba(255,255,255,0.05);
 }
 
 .cover-title {
@@ -503,6 +528,10 @@ body {
 
 /* ===== 响应式 ===== */
 @media (max-width: 1000px) {
+  .book-scene {
+    min-height: 520px;
+  }
+
   .book {
     width: 90vw;
     height: 60vw;
@@ -511,6 +540,11 @@ body {
 
   .cover-title {
     font-size: 32px;
+    letter-spacing: 4px;
+  }
+
+  .cover-sub {
+    font-size: 16px;
   }
 
   .page-content {
@@ -528,5 +562,50 @@ body {
   .mini-book {
     width: 80px;
     height: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  .book-scene {
+    min-height: 380px;
+  }
+
+  .book {
+    width: 92vw;
+    height: 62vw;
+    max-height: 380px;
+  }
+
+  .cover-title {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .cover-sub {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .cover-hint {
+    font-size: 11px;
+    bottom: 20px;
+  }
+
+  .top-bar {
+    gap: 8px;
+  }
+
+  .top-stat {
+    padding: 6px 10px;
+    min-width: 60px;
+  }
+
+  .top-stat-num {
+    font-size: 16px;
+  }
+
+  .top-stat-label {
+    font-size: 9px;
   }
 }
