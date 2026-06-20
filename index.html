@@ -6,79 +6,85 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>2027届高考日记 | 化学不难学</title>
 <link rel="stylesheet" href="assets/diary.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="bookshelf">
-
-  <!-- 顶部信息栏 -->
-  <div class="top-bar">
-    <div class="top-stat">
-      <div class="top-stat-num" id="scoreNum">0</div>
-      <div class="top-stat-label">积分</div>
-    </div>
-    <div class="top-stat">
-      <div class="top-stat-num" id="streakNum">0</div>
-      <div class="top-stat-label">连续打卡</div>
-    </div>
-    <div class="top-stat">
-      <div class="top-stat-num" id="wrongNum">0</div>
-      <div class="top-stat-label">错题</div>
-    </div>
-    <div class="top-stat">
-      <div class="top-stat-num" id="weekNum">1</div>
-      <div class="top-stat-label">当前周次</div>
-    </div>
+<!-- 顶部信息栏 -->
+<div class="top-bar">
+  <div class="top-stat">
+    <div class="top-stat-num" id="scoreNum">0</div>
+    <div class="top-stat-label">积分</div>
   </div>
-
-  <!-- 桌面端：3D翻页大书 -->
-  <div class="book-scene">
-    <div class="book" id="mainBook">
-      <div class="book-spine"></div>
-      <div class="book-cover" id="bookCover" onclick="openBook()">
-        <div class="cover-title">2027届高考日记</div>
-        <div class="cover-sub">化学</div>
-        <div class="cover-hint">点击翻开</div>
-      </div>
-      <div class="book-pages" id="bookPages" style="display:none;"></div>
-    </div>
+  <div class="top-stat">
+    <div class="top-stat-num" id="streakNum">0</div>
+    <div class="top-stat-label">连续打卡</div>
   </div>
-
-  <!-- 手机端：单页卡片 -->
-  <div class="mobile-pages" id="mobilePages"></div>
-
-  <!-- 小书区域 -->
-  <div class="mini-books-section">
-    <div class="mini-books-title">辅助练习</div>
-    <div class="mini-books-row">
-      <a href="nickname.html" class="mini-book nickname">
-        <div class="mini-book-spine"></div>
-        <div class="mini-book-cover">
-          <div class="mini-book-icon">🧪</div>
-          <div class="mini-book-title">化学俗称<br>大挑战</div>
-        </div>
-      </a>
-      <a href="equation.html" class="mini-book equation">
-        <div class="mini-book-spine"></div>
-        <div class="mini-book-cover">
-          <div class="mini-book-icon">⚗️</div>
-          <div class="mini-book-title">方程式<br>正误判断</div>
-        </div>
-      </a>
-      <a href="wrong.html" class="mini-book wrong">
-        <div class="mini-book-spine"></div>
-        <div class="mini-book-cover">
-          <div class="mini-book-icon">📖</div>
-          <div class="mini-book-title">错题本</div>
-        </div>
-      </a>
-    </div>
+  <div class="top-stat">
+    <div class="top-stat-num" id="wrongNum">0</div>
+    <div class="top-stat-label">错题</div>
   </div>
-
-  <div class="footer">2027届高考日记 · 化学不难学 | 坚持每一天</div>
-
+  <div class="top-stat">
+    <div class="top-stat-num" id="weekNum">1</div>
+    <div class="top-stat-label">当前周次</div>
+  </div>
 </div>
+
+<!-- 封面 -->
+<div class="diary-cover">
+  <div class="diary-title">2027届高考日记</div>
+  <div class="diary-sub">化学</div>
+</div>
+
+<!-- 周次网格 -->
+<div class="week-grid-section">
+  <div class="week-grid" id="weekGrid">
+    <!-- JS 生成 1~40 -->
+  </div>
+</div>
+
+<!-- 周次内容面板 -->
+<div class="week-panel" id="weekPanel">
+  <div class="week-panel-header">
+    <div>
+      <div class="week-panel-title" id="panelTitle"></div>
+      <div class="week-panel-date" id="panelDate"></div>
+    </div>
+    <button class="week-panel-close" onclick="closeWeekPanel()">收起</button>
+  </div>
+  <div class="week-content">
+    <div>
+      <div class="section-title">本周复习内容</div>
+      <ul class="topic-list" id="panelTopics"></ul>
+    </div>
+    <div>
+      <div class="section-title">本周任务</div>
+      <ul class="task-list" id="panelTasks"></ul>
+      <div class="section-title" style="margin-top:16px;">学习心得</div>
+      <div class="notes-box">（点击此处记录本周学习心得...）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 小书区域 -->
+<div class="mini-books-section">
+  <div class="mini-books-title">辅助练习</div>
+  <div class="mini-books-row">
+    <a href="nickname.html" class="mini-book nickname">
+      <div class="mini-book-icon">🧪</div>
+      <div class="mini-book-title">化学俗称<br>大挑战</div>
+    </a>
+    <a href="equation.html" class="mini-book equation">
+      <div class="mini-book-icon">⚗️</div>
+      <div class="mini-book-title">方程式<br>正误判断</div>
+    </a>
+    <a href="wrong.html" class="mini-book wrong">
+      <div class="mini-book-icon">📖</div>
+      <div class="mini-book-title">错题本</div>
+    </a>
+  </div>
+</div>
+
+<div class="footer">2027届高考日记 · 化学不难学 | 坚持每一天</div>
 
 <script src="assets/game.js"></script>
 <script src="assets/diary.js"></script>
