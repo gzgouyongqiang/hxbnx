@@ -77,58 +77,9 @@
     grid.innerHTML = html;
   }
 
-  // 切换周次面板
+  // 点击周次跳转到独立页面
   window.toggleWeek = function(weekNum) {
-    var panel = document.getElementById('weekPanel');
-    var cells = document.querySelectorAll('.week-cell');
-
-    if (activeWeek === weekNum) {
-      // 收起
-      closeWeekPanel();
-      return;
-    }
-
-    // 更新网格高亮
-    cells.forEach(function(c) { c.classList.remove('active'); });
-    var activeCell = document.querySelector('.week-cell[data-week="' + weekNum + '"]');
-    if (activeCell) activeCell.classList.add('active');
-
-    // 填充面板内容
-    var data = weekData[weekNum - 1];
-    document.getElementById('panelTitle').textContent = data.title;
-    document.getElementById('panelDate').textContent = data.dateRange;
-
-    var topicsHtml = '';
-    for (var i = 0; i < data.topics.length; i++) {
-      var t = data.topics[i];
-      topicsHtml += '<li class="' + (t.placeholder ? 'placeholder' : '') + '">' + t.name + '</li>';
-    }
-    document.getElementById('panelTopics').innerHTML = topicsHtml;
-
-    var tasksHtml = '';
-    for (var j = 0; j < data.tasks.length; j++) {
-      var task = data.tasks[j];
-      tasksHtml += '<li><input type="checkbox" ' + (task.done ? 'checked' : '') + ' disabled><span>' + task.name + '</span></li>';
-    }
-    document.getElementById('panelTasks').innerHTML = tasksHtml;
-
-    // 显示面板
-    panel.classList.add('active');
-    activeWeek = weekNum;
-
-    // 滚动到面板
-    setTimeout(function() {
-      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
-  };
-
-  // 收起面板
-  window.closeWeekPanel = function() {
-    var panel = document.getElementById('weekPanel');
-    var cells = document.querySelectorAll('.week-cell');
-    panel.classList.remove('active');
-    cells.forEach(function(c) { c.classList.remove('active'); });
-    activeWeek = 0;
+    window.location.href = 'week.html?w=' + weekNum;
   };
 
   // 初始化
