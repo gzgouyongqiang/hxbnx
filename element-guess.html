@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>元素推断大师 | 化学不难学</title>
+<style>
+:root{--bg:#0a0e1a;--card:#11182b;--gold:#f0c040;--cyan:#67e8f9;--red:#f87171;--green:#6ee7b7;--purple:#a78bfa;--orange:#fb923c;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(103,232,249,0.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* 顶部导航 */
+.header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.header-left{display:flex;align-items:center;gap:12px}
+.header h1{font-size:24px;background:linear-gradient(90deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back-link{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+
+/* 统计栏 */
+.stats-bar{display:flex;justify-content:center;gap:16px;padding:0 20px 16px;flex-wrap:wrap}
+.stat-box{padding:10px 18px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-align:center;min-width:80px}
+.stat-num{font-size:20px;font-weight:700;color:var(--gold)}
+.stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* 开始界面 */
+.start-screen{max-width:600px;margin:40px auto;padding:0 20px;text-align:center}
+.start-title{font-size:28px;font-weight:800;color:var(--gold);margin-bottom:12px}
+.start-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:30px}
+.start-btn{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000;border:none;border-radius:12px;padding:14px 40px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,192,64,.3)}
+
+/* 游戏区域 */
+.game-area{display:none;max-width:700px;margin:0 auto;padding:0 20px 40px}
+.game-area.active{display:block}
+
+/* 进度 */
+.progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:13px;color:var(--muted)}
+.progress-bar{height:6px;background:rgba(255,255,255,.05);border-radius:3px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));border-radius:3px;transition:width .5s}
+
+/* 题目卡片 */
+.question-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+.question-num{font-size:12px;color:var(--cyan);margin-bottom:8px}
+.question-title{font-size:18px;font-weight:700;color:var(--gold);margin-bottom:16px}
+
+/* 线索列表 */
+.clue-list{list-style:none;margin-bottom:20px}
+.clue-list li{padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;font-size:14px;line-height:1.6;color:var(--text);display:flex;align-items:flex-start;gap:10px}
+.clue-list li::before{content:'🔍';flex-shrink:0}
+
+/* 选项 */
+.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt-btn{padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);font-size:15px;cursor:pointer;transition:all .2s;text-align:center;font-family:inherit}
+.opt-btn:hover:not(.disabled){border-color:var(--cyan);background:rgba(103,232,249,.05);transform:translateY(-1px)}
+.opt-btn.correct{border-color:var(--green);background:rgba(110,231,183,.1);color:var(--green)}
+.opt-btn.wrong{border-color:var(--red);background:rgba(248,113,113,.1);color:var(--red)}
+.opt-btn.disabled{cursor:not-allowed;opacity:.7}
+
+/* 解析 */
+.explanation{display:none;margin-top:16px;padding:16px;background:rgba(110,231,183,.05);border:1px solid rgba(110,231,183,.2);border-radius:10px}
+.explanation.show{display:block}
+.exp-title{font-size:14px;font-weight:700;color:var(--green);margin-bottom:8px}
+.exp-text{font-size:13px;color:var(--text);line-height:1.8}
+
+/* 下一题按钮 */
+.next-btn-area{text-align:center;margin-top:20px}
+.next-btn{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000;border:none;border-radius:10px;padding:10px 32px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* 结算界面 */
+.result-screen{display:none;max-width:500px;margin:40px auto;padding:0 20px;text-align:center}
+.result-screen.active{display:block}
+.result-title{font-size:32px;font-weight:800;color:var(--gold);margin-bottom:8px}
+.result-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.result-stat{padding:16px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+.result-stat-num{font-size:28px;font-weight:700;color:var(--gold)}
+.result-stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+.result-btn{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000;border:none;border-radius:12px;padding:12px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin:6px}
+
+/* 连击提示 */
+.combo-popup{position:fixed;top:20%;left:50%;transform:translateX(-50%) scale(0);padding:10px 24px;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--orange));color:#000;font-size:16px;font-weight:700;z-index:50;transition:transform .3s;pointer-events:none}
+.combo-popup.show{transform:translateX(-50%) scale(1)}
+
+/* 响应式 */
+@media(max-width:600px){
+  .header h1{font-size:20px}
+  .options{grid-template-columns:1fr}
+  .start-title{font-size:22px}
+  .question-title{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <a href="index.html" class="back-link">← 返回首页</a>
+    <span style="color:var(--border)">|</span>
+    <h1>元素推断大师</h1>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-box"><div class="stat-num" id="scoreNum">0</div><div class="stat-label">积分</div></div>
+  <div class="stat-box"><div class="stat-num" id="comboNum">0</div><div class="stat-label">连击</div></div>
+  <div class="stat-box"><div class="stat-num" id="lifeNum">3</div><div class="stat-label">生命</div></div>
+</div>
+
+<!-- 开始界面 -->
+<div class="start-screen" id="startScreen">
+  <div class="start-title">元素推断大师</div>
+  <div class="start-desc">
+    根据给出的线索，推断是哪种元素。<br>
+    涵盖原子序数1~36号元素、碱金属族和卤族元素。<br>
+    答对得分，连续答对有连击加成！<br>
+    共40题，3条生命，挑战你的元素知识！
+  </div>
+  <button class="start-btn" onclick="startGame()">开始挑战</button>
+</div>
+
+<!-- 游戏区域 -->
+<div class="game-area" id="gameArea">
+  <div class="progress-info">
+    <span>第 <span id="currentQ">1</span> / <span id="totalQ">40</span> 题</span>
+    <span>最高分连击: <span id="maxCombo">0</span></span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <div class="question-card">
+    <div class="question-num" id="qNum">第 1 题</div>
+    <div class="question-title" id="qTitle">根据以下线索，推断这是什么元素：</div>
+    <ul class="clue-list" id="clueList"></ul>
+
+    <div class="options" id="options"></div>
+
+    <div class="explanation" id="explanation">
+      <div class="exp-title">解析</div>
+      <div class="exp-text" id="expText"></div>
+    </div>
+
+    <div class="next-btn-area" id="nextArea" style="display:none">
+      <button class="next-btn" onclick="nextQuestion()">下一题 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- 结算界面 -->
+<div class="result-screen" id="resultScreen">
+  <div class="result-title" id="resultTitle">挑战完成！</div>
+  <div class="result-sub" id="resultSub"></div>
+  <div class="result-stats">
+    <div class="result-stat"><div class="result-stat-num" id="rScore">0</div><div class="result-stat-label">总积分</div></div>
+    <div class="result-stat"><div class="result-stat-num" id="rCorrect">0</div><div class="result-stat-label">答对题数</div></div>
+    <div class="result-stat"><div class="result-stat-num" id="rMaxCombo">0</div><div class="result-stat-label">最高连击</div></div>
+    <div class="result-stat"><div class="result-stat-num" id="rAccuracy">0%</div><div class="result-stat-label">正确率</div></div>
+  </div>
+  <button class="result-btn" onclick="startGame()">再来一次</button>
+  <a href="index.html" style="display:inline-block;margin-top:12px;color:var(--muted);text-decoration:none;font-size:14px">返回首页</a>
+</div>
+
+<!-- 连击提示 -->
+<div class="combo-popup" id="comboPopup"></div>
+
+<script src="assets/game.js"></script>
+<script>
+// ==================== 题目数据 ====================
+const QUESTIONS = [
+  {
+    clues: [
+      "我是宇宙中含量最丰富的元素",
+      "我的原子核只有一个质子",
+      "我是所有元素中最轻的"
+    ],
+    answer: "氢 (H)",
+    options: ["氢 (H)", "氦 (He)", "锂 (Li)", "铍 (Be)"],
+    explanation: "氢（H）原子序数为1，是宇宙中最丰富的元素，约占宇宙质量的75%。"
+  },
+  {
+    clues: [
+      "我是碱金属族中最轻的成员",
+      "我的原子序数是3",
+      "我的密度比水还小，可以浮在水面上"
+    ],
+    answer: "锂 (Li)",
+    options: ["钠 (Na)", "钾 (K)", "锂 (Li)", "铷 (Rb)"],
+    explanation: "锂（Li）原子序数3，是碱金属中最轻的，密度约0.534 g/cm³，比水轻。"
+  },
+  {
+    clues: [
+      "我是地壳中含量第二丰富的元素",
+      "我的原子序数是8",
+      "我约占地球大气层的21%"
+    ],
+    answer: "氧 (O)",
+    options: ["氮 (N)", "氧 (O)", "硅 (Si)", "铝 (Al)"],
+    explanation: "氧（O）原子序数8，地壳中含量约46.6%，大气中约占21%。"
+  },
+  {
+    clues: [
+      "我是地壳中含量最丰富的金属元素",
+      "我的原子序数是13",
+      "我的氧化物是两性氧化物，既能与酸反应也能与碱反应"
+    ],
+    answer: "铝 (Al)",
+    options: ["铁 (Fe)", "铜 (Cu)", "铝 (Al)", "镁 (Mg)"],
+    explanation: "铝（Al）原子序数13，地壳中含量约8.1%，是最丰富的金属元素。Al₂O₃是两性氧化物。"
+  },
+  {
+    clues: [
+      "我是人体中含量最丰富的金属元素",
+      "我的原子序数是20",
+      "我的化合物是骨骼和牙齿的主要成分"
+    ],
+    answer: "钙 (Ca)",
+    options: ["钠 (Na)", "钾 (K)", "钙 (Ca)", "镁 (Mg)"],
+    explanation: "钙（Ca）原子序数20，人体中含量约1.5%，骨骼主要成分为羟基磷酸钙。"
+  },
+  {
+    clues: [
+      "我是卤族元素中最轻的成员",
+      "我的原子序数是9",
+      "我是电负性最强的元素"
+    ],
+    answer: "氟 (F)",
+    options: ["氯 (Cl)", "氟 (F)", "溴 (Br)", "碘 (I)"],
+    explanation: "氟（F）原子序数9，电负性4.0，是所有元素中最强的。"
+  },
+  {
+    clues: [
+      "我的原子序数是26",
+      "我是人体血红蛋白的核心元素",
+      "我在工业上被大量用于炼钢"
+    ],
+    answer: "铁 (Fe)",
+    options: ["铜 (Cu)", "锌 (Zn)", "铁 (Fe)", "锰 (Mn)"],
+    explanation: "铁（Fe）原子序数26，血红蛋白中含Fe²⁺，是氧气运输的关键。"
+  },
+  {
+    clues: [
+      "我是碱金属族中化学性质最活泼的成员（前36号内）",
+      "我的原子序数是19",
+      "我的焰色反应呈紫色"
+    ],
+    answer: "钾 (K)",
+    options: ["钠 (Na)", "钾 (K)", "锂 (Li)", "铷 (Rb)"],
+    explanation: "钾（K）原子序数19，前36号中碱金属最活泼，焰色反应为紫色。"
+  },
+  {
+    clues: [
+      "我的原子序数是29",
+      "我是优良的导电材料，仅次于银",
+      "我的单质呈紫红色"
+    ],
+    answer: "铜 (Cu)",
+    options: ["银 (Ag)", "铜 (Cu)", "金 (Au)", "铝 (Al)"],
+    explanation: "铜（Cu）原子序数29，导电性仅次于银，单质为紫红色金属。"
+  },
+  {
+    clues: [
+      "我的原子序数是17",
+      "我是自来水消毒常用的元素",
+      "我的单质是黄绿色气体"
+    ],
+    answer: "氯 (Cl)",
+    options: ["氟 (F)", "氯 (Cl)", "溴 (Br)", "碘 (I)"],
+    explanation: "氯（Cl）原子序数17，单质Cl₂为黄绿色气体，常用于自来水消毒。"
+  },
+  {
+    clues: [
+      "我是地壳中含量最丰富的元素",
+      "我的原子序数是14",
+      "我的单质是半导体材料的核心"
+    ],
+    answer: "硅 (Si)",
+    options: ["碳 (C)", "硅 (Si)", "锗 (Ge)", "锡 (Sn)"],
+    explanation: "硅（Si）原子序数14，地壳中含量约27%，是半导体工业的基础材料。"
+  },
+  {
+    clues: [
+      "我的原子序数是11",
+      "我是碱金属族成员",
+      "我的焰色反应呈黄色"
+    ],
+    answer: "钠 (Na)",
+    options: ["锂 (Li)", "钠 (Na)", "钾 (K)", "铷 (Rb)"],
+    explanation: "钠（Na）原子序数11，焰色反应为黄色，常见于食盐（NaCl）。"
+  },
+  {
+    clues: [
+      "我的原子序数是30",
+      "我的单质是蓝白色金属",
+      "我对人体免疫系统和味觉很重要"
+    ],
+    answer: "锌 (Zn)",
+    options: ["铁 (Fe)", "铜 (Cu)", "锌 (Zn)", "镍 (Ni)"],
+    explanation: "锌（Zn）原子序数30，人体必需微量元素，参与多种酶的组成。"
+  },
+  {
+    clues: [
+      "我的原子序数是16",
+      "我的单质是黄色固体",
+      "我是硫酸的主要成分"
+    ],
+    answer: "硫 (S)",
+    options: ["氧 (O)", "硫 (S)", "硒 (Se)", "碲 (Te)"],
+    explanation: "硫（S）原子序数16，单质为黄色固体，硫酸（H₂SO₄）含硫元素。"
+  },
+  {
+    clues: [
+      "我的原子序数是25",
+      "我是过渡金属元素",
+      "我的化合物常用于干电池的正极材料"
+    ],
+    answer: "锰 (Mn)",
+    options: ["铁 (Fe)", "钴 (Co)", "锰 (Mn)", "镍 (Ni)"],
+    explanation: "锰（Mn）原子序数25，MnO₂是干电池正极的常用材料。"
+  },
+  {
+    clues: [
+      "我的原子序数是35",
+      "我是卤族元素",
+      "我的单质在常温下是红棕色液体"
+    ],
+    answer: "溴 (Br)",
+    options: ["氯 (Cl)", "溴 (Br)", "碘 (I)", "砹 (At)"],
+    explanation: "溴（Br）原子序数35，常温下唯一呈液态的非金属单质，红棕色。"
+  },
+  {
+    clues: [
+      "我的原子序数是12",
+      "我的单质燃烧时发出耀眼的白光",
+      "我是叶绿素分子的核心元素"
+    ],
+    answer: "镁 (Mg)",
+    options: ["钙 (Ca)", "镁 (Mg)", "铝 (Al)", "钠 (Na)"],
+    explanation: "镁（Mg）原子序数12，燃烧发出耀眼白光，叶绿素含Mg²⁺。"
+  },
+  {
+    clues: [
+      "我的原子序数是33",
+      "我是类金属元素",
+      "我的化合物三氧化二砷俗称砒霜"
+    ],
+    answer: "砷 (As)",
+    options: ["磷 (P)", "砷 (As)", "锑 (Sb)", "铋 (Bi)"],
+    explanation: "砷（As）原子序数33，As₂O₃俗称砒霜，有剧毒。"
+  },
+  {
+    clues: [
+      "我的原子序数是7",
+      "我约占地球大气层的78%",
+      "我是蛋白质的重要组成元素"
+    ],
+    answer: "氮 (N)",
+    options: ["氧 (O)", "氮 (N)", "碳 (C)", "氢 (H)"],
+    explanation: "氮（N）原子序数7，大气中约占78%，是氨基酸和蛋白质的关键元素。"
+  },
+  {
+    clues: [
+      "我的原子序数是15",
+      "我的单质有白磷和红磷两种同素异形体",
+      "我是DNA和ATP的重要组成元素"
+    ],
+    answer: "磷 (P)",
+    options: ["氮 (N)", "磷 (P)", "砷 (As)", "硫 (S)"],
+    explanation: "磷（P）原子序数15，白磷剧毒易自燃，红磷稳定，是生物体重要元素。"
+  },
+  {
+    clues: [
+      "我的原子序数是24",
+      "我是过渡金属",
+      "我的化合物常用于不锈钢和镀铬"
+    ],
+    answer: "铬 (Cr)",
+    options: ["锰 (Mn)", "铁 (Fe)", "铬 (Cr)", "镍 (Ni)"],
+    explanation: "铬（Cr）原子序数24，Cr₂O₃用于镀铬，不锈钢含铬约10-20%。"
+  },
+  {
+    clues: [
+      "我的原子序数是6",
+      "我是有机物的基础元素",
+      "我的单质有金刚石和石墨两种同素异形体"
+    ],
+    answer: "碳 (C)",
+    options: ["硅 (Si)", "碳 (C)", "硼 (B)", "氮 (N)"],
+    explanation: "碳（C）原子序数6，有机物骨架元素，金刚石和石墨是其同素异形体。"
+  },
+  {
+    clues: [
+      "我的原子序数是28",
+      "我是过渡金属",
+      "我的合金（与铬、铁）就是不锈钢"
+    ],
+    answer: "镍 (Ni)",
+    options: ["钴 (Co)", "镍 (Ni)", "铜 (Cu)", "锌 (Zn)"],
+    explanation: "镍（Ni）原子序数28，与铬、铁形成不锈钢，耐腐蚀性强。"
+  },
+  {
+    clues: [
+      "我的原子序数是53",
+      "我是卤族元素",
+      "我的单质是紫黑色固体，易升华"
+    ],
+    answer: "碘 (I)",
+    options: ["溴 (Br)", "碘 (I)", "砹 (At)", "氯 (Cl)"],
+    explanation: "碘（I）原子序数53，单质为紫黑色固体，易升华，遇淀粉变蓝。"
+  },
+  {
+    clues: [
+      "我的原子序数是37",
+      "我是碱金属族成员",
+      "我的焰色反应呈紫红色"
+    ],
+    answer: "铷 (Rb)",
+    options: ["钾 (K)", "铷 (Rb)", "铯 (Cs)", "钠 (Na)"],
+    explanation: "铷（Rb）原子序数37，碱金属，焰色反应为紫红色。"
+  },
+  {
+    clues: [
+      "我的原子序数是34",
+      "我是氧族元素",
+      "我的单质是灰色固体，是半导体材料"
+    ],
+    answer: "硒 (Se)",
+    options: ["硫 (S)", "硒 (Se)", "碲 (Te)", "氧 (O)"],
+    explanation: "硒（Se）原子序数34，半导体材料，人体必需微量元素。"
+  },
+  {
+    clues: [
+      "我的原子序数是22",
+      "我是过渡金属",
+      "我的合金强度高、耐腐蚀，常用于航空航天"
+    ],
+    answer: "钛 (Ti)",
+    options: ["钒 (V)", "铬 (Cr)", "钛 (Ti)", "锰 (Mn)"],
+    explanation: "钛（Ti）原子序数22，钛合金强度高、耐腐蚀，广泛用于航空航天。"
+  },
+  {
+    clues: [
+      "我的原子序数是5",
+      "我是类金属元素",
+      "我的化合物硼砂可用于清洁和玻璃制造"
+    ],
+    answer: "硼 (B)",
+    options: ["铝 (Al)", "硼 (B)", "镓 (Ga)", "铟 (In)"],
+    explanation: "硼（B）原子序数5，类金属，硼砂（Na₂B₄O₇·10H₂O）有广泛用途。"
+  },
+  {
+    clues: [
+      "我的原子序数是27",
+      "我是过渡金属",
+      "我是维生素B₁₂的核心元素"
+    ],
+    answer: "钴 (Co)",
+    options: ["铁 (Fe)", "钴 (Co)", "镍 (Ni)", "铜 (Cu)"],
+    explanation: "钴（Co）原子序数27，维生素B₁₂含钴，是人体必需微量元素。"
+  },
+  {
+    clues: [
+      "我的原子序数是32",
+      "我是类金属元素",
+      "我的单质是重要的半导体材料，用于晶体管"
+    ],
+    answer: "锗 (Ge)",
+    options: ["硅 (Si)", "锗 (Ge)", "锡 (Sn)", "铅 (Pb)"],
+    explanation: "锗（Ge）原子序数32，早期晶体管材料，现在多被硅取代。"
+  },
+  {
+    clues: [
+      "我的原子序数是23",
+      "我是过渡金属",
+      "我的化合物五氧化二钒是硫酸工业的重要催化剂"
+    ],
+    answer: "钒 (V)",
+    options: ["钛 (Ti)", "钒 (V)", "铬 (Cr)", "锰 (Mn)"],
+    explanation: "钒（V）原子序数23，V₂O₅是接触法制硫酸的催化剂。"
+  },
+  {
+    clues: [
+      "我的原子序数是55",
+      "我是碱金属族中最活泼的成员",
+      "我的熔点很低，仅28.5°C"
+    ],
+    answer: "铯 (Cs)",
+    options: ["铷 (Rb)", "铯 (Cs)", "钾 (K)", "钠 (Na)"],
+    explanation: "铯（Cs）原子序数55，碱金属最活泼，熔点仅28.5°C，接近室温。"
+  },
+  {
+    clues: [
+      "我的原子序数是21",
+      "我是过渡金属",
+      "我的化合物用于制造高强度合金和催化剂"
+    ],
+    answer: "钪 (Sc)",
+    options: ["钙 (Ca)", "钪 (Sc)", "钛 (Ti)", "钒 (V)"],
+    explanation: "钪（Sc）原子序数21，第一个过渡金属，用于铝合金强化。"
+  },
+  {
+    clues: [
+      "我的原子序数是31",
+      "我是后过渡金属",
+      "我的化合物氮化镓是LED和蓝光二极管的关键材料"
+    ],
+    answer: "镓 (Ga)",
+    options: ["铝 (Al)", "镓 (Ga)", "铟 (In)", "铊 (Tl)"],
+    explanation: "镓（Ga）原子序数31，GaN是LED和蓝光二极管的核心材料。"
+  },
+  {
+    clues: [
+      "我的原子序数是85",
+      "我是卤族元素中最重的成员",
+      "我是人工合成的放射性元素"
+    ],
+    answer: "砹 (At)",
+    options: ["碘 (I)", "砹 (At)", "氯 (Cl)", "溴 (Br)"],
+    explanation: "砹（At）原子序数85，卤族最重的元素，极不稳定，半衰期很短。"
+  },
+  {
+    clues: [
+      "我的原子序数是18",
+      "我不是稀有气体",
+      "等等，我确实是稀有气体...这道题出错了！"
+    ],
+    answer: "氩 (Ar)",
+    options: ["氖 (Ne)", "氩 (Ar)", "氪 (Kr)", "氙 (Xe)"],
+    explanation: "这是一道陷阱题！氩（Ar）确实是稀有气体，原子序数18。题目说'除掉稀有气体'，但这里故意放了一个来测试你是否认真读题！"
+  },
+  {
+    clues: [
+      "我的原子序数是10",
+      "我也不是稀有气体...才怪",
+      "我在霓虹灯中发出红光"
+    ],
+    answer: "氖 (Ne)",
+    options: ["氦 (He)", "氖 (Ne)", "氩 (Ar)", "氪 (Kr)"],
+    explanation: "又一道陷阱题！氖（Ne）是稀有气体，原子序数10，通电时发出红光，用于霓虹灯。"
+  },
+  {
+    clues: [
+      "我的原子序数是2",
+      "我虽然是稀有气体，但我是宇宙中第二丰富的元素",
+      "我的沸点极低，接近绝对零度"
+    ],
+    answer: "氦 (He)",
+    options: ["氢 (H)", "氦 (He)", "锂 (Li)", "铍 (Be)"],
+    explanation: "氦（He）原子序数2，宇宙中第二丰富的元素，沸点-268.9°C，用于超导磁体和气球。"
+  },
+  {
+    clues: [
+      "我的原子序数是4",
+      "我是碱土金属",
+      "我的化合物绿宝石（祖母绿）非常珍贵"
+    ],
+    answer: "铍 (Be)",
+    options: ["锂 (Li)", "铍 (Be)", "镁 (Mg)", "钙 (Ca)"],
+    explanation: "铍（Be）原子序数4，碱土金属，绿宝石（Be₃Al₂Si₆O₁₈）含铍元素。"
+  },
+  {
+    clues: [
+      "我的原子序数是19",
+      "我的化合物是化肥的主要成分之一",
+      "我的离子对植物生长至关重要"
+    ],
+    answer: "钾 (K)",
+    options: ["氮 (N)", "磷 (P)", "钾 (K)", "钙 (Ca)"],
+    explanation: "钾（K）原子序数19，K⁺是植物必需营养元素，化肥N-P-K中的K就是钾。"
+  }
+];
+
+// ==================== 游戏状态 ====================
+let gameState = {
+  score: 0,
+  combo: 0,
+  maxCombo: 0,
+  life: 3,
+  currentQ: 0,
+  correctCount: 0,
+  questions: [],
+  answered: false
+};
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startGame() {
+  gameState = {
+    score: 0,
+    combo: 0,
+    maxCombo: 0,
+    life: 3,
+    currentQ: 0,
+    correctCount: 0,
+    questions: shuffle([...QUESTIONS]),
+    answered: false
+  };
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('resultScreen').classList.remove('active');
+  document.getElementById('gameArea').classList.add('active');
+
+  updateStats();
+  showQuestion();
+}
+
+function updateStats() {
+  document.getElementById('scoreNum').textContent = gameState.score;
+  document.getElementById('comboNum').textContent = gameState.combo;
+  document.getElementById('lifeNum').textContent = gameState.life;
+  document.getElementById('currentQ').textContent = gameState.currentQ + 1;
+  document.getElementById('totalQ').textContent = gameState.questions.length;
+  document.getElementById('maxCombo').textContent = gameState.maxCombo;
+}
+
+function showQuestion() {
+  const q = gameState.questions[gameState.currentQ];
+  if (!q || gameState.life <= 0) {
+    showResult();
+    return;
+  }
+
+  gameState.answered = false;
+
+  const progress = ((gameState.currentQ) / gameState.questions.length * 100);
+  document.getElementById('progressFill').style.width = progress + '%';
+
+  document.getElementById('qNum').textContent = `第 ${gameState.currentQ + 1} / ${gameState.questions.length} 题`;
+
+  // 线索
+  const clueList = document.getElementById('clueList');
+  clueList.innerHTML = '';
+  q.clues.forEach(clue => {
+    const li = document.createElement('li');
+    li.textContent = clue;
+    clueList.appendChild(li);
+  });
+
+  // 选项
+  const optionsDiv = document.getElementById('options');
+  optionsDiv.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(idx);
+    optionsDiv.appendChild(btn);
+  });
+
+  // 隐藏解析和下一题
+  document.getElementById('explanation').classList.remove('show');
+  document.getElementById('nextArea').style.display = 'none';
+
+  updateStats();
+}
+
+function checkAnswer(idx) {
+  if (gameState.answered) return;
+  gameState.answered = true;
+
+  const q = gameState.questions[gameState.currentQ];
+  const options = document.querySelectorAll('.opt-btn');
+  const correctIdx = q.options.indexOf(q.answer);
+
+  options.forEach((btn, i) => {
+    btn.classList.add('disabled');
+    if (i === correctIdx) {
+      btn.classList.add('correct');
+    } else if (i === idx && i !== correctIdx) {
+      btn.classList.add('wrong');
+    }
+  });
+
+  if (idx === correctIdx) {
+    gameState.combo++;
+    if (gameState.combo > gameState.maxCombo) gameState.maxCombo = gameState.combo;
+
+    // 基础分100 + 连击加成
+    let points = 100;
+    if (gameState.combo >= 3) points += 50;
+    if (gameState.combo >= 5) points += 50;
+    if (gameState.combo >= 10) points += 100;
+
+    gameState.score += points;
+    gameState.correctCount++;
+
+    // 显示连击
+    if (gameState.combo >= 3) {
+      showComboPopup(gameState.combo + '连击！+' + points);
+    }
+
+    // 同步到总积分
+    if (typeof HXBNX_GAME !== 'undefined') {
+      HXBNX_GAME.addScore(points);
+    }
+  } else {
+    gameState.combo = 0;
+    gameState.life--;
+
+    // 错题记录
+    if (typeof HXBNX_GAME !== 'undefined') {
+      HXBNX_GAME.addWrongQuestion({
+        filename: 'element-guess',
+        topicName: '元素推断',
+        questionText: q.clues.join('；'),
+        options: q.options,
+        correctIndex: correctIdx,
+        wrongIndex: idx
+      });
+    }
+  }
+
+  // 显示解析
+  document.getElementById('expText').textContent = q.explanation;
+  document.getElementById('explanation').classList.add('show');
+  document.getElementById('nextArea').style.display = 'block';
+
+  updateStats();
+}
+
+function showComboPopup(text) {
+  const popup = document.getElementById('comboPopup');
+  popup.textContent = text;
+  popup.classList.add('show');
+  setTimeout(() => popup.classList.remove('show'), 1500);
+}
+
+function nextQuestion() {
+  gameState.currentQ++;
+  if (gameState.currentQ >= gameState.questions.length || gameState.life <= 0) {
+    showResult();
+  } else {
+    showQuestion();
+  }
+}
+
+function showResult() {
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.add('active');
+
+  const total = gameState.questions.length;
+  const accuracy = total > 0 ? Math.round(gameState.correctCount / total * 100) : 0;
+
+  document.getElementById('rScore').textContent = gameState.score;
+  document.getElementById('rCorrect').textContent = gameState.correctCount;
+  document.getElementById('rMaxCombo').textContent = gameState.maxCombo;
+  document.getElementById('rAccuracy').textContent = accuracy + '%';
+
+  let title = '挑战完成！';
+  if (accuracy >= 90) title = '元素大师！';
+  else if (accuracy >= 70) title = '表现优秀！';
+  else if (accuracy >= 50) title = '继续努力！';
+  else title = '再接再厉！';
+  document.getElementById('resultTitle').textContent = title;
+
+  document.getElementById('resultSub').textContent =
+    `共${total}题，答对${gameState.correctCount}题，正确率${accuracy}%`;
+
+  // 同步副本通关积分
+  if (typeof HXBNX_GAME !== 'undefined' && gameState.score > 0) {
+    HXBNX_GAME.addSideScore('side-element-guess', gameState.score);
+  }
+}
+</script>
+</body>
+</html>
