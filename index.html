@@ -32,25 +32,21 @@
     </div>
   </div>
 
-  <!-- 大书 -->
+  <!-- 桌面端：3D翻页大书 -->
   <div class="book-scene">
     <div class="book" id="mainBook">
-      <!-- 书脊 -->
       <div class="book-spine"></div>
-
-      <!-- 封面 -->
       <div class="book-cover" id="bookCover" onclick="openBook()">
         <div class="cover-title">2027届高考日记</div>
         <div class="cover-sub">化学</div>
         <div class="cover-hint">点击翻开</div>
       </div>
-
-      <!-- 书页容器 -->
-      <div class="book-pages" id="bookPages" style="display:none;">
-        <!-- 页面由 JS 动态生成 -->
-      </div>
+      <div class="book-pages" id="bookPages" style="display:none;"></div>
     </div>
   </div>
+
+  <!-- 手机端：单页卡片 -->
+  <div class="mobile-pages" id="mobilePages"></div>
 
   <!-- 小书区域 -->
   <div class="mini-books-section">
