@@ -69,6 +69,51 @@ const ALCHEMY_SYSTEM = (function() {
     { id: 'o3', name: '臭氧卫士', formula: 'O₃', type: 'special', rarity: 3, atk: 24, hp: 42, def: 18, skill: '紫外线盾', skillDesc: '免疫光系伤害', voice: '我在高空保护地球，吸收紫外线！', icon: '🌍' },
     { id: 'h2o2', name: '双氧水医生', formula: 'H₂O₂', type: 'special', rarity: 2, atk: 20, hp: 40, def: 14, skill: '消毒杀菌', skillDesc: '攻击有概率净化队友异常状态', voice: '我分解产生氧气，可以消毒伤口！', icon: '👨‍⚕️' },
     { id: 'c60', name: '富勒烯球', formula: 'C₆₀', type: 'special', rarity: 5, atk: 35, hp: 50, def: 30, skill: '足球结构', skillDesc: '受到物理伤害减半', voice: '我是足球状的碳分子，纳米材料的新星！', icon: '⚽' },
+
+    // ===== 新增宠物（扩充到60+）=====
+
+    // 单质 - 金属（新增5种）
+    { id: 'li', name: '锂电车', formula: 'Li', type: 'metal', rarity: 2, atk: 24, hp: 40, def: 12, skill: '电池充能', skillDesc: '战斗开始时攻击力提升30%', voice: '我是锂电池的核心，给手机供电！', icon: '🔋' },
+    { id: 'pb', name: '铅球王', formula: 'Pb', type: 'metal', rarity: 2, atk: 20, hp: 60, def: 25, skill: '重金属压制', skillDesc: '降低敌人速度', voice: '我很重，但我很稳定，防辐射！', icon: '🏋️' },
+    { id: 'hg', name: '水银刺客', formula: 'Hg', type: 'metal', rarity: 3, atk: 30, hp: 35, def: 10, skill: '液态闪避', skillDesc: '闪避率提升50%', voice: '我是唯一液态金属，来无影去无踪！', icon: '🥷' },
+    { id: 'sn', name: '锡纸侠', formula: 'Sn', type: 'metal', rarity: 1, atk: 16, hp: 45, def: 16, skill: '低温脆化', skillDesc: '寒冷环境下攻击力翻倍', voice: '我是锡纸，包烧烤、包糖果都靠我！', icon: '🦸‍♂️' },
+    { id: 'pt', name: '铂金贵族', formula: 'Pt', type: 'metal', rarity: 4, atk: 32, hp: 55, def: 22, skill: '催化加速', skillDesc: '全队攻击速度提升', voice: '我是催化剂之王，化学反应因我加速！', icon: '💎' },
+
+    // 单质 - 非金属（新增2种）
+    { id: 'n2', name: '氮气忍者', formula: 'N₂', type: 'nonmetal', rarity: 2, atk: 18, hp: 48, def: 20, skill: '氮气护盾', skillDesc: '受到攻击时概率免疫', voice: '空气里78%都是我，但你抓不到我！', icon: '🥷' },
+    { id: 'i2', name: '碘酒医师', formula: 'I₂', type: 'nonmetal', rarity: 2, atk: 22, hp: 38, def: 14, skill: '消毒紫晶', skillDesc: '攻击附带减速效果', voice: '我是紫黑色晶体，消毒伤口的好帮手！', icon: '💜' },
+
+    // 稀有气体（新增2种）
+    { id: 'kr', name: '氪金战士', formula: 'Kr', type: 'noble', rarity: 3, atk: 20, hp: 45, def: 25, skill: '氪金闪光', skillDesc: '攻击时概率致盲敌人', voice: '氪金使我变强！闪瞎你的眼！', icon: '💰' },
+    { id: 'xe', name: '氙气大灯', formula: 'Xe', type: 'noble', rarity: 4, atk: 22, hp: 42, def: 20, skill: '强光照射', skillDesc: '降低敌人命中率并造成持续伤害', voice: '我是汽车大灯的核心，照亮前路！', icon: '🔦' },
+
+    // 氧化物（新增3种）
+    { id: 'sio2', name: '石英水晶', formula: 'SiO₂', type: 'oxide', rarity: 3, atk: 20, hp: 58, def: 28, skill: '水晶护盾', skillDesc: '受到物理伤害大幅降低', voice: '我是石英，手表里的振荡器就是我！', icon: '💎' },
+    { id: 'so2', name: '二氧化硫怪', formula: 'SO₂', type: 'oxide', rarity: 2, atk: 24, hp: 38, def: 12, skill: '酸雨腐蚀', skillDesc: '攻击降低敌人防御并持续掉血', voice: '我是酸雨的元凶之一，刺鼻的气味！', icon: '🌧️' },
+    { id: 'no2', name: '红棕恶魔', formula: 'NO₂', type: 'oxide', rarity: 3, atk: 28, hp: 36, def: 10, skill: '毒气蔓延', skillDesc: '攻击附带中毒和减速', voice: '我是红棕色气体，有毒但可以做肥料！', icon: '👿' },
+
+    // 酸（新增2种）
+    { id: 'h3po4', name: '磷酸农夫', formula: 'H₃PO₄', type: 'acid', rarity: 2, atk: 22, hp: 45, def: 16, skill: '肥料滋养', skillDesc: '每回合恢复少量生命', voice: '我是磷肥的主要成分，庄稼离不开我！', icon: '👨‍🌾' },
+    { id: 'hf', name: '氢氟酸刺客', formula: 'HF', type: 'acid', rarity: 4, atk: 36, hp: 32, def: 8, skill: '玻璃腐蚀', skillDesc: '攻击无视敌人80%防御', voice: '我能腐蚀玻璃，小心别碰我！', icon: '🗡️' },
+
+    // 碱（新增2种）
+    { id: 'koh', name: '氢氧化钾法师', formula: 'KOH', type: 'base', rarity: 3, atk: 26, hp: 42, def: 13, skill: '强碱风暴', skillDesc: '攻击时概率造成范围伤害', voice: '我比氢氧化钠还强，别惹我！', icon: '🧙' },
+    { id: 'na2co3', name: '纯碱商人', formula: 'Na₂CO₃', type: 'base', rarity: 2, atk: 18, hp: 48, def: 18, skill: '碱性中和', skillDesc: '受到酸攻击时大幅恢复生命', voice: '我是纯碱，做馒头、洗玻璃都有我！', icon: '🧑‍💼' },
+
+    // 盐（新增3种）
+    { id: 'agcl', name: '氯化银摄影师', formula: 'AgCl', type: 'salt', rarity: 3, atk: 20, hp: 40, def: 20, skill: '感光曝光', skillDesc: '攻击时概率使敌人失明', voice: '我遇光变黑，胶卷摄影的核心！', icon: '📷' },
+    { id: 'baso4', name: '硫酸钡医生', formula: 'BaSO₄', type: 'salt', rarity: 2, atk: 16, hp: 55, def: 26, skill: 'X光透视', skillDesc: '看穿敌人弱点，提升暴击率', voice: '我是钡餐，做X光检查要喝我！', icon: '🩺' },
+    { id: 'feso4', name: '硫酸亚铁绿晶', formula: 'FeSO₄', type: 'salt', rarity: 2, atk: 20, hp: 46, def: 17, skill: '补血补铁', skillDesc: '攻击时概率恢复自身生命', voice: '我是浅绿色晶体，补铁剂的主要成分！', icon: '💚' },
+
+    // 有机物（新增3种）
+    { id: 'c3h8', name: '丙烷厨师', formula: 'C₃H₈', type: 'organic', rarity: 2, atk: 24, hp: 36, def: 10, skill: '火焰喷射', skillDesc: '火系攻击时伤害翻倍', voice: '我是液化气的主要成分，烧烤必备！', icon: '👨‍🍳' },
+    { id: 'c8h10n4o2', name: '咖啡因精灵', formula: 'C₈H₁₀N₄O₂', type: 'organic', rarity: 3, atk: 26, hp: 38, def: 12, skill: '提神醒脑', skillDesc: '战斗开始时全队速度提升', voice: '我是咖啡因，让你精神百倍！', icon: '☕' },
+    { id: 'c27h46o', name: '胆固醇大叔', formula: 'C₂₇H₄₆O', type: 'organic', rarity: 2, atk: 14, hp: 65, def: 28, skill: '脂肪护盾', skillDesc: '生命值上限提升，受到的伤害降低', voice: '我是胆固醇，细胞膜需要我，但别太多！', icon: '🍔' },
+
+    // 特殊（新增3种）
+    { id: 'tnt', name: 'TNT爆破手', formula: 'C₇H₅N₃O₆', type: 'special', rarity: 4, atk: 42, hp: 30, def: 8, skill: '大爆炸', skillDesc: '生命值低于25%时自爆造成毁灭伤害', voice: '我一点就炸，威力巨大！', icon: '💣' },
+    { id: 'nano', name: '纳米机器人', formula: 'Nano', type: 'special', rarity: 5, atk: 30, hp: 45, def: 35, skill: '纳米修复', skillDesc: '每回合大幅恢复生命并清除异常', voice: '我是纳米科技的未来，微观世界的王者！', icon: '🤖' },
+    { id: 'graphene', name: '石墨烯侠', formula: 'Graphene', type: 'special', rarity: 4, atk: 28, hp: 48, def: 30, skill: '二维防御', skillDesc: '受到的所有伤害大幅降低', voice: '我是最薄最强的材料，诺贝尔奖得主！', icon: '🛡️' },
   ];
 
   // 按稀有度分组
@@ -350,6 +395,89 @@ const ALCHEMY_SYSTEM = (function() {
       s.score = (s.score || 0) + points;
       save(s);
       return { ok: true, score: s.score };
+    },
+
+    // ===== 宠物进化系统 =====
+    getEvolutionChain: function(petId) {
+      var def = getPetDef(petId);
+      if (!def) return null;
+      var chain = { current: def, prev: null, next: null };
+      if (def.evolveFrom) {
+        chain.prev = getPetDef(def.evolveFrom);
+      }
+      if (def.evolveTo) {
+        chain.next = getPetDef(def.evolveTo);
+      }
+      return chain;
+    },
+
+    canEvolve: function(petId) {
+      var def = getPetDef(petId);
+      if (!def || !def.evolveTo) return { can: false, msg: '该宠物无法进化' };
+      var s = load();
+      if (!s || !s.petCollection || !s.petCollection[petId]) {
+        return { can: false, msg: '没有该宠物' };
+      }
+      var owned = s.petCollection[petId].count;
+      if (owned < 3) return { can: false, msg: '需要3只相同的宠物才能进化' };
+
+      var nextDef = getPetDef(def.evolveTo);
+      if (!nextDef) return { can: false, msg: '进化目标不存在' };
+
+      var evolveCost = def.rarity * 50;
+      if ((s.score || 0) < evolveCost) {
+        return { can: false, msg: '积分不足，需要 ' + evolveCost + ' 积分' };
+      }
+
+      return {
+        can: true,
+        from: def,
+        to: nextDef,
+        cost: evolveCost,
+        owned: owned
+      };
+    },
+
+    evolve: function(petId) {
+      var check = this.canEvolve(petId);
+      if (!check.can) return { ok: false, msg: check.msg };
+
+      var s = load();
+      var def = getPetDef(petId);
+      var nextDef = getPetDef(def.evolveTo);
+
+      // 消耗3只宠物
+      s.petCollection[petId].count -= 3;
+      if (s.petCollection[petId].count <= 0) delete s.petCollection[petId];
+
+      // 消耗积分
+      s.score -= check.cost;
+
+      // 获得进化后宠物
+      if (!s.petCollection[nextDef.id]) {
+        s.petCollection[nextDef.id] = { count: 0, firstDate: todayStr() };
+      }
+      s.petCollection[nextDef.id].count++;
+
+      // 记录进化次数
+      if (!s.evolveCount) s.evolveCount = 0;
+      s.evolveCount++;
+
+      save(s);
+
+      return {
+        ok: true,
+        from: def,
+        to: nextDef,
+        cost: check.cost,
+        remainingScore: s.score
+      };
+    },
+
+    getEvolveStats: function() {
+      var s = load();
+      if (!s) return { count: 0 };
+      return { count: s.evolveCount || 0 };
     }
   };
 
