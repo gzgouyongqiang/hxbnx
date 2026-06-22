@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>宠物交易中心 | 化学不难学</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: #11182b;
+  --gold: #f0c040;
+  --cyan: #67e8f9;
+  --red: #f87171;
+  --green: #6ee7b7;
+  --purple: #a78bfa;
+  --orange: #fb923c;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: rgba(103,232,249,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 顶部导航 */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.back-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--gold); }
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+.score-icon { font-size: 18px; }
+.score-num { font-size: 18px; font-weight: 700; color: var(--gold); }
+.score-label { font-size: 12px; color: var(--muted); }
+
+/* 标题区 */
+.header {
+  text-align: center;
+  padding: 30px 20px 20px;
+}
+.header-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* 收集统计 */
+.collection-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 20px 20px;
+  flex-wrap: wrap;
+}
+.stat-badge {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 80px;
+}
+.stat-badge .label { font-size: 11px; color: var(--muted); }
+.stat-badge .value { font-size: 20px; font-weight: 700; margin-top: 4px; }
+
+/* 标签页 */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px 20px;
+}
+.tab {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.tab:hover { border-color: var(--gold); color: var(--text); }
+.tab.active {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #000;
+  border-color: transparent;
+  font-weight: 700;
+}
+
+/* 宠物网格 */
+.pets-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+}
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.pet-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+}
+.pet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.pet-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 16px rgba(240,192,64,0.2);
+}
+.pet-card.locked {
+  opacity: 0.4;
+}
+.pet-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+.pet-rarity {
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+.pet-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.pet-formula {
+  font-size: 12px;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+.pet-count {
+  font-size: 11px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 2px 8px;
+  display: inline-block;
+}
+.pet-actions {
+  display: none;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: center;
+}
+.pet-card:hover .pet-actions,
+.pet-card.selected .pet-actions {
+  display: flex;
+}
+.pet-btn {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.pet-btn.dismantle {
+  background: rgba(248,113,113,0.15);
+  color: var(--red);
+  border: 1px solid rgba(248,113,113,0.3);
+}
+.pet-btn.dismantle:hover { background: rgba(248,113,113,0.25); }
+.pet-btn.select {
+  background: rgba(240,192,64,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(240,192,64,0.3);
+}
+.pet-btn.select:hover { background: rgba(240,192,64,0.25); }
+
+/* 合成区 */
+.synthesis-section {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+.synthesis-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.synthesis-slots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.synthesis-slot {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background: rgba(255,255,255,0.02);
+}
+.synthesis-slot.filled {
+  border-style: solid;
+  border-color: var(--gold);
+  background: rgba(240,192,64,0.08);
+}
+.synthesis-info {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.synthesis-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.synthesis-btn:hover { transform: scale(1.02); }
+.synthesis-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 图鉴模式 */
+.encyclopedia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+.ency-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  opacity: 0.3;
+}
+.ency-item.unlocked {
+  opacity: 1;
+  border-color: var(--gold);
+}
+.ency-icon { font-size: 32px; margin-bottom: 6px; }
+.ency-name { font-size: 12px; font-weight: 600; }
+.ency-formula { font-size: 11px; color: var(--cyan); }
+
+/* 底部 */
+.footer-tip {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .header-title { font-size: 24px; }
+  .pets-grid { grid-template-columns: repeat(2, 1fr); }
+  .synthesis-slots { gap: 8px; }
+  .synthesis-slot { width: 60px; height: 60px; font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="top-nav">
+  <a href="index.html" class="back-link">← 返回日记</a>
+  <div class="score-display">
+    <span class="score-icon">💰</span>
+    <span class="score-num" id="scoreNum">0</span>
+    <span class="score-label">积分</span>
+  </div>
+</div>
+
+<!-- 标题 -->
+<div class="header">
+  <div class="header-title">🎒 宠物交易中心</div>
+  <div class="header-sub">管理你的化学灵宠，分解重复宠物，合成更高级宠物</div>
+</div>
+
+<!-- 收集统计 -->
+<div class="collection-stats" id="collectionStats">
+  <div class="stat-badge">
+    <div class="label">已收集</div>
+    <div class="value" id="statUnique" style="color:var(--gold)">0</div>
+  </div>
+  <div class="stat-badge">
+    <div class="label">总数量</div>
+    <div class="value" id="statTotal" style="color:var(--cyan)">0</div>
+  </div>
+  <div class="stat-badge">
+    <div class="label">图鉴进度</div>
+    <div class="value" id="statProgress" style="color:var(--green)">0%</div>
+  </div>
+</div>
+
+<!-- 标签页 -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('collection')">我的宠物</button>
+  <button class="tab" onclick="switchTab('synthesis')">合成</button>
+  <button class="tab" onclick="switchTab('encyclopedia')">图鉴</button>
+</div>
+
+<!-- 我的宠物 -->
+<div class="pets-section" id="tabCollection">
+  <div class="pets-grid" id="petsGrid">
+    <!-- 由JS生成 -->
+  </div>
+</div>
+
+<!-- 合成 -->
+<div class="pets-section" id="tabSynthesis" style="display:none">
+  <div class="synthesis-section">
+    <div class="synthesis-title">🔥 宠物合成</div>
+    <div class="synthesis-info">选择2只同品级宠物，合成1只更高品级宠物</div>
+    <div class="synthesis-slots" id="synthesisSlots">
+      <div class="synthesis-slot" id="slot1">?</div>
+      <div class="synthesis-slot" id="slot2">?</div>
+    </div>
+    <div class="synthesis-info" id="synthesisInfo">请点击下方宠物选择</div>
+    <button class="synthesis-btn" id="synthesisBtn" disabled onclick="doSynthesize()">选择宠物后开始合成</button>
+  </div>
+  <div class="pets-grid" id="synthesisPetsGrid">
+    <!-- 由JS生成 -->
+  </div>
+</div>
+
+<!-- 图鉴 -->
+<div class="pets-section" id="tabEncyclopedia" style="display:none">
+  <div class="encyclopedia-grid" id="encyGrid">
+    <!-- 由JS生成 -->
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer-tip">
+  积分不足？去 <a href="index.html" style="color:var(--gold);text-decoration:none">学习系统</a> 做题赚积分！
+</div>
+
+<script src="assets/alchemy.js"></script>
+<script>
+(function() {
+  var RARITY_NAMES = ['', '普通', '稀有', '史诗', '传说', '神话'];
+  var RARITY_COLORS = ['', '#94a3b8', '#6ee7b7', '#67e8f9', '#a78bfa', '#f0c040'];
+  var TYPE_ICONS = {
+    metal: '🔩', nonmetal: '💎', noble: '🎈', oxide: '💨',
+    acid: '🧪', base: '💧', salt: '🧂', organic: '🌿', special: '⚡'
+  };
+
+  var selectedPets = [];
+  var currentTab = 'collection';
+
+  function init() {
+    updateScore();
+    renderStats();
+    renderCollection();
+    renderSynthesisPets();
+    renderEncyclopedia();
+  }
+
+  function updateScore() {
+    var score = ALCHEMY_SYSTEM.getScore();
+    document.getElementById('scoreNum').textContent = score;
+  }
+
+  function renderStats() {
+    var stats = ALCHEMY_SYSTEM.getCollectionStats();
+    var allPets = ALCHEMY_SYSTEM.getPetDB();
+    document.getElementById('statUnique').textContent = stats.unique;
+    document.getElementById('statTotal').textContent = stats.total;
+    document.getElementById('statProgress').textContent = Math.round(stats.unique / allPets.length * 100) + '%';
+  }
+
+  function renderCollection() {
+    var myPets = ALCHEMY_SYSTEM.getMyPets();
+    var grid = document.getElementById('petsGrid');
+    if (myPets.length === 0) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">还没有宠物，快去<a href="alchemy.html" style="color:var(--gold)">炼丹炉</a>获取吧！</div>';
+      return;
+    }
+
+    var html = '';
+    myPets.forEach(function(item) {
+      var pet = item.def;
+      html += '<div class="pet-card" data-id="' + pet.id + '">';
+      html += '<div class="pet-icon">' + (TYPE_ICONS[pet.type] || '🧪') + '</div>';
+      html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
+      html += '<div class="pet-name">' + pet.name + '</div>';
+      html += '<div class="pet-formula">' + pet.formula + '</div>';
+      html += '<div class="pet-count">拥有 ' + item.count + ' 只</div>';
+      html += '<div class="pet-actions">';
+      if (item.count > 1) {
+        html += '<button class="pet-btn dismantle" onclick="dismantlePet(\'' + pet.id + '\')">分解(+' + (pet.rarity * 10) + '分)</button>';
+      }
+      html += '</div>';
+      html += '</div>';
+    });
+    grid.innerHTML = html;
+  }
+
+  function renderSynthesisPets() {
+    var myPets = ALCHEMY_SYSTEM.getMyPets();
+    var grid = document.getElementById('synthesisPetsGrid');
+    if (myPets.length === 0) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">还没有宠物</div>';
+      return;
+    }
+
+    var html = '';
+    myPets.forEach(function(item) {
+      var pet = item.def;
+      if (item.count < 2 || pet.rarity >= 5) return;
+      html += '<div class="pet-card" data-id="' + pet.id + '" onclick="selectForSynthesis(\'' + pet.id + '\')">';
+      html += '<div class="pet-icon">' + (TYPE_ICONS[pet.type] || '🧪') + '</div>';
+      html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
+      html += '<div class="pet-name">' + pet.name + '</div>';
+      html += '<div class="pet-formula">' + pet.formula + '</div>';
+      html += '<div class="pet-count">拥有 ' + item.count + ' 只</div>';
+      html += '</div>';
+    });
+    grid.innerHTML = html || '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">没有可合成的宠物（需要2只同品级且非神话）</div>';
+  }
+
+  function renderEncyclopedia() {
+    var allPets = ALCHEMY_SYSTEM.getPetDB();
+    var myPets = ALCHEMY_SYSTEM.getMyPets();
+    var owned = {};
+    myPets.forEach(function(p) { owned[p.id] = true; });
+
+    var grid = document.getElementById('encyGrid');
+    var html = '';
+    allPets.forEach(function(pet) {
+      var isOwned = owned[pet.id];
+      html += '<div class="ency-item' + (isOwned ? ' unlocked' : '') + '">';
+      html += '<div class="ency-icon">' + (isOwned ? (TYPE_ICONS[pet.type] || '🧪') : '❓') + '</div>';
+      html += '<div class="ency-name">' + (isOwned ? pet.name : '???') + '</div>';
+      html += '<div class="ency-formula">' + (isOwned ? pet.formula : '???') + '</div>';
+      html += '</div>';
+    });
+    grid.innerHTML = html;
+  }
+
+  window.switchTab = function(tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    event.target.classList.add('active');
+    document.getElementById('tabCollection').style.display = tab === 'collection' ? 'block' : 'none';
+    document.getElementById('tabSynthesis').style.display = tab === 'synthesis' ? 'block' : 'none';
+    document.getElementById('tabEncyclopedia').style.display = tab === 'encyclopedia' ? 'block' : 'none';
+  };
+
+  window.dismantlePet = function(petId) {
+    if (!confirm('确定分解这只宠物吗？将获得积分。')) return;
+    var result = ALCHEMY_SYSTEM.dismantlePet(petId, 1);
+    if (result.ok) {
+      alert('分解成功！获得 ' + result.points + ' 积分');
+      updateScore();
+      renderStats();
+      renderCollection();
+      renderSynthesisPets();
+      renderEncyclopedia();
+    } else {
+      alert(result.msg);
+    }
+  };
+
+  window.selectForSynthesis = function(petId) {
+    if (selectedPets.indexOf(petId) >= 0) {
+      selectedPets = selectedPets.filter(function(id) { return id !== petId; });
+    } else if (selectedPets.length < 2) {
+      selectedPets.push(petId);
+    }
+    updateSynthesisUI();
+  };
+
+  function updateSynthesisUI() {
+    var slot1 = document.getElementById('slot1');
+    var slot2 = document.getElementById('slot2');
+    var info = document.getElementById('synthesisInfo');
+    var btn = document.getElementById('synthesisBtn');
+
+    if (selectedPets.length >= 1) {
+      var pet1 = ALCHEMY_SYSTEM.getPetById(selectedPets[0]);
+      slot1.textContent = TYPE_ICONS[pet1.type] || '🧪';
+      slot1.classList.add('filled');
+    } else {
+      slot1.textContent = '?';
+      slot1.classList.remove('filled');
+    }
+
+    if (selectedPets.length >= 2) {
+      var pet2 = ALCHEMY_SYSTEM.getPetById(selectedPets[1]);
+      slot2.textContent = TYPE_ICONS[pet2.type] || '🧪';
+      slot2.classList.add('filled');
+      info.textContent = '合成后获得：' + RARITY_NAMES[pet1.rarity + 1] + ' 宠物（随机）';
+      btn.disabled = false;
+      btn.textContent = '开始合成';
+    } else {
+      slot2.textContent = '?';
+      slot2.classList.remove('filled');
+      info.textContent = '请选择2只同品级宠物';
+      btn.disabled = true;
+      btn.textContent = '选择宠物后开始合成';
+    }
+  }
+
+  window.doSynthesize = function() {
+    if (selectedPets.length < 2) return;
+    var result = ALCHEMY_SYSTEM.synthesize(selectedPets);
+    if (result.ok) {
+      alert('合成成功！获得 ' + result.newPet.name + ' (' + RARITY_NAMES[result.rarity] + ')');
+      selectedPets = [];
+      updateSynthesisUI();
+      updateScore();
+      renderStats();
+      renderCollection();
+      renderSynthesisPets();
+      renderEncyclopedia();
+    } else {
+      alert(result.msg);
+    }
+  };
+
+  init();
+})();
+</script>
+
+</body>
+</html>

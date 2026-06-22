@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>炼丹炉 | 化学不难学</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: #11182b;
+  --gold: #f0c040;
+  --cyan: #67e8f9;
+  --red: #f87171;
+  --green: #6ee7b7;
+  --purple: #a78bfa;
+  --orange: #fb923c;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: rgba(103,232,249,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 顶部导航 */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.back-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--gold); }
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+.score-icon { font-size: 18px; }
+.score-num { font-size: 18px; font-weight: 700; color: var(--gold); }
+.score-label { font-size: 12px; color: var(--muted); }
+
+/* 标题区 */
+.header {
+  text-align: center;
+  padding: 30px 20px 20px;
+}
+.header-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* 炼丹师信息 */
+.alchemist-info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 20px 20px;
+  flex-wrap: wrap;
+}
+.alchemist-badge {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+}
+.alchemist-badge .label { font-size: 11px; color: var(--muted); }
+.alchemist-badge .value { font-size: 18px; font-weight: 700; color: var(--gold); margin-top: 4px; }
+
+/* 今日运势 */
+.daily-luck {
+  text-align: center;
+  padding: 0 20px 20px;
+}
+.luck-text {
+  font-size: 14px;
+  color: var(--cyan);
+}
+.luck-types {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* 丹炉区 */
+.furnace-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+}
+.furnace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.furnace-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.furnace-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(240,192,64,0.15);
+}
+.furnace-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.furnace-card.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+.furnace-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+.furnace-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.furnace-cost {
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.furnace-desc {
+  font-size: 11px;
+  color: var(--muted);
+}
+.furnace-prob {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* 炼丹动画区 */
+.alchemy-animation {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.alchemy-animation.active { display: flex; }
+.furnace-visual {
+  font-size: 80px;
+  animation: furnaceShake 0.5s ease-in-out infinite;
+}
+@keyframes furnaceShake {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.alchemy-text {
+  font-size: 20px;
+  color: var(--gold);
+  margin-top: 20px;
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.alchemy-particles {
+  position: absolute;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  animation: particleFloat 2s ease-out forwards;
+}
+@keyframes particleFloat {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-200px) scale(0); }
+}
+
+/* 结果展示 */
+.result-card {
+  display: none;
+  background: var(--card);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  max-width: 320px;
+  animation: resultPop 0.5s ease;
+}
+.result-card.active { display: block; }
+@keyframes resultPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.result-rarity {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.result-pet-icon {
+  font-size: 60px;
+  margin: 10px 0;
+}
+.result-pet-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.result-pet-formula {
+  font-size: 14px;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+.result-pet-skill {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.result-pet-voice {
+  font-size: 12px;
+  color: var(--gold);
+  font-style: italic;
+  padding: 8px;
+  background: rgba(240,192,64,0.08);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.result-isnew {
+  font-size: 12px;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.result-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.result-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.result-btn.primary {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #000;
+  font-weight: 700;
+}
+.result-btn.primary:hover { transform: scale(1.05); }
+.result-btn.secondary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.result-btn.secondary:hover { border-color: var(--gold); }
+
+/* 底部提示 */
+.footer-tip {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.footer-tip a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .header-title { font-size: 24px; }
+  .furnace-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="top-nav">
+  <a href="index.html" class="back-link">← 返回日记</a>
+  <div class="score-display">
+    <span class="score-icon">💰</span>
+    <span class="score-num" id="scoreNum">0</span>
+    <span class="score-label">积分</span>
+  </div>
+</div>
+
+<!-- 标题 -->
+<div class="header">
+  <div class="header-title">⚗️ 炼丹炉</div>
+  <div class="header-sub">消耗积分炼丹，获得化学灵宠</div>
+</div>
+
+<!-- 炼丹师信息 -->
+<div class="alchemist-info" id="alchemistInfo">
+  <div class="alchemist-badge">
+    <div class="label">炼丹师等级</div>
+    <div class="value" id="alchemistLevel">炼丹学徒</div>
+  </div>
+  <div class="alchemist-badge">
+    <div class="label">今日炼丹</div>
+    <div class="value" id="todayCount">0/10</div>
+  </div>
+  <div class="alchemist-badge">
+    <div class="label">累计炼丹</div>
+    <div class="value" id="totalCount">0</div>
+  </div>
+</div>
+
+<!-- 今日运势 -->
+<div class="daily-luck" id="dailyLuck">
+  <div class="luck-text">🔮 今日运势元素：<span id="luckElement">火</span></div>
+  <div class="luck-types">对应宠物类型：<span id="luckTypes">氧化物、特殊</span></div>
+</div>
+
+<!-- 丹炉选择 -->
+<div class="furnace-section">
+  <div class="furnace-grid" id="furnaceGrid">
+    <!-- 由JS生成 -->
+  </div>
+</div>
+
+<!-- 炼丹动画 -->
+<div class="alchemy-animation" id="alchemyAnimation">
+  <div class="alchemy-particles" id="particles"></div>
+  <div class="furnace-visual" id="furnaceVisual">🔥</div>
+  <div class="alchemy-text" id="alchemyText">炼丹中...</div>
+  <div class="result-card" id="resultCard">
+    <div class="result-rarity" id="resultRarity">⭐ 凡丹</div>
+    <div class="result-pet-icon" id="resultPetIcon">🧪</div>
+    <div class="result-pet-name" id="resultPetName">钠宝宝</div>
+    <div class="result-pet-formula" id="resultPetFormula">Na</div>
+    <div class="result-pet-skill" id="resultPetSkill">技能：遇水爆炸</div>
+    <div class="result-pet-voice" id="resultPetVoice">"别泼水！别泼水！啊啊啊💥"</div>
+    <div class="result-isnew" id="resultIsNew">✨ 新宠物！</div>
+    <div class="result-btns">
+      <button class="result-btn primary" onclick="continueAlchemy()">继续炼丹</button>
+      <button class="result-btn secondary" onclick="viewPets()">查看宠物</button>
+    </div>
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer-tip">
+  积分不足？去 <a href="index.html">学习系统</a> 做题赚积分！<br>
+  重复宠物可在 <a href="pets.html">宠物交易中心</a> 分解或合成
+</div>
+
+<script src="assets/alchemy.js"></script>
+<script>
+(function() {
+  var RARITY_NAMES = ['', '普通', '稀有', '史诗', '传说', '神话'];
+  var RARITY_COLORS = ['', '#94a3b8', '#6ee7b7', '#67e8f9', '#a78bfa', '#f0c040'];
+  var RARITY_STARS = ['', '⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'];
+  var TYPE_ICONS = {
+    metal: '🔩', nonmetal: '💎', noble: '🎈', oxide: '💨',
+    acid: '🧪', base: '💧', salt: '🧂', organic: '🌿', special: '⚡'
+  };
+
+  var currentFurnace = null;
+  var isAlchemying = false;
+
+  function init() {
+    updateScore();
+    renderAlchemistInfo();
+    renderDailyLuck();
+    renderFurnaces();
+  }
+
+  function updateScore() {
+    var score = ALCHEMY_SYSTEM.getScore();
+    document.getElementById('scoreNum').textContent = score;
+  }
+
+  function renderAlchemistInfo() {
+    var info = ALCHEMY_SYSTEM.getAlchemistInfo();
+    if (!info) return;
+    document.getElementById('alchemistLevel').textContent = info.level.name;
+    document.getElementById('todayCount').textContent = info.todayCount + '/' + info.dailyLimit;
+    document.getElementById('totalCount').textContent = info.totalCount;
+  }
+
+  function renderDailyLuck() {
+    var elem = ALCHEMY_SYSTEM.getDailyElement();
+    var typeMap = ALCHEMY_SYSTEM.getElementTypeMap();
+    var elemNames = { fire: '火', water: '水', metal: '金', wood: '木', earth: '土', light: '光', dark: '暗' };
+    var types = typeMap[elem] || [];
+    var typeNames = { metal: '金属', nonmetal: '非金属', noble: '稀有气体', oxide: '氧化物', acid: '酸', base: '碱', salt: '盐', organic: '有机物', special: '特殊' };
+    document.getElementById('luckElement').textContent = elemNames[elem] || elem;
+    document.getElementById('luckTypes').textContent = types.map(function(t) { return typeNames[t] || t; }).join('、');
+  }
+
+  function renderFurnaces() {
+    var config = ALCHEMY_SYSTEM.getAlchemyConfig();
+    var grid = document.getElementById('furnaceGrid');
+    var score = ALCHEMY_SYSTEM.getScore();
+    var info = ALCHEMY_SYSTEM.getAlchemistInfo();
+    var html = '';
+
+    config.furnaces.forEach(function(f) {
+      var canAfford = score >= f.cost;
+      var canUse = info && info.todayCount < info.dailyLimit;
+      var disabled = !canAfford || !canUse;
+
+      html += '<div class="furnace-card' + (disabled ? ' disabled' : '') + '"' +
+              (disabled ? '' : ' onclick="startAlchemy(\'' + f.id + '\')"') + '>';
+      html += '<div class="furnace-icon">🔥</div>';
+      html += '<div class="furnace-name" style="color:' + f.color + '">' + f.name + '</div>';
+      html += '<div class="furnace-cost">💰 ' + f.cost + ' 积分</div>';
+      html += '<div class="furnace-desc">' + f.desc + '</div>';
+      html += '<div class="furnace-prob">概率: ' + f.weights.map(function(w, i) {
+        return w > 0 ? RARITY_NAMES[i+1] + ' ' + w + '%' : '';
+      }).filter(function(s) { return s; }).join(' / ') + '</div>';
+      html += '</div>';
+    });
+
+    grid.innerHTML = html;
+  }
+
+  window.startAlchemy = function(furnaceId) {
+    if (isAlchemying) return;
+    isAlchemying = true;
+    currentFurnace = furnaceId;
+
+    var anim = document.getElementById('alchemyAnimation');
+    var result = document.getElementById('resultCard');
+    anim.classList.add('active');
+    result.classList.remove('active');
+
+    // 创建粒子
+    createParticles();
+
+    // 炼丹过程
+    var steps = ['引火入炉...', '药材融合...', '丹气凝聚...', '丹成！'];
+    var step = 0;
+    var textEl = document.getElementById('alchemyText');
+
+    var interval = setInterval(function() {
+      textEl.textContent = steps[step];
+      step++;
+      if (step >= steps.length) {
+        clearInterval(interval);
+        setTimeout(showResult, 500);
+      }
+    }, 800);
+  };
+
+  function createParticles() {
+    var container = document.getElementById('particles');
+    container.innerHTML = '';
+    var colors = ['#f0c040', '#f87171', '#67e8f9', '#a78bfa', '#fb923c'];
+    for (var i = 0; i < 30; i++) {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.bottom = '30%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.animationDelay = Math.random() * 1 + 's';
+      p.style.width = (4 + Math.random() * 6) + 'px';
+      p.style.height = p.style.width;
+      container.appendChild(p);
+    }
+  }
+
+  function showResult() {
+    var result = ALCHEMY_SYSTEM.alchemy(currentFurnace);
+
+    if (!result.ok) {
+      alert(result.msg);
+      document.getElementById('alchemyAnimation').classList.remove('active');
+      isAlchemying = false;
+      renderFurnaces();
+      return;
+    }
+
+    var pet = result.pet;
+    var rarity = result.rarity;
+
+    document.getElementById('resultRarity').textContent = RARITY_STARS[rarity] + ' ' + RARITY_NAMES[rarity];
+    document.getElementById('resultRarity').style.color = RARITY_COLORS[rarity];
+    document.getElementById('resultPetIcon').textContent = TYPE_ICONS[pet.type] || '🧪';
+    document.getElementById('resultPetName').textContent = pet.name;
+    document.getElementById('resultPetName').style.color = RARITY_COLORS[rarity];
+    document.getElementById('resultPetFormula').textContent = pet.formula;
+    document.getElementById('resultPetSkill').textContent = '技能：' + pet.skill + ' — ' + pet.skillDesc;
+    document.getElementById('resultPetVoice').textContent = '"' + pet.voice + '"';
+    document.getElementById('resultIsNew').textContent = result.isNew ? '✨ 新宠物！' : '🔄 重复获得（可在交易中心分解）';
+    document.getElementById('resultIsNew').style.color = result.isNew ? '#6ee7b7' : '#94a3b8';
+
+    document.getElementById('resultCard').classList.add('active');
+    document.getElementById('furnaceVisual').style.display = 'none';
+    document.getElementById('alchemyText').style.display = 'none';
+
+    updateScore();
+    renderAlchemistInfo();
+  }
+
+  window.continueAlchemy = function() {
+    document.getElementById('alchemyAnimation').classList.remove('active');
+    document.getElementById('resultCard').classList.remove('active');
+    document.getElementById('furnaceVisual').style.display = 'block';
+    document.getElementById('alchemyText').style.display = 'block';
+    isAlchemying = false;
+    renderFurnaces();
+  };
+
+  window.viewPets = function() {
+    window.location.href = 'pets.html';
+  };
+
+  init();
+})();
+</script>
+
+</body>
+</html>
