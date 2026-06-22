@@ -330,37 +330,42 @@ const BATTLE_SYSTEM = (function() {
     currentBattle = {
       playerTeam: playerTeam.map(function(p) {
         var def = getPetDef(p.id);
+        if (!def) return null;
         return {
           id: p.id,
-          name: def.name,
-          icon: def.icon,
-          formula: def.formula,
-          type: def.type,
-          rarity: def.rarity,
-          atk: def.atk,
-          hp: def.hp,
-          def: def.def,
-          skill: def.skill,
-          skillDesc: def.skillDesc,
-          voice: def.voice,
-          currentHp: def.hp,
-          maxHp: def.hp,
+          name: def.name || '未知',
+          icon: def.icon || '🧪',
+          formula: def.formula || '?',
+          type: def.type || 'special',
+          rarity: def.rarity || 1,
+          atk: def.atk || 20,
+          hp: def.hp || 40,
+          def: def.def || 10,
+          skill: def.skill || '普通攻击',
+          skillDesc: def.skillDesc || '',
+          voice: def.voice || '',
+          currentHp: def.hp || 40,
+          maxHp: def.hp || 40,
           effects: [],
           isAI: false
         };
-      }),
+      }).filter(function(p) { return p !== null; }),
       aiTeam: aiTeam,
       playerActive: 0,
       aiActive: 0,
       turn: 1,
       difficulty: difficulty,
       logs: [],
-      status: 'active', // active, player_win, ai_win
+      status: 'active',
       bonusReward: false
     };
 
+    if (currentBattle.playerTeam.length === 0) {
+      return { ok: false, msg: '没有有效的宠物！请重新选择。' };
+    }
+
     battleLog = [];
-    return currentBattle;
+    return { ok: true, battle: currentBattle };
   }
 
   // ===== 执行一回合 =====
