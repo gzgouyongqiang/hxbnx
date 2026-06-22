@@ -71,7 +71,7 @@ const GAS_LAB = (function() {
           reactants: 'CaCO₃ + 稀HCl',
           condition: '常温',
           apparatus: '启普发生器（固液不加热）',
-          purification: '不需要除杂',
+          purification: '通过饱和NaHCO₃溶液除挥发出的HCl气体',
           collection: '向上排空气法',
           test: '燃着木条熄灭，通入澄清石灰水变浑浊',
           equation: 'CaCO₃ + 2HCl = CaCl₂ + H₂O + CO₂↑'
