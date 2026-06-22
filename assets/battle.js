@@ -23,6 +23,14 @@ const BATTLE_SYSTEM = (function() {
   // 品级加成系数
   const RARITY_BONUS = { 1: 1.0, 2: 1.15, 3: 1.3, 4: 1.5, 5: 1.8 };
 
+  // 难度配置（含学习等级门槛和积分消耗）
+  const DIFFICULTY_CONFIG = {
+    easy:   { name: '简单', minLevel: 1, cost: 0,  reward: 20,  aiMinRarity: 1, aiMaxRarity: 3 },
+    normal: { name: '普通', minLevel: 2, cost: 10, reward: 40,  aiMinRarity: 2, aiMaxRarity: 4 },
+    hard:   { name: '困难', minLevel: 4, cost: 20, reward: 80,  aiMinRarity: 3, aiMaxRarity: 5 },
+    expert: { name: '专家', minLevel: 6, cost: 50, reward: 150, aiMinRarity: 4, aiMaxRarity: 5 }
+  };
+
   // 战斗记录
   var battleLog = [];
   var currentBattle = null;
@@ -290,6 +298,33 @@ const BATTLE_SYSTEM = (function() {
 
   // ===== 创建战斗实例 =====
   function createBattle(playerTeam, difficulty) {
+    var config = DIFFICULTY_CONFIG[difficulty];
+    if (!config) return { ok: false, msg: '无效难度' };
+
+    // 检查学习等级
+    var playerLevel = 1;
+    if (typeof HXBNX_GAME !== 'undefined' && HXBNX_GAME.getLearnLevel) {
+      playerLevel = HXBNX_GAME.getLearnLevel().lv;
+    }
+    if (playerLevel < config.minLevel) {
+      return {
+        ok: false,
+        msg: '需要学习等级 ' + config.minLevel + ' 级才能挑战此难度！当前等级: ' + playerLevel + ' 级，快去学习获取积分升级吧！',
+        requiredLevel: config.minLevel,
+        currentLevel: playerLevel
+      };
+    }
+
+    // 扣除积分
+    if (config.cost > 0) {
+      var s = load();
+      if (!s || (s.score || 0) < config.cost) {
+        return { ok: false, msg: '积分不足！挑战' + config.name + '难度需要 ' + config.cost + ' 积分，快去练功房学习赚取积分吧！' };
+      }
+      s.score -= config.cost;
+      save(s);
+    }
+
     var aiTeam = generateAITeam(difficulty);
 
     currentBattle = {
@@ -540,10 +575,8 @@ const BATTLE_SYSTEM = (function() {
     var difficulty = currentBattle.difficulty;
 
     if (currentBattle.status === 'player_win') {
-      if (difficulty === 'easy') baseScore = 20;
-      else if (difficulty === 'normal') baseScore = 40;
-      else if (difficulty === 'hard') baseScore = 80;
-      else if (difficulty === 'expert') baseScore = 150;
+      var config = DIFFICULTY_CONFIG[currentBattle.difficulty] || DIFFICULTY_CONFIG.easy;
+      baseScore = config.reward;
 
       // 额外奖励
       if (currentBattle.bonusReward) baseScore += 10;
@@ -605,7 +638,8 @@ const BATTLE_SYSTEM = (function() {
 
     // 工具
     getPetDef: getPetDef,
-    getAllPets: getAllPets
+    getAllPets: getAllPets,
+    getDifficultyConfig: function() { return DIFFICULTY_CONFIG; }
   };
 
   return api;

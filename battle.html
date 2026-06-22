@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>宠物战斗场 | 化学不难学</title>
+<title>宠物对战 | 化学不难学 - 游乐场</title>
 <style>
 :root {
   --bg: #0a0e1a;
@@ -124,10 +124,13 @@ body {
   color: var(--text);
   font-family: inherit;
 }
-.diff-btn:hover {
-  border-color: var(--gold);
-  transform: translateY(-2px);
+.diff-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+.diff-btn.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
 }
+.diff-btn.locked:hover { border-color: var(--border); transform: none; }
 .diff-btn .diff-icon { font-size: 32px; margin-bottom: 8px; }
 .diff-btn .diff-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
 .diff-btn .diff-desc { font-size: 12px; color: var(--muted); }
@@ -469,8 +472,8 @@ body {
 
 <!-- 标题 -->
 <div class="header">
-  <div class="header-title">⚔️ 宠物战斗场</div>
-  <div class="header-sub">组建你的化学宠物战队，挑战AI对手！</div>
+  <div class="header-title">⚔️ 宠物对战</div>
+  <div class="header-sub">组建化学宠物战队，挑战AI对手！学习等级越高，可挑战难度越大</div>
 </div>
 
 <!-- 战斗统计 -->
@@ -488,31 +491,8 @@ body {
 <!-- 阶段1: 选择难度 -->
 <div class="phase" id="phaseDifficulty">
   <div class="phase-title">选择挑战难度</div>
-  <div class="difficulty-grid">
-    <button class="diff-btn" onclick="selectDifficulty('easy')">
-      <div class="diff-icon">🌱</div>
-      <div class="diff-name">简单</div>
-      <div class="diff-desc">AI宠物 普通~稀有</div>
-      <div class="diff-reward">胜利 +20 积分</div>
-    </button>
-    <button class="diff-btn" onclick="selectDifficulty('normal')">
-      <div class="diff-icon">🔥</div>
-      <div class="diff-name">普通</div>
-      <div class="diff-desc">AI宠物 稀有~史诗</div>
-      <div class="diff-reward">胜利 +40 积分</div>
-    </button>
-    <button class="diff-btn" onclick="selectDifficulty('hard')">
-      <div class="diff-icon">⚡</div>
-      <div class="diff-name">困难</div>
-      <div class="diff-desc">AI宠物 史诗~传说</div>
-      <div class="diff-reward">胜利 +80 积分</div>
-    </button>
-    <button class="diff-btn" onclick="selectDifficulty('expert')">
-      <div class="diff-icon">👑</div>
-      <div class="diff-name">专家</div>
-      <div class="diff-desc">AI宠物 传说~神话</div>
-      <div class="diff-reward">胜利 +150 积分</div>
-    </button>
+  <div class="difficulty-grid" id="difficultyGrid">
+    <!-- 由JS动态生成 -->
   </div>
 
   <div class="phase-title" style="margin-top:30px;font-size:16px;">属性克制关系</div>
@@ -587,6 +567,7 @@ body {
   </div>
 </div>
 
+<script src="assets/game.js?v=5"></script>
 <script src="assets/alchemy.js"></script>
 <script src="assets/battle.js"></script>
 <script>
@@ -602,6 +583,9 @@ body {
     acid: '🧪', base: '💧', salt: '🧂', organic: '🌿', special: '⚡'
   };
 
+  var DIFF_ICONS = { easy: '🌱', normal: '🔥', hard: '⚡', expert: '👑' };
+  var LEVEL_NAMES = ['', '化学萌新', '化学学徒', '化学达人', '化学高手', '化学学霸', '化学大师', '化学宗师', '化学之神'];
+
   var currentDifficulty = 'normal';
   var selectedPets = [];
   var myPets = [];
@@ -610,6 +594,7 @@ body {
     updateScore();
     updateBattleStats();
     renderTypeChart();
+    renderDifficultyGrid();
     loadMyPets();
   }
 
@@ -635,6 +620,41 @@ body {
       html += '</div>';
     }
     document.getElementById('typeChart').innerHTML = html;
+  }
+
+  // ===== 动态渲染难度按钮 =====
+  function renderDifficultyGrid() {
+    var config = BATTLE_SYSTEM.getDifficultyConfig();
+    var playerLevel = HXBNX_GAME.getLearnLevel ? HXBNX_GAME.getLearnLevel().lv : 1;
+    var playerScore = HXBNX_GAME.getStatus ? HXBNX_GAME.getStatus().state.score || 0 : 0;
+    var html = '';
+
+    for (var key in config) {
+      var c = config[key];
+      var locked = playerLevel < c.minLevel;
+      var noScore = playerScore < c.cost;
+
+      html += '<button class="diff-btn' + (locked ? ' locked' : '') + '" onclick="selectDifficulty(\'' + key + '\')"';
+      if (locked) html += ' disabled';
+      html += '>';
+      html += '<div class="diff-icon">' + DIFF_ICONS[key] + '</div>';
+      html += '<div class="diff-name">' + c.name + '</div>';
+      if (locked) {
+        html += '<div class="diff-desc" style="color:var(--red)">🔒 需要' + LEVEL_NAMES[c.minLevel] + '（等级' + c.minLevel + '）</div>';
+        html += '<div class="diff-desc">快去学习升级吧！</div>';
+      } else {
+        html += '<div class="diff-desc">AI宠物 ' + RARITY_NAMES[c.aiMinRarity] + '~' + RARITY_NAMES[c.aiMaxRarity] + '</div>';
+        if (c.cost > 0) {
+          html += '<div class="diff-desc" style="color:' + (noScore ? 'var(--red)' : 'var(--muted)') + '">挑战消耗: ' + c.cost + ' 积分</div>';
+        } else {
+          html += '<div class="diff-desc">免费挑战</div>';
+        }
+      }
+      html += '<div class="diff-reward">胜利 +' + c.reward + ' 积分</div>';
+      html += '</button>';
+    }
+
+    document.getElementById('difficultyGrid').innerHTML = html;
   }
 
   function loadMyPets() {
@@ -717,9 +737,14 @@ body {
   window.startBattle = function() {
     if (selectedPets.length < 3) return;
     var team = selectedPets.map(function(id) { return { id: id }; });
-    BATTLE_SYSTEM.createBattle(team, currentDifficulty);
+    var result = BATTLE_SYSTEM.createBattle(team, currentDifficulty);
+    if (!result.ok) {
+      alert(result.msg);
+      return;
+    }
     showPhase('phaseBattle');
     renderBattle();
+    updateScore();
     addLog('战斗开始！第1回合', 'info');
   };
 
