@@ -1,31 +1,10 @@
 /**
  * diary.js — 2027届高考日记
- * 周次网格导航 + 展开面板
+ * 周次网格导航 + 展开面板 + 学习进度显示
  */
 
 (function() {
   var TOTAL_WEEKS = 40;
-  var activeWeek = 0;
-
-  // 40周占位数据
-  var weekData = [];
-  for (var i = 1; i <= TOTAL_WEEKS; i++) {
-    weekData.push({
-      week: i,
-      title: '第' + i + '周',
-      dateRange: getWeekDateRange(i),
-      topics: [
-        { name: '（待填入本周复习知识点1）', placeholder: true },
-        { name: '（待填入本周复习知识点2）', placeholder: true },
-        { name: '（待填入本周复习知识点3）', placeholder: true }
-      ],
-      tasks: [
-        { name: '完成本周知识点复习', done: false },
-        { name: '做配套练习题', done: false },
-        { name: '整理错题', done: false }
-      ]
-    });
-  }
 
   function getWeekDateRange(weekNum) {
     var start = new Date(2026, 6, 6);
@@ -59,9 +38,18 @@
     if (streakEl) streakEl.textContent = state.currentStreak || 0;
     if (wrongEl) wrongEl.textContent = (state.wrongQuestions || []).length;
     if (weekEl) weekEl.textContent = getCurrentWeek();
+
+    // 显示学习等级
+    if (HXBNX_GAME.getLearnLevel) {
+      var level = HXBNX_GAME.getLearnLevel();
+      var levelEl = document.getElementById('levelDisplay');
+      if (levelEl) {
+        levelEl.textContent = level.icon + ' ' + level.name;
+      }
+    }
   }
 
-  // 生成周次网格
+  // 生成周次网格（带学习进度标记）
   function generateWeekGrid() {
     var grid = document.getElementById('weekGrid');
     if (!grid) return;
@@ -70,8 +58,26 @@
     for (var i = 1; i <= TOTAL_WEEKS; i++) {
       var cls = 'week-cell';
       if (i === currentWeek) cls += ' current';
+
+      // 检查该周的学习进度
+      var progress = 0;
+      if (HXBNX_GAME.getWeekProgress) {
+        var p = HXBNX_GAME.getWeekProgress(i);
+        progress = p.done;
+      }
+
+      var statusIcon = '';
+      if (progress === 3) {
+        statusIcon = '<div class="week-status complete">✓</div>';
+        cls += ' completed';
+      } else if (progress > 0) {
+        statusIcon = '<div class="week-status partial">' + progress + '/3</div>';
+        cls += ' in-progress';
+      }
+
       html += '<div class="' + cls + '" data-week="' + i + '" onclick="toggleWeek(' + i + ')">';
       html += '<div class="week-num">' + i + '</div>';
+      html += statusIcon;
       html += '</div>';
     }
     grid.innerHTML = html;

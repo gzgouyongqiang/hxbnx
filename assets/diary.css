@@ -154,6 +154,27 @@ body {
   color: var(--cyan);
 }
 
+/* 周次学习进度标记 */
+.week-cell.completed {
+  border-color: var(--green);
+  background: rgba(110,231,183,0.08);
+}
+.week-cell.in-progress {
+  border-color: var(--orange);
+  background: rgba(251,146,60,0.05);
+}
+.week-status {
+  font-size: 9px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+.week-status.complete {
+  color: var(--green);
+}
+.week-status.partial {
+  color: var(--orange);
+}
+
 .week-label {
   font-size: 10px;
   color: var(--muted);

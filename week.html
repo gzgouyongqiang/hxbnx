@@ -6,53 +6,352 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>高考日记 | 化学不难学</title>
 <link rel="stylesheet" href="assets/diary.css">
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: #11182b;
+  --gold: #f0c040;
+  --cyan: #67e8f9;
+  --red: #f87171;
+  --green: #6ee7b7;
+  --purple: #a78bfa;
+  --orange: #fb923c;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: rgba(103,232,249,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.top-nav a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 14px;
+}
+.top-nav .sep { color: var(--border); }
+.top-nav .nav-title { color: var(--muted); font-size: 14px; }
+
+/* 积分条 */
+.score-bar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.score-item {
+  text-align: center;
+}
+.score-item .num {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.score-item .label {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* 内容区 */
+.content-area {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+.week-header {
+  margin-bottom: 20px;
+}
+.week-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.week-date {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* 进度条 */
+.week-progress-bar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.progress-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+}
+.progress-score {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+  transition: width 0.5s;
+}
+
+/* 知识点 */
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--gold);
+}
+.topic-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+.topic-list li {
+  padding: 12px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* 任务列表 */
+.task-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.task-item:hover {
+  border-color: var(--gold);
+  transform: translateX(4px);
+}
+.task-item.done {
+  border-color: var(--green);
+  background: rgba(110,231,183,0.05);
+}
+.task-item.done .task-name {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.task-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.task-item.done .task-checkbox {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+}
+.task-info {
+  flex: 1;
+}
+.task-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+.task-reward {
+  font-size: 12px;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+/* 学习心得 */
+.notes-box {
+  width: 100%;
+  min-height: 100px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.notes-box:focus {
+  border-color: var(--gold);
+}
+.notes-box::placeholder {
+  color: var(--muted);
+}
+.notes-save {
+  margin-top: 8px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  background: var(--gold);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* 周次导航 */
+.week-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.week-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.week-nav a:hover { border-color: var(--gold); color: var(--text); }
+.week-nav a.disabled { opacity: 0.3; pointer-events: none; }
+.week-nav a.home { color: var(--gold); border-color: var(--gold); }
+
+/* 积分飞入动画 */
+.score-fly {
+  position: fixed;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  pointer-events: none;
+  z-index: 9999;
+  animation: flyUp 1s ease-out forwards;
+}
+@keyframes flyUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-60px); }
+}
+</style>
 </head>
 <body>
 
 <!-- 顶部导航 -->
-<div style="padding:16px 20px;display:flex;align-items:center;gap:12px;">
-  <a href="index.html" style="color:var(--gold);text-decoration:none;font-size:14px;">← 返回首页</a>
-  <span style="color:var(--border);">|</span>
-  <span id="navTitle" style="color:var(--muted);font-size:14px;"></span>
+<div class="top-nav">
+  <a href="index.html">← 返回首页</a>
+  <span class="sep">|</span>
+  <span class="nav-title" id="navTitle"></span>
 </div>
 
-<!-- 周次内容 -->
-<div style="max-width:800px;margin:0 auto;padding:0 20px 40px;">
-  <div style="margin-bottom:20px;">
-    <div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:4px;" id="weekTitle"></div>
-    <div style="font-size:13px;color:var(--muted);" id="weekDate"></div>
+<!-- 积分条 -->
+<div class="score-bar">
+  <div class="score-item">
+    <div class="num" id="scoreNum">0</div>
+    <div class="label">积分</div>
+  </div>
+  <div class="score-item">
+    <div class="num" id="levelIcon">🌱</div>
+    <div class="label" id="levelName">化学萌新</div>
+  </div>
+  <div class="score-item">
+    <div class="num" id="streakNum">0</div>
+    <div class="label">连续打卡</div>
+  </div>
+</div>
+
+<!-- 内容区 -->
+<div class="content-area">
+  <div class="week-header">
+    <div class="week-title" id="weekTitle"></div>
+    <div class="week-date" id="weekDate"></div>
   </div>
 
-  <div class="week-content" style="display:block;">
-    <div style="margin-bottom:24px;">
-      <div class="section-title">本周复习内容</div>
-      <ul class="topic-list" id="weekTopics"></ul>
+  <!-- 本周进度 -->
+  <div class="week-progress-bar">
+    <div class="progress-header">
+      <div class="progress-title">📊 本周学习进度</div>
+      <div class="progress-score" id="progressScore">0/3 任务完成</div>
     </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
 
-    <div style="margin-bottom:24px;">
-      <div class="section-title">本周任务</div>
-      <ul class="task-list" id="weekTasks"></ul>
-    </div>
+  <!-- 知识点 -->
+  <div style="margin-bottom:24px;">
+    <div class="section-title">📖 本周复习内容</div>
+    <ul class="topic-list" id="weekTopics"></ul>
+  </div>
 
-    <div>
-      <div class="section-title">学习心得</div>
-      <div class="notes-box">（点击此处记录本周学习心得...）</div>
-    </div>
+  <!-- 任务 -->
+  <div style="margin-bottom:24px;">
+    <div class="section-title">✅ 本周任务（完成获得积分）</div>
+    <ul class="task-list" id="weekTasks"></ul>
+  </div>
+
+  <!-- 学习心得 -->
+  <div>
+    <div class="section-title">📝 学习心得</div>
+    <textarea class="notes-box" id="notesBox" placeholder="点击此处记录本周学习心得..."></textarea>
+    <button class="notes-save" onclick="saveNotes()">💾 保存心得</button>
   </div>
 
   <!-- 周次导航 -->
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--border);">
-    <a id="prevWeekLink" href="#" style="color:var(--muted);text-decoration:none;font-size:14px;padding:8px 16px;border:1px solid var(--border);border-radius:8px;transition:all 0.2s;">← 上一周</a>
-    <a href="index.html" style="color:var(--gold);text-decoration:none;font-size:14px;">返回目录</a>
-    <a id="nextWeekLink" href="#" style="color:var(--muted);text-decoration:none;font-size:14px;padding:8px 16px;border:1px solid var(--border);border-radius:8px;transition:all 0.2s;">下一周 →</a>
+  <div class="week-nav">
+    <a id="prevWeekLink" href="#">← 上一周</a>
+    <a href="index.html" class="home">返回目录</a>
+    <a id="nextWeekLink" href="#">下一周 →</a>
   </div>
 </div>
 
+<script src="assets/game.js?v=5"></script>
 <script>
 (function() {
   var TOTAL_WEEKS = 40;
+  var KEY = 'hxbnx_game_v2';
 
-  // 解析 URL 参数
   function getParam(name) {
     var match = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match ? parseInt(match[1]) : 1;
@@ -62,7 +361,6 @@
   if (weekNum < 1) weekNum = 1;
   if (weekNum > TOTAL_WEEKS) weekNum = TOTAL_WEEKS;
 
-  // 生成周次数据
   function getWeekDateRange(wn) {
     var start = new Date(2026, 6, 6);
     start.setDate(start.getDate() + (wn - 1) * 7);
@@ -75,46 +373,184 @@
     return (d.getMonth() + 1) + '月' + d.getDate() + '日';
   }
 
-  // 填充内容
-  document.getElementById('navTitle').textContent = '第' + weekNum + '周';
-  document.getElementById('weekTitle').textContent = '第' + weekNum + '周';
-  document.getElementById('weekDate').textContent = getWeekDateRange(weekNum);
+  // 高考化学40周知识点（按周次分配）
+  var WEEK_TOPICS = {
+    1: ['物质的分类与转化', '化学实验基本操作', '化学用语（元素符号、化学式）'],
+    2: ['离子反应与离子方程式', '离子共存判断', '离子浓度大小比较'],
+    3: ['氧化还原反应基本概念', '氧化剂与还原剂的判断', '氧化还原反应方程式配平'],
+    4: ['钠及其化合物', '钠的化学性质实验', 'Na₂O与Na₂O₂的区别'],
+    5: ['铁及其化合物', 'Fe²⁺与Fe³⁺的转化', 'Fe(OH)₂与Fe(OH)₃的制备'],
+    6: ['铝及其化合物', '两性氧化物与两性氢氧化物', '铝的冶炼'],
+    7: ['铜及其化合物', '铜的化学性质', '铜的冶炼'],
+    8: ['硅及其化合物', '硅酸盐工业', '新型无机非金属材料'],
+    9: ['氯及其化合物', '氯气的制备与性质', '漂白粉与消毒'],
+    10: ['硫及其化合物', 'SO₂的性质与用途', '硫酸的制备与性质'],
+    11: ['氮及其化合物', '氮气的性质与用途', 'NO与NO₂的性质', '硝酸的性质'],
+    12: ['元素周期律', '元素周期表的结构', '元素性质的递变规律'],
+    13: ['化学键与分子结构', '离子键、共价键、金属键', '分子间作用力与氢键'],
+    14: ['晶体结构与性质', '离子晶体、原子晶体、分子晶体', '晶体熔沸点比较'],
+    15: ['化学反应速率', '影响化学反应速率的因素', '化学反应速率的计算'],
+    16: ['化学平衡', '化学平衡状态的判断', '化学平衡移动原理（勒夏特列原理）'],
+    17: ['化学平衡常数', '平衡常数K的计算', '转化率的计算'],
+    18: ['弱电解质的电离', '电离平衡与电离常数', '溶液的pH计算'],
+    19: ['水的电离与溶液pH', 'pH的计算与测定', '酸碱混合的pH计算'],
+    20: ['盐类水解', '水解原理与规律', '盐溶液酸碱性的判断'],
+    21: ['离子浓度大小比较', '电荷守恒与物料守恒', '质子守恒'],
+    22: ['原电池原理', '原电池的构成条件', '常见化学电源'],
+    23: ['电解池原理', '电解原理与应用', '氯碱工业'],
+    24: ['金属的腐蚀与防护', '化学腐蚀与电化学腐蚀', '金属防护方法'],
+    25: ['热化学方程式', '反应热与焓变', '盖斯定律的应用'],
+    26: ['烃的分类与性质', '甲烷、乙烯、乙炔', '苯的结构与性质'],
+    27: ['石油化工与煤化工', '石油的分馏与裂化', '煤的综合利用'],
+    28: ['卤代烃', '溴乙烷的性质', '消去反应与取代反应'],
+    29: ['醇、酚、醚', '乙醇的性质与用途', '苯酚的性质'],
+    30: ['醛与酮', '乙醛的性质', '醛基的检验'],
+    31: ['羧酸与酯', '乙酸的性质', '酯化反应原理'],
+    32: ['糖类与蛋白质', '葡萄糖的性质', '氨基酸与蛋白质'],
+    33: ['高分子化合物', '加聚反应与缩聚反应', '常见高分子材料'],
+    34: ['化学实验综合', '物质检验与鉴别', '分离与提纯方法'],
+    35: ['化学计算综合', '守恒法在化学计算中的应用', '关系式法'],
+    36: ['化学与生活', '食品添加剂与营养成分', '环境保护与绿色化学'],
+    37: ['工业流程题', '化工生产流程分析', '流程中的反应条件控制'],
+    38: ['实验探究题', '实验方案设计与评价', '控制变量法'],
+    39: ['有机推断与合成', '有机推断题解题策略', '有机合成路线设计'],
+    40: ['高考综合模拟', '选择题快速解题技巧', '大题答题规范与策略']
+  };
 
-  // 占位知识点
-  var topicsHtml = '';
-  for (var i = 1; i <= 3; i++) {
-    topicsHtml += '<li class="placeholder">（待填入本周复习知识点' + i + '）</li>';
+  // 初始化
+  function init() {
+    document.getElementById('navTitle').textContent = '第' + weekNum + '周';
+    document.getElementById('weekTitle').textContent = '第' + weekNum + '周';
+    document.getElementById('weekDate').textContent = getWeekDateRange(weekNum);
+
+    updateScoreBar();
+    renderTopics();
+    renderTasks();
+    updateProgress();
+    loadNotes();
+    setupNav();
   }
-  document.getElementById('weekTopics').innerHTML = topicsHtml;
 
-  // 占位任务
-  var tasks = ['完成本周知识点复习', '做配套练习题', '整理错题'];
-  var tasksHtml = '';
-  for (var j = 0; j < tasks.length; j++) {
-    tasksHtml += '<li><input type="checkbox" disabled><span>' + tasks[j] + '</span></li>';
-  }
-  document.getElementById('weekTasks').innerHTML = tasksHtml;
-
-  // 导航链接
-  var prevLink = document.getElementById('prevWeekLink');
-  var nextLink = document.getElementById('nextWeekLink');
-
-  if (weekNum > 1) {
-    prevLink.href = 'week.html?w=' + (weekNum - 1);
-    prevLink.style.color = 'var(--text)';
-  } else {
-    prevLink.style.opacity = '0.3';
-    prevLink.style.pointerEvents = 'none';
+  function updateScoreBar() {
+    var status = HXBNX_GAME.getStatus();
+    var level = HXBNX_GAME.getLearnLevel();
+    document.getElementById('scoreNum').textContent = status.score;
+    document.getElementById('levelIcon').textContent = level.icon;
+    document.getElementById('levelName').textContent = level.name;
+    document.getElementById('streakNum').textContent = status.currentStreak;
   }
 
-  if (weekNum < TOTAL_WEEKS) {
-    nextLink.href = 'week.html?w=' + (weekNum + 1);
-    nextLink.style.color = 'var(--text)';
-  } else {
-    nextLink.style.opacity = '0.3';
-    nextLink.style.pointerEvents = 'none';
+  function renderTopics() {
+    var topics = WEEK_TOPICS[weekNum] || [
+      '（待填入本周复习知识点1）',
+      '（待填入本周复习知识点2）',
+      '（待填入本周复习知识点3）'
+    ];
+    var html = '';
+    for (var i = 0; i < topics.length; i++) {
+      html += '<li>' + topics[i] + '</li>';
+    }
+    document.getElementById('weekTopics').innerHTML = html;
   }
 
+  function renderTasks() {
+    var taskStatus = HXBNX_GAME.getWeekTaskStatus(weekNum);
+    var tasks = [
+      { type: 'review', name: '完成本周知识点复习', score: 5, icon: '📖' },
+      { type: 'practice', name: '做配套练习题', score: 10, icon: '✏️' },
+      { type: 'wrongbook', name: '整理错题', score: 5, icon: '📝' }
+    ];
+    var html = '';
+    for (var i = 0; i < tasks.length; i++) {
+      var t = tasks[i];
+      var isDone = taskStatus[t.type];
+      html += '<li class="task-item' + (isDone ? ' done' : '') + '" onclick="completeTask(\'' + t.type + '\', this)">';
+      html += '<div class="task-checkbox">' + (isDone ? '✓' : '') + '</div>';
+      html += '<div class="task-info">';
+      html += '<div class="task-name">' + t.icon + ' ' + t.name + '</div>';
+      html += '<div class="task-reward">完成 +' + t.score + ' 积分' + (isDone ? '（已完成）' : '') + '</div>';
+      html += '</div>';
+      html += '</li>';
+    }
+    document.getElementById('weekTasks').innerHTML = html;
+  }
+
+  function updateProgress() {
+    var progress = HXBNX_GAME.getWeekProgress(weekNum);
+    document.getElementById('progressScore').textContent = progress.done + '/3 任务完成';
+    document.getElementById('progressFill').style.width = (progress.done / 3 * 100) + '%';
+  }
+
+  window.completeTask = function(taskType, el) {
+    var result = HXBNX_GAME.completeWeekTask(weekNum, taskType);
+    if (result.ok) {
+      // 积分飞入动画
+      showScoreFly(el, '+' + result.points);
+      renderTasks();
+      updateProgress();
+      updateScoreBar();
+    } else {
+      HXBNX_GAME.toaster(result.msg, 'info');
+    }
+  };
+
+  function showScoreFly(el, text) {
+    var rect = el.getBoundingClientRect();
+    var fly = document.createElement('div');
+    fly.className = 'score-fly';
+    fly.textContent = text;
+    fly.style.left = rect.left + rect.width / 2 + 'px';
+    fly.style.top = rect.top + 'px';
+    document.body.appendChild(fly);
+    setTimeout(function() { fly.remove(); }, 1000);
+  }
+
+  // 学习心得
+  function loadNotes() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var s = JSON.parse(raw);
+        if (s.weekNotes && s.weekNotes['week_' + weekNum]) {
+          document.getElementById('notesBox').value = s.weekNotes['week_' + weekNum];
+        }
+      }
+    } catch (e) {}
+  }
+
+  window.saveNotes = function() {
+    var text = document.getElementById('notesBox').value.trim();
+    try {
+      var raw = localStorage.getItem(KEY);
+      var s = raw ? JSON.parse(raw) : {};
+      if (!s.weekNotes) s.weekNotes = {};
+      s.weekNotes['week_' + weekNum] = text;
+      localStorage.setItem(KEY, JSON.stringify(s));
+      HXBNX_GAME.toaster('心得已保存！', 'success');
+    } catch (e) {
+      HXBNX_GAME.toaster('保存失败', 'error');
+    }
+  };
+
+  // 导航
+  function setupNav() {
+    var prevLink = document.getElementById('prevWeekLink');
+    var nextLink = document.getElementById('nextWeekLink');
+
+    if (weekNum > 1) {
+      prevLink.href = 'week.html?w=' + (weekNum - 1);
+    } else {
+      prevLink.className = 'disabled';
+    }
+
+    if (weekNum < TOTAL_WEEKS) {
+      nextLink.href = 'week.html?w=' + (weekNum + 1);
+    } else {
+      nextLink.className = 'disabled';
+    }
+  }
+
+  init();
 })();
 </script>
 </body>
