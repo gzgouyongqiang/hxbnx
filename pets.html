@@ -436,7 +436,7 @@ body {
     myPets.forEach(function(item) {
       var pet = item.def;
       html += '<div class="pet-card" data-id="' + pet.id + '">';
-      html += '<div class="pet-icon">' + (TYPE_ICONS[pet.type] || '🧪') + '</div>';
+      html += '<div class="pet-icon">' + (pet.icon || TYPE_ICONS[pet.type] || '🧪') + '</div>';
       html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
       html += '<div class="pet-name">' + pet.name + '</div>';
       html += '<div class="pet-formula">' + pet.formula + '</div>';
@@ -464,7 +464,7 @@ body {
       var pet = item.def;
       if (item.count < 2 || pet.rarity >= 5) return;
       html += '<div class="pet-card" data-id="' + pet.id + '" onclick="selectForSynthesis(\'' + pet.id + '\')">';
-      html += '<div class="pet-icon">' + (TYPE_ICONS[pet.type] || '🧪') + '</div>';
+      html += '<div class="pet-icon">' + (pet.icon || TYPE_ICONS[pet.type] || '🧪') + '</div>';
       html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
       html += '<div class="pet-name">' + pet.name + '</div>';
       html += '<div class="pet-formula">' + pet.formula + '</div>';
@@ -485,7 +485,7 @@ body {
     allPets.forEach(function(pet) {
       var isOwned = owned[pet.id];
       html += '<div class="ency-item' + (isOwned ? ' unlocked' : '') + '">';
-      html += '<div class="ency-icon">' + (isOwned ? (TYPE_ICONS[pet.type] || '🧪') : '❓') + '</div>';
+      html += '<div class="ency-icon">' + (isOwned ? (pet.icon || TYPE_ICONS[pet.type] || '🧪') : '❓') + '</div>';
       html += '<div class="ency-name">' + (isOwned ? pet.name : '???') + '</div>';
       html += '<div class="ency-formula">' + (isOwned ? pet.formula : '???') + '</div>';
       html += '</div>';
@@ -534,7 +534,7 @@ body {
 
     if (selectedPets.length >= 1) {
       var pet1 = ALCHEMY_SYSTEM.getPetById(selectedPets[0]);
-      slot1.textContent = TYPE_ICONS[pet1.type] || '🧪';
+      slot1.textContent = pet1.icon || TYPE_ICONS[pet1.type] || '🧪';
       slot1.classList.add('filled');
     } else {
       slot1.textContent = '?';
@@ -543,7 +543,7 @@ body {
 
     if (selectedPets.length >= 2) {
       var pet2 = ALCHEMY_SYSTEM.getPetById(selectedPets[1]);
-      slot2.textContent = TYPE_ICONS[pet2.type] || '🧪';
+      slot2.textContent = pet2.icon || TYPE_ICONS[pet2.type] || '🧪';
       slot2.classList.add('filled');
       info.textContent = '合成后获得：' + RARITY_NAMES[pet1.rarity + 1] + ' 宠物（随机）';
       btn.disabled = false;

@@ -518,7 +518,7 @@ body {
 
     document.getElementById('resultRarity').textContent = RARITY_STARS[rarity] + ' ' + RARITY_NAMES[rarity];
     document.getElementById('resultRarity').style.color = RARITY_COLORS[rarity];
-    document.getElementById('resultPetIcon').textContent = TYPE_ICONS[pet.type] || '🧪';
+    document.getElementById('resultPetIcon').textContent = pet.icon || TYPE_ICONS[pet.type] || '🧪';
     document.getElementById('resultPetName').textContent = pet.name;
     document.getElementById('resultPetName').style.color = RARITY_COLORS[rarity];
     document.getElementById('resultPetFormula').textContent = pet.formula;

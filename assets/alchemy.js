@@ -10,65 +10,65 @@ const ALCHEMY_SYSTEM = (function() {
   // ===== 宠物数据库 =====
   const PET_DB = [
     // 单质 - 金属
-    { id: 'na', name: '钠宝宝', formula: 'Na', type: 'metal', rarity: 1, atk: 28, hp: 45, def: 12, skill: '遇水爆炸', skillDesc: '对水系造成3倍伤害', voice: '别泼水！别泼水！啊啊啊💥', evolveTo: 'naoh', evolveCond: '投入水中战斗3次' },
-    { id: 'fe', name: '铁块头', formula: 'Fe', type: 'metal', rarity: 1, atk: 22, hp: 55, def: 18, skill: '铁壁防御', skillDesc: '防御力提升50%', voice: '我很硬，但我会生锈...', evolveTo: 'fe2o3', evolveCond: '遇到氧气战斗5次' },
-    { id: 'al', name: '铝小弟', formula: 'Al', type: 'metal', rarity: 1, atk: 20, hp: 48, def: 15, skill: '氧化膜', skillDesc: '免疫首次攻击', voice: '我表面有层保护膜，刀枪不入！' },
-    { id: 'cu', name: '铜将军', formula: 'Cu', type: 'metal', rarity: 2, atk: 25, hp: 50, def: 20, skill: '导电之怒', skillDesc: '攻击附带麻痹效果', voice: '我是电的良导体，小心触电！' },
-    { id: 'au', name: '金闪闪', formula: 'Au', type: 'metal', rarity: 4, atk: 35, hp: 60, def: 25, skill: '金光护体', skillDesc: '免疫酸和碱伤害', voice: '我不怕酸不怕碱，就怕王水那个混蛋！', evolveTo: 'aucl4', evolveCond: '被王水击败1次' },
-    { id: 'ag', name: '银月姬', formula: 'Ag', type: 'metal', rarity: 3, atk: 30, hp: 45, def: 18, skill: '银镜反射', skillDesc: '反弹30%伤害', voice: '我的光泽像月光一样美丽~' },
-    { id: 'zn', name: '锌小子', formula: 'Zn', type: 'metal', rarity: 1, atk: 18, hp: 42, def: 14, skill: '牺牲阳极', skillDesc: '替队友承受伤害', voice: '为了保护铁大哥，我愿意牺牲自己！' },
-    { id: 'ca', name: '钙骨架', formula: 'Ca', type: 'metal', rarity: 2, atk: 24, hp: 52, def: 22, skill: '骨骼强化', skillDesc: '生命值低于30%时防御翻倍', voice: '我是骨骼的主要成分，坚硬无比！' },
-    { id: 'mg', name: '镁光灯', formula: 'Mg', type: 'metal', rarity: 2, atk: 26, hp: 44, def: 13, skill: '耀眼白光', skillDesc: '致盲敌人1回合', voice: '燃烧时发出耀眼的白光，别直视我！' },
-    { id: 'k', name: '钾暴徒', formula: 'K', type: 'metal', rarity: 3, atk: 32, hp: 40, def: 10, skill: '剧烈燃烧', skillDesc: '攻击时50%概率暴击', voice: '我比钠还暴躁，遇水直接爆炸！' },
+    { id: 'na', name: '钠宝宝', formula: 'Na', type: 'metal', rarity: 1, atk: 28, hp: 45, def: 12, skill: '遇水爆炸', skillDesc: '对水系造成3倍伤害', voice: '别泼水！别泼水！啊啊啊💥', icon: '👶', evolveTo: 'naoh', evolveCond: '投入水中战斗3次' },
+    { id: 'fe', name: '铁块头', formula: 'Fe', type: 'metal', rarity: 1, atk: 22, hp: 55, def: 18, skill: '铁壁防御', skillDesc: '防御力提升50%', voice: '我很硬，但我会生锈...', icon: '👷', evolveTo: 'fe2o3', evolveCond: '遇到氧气战斗5次' },
+    { id: 'al', name: '铝小弟', formula: 'Al', type: 'metal', rarity: 1, atk: 20, hp: 48, def: 15, skill: '氧化膜', skillDesc: '免疫首次攻击', voice: '我表面有层保护膜，刀枪不入！', icon: '🦸' },
+    { id: 'cu', name: '铜将军', formula: 'Cu', type: 'metal', rarity: 2, atk: 25, hp: 50, def: 20, skill: '导电之怒', skillDesc: '攻击附带麻痹效果', voice: '我是电的良导体，小心触电！', icon: '⚔️' },
+    { id: 'au', name: '金闪闪', formula: 'Au', type: 'metal', rarity: 4, atk: 35, hp: 60, def: 25, skill: '金光护体', skillDesc: '免疫酸和碱伤害', voice: '我不怕酸不怕碱，就怕王水那个混蛋！', icon: '👑', evolveTo: 'aucl4', evolveCond: '被王水击败1次' },
+    { id: 'ag', name: '银月姬', formula: 'Ag', type: 'metal', rarity: 3, atk: 30, hp: 45, def: 18, skill: '银镜反射', skillDesc: '反弹30%伤害', voice: '我的光泽像月光一样美丽~', icon: '🧝‍♀️' },
+    { id: 'zn', name: '锌小子', formula: 'Zn', type: 'metal', rarity: 1, atk: 18, hp: 42, def: 14, skill: '牺牲阳极', skillDesc: '替队友承受伤害', voice: '为了保护铁大哥，我愿意牺牲自己！', icon: '🛡️' },
+    { id: 'ca', name: '钙骨架', formula: 'Ca', type: 'metal', rarity: 2, atk: 24, hp: 52, def: 22, skill: '骨骼强化', skillDesc: '生命值低于30%时防御翻倍', voice: '我是骨骼的主要成分，坚硬无比！', icon: '🦴' },
+    { id: 'mg', name: '镁光灯', formula: 'Mg', type: 'metal', rarity: 2, atk: 26, hp: 44, def: 13, skill: '耀眼白光', skillDesc: '致盲敌人1回合', voice: '燃烧时发出耀眼的白光，别直视我！', icon: '📸' },
+    { id: 'k', name: '钾暴徒', formula: 'K', type: 'metal', rarity: 3, atk: 32, hp: 40, def: 10, skill: '剧烈燃烧', skillDesc: '攻击时50%概率暴击', voice: '我比钠还暴躁，遇水直接爆炸！', icon: '💣' },
 
     // 单质 - 非金属
-    { id: 'c', name: '碳弟弟', formula: 'C', type: 'nonmetal', rarity: 1, atk: 15, hp: 40, def: 20, skill: '同素异构', skillDesc: '可在金刚石/石墨形态切换', voice: '我和石墨是亲兄弟，都是碳~', evolveTo: 'co2', evolveCond: '燃烧战斗3次' },
-    { id: 's', name: '硫磺仔', formula: 'S', type: 'nonmetal', rarity: 1, atk: 20, hp: 38, def: 12, skill: '臭气熏天', skillDesc: '降低敌人攻击力', voice: '我燃烧时产生刺鼻的二氧化硫！' },
-    { id: 'p', name: '磷火灵', formula: 'P', type: 'nonmetal', rarity: 2, atk: 24, hp: 35, def: 10, skill: '鬼火闪烁', skillDesc: '夜间战斗攻击力翻倍', voice: '我在空气中自燃，发出幽幽绿光...' },
-    { id: 'si', name: '硅晶人', formula: 'Si', type: 'nonmetal', rarity: 2, atk: 18, hp: 50, def: 24, skill: '半导体', skillDesc: '受到魔法伤害减半', voice: '我是芯片的核心，信息时代的基石！' },
+    { id: 'c', name: '碳弟弟', formula: 'C', type: 'nonmetal', rarity: 1, atk: 15, hp: 40, def: 20, skill: '同素异构', skillDesc: '可在金刚石/石墨形态切换', voice: '我和石墨是亲兄弟，都是碳~', icon: '👦', evolveTo: 'co2', evolveCond: '燃烧战斗3次' },
+    { id: 's', name: '硫磺仔', formula: 'S', type: 'nonmetal', rarity: 1, atk: 20, hp: 38, def: 12, skill: '臭气熏天', skillDesc: '降低敌人攻击力', voice: '我燃烧时产生刺鼻的二氧化硫！', icon: '👃' },
+    { id: 'p', name: '磷火灵', formula: 'P', type: 'nonmetal', rarity: 2, atk: 24, hp: 35, def: 10, skill: '鬼火闪烁', skillDesc: '夜间战斗攻击力翻倍', voice: '我在空气中自燃，发出幽幽绿光...', icon: '👻' },
+    { id: 'si', name: '硅晶人', formula: 'Si', type: 'nonmetal', rarity: 2, atk: 18, hp: 50, def: 24, skill: '半导体', skillDesc: '受到魔法伤害减半', voice: '我是芯片的核心，信息时代的基石！', icon: '🤖' },
 
     // 稀有气体
-    { id: 'he', name: '氦气绅士', formula: 'He', type: 'noble', rarity: 2, atk: 10, hp: 35, def: 30, skill: '漂浮不定', skillDesc: '闪避率提升40%', voice: '我很轻，但我很稳定，什么都不跟我反应~' },
-    { id: 'ne', name: '氖灯侠', formula: 'Ne', type: 'noble', rarity: 3, atk: 15, hp: 40, def: 22, skill: '霓虹闪烁', skillDesc: '战斗开始时提升全队攻击力', voice: '通电时我发出红光，照亮黑夜！' },
-    { id: 'ar', name: '氩气盾', formula: 'Ar', type: 'noble', rarity: 2, atk: 12, hp: 48, def: 28, skill: '惰性守护', skillDesc: '每回合恢复5%生命值', voice: '我保护着灯丝，让它不被氧化~' },
+    { id: 'he', name: '氦气绅士', formula: 'He', type: 'noble', rarity: 2, atk: 10, hp: 35, def: 30, skill: '漂浮不定', skillDesc: '闪避率提升40%', voice: '我很轻，但我很稳定，什么都不跟我反应~', icon: '🎩' },
+    { id: 'ne', name: '氖灯侠', formula: 'Ne', type: 'noble', rarity: 3, atk: 15, hp: 40, def: 22, skill: '霓虹闪烁', skillDesc: '战斗开始时提升全队攻击力', voice: '通电时我发出红光，照亮黑夜！', icon: '💡' },
+    { id: 'ar', name: '氩气盾', formula: 'Ar', type: 'noble', rarity: 2, atk: 12, hp: 48, def: 28, skill: '惰性守护', skillDesc: '每回合恢复5%生命值', voice: '我保护着灯丝，让它不被氧化~', icon: '🛡️' },
 
     // 化合物 - 氧化物
-    { id: 'co2', name: '二氧化碳仙子', formula: 'CO₂', type: 'oxide', rarity: 2, atk: 20, hp: 42, def: 16, skill: '温室效应', skillDesc: '每回合对敌人造成持续伤害', voice: '我是温室效应的元凶之一...', evolveFrom: 'c' },
-    { id: 'fe2o3', name: '铁锈怪', formula: 'Fe₂O₃', type: 'oxide', rarity: 2, atk: 18, hp: 58, def: 20, skill: '氧化侵蚀', skillDesc: '攻击降低敌人防御', voice: '我是铁生锈后的样子，红褐色的~', evolveFrom: 'fe' },
-    { id: 'h2o', name: '水精灵', formula: 'H₂O', type: 'oxide', rarity: 2, atk: 16, hp: 45, def: 18, skill: '生命之源', skillDesc: '每回合恢复队友生命值', voice: '我是生命之源，万物都离不开我！' },
-    { id: 'cao', name: '生石灰', formula: 'CaO', type: 'oxide', rarity: 2, atk: 22, hp: 48, def: 19, skill: '遇水放热', skillDesc: '水系敌人受到额外伤害', voice: '我遇水会放出大量热，小心烫伤！' },
+    { id: 'co2', name: '二氧化碳仙子', formula: 'CO₂', type: 'oxide', rarity: 2, atk: 20, hp: 42, def: 16, skill: '温室效应', skillDesc: '每回合对敌人造成持续伤害', voice: '我是温室效应的元凶之一...', icon: '🧚', evolveFrom: 'c' },
+    { id: 'fe2o3', name: '铁锈怪', formula: 'Fe₂O₃', type: 'oxide', rarity: 2, atk: 18, hp: 58, def: 20, skill: '氧化侵蚀', skillDesc: '攻击降低敌人防御', voice: '我是铁生锈后的样子，红褐色的~', icon: '🧟', evolveFrom: 'fe' },
+    { id: 'h2o', name: '水精灵', formula: 'H₂O', type: 'oxide', rarity: 2, atk: 16, hp: 45, def: 18, skill: '生命之源', skillDesc: '每回合恢复队友生命值', voice: '我是生命之源，万物都离不开我！', icon: '🧜‍♀️' },
+    { id: 'cao', name: '生石灰', formula: 'CaO', type: 'oxide', rarity: 2, atk: 22, hp: 48, def: 19, skill: '遇水放热', skillDesc: '水系敌人受到额外伤害', voice: '我遇水会放出大量热，小心烫伤！', icon: '🧱' },
 
     // 化合物 - 酸
-    { id: 'hcl', name: '盐酸精灵', formula: 'HCl', type: 'acid', rarity: 2, atk: 26, hp: 38, def: 12, skill: '强酸腐蚀', skillDesc: '攻击无视敌人30%防御', voice: '我的腐蚀性很强，小心皮肤！', evolveFrom: 'cl2' },
-    { id: 'h2so4', name: '硫酸暴君', formula: 'H₂SO₄', type: 'acid', rarity: 3, atk: 30, hp: 42, def: 15, skill: '脱水碳化', skillDesc: '攻击有概率使敌人虚弱', voice: '我是酸中之王，脱水能力一流！' },
-    { id: 'hno3', name: '硝酸炸弹', formula: 'HNO₃', type: 'acid', rarity: 3, atk: 32, hp: 35, def: 10, skill: '爆炸分解', skillDesc: '生命值低于20%时自爆造成大量伤害', voice: '我不稳定，容易分解产生红棕色气体！' },
+    { id: 'hcl', name: '盐酸精灵', formula: 'HCl', type: 'acid', rarity: 2, atk: 26, hp: 38, def: 12, skill: '强酸腐蚀', skillDesc: '攻击无视敌人30%防御', voice: '我的腐蚀性很强，小心皮肤！', icon: '🧚‍♂️', evolveFrom: 'cl2' },
+    { id: 'h2so4', name: '硫酸暴君', formula: 'H₂SO₄', type: 'acid', rarity: 3, atk: 30, hp: 42, def: 15, skill: '脱水碳化', skillDesc: '攻击有概率使敌人虚弱', voice: '我是酸中之王，脱水能力一流！', icon: '👹' },
+    { id: 'hno3', name: '硝酸炸弹', formula: 'HNO₃', type: 'acid', rarity: 3, atk: 32, hp: 35, def: 10, skill: '爆炸分解', skillDesc: '生命值低于20%时自爆造成大量伤害', voice: '我不稳定，容易分解产生红棕色气体！', icon: '💥' },
 
     // 化合物 - 碱
-    { id: 'naoh', name: '氢氧化钠魔女', formula: 'NaOH', type: 'base', rarity: 3, atk: 28, hp: 40, def: 14, skill: '强碱灼伤', skillDesc: '攻击附带持续伤害', voice: '我是强碱，皮肤和眼睛都要小心！', evolveFrom: 'na' },
-    { id: 'caoh2', name: '氢氧化钙石匠', formula: 'Ca(OH)₂', type: 'base', rarity: 2, atk: 20, hp: 50, def: 20, skill: '砌墙硬化', skillDesc: '提升全队防御', voice: '我是石灰浆的主要成分，用来砌墙！' },
-    { id: 'nh3', name: '氨气仙子', formula: 'NH₃', type: 'base', rarity: 2, atk: 18, hp: 42, def: 16, skill: '刺激性气味', skillDesc: '降低敌人命中率', voice: '我有刺激性气味，但我是重要的氮肥！' },
+    { id: 'naoh', name: '氢氧化钠魔女', formula: 'NaOH', type: 'base', rarity: 3, atk: 28, hp: 40, def: 14, skill: '强碱灼伤', skillDesc: '攻击附带持续伤害', voice: '我是强碱，皮肤和眼睛都要小心！', icon: '🧙‍♀️', evolveFrom: 'na' },
+    { id: 'caoh2', name: '氢氧化钙石匠', formula: 'Ca(OH)₂', type: 'base', rarity: 2, atk: 20, hp: 50, def: 20, skill: '砌墙硬化', skillDesc: '提升全队防御', voice: '我是石灰浆的主要成分，用来砌墙！', icon: '👨‍🔧' },
+    { id: 'nh3', name: '氨气仙子', formula: 'NH₃', type: 'base', rarity: 2, atk: 18, hp: 42, def: 16, skill: '刺激性气味', skillDesc: '降低敌人命中率', voice: '我有刺激性气味，但我是重要的氮肥！', icon: '🧚‍♀️' },
 
     // 化合物 - 盐
-    { id: 'nacl', name: '氯化钠双胞胎', formula: 'NaCl', type: 'salt', rarity: 1, atk: 15, hp: 45, def: 18, skill: '咸味护盾', skillDesc: '受到攻击时反弹少量伤害', voice: '我们是食盐，每天必不可少的调味品！' },
-    { id: 'caco3', name: '碳酸钙石像', formula: 'CaCO₃', type: 'salt', rarity: 2, atk: 18, hp: 55, def: 25, skill: '遇酸起泡', skillDesc: '受到酸攻击时恢复生命', voice: '我是大理石和石灰石的主要成分！' },
-    { id: 'cuso4', name: '硫酸铜蓝晶', formula: 'CuSO₄', type: 'salt', rarity: 3, atk: 24, hp: 42, def: 16, skill: '波尔多液', skillDesc: '攻击附带中毒效果', voice: '我是蓝色的晶体，可以用来杀菌！' },
-    { id: 'kmno4', name: '高锰酸钾紫晶', formula: 'KMnO₄', type: 'salt', rarity: 4, atk: 35, hp: 40, def: 14, skill: '强氧化', skillDesc: '攻击净化敌人增益效果', voice: '我是紫色晶体，强氧化剂，可以消毒！' },
+    { id: 'nacl', name: '氯化钠双胞胎', formula: 'NaCl', type: 'salt', rarity: 1, atk: 15, hp: 45, def: 18, skill: '咸味护盾', skillDesc: '受到攻击时反弹少量伤害', voice: '我们是食盐，每天必不可少的调味品！', icon: '🧂' },
+    { id: 'caco3', name: '碳酸钙石像', formula: 'CaCO₃', type: 'salt', rarity: 2, atk: 18, hp: 55, def: 25, skill: '遇酸起泡', skillDesc: '受到酸攻击时恢复生命', voice: '我是大理石和石灰石的主要成分！', icon: '🗿' },
+    { id: 'cuso4', name: '硫酸铜蓝晶', formula: 'CuSO₄', type: 'salt', rarity: 3, atk: 24, hp: 42, def: 16, skill: '波尔多液', skillDesc: '攻击附带中毒效果', voice: '我是蓝色的晶体，可以用来杀菌！', icon: '🔷' },
+    { id: 'kmno4', name: '高锰酸钾紫晶', formula: 'KMnO₄', type: 'salt', rarity: 4, atk: 35, hp: 40, def: 14, skill: '强氧化', skillDesc: '攻击净化敌人增益效果', voice: '我是紫色晶体，强氧化剂，可以消毒！', icon: '💜' },
 
     // 有机物
-    { id: 'ch4', name: '甲烷泡泡', formula: 'CH₄', type: 'organic', rarity: 1, atk: 18, hp: 38, def: 10, skill: '沼气爆炸', skillDesc: '火系攻击时伤害翻倍', voice: '我是沼气的主要成分，小心明火！' },
-    { id: 'c2h4', name: '乙烯舞者', formula: 'C₂H₄', type: 'organic', rarity: 2, atk: 22, hp: 40, def: 12, skill: '催熟果实', skillDesc: '战斗后获得额外奖励', voice: '我可以催熟水果，让果实更快成熟！' },
-    { id: 'c6h6', name: '苯环大师', formula: 'C₆H₆', type: 'organic', rarity: 3, atk: 25, hp: 45, def: 18, skill: '芳香迷醉', skillDesc: '有概率使敌人沉睡', voice: '我是芳香烃的代表，结构很稳定！' },
-    { id: 'c2h5oh', name: '乙醇醉仙', formula: 'C₂H₅OH', type: 'organic', rarity: 2, atk: 20, hp: 42, def: 14, skill: '醉酒狂暴', skillDesc: '生命值越低攻击力越高', voice: '我是酒精，可以消毒也可以让人醉倒！' },
-    { id: 'ch3cooh', name: '乙酸醋坛子', formula: 'CH₃COOH', type: 'organic', rarity: 2, atk: 18, hp: 40, def: 16, skill: '醋酸腐蚀', skillDesc: '降低敌人防御', voice: '我是醋的主要成分，酸溜溜的！' },
-    { id: 'c6h12o6', name: '葡萄糖甜心', formula: 'C₆H₁₂O₆', type: 'organic', rarity: 3, atk: 16, hp: 48, def: 20, skill: '能量补给', skillDesc: '每回合恢复生命值', voice: '我是能量的来源，运动前补充我！' },
-    { id: 'dna', name: 'DNA螺旋', formula: 'DNA', type: 'organic', rarity: 5, atk: 40, hp: 55, def: 25, skill: '遗传密码', skillDesc: '复制一个队友的技能', voice: '我携带生命的密码，是遗传信息的载体！' },
+    { id: 'ch4', name: '甲烷泡泡', formula: 'CH₄', type: 'organic', rarity: 1, atk: 18, hp: 38, def: 10, skill: '沼气爆炸', skillDesc: '火系攻击时伤害翻倍', voice: '我是沼气的主要成分，小心明火！', icon: '🫧' },
+    { id: 'c2h4', name: '乙烯舞者', formula: 'C₂H₄', type: 'organic', rarity: 2, atk: 22, hp: 40, def: 12, skill: '催熟果实', skillDesc: '战斗后获得额外奖励', voice: '我可以催熟水果，让果实更快成熟！', icon: '💃' },
+    { id: 'c6h6', name: '苯环大师', formula: 'C₆H₆', type: 'organic', rarity: 3, atk: 25, hp: 45, def: 18, skill: '芳香迷醉', skillDesc: '有概率使敌人沉睡', voice: '我是芳香烃的代表，结构很稳定！', icon: '🧘' },
+    { id: 'c2h5oh', name: '乙醇醉仙', formula: 'C₂H₅OH', type: 'organic', rarity: 2, atk: 20, hp: 42, def: 14, skill: '醉酒狂暴', skillDesc: '生命值越低攻击力越高', voice: '我是酒精，可以消毒也可以让人醉倒！', icon: '🍺' },
+    { id: 'ch3cooh', name: '乙酸醋坛子', formula: 'CH₃COOH', type: 'organic', rarity: 2, atk: 18, hp: 40, def: 16, skill: '醋酸腐蚀', skillDesc: '降低敌人防御', voice: '我是醋的主要成分，酸溜溜的！', icon: '🍶' },
+    { id: 'c6h12o6', name: '葡萄糖甜心', formula: 'C₆H₁₂O₆', type: 'organic', rarity: 3, atk: 16, hp: 48, def: 20, skill: '能量补给', skillDesc: '每回合恢复生命值', voice: '我是能量的来源，运动前补充我！', icon: '🍬' },
+    { id: 'dna', name: 'DNA螺旋', formula: 'DNA', type: 'organic', rarity: 5, atk: 40, hp: 55, def: 25, skill: '遗传密码', skillDesc: '复制一个队友的技能', voice: '我携带生命的密码，是遗传信息的载体！', icon: '🧬' },
 
     // 特殊
-    { id: 'cl2', name: '氯气怪', formula: 'Cl₂', type: 'special', rarity: 2, atk: 26, hp: 38, def: 12, skill: '黄绿毒雾', skillDesc: '攻击附带中毒效果', voice: '我是黄绿色气体，有毒但可以用来消毒！', evolveTo: 'hcl', evolveCond: '溶于水战斗3次' },
-    { id: 'f2', name: '氟气女皇', formula: 'F₂', type: 'special', rarity: 4, atk: 38, hp: 35, def: 12, skill: '最强氧化', skillDesc: '攻击无视敌人50%防御', voice: '我是最强的氧化剂，谁都不服！' },
-    { id: 'o3', name: '臭氧卫士', formula: 'O₃', type: 'special', rarity: 3, atk: 24, hp: 42, def: 18, skill: '紫外线盾', skillDesc: '免疫光系伤害', voice: '我在高空保护地球，吸收紫外线！' },
-    { id: 'h2o2', name: '双氧水医生', formula: 'H₂O₂', type: 'special', rarity: 2, atk: 20, hp: 40, def: 14, skill: '消毒杀菌', skillDesc: '攻击有概率净化队友异常状态', voice: '我分解产生氧气，可以消毒伤口！' },
-    { id: 'c60', name: '富勒烯球', formula: 'C₆₀', type: 'special', rarity: 5, atk: 35, hp: 50, def: 30, skill: '足球结构', skillDesc: '受到物理伤害减半', voice: '我是足球状的碳分子，纳米材料的新星！' },
+    { id: 'cl2', name: '氯气怪', formula: 'Cl₂', type: 'special', rarity: 2, atk: 26, hp: 38, def: 12, skill: '黄绿毒雾', skillDesc: '攻击附带中毒效果', voice: '我是黄绿色气体，有毒但可以用来消毒！', icon: '☠️', evolveTo: 'hcl', evolveCond: '溶于水战斗3次' },
+    { id: 'f2', name: '氟气女皇', formula: 'F₂', type: 'special', rarity: 4, atk: 38, hp: 35, def: 12, skill: '最强氧化', skillDesc: '攻击无视敌人50%防御', voice: '我是最强的氧化剂，谁都不服！', icon: '👸' },
+    { id: 'o3', name: '臭氧卫士', formula: 'O₃', type: 'special', rarity: 3, atk: 24, hp: 42, def: 18, skill: '紫外线盾', skillDesc: '免疫光系伤害', voice: '我在高空保护地球，吸收紫外线！', icon: '🌍' },
+    { id: 'h2o2', name: '双氧水医生', formula: 'H₂O₂', type: 'special', rarity: 2, atk: 20, hp: 40, def: 14, skill: '消毒杀菌', skillDesc: '攻击有概率净化队友异常状态', voice: '我分解产生氧气，可以消毒伤口！', icon: '👨‍⚕️' },
+    { id: 'c60', name: '富勒烯球', formula: 'C₆₀', type: 'special', rarity: 5, atk: 35, hp: 50, def: 30, skill: '足球结构', skillDesc: '受到物理伤害减半', voice: '我是足球状的碳分子，纳米材料的新星！', icon: '⚽' },
   ];
 
   // 按稀有度分组
