@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>气体制备工坊 | 化学不难学</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: #11182b;
+  --gold: #f0c040;
+  --cyan: #67e8f9;
+  --red: #f87171;
+  --green: #6ee7b7;
+  --purple: #a78bfa;
+  --orange: #fb923c;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: rgba(103,232,249,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 顶部 */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.back-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--gold); }
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+.score-num { font-size: 18px; font-weight: 700; color: var(--gold); }
+
+/* 标题 */
+.header {
+  text-align: center;
+  padding: 30px 20px 20px;
+}
+.header-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* 主区域 */
+.main-area {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+/* 开始界面 */
+.start-panel {
+  text-align: center;
+  padding: 40px 20px;
+}
+.start-icon { font-size: 64px; margin-bottom: 16px; }
+.start-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.start-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+.start-btn {
+  padding: 14px 48px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+.start-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(103,232,249,0.3); }
+
+/* 气体信息卡 */
+.gas-card {
+  background: linear-gradient(135deg, var(--card), rgba(103,232,249,0.05));
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.gas-icon { font-size: 48px; margin-bottom: 8px; }
+.gas-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+.gas-formula {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.gas-equation {
+  font-size: 14px;
+  color: var(--gold);
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(240,192,64,0.08);
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+/* 步骤指示器 */
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.step-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+.step-dot.done {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+}
+.step-dot.current {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #000;
+  box-shadow: 0 0 12px rgba(103,232,249,0.4);
+}
+.step-dot.wrong {
+  background: var(--red);
+  border-color: var(--red);
+  color: #000;
+}
+
+/* 题目区域 */
+.question-area {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.question-step {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.question-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.question-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* 选项 */
+.options-grid {
+  display: grid;
+  gap: 10px;
+}
+.option-btn {
+  padding: 14px 18px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  line-height: 1.5;
+}
+.option-btn:hover {
+  border-color: var(--cyan);
+  background: rgba(103,232,249,0.05);
+}
+.option-btn.correct {
+  border-color: var(--green);
+  background: rgba(110,231,183,0.1);
+}
+.option-btn.wrong {
+  border-color: var(--red);
+  background: rgba(248,113,113,0.1);
+}
+.option-btn:disabled {
+  cursor: default;
+}
+
+/* 解析 */
+.explanation {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.explanation.correct-ex {
+  background: rgba(110,231,183,0.08);
+  border: 1px solid var(--green);
+}
+.explanation.wrong-ex {
+  background: rgba(248,113,113,0.08);
+  border: 1px solid var(--red);
+}
+.explanation .ex-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.explanation.correct-ex .ex-title { color: var(--green); }
+.explanation.wrong-ex .ex-title { color: var(--red); }
+
+/* 结果面板 */
+.result-panel {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+}
+.result-icon { font-size: 64px; margin-bottom: 16px; }
+.result-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.result-score {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.result-detail {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.result-btns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.result-btn {
+  padding: 12px 28px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.result-btn.primary {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #000;
+}
+.result-btn.secondary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.result-btn:hover { transform: scale(1.03); }
+
+/* 气体图鉴入口 */
+.gas-encyclopedia {
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.gas-ency-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.gas-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+.gas-item {
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.gas-item:hover {
+  border-color: var(--cyan);
+  background: rgba(103,232,249,0.05);
+}
+.gas-item .gas-item-icon { font-size: 20px; margin-bottom: 4px; }
+.gas-item .gas-item-name { font-weight: 600; }
+.gas-item .gas-item-formula { color: var(--muted); font-size: 11px; }
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .header-title { font-size: 24px; }
+  .gas-name { font-size: 20px; }
+  .step-dot { width: 30px; height: 30px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部 -->
+<div class="top-nav">
+  <a href="index.html" class="back-link">← 返回日记</a>
+  <div class="score-display">
+    <span>💰</span>
+    <span class="score-num" id="scoreNum">0</span>
+  </div>
+</div>
+
+<!-- 标题 -->
+<div class="header">
+  <div class="header-title">🧫 气体制备工坊</div>
+  <div class="header-sub">选择反应物 → 条件 → 装置 → 除杂 → 收集 → 验满，完成气体制备全流程！</div>
+</div>
+
+<!-- 主区域 -->
+<div class="main-area">
+
+  <!-- 开始界面 -->
+  <div class="start-panel" id="startPanel">
+    <div class="start-icon">🧫</div>
+    <div class="start-title">气体制备工坊</div>
+    <div class="start-desc">
+      覆盖12种常见气体：H₂、O₂、CO₂、Cl₂、NH₃、SO₂、NO、NO₂、H₂S、CH₄、C₂H₄、C₂H₂<br>
+      每题随机抽取一种气体，你需要依次完成6个步骤的制备流程<br>
+      包含除杂、多制法、特殊收集方法等高考重点！
+    </div>
+    <button class="start-btn" onclick="startGame()">🔬 开始制备</button>
+
+    <!-- 气体图鉴 -->
+    <div class="gas-encyclopedia">
+      <div class="gas-ency-title">📖 气体图鉴（点击预览）</div>
+      <div class="gas-list" id="gasList"></div>
+    </div>
+  </div>
+
+  <!-- 游戏界面 -->
+  <div id="gamePanel" style="display:none">
+    <!-- 气体信息 -->
+    <div class="gas-card" id="gasCard">
+      <div class="gas-icon" id="gasIcon">💨</div>
+      <div class="gas-name" id="gasName">-</div>
+      <div class="gas-formula" id="gasFormula">-</div>
+      <div class="gas-equation" id="gasEquation">-</div>
+    </div>
+
+    <!-- 步骤指示器 -->
+    <div class="step-indicator" id="stepIndicator"></div>
+
+    <!-- 题目 -->
+    <div class="question-area" id="questionArea">
+      <div class="question-step" id="questionStep">步骤 1/6</div>
+      <div class="question-title" id="questionTitle">-</div>
+      <div class="question-desc" id="questionDesc">-</div>
+      <div class="options-grid" id="optionsGrid"></div>
+      <div class="explanation" id="explanation" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- 结果界面 -->
+  <div class="result-panel" id="resultPanel" style="display:none">
+    <div class="result-icon" id="resultIcon">🏆</div>
+    <div class="result-title" id="resultTitle">制备完成！</div>
+    <div class="result-score" id="resultScore">0/18</div>
+    <div class="result-detail" id="resultDetail"></div>
+    <div class="result-btns">
+      <button class="result-btn secondary" onclick="backToStart()">返回</button>
+      <button class="result-btn primary" onclick="startGame()">再来一局</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/game.js?v=5"></script>
+<script src="assets/gas-lab.js"></script>
+<script>
+(function() {
+  var currentQuestion = null;
+  var stepResults = [];
+
+  function init() {
+    updateScore();
+    renderGasList();
+  }
+
+  function updateScore() {
+    var s = HXBNX_GAME.getStatus ? HXBNX_GAME.getStatus() : { state: { score: 0 } };
+    document.getElementById('scoreNum').textContent = s.state.score || 0;
+  }
+
+  // 渲染气体图鉴
+  function renderGasList() {
+    var gases = GAS_LAB.getGases();
+    var html = '';
+    for (var i = 0; i < gases.length; i++) {
+      var g = gases[i];
+      html += '<div class="gas-item" onclick="previewGas(\'' + g.id + '\')">';
+      html += '<div class="gas-item-icon">' + g.icon + '</div>';
+      html += '<div class="gas-item-name">' + g.name + '</div>';
+      html += '<div class="gas-item-formula">' + g.formula + '</div>';
+      html += '</div>';
+    }
+    document.getElementById('gasList').innerHTML = html;
+  }
+
+  window.previewGas = function(gasId) {
+    var gases = GAS_LAB.getGases();
+    var gas = null;
+    for (var i = 0; i < gases.length; i++) {
+      if (gases[i].id === gasId) { gas = gases[i]; break; }
+    }
+    if (!gas) return;
+    var method = gas.methods[0];
+    alert(
+      gas.name + ' ' + gas.formula + '\n\n' +
+      '反应物：' + method.reactants + '\n' +
+      '条件：' + method.condition + '\n' +
+      '装置：' + method.apparatus + '\n' +
+      '除杂：' + method.purification + '\n' +
+      '收集：' + method.collection + '\n' +
+      '检验：' + method.test + '\n\n' +
+      '方程式：' + method.equation
+    );
+  };
+
+  // 开始游戏
+  window.startGame = function() {
+    currentQuestion = GAS_LAB.getRandomQuestion();
+    stepResults = [];
+
+    // 显示气体信息
+    document.getElementById('gasIcon').textContent = currentQuestion.gas.icon;
+    document.getElementById('gasName').textContent = currentQuestion.gas.name;
+    document.getElementById('gasFormula').textContent = currentQuestion.gas.formula;
+    document.getElementById('gasEquation').textContent = currentQuestion.method.equation;
+
+    // 显示步骤指示器
+    renderStepIndicator();
+
+    // 显示第一步
+    showStep();
+
+    // 切换面板
+    document.getElementById('startPanel').style.display = 'none';
+    document.getElementById('resultPanel').style.display = 'none';
+    document.getElementById('gamePanel').style.display = 'block';
+  };
+
+  function renderStepIndicator() {
+    var steps = GAS_LAB.STEPS;
+    var html = '';
+    for (var i = 0; i < steps.length; i++) {
+      var cls = 'step-dot';
+      if (i < stepResults.length) {
+        cls += stepResults[i] ? ' done' : ' wrong';
+      } else if (i === stepResults.length) {
+        cls += ' current';
+      }
+      html += '<div class="' + cls + '">' + steps[i].icon + '</div>';
+    }
+    document.getElementById('stepIndicator').innerHTML = html;
+  }
+
+  function showStep() {
+    var step = GAS_LAB.getCurrentStep();
+    if (!step) {
+      showResult();
+      return;
+    }
+
+    document.getElementById('questionStep').textContent = '步骤 ' + (stepResults.length + 1) + '/6';
+    document.getElementById('questionTitle').textContent = step.title;
+    document.getElementById('questionDesc').textContent = step.desc;
+    document.getElementById('explanation').style.display = 'none';
+
+    // 生成选项
+    var options = GAS_LAB.generateOptions(step.key, currentQuestion.method[step.key]);
+    var html = '';
+    for (var i = 0; i < options.length; i++) {
+      html += '<button class="option-btn" onclick="selectOption(this, \'' + options[i].replace(/'/g, "\\'") + '\')">' + options[i] + '</button>';
+    }
+    document.getElementById('optionsGrid').innerHTML = html;
+  }
+
+  window.selectOption = function(btn, answer) {
+    var step = GAS_LAB.getCurrentStep();
+    var result = GAS_LAB.checkAnswer(step.key, answer);
+    stepResults.push(result.correct);
+
+    // 禁用所有按钮
+    var btns = document.querySelectorAll('.option-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].disabled = true;
+    }
+
+    // 标记正确/错误
+    if (result.correct) {
+      btn.classList.add('correct');
+    } else {
+      btn.classList.add('wrong');
+      // 标记正确答案
+      for (var j = 0; j < btns.length; j++) {
+        if (btns[j].textContent === result.rightAnswer) {
+          btns[j].classList.add('correct');
+        }
+      }
+    }
+
+    // 显示解析
+    var ex = document.getElementById('explanation');
+    ex.style.display = 'block';
+    ex.className = 'explanation ' + (result.correct ? 'correct-ex' : 'wrong-ex');
+    ex.innerHTML = '<div class="ex-title">' + (result.correct ? '✅ 正确！' : '❌ 错误！') + '</div>' +
+      '<div>正确答案：' + result.rightAnswer + '</div>';
+
+    // 更新步骤指示器
+    renderStepIndicator();
+
+    // 延迟下一步
+    setTimeout(function() {
+      var hasNext = GAS_LAB.nextStep();
+      if (hasNext) {
+        showStep();
+      } else {
+        showResult();
+      }
+    }, 1500);
+  };
+
+  function showResult() {
+    var score = GAS_LAB.getScore();
+    var correctCount = 0;
+    for (var i = 0; i < stepResults.length; i++) {
+      if (stepResults[i]) correctCount++;
+    }
+
+    document.getElementById('gamePanel').style.display = 'none';
+    document.getElementById('resultPanel').style.display = 'block';
+
+    var icon = correctCount >= 5 ? '🏆' : (correctCount >= 3 ? '👍' : '💪');
+    var title = correctCount >= 5 ? '制备大师！' : (correctCount >= 3 ? '还不错！' : '继续加油！');
+
+    document.getElementById('resultIcon').textContent = icon;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultScore').textContent = score + '/18';
+    document.getElementById('resultDetail').textContent =
+      '正确 ' + correctCount + '/6 步 | ' + currentQuestion.gas.name + ' ' + currentQuestion.gas.formula;
+
+    // 记录积分
+    if (HXBNX_GAME.addPracticeScore) {
+      var result = HXBNX_GAME.addPracticeScore('gaslab', score);
+      if (result.bonusText) {
+        HXBNX_GAME.toaster('+' + result.points + '积分（' + result.bonusText.trim() + '）', 'success');
+      }
+    }
+    updateScore();
+
+    // 记录到错题本（错的步骤）
+    if (HXBNX_GAME.addWrong && correctCount < 6) {
+      var wrongSteps = [];
+      for (var i = 0; i < stepResults.length; i++) {
+        if (!stepResults[i]) {
+          wrongSteps.push(GAS_LAB.STEPS[i].title);
+        }
+      }
+      HXBNX_GAME.addWrong({
+        type: '气体制备',
+        question: currentQuestion.gas.name + ' ' + currentQuestion.gas.formula + ' 制备',
+        answer: '错误步骤：' + wrongSteps.join('、'),
+        note: '方程式：' + currentQuestion.method.equation
+      });
+    }
+  }
+
+  window.backToStart = function() {
+    document.getElementById('gamePanel').style.display = 'none';
+    document.getElementById('resultPanel').style.display = 'none';
+    document.getElementById('startPanel').style.display = 'block';
+  };
+
+  init();
+})();
+</script>
+
+</body>
+</html>

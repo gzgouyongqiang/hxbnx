@@ -35,6 +35,7 @@
   ├─ 🧪 化学俗称大挑战 → nickname.html
   ├─ ⚗️ 方程式正误判断 → equation.html
   ├─ 🔮 元素推断大师 → element-guess.html
+  ├─ 🧫 气体制备工坊 → gas-lab.html
   └─ 📖 错题本 → wrong.html
   ↓
 【游乐场】（页面下方）
@@ -54,10 +55,12 @@ Footer
 | `nickname.html` | 化学俗称大挑战（6级闯关，43物质） | ✅ |
 | `equation.html` | 方程式正误判断（40题） | ✅ |
 | `element-guess.html` | 元素推断大师（40题） | ✅ |
+| `gas-lab.html` | 气体制备工坊（12种气体，6步制备流程） | ✅ 新增 |
 | `wrong.html` | 错题本 | ✅ |
 | `alchemy.html` | 炼丹炉（宠物获取） | ✅ 新增 |
-| `pets.html` | 宠物交易中心（分解/合成/图鉴） | ✅ 新增 |
-| `assets/game.js` | 游戏核心（v4精简版：积分/打卡/错题本） | ✅ |
+| `pets.html` | 宠物交易中心（分解/合成/进化/图鉴） | ✅ 新增 |
+| `battle.html` | 宠物对战（4种难度，属性克制） | ✅ 新增 |
+| `assets/game.js` | 游戏核心（v5联动版：积分/打卡/错题本/等级/签到/周次任务） | ✅ |
 | `assets/diary.js` | 周次网格逻辑 | ✅ |
 | `assets/diary.css` | 日记主题样式 | ✅ |
 | `assets/alchemy.js` | 宠物数据库 + 炼丹API | ✅ 新增 |
