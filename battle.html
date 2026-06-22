@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>宠物战斗场 | 化学不难学</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: #11182b;
+  --gold: #f0c040;
+  --cyan: #67e8f9;
+  --red: #f87171;
+  --green: #6ee7b7;
+  --purple: #a78bfa;
+  --orange: #fb923c;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: rgba(103,232,249,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 顶部导航 */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.back-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--gold); }
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+.score-icon { font-size: 18px; }
+.score-num { font-size: 18px; font-weight: 700; color: var(--gold); }
+
+/* 标题区 */
+.header {
+  text-align: center;
+  padding: 30px 20px 20px;
+}
+.header-title {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--red), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* 战斗统计 */
+.battle-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 20px 20px;
+}
+.stat-badge {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  text-align: center;
+}
+.stat-badge .label { font-size: 11px; color: var(--muted); }
+.stat-badge .value { font-size: 20px; font-weight: 700; margin-top: 4px; }
+
+/* 阶段切换 */
+.phase {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+}
+.phase-title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+
+/* 难度选择 */
+.difficulty-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.diff-btn {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--text);
+  font-family: inherit;
+}
+.diff-btn:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.diff-btn .diff-icon { font-size: 32px; margin-bottom: 8px; }
+.diff-btn .diff-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.diff-btn .diff-desc { font-size: 12px; color: var(--muted); }
+.diff-btn .diff-reward { font-size: 13px; color: var(--gold); margin-top: 6px; }
+
+/* 宠物选择 */
+.pet-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+.pet-select-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.pet-select-card:hover { border-color: var(--cyan); }
+.pet-select-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(240,192,64,0.3);
+}
+.pet-select-card.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pet-select-card .pet-icon { font-size: 36px; margin-bottom: 6px; }
+.pet-select-card .pet-name { font-size: 13px; font-weight: 700; }
+.pet-select-card .pet-formula { font-size: 11px; color: var(--cyan); }
+.pet-select-card .pet-stats {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.pet-select-card .pet-rarity {
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* 已选队伍 */
+.selected-team {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.team-slot {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed var(--border);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background: rgba(255,255,255,0.02);
+}
+.team-slot.filled {
+  border-style: solid;
+  border-color: var(--gold);
+  background: rgba(240,192,64,0.08);
+}
+
+/* 操作按钮 */
+.action-btns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.action-btn {
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #000;
+}
+.action-btn.secondary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.action-btn:hover { transform: scale(1.03); }
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 战斗场景 */
+.battle-arena {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.battle-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+  background: linear-gradient(180deg, rgba(17,24,43,0.8), rgba(10,14,26,0.9));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.battle-vs {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--red);
+  text-shadow: 0 0 20px rgba(248,113,113,0.5);
+}
+.battle-pet {
+  text-align: center;
+  min-width: 120px;
+}
+.battle-pet .pet-icon {
+  font-size: 56px;
+  margin-bottom: 8px;
+  transition: transform 0.3s;
+}
+.battle-pet.attacking .pet-icon {
+  transform: scale(1.2) translateX(20px);
+}
+.battle-pet.hurt .pet-icon {
+  animation: shake 0.5s;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+.battle-pet .pet-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.battle-pet .hp-bar {
+  width: 100px;
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin: 0 auto 6px;
+  overflow: hidden;
+}
+.battle-pet .hp-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s, background 0.3s;
+}
+.battle-pet .hp-text {
+  font-size: 11px;
+  color: var(--muted);
+}
+.battle-pet .pet-skill {
+  font-size: 11px;
+  color: var(--cyan);
+  margin-top: 4px;
+}
+
+/* 队伍列表 */
+.team-list {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.team-member {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: var(--card);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.team-member.active {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(240,192,64,0.3);
+}
+.team-member.dead {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+.team-member .hp-mini {
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  right: 4px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+.team-member .hp-mini-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green);
+}
+
+/* 战斗日志 */
+.battle-log {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+.battle-log .log-entry {
+  font-size: 13px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.battle-log .log-entry:last-child { border-bottom: none; }
+.battle-log .log-damage { color: var(--red); font-weight: 700; }
+.battle-log .log-heal { color: var(--green); font-weight: 700; }
+.battle-log .log-skill { color: var(--cyan); }
+.battle-log .log-crit { color: var(--gold); font-weight: 700; }
+.battle-log .log-ko { color: var(--red); font-weight: 700; }
+
+/* 战斗操作 */
+.battle-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.battle-action-btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+.battle-action-btn:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.battle-action-btn.skill-btn {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.battle-action-btn.skill-btn:hover {
+  background: rgba(167,139,250,0.1);
+}
+
+/* 结果面板 */
+.result-panel {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.result-panel .result-icon { font-size: 64px; margin-bottom: 16px; }
+.result-panel .result-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.result-panel .result-title.win { color: var(--gold); }
+.result-panel .result-title.lose { color: var(--red); }
+.result-panel .result-score {
+  font-size: 20px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.result-panel .result-detail {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* 属性克制图 */
+.type-chart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+.type-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+}
+.type-item .type-name { font-weight: 700; margin-bottom: 4px; }
+.type-item .type-strong { color: var(--green); font-size: 11px; }
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .header-title { font-size: 24px; }
+  .difficulty-grid { grid-template-columns: 1fr; }
+  .battle-field { padding: 20px 10px; }
+  .battle-pet .pet-icon { font-size: 40px; }
+  .battle-vs { font-size: 20px; }
+  .pet-select-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="top-nav">
+  <a href="index.html" class="back-link">← 返回日记</a>
+  <div class="score-display">
+    <span class="score-icon">💰</span>
+    <span class="score-num" id="scoreNum">0</span>
+  </div>
+</div>
+
+<!-- 标题 -->
+<div class="header">
+  <div class="header-title">⚔️ 宠物战斗场</div>
+  <div class="header-sub">组建你的化学宠物战队，挑战AI对手！</div>
+</div>
+
+<!-- 战斗统计 -->
+<div class="battle-stats">
+  <div class="stat-badge">
+    <div class="label">胜场</div>
+    <div class="value" id="statWins" style="color:var(--gold)">0</div>
+  </div>
+  <div class="stat-badge">
+    <div class="label">战斗积分</div>
+    <div class="value" id="statBattleScore" style="color:var(--cyan)">0</div>
+  </div>
+</div>
+
+<!-- 阶段1: 选择难度 -->
+<div class="phase" id="phaseDifficulty">
+  <div class="phase-title">选择挑战难度</div>
+  <div class="difficulty-grid">
+    <button class="diff-btn" onclick="selectDifficulty('easy')">
+      <div class="diff-icon">🌱</div>
+      <div class="diff-name">简单</div>
+      <div class="diff-desc">AI宠物 普通~稀有</div>
+      <div class="diff-reward">胜利 +20 积分</div>
+    </button>
+    <button class="diff-btn" onclick="selectDifficulty('normal')">
+      <div class="diff-icon">🔥</div>
+      <div class="diff-name">普通</div>
+      <div class="diff-desc">AI宠物 稀有~史诗</div>
+      <div class="diff-reward">胜利 +40 积分</div>
+    </button>
+    <button class="diff-btn" onclick="selectDifficulty('hard')">
+      <div class="diff-icon">⚡</div>
+      <div class="diff-name">困难</div>
+      <div class="diff-desc">AI宠物 史诗~传说</div>
+      <div class="diff-reward">胜利 +80 积分</div>
+    </button>
+    <button class="diff-btn" onclick="selectDifficulty('expert')">
+      <div class="diff-icon">👑</div>
+      <div class="diff-name">专家</div>
+      <div class="diff-desc">AI宠物 传说~神话</div>
+      <div class="diff-reward">胜利 +150 积分</div>
+    </button>
+  </div>
+
+  <div class="phase-title" style="margin-top:30px;font-size:16px;">属性克制关系</div>
+  <div class="type-chart" id="typeChart"></div>
+</div>
+
+<!-- 阶段2: 选择宠物 -->
+<div class="phase" id="phaseSelect" style="display:none">
+  <div class="phase-title">选择3只宠物组成战队</div>
+  <div class="selected-team" id="selectedTeam">
+    <div class="team-slot" id="slot0">?</div>
+    <div class="team-slot" id="slot1">?</div>
+    <div class="team-slot" id="slot2">?</div>
+  </div>
+  <div class="pet-select-grid" id="petSelectGrid"></div>
+  <div class="action-btns">
+    <button class="action-btn secondary" onclick="backToDifficulty()">返回</button>
+    <button class="action-btn primary" id="startBattleBtn" disabled onclick="startBattle()">开始战斗</button>
+  </div>
+</div>
+
+<!-- 阶段3: 战斗 -->
+<div class="phase" id="phaseBattle" style="display:none">
+  <div class="battle-arena">
+    <!-- 玩家队伍 -->
+    <div class="team-list" id="playerTeamList"></div>
+
+    <!-- 战斗场地 -->
+    <div class="battle-field">
+      <div class="battle-pet" id="playerPet">
+        <div class="pet-icon">🧪</div>
+        <div class="pet-name">-</div>
+        <div class="hp-bar"><div class="hp-fill" style="width:100%;background:var(--green)"></div></div>
+        <div class="hp-text">-/-</div>
+        <div class="pet-skill">-</div>
+      </div>
+      <div class="battle-vs">VS</div>
+      <div class="battle-pet" id="aiPet">
+        <div class="pet-icon">🧪</div>
+        <div class="pet-name">-</div>
+        <div class="hp-bar"><div class="hp-fill" style="width:100%;background:var(--red)"></div></div>
+        <div class="hp-text">-/-</div>
+        <div class="pet-skill">-</div>
+      </div>
+    </div>
+
+    <!-- AI队伍 -->
+    <div class="team-list" id="aiTeamList"></div>
+
+    <!-- 战斗日志 -->
+    <div class="battle-log" id="battleLog"></div>
+
+    <!-- 战斗操作 -->
+    <div class="battle-actions" id="battleActions">
+      <button class="battle-action-btn" onclick="doAction('attack')">普通攻击</button>
+      <button class="battle-action-btn skill-btn" onclick="doAction('skill')">技能攻击</button>
+    </div>
+  </div>
+</div>
+
+<!-- 阶段4: 结果 -->
+<div class="phase" id="phaseResult" style="display:none">
+  <div class="result-panel">
+    <div class="result-icon" id="resultIcon">🏆</div>
+    <div class="result-title" id="resultTitle">胜利！</div>
+    <div class="result-score" id="resultScore">+0 积分</div>
+    <div class="result-detail" id="resultDetail"></div>
+    <div class="action-btns">
+      <button class="action-btn secondary" onclick="backToDifficulty()">返回主页</button>
+      <button class="action-btn primary" onclick="selectDifficulty(currentDifficulty)">再来一局</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/alchemy.js"></script>
+<script src="assets/battle.js"></script>
+<script>
+(function() {
+  var RARITY_NAMES = ['', '普通', '稀有', '史诗', '传说', '神话'];
+  var RARITY_COLORS = ['', '#94a3b8', '#6ee7b7', '#67e8f9', '#a78bfa', '#f0c040'];
+  var TYPE_NAMES = {
+    metal: '金属', nonmetal: '非金属', noble: '稀有气体', oxide: '氧化物',
+    acid: '酸', base: '碱', salt: '盐', organic: '有机物', special: '特殊'
+  };
+  var TYPE_ICONS = {
+    metal: '🔩', nonmetal: '💎', noble: '🎈', oxide: '💨',
+    acid: '🧪', base: '💧', salt: '🧂', organic: '🌿', special: '⚡'
+  };
+
+  var currentDifficulty = 'normal';
+  var selectedPets = [];
+  var myPets = [];
+
+  function init() {
+    updateScore();
+    updateBattleStats();
+    renderTypeChart();
+    loadMyPets();
+  }
+
+  function updateScore() {
+    var score = ALCHEMY_SYSTEM.getScore();
+    document.getElementById('scoreNum').textContent = score;
+  }
+
+  function updateBattleStats() {
+    var stats = BATTLE_SYSTEM.getBattleStats();
+    document.getElementById('statWins').textContent = stats.wins;
+    document.getElementById('statBattleScore').textContent = stats.totalScore;
+  }
+
+  function renderTypeChart() {
+    var advantages = BATTLE_SYSTEM.getTypeAdvantage();
+    var html = '';
+    for (var type in advantages) {
+      var strongAgainst = advantages[type].map(function(t) { return TYPE_NAMES[t] || t; }).join('、');
+      html += '<div class="type-item">';
+      html += '<div class="type-name">' + (TYPE_ICONS[type] || '') + ' ' + (TYPE_NAMES[type] || type) + '</div>';
+      html += '<div class="type-strong">克制: ' + strongAgainst + '</div>';
+      html += '</div>';
+    }
+    document.getElementById('typeChart').innerHTML = html;
+  }
+
+  function loadMyPets() {
+    myPets = ALCHEMY_SYSTEM.getMyPets();
+  }
+
+  // ===== 难度选择 =====
+  window.selectDifficulty = function(diff) {
+    currentDifficulty = diff;
+    selectedPets = [];
+    updateSelectedTeam();
+    renderPetSelect();
+    showPhase('phaseSelect');
+  };
+
+  window.backToDifficulty = function() {
+    selectedPets = [];
+    showPhase('phaseDifficulty');
+  };
+
+  function showPhase(phaseId) {
+    document.getElementById('phaseDifficulty').style.display = 'none';
+    document.getElementById('phaseSelect').style.display = 'none';
+    document.getElementById('phaseBattle').style.display = 'none';
+    document.getElementById('phaseResult').style.display = 'none';
+    document.getElementById(phaseId).style.display = 'block';
+  }
+
+  // ===== 宠物选择 =====
+  function renderPetSelect() {
+    var grid = document.getElementById('petSelectGrid');
+    if (myPets.length === 0) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">还没有宠物，快去<a href="alchemy.html" style="color:var(--gold)">炼丹炉</a>获取吧！</div>';
+      return;
+    }
+
+    var html = '';
+    myPets.forEach(function(item) {
+      var pet = item.def;
+      var isSelected = selectedPets.indexOf(pet.id) >= 0;
+      var isDisabled = !isSelected && selectedPets.length >= 3;
+      html += '<div class="pet-select-card' + (isSelected ? ' selected' : '') + (isDisabled ? ' disabled' : '') + '" data-id="' + pet.id + '" onclick="togglePet(\'' + pet.id + '\')">';
+      html += '<div class="pet-icon">' + (pet.icon || TYPE_ICONS[pet.type] || '🧪') + '</div>';
+      html += '<div class="pet-name">' + pet.name + '</div>';
+      html += '<div class="pet-formula">' + pet.formula + '</div>';
+      html += '<div class="pet-stats">攻' + pet.atk + ' 血' + pet.hp + ' 防' + pet.def + '</div>';
+      html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
+      html += '</div>';
+    });
+    grid.innerHTML = html;
+  }
+
+  window.togglePet = function(petId) {
+    var idx = selectedPets.indexOf(petId);
+    if (idx >= 0) {
+      selectedPets.splice(idx, 1);
+    } else if (selectedPets.length < 3) {
+      selectedPets.push(petId);
+    }
+    updateSelectedTeam();
+    renderPetSelect();
+  };
+
+  function updateSelectedTeam() {
+    for (var i = 0; i < 3; i++) {
+      var slot = document.getElementById('slot' + i);
+      if (selectedPets[i]) {
+        var pet = ALCHEMY_SYSTEM.getPetById(selectedPets[i]);
+        slot.textContent = pet.icon || TYPE_ICONS[pet.type] || '🧪';
+        slot.classList.add('filled');
+      } else {
+        slot.textContent = '?';
+        slot.classList.remove('filled');
+      }
+    }
+    document.getElementById('startBattleBtn').disabled = selectedPets.length < 3;
+  }
+
+  // ===== 开始战斗 =====
+  window.startBattle = function() {
+    if (selectedPets.length < 3) return;
+    var team = selectedPets.map(function(id) { return { id: id }; });
+    BATTLE_SYSTEM.createBattle(team, currentDifficulty);
+    showPhase('phaseBattle');
+    renderBattle();
+    addLog('战斗开始！第1回合', 'info');
+  };
+
+  // ===== 渲染战斗场景 =====
+  function renderBattle() {
+    var battle = BATTLE_SYSTEM.getCurrentBattle();
+    if (!battle) return;
+
+    // 渲染玩家队伍
+    var playerHtml = '';
+    battle.playerTeam.forEach(function(pet, idx) {
+      var isActive = idx === battle.playerActive;
+      var isDead = pet.currentHp <= 0;
+      var hpPercent = Math.round(pet.currentHp / pet.maxHp * 100);
+      playerHtml += '<div class="team-member' + (isActive ? ' active' : '') + (isDead ? ' dead' : '') + '" onclick="switchPet(' + idx + ')">';
+      playerHtml += pet.icon || TYPE_ICONS[pet.type] || '🧪';
+      playerHtml += '<div class="hp-mini"><div class="hp-mini-fill" style="width:' + hpPercent + '%"></div></div>';
+      playerHtml += '</div>';
+    });
+    document.getElementById('playerTeamList').innerHTML = playerHtml;
+
+    // 渲染AI队伍
+    var aiHtml = '';
+    battle.aiTeam.forEach(function(pet, idx) {
+      var isActive = idx === battle.aiActive;
+      var isDead = pet.currentHp <= 0;
+      var hpPercent = Math.round(pet.currentHp / pet.maxHp * 100);
+      aiHtml += '<div class="team-member' + (isActive ? ' active' : '') + (isDead ? ' dead' : '') + '">';
+      aiHtml += pet.icon || TYPE_ICONS[pet.type] || '🧪';
+      aiHtml += '<div class="hp-mini"><div class="hp-mini-fill" style="width:' + hpPercent + '%"></div></div>';
+      aiHtml += '</div>';
+    });
+    document.getElementById('aiTeamList').innerHTML = aiHtml;
+
+    // 渲染当前宠物
+    var playerPet = battle.playerTeam[battle.playerActive];
+    var aiPet = battle.aiTeam[battle.aiActive];
+
+    if (playerPet) {
+      var pEl = document.getElementById('playerPet');
+      pEl.querySelector('.pet-icon').textContent = playerPet.icon || TYPE_ICONS[playerPet.type] || '🧪';
+      pEl.querySelector('.pet-name').textContent = playerPet.name;
+      var pHpPct = Math.round(playerPet.currentHp / playerPet.maxHp * 100);
+      var pHpFill = pEl.querySelector('.hp-fill');
+      pHpFill.style.width = pHpPct + '%';
+      pHpFill.style.background = pHpPct > 50 ? 'var(--green)' : (pHpPct > 20 ? 'var(--orange)' : 'var(--red)');
+      pEl.querySelector('.hp-text').textContent = playerPet.currentHp + '/' + playerPet.maxHp;
+      pEl.querySelector('.pet-skill').textContent = '💫 ' + playerPet.skill;
+    }
+
+    if (aiPet) {
+      var aEl = document.getElementById('aiPet');
+      aEl.querySelector('.pet-icon').textContent = aiPet.icon || TYPE_ICONS[aiPet.type] || '🧪';
+      aEl.querySelector('.pet-name').textContent = aiPet.name;
+      var aHpPct = Math.round(aiPet.currentHp / aiPet.maxHp * 100);
+      var aHpFill = aEl.querySelector('.hp-fill');
+      aHpFill.style.width = aHpPct + '%';
+      aHpFill.style.background = aHpPct > 50 ? 'var(--green)' : (aHpPct > 20 ? 'var(--orange)' : 'var(--red)');
+      aEl.querySelector('.hp-text').textContent = aiPet.currentHp + '/' + aiPet.maxHp;
+      aEl.querySelector('.pet-skill').textContent = '💫 ' + aiPet.skill;
+    }
+  }
+
+  // ===== 切换宠物 =====
+  window.switchPet = function(idx) {
+    var result = BATTLE_SYSTEM.switchPlayerActive(idx);
+    if (result.ok) {
+      renderBattle();
+      addLog('切换至 ' + result.battle.playerTeam[idx].name, 'info');
+    }
+  };
+
+  // ===== 执行动作 =====
+  window.doAction = function(action) {
+    var result = BATTLE_SYSTEM.executeTurn(action, 0);
+    if (!result.ok) {
+      addLog(result.msg, 'error');
+      return;
+    }
+
+    // 渲染日志
+    result.logs.forEach(function(log) {
+      if (log.type === 'ko') {
+        addLog(log.msg, 'ko');
+      } else {
+        var actorName = log.actor === 'player' ? '我方' : '敌方';
+        var targetName = log.actor === 'player' ? '敌方' : '我方';
+        var actionText = log.action === 'skill' ? '【技能】' : '【普攻】';
+        var critText = log.result.isCrit ? ' <span class="log-crit">暴击！</span>' : '';
+        var effectText = log.result.effects.length > 0 ? ' (' + log.result.effects.join('、') + ')' : '';
+
+        var typeText = '';
+        if (log.result.typeMultiplier > 1) typeText = ' <span class="log-crit">克制！</span>';
+        else if (log.result.typeMultiplier < 1) typeText = ' <span style="color:var(--muted)">被克制</span>';
+
+        var msg = actorName + log.pet.name + actionText + '对' + targetName + log.target.name + '造成 <span class="log-damage">' + log.result.damage + '</span> 点伤害' + critText + typeText + effectText;
+        addLog(msg, 'damage');
+      }
+    });
+
+    renderBattle();
+
+    // 检查战斗结果
+    if (result.result === 'win') {
+      setTimeout(function() { showResult(true); }, 800);
+    } else if (result.result === 'lose') {
+      setTimeout(function() { showResult(false); }, 800);
+    }
+  };
+
+  // ===== 战斗日志 =====
+  function addLog(msg, type) {
+    var logContainer = document.getElementById('battleLog');
+    var entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.innerHTML = msg;
+    logContainer.appendChild(entry);
+    logContainer.scrollTop = logContainer.scrollHeight;
+  }
+
+  // ===== 显示结果 =====
+  function showResult(isWin) {
+    var rewards = BATTLE_SYSTEM.calcRewards();
+    showPhase('phaseResult');
+
+    var icon = document.getElementById('resultIcon');
+    var title = document.getElementById('resultTitle');
+    var score = document.getElementById('resultScore');
+    var detail = document.getElementById('resultDetail');
+
+    if (isWin) {
+      icon.textContent = '🏆';
+      title.textContent = '胜利！';
+      title.className = 'result-title win';
+      score.textContent = '+' + rewards.score + ' 积分';
+      detail.textContent = '难度: ' + getDiffName(rewards.difficulty) + ' | 回合: ' + rewards.turns;
+
+      // 添加积分
+      if (rewards.score > 0) {
+        ALCHEMY_SYSTEM.addScore(rewards.score);
+        updateScore();
+      }
+    } else {
+      icon.textContent = '💔';
+      title.textContent = '战败...';
+      title.className = 'result-title lose';
+      score.textContent = '+0 积分';
+      detail.textContent = '不要气馁，调整队伍再来挑战！';
+    }
+
+    updateBattleStats();
+  }
+
+  function getDiffName(diff) {
+    var names = { easy: '简单', normal: '普通', hard: '困难', expert: '专家' };
+    return names[diff] || diff;
+  }
+
+  init();
+})();
+</script>
+
+</body>
+</html>
