@@ -352,8 +352,11 @@ const GAS_LAB = (function() {
 
   // ===== 下一步 =====
   function nextStep() {
-    currentStep++;
-    return currentStep < STEPS.length;
+    if (currentStep + 1 < STEPS.length) {
+      currentStep++;
+      return true;
+    }
+    return false;
   }
 
   // ===== 获取总分 =====

@@ -260,13 +260,12 @@ const BATTLE_SYSTEM = (function() {
 
   // ===== 生成AI对手队伍 =====
   function generateAITeam(difficulty) {
+    var config = DIFFICULTY_CONFIG[difficulty] || DIFFICULTY_CONFIG.easy;
     var allPets = getAllPets();
     var team = [];
     var count = 3;
-    var minRarity = 1, maxRarity = 3;
-
-    if (difficulty === 'hard') { minRarity = 2; maxRarity = 4; }
-    if (difficulty === 'expert') { minRarity = 3; maxRarity = 5; }
+    var minRarity = config.aiMinRarity;
+    var maxRarity = config.aiMaxRarity;
 
     for (var i = 0; i < count; i++) {
       var pool = allPets.filter(function(p) {
@@ -304,7 +303,8 @@ const BATTLE_SYSTEM = (function() {
     // 检查学习等级
     var playerLevel = 1;
     if (typeof HXBNX_GAME !== 'undefined' && HXBNX_GAME.getLearnLevel) {
-      playerLevel = HXBNX_GAME.getLearnLevel().lv;
+      var lvObj = HXBNX_GAME.getLearnLevel();
+      playerLevel = (lvObj && lvObj.lv) || 1;
     }
     if (playerLevel < config.minLevel) {
       return {
@@ -368,6 +368,23 @@ const BATTLE_SYSTEM = (function() {
     return { ok: true, battle: currentBattle };
   }
 
+  // ===== 状态检查辅助 =====
+  function hasStatus(pet, statusType) {
+    for (var i = 0; i < pet.effects.length; i++) {
+      if (pet.effects[i].type === statusType && pet.effects[i].duration > 0) return true;
+    }
+    return false;
+  }
+
+  function tickStatus(pet) {
+    for (var i = pet.effects.length - 1; i >= 0; i--) {
+      if (pet.effects[i].duration !== undefined) {
+        pet.effects[i].duration--;
+        if (pet.effects[i].duration <= 0) pet.effects.splice(i, 1);
+      }
+    }
+  }
+
   // ===== 执行一回合 =====
   function executeTurn(playerAction, playerTargetIndex) {
     if (!currentBattle || currentBattle.status !== 'active') {
@@ -397,15 +414,24 @@ const BATTLE_SYSTEM = (function() {
       return { ok: true, battle: currentBattle, logs: logs, result: 'win' };
     }
 
+    // 检查 stun/sleep 状态
+    var playerStunned = hasStatus(playerPet, 'stun') || hasStatus(playerPet, 'sleep');
+    var aiStunned = hasStatus(aiPet, 'stun') || hasStatus(aiPet, 'sleep');
+
     // 玩家回合
-    var playerResult = doAttack(playerPet, aiPet, playerAction === 'skill');
-    logs.push({
-      actor: 'player',
-      pet: playerPet,
-      target: aiPet,
-      action: playerAction,
-      result: playerResult
-    });
+    if (!playerStunned) {
+      var playerResult = doAttack(playerPet, aiPet, playerAction === 'skill');
+      logs.push({
+        actor: 'player',
+        pet: playerPet,
+        target: aiPet,
+        action: playerAction,
+        result: playerResult
+      });
+    } else {
+      logs.push({ type: 'status', msg: playerPet.name + ' 处于异常状态，无法行动！' });
+      tickStatus(playerPet);
+    }
 
     if (aiPet.currentHp <= 0) {
       logs.push({ type: 'ko', pet: aiPet, msg: aiPet.name + ' 倒下了！' });
@@ -425,15 +451,20 @@ const BATTLE_SYSTEM = (function() {
     if (currentBattle.status === 'active') {
       aiPet = currentBattle.aiTeam[currentBattle.aiActive];
       if (aiPet && aiPet.currentHp > 0) {
-        var aiAction = Math.random() < 0.3 ? 'skill' : 'attack';
-        var aiResult = doAttack(aiPet, playerPet, aiAction === 'skill');
-        logs.push({
-          actor: 'ai',
-          pet: aiPet,
-          target: playerPet,
-          action: aiAction,
-          result: aiResult
-        });
+        if (!aiStunned) {
+          var aiAction = Math.random() < 0.3 ? 'skill' : 'attack';
+          var aiResult = doAttack(aiPet, playerPet, aiAction === 'skill');
+          logs.push({
+            actor: 'ai',
+            pet: aiPet,
+            target: playerPet,
+            action: aiAction,
+            result: aiResult
+          });
+        } else {
+          logs.push({ type: 'status', msg: aiPet.name + ' 处于异常状态，无法行动！' });
+          tickStatus(aiPet);
+        }
 
         if (playerPet.currentHp <= 0) {
           logs.push({ type: 'ko', pet: playerPet, msg: playerPet.name + ' 倒下了！' });
@@ -475,7 +506,7 @@ const BATTLE_SYSTEM = (function() {
         finalDamage = Math.floor(finalDamage * (1 + eff.value));
         effectDescs.push(eff.desc);
       }
-      if (eff.type === 'crit_bonus' && damageResult.isCrit) {
+      if (eff.type === 'crit_bonus') {
         finalDamage = Math.floor(finalDamage * eff.value);
         effectDescs.push(eff.desc);
       }
@@ -486,6 +517,7 @@ const BATTLE_SYSTEM = (function() {
       if (eff.type === 'suicide_bomb') {
         finalDamage = Math.floor(finalDamage * eff.value);
         effectDescs.push(eff.desc);
+        attacker.currentHp = 0; // 自爆后攻击者死亡
       }
       if (eff.type === 'dot') {
         defender.effects.push({ type: 'dot', value: eff.value, duration: eff.duration });

@@ -255,6 +255,7 @@ const ALCHEMY_SYSTEM = (function() {
       }
 
       var pool = PETS_BY_RARITY[rarity];
+      if (!pool || pool.length === 0) return { ok: false, msg: '该品级无可用宠物' };
       var pet = pool[Math.floor(Math.random() * pool.length)];
 
       if (!s.petCollection) s.petCollection = {};
@@ -375,6 +376,7 @@ const ALCHEMY_SYSTEM = (function() {
 
       var targetRarity = rarity + 1;
       var pool = PETS_BY_RARITY[targetRarity];
+      if (!pool || pool.length === 0) return { ok: false, msg: '目标品级无可用宠物' };
       var newPet = pool[Math.floor(Math.random() * pool.length)];
 
       if (!s.petCollection[newPet.id]) s.petCollection[newPet.id] = { count: 0, firstDate: todayStr() };

@@ -607,26 +607,25 @@ body {
 
     // 记录积分
     if (HXBNX_GAME.addPracticeScore) {
-      var result = HXBNX_GAME.addPracticeScore('gaslab', score);
-      if (result.bonusText) {
-        HXBNX_GAME.toaster('+' + result.points + '积分（' + result.bonusText.trim() + '）', 'success');
-      }
+      HXBNX_GAME.addPracticeScore('gaslab', score);
     }
     updateScore();
 
     // 记录到错题本（错的步骤）
-    if (HXBNX_GAME.addWrong && correctCount < 6) {
+    if (HXBNX_GAME.addWrongQuestion && correctCount < 6) {
       var wrongSteps = [];
       for (var i = 0; i < stepResults.length; i++) {
         if (!stepResults[i]) {
           wrongSteps.push(GAS_LAB.STEPS[i].title);
         }
       }
-      HXBNX_GAME.addWrong({
-        type: '气体制备',
-        question: currentQuestion.gas.name + ' ' + currentQuestion.gas.formula + ' 制备',
-        answer: '错误步骤：' + wrongSteps.join('、'),
-        note: '方程式：' + currentQuestion.method.equation
+      HXBNX_GAME.addWrongQuestion({
+        questionText: currentQuestion.gas.name + ' ' + currentQuestion.gas.formula + ' 制备',
+        options: ['反应物', '条件', '装置', '除杂', '收集', '验满'],
+        correctIndex: 0,
+        wrongIndex: 0,
+        filename: 'gas-lab.html',
+        topicName: '气体制备'
       });
     }
   }

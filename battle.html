@@ -829,6 +829,8 @@ body {
     result.logs.forEach(function(log) {
       if (log.type === 'ko') {
         addLog(log.msg, 'ko');
+      } else if (log.type === 'status') {
+        addLog(log.msg, 'info');
       } else {
         var actorName = log.actor === 'player' ? '我方' : '敌方';
         var targetName = log.actor === 'player' ? '敌方' : '我方';

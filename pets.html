@@ -560,10 +560,10 @@ body {
 
 <!-- 标签页 -->
 <div class="tabs">
-  <button class="tab active" onclick="switchTab('collection')">我的宠物</button>
-  <button class="tab" onclick="switchTab('synthesis')">合成</button>
-  <button class="tab" onclick="switchTab('evolution')">✨进化</button>
-  <button class="tab" onclick="switchTab('encyclopedia')">图鉴</button>
+  <button class="tab active" onclick="switchTab('collection', this)">我的宠物</button>
+  <button class="tab" onclick="switchTab('synthesis', this)">合成</button>
+  <button class="tab" onclick="switchTab('evolution', this)">✨进化</button>
+  <button class="tab" onclick="switchTab('encyclopedia', this)">图鉴</button>
   <a href="battle.html" class="tab" style="text-decoration:none;display:inline-flex;align-items:center;">⚔️ 去战斗</a>
 </div>
 
@@ -735,10 +735,10 @@ body {
     grid.innerHTML = html;
   }
 
-  window.switchTab = function(tab) {
+  window.switchTab = function(tab, el) {
     currentTab = tab;
     document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-    event.target.classList.add('active');
+    if (el) el.classList.add('active');
     document.getElementById('tabCollection').style.display = tab === 'collection' ? 'block' : 'none';
     document.getElementById('tabSynthesis').style.display = tab === 'synthesis' ? 'block' : 'none';
     document.getElementById('tabEvolution').style.display = tab === 'evolution' ? 'block' : 'none';

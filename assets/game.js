@@ -84,15 +84,33 @@ const HXBNX_GAME = (function () {
     if (state.checkinDates.indexOf(today) >= 0) return;
     state.checkinDates.push(today);
     var sorted = state.checkinDates.slice().sort();
-    var streak = 1, maxStreak = 1, cur = 1;
+    var maxStreak = 1, cur = 1;
     for (var i = 1; i < sorted.length; i++) {
       var diff = (new Date(sorted[i]) - new Date(sorted[i-1])) / 86400000;
-      if (diff === 1) { cur++; streak = cur; }
+      if (diff === 1) { cur++; }
       else { cur = 1; }
       if (cur > maxStreak) maxStreak = cur;
     }
-    state.currentStreak = streak;
-    state.maxStreak = Math.max(state.maxStreak, maxStreak);
+    state.currentStreak = cur;
+    state.maxStreak = Math.max(state.maxStreak || 0, maxStreak);
+  }
+
+  // 仅重算streak（不添加日期，用于非打卡操作）
+  function recalcStreak(state) {
+    if (!state.checkinDates || state.checkinDates.length === 0) {
+      state.currentStreak = 0;
+      return;
+    }
+    var sorted = state.checkinDates.slice().sort();
+    var maxStreak = 1, cur = 1;
+    for (var i = 1; i < sorted.length; i++) {
+      var diff = (new Date(sorted[i]) - new Date(sorted[i-1])) / 86400000;
+      if (diff === 1) { cur++; }
+      else { cur = 1; }
+      if (cur > maxStreak) maxStreak = cur;
+    }
+    state.currentStreak = cur;
+    state.maxStreak = Math.max(state.maxStreak || 0, maxStreak);
   }
 
   // ===== Toast =====
@@ -128,7 +146,7 @@ const HXBNX_GAME = (function () {
     if (s.clearedQuests.indexOf(sideQuestId) === -1) {
       s.clearedQuests.push(sideQuestId);
     }
-    updateStreak(s);
+    recalcStreak(s);
     save(s);
     return { score: points };
   }
@@ -138,12 +156,12 @@ const HXBNX_GAME = (function () {
     var s = load();
     s.score = (s.score || 0) + points;
     s.totalExp = (s.totalExp || 0) + points;
-    updateStreak(s);
+    recalcStreak(s);
     save(s);
-    return { score: s.score };
+    return { score: points };
   }
 
-  // ===== API =====
+  // ===== 学习等级系统 =====
   var api = {
     // 状态
     getStatus: function () {
@@ -165,6 +183,7 @@ const HXBNX_GAME = (function () {
 
     // 错题本
     addWrongQuestion: function (data) {
+      if (!data || typeof data !== 'object') return;
       var s = load();
       if (!s.wrongQuestions) s.wrongQuestions = [];
       var exists = false;
@@ -196,6 +215,7 @@ const HXBNX_GAME = (function () {
     removeWrongQuestion: function (index) {
       var s = load();
       if (!s.wrongQuestions) return;
+      if (index < 0 || index >= s.wrongQuestions.length) return;
       s.wrongQuestions.splice(index, 1);
       if (!s.clearedWrong) s.clearedWrong = 0;
       s.clearedWrong++;
@@ -274,7 +294,7 @@ const HXBNX_GAME = (function () {
 
       s.score = (s.score || 0) + points;
       s.totalExp = (s.totalExp || 0) + points;
-      updateStreak(s);
+      recalcStreak(s);
       save(s);
 
       var taskNames = { review: '完成知识点复习', practice: '做配套练习题', wrongbook: '整理错题' };
@@ -341,7 +361,7 @@ const HXBNX_GAME = (function () {
       var points = Math.floor(basePoints * multiplier);
       s.score = (s.score || 0) + points;
       s.totalExp = (s.totalExp || 0) + points;
-      updateStreak(s);
+      recalcStreak(s);
       save(s);
 
       var bonusText = '';
