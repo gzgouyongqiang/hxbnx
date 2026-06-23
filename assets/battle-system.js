@@ -111,7 +111,7 @@ var BATTLE_SYSTEM = (function() {
   function getElementData(elementId) {
     if (typeof ELEMENTS_DATA !== 'undefined' && ELEMENTS_DATA) {
       for (var i = 0; i < ELEMENTS_DATA.length; i++) {
-        if (ELEMENTS_DATA[i].sym === elementId) return ELEMENTS_DATA[i];
+        if ((ELEMENTS_DATA[i].sym || ELEMENTS_DATA[i].symbol) === elementId) return ELEMENTS_DATA[i];
       }
     }
     // 如果 ELEMENTS_DATA 不可用，用内置的118元素基础数据
@@ -783,23 +783,28 @@ var BATTLE_SYSTEM = (function() {
 
     for (var i = 0; i < allElems.length; i++) {
       var elem = allElems[i];
-      var difficulty = getElementDifficulty(elem.num);
+      // 兼容 ELEMENTS_DATA(z/symbol/category) 和 BUILTIN_ELEMENTS(num/sym/cat)
+      var eNum = elem.num || elem.z;
+      var eSym = elem.sym || elem.symbol;
+      var eName = elem.name;
+      var eCat = elem.cat || elem.category;
+      var difficulty = getElementDifficulty(eNum);
 
       // 检查难度是否已解锁
       if (!isDifficultyUnlocked(difficulty)) continue;
 
       // 检查是否已获得徽章
-      var alreadyWon = badges[elem.sym] && badges[elem.sym].won;
+      var alreadyWon = badges[eSym] && badges[eSym].won;
 
       result.push({
-        sym: elem.sym,
-        name: elem.name,
-        num: elem.num,
-        cat: elem.cat,
-        stars: elem.stars || 1,
+        sym: eSym,
+        name: eName,
+        num: eNum,
+        cat: eCat,
+        stars: elem.stars || elem.difficulty || 1,
         difficulty: difficulty,
         alreadyWon: !!alreadyWon,
-        wonDate: alreadyWon ? badges[elem.sym].date : null
+        wonDate: alreadyWon ? badges[eSym].date : null
       });
     }
 
