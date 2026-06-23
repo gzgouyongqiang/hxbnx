@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>有机物命名挑战 | 炼金试炼副本</title>
+<title>化学俗称大挑战 | 炼金试炼副本</title>
 <style>
 :root{
   --bg:#0a0e1a;--card:#11182b;--gold:#f0c040;--cyan:#67e8f9;--red:#f87171;
-  --green:#6ee7b7;--teal:#14b8a6;--orange:#fb923c;--text:#e2e8f0;
-  --muted:#94a3b8;--border:rgba(20,184,166,0.15);
+  --green:#6ee7b7;--purple:#a78bfa;--orange:#fb923c;--text:#e2e8f0;
+  --muted:#94a3b8;--border:rgba(103,232,249,0.15);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
@@ -18,22 +18,22 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 
 /* 头部 */
 .header{position:relative;z-index:10;text-align:center;padding:24px 16px 12px}
-.header h1{font-size:28px;background:linear-gradient(90deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.header h1{font-size:28px;background:linear-gradient(90deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
 .header p{color:var(--muted);font-size:13px}
 
 /* 导航 */
 .nav{position:relative;z-index:10;display:flex;justify-content:center;gap:8px;padding:0 16px 16px;flex-wrap:wrap}
 .nav-btn{padding:8px 18px;border-radius:20px;border:1px solid var(--border);background:rgba(17,24,43,0.8);color:var(--muted);font-size:13px;cursor:pointer;transition:all .3s}
-.nav-btn.active{background:linear-gradient(90deg,rgba(20,184,166,0.2),rgba(103,232,249,0.2));color:var(--teal);border-color:var(--teal)}
+.nav-btn.active{background:linear-gradient(90deg,rgba(240,192,64,0.2),rgba(103,232,249,0.2));color:var(--gold);border-color:var(--gold)}
 .nav-btn:hover{transform:translateY(-1px)}
 
 /* 主内容 */
-.main{position:relative;z-index:10;max-width:800px;margin:0 auto;padding:0 16px 40px}
+.main{position:relative;z-index:10;max-width:720px;margin:0 auto;padding:0 16px 40px}
 
 /* 关卡选择 */
 .level-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
 .level-card{padding:16px;border-radius:12px;border:1px solid var(--border);background:var(--card);cursor:pointer;transition:all .3s;text-align:center;position:relative;overflow:hidden}
-.level-card:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:0 8px 24px rgba(20,184,166,0.1)}
+.level-card:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 8px 24px rgba(103,232,249,0.1)}
 .level-card.locked{opacity:.5;cursor:not-allowed;filter:grayscale(.8)}
 .level-card.cleared{border-color:var(--green)}
 .level-card.cleared::after{content:'✓';position:absolute;top:6px;right:8px;color:var(--green);font-size:16px;font-weight:700}
@@ -46,30 +46,24 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 .game-area{display:none;background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;margin-top:16px}
 .game-area.active{display:block}
 .game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px}
-.game-title{font-size:18px;color:var(--teal)}
+.game-title{font-size:18px;color:var(--gold)}
 .game-stats{display:flex;gap:16px;font-size:13px;color:var(--muted)}
 .game-stats span{color:var(--cyan);font-weight:600}
 
 /* 进度条 */
 .progress-bar{height:6px;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:20px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--cyan));border-radius:3px;transition:width .5s}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));border-radius:3px;transition:width .5s}
 
 /* 题目 */
 .question-box{margin-bottom:20px}
-.question-type{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;margin-bottom:10px;background:rgba(20,184,166,0.1);color:var(--teal)}
+.question-type{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;margin-bottom:10px;background:rgba(103,232,249,0.1);color:var(--cyan)}
 .question-text{font-size:17px;line-height:1.6;margin-bottom:16px;min-height:48px}
 .question-text .highlight{color:var(--gold);font-weight:600}
-
-/* 结构展示 */
-.structure-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
-.structure-name{font-size:18px;color:var(--cyan);font-weight:600;margin-bottom:8px}
-.structure-formula{font-size:20px;color:var(--text);font-family:'Courier New',monospace;line-height:1.8;word-break:break-all}
-.structure-hint{font-size:12px;color:var(--muted);margin-top:8px}
 
 /* 选项 */
 .options{display:grid;gap:10px}
 .opt-btn{padding:14px 16px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.03);color:var(--text);font-size:15px;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:10px}
-.opt-btn:hover:not(.disabled){border-color:var(--teal);background:rgba(20,184,166,0.05)}
+.opt-btn:hover:not(.disabled){border-color:var(--cyan);background:rgba(103,232,249,0.05)}
 .opt-btn.correct{border-color:var(--green);background:rgba(110,231,183,0.1);color:var(--green)}
 .opt-btn.wrong{border-color:var(--red);background:rgba(248,113,113,0.1);color:var(--red)}
 .opt-btn.disabled{cursor:not-allowed;opacity:.7}
@@ -78,20 +72,18 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 .opt-btn.wrong .opt-label{background:var(--red);color:#fff;border-color:var(--red)}
 
 /* 解析 */
-.explanation{display:none;margin-top:16px;padding:16px;border-radius:10px;background:rgba(20,184,166,0.05);border:1px solid rgba(20,184,166,0.15);font-size:14px;line-height:1.7}
+.explanation{display:none;margin-top:16px;padding:16px;border-radius:10px;background:rgba(103,232,249,0.05);border:1px solid rgba(103,232,249,0.15);font-size:14px;line-height:1.7}
 .explanation.show{display:block}
-.explanation .exp-title{color:var(--teal);font-weight:600;margin-bottom:6px}
+.explanation .exp-title{color:var(--cyan);font-weight:600;margin-bottom:6px}
 .explanation .exp-wrong{color:var(--red)}
 .explanation .exp-correct{color:var(--green)}
-.explanation .naming-rule{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin-top:10px;border:1px solid var(--border)}
-.explanation .naming-rule-title{color:var(--gold);font-weight:600;margin-bottom:6px}
 
 /* 操作按钮 */
 .action-btns{display:flex;gap:10px;margin-top:20px;justify-content:center}
 .action-btn{padding:12px 28px;border-radius:24px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s}
-.btn-primary{background:linear-gradient(90deg,var(--teal),#0d9488);color:#fff}
+.btn-primary{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000}
 .btn-secondary{background:rgba(255,255,255,0.08);color:var(--text);border:1px solid var(--border)}
-.action-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(20,184,166,0.2)}
+.action-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(240,192,64,0.2)}
 
 /* 结算 */
 .result-screen{display:none;text-align:center;padding:40px 20px}
@@ -101,29 +93,30 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 .result-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
 .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:400px;margin:0 auto 24px}
 .stat-box{padding:16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border)}
-.stat-num{font-size:28px;font-weight:700;color:var(--teal)}
+.stat-num{font-size:28px;font-weight:700;color:var(--gold)}
 .stat-label{font-size:12px;color:var(--muted);margin-top:4px}
 
 /* 图鉴 */
-.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:16px}
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-top:16px}
 .coll-card{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);text-align:center;transition:all .3s;cursor:pointer}
-.coll-card:hover{transform:translateY(-2px);border-color:var(--teal)}
+.coll-card:hover{transform:translateY(-2px);border-color:var(--cyan)}
 .coll-card.locked{opacity:.4;filter:grayscale(1)}
-.coll-formula{font-size:14px;color:var(--cyan);font-weight:600;margin-bottom:4px;word-break:break-all}
+.coll-symbol{font-size:28px;margin-bottom:6px}
+.coll-formula{font-size:11px;color:var(--cyan);font-weight:600;margin-bottom:2px}
 .coll-name{font-size:12px;color:var(--text)}
-.coll-rule{font-size:11px;color:var(--muted);margin-top:4px}
-.coll-card.locked .coll-formula,.coll-card.locked .coll-name,.coll-card.locked .coll-rule{color:var(--muted)}
+.coll-card.locked .coll-formula,.coll-card.locked .coll-name{color:var(--muted)}
 
 /* 弹窗 */
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
 .modal.active{display:flex}
-.modal-content{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;max-width:420px;width:100%;text-align:center}
+.modal-content{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;max-width:400px;width:100%;text-align:center}
+.modal-symbol{font-size:48px;margin-bottom:12px}
 .modal-title{font-size:20px;color:var(--gold);margin-bottom:8px}
 .modal-info{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
 .modal-info span{color:var(--cyan)}
 
 /* 连击 */
-.combo-popup{position:fixed;top:20%;left:50%;transform:translateX(-50%) scale(0);padding:12px 24px;border-radius:20px;background:linear-gradient(90deg,var(--teal),var(--cyan));color:#000;font-size:18px;font-weight:700;z-index:50;transition:transform .3s;pointer-events:none}
+.combo-popup{position:fixed;top:20%;left:50%;transform:translateX(-50%) scale(0);padding:12px 24px;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--orange));color:#000;font-size:18px;font-weight:700;z-index:50;transition:transform .3s;pointer-events:none}
 .combo-popup.show{transform:translateX(-50%) scale(1)}
 
 /* 动画 */
@@ -146,7 +139,6 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
   .header h1{font-size:22px}
   .level-grid{grid-template-columns:repeat(2,1fr)}
   .result-stats{grid-template-columns:1fr}
-  .structure-formula{font-size:16px}
 }
 </style>
 </head>
@@ -154,14 +146,14 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 <canvas id="particles"></canvas>
 
 <div class="header">
-  <h1>📝 有机物命名挑战</h1>
-  <p>炼金试炼 · 副本模式 — 掌握IUPAC命名与习惯命名法</p>
+  <h1>⚗️ 化学俗称大挑战</h1>
+  <p>炼金试炼 · 副本模式 — 掌握43个高考高频俗称</p>
 </div>
 
 <div class="nav">
-  <button class="nav-btn active" onclick="showTab('levels')">关卡</button>
-  <button class="nav-btn" onclick="showTab('collection')">图鉴</button>
-  <button class="nav-btn" onclick="showTab('leaderboard')">排行</button>
+  <button class="nav-btn active" onclick="showTab('levels')">🗺️ 关卡</button>
+  <button class="nav-btn" onclick="showTab('collection')">📖 图鉴</button>
+  <button class="nav-btn" onclick="showTab('leaderboard')">🏆 排行</button>
 </div>
 
 <div class="main">
@@ -175,9 +167,9 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
     <div class="game-header">
       <div class="game-title" id="gameTitle">第1关</div>
       <div class="game-stats">
-        <div>得分: <span id="scoreNum">0</span></div>
-        <div>连对: <span id="comboNum">0</span></div>
-        <div>生命: <span id="lifeNum">3</span></div>
+        <div>⭐ 得分: <span id="scoreNum">0</span></div>
+        <div>🔥 连对: <span id="comboNum">0</span></div>
+        <div>❤️ 生命: <span id="lifeNum">3</span></div>
       </div>
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -191,7 +183,7 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
   <div id="resultScreen" class="result-screen">
     <div class="result-icon" id="resultIcon">🎉</div>
     <div class="result-title" id="resultTitle">通关成功！</div>
-    <div class="result-sub" id="resultSub">你掌握了本关所有有机物命名！</div>
+    <div class="result-sub" id="resultSub">你掌握了本关所有物质的俗称</div>
     <div class="result-stats">
       <div class="stat-box"><div class="stat-num" id="statScore">0</div><div class="stat-label">得分</div></div>
       <div class="stat-box"><div class="stat-num" id="statCombo">0</div><div class="stat-label">最高连对</div></div>
@@ -206,7 +198,7 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
   <!-- 图鉴 -->
   <div id="tab-collection" class="tab-content" style="display:none">
     <div style="text-align:center;margin-bottom:12px">
-      <span style="color:var(--muted);font-size:13px">已解锁: <span id="unlockCount" style="color:var(--teal);font-weight:600">0</span> / <span id="totalCount">0</span></span>
+      <span style="color:var(--muted);font-size:13px">已解锁: <span id="unlockCount" style="color:var(--gold);font-weight:600">0</span> / 43</span>
     </div>
     <div class="collection-grid" id="collectionGrid"></div>
   </div>
@@ -220,88 +212,85 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 <!-- 详情弹窗 -->
 <div class="modal" id="detailModal" onclick="closeModal()">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <div class="modal-title" id="modalTitle">化合物名称</div>
+    <div class="modal-symbol" id="modalSymbol">🧪</div>
+    <div class="modal-title" id="modalTitle">物质名称</div>
     <div class="modal-info" id="modalInfo"></div>
     <button class="action-btn btn-secondary" onclick="closeModal()" style="width:100%">关闭</button>
   </div>
 </div>
 
 <!-- 连击提示 -->
-<div class="combo-popup" id="comboPopup">连击 x3!</div>
+<div class="combo-popup" id="comboPopup">🔥 连击 x3!</div>
 
 <script src="assets/game.js"></script>
 <script>
-// ==================== 有机物命名题库 ====================
-const NAMING_QUESTIONS = {
-  // 关卡1: 烷烃命名（基础）
-  alkane: [
-    {structure:'CH₃-CH₂-CH₂-CH₃', name:'丁烷', type:'烷烃', rule:'直链烷烃，碳数4为丁'},
-    {structure:'CH₃-CH(CH₃)-CH₃', name:'2-甲基丙烷', type:'烷烃', rule:'最长碳链3个碳为丙，2号碳有1个甲基'},
-    {structure:'CH₃-C(CH₃)₂-CH₃', name:'2,2-二甲基丙烷', type:'烷烃', rule:'最长碳链3个碳，2号碳有2个甲基'},
-    {structure:'CH₃-CH₂-CH(CH₃)-CH₃', name:'2-甲基丁烷', type:'烷烃', rule:'最长碳链4个碳为丁，2号碳有1个甲基'},
-    {structure:'CH₃-CH₂-C(CH₃)₂-CH₃', name:'2,2-二甲基丁烷', type:'烷烃', rule:'最长碳链4个碳，2号碳有2个甲基'},
-    {structure:'CH₃-CH(CH₃)-CH(CH₃)-CH₃', name:'2,3-二甲基丁烷', type:'烷烃', rule:'最长碳链4个碳，2、3号碳各有1个甲基'}
+// ==================== 数据 ====================
+const SUBSTANCES = {
+  element: [
+    {formula:'Hg',name:'汞',nick:'水银',color:'银白色液体',icon:'💧',type:'单质'},
+    {formula:'S',name:'硫',nick:'硫磺',color:'淡黄色固体',icon:'🟡',type:'单质'},
+    {formula:'C',name:'碳',nick:'金刚石、石墨',color:'黑色/无色',icon:'⬛',type:'单质'}
   ],
-  // 关卡2: 烯烃/炔烃命名
-  alkene: [
-    {structure:'CH₂=CH-CH₃', name:'丙烯', type:'烯烃', rule:'含双键最长链3个碳为丙，双键位置默认1号'},
-    {structure:'CH₃-CH=CH-CH₃', name:'2-丁烯', type:'烯烃', rule:'含双键最长链4个碳为丁，双键在2号碳'},
-    {structure:'CH₂=C(CH₃)-CH₃', name:'2-甲基丙烯', type:'烯烃', rule:'含双键最长链3个碳，2号碳有1个甲基'},
-    {structure:'CH≡C-CH₂-CH₃', name:'1-丁炔', type:'炔烃', rule:'含三键最长链4个碳，三键在1号碳'},
-    {structure:'CH₃-C≡C-CH₃', name:'2-丁炔', type:'炔烃', rule:'含三键最长链4个碳，三键在2号碳'},
-    {structure:'CH₂=CH-CH=CH₂', name:'1,3-丁二烯', type:'二烯烃', rule:'含两个双键，最长链4个碳，双键在1、3号碳'}
+  oxide: [
+    {formula:'CO₂',name:'二氧化碳',nick:'干冰(固态)',color:'无色气体',icon:'❄️',type:'氧化物'},
+    {formula:'CaO',name:'氧化钙',nick:'生石灰',color:'白色固体',icon:'⬜',type:'氧化物'},
+    {formula:'Ca(OH)₂',name:'氢氧化钙',nick:'熟石灰、消石灰',color:'白色粉末',icon:'⬜',type:'氧化物'},
+    {formula:'Fe₂O₃',name:'氧化铁',nick:'铁红',color:'红棕色粉末',icon:'🟤',type:'氧化物'},
+    {formula:'Fe₃O₄',name:'四氧化三铁',nick:'磁性氧化铁',color:'黑色晶体',icon:'⬛',type:'氧化物'},
+    {formula:'SiO₂',name:'二氧化硅',nick:'石英、水晶',color:'无色透明',icon:'💎',type:'氧化物'}
   ],
-  // 关卡3: 芳香烃命名
-  aromatic: [
-    {structure:'C₆H₅-CH₃', name:'甲苯', type:'芳香烃', rule:'苯环上连1个甲基'},
-    {structure:'C₆H₅-CH₂-CH₃', name:'乙苯', type:'芳香烃', rule:'苯环上连1个乙基'},
-    {structure:'C₆H₅(CH₃)₂(1,2)', name:'邻二甲苯', type:'芳香烃', rule:'苯环上两个甲基相邻(1,2位)'},
-    {structure:'C₆H₅(CH₃)₂(1,3)', name:'间二甲苯', type:'芳香烃', rule:'苯环上两个甲基相隔1个碳(1,3位)'},
-    {structure:'C₆H₅(CH₃)₂(1,4)', name:'对二甲苯', type:'芳香烃', rule:'苯环上两个甲基相对(1,4位)'},
-    {structure:'C₆H₅-OH', name:'苯酚', type:'芳香烃', rule:'苯环上直接连羟基'}
+  acid: [
+    {formula:'HCl',name:'盐酸',nick:'盐酸(氢氯酸)',color:'无色液体',icon:'🧪',type:'酸'},
+    {formula:'H₂SO₄',name:'硫酸',nick:'磺镪水',color:'无色油状',icon:'🧪',type:'酸'},
+    {formula:'HNO₃',name:'硝酸',nick:'硝镪水',color:'无色液体',icon:'🧪',type:'酸'},
+    {formula:'CH₃COOH',name:'乙酸',nick:'醋酸',color:'无色液体',icon:'🍶',type:'酸'}
   ],
-  // 关卡4: 含氧衍生物
-  oxygen: [
-    {structure:'CH₃-CH₂-OH', name:'乙醇', type:'醇', rule:'羟基连在2个碳的链上'},
-    {structure:'CH₃-OH', name:'甲醇', type:'醇', rule:'最简单的醇，1个碳'},
-    {structure:'CH₃-CHO', name:'乙醛', type:'醛', rule:'醛基(-CHO)连在1个碳上，共2个碳'},
-    {structure:'CH₃-CO-CH₃', name:'丙酮', type:'酮', rule:'羰基在中间，共3个碳'},
-    {structure:'CH₃-COOH', name:'乙酸', type:'羧酸', rule:'羧基(-COOH)连在1个碳上，共2个碳'},
-    {structure:'HCOOH', name:'甲酸', type:'羧酸', rule:'最简单的羧酸，1个碳'},
-    {structure:'CH₃-COO-CH₂-CH₃', name:'乙酸乙酯', type:'酯', rule:'乙酸与乙醇形成的酯'},
-    {structure:'HCOO-CH₃', name:'甲酸甲酯', type:'酯', rule:'甲酸与甲醇形成的酯'},
-    {structure:'CH₃-O-CH₃', name:'甲醚', type:'醚', rule:'两个甲基通过氧连接'},
-    {structure:'C₂H₅-O-C₂H₅', name:'乙醚', type:'醚', rule:'两个乙基通过氧连接'}
+  base: [
+    {formula:'NaOH',name:'氢氧化钠',nick:'烧碱、火碱、苛性钠',color:'白色固体',icon:'🧂',type:'碱'},
+    {formula:'Ca(OH)₂',name:'氢氧化钙',nick:'熟石灰、消石灰',color:'白色粉末',icon:'⬜',type:'碱'},
+    {formula:'NH₃·H₂O',name:'一水合氨',nick:'氨水',color:'无色液体',icon:'💧',type:'碱'},
+    {formula:'KOH',name:'氢氧化钾',nick:'苛性钾',color:'白色固体',icon:'🧂',type:'碱'}
   ],
-  // 关卡5: 高考综合（含陷阱题）
-  advanced: [
-    {structure:'CH₃-CH(OH)-COOH', name:'2-羟基丙酸', type:'羟基酸', rule:'羧基优先，3个碳为丙酸，2号碳有羟基'},
-    {structure:'CH₂=CH-COOH', name:'丙烯酸', type:'不饱和酸', rule:'含双键和羧基，3个碳为丙烯酸'},
-    {structure:'HOOC-COOH', name:'乙二酸', type:'二元酸', rule:'两个羧基，2个碳为乙二酸'},
-    {structure:'CH₂OH-CHOH-CH₂OH', name:'丙三醇', type:'多元醇', rule:'3个碳，每个碳都有羟基'},
-    {structure:'C₆H₅-CH=CH₂', name:'苯乙烯', type:'芳香烯烃', rule:'苯环连乙烯基'},
-    {structure:'CH₃-CH₂-NH₂', name:'乙胺', type:'胺', rule:'氨基连在乙基上'},
-    {structure:'CH₃-CONH₂', name:'乙酰胺', type:'酰胺', rule:'酰胺键连在甲基上'},
-    {structure:'CH₂=CH-CN', name:'丙烯腈', type:'腈', rule:'含双键和氰基'}
+  salt: [
+    {formula:'Na₂CO₃',name:'碳酸钠',nick:'纯碱、苏打',color:'白色粉末',icon:'🧂',type:'盐'},
+    {formula:'NaHCO₃',name:'碳酸氢钠',nick:'小苏打',color:'白色晶体',icon:'🧂',type:'盐'},
+    {formula:'Na₂S₂O₃',name:'硫代硫酸钠',nick:'大苏打、海波',color:'无色晶体',icon:'🧂',type:'盐'},
+    {formula:'NaCl',name:'氯化钠',nick:'食盐',color:'无色晶体',icon:'🧂',type:'盐'},
+    {formula:'CaCO₃',name:'碳酸钙',nick:'石灰石、大理石',color:'白色固体',icon:'⬜',type:'盐'},
+    {formula:'CaSO₄·2H₂O',name:'硫酸钙晶体',nick:'石膏',color:'白色固体',icon:'⬜',type:'盐'},
+    {formula:'CuSO₄·5H₂O',name:'五水硫酸铜',nick:'胆矾、蓝矾',color:'蓝色晶体',icon:'🔵',type:'盐'},
+    {formula:'FeSO₄·7H₂O',name:'七水硫酸亚铁',nick:'绿矾',color:'浅绿色晶体',icon:'🟢',type:'盐'},
+    {formula:'KAl(SO₄)₂·12H₂O',name:'十二水硫酸铝钾',nick:'明矾',color:'无色晶体',icon:'🧂',type:'盐'},
+    {formula:'KMnO₄',name:'高锰酸钾',nick:'灰锰氧',color:'暗紫色晶体',icon:'🟣',type:'盐'},
+    {formula:'Ca(ClO)₂',name:'次氯酸钙',nick:'漂白粉(有效成分)',color:'白色粉末',icon:'⬜',type:'盐'},
+    {formula:'BaSO₄',name:'硫酸钡',nick:'钡餐、重晶石',color:'白色固体',icon:'⬜',type:'盐'}
+  ],
+  organic: [
+    {formula:'CH₄',name:'甲烷',nick:'沼气、天然气',color:'无色气体',icon:'🔥',type:'有机物'},
+    {formula:'CaC₂',name:'碳化钙',nick:'电石',color:'灰色固体',icon:'⬛',type:'有机物'},
+    {formula:'C₂H₂',name:'乙炔',nick:'电石气',color:'无色气体',icon:'🔥',type:'有机物'},
+    {formula:'C₂H₅OH',name:'乙醇',nick:'酒精',color:'无色液体',icon:'🍶',type:'有机物'},
+    {formula:'CH₃OH',name:'甲醇',nick:'木醇、木精',color:'无色液体',icon:'🍶',type:'有机物'},
+    {formula:'HCOOH',name:'甲酸',nick:'蚁酸',color:'无色液体',icon:'🐜',type:'有机物'},
+    {formula:'CH₃COOH',name:'乙酸',nick:'醋酸、冰醋酸',color:'无色液体',icon:'🍶',type:'有机物'},
+    {formula:'HOOC-COOH',name:'乙二酸',nick:'草酸',color:'无色晶体',icon:'🌿',type:'有机物'},
+    {formula:'C₆H₅OH',name:'苯酚',nick:'石炭酸',color:'无色晶体',icon:'🧪',type:'有机物'},
+    {formula:'C₁₂H₂₂O₁₁',name:'蔗糖',nick:'食糖',color:'白色晶体',icon:'🍬',type:'有机物'},
+    {formula:'C₆H₁₂O₆',name:'葡萄糖',nick:'血糖',color:'白色晶体',icon:'🍬',type:'有机物'},
+    {formula:'C₃H₅(ONO₂)₃',name:'三硝酸甘油酯',nick:'硝化甘油',color:'淡黄色液体',icon:'💥',type:'有机物'},
+    {formula:'C₁₇H₃₅COONa',name:'高级脂肪酸钠',nick:'肥皂',color:'白色固体',icon:'🧼',type:'有机物'},
+    {formula:'-(CH₂-CHCl)n-',name:'聚氯乙烯',nick:'PVC',color:'白色粉末',icon:'🏗️',type:'有机物'},
+    {formula:'-(CH₂-CH₂)n-',name:'聚乙烯',nick:'PE',color:'白色半透明',icon:'🏗️',type:'有机物'}
   ]
 };
 
-// ==================== 命名陷阱题（高考常见错误）====================
-const NAMING_TRAPS = [
-  {wrong:'2-乙基丁烷', correct:'3-甲基戊烷', reason:'主链选错，最长碳链应为5个碳(戊烷)，不是4个碳'},
-  {wrong:'1-甲基丙烷', correct:'丁烷', reason:'甲基在1号碳不是取代基，主链就是4个碳'},
-  {wrong:'3-甲基-2-丁烯', correct:'2-甲基-2-丁烯', reason:'编号应从靠近双键端开始，双键在2号碳'},
-  {wrong:'2-甲基-3-戊烯', correct:'4-甲基-2-戊烯', reason:'编号应从靠近双键端开始'},
-  {wrong:'1,1-二甲基乙烷', correct:'2-甲基丙烷', reason:'主链选错，最长链3个碳'},
-  {wrong:'3-丙基己烷', correct:'4-乙基庚烷', reason:'主链选错，最长链应为7个碳'}
-];
-
 const LEVELS = [
-  {id:'alkane',name:'烷烃命名',icon:'📏',desc:'直链/支链烷烃',color:'#67e8f9',count:6},
-  {id:'alkene',name:'烯炔命名',icon:'➿',desc:'双键/三键位置',color:'#fb923c',count:6},
-  {id:'aromatic',name:'芳香烃',icon:'⬡',desc:'苯环取代物',color:'#f0c040',count:6},
-  {id:'oxygen',name:'含氧衍生物',icon:'💧',desc:'醇/醛/酮/酸/酯',color:'#6ee7b7',count:10},
-  {id:'advanced',name:'高考综合',icon:'🎓',desc:'多官能团/陷阱题',color:'#a78bfa',count:8}
+  {id:'element',name:'单质秘境',icon:'💎',desc:'3种单质',color:'#67e8f9',count:3},
+  {id:'oxide',name:'氧化物峡谷',icon:'🏔️',desc:'6种氧化物',color:'#fb923c',count:6},
+  {id:'acid',name:'酸之试炼',icon:'🧪',desc:'4种酸',color:'#f87171',count:4},
+  {id:'base',name:'碱之深渊',icon:'🧂',desc:'4种碱',color:'#6ee7b7',count:4},
+  {id:'salt',name:'盐之迷宫',icon:'🧊',desc:'12种盐',color:'#a78bfa',count:12},
+  {id:'organic',name:'有机森林',icon:'🌲',desc:'15种有机物',color:'#f0c040',count:15}
 ];
 
 // ==================== 状态 ====================
@@ -314,18 +303,18 @@ let gameState = {
   currentQ: 0,
   questions: [],
   correctCount: 0,
-  unlocked: JSON.parse(localStorage.getItem('naming_unlocked') || '["alkane"]'),
-  cleared: JSON.parse(localStorage.getItem('naming_cleared') || '[]'),
-  collection: JSON.parse(localStorage.getItem('naming_collection') || '[]'),
-  scores: JSON.parse(localStorage.getItem('naming_scores') || '[]')
+  unlocked: JSON.parse(localStorage.getItem('nickname_unlocked') || '["element"]'),
+  cleared: JSON.parse(localStorage.getItem('nickname_cleared') || '[]'),
+  collection: JSON.parse(localStorage.getItem('nickname_collection') || '[]'),
+  scores: JSON.parse(localStorage.getItem('nickname_scores') || '[]')
 };
 
 // ==================== 错题本 ====================
 function addToWrongBook(q, selected){
   if(typeof HXBNX_GAME !== 'undefined' && HXBNX_GAME.addWrongQuestion){
     HXBNX_GAME.addWrongQuestion({
-      filename: 'side-organic-naming',
-      topicName: '有机物命名挑战 · ' + LEVELS[gameState.currentLevel].name,
+      filename: 'side-nickname',
+      topicName: '化学俗称大挑战 · ' + LEVELS[gameState.currentLevel].name,
       questionText: q.text,
       options: q.options,
       correctIndex: q.options.indexOf(q.correct),
@@ -378,54 +367,37 @@ function startLevel(idx){
 
 // ==================== 生成题目 ====================
 function generateQuestions(levelId){
-  const items = NAMING_QUESTIONS[levelId];
+  const items = SUBSTANCES[levelId];
   const qs = [];
-  
+  // 为每个物质生成2-3道题
   items.forEach(item => {
-    // 题型1: 结构→名称
-    const allNames = Object.values(NAMING_QUESTIONS).flat().map(x => x.name);
-    const distractors = shuffle(allNames.filter(n => n !== item.name)).slice(0, 3);
+    // 题1: 看俗称选化学式
     qs.push({
-      type: 'structure2name',
-      text: `下列化合物的正确命名是？`,
-      compound: item,
-      options: shuffle([item.name, ...distractors]),
-      correct: item.name,
+      type: 'name2formula',
+      text: `「${item.nick.split('、')[0]}」的化学式是？`,
+      options: shuffle([item.formula, ...getDistractors(levelId, item.formula, 3)]),
+      correct: item.formula,
       item: item
     });
-    
-    // 题型2: 名称→结构（高级关卡才有）
-    if(levelId === 'advanced') {
-      const otherItems = items.filter(x => x.name !== item.name).slice(0, 3);
-      qs.push({
-        type: 'name2structure',
-        text: `${item.name} 的结构简式是？`,
-        compound: item,
-        options: shuffle([item.structure, ...otherItems.map(x => x.structure)]),
-        correct: item.structure,
-        item: item
-      });
-    }
-  });
-  
-  // 添加陷阱题（仅高级关卡）
-  if(levelId === 'advanced') {
-    const traps = shuffle(NAMING_TRAPS).slice(0, 3);
-    traps.forEach(trap => {
-      const allCorrect = Object.values(NAMING_QUESTIONS).flat().map(x => x.name);
-      const distractors = shuffle(allCorrect.filter(n => n !== trap.correct)).slice(0, 3);
-      qs.push({
-        type: 'trap',
-        text: `某同学将化合物命名为「${trap.wrong}」，正确的命名应该是？`,
-        compound: {name:trap.correct, structure:'', type:'陷阱题', rule:trap.reason},
-        options: shuffle([trap.correct, ...distractors]),
-        correct: trap.correct,
-        item: {name:trap.correct, structure:'', type:'陷阱题', rule:trap.reason, wrong:trap.wrong}
-      });
+    // 题2: 看化学式选俗称
+    qs.push({
+      type: 'formula2name',
+      text: `${item.formula} 的俗称是？`,
+      options: shuffle([item.nick, ...getDistractors(levelId, item.nick, 3, true)]),
+      correct: item.nick,
+      item: item
     });
-  }
-  
+  });
+  // 随机打乱，取适量题目
   return shuffle(qs).slice(0, Math.min(qs.length, 12));
+}
+
+function getDistractors(levelId, correct, count, isName){
+  const all = [];
+  Object.values(SUBSTANCES).forEach(arr => arr.forEach(item => {
+    all.push(isName ? item.nick : item.formula);
+  }));
+  return shuffle(all.filter(x => x !== correct)).slice(0, count);
 }
 
 function shuffle(arr){
@@ -446,29 +418,10 @@ function showQuestion(){
   document.getElementById('lifeNum').textContent = '❤️'.repeat(gameState.life);
   document.getElementById('gameTitle').textContent = `${LEVELS[gameState.currentLevel].name} · ${gameState.currentQ + 1}/${gameState.questions.length}`;
 
-  const typeLabels = {structure2name:'🔍 结构→命名', name2structure:'🎯 命名→结构', trap:'⚠️ 纠错'};
-  
-  let structureHtml = '';
-  if(q.type === 'structure2name' || q.type === 'trap') {
-    structureHtml = `
-      <div class="structure-box">
-        <div class="structure-formula">${q.compound.structure || '请判断命名正误'}</div>
-        ${q.type==='trap'?`<div class="structure-hint">错误命名: ${q.item.wrong}</div>`:''}
-      </div>
-    `;
-  } else {
-    structureHtml = `
-      <div class="structure-box">
-        <div class="structure-name">${q.compound.name}</div>
-        <div class="structure-hint">选择正确的结构简式</div>
-      </div>
-    `;
-  }
-  
+  const typeLabels = {name2formula:'🔤 俗称→化学式', formula2name:'🧪 化学式→俗称'};
   document.getElementById('questionBox').innerHTML = `
     <div class="question-type">${typeLabels[q.type]}</div>
     <div class="question-text">${q.text.replace(/「(.+?)」/,'<span class="highlight">「$1」</span>')}</div>
-    ${structureHtml}
   `;
 
   const labels = ['A','B','C','D'];
@@ -514,27 +467,13 @@ function selectOption(idx, selected){
 
   // 显示解析
   const exp = document.getElementById('explanationBox');
-  let expHtml = `
+  exp.innerHTML = `
     <div class="exp-title">${isCorrect?'✅ 回答正确':'❌ 回答错误'}</div>
-    <div><strong>${q.item.name}</strong></div>
+    <div><strong>${q.item.formula}</strong> — ${q.item.name}</div>
+    <div>俗称：${q.item.nick}</div>
+    <div>颜色/状态：${q.item.color}</div>
+    <div style="margin-top:8px">分类：<span style="color:${getTypeColor(q.item.type)}">${q.item.type}</span></div>
   `;
-  
-  if(q.item.structure) {
-    expHtml += `<div>结构简式：${q.item.structure}</div>`;
-  }
-  
-  if(q.item.wrong) {
-    expHtml += `<div style="color:var(--red)">错误命名：${q.item.wrong}</div>`;
-  }
-  
-  expHtml += `
-    <div class="naming-rule">
-      <div class="naming-rule-title">📖 命名规则</div>
-      <div>${q.item.rule}</div>
-    </div>
-  `;
-  
-  exp.innerHTML = expHtml;
   exp.classList.add('show');
 
   document.getElementById('scoreNum').textContent = gameState.score;
@@ -544,20 +483,26 @@ function selectOption(idx, selected){
   if(gameState.life <= 0){
     document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(false)">查看结果</button>`;
   }else if(isCorrect){
+    // 回答正确：自动进入下一题或显示结果
     if(gameState.currentQ >= gameState.questions.length - 1){
-      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
-      setTimeout(function(){ showResult(true); }, 1500);
+      
+      setTimeout(() => showResult(true), 1500);
     }else{
-      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
-      setTimeout(function(){ nextQuestion(); }, 1500);
+      }else{
+      setTimeout(() => nextQuestion(), 1500);
     }
   }else{
+    // 回答错误：保留手动按钮
     if(gameState.currentQ >= gameState.questions.length - 1){
-      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+      
     }else{
-      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+      }else{
     }
   }
+
+function getTypeColor(type){
+  const colors = {单质:'#67e8f9',氧化物:'#fb923c',酸:'#f87171',碱:'#6ee7b7',盐:'#a78bfa',有机物:'#f0c040'};
+  return colors[type] || '#fff';
 }
 
 function nextQuestion(){
@@ -574,10 +519,9 @@ function showComboPopup(combo){
 
 // ==================== 解锁物质 ====================
 function unlockItem(item){
-  const key = item.name;
-  if(!gameState.collection.includes(key)){
-    gameState.collection.push(key);
-    localStorage.setItem('naming_collection', JSON.stringify(gameState.collection));
+  if(!gameState.collection.includes(item.formula)){
+    gameState.collection.push(item.formula);
+    localStorage.setItem('nickname_collection', JSON.stringify(gameState.collection));
   }
 }
 
@@ -591,25 +535,28 @@ function showResult(success){
 
   if(allCorrect && !gameState.cleared.includes(lv.id)){
     gameState.cleared.push(lv.id);
-    localStorage.setItem('naming_cleared', JSON.stringify(gameState.cleared));
+    localStorage.setItem('nickname_cleared', JSON.stringify(gameState.cleared));
+    // 解锁下一关
     const nextIdx = gameState.currentLevel + 1;
     if(nextIdx < LEVELS.length && !gameState.unlocked.includes(LEVELS[nextIdx].id)){
       gameState.unlocked.push(LEVELS[nextIdx].id);
-      localStorage.setItem('naming_unlocked', JSON.stringify(gameState.unlocked));
+      localStorage.setItem('nickname_unlocked', JSON.stringify(gameState.unlocked));
     }
   }
 
+  // 保存分数
   gameState.scores.push({level:lv.id,score:gameState.score,maxCombo:gameState.maxCombo,date:new Date().toLocaleDateString()});
-  localStorage.setItem('naming_scores', JSON.stringify(gameState.scores));
+  localStorage.setItem('nickname_scores', JSON.stringify(gameState.scores));
 
+  // 同步积分到总积分系统
   if(typeof HXBNX_GAME !== 'undefined' && gameState.score > 0){
-    HXBNX_GAME.addSideScore('side-organic-naming', gameState.score);
+    HXBNX_GAME.addSideScore('side-nickname', gameState.score);
   }
 
   document.getElementById('resultIcon').textContent = allCorrect ? '🎉' : gameState.life <= 0 ? '💔' : '⭐';
   document.getElementById('resultTitle').textContent = allCorrect ? '完美通关！' : gameState.life <= 0 ? '挑战失败' : '挑战完成';
   document.getElementById('resultSub').textContent = allCorrect
-    ? `你掌握了${lv.name}的所有有机物命名！`
+    ? `你掌握了${lv.name}的所有${lv.count}种物质俗称！`
     : `答对 ${gameState.correctCount}/${gameState.questions.length} 题，继续加油！`;
   document.getElementById('statScore').textContent = gameState.score;
   document.getElementById('statCombo').textContent = gameState.maxCombo;
@@ -638,28 +585,29 @@ function nextLevel(){
 // ==================== 图鉴 ====================
 function renderCollection(){
   const grid = document.getElementById('collectionGrid');
-  const all = Object.values(NAMING_QUESTIONS).flat();
+  const all = Object.values(SUBSTANCES).flat();
   document.getElementById('unlockCount').textContent = gameState.collection.length;
-  document.getElementById('totalCount').textContent = all.length;
   grid.innerHTML = all.map(item => {
-    const unlocked = gameState.collection.includes(item.name);
-    return `<div class="coll-card ${unlocked?'':'locked'}" onclick="${unlocked?`showDetail('${item.name}')`:''}">
-      <div class="coll-formula">${unlocked?item.structure:'???'}</div>
+    const unlocked = gameState.collection.includes(item.formula);
+    return `<div class="coll-card ${unlocked?'':'locked'}" onclick="${unlocked?`showDetail('${item.formula}')`:''}">
+      <div class="coll-symbol">${unlocked?item.icon:'🔒'}</div>
+      <div class="coll-formula">${item.formula}</div>
       <div class="coll-name">${unlocked?item.name:'???'}</div>
-      <div class="coll-rule">${unlocked?item.type:'???'}</div>
     </div>`;
   }).join('');
 }
 
-function showDetail(name){
-  const all = Object.values(NAMING_QUESTIONS).flat();
-  const item = all.find(x => x.name === name);
+function showDetail(formula){
+  const all = Object.values(SUBSTANCES).flat();
+  const item = all.find(x => x.formula === formula);
   if(!item) return;
+  document.getElementById('modalSymbol').textContent = item.icon;
   document.getElementById('modalTitle').textContent = item.name;
   document.getElementById('modalInfo').innerHTML = `
-    <div>结构简式：<span style="color:var(--cyan)">${item.structure}</span></div>
-    <div>类型：<span style="color:var(--teal)">${item.type}</span></div>
-    <div style="margin-top:8px">命名规则：${item.rule}</div>
+    <div>化学式：<span>${item.formula}</span></div>
+    <div>俗称：<span>${item.nick}</span></div>
+    <div>颜色/状态：<span>${item.color}</span></div>
+    <div>分类：<span style="color:${getTypeColor(item.type)}">${item.type}</span></div>
   `;
   document.getElementById('detailModal').classList.add('active');
 }
@@ -670,29 +618,28 @@ function closeModal(){
 
 // ==================== 排行榜 ====================
 function renderLeaderboard(){
-  const board = document.getElementById('leaderboard');
-  const sorted = gameState.scores.sort((a,b) => b.score - a.score).slice(0,10);
-  if(sorted.length === 0){
-    board.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">暂无记录，快去挑战吧！</div>';
+  const lb = document.getElementById('leaderboard');
+  if(gameState.scores.length === 0){
+    lb.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">暂无记录，快去挑战吧！</div>';
     return;
   }
-  board.innerHTML = sorted.map((s,i) => `
-    <div class="lb-row">
+  const sorted = [...gameState.scores].sort((a,b)=>b.score-a.score).slice(0,10);
+  lb.innerHTML = sorted.map((s,i) => {
+    const lv = LEVELS.find(l => l.id === s.level);
+    return `<div class="lb-row">
       <div class="lb-rank">${i+1}</div>
-      <div class="lb-name">${LEVELS.find(l=>l.id===s.level)?.name || s.level}</div>
+      <div class="lb-name">${lv?lv.name:s.level} · ${s.date}</div>
       <div class="lb-score">${s.score}分</div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 // ==================== 标签切换 ====================
 function showTab(tab){
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.getElementById('tab-'+tab).style.display = 'block';
+  document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
   event.target.classList.add('active');
-  document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
-  document.getElementById('tab-' + tab).style.display = 'block';
-  document.getElementById('gameArea').classList.remove('active');
-  document.getElementById('resultScreen').classList.remove('active');
   if(tab === 'collection') renderCollection();
   if(tab === 'leaderboard') renderLeaderboard();
 }
@@ -705,32 +652,26 @@ function initParticles(){
   canvas.height = window.innerHeight;
   const particles = [];
   for(let i=0;i<50;i++){
-    particles.push({
-      x:Math.random()*canvas.width,
-      y:Math.random()*canvas.height,
-      r:Math.random()*2+1,
-      dx:(Math.random()-0.5)*0.5,
-      dy:(Math.random()-0.5)*0.5,
-      alpha:Math.random()*0.5+0.2
-    });
+    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-.5)*.3,dy:(Math.random()-.5)*.3,alpha:Math.random()*.5+.1});
   }
-  function animate(){
+  function draw(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     particles.forEach(p => {
       p.x += p.dx; p.y += p.dy;
-      if(p.x<0||p.x>canvas.width) p.dx = -p.dx;
-      if(p.y<0||p.y>canvas.height) p.dy = -p.dy;
+      if(p.x<0||p.x>canvas.width) p.dx *= -1;
+      if(p.y<0||p.y>canvas.height) p.dy *= -1;
       ctx.beginPath();
       ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle = `rgba(20,184,166,${p.alpha})`;
+      ctx.fillStyle = `rgba(103,232,249,${p.alpha})`;
       ctx.fill();
     });
-    requestAnimationFrame(animate);
+    requestAnimationFrame(draw);
   }
-  animate();
+  draw();
   window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 }
 
+// 启动
 init();
 </script>
 </body>

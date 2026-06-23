@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -34,7 +34,7 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 .level-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
 .level-card{padding:16px;border-radius:12px;border:1px solid var(--border);background:var(--card);cursor:pointer;transition:all .3s;text-align:center;position:relative;overflow:hidden}
 .level-card:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 8px 24px rgba(103,232,249,0.1)}
-.level-card.locked{opacity:.5;cursor:not-allowed;filter:grayscale(.8)}
+.level-card.locked{display:none}
 .level-card.cleared{border-color:var(--green)}
 .level-card.cleared::after{content:'✓';position:absolute;top:6px;right:8px;color:var(--green);font-size:16px;font-weight:700}
 .level-icon{font-size:32px;margin-bottom:8px}
@@ -337,7 +337,7 @@ function renderLevels(){
   grid.innerHTML = LEVELS.map((lv,i) => {
     const unlocked = gameState.unlocked.includes(lv.id);
     const cleared = gameState.cleared.includes(lv.id);
-    return `<div class="level-card ${unlocked?'':'locked'} ${cleared?'cleared':''}" onclick="${unlocked?`startLevel(${i})`:''}">
+    return `<div class="level-card ${'':'locked'} ${cleared?'cleared':''}" onclick="`startLevel(${i})`">
       <div class="level-icon">${lv.icon}</div>
       <div class="level-name" style="color:${lv.color}">${lv.name}</div>
       <div class="level-desc">${lv.desc}</div>
@@ -482,12 +482,23 @@ function selectOption(idx, selected){
 
   if(gameState.life <= 0){
     document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(false)">查看结果</button>`;
-  }else if(gameState.currentQ >= gameState.questions.length - 1){
-    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+  }else if(isCorrect){
+    // 回答正确：自动进入下一题或显示结果
+    if(gameState.currentQ >= gameState.questions.length - 1){
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+      setTimeout(() => showResult(true), 1500);
+    }else{
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+      setTimeout(() => nextQuestion(), 1500);
+    }
   }else{
-    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+    // 回答错误：保留手动按钮
+    if(gameState.currentQ >= gameState.questions.length - 1){
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+    }else{
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+    }
   }
-}
 
 function getTypeColor(type){
   const colors = {单质:'#67e8f9',氧化物:'#fb923c',酸:'#f87171',碱:'#6ee7b7',盐:'#a78bfa',有机物:'#f0c040'};

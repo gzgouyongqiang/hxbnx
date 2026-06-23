@@ -718,7 +718,22 @@ function checkAnswer(idx) {
   // 显示解析
   document.getElementById('expText').textContent = q.explanation;
   document.getElementById('explanation').classList.add('show');
-  document.getElementById('nextArea').style.display = 'block';
+
+  if (idx === correctIdx) {
+    // 回答正确：自动进入下一题或显示结果
+    document.getElementById('nextArea').style.display = 'none';
+    const isLast = gameState.currentQ >= gameState.questions.length - 1;
+    setTimeout(() => {
+      if (isLast) {
+        showResult();
+      } else {
+        nextQuestion();
+      }
+    }, 1500);
+  } else {
+    // 回答错误：保留手动下一题按钮
+    document.getElementById('nextArea').style.display = 'block';
+  }
 
   updateStats();
 }

@@ -362,13 +362,12 @@ function init(){
 function renderLevels(){
   const grid = document.getElementById('levelGrid');
   grid.innerHTML = LEVELS.map((lv,i) => {
-    const unlocked = gameState.unlocked.includes(lv.id);
     const cleared = gameState.cleared.includes(lv.id);
-    return `<div class="level-card ${unlocked?'':'locked'} ${cleared?'cleared':''}" onclick="${unlocked?`startLevel(${i})`:''}">
+    return `<div class="level-card ${cleared?'cleared':''}" onclick="startLevel(${i})">
       <div class="level-icon">${lv.icon}</div>
       <div class="level-name" style="color:${lv.color}">${lv.name}</div>
       <div class="level-desc">${lv.desc}</div>
-      ${cleared?'<div class="level-progress">已通关</div>':unlocked?'<div class="level-progress">点击挑战</div>':'<div class="level-progress">🔒 未解锁</div>'}
+      ${cleared?'<div class="level-progress">已通关</div>':'<div class="level-progress">点击挑战</div>'}
     </div>`;
   }).join('');
 }
@@ -524,10 +523,20 @@ function selectOption(idx, selected){
 
   if(gameState.life <= 0){
     document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(false)">查看结果</button>`;
-  }else if(gameState.currentQ >= gameState.questions.length - 1){
-    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+  }else if(isCorrect){
+    if(gameState.currentQ >= gameState.questions.length - 1){
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+      setTimeout(() => showResult(true), 1500);
+    }else{
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+      setTimeout(() => nextQuestion(), 1500);
+    }
   }else{
-    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+    if(gameState.currentQ >= gameState.questions.length - 1){
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+    }else{
+      document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+    }
   }
 }
 
@@ -562,11 +571,6 @@ function showResult(success){
   if(allCorrect && !gameState.cleared.includes(lv.id)){
     gameState.cleared.push(lv.id);
     localStorage.setItem('fg_cleared', JSON.stringify(gameState.cleared));
-    const nextIdx = gameState.currentLevel + 1;
-    if(nextIdx < LEVELS.length && !gameState.unlocked.includes(LEVELS[nextIdx].id)){
-      gameState.unlocked.push(LEVELS[nextIdx].id);
-      localStorage.setItem('fg_unlocked', JSON.stringify(gameState.unlocked));
-    }
   }
 
   gameState.scores.push({level:lv.id,score:gameState.score,maxCombo:gameState.maxCombo,date:new Date().toLocaleDateString()});
@@ -597,7 +601,7 @@ function backToLevels(){
 
 function nextLevel(){
   const nextIdx = gameState.currentLevel + 1;
-  if(nextIdx < LEVELS.length && gameState.unlocked.includes(LEVELS[nextIdx].id)){
+  if(nextIdx < LEVELS.length){
     backToLevels();
     setTimeout(()=>startLevel(nextIdx),100);
   }else{
