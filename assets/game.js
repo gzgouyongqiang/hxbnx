@@ -53,7 +53,14 @@ const HXBNX_GAME = (function () {
       // 新增字段
       weekTasks: {},        // { "week_1": { review: true, practice: false, wrongbook: false } }
       dailyPracticeDone: {}, // { "2026-06-22": { nickname: true, equation: false, element: false } }
-      lastCheckinReward: '' // 上次签到奖励日期
+      lastCheckinReward: '', // 上次签到奖励日期
+      // 炼丹炉/宠物系统字段（与 alchemy.js 共享）
+      petCollection: {},     // { petId: { count, firstDate } }
+      pets: [],              // 炼丹历史记录
+      alchemyExp: 0,
+      alchemyTotalCount: 0,
+      alchemyDailyCount: 0,
+      alchemyLastDate: ''
     };
   }
 
