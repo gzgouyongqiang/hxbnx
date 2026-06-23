@@ -131,29 +131,64 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
 }
+/* 3D翻转卡片 */
 .pet-card {
-  background: var(--card);
-  border: 2px solid var(--border);
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.pet-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.pet-card:hover .pet-card-inner {
+  transform: rotateY(180deg);
+}
+.pet-card.flipped .pet-card-inner {
+  transform: rotateY(180deg);
+}
+.pet-card-front, .pet-card-back {
+  position: absolute;
+  width: 100%;
+  backface-visibility: hidden;
   border-radius: 16px;
   padding: 16px 12px;
   text-align: center;
-  transition: all 0.3s;
-  position: relative;
 }
-.pet-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+.pet-card-front {
+  background: var(--card);
+  border: 2px solid var(--border);
 }
-.pet-card.selected {
+.pet-card:hover .pet-card-front,
+.pet-card.selected .pet-card-front {
   border-color: var(--gold);
   box-shadow: 0 0 16px rgba(240,192,64,0.2);
+}
+.pet-card-back {
+  background: linear-gradient(135deg, #1a1f3a, #0f1525);
+  border: 2px solid var(--gold);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
 }
 .pet-card.locked {
   opacity: 0.4;
 }
 .pet-icon {
-  font-size: 40px;
+  font-size: 48px;
   margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 .pet-rarity {
   font-size: 11px;
@@ -177,6 +212,34 @@ body {
   padding: 2px 8px;
   display: inline-block;
 }
+/* 背面属性 */
+.pet-back-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.pet-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  margin: 2px 0;
+  font-size: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+}
+.pet-stat-label { color: var(--muted); }
+.pet-stat-value { color: var(--cyan); font-weight: 700; }
+.pet-skill {
+  margin-top: 8px;
+  padding: 6px;
+  background: rgba(240,192,64,0.1);
+  border-radius: 8px;
+  font-size: 11px;
+}
+.pet-skill-name { color: var(--gold); font-weight: 700; }
+.pet-skill-desc { color: var(--muted); margin-top: 2px; }
 .pet-actions {
   display: none;
   gap: 6px;
@@ -280,21 +343,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 10px;
 }
-.ency-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 8px;
-  text-align: center;
-  opacity: 0.3;
-}
-.ency-item.unlocked {
-  opacity: 1;
-  border-color: var(--gold);
-}
-.ency-icon { font-size: 32px; margin-bottom: 6px; }
-.ency-name { font-size: 12px; font-weight: 600; }
-.ency-formula { font-size: 11px; color: var(--cyan); }
+/* 图鉴使用pet-card样式，已合并 */
 
 /* 底部 */
 .footer-tip {
@@ -678,6 +727,9 @@ body {
     myPets.forEach(function(item) {
       var pet = item.def;
       html += '<div class="pet-card" data-id="' + pet.id + '">';
+      html += '<div class="pet-card-inner">';
+      // 正面
+      html += '<div class="pet-card-front">';
       html += '<div class="pet-icon">' + (pet.icon || TYPE_ICONS[pet.type] || '🧪') + '</div>';
       html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
       html += '<div class="pet-name">' + pet.name + '</div>';
@@ -685,8 +737,18 @@ body {
       html += '<div class="pet-count">拥有 ' + item.count + ' 只</div>';
       html += '<div class="pet-actions">';
       if (item.count > 1) {
-        html += '<button class="pet-btn dismantle" onclick="dismantlePet(\'' + pet.id + '\')">分解(+' + (pet.rarity * 10) + '分)</button>';
+        html += '<button class="pet-btn dismantle" onclick="event.stopPropagation();dismantlePet('' + pet.id + '')">分解(+' + (pet.rarity * 10) + '分)</button>';
       }
+      html += '</div>';
+      html += '</div>';
+      // 背面
+      html += '<div class="pet-card-back">';
+      html += '<div class="pet-back-title">' + pet.name + '</div>';
+      html += '<div class="pet-stat-row"><span class="pet-stat-label">攻击力</span><span class="pet-stat-value">' + pet.atk + '</span></div>';
+      html += '<div class="pet-stat-row"><span class="pet-stat-label">生命值</span><span class="pet-stat-value">' + pet.hp + '</span></div>';
+      html += '<div class="pet-stat-row"><span class="pet-stat-label">防御力</span><span class="pet-stat-value">' + pet.def + '</span></div>';
+      html += '<div class="pet-skill"><div class="pet-skill-name">' + pet.skill + '</div><div class="pet-skill-desc">' + pet.skillDesc + '</div></div>';
+      html += '</div>';
       html += '</div>';
       html += '</div>';
     });
@@ -726,10 +788,32 @@ body {
     var html = '';
     allPets.forEach(function(pet) {
       var isOwned = owned[pet.id];
-      html += '<div class="ency-item' + (isOwned ? ' unlocked' : '') + '">';
-      html += '<div class="ency-icon">' + (isOwned ? (pet.icon || TYPE_ICONS[pet.type] || '🧪') : '❓') + '</div>';
-      html += '<div class="ency-name">' + (isOwned ? pet.name : '???') + '</div>';
-      html += '<div class="ency-formula">' + (isOwned ? pet.formula : '???') + '</div>';
+      html += '<div class="pet-card' + (isOwned ? '' : ' locked') + '">';
+      html += '<div class="pet-card-inner">';
+      // 正面
+      html += '<div class="pet-card-front">';
+      html += '<div class="pet-icon">' + (isOwned ? (pet.icon || TYPE_ICONS[pet.type] || '🧪') : '❓') + '</div>';
+      html += '<div class="pet-rarity" style="color:' + (isOwned ? RARITY_COLORS[pet.rarity] : 'var(--muted)') + '">' + (isOwned ? RARITY_NAMES[pet.rarity] : '???') + '</div>';
+      html += '<div class="pet-name">' + (isOwned ? pet.name : '???') + '</div>';
+      html += '<div class="pet-formula">' + (isOwned ? pet.formula : '???') + '</div>';
+      html += '</div>';
+      // 背面
+      if (isOwned) {
+        html += '<div class="pet-card-back">';
+        html += '<div class="pet-back-title">' + pet.name + '</div>';
+        html += '<div class="pet-stat-row"><span class="pet-stat-label">攻击力</span><span class="pet-stat-value">' + pet.atk + '</span></div>';
+        html += '<div class="pet-stat-row"><span class="pet-stat-label">生命值</span><span class="pet-stat-value">' + pet.hp + '</span></div>';
+        html += '<div class="pet-stat-row"><span class="pet-stat-label">防御力</span><span class="pet-stat-value">' + pet.def + '</span></div>';
+        html += '<div class="pet-skill"><div class="pet-skill-name">' + pet.skill + '</div><div class="pet-skill-desc">' + pet.skillDesc + '</div></div>';
+        html += '</div>';
+      } else {
+        html += '<div class="pet-card-back" style="justify-content:center;">';
+        html += '<div style="font-size:40px;margin-bottom:10px;">🔒</div>';
+        html += '<div style="color:var(--muted);font-size:12px;">尚未解锁</div>';
+        html += '<div style="color:var(--gold);font-size:11px;margin-top:6px;">去炼丹炉获取</div>';
+        html += '</div>';
+      }
+      html += '</div>';
       html += '</div>';
     });
     grid.innerHTML = html;
