@@ -337,7 +337,7 @@ function renderLevels(){
   grid.innerHTML = LEVELS.map((lv,i) => {
     const unlocked = gameState.unlocked.includes(lv.id);
     const cleared = gameState.cleared.includes(lv.id);
-    return `<div class="level-card ${'':'locked'} ${cleared?'cleared':''}" onclick="`startLevel(${i})`">
+    return `<div class="level-card ${unlocked?'':'locked'} ${cleared?'cleared':''}" onclick="startLevel(${i})">
       <div class="level-icon">${lv.icon}</div>
       <div class="level-name" style="color:${lv.color}">${lv.name}</div>
       <div class="level-desc">${lv.desc}</div>
