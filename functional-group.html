@@ -1,1 +1,707 @@
-START
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>官能团识别大师 | 炼金试炼副本</title>
+<style>
+:root{
+  --bg:#0a0e1a;--card:#11182b;--gold:#f0c040;--cyan:#67e8f9;--red:#f87171;
+  --green:#6ee7b7;--purple:#a78bfa;--orange:#fb923c;--text:#e2e8f0;
+  --muted:#94a3b8;--border:rgba(103,232,249,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* 背景粒子 */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+/* 头部 */
+.header{position:relative;z-index:10;text-align:center;padding:24px 16px 12px}
+.header h1{font-size:28px;background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.header p{color:var(--muted);font-size:13px}
+
+/* 导航 */
+.nav{position:relative;z-index:10;display:flex;justify-content:center;gap:8px;padding:0 16px 16px;flex-wrap:wrap}
+.nav-btn{padding:8px 18px;border-radius:20px;border:1px solid var(--border);background:rgba(17,24,43,0.8);color:var(--muted);font-size:13px;cursor:pointer;transition:all .3s}
+.nav-btn.active{background:linear-gradient(90deg,rgba(167,139,250,0.2),rgba(103,232,249,0.2));color:var(--purple);border-color:var(--purple)}
+.nav-btn:hover{transform:translateY(-1px)}
+
+/* 主内容 */
+.main{position:relative;z-index:10;max-width:800px;margin:0 auto;padding:0 16px 40px}
+
+/* 关卡选择 */
+.level-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
+.level-card{padding:16px;border-radius:12px;border:1px solid var(--border);background:var(--card);cursor:pointer;transition:all .3s;text-align:center;position:relative;overflow:hidden}
+.level-card:hover{transform:translateY(-3px);border-color:var(--purple);box-shadow:0 8px 24px rgba(167,139,250,0.1)}
+.level-card.locked{opacity:.5;cursor:not-allowed;filter:grayscale(.8)}
+.level-card.cleared{border-color:var(--green)}
+.level-card.cleared::after{content:'✓';position:absolute;top:6px;right:8px;color:var(--green);font-size:16px;font-weight:700}
+.level-icon{font-size:32px;margin-bottom:8px}
+.level-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.level-desc{font-size:11px;color:var(--muted)}
+.level-progress{font-size:11px;color:var(--gold);margin-top:6px}
+
+/* 游戏区域 */
+.game-area{display:none;background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;margin-top:16px}
+.game-area.active{display:block}
+.game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px}
+.game-title{font-size:18px;color:var(--purple)}
+.game-stats{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+.game-stats span{color:var(--cyan);font-weight:600}
+
+/* 进度条 */
+.progress-bar{height:6px;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:3px;transition:width .5s}
+
+/* 题目 */
+.question-box{margin-bottom:20px}
+.question-type{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;margin-bottom:10px;background:rgba(167,139,250,0.1);color:var(--purple)}
+.question-text{font-size:17px;line-height:1.6;margin-bottom:16px;min-height:48px}
+.question-text .highlight{color:var(--gold);font-weight:600}
+
+/* 化合物展示 */
+.compound-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
+.compound-name{font-size:20px;color:var(--cyan);font-weight:600;margin-bottom:8px}
+.compound-structure{font-size:18px;color:var(--text);font-family:'Courier New',monospace;line-height:1.8}
+.compound-hint{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* 选项 */
+.options{display:grid;gap:10px}
+.opt-btn{padding:14px 16px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.03);color:var(--text);font-size:15px;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:10px}
+.opt-btn:hover:not(.disabled){border-color:var(--purple);background:rgba(167,139,250,0.05)}
+.opt-btn.correct{border-color:var(--green);background:rgba(110,231,183,0.1);color:var(--green)}
+.opt-btn.wrong{border-color:var(--red);background:rgba(248,113,113,0.1);color:var(--red)}
+.opt-btn.disabled{cursor:not-allowed;opacity:.7}
+.opt-label{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.opt-btn.correct .opt-label{background:var(--green);color:#000;border-color:var(--green)}
+.opt-btn.wrong .opt-label{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* 解析 */
+.explanation{display:none;margin-top:16px;padding:16px;border-radius:10px;background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);font-size:14px;line-height:1.7}
+.explanation.show{display:block}
+.explanation .exp-title{color:var(--purple);font-weight:600;margin-bottom:6px}
+.explanation .exp-wrong{color:var(--red)}
+.explanation .exp-correct{color:var(--green)}
+
+/* 操作按钮 */
+.action-btns{display:flex;gap:10px;margin-top:20px;justify-content:center}
+.action-btn{padding:12px 28px;border-radius:24px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s}
+.btn-primary{background:linear-gradient(90deg,var(--purple),#8b5cf6);color:#fff}
+.btn-secondary{background:rgba(255,255,255,0.08);color:var(--text);border:1px solid var(--border)}
+.action-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(167,139,250,0.2)}
+
+/* 结算 */
+.result-screen{display:none;text-align:center;padding:40px 20px}
+.result-screen.active{display:block}
+.result-icon{font-size:64px;margin-bottom:16px}
+.result-title{font-size:24px;margin-bottom:8px}
+.result-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:400px;margin:0 auto 24px}
+.stat-box{padding:16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border)}
+.stat-num{font-size:28px;font-weight:700;color:var(--purple)}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* 图鉴 */
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:16px}
+.coll-card{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);text-align:center;transition:all .3s;cursor:pointer}
+.coll-card:hover{transform:translateY(-2px);border-color:var(--purple)}
+.coll-card.locked{opacity:.4;filter:grayscale(1)}
+.coll-symbol{font-size:28px;margin-bottom:6px}
+.coll-formula{font-size:11px;color:var(--cyan);font-weight:600;margin-bottom:2px}
+.coll-name{font-size:12px;color:var(--text)}
+.coll-card.locked .coll-formula,.coll-card.locked .coll-name{color:var(--muted)}
+
+/* 弹窗 */
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.active{display:flex}
+.modal-content{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;max-width:400px;width:100%;text-align:center}
+.modal-symbol{font-size:48px;margin-bottom:12px}
+.modal-title{font-size:20px;color:var(--gold);margin-bottom:8px}
+.modal-info{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.modal-info span{color:var(--cyan)}
+
+/* 连击 */
+.combo-popup{position:fixed;top:20%;left:50%;transform:translateX(-50%) scale(0);padding:12px 24px;border-radius:20px;background:linear-gradient(90deg,var(--purple),var(--cyan));color:#000;font-size:18px;font-weight:700;z-index:50;transition:transform .3s;pointer-events:none}
+.combo-popup.show{transform:translateX(-50%) scale(1)}
+
+/* 动画 */
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.shake{animation:shake .4s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.pulse{animation:pulse .3s}
+
+/* 官能团标签 */
+.fg-tag{display:inline-block;padding:3px 10px;border-radius:8px;font-size:12px;margin:3px;background:rgba(167,139,250,0.15);color:var(--purple);border:1px solid rgba(167,139,250,0.3)}
+.fg-tag.highlight{background:rgba(240,192,64,0.15);color:var(--gold);border-color:rgba(240,192,64,0.3)}
+
+/* 排行榜 */
+.leaderboard{margin-top:16px}
+.lb-row{display:flex;align-items:center;padding:10px 12px;border-radius:8px;margin-bottom:6px;background:rgba(255,255,255,0.02)}
+.lb-row:nth-child(1){background:rgba(240,192,64,0.1);border:1px solid rgba(240,192,64,0.2)}
+.lb-row:nth-child(2){background:rgba(192,192,192,0.1);border:1px solid rgba(192,192,192,0.2)}
+.lb-row:nth-child(3){background:rgba(205,127,50,0.1);border:1px solid rgba(205,127,50,0.2)}
+.lb-rank{width:28px;font-weight:700;color:var(--gold)}
+.lb-name{flex:1;font-size:14px}
+.lb-score{color:var(--cyan);font-weight:600}
+
+@media(max-width:480px){
+  .header h1{font-size:22px}
+  .level-grid{grid-template-columns:repeat(2,1fr)}
+  .result-stats{grid-template-columns:1fr}
+  .compound-structure{font-size:14px}
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="header">
+  <h1>官能团识别大师</h1>
+  <p>炼金试炼 · 副本模式 — 识别有机物中的官能团</p>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('levels')">关卡</button>
+  <button class="nav-btn" onclick="showTab('collection')">图鉴</button>
+  <button class="nav-btn" onclick="showTab('leaderboard')">排行</button>
+</div>
+
+<div class="main">
+  <!-- 关卡选择 -->
+  <div id="tab-levels" class="tab-content">
+    <div class="level-grid" id="levelGrid"></div>
+  </div>
+
+  <!-- 游戏区域 -->
+  <div id="gameArea" class="game-area">
+    <div class="game-header">
+      <div class="game-title" id="gameTitle">第1关</div>
+      <div class="game-stats">
+        <div>得分: <span id="scoreNum">0</span></div>
+        <div>连对: <span id="comboNum">0</span></div>
+        <div>生命: <span id="lifeNum">3</span></div>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="question-box" id="questionBox"></div>
+    <div class="options" id="optionsBox"></div>
+    <div class="explanation" id="explanationBox"></div>
+    <div class="action-btns" id="actionBtns"></div>
+  </div>
+
+  <!-- 结算 -->
+  <div id="resultScreen" class="result-screen">
+    <div class="result-icon" id="resultIcon">🎉</div>
+    <div class="result-title" id="resultTitle">通关成功！</div>
+    <div class="result-sub" id="resultSub">你掌握了本关所有官能团识别！</div>
+    <div class="result-stats">
+      <div class="stat-box"><div class="stat-num" id="statScore">0</div><div class="stat-label">得分</div></div>
+      <div class="stat-box"><div class="stat-num" id="statCombo">0</div><div class="stat-label">最高连对</div></div>
+      <div class="stat-box"><div class="stat-num" id="statCorrect">0</div><div class="stat-label">正确数</div></div>
+    </div>
+    <div class="action-btns">
+      <button class="action-btn btn-primary" onclick="backToLevels()">返回关卡</button>
+      <button class="action-btn btn-secondary" onclick="nextLevel()">下一关</button>
+    </div>
+  </div>
+
+  <!-- 图鉴 -->
+  <div id="tab-collection" class="tab-content" style="display:none">
+    <div style="text-align:center;margin-bottom:12px">
+      <span style="color:var(--muted);font-size:13px">已解锁: <span id="unlockCount" style="color:var(--purple);font-weight:600">0</span> / <span id="totalCount">0</span></span>
+    </div>
+    <div class="collection-grid" id="collectionGrid"></div>
+  </div>
+
+  <!-- 排行榜 -->
+  <div id="tab-leaderboard" class="tab-content" style="display:none">
+    <div class="leaderboard" id="leaderboard"></div>
+  </div>
+</div>
+
+<!-- 详情弹窗 -->
+<div class="modal" id="detailModal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div class="modal-symbol" id="modalSymbol">🧬</div>
+    <div class="modal-title" id="modalTitle">官能团名称</div>
+    <div class="modal-info" id="modalInfo"></div>
+    <button class="action-btn btn-secondary" onclick="closeModal()" style="width:100%">关闭</button>
+  </div>
+</div>
+
+<!-- 连击提示 -->
+<div class="combo-popup" id="comboPopup">连击 x3!</div>
+
+<script src="assets/game.js"></script>
+<script>
+// ==================== 官能团数据库 ====================
+// 注意：苯环不是官能团，卤原子现在叫碳卤键
+const FUNCTIONAL_GROUPS = {
+  basic: [
+    {name:'碳碳双键', symbol:'C=C', example:'CH₂=CH₂ (乙烯)', icon:'➿', type:'烯烃', desc:'含有碳碳双键的烃类'},
+    {name:'碳碳三键', symbol:'C≡C', example:'CH≡CH (乙炔)', icon:'➰', type:'炔烃', desc:'含有碳碳三键的烃类'},
+    {name:'碳卤键', symbol:'C-X', example:'CH₃Cl (氯甲烷)', icon:'⚪', type:'卤代烃', desc:'碳原子与卤素原子相连'}
+  ],
+  oxygen: [
+    {name:'羟基', symbol:'-OH', example:'C₂H₅OH (乙醇)', icon:'💧', type:'醇/酚', desc:'氧氢键连在饱和碳上为醇，连在苯环上为酚'},
+    {name:'醛基', symbol:'-CHO', example:'HCHO (甲醛)', icon:'🏠', type:'醛', desc:'碳氧双键一端连氢'},
+    {name:'酮羰基', symbol:'C=O', example:'CH₃COCH₃ (丙酮)', icon:'🔴', type:'酮', desc:'碳氧双键两端连碳'},
+    {name:'羧基', symbol:'-COOH', example:'CH₃COOH (乙酸)', icon:'🍋', type:'羧酸', desc:'含有羰基和羟基'},
+    {name:'酯基', symbol:'-COO-', example:'CH₃COOCH₃ (乙酸甲酯)', icon:'🧴', type:'酯', desc:'羧酸与醇脱水形成'},
+    {name:'醚键', symbol:'-O-', example:'C₂H₅OC₂H₅ (乙醚)', icon:'🔗', type:'醚', desc:'氧原子连接两个烃基'}
+  ],
+  nitrogen: [
+    {name:'氨基', symbol:'-NH₂', example:'C₆H₅NH₂ (苯胺)', icon:'💙', type:'胺', desc:'氮原子连两个氢'},
+    {name:'酰胺键', symbol:'-CONH-', example:'CH₃CONH₂ (乙酰胺)', icon:'🧬', type:'酰胺', desc:'羰基与氨基相连'},
+    {name:'硝基', symbol:'-NO₂', example:'C₆H₅NO₂ (硝基苯)', icon:'💥', type:'硝基化合物', desc:'氮原子连两个氧'}
+  ],
+  special: [
+    {name:'磺酸基', symbol:'-SO₃H', example:'C₆H₅SO₃H (苯磺酸)', icon:'📄', type:'磺酸', desc:'硫原子连三个氧和一个羟基'},
+    {name:'氰基', symbol:'-CN', example:'CH₃CN (乙腈)', icon:'🔵', type:'腈', desc:'碳氮三键'}
+  ]
+};
+
+// ==================== 化合物题库（给出完整物质，指出官能团）====================
+const COMPOUNDS = {
+  basic: [
+    {name:'乙烯', structure:'CH₂=CH₂', groups:['碳碳双键'], formula:'C₂H₄', icon:'🔥'},
+    {name:'乙炔', structure:'CH≡CH', groups:['碳碳三键'], formula:'C₂H₂', icon:'🔥'},
+    {name:'氯乙烯', structure:'CH₂=CHCl', groups:['碳碳双键','碳卤键'], formula:'C₂H₃Cl', icon:'⚪'},
+    {name:'溴乙烷', structure:'CH₃CH₂Br', groups:['碳卤键'], formula:'C₂H₅Br', icon:'⚪'},
+    {name:'1,2-二溴乙烷', structure:'BrCH₂-CH₂Br', groups:['碳卤键'], formula:'C₂H₄Br₂', icon:'⚪'},
+    {name:'氯苯', structure:'C₆H₅Cl', groups:['碳卤键'], formula:'C₆H₅Cl', icon:'⬡'}
+  ],
+  oxygen: [
+    {name:'乙醇', structure:'CH₃CH₂OH', groups:['羟基'], formula:'C₂H₆O', icon:'🍶'},
+    {name:'苯酚', structure:'C₆H₅OH', groups:['羟基'], formula:'C₆H₆O', icon:'🧪'},
+    {name:'乙醛', structure:'CH₃CHO', groups:['醛基'], formula:'C₂H₄O', icon:'🏠'},
+    {name:'丙酮', structure:'CH₃COCH₃', groups:['酮羰基'], formula:'C₃H₆O', icon:'🔴'},
+    {name:'乙酸', structure:'CH₃COOH', groups:['羧基'], formula:'C₂H₄O₂', icon:'🍋'},
+    {name:'乙酸乙酯', structure:'CH₃COOCH₂CH₃', groups:['酯基'], formula:'C₄H₈O₂', icon:'🧴'},
+    {name:'乙醚', structure:'C₂H₅OC₂H₅', groups:['醚键'], formula:'C₄H₁₀O', icon:'🔗'},
+    {name:'甲酸', structure:'HCOOH', groups:['羧基','醛基'], formula:'CH₂O₂', icon:'🐜'},
+    {name:'水杨酸', structure:'C₆H₄(OH)COOH', groups:['羟基','羧基'], formula:'C₇H₆O₃', icon:'🌿'},
+    {name:'乙二酸', structure:'HOOC-COOH', groups:['羧基'], formula:'C₂H₂O₄', icon:'🌿'}
+  ],
+  nitrogen: [
+    {name:'乙酰胺', structure:'CH₃CONH₂', groups:['酰胺键'], formula:'C₂H₅NO', icon:'🧬'},
+    {name:'苯胺', structure:'C₆H₅NH₂', groups:['氨基'], formula:'C₆H₇N', icon:'💙'},
+    {name:'硝基苯', structure:'C₆H₅NO₂', groups:['硝基'], formula:'C₆H₅NO₂', icon:'💥'},
+    {name:'尿素', structure:'H₂N-CO-NH₂', groups:['酰胺键'], formula:'CH₄N₂O', icon:'🧬'},
+    {name:'乙腈', structure:'CH₃CN', groups:['氰基'], formula:'C₂H₃N', icon:'🔵'},
+    {name:'甘氨酸', structure:'H₂N-CH₂-COOH', groups:['氨基','羧基'], formula:'C₂H₅NO₂', icon:'🧬'}
+  ],
+  cyclic: [
+    {name:'乳酸', structure:'CH₃-CH(OH)-COOH', groups:['羟基','羧基'], formula:'C₃H₆O₃', icon:'🥛'},
+    {name:'丙烯酸', structure:'CH₂=CH-COOH', groups:['碳碳双键','羧基'], formula:'C₃H₄O₂', icon:'🧪'},
+    {name:'乙酸酐', structure:'(CH₃CO)₂O', groups:['酯基'], formula:'C₄H₆O₃', icon:'🧴'},
+    {name:'苯甲酸', structure:'C₆H₅COOH', groups:['羧基'], formula:'C₇H₆O₂', icon:'🍋'},
+    {name:'对羟基苯甲酸', structure:'HOC₆H₄COOH', groups:['羟基','羧基'], formula:'C₇H₆O₃', icon:'🌿'},
+    {name:'乙酰水杨酸', structure:'CH₃COOC₆H₄COOH', groups:['酯基','羧基'], formula:'C₉H₈O₄', icon:'💊'}
+  ],
+  advanced: [
+    {name:'葡萄糖', structure:'C₆H₁₂O₆ (多羟基醛)', groups:['羟基','醛基'], formula:'C₆H₁₂O₆', icon:'🍬'},
+    {name:'果糖', structure:'C₆H₁₂O₆ (多羟基酮)', groups:['羟基','酮羰基'], formula:'C₆H₁₂O₆', icon:'🍯'},
+    {name:'硬脂酸甘油酯', structure:'(C₁₇H₃₅COO)₃C₃H₅', groups:['酯基'], formula:'C₅₇H₁₁₀O₆', icon:'🧈'},
+    {name:'α-氨基酸', structure:'R-CH(NH₂)-COOH', groups:['氨基','羧基'], formula:'RCHNH₂COOH', icon:'🧬'},
+    {name:'二肽', structure:'H₂N-CHR-CO-NH-CHR-COOH', groups:['氨基','羧基','酰胺键'], formula:'varies', icon:'🧬'},
+    {name:'油脂', structure:'甘油三酯', groups:['酯基'], formula:'varies', icon:'🧈'}
+  ]
+};
+
+const LEVELS = [
+  {id:'basic',name:'基础官能团',icon:'🔬',desc:'双键/三键/碳卤键',color:'#67e8f9',count:6},
+  {id:'oxygen',name:'含氧官能团',icon:'💧',desc:'羟基/醛/酮/羧酸/酯/醚',color:'#fb923c',count:10},
+  {id:'nitrogen',name:'含氮官能团',icon:'💙',desc:'氨基/酰胺/硝基/氰基',color:'#6ee7b7',count:6},
+  {id:'cyclic',name:'环状与复合',icon:'⭕',desc:'多官能团化合物',color:'#f0c040',count:6},
+  {id:'advanced',name:'高考综合',icon:'🎓',desc:'糖类/油脂/蛋白质',color:'#a78bfa',count:6}
+];
+
+// ==================== 状态 ====================
+let gameState = {
+  currentLevel: 0,
+  score: 0,
+  combo: 0,
+  maxCombo: 0,
+  life: 3,
+  currentQ: 0,
+  questions: [],
+  correctCount: 0,
+  unlocked: JSON.parse(localStorage.getItem('fg_unlocked') || '["basic"]'),
+  cleared: JSON.parse(localStorage.getItem('fg_cleared') || '[]'),
+  collection: JSON.parse(localStorage.getItem('fg_collection') || '[]'),
+  scores: JSON.parse(localStorage.getItem('fg_scores') || '[]')
+};
+
+// ==================== 错题本 ====================
+function addToWrongBook(q, selected){
+  if(typeof HXBNX_GAME !== 'undefined' && HXBNX_GAME.addWrongQuestion){
+    HXBNX_GAME.addWrongQuestion({
+      filename: 'side-functional-group',
+      topicName: '官能团识别大师 · ' + LEVELS[gameState.currentLevel].name,
+      questionText: q.text,
+      options: q.options,
+      correctIndex: q.options.indexOf(q.correct),
+      wrongIndex: q.options.indexOf(selected)
+    });
+  }
+}
+
+// ==================== 初始化 ====================
+function init(){
+  renderLevels();
+  renderCollection();
+  renderLeaderboard();
+  initParticles();
+}
+
+// ==================== 关卡渲染 ====================
+function renderLevels(){
+  const grid = document.getElementById('levelGrid');
+  grid.innerHTML = LEVELS.map((lv,i) => {
+    const unlocked = gameState.unlocked.includes(lv.id);
+    const cleared = gameState.cleared.includes(lv.id);
+    return `<div class="level-card ${unlocked?'':'locked'} ${cleared?'cleared':''}" onclick="${unlocked?`startLevel(${i})`:''}">
+      <div class="level-icon">${lv.icon}</div>
+      <div class="level-name" style="color:${lv.color}">${lv.name}</div>
+      <div class="level-desc">${lv.desc}</div>
+      ${cleared?'<div class="level-progress">已通关</div>':unlocked?'<div class="level-progress">点击挑战</div>':'<div class="level-progress">🔒 未解锁</div>'}
+    </div>`;
+  }).join('');
+}
+
+// ==================== 开始关卡 ====================
+function startLevel(idx){
+  const lv = LEVELS[idx];
+  gameState.currentLevel = idx;
+  gameState.score = 0;
+  gameState.combo = 0;
+  gameState.maxCombo = 0;
+  gameState.life = 3;
+  gameState.currentQ = 0;
+  gameState.correctCount = 0;
+  gameState.questions = generateQuestions(lv.id);
+
+  document.getElementById('tab-levels').style.display = 'none';
+  document.getElementById('gameArea').classList.add('active');
+  document.getElementById('resultScreen').classList.remove('active');
+
+  showQuestion();
+}
+
+// ==================== 生成题目 ====================
+function generateQuestions(levelId){
+  const items = COMPOUNDS[levelId];
+  const qs = [];
+  
+  items.forEach(item => {
+    // 题型1: 给出化合物，选择含有的官能团
+    const mainGroup = item.groups[0];
+    const allGroups = Object.values(FUNCTIONAL_GROUPS).flat().map(g => g.name);
+    const distractors = shuffle(allGroups.filter(g => !item.groups.includes(g))).slice(0, 3);
+    qs.push({
+      type: 'identify',
+      text: `${item.name} (${item.structure}) 中含有的官能团是？`,
+      compound: item,
+      options: shuffle([mainGroup, ...distractors]),
+      correct: mainGroup,
+      item: item
+    });
+    
+    // 题型2: 给出官能团，选择含有该官能团的化合物
+    if(item.groups.length > 1) {
+      const secondGroup = item.groups[1];
+      const otherCompounds = items.filter(c => c.name !== item.name).slice(0, 3);
+      qs.push({
+        type: 'match',
+        text: `下列化合物中，含有「${secondGroup}」的是？`,
+        compound: item,
+        options: shuffle([item.name, ...otherCompounds.map(c => c.name)]),
+        correct: item.name,
+        item: item
+      });
+    }
+  });
+  
+  return shuffle(qs).slice(0, Math.min(qs.length, 12));
+}
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return a;
+}
+
+// ==================== 显示题目 ====================
+function showQuestion(){
+  const q = gameState.questions[gameState.currentQ];
+  if(!q || gameState.life <= 0){showResult(false);return}
+
+  const progress = ((gameState.currentQ) / gameState.questions.length * 100);
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('scoreNum').textContent = gameState.score;
+  document.getElementById('comboNum').textContent = gameState.combo;
+  document.getElementById('lifeNum').textContent = '❤️'.repeat(gameState.life);
+  document.getElementById('gameTitle').textContent = `${LEVELS[gameState.currentLevel].name} · ${gameState.currentQ + 1}/${gameState.questions.length}`;
+
+  const typeLabels = {identify:'🔍 识别官能团', match:'🎯 匹配化合物'};
+  
+  let compoundHtml = '';
+  if(q.compound) {
+    compoundHtml = `
+      <div class="compound-box">
+        <div class="compound-name">${q.compound.name}</div>
+        <div class="compound-structure">${q.compound.structure}</div>
+        <div class="compound-hint">分子式: ${q.compound.formula}</div>
+      </div>
+    `;
+  }
+  
+  document.getElementById('questionBox').innerHTML = `
+    <div class="question-type">${typeLabels[q.type]}</div>
+    <div class="question-text">${q.text.replace(/「(.+?)」/,'<span class="highlight">「$1」</span>')}</div>
+    ${compoundHtml}
+  `;
+
+  const labels = ['A','B','C','D'];
+  document.getElementById('optionsBox').innerHTML = q.options.map((opt,i) => `
+    <button class="opt-btn" onclick="selectOption(${i},'${opt.replace(/'/g,"\\'")}')">
+      <span class="opt-label">${labels[i]}</span>
+      <span>${opt}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('explanationBox').classList.remove('show');
+  document.getElementById('actionBtns').innerHTML = '';
+}
+
+// ==================== 选择答案 ====================
+function selectOption(idx, selected){
+  const q = gameState.questions[gameState.currentQ];
+  const btns = document.querySelectorAll('.opt-btn');
+  const isCorrect = selected === q.correct;
+
+  btns.forEach((btn,i) => {
+    btn.classList.add('disabled');
+    const optText = btn.querySelector('span:last-child').textContent;
+    if(optText === q.correct) btn.classList.add('correct');
+    else if(i === idx && !isCorrect) btn.classList.add('wrong');
+  });
+
+  if(isCorrect){
+    gameState.combo++;
+    if(gameState.combo > gameState.maxCombo) gameState.maxCombo = gameState.combo;
+    const bonus = gameState.combo >= 3 ? Math.floor(gameState.combo * 0.5) : 0;
+    gameState.score += 10 + bonus;
+    gameState.correctCount++;
+    unlockItem(q.item);
+    if(gameState.combo >= 3) showComboPopup(gameState.combo);
+  }else{
+    gameState.combo = 0;
+    gameState.life--;
+    addToWrongBook(q, selected);
+    document.getElementById('questionBox').classList.add('shake');
+    setTimeout(()=>document.getElementById('questionBox').classList.remove('shake'),400);
+  }
+
+  // 显示解析
+  const exp = document.getElementById('explanationBox');
+  const allGroups = q.item.groups.map(g => `<span class="fg-tag ${g===q.correct?'highlight':''}">${g}</span>`).join('');
+  exp.innerHTML = `
+    <div class="exp-title">${isCorrect?'✅ 回答正确':'❌ 回答错误'}</div>
+    <div><strong>${q.item.name}</strong> — ${q.item.structure}</div>
+    <div style="margin-top:8px">含有的官能团：${allGroups}</div>
+    <div style="margin-top:8px">分子式：${q.item.formula}</div>
+  `;
+  exp.classList.add('show');
+
+  document.getElementById('scoreNum').textContent = gameState.score;
+  document.getElementById('comboNum').textContent = gameState.combo;
+  document.getElementById('lifeNum').textContent = '❤️'.repeat(gameState.life);
+
+  if(gameState.life <= 0){
+    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(false)">查看结果</button>`;
+  }else if(gameState.currentQ >= gameState.questions.length - 1){
+    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="showResult(true)">完成挑战</button>`;
+  }else{
+    document.getElementById('actionBtns').innerHTML = `<button class="action-btn btn-primary" onclick="nextQuestion()">下一题 →</button>`;
+  }
+}
+
+function nextQuestion(){
+  gameState.currentQ++;
+  showQuestion();
+}
+
+function showComboPopup(combo){
+  const pop = document.getElementById('comboPopup');
+  pop.textContent = `🔥 连击 x${combo}! +${Math.floor(combo*0.5)}分`;
+  pop.classList.add('show');
+  setTimeout(()=>pop.classList.remove('show'),1200);
+}
+
+// ==================== 解锁物质 ====================
+function unlockItem(item){
+  if(!gameState.collection.includes(item.name)){
+    gameState.collection.push(item.name);
+    localStorage.setItem('fg_collection', JSON.stringify(gameState.collection));
+  }
+}
+
+// ==================== 结算 ====================
+function showResult(success){
+  const lv = LEVELS[gameState.currentLevel];
+  const allCorrect = gameState.correctCount >= gameState.questions.length;
+
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.add('active');
+
+  if(allCorrect && !gameState.cleared.includes(lv.id)){
+    gameState.cleared.push(lv.id);
+    localStorage.setItem('fg_cleared', JSON.stringify(gameState.cleared));
+    const nextIdx = gameState.currentLevel + 1;
+    if(nextIdx < LEVELS.length && !gameState.unlocked.includes(LEVELS[nextIdx].id)){
+      gameState.unlocked.push(LEVELS[nextIdx].id);
+      localStorage.setItem('fg_unlocked', JSON.stringify(gameState.unlocked));
+    }
+  }
+
+  gameState.scores.push({level:lv.id,score:gameState.score,maxCombo:gameState.maxCombo,date:new Date().toLocaleDateString()});
+  localStorage.setItem('fg_scores', JSON.stringify(gameState.scores));
+
+  if(typeof HXBNX_GAME !== 'undefined' && gameState.score > 0){
+    HXBNX_GAME.addSideScore('side-functional-group', gameState.score);
+  }
+
+  document.getElementById('resultIcon').textContent = allCorrect ? '🎉' : gameState.life <= 0 ? '💔' : '⭐';
+  document.getElementById('resultTitle').textContent = allCorrect ? '完美通关！' : gameState.life <= 0 ? '挑战失败' : '挑战完成';
+  document.getElementById('resultSub').textContent = allCorrect
+    ? `你掌握了${lv.name}的所有官能团识别！`
+    : `答对 ${gameState.correctCount}/${gameState.questions.length} 题，继续加油！`;
+  document.getElementById('statScore').textContent = gameState.score;
+  document.getElementById('statCombo').textContent = gameState.maxCombo;
+  document.getElementById('statCorrect').textContent = gameState.correctCount;
+
+  renderLevels();
+  renderCollection();
+  renderLeaderboard();
+}
+
+function backToLevels(){
+  document.getElementById('resultScreen').classList.remove('active');
+  document.getElementById('tab-levels').style.display = 'block';
+}
+
+function nextLevel(){
+  const nextIdx = gameState.currentLevel + 1;
+  if(nextIdx < LEVELS.length && gameState.unlocked.includes(LEVELS[nextIdx].id)){
+    backToLevels();
+    setTimeout(()=>startLevel(nextIdx),100);
+  }else{
+    backToLevels();
+  }
+}
+
+// ==================== 图鉴 ====================
+function renderCollection(){
+  const grid = document.getElementById('collectionGrid');
+  const all = Object.values(COMPOUNDS).flat();
+  document.getElementById('unlockCount').textContent = gameState.collection.length;
+  document.getElementById('totalCount').textContent = all.length;
+  grid.innerHTML = all.map(item => {
+    const unlocked = gameState.collection.includes(item.name);
+    return `<div class="coll-card ${unlocked?'':'locked'}" onclick="${unlocked?`showDetail('${item.name}')`:''}">
+      <div class="coll-symbol">${unlocked?item.icon:'🔒'}</div>
+      <div class="coll-formula">${item.name}</div>
+      <div class="coll-name">${unlocked?item.groups.join('、'):'???'}</div>
+    </div>`;
+  }).join('');
+}
+
+function showDetail(name){
+  const all = Object.values(COMPOUNDS).flat();
+  const item = all.find(x => x.name === name);
+  if(!item) return;
+  document.getElementById('modalSymbol').textContent = item.icon;
+  document.getElementById('modalTitle').textContent = item.name;
+  const groupsHtml = item.groups.map(g => `<span class="fg-tag">${g}</span>`).join('');
+  document.getElementById('modalInfo').innerHTML = `
+    <div>结构简式：<span style="color:var(--cyan)">${item.structure}</span></div>
+    <div>分子式：<span style="color:var(--cyan)">${item.formula}</span></div>
+    <div style="margin-top:8px">官能团：${groupsHtml}</div>
+  `;
+  document.getElementById('detailModal').classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('detailModal').classList.remove('active');
+}
+
+// ==================== 排行榜 ====================
+function renderLeaderboard(){
+  const board = document.getElementById('leaderboard');
+  const sorted = gameState.scores.sort((a,b) => b.score - a.score).slice(0,10);
+  if(sorted.length === 0){
+    board.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">暂无记录，快去挑战吧！</div>';
+    return;
+  }
+  board.innerHTML = sorted.map((s,i) => `
+    <div class="lb-row">
+      <div class="lb-rank">${i+1}</div>
+      <div class="lb-name">${LEVELS.find(l=>l.id===s.level)?.name || s.level}</div>
+      <div class="lb-score">${s.score}分</div>
+    </div>
+  `).join('');
+}
+
+// ==================== 标签切换 ====================
+function showTab(tab){
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+  document.getElementById('tab-' + tab).style.display = 'block';
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.remove('active');
+  if(tab === 'collection') renderCollection();
+  if(tab === 'leaderboard') renderLeaderboard();
+}
+
+// ==================== 粒子背景 ====================
+function initParticles(){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const particles = [];
+  for(let i=0;i<50;i++){
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*2+1,
+      dx:(Math.random()-0.5)*0.5,
+      dy:(Math.random()-0.5)*0.5,
+      alpha:Math.random()*0.5+0.2
+    });
+  }
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if(p.x<0||p.x>canvas.width) p.dx = -p.dx;
+      if(p.y<0||p.y>canvas.height) p.dy = -p.dy;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = `rgba(167,139,250,${p.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+  window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+}
+
+init();
+</script>
+</body>
+</html>
