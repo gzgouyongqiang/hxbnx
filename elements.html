@@ -27,6 +27,75 @@ body {
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
+  animation: pageFadeIn 0.6s ease-out;
+}
+
+/* ===== 页面加载淡入动画 ===== */
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== 星空/化学分子浮动背景 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(103,232,249,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(240,192,64,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 10%, rgba(167,139,250,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, rgba(110,231,183,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 40%, rgba(248,113,113,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 15% 85%, rgba(103,232,249,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 45%, rgba(240,192,64,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 15%, rgba(167,139,250,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 70%, rgba(110,231,183,0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 35%, rgba(248,113,113,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 55%, rgba(103,232,249,0.3) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 5% 50%, rgba(240,192,64,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 90%, rgba(167,139,250,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 65% 25%, rgba(110,231,183,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 70%, rgba(248,113,113,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 5%, rgba(103,232,249,0.35) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 95%, rgba(240,192,64,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 50%, rgba(167,139,250,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 75%, rgba(110,231,183,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 30%, rgba(248,113,113,0.25) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: starTwinkle 8s ease-in-out infinite alternate;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(1px 1px at 18% 42%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 38% 18%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 58% 62%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 32%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 8% 78%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 88%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 28% 52%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 68% 8%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 52% 48%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 22%, rgba(255,255,255,0.15) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: starTwinkle 6s ease-in-out infinite alternate-reverse;
+}
+@keyframes starTwinkle {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* 确保内容在背景之上 */
+.top-nav, .progress-section, .periodic-table-section, .legend-section,
+.achievements-section, .page-footer, .modal-overlay {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== 顶部导航 ===== */
@@ -106,15 +175,22 @@ body {
 .progress-bar-fill {
   height: 100%;
   border-radius: 5px;
-  background: linear-gradient(90deg, var(--cyan), var(--gold));
+  background: linear-gradient(90deg, var(--cyan), var(--purple), var(--gold), var(--orange), var(--cyan));
+  background-size: 300% 100%;
   transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  animation: progressFlow 3s linear infinite;
+}
+/* 进度条流光动画 */
+@keyframes progressFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 .progress-bar-fill::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
   animation: shimmer 2s infinite;
 }
 @keyframes shimmer {
@@ -176,7 +252,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   position: relative;
   overflow: hidden;
   user-select: none;
@@ -196,10 +272,34 @@ body {
   line-height: 1;
 }
 
-/* 已收集状态 */
+/* 元素格子hover tooltip */
+.element-cell:hover::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 24, 43, 0.95);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 400;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* 已收集状态 - 呼吸发光效果 */
 .element-cell.collected {
   border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+  animation: breathGlow 3s ease-in-out infinite;
+}
+@keyframes breathGlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(255,255,255,0.08), inset 0 0 4px rgba(255,255,255,0.03); }
+  50% { box-shadow: 0 0 14px rgba(255,255,255,0.2), inset 0 0 8px rgba(255,255,255,0.06); }
 }
 .element-cell.collected::before {
   content: '';
@@ -215,7 +315,7 @@ body {
 .element-cell.collected:hover {
   transform: scale(1.15);
   z-index: 10;
-  box-shadow: 0 0 16px rgba(255,255,255,0.2);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
 /* 未收集但可挑战 */
@@ -229,6 +329,7 @@ body {
   transform: scale(1.1);
   z-index: 10;
   border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(103,232,249,0.2);
 }
 
 /* 未解锁 */
@@ -240,6 +341,9 @@ body {
 }
 .element-cell.locked:hover {
   opacity: 0.5;
+}
+.element-cell.locked:hover::after {
+  display: none;
 }
 
 /* ===== 分类图例 ===== */
@@ -272,10 +376,13 @@ body {
   border: 1px solid var(--border);
   font-size: 12px;
   color: var(--text);
-  transition: all 0.2s;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
+/* 分类图例hover浮起效果 */
 .legend-item:hover {
   border-color: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 .legend-color {
   width: 12px;
@@ -315,12 +422,24 @@ body {
   background: var(--card);
   border-radius: 8px;
   border: 1px solid var(--border);
-  transition: all 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+/* 成就卡片hover浮起效果 */
+.achievement-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+/* 已达成成就 - 金色渐变背景 + 闪光效果 */
 .achievement-card.achieved {
   border-color: var(--gold);
-  background: rgba(240, 192, 64, 0.06);
-  box-shadow: 0 0 12px rgba(240, 192, 64, 0.1);
+  background: linear-gradient(135deg, rgba(240, 192, 64, 0.12), rgba(251, 146, 60, 0.08), rgba(240, 192, 64, 0.12));
+  background-size: 200% 200%;
+  animation: achievedShimmer 3s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(240, 192, 64, 0.15);
+}
+@keyframes achievedShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 .achievement-icon {
   width: 36px;
@@ -382,6 +501,16 @@ body {
   width: 100%;
   position: relative;
   animation: modalIn 0.3s ease;
+}
+/* 已收集元素弹窗 - 金色边框闪光效果 */
+.modal-content.collected-modal {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(240, 192, 64, 0.15), 0 0 40px rgba(240, 192, 64, 0.05);
+  animation: modalIn 0.3s ease, goldBorderPulse 2s ease-in-out infinite 0.3s;
+}
+@keyframes goldBorderPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(240, 192, 64, 0.15), 0 0 40px rgba(240, 192, 64, 0.05); }
+  50% { box-shadow: 0 0 30px rgba(240, 192, 64, 0.25), 0 0 60px rgba(240, 192, 64, 0.1); }
 }
 @keyframes modalIn {
   from { opacity: 0; transform: scale(0.9) translateY(20px); }
@@ -462,6 +591,52 @@ body {
   color: var(--muted);
 }
 
+/* 元素分类彩色标签 */
+.modal-category-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* 电子排布式显示区域 */
+.modal-electron-config {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: rgba(103, 232, 249, 0.04);
+  border: 1px solid rgba(103, 232, 249, 0.12);
+  border-radius: 10px;
+}
+.modal-electron-config .config-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.modal-electron-config .config-display {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 8px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+/* 电子排布式中的电子层数字高亮 */
+.config-shell {
+  color: var(--gold);
+  font-weight: 700;
+}
+.config-electrons {
+  color: var(--cyan);
+}
+
 /* 弹窗信息 */
 .modal-info {
   display: grid;
@@ -509,10 +684,14 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
   text-decoration: none;
   text-align: center;
   font-family: 'Microsoft YaHei', sans-serif;
+}
+/* 按钮按下缩放效果 */
+.btn-battle:active:not(:disabled) {
+  transform: scale(0.95);
 }
 .btn-battle.primary {
   background: linear-gradient(135deg, var(--cyan), #3b82f6);
@@ -588,15 +767,6 @@ body {
   .progress-section, .periodic-table-section, .legend-section, .achievements-section {
     padding: 12px;
   }
-}
-
-/* ===== 收集动画 ===== */
-@keyframes badgeGlow {
-  0%, 100% { box-shadow: 0 0 8px rgba(255,255,255,0.1); }
-  50% { box-shadow: 0 0 16px rgba(255,255,255,0.25); }
-}
-.element-cell.collected {
-  animation: badgeGlow 3s ease-in-out infinite;
 }
 
 /* ===== 滚动条美化 ===== */
@@ -870,6 +1040,8 @@ body {
     cell.className = 'element-cell';
     cell.setAttribute('data-z', elem.z);
     cell.setAttribute('data-symbol', elem.symbol);
+    /* 添加data-name属性用于tooltip显示 */
+    cell.setAttribute('data-name', elem.name);
 
     var isCollected = badges[elem.symbol] && badges[elem.symbol].won;
     var difficulty = elem.difficulty || 1;
@@ -968,9 +1140,9 @@ body {
       var card = document.createElement('div');
       card.className = 'achievement-card' + (achieved ? ' achieved' : '');
       card.innerHTML =
-        '<div class="achievement-icon">' + ach.icon + '</div>' +
+        '<div class="achievement-icon">' + (achieved ? '✨' : ach.icon) + '</div>' +
         '<div class="achievement-info">' +
-          '<div class="achievement-name">' + ach.name + '</div>' +
+          '<div class="achievement-name">' + (achieved ? '✨ ' : '') + ach.name + '</div>' +
           '<div class="achievement-desc">' + ach.desc + '</div>' +
         '</div>' +
         '<div class="achievement-status">' + (achieved ? '✓' : '○') + '</div>';
@@ -982,11 +1154,18 @@ body {
   function showElementDetail(elem, isCollected, isUnlocked, badges) {
     var overlay = document.getElementById('modalOverlay');
     var body = document.getElementById('modalBody');
+    var modalContent = document.getElementById('modalContent');
 
     var catInfo = CATEGORIES[elem.category] || { name: '未知', color: '#666', icon: '?' };
     var catColor = catInfo.color;
     var difficulty = elem.difficulty || 1;
     var diffName = DIFF_NAMES[difficulty] || '未知';
+
+    /* 已收集元素弹窗添加金色边框class */
+    modalContent.classList.remove('collected-modal');
+    if (isCollected) {
+      modalContent.classList.add('collected-modal');
+    }
 
     // 状态文本
     var statusHtml = '';
@@ -998,6 +1177,20 @@ body {
       statusHtml = '<span class="modal-badge-status challengeable-badge">可挑战</span>';
     } else {
       statusHtml = '<span class="modal-badge-status locked-badge">🔒 未解锁</span>';
+    }
+
+    /* 元素分类彩色标签 */
+    var categoryTagHtml = '<span class="modal-category-tag" style="background:' + hexToRgba(catColor, 0.15) + ';color:' + catColor + ';border:1px solid ' + hexToRgba(catColor, 0.3) + '">' + catInfo.icon + ' ' + catInfo.name + '</span>';
+
+    /* 电子排布式显示区域 */
+    var electronConfigHtml = '';
+    var electronConfig = elem.electronConfig || '';
+    if (electronConfig) {
+      electronConfigHtml =
+        '<div class="modal-electron-config">' +
+          '<div class="config-label">⚛️ 电子排布式</div>' +
+          '<div class="config-display">' + electronConfig + '</div>' +
+        '</div>';
     }
 
     // 解锁条件
@@ -1019,7 +1212,7 @@ body {
       actionsHtml = '<button class="btn-battle secondary" onclick="closeModal()">关闭</button>';
     } else if (isUnlocked) {
       actionsHtml =
-        '<a class="btn-battle primary" href="battle.html?element=' + elem.symbol + '">去挑战</a>' +
+        '<a class="btn-battle primary" href="battle.html?element=' + elem.symbol + '">⚔️ 挑战获取</a>' +
         '<button class="btn-battle secondary" onclick="closeModal()">关闭</button>';
     } else {
       actionsHtml =
@@ -1037,8 +1230,10 @@ body {
           '<div class="cn-name">' + elem.name + '</div>' +
           '<div class="en-name">' + elem.nameEn + '</div>' +
           statusHtml +
+          categoryTagHtml +
         '</div>' +
       '</div>' +
+      electronConfigHtml +
       '<div class="modal-info">' +
         '<div class="modal-info-item"><div class="label">分类</div><div class="value" style="color:' + catColor + '">' + catInfo.icon + ' ' + catInfo.name + '</div></div>' +
         '<div class="modal-info-item"><div class="label">周期 / 族</div><div class="value">第' + elem.period + '周期 / 第' + elem.group + '族</div></div>' +
