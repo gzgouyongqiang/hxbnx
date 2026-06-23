@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>宠物对战 | 化学不难学 - 游乐场</title>
+<title>元素徽章对战 | 化学不难学</title>
 <style>
+/* ===== 全局变量 ===== */
 :root {
   --bg: #0a0e1a;
   --card: #11182b;
@@ -28,355 +29,442 @@ body {
   overflow-x: hidden;
 }
 
-/* 顶部导航 */
+/* ===== 顶部导航 ===== */
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 14px 20px;
   border-bottom: 1px solid var(--border);
+  background: rgba(17,24,43,0.6);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+.nav-left { display: flex; align-items: center; gap: 16px; }
 .back-link {
   color: var(--muted);
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 .back-link:hover { color: var(--gold); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
 .score-display {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 6px 16px;
+  padding: 5px 14px;
+  font-size: 14px;
 }
-.score-icon { font-size: 18px; }
-.score-num { font-size: 18px; font-weight: 700; color: var(--gold); }
+.score-icon { font-size: 16px; }
+.score-num { font-weight: 700; color: var(--gold); }
+.badge-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 14px;
+}
+.badge-icon { font-size: 16px; }
+.badge-num { font-weight: 700; color: var(--cyan); }
 
-/* 标题区 */
-.header {
+/* ===== 页面标题 ===== */
+.page-header {
   text-align: center;
-  padding: 30px 20px 20px;
+  padding: 28px 20px 16px;
 }
-.header-title {
-  font-size: 32px;
+.page-title {
+  font-size: 30px;
   font-weight: 800;
-  background: linear-gradient(90deg, var(--red), var(--orange));
+  background: linear-gradient(135deg, var(--red), var(--orange), var(--gold));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.header-sub {
-  font-size: 14px;
+.page-sub {
+  font-size: 13px;
   color: var(--muted);
   margin-top: 6px;
 }
 
-/* 战斗统计 */
-.battle-stats {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 0 20px 20px;
-}
-.stat-badge {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 16px;
-  text-align: center;
-}
-.stat-badge .label { font-size: 11px; color: var(--muted); }
-.stat-badge .value { font-size: 20px; font-weight: 700; margin-top: 4px; }
-
-/* 阶段切换 */
+/* ===== 阶段容器 ===== */
 .phase {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 0 20px 20px;
+  padding: 0 16px 30px;
+  display: none;
 }
-.phase-title {
-  font-size: 20px;
+.phase.active { display: block; }
+
+/* ===== 阶段1：元素选择 ===== */
+.difficulty-group {
+  margin-bottom: 24px;
+}
+.difficulty-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.difficulty-label {
+  font-size: 15px;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 20px;
-  color: var(--gold);
 }
-
-/* 难度选择 */
-.difficulty-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-.diff-btn {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  color: var(--text);
-  font-family: inherit;
-}
-.diff-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
-.diff-btn.locked {
-  opacity: 0.4;
-  cursor: not-allowed;
-  filter: grayscale(0.5);
-}
-.diff-btn.locked:hover { border-color: var(--border); transform: none; }
-.diff-btn .diff-icon { font-size: 32px; margin-bottom: 8px; }
-.diff-btn .diff-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.diff-btn .diff-desc { font-size: 12px; color: var(--muted); }
-.diff-btn .diff-reward { font-size: 13px; color: var(--gold); margin-top: 6px; }
-
-/* 宠物选择 */
-.pet-select-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-}
-.pet-select-card {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 14px 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-}
-.pet-select-card:hover { border-color: var(--cyan); }
-.pet-select-card.selected {
-  border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(240,192,64,0.3);
-}
-.pet-select-card.disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-.pet-select-card .pet-icon { font-size: 36px; margin-bottom: 6px; }
-.pet-select-card .pet-name { font-size: 13px; font-weight: 700; }
-.pet-select-card .pet-formula { font-size: 11px; color: var(--cyan); }
-.pet-select-card .pet-stats {
-  font-size: 11px;
+.difficulty-count {
+  font-size: 12px;
   color: var(--muted);
-  margin-top: 4px;
+  margin-left: auto;
 }
-.pet-select-card .pet-rarity {
-  font-size: 10px;
-  margin-top: 4px;
-}
+.diff-1 .difficulty-label { color: var(--green); }
+.diff-2 .difficulty-label { color: var(--cyan); }
+.diff-3 .difficulty-label { color: var(--orange); }
+.diff-4 .difficulty-label { color: var(--purple); }
+.diff-5 .difficulty-label { color: var(--red); }
 
-/* 已选队伍 */
-.selected-team {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
+/* 元素网格 */
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
 }
-.team-slot {
-  width: 80px;
-  height: 80px;
-  border: 2px dashed var(--border);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  background: rgba(255,255,255,0.02);
-}
-.team-slot.filled {
-  border-style: solid;
-  border-color: var(--gold);
-  background: rgba(240,192,64,0.08);
-}
-
-/* 操作按钮 */
-.action-btns {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
-}
-.action-btn {
-  padding: 12px 32px;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.2s;
-}
-.action-btn.primary {
-  background: linear-gradient(135deg, var(--gold), var(--orange));
-  color: #000;
-}
-.action-btn.secondary {
+.element-card {
   background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.action-btn:hover { transform: scale(1.03); }
-.action-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* 战斗场景 */
-.battle-arena {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.battle-field {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 20px;
-  background: linear-gradient(180deg, rgba(17,24,43,0.8), rgba(10,14,26,0.9));
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  margin-bottom: 20px;
-  position: relative;
-}
-.battle-vs {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--red);
-  text-shadow: 0 0 20px rgba(248,113,113,0.5);
-}
-.battle-pet {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 10px;
   text-align: center;
-  min-width: 120px;
-}
-.battle-pet .pet-icon {
-  font-size: 56px;
-  margin-bottom: 8px;
-  transition: transform 0.3s;
-}
-.battle-pet.attacking .pet-icon {
-  transform: scale(1.2) translateX(20px);
-}
-.battle-pet.hurt .pet-icon {
-  animation: shake 0.5s;
-}
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
-}
-.battle-pet .pet-name {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.battle-pet .hp-bar {
-  width: 100px;
-  height: 8px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-  margin: 0 auto 6px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
   overflow: hidden;
 }
-.battle-pet .hp-fill {
-  height: 100%;
-  border-radius: 4px;
-  transition: width 0.5s, background 0.3s;
+.element-card:hover:not(.locked):not(.won) {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(240,192,64,0.15);
 }
-.battle-pet .hp-text {
-  font-size: 11px;
+.element-card.locked {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+.element-card.won {
+  border-color: var(--green);
+  background: rgba(110,231,183,0.06);
+  cursor: default;
+}
+.element-card .elem-z {
+  font-size: 10px;
   color: var(--muted);
+  position: absolute;
+  top: 6px;
+  left: 8px;
 }
-.battle-pet .pet-skill {
+.element-card .elem-sym {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 4px 0;
+  line-height: 1.2;
+}
+.element-card .elem-name {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.element-card .elem-stars {
   font-size: 11px;
-  color: var(--cyan);
-  margin-top: 4px;
+  color: var(--gold);
+}
+.element-card .elem-won-mark {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 14px;
+  color: var(--green);
+  font-weight: 700;
+}
+.element-card .elem-won-date {
+  font-size: 10px;
+  color: var(--green);
+  margin-top: 2px;
 }
 
-/* 队伍列表 */
-.team-list {
+/* ===== 阶段2：宠物选择 ===== */
+.pet-select-title {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+  color: var(--gold);
+}
+.pet-select-sub {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.pet-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+}
+.pet-card:hover:not(.disabled) {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+.pet-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 24px rgba(240,192,64,0.25);
+  background: rgba(240,192,64,0.05);
+}
+.pet-card .pet-icon { font-size: 40px; margin-bottom: 6px; }
+.pet-card .pet-name { font-size: 14px; font-weight: 700; }
+.pet-card .pet-formula { font-size: 12px; color: var(--cyan); margin-top: 2px; }
+.pet-card .pet-level {
+  font-size: 11px;
+  color: var(--gold);
+  margin-top: 4px;
+  background: rgba(240,192,64,0.1);
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 8px;
+}
+.pet-card .pet-power {
+  font-size: 11px;
+  color: var(--orange);
+  margin-top: 2px;
+}
+.pet-card .pet-stats-row {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
 }
-.team-member {
-  width: 50px;
-  height: 50px;
-  border: 2px solid var(--border);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  background: var(--card);
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
+.pet-card .pet-stats-row span { display: flex; align-items: center; gap: 2px; }
+.pet-card .pet-stats-row .stat-hp { color: var(--green); }
+.pet-card .pet-stats-row .stat-atk { color: var(--red); }
+.pet-card .pet-stats-row .stat-def { color: var(--cyan); }
+.pet-card .pet-rarity {
+  font-size: 10px;
+  margin-top: 4px;
+  font-weight: 700;
 }
-.team-member.active {
-  border-color: var(--gold);
-  box-shadow: 0 0 12px rgba(240,192,64,0.3);
+.no-pets-hint {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+  font-size: 15px;
 }
-.team-member.dead {
-  opacity: 0.3;
-  filter: grayscale(1);
-}
-.team-member .hp-mini {
-  position: absolute;
-  bottom: 2px;
-  left: 4px;
-  right: 4px;
-  height: 3px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 2px;
-}
-.team-member .hp-mini-fill {
-  height: 100%;
-  border-radius: 2px;
-  background: var(--green);
+.no-pets-hint a {
+  color: var(--gold);
+  text-decoration: underline;
 }
 
-/* 战斗日志 */
-.battle-log {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
-  max-height: 200px;
-  overflow-y: auto;
-  margin-bottom: 16px;
-}
-.battle-log .log-entry {
-  font-size: 13px;
-  padding: 4px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.battle-log .log-entry:last-child { border-bottom: none; }
-.battle-log .log-damage { color: var(--red); font-weight: 700; }
-.battle-log .log-heal { color: var(--green); font-weight: 700; }
-.battle-log .log-skill { color: var(--cyan); }
-.battle-log .log-crit { color: var(--gold); font-weight: 700; }
-.battle-log .log-ko { color: var(--red); font-weight: 700; }
-
-/* 战斗操作 */
-.battle-actions {
+/* 操作按钮区 */
+.action-bar {
   display: flex;
   justify-content: center;
   gap: 12px;
+  margin-top: 24px;
 }
-.battle-action-btn {
-  padding: 14px 28px;
+.btn {
+  padding: 12px 28px;
   border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.btn:hover { transform: scale(1.03); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #000;
+}
+.btn-secondary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ===== 阶段3：对战界面 ===== */
+.battle-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.battle-info-bar {
+  text-align: center;
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.battle-info-bar .elem-badge {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold);
+  margin: 0 6px;
+}
+.battle-info-bar .turn-info {
+  color: var(--cyan);
+  font-weight: 700;
+}
+.fighter-area {
+  background: linear-gradient(180deg, rgba(17,24,43,0.9), rgba(10,14,26,0.95));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.fighter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  transition: background 0.3s;
+}
+.fighter-icon {
+  font-size: 52px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.fighter-info { flex: 1; min-width: 0; }
+.fighter-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.fighter-level {
+  font-size: 11px;
+  color: var(--gold);
+}
+.fighter-skill {
+  font-size: 11px;
+  color: var(--purple);
+  margin-top: 2px;
+}
+.fighter-hp-section { margin-top: 6px; }
+.fighter-hp-text {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+.hp-bar-outer {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.hp-bar-inner {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease, background 0.4s;
+  background: linear-gradient(90deg, var(--green), #4ade80);
+}
+.hp-bar-inner.hp-mid {
+  background: linear-gradient(90deg, var(--orange), #fbbf24);
+}
+.hp-bar-inner.hp-low {
+  background: linear-gradient(90deg, var(--red), #ef4444);
+}
+.vs-divider {
+  text-align: center;
+  padding: 8px 0;
+  position: relative;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 12px 0;
+}
+.vs-divider::before,
+.vs-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 30px);
+  height: 1px;
+  background: var(--border);
+}
+.vs-divider::before { left: 0; }
+.vs-divider::after { right: 0; }
+.vs-text {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--red);
+  text-shadow: 0 0 16px rgba(248,113,113,0.4);
+  position: relative;
+  z-index: 1;
+}
+.battle-log-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+.battle-log-box::-webkit-scrollbar { width: 4px; }
+.battle-log-box::-webkit-scrollbar-track { background: transparent; }
+.battle-log-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.log-line {
+  font-size: 13px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  line-height: 1.5;
+  animation: logFadeIn 0.3s ease;
+}
+.log-line:last-child { border-bottom: none; }
+@keyframes logFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.log-player { color: var(--cyan); }
+.log-enemy { color: var(--red); }
+.log-system { color: var(--gold); font-weight: 700; }
+.battle-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.battle-btn {
+  padding: 14px 24px;
+  border-radius: 14px;
   border: 2px solid var(--border);
   background: var(--card);
   color: var(--text);
@@ -385,526 +473,746 @@ body {
   cursor: pointer;
   font-family: inherit;
   transition: all 0.2s;
-  min-width: 120px;
+  min-width: 110px;
+  text-align: center;
 }
-.battle-action-btn:hover {
+.battle-btn:hover:not(:disabled) {
   border-color: var(--gold);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(240,192,64,0.15);
 }
-.battle-action-btn.skill-btn {
-  border-color: var(--purple);
-  color: var(--purple);
+.battle-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
 }
-.battle-action-btn.skill-btn:hover {
-  background: rgba(167,139,250,0.1);
-}
+.battle-btn.btn-attack { border-color: rgba(248,113,113,0.4); }
+.battle-btn.btn-attack:hover:not(:disabled) { border-color: var(--red); box-shadow: 0 4px 16px rgba(248,113,113,0.2); }
+.battle-btn.btn-skill { border-color: rgba(167,139,250,0.4); }
+.battle-btn.btn-skill:hover:not(:disabled) { border-color: var(--purple); box-shadow: 0 4px 16px rgba(167,139,250,0.2); }
+.battle-btn.btn-defend { border-color: rgba(103,232,249,0.4); }
+.battle-btn.btn-defend:hover:not(:disabled) { border-color: var(--cyan); box-shadow: 0 4px 16px rgba(103,232,249,0.2); }
 
-/* 结果面板 */
-.result-panel {
+/* ===== 阶段4：结算界面 ===== */
+.result-container {
+  max-width: 440px;
+  margin: 0 auto;
   text-align: center;
-  padding: 40px 20px;
+}
+.result-panel {
   background: var(--card);
   border: 2px solid var(--border);
-  border-radius: 20px;
-  max-width: 400px;
-  margin: 0 auto;
+  border-radius: 24px;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
 }
-.result-panel .result-icon { font-size: 64px; margin-bottom: 16px; }
-.result-panel .result-title {
+.result-panel.win-panel { border-color: rgba(240,192,64,0.4); }
+.result-panel.lose-panel { border-color: rgba(248,113,113,0.3); }
+.result-icon { font-size: 64px; margin-bottom: 12px; }
+.result-title {
   font-size: 28px;
   font-weight: 800;
-  margin-bottom: 12px;
-}
-.result-panel .result-title.win { color: var(--gold); }
-.result-panel .result-title.lose { color: var(--red); }
-.result-panel .result-score {
-  font-size: 20px;
-  color: var(--gold);
-  font-weight: 700;
   margin-bottom: 8px;
 }
-.result-panel .result-detail {
+.result-title.win { color: var(--gold); }
+.result-title.lose { color: var(--red); }
+.result-subtitle {
   font-size: 14px;
   color: var(--muted);
+  margin-bottom: 24px;
+}
+.badge-reveal {
+  background: rgba(240,192,64,0.06);
+  border: 2px solid rgba(240,192,64,0.3);
+  border-radius: 20px;
+  padding: 24px;
   margin-bottom: 20px;
+  animation: badgeGlow 2s ease-in-out infinite;
 }
-
-/* 属性克制图 */
-.type-chart {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  max-width: 400px;
-  margin: 0 auto 20px;
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(240,192,64,0.1); }
+  50% { box-shadow: 0 0 40px rgba(240,192,64,0.25); }
 }
-.type-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
+.badge-reveal .badge-big-icon { font-size: 56px; margin-bottom: 8px; }
+.badge-reveal .badge-elem-sym {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.badge-reveal .badge-elem-name {
+  font-size: 16px;
+  color: var(--text);
+  margin-top: 2px;
+}
+.badge-reveal .badge-elem-num {
   font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
 }
-.type-item .type-name { font-weight: 700; margin-bottom: 4px; }
-.type-item .type-strong { color: var(--green); font-size: 11px; }
+.badge-reveal .badge-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  font-style: italic;
+}
+.rewards-list {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.reward-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  text-align: center;
+}
+.reward-item .reward-label {
+  font-size: 11px;
+  color: var(--muted);
+}
+.reward-item .reward-value {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.reward-item .reward-value.score-val { color: var(--gold); }
+.reward-item .reward-value.exp-val { color: var(--cyan); }
 
-/* 响应式 */
+/* ===== 动画 ===== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px) rotate(-1deg); }
+  40% { transform: translateX(6px) rotate(1deg); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes hurtFlash {
+  0% { background: transparent; }
+  30% { background: rgba(248,113,113,0.2); }
+  100% { background: transparent; }
+}
+@keyframes attackAnim {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(16px) scale(1.05); }
+  100% { transform: translateX(0); }
+}
+@keyframes enemyAttackAnim {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-16px) scale(1.05); }
+  100% { transform: translateX(0); }
+}
+.anim-shake { animation: shake 0.4s ease; }
+.anim-hurt { animation: hurtFlash 0.5s ease; }
+.anim-attack { animation: attackAnim 0.4s ease; }
+.anim-enemy-attack { animation: enemyAttackAnim 0.4s ease; }
+
+/* ===== 金色粒子特效 ===== */
+.particle-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0;
+  animation: particleFly 1.5s ease-out forwards;
+}
+@keyframes particleFly {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-200px) scale(0); }
+}
+
+/* ===== 响应式 ===== */
 @media (max-width: 600px) {
-  .header-title { font-size: 24px; }
-  .difficulty-grid { grid-template-columns: 1fr; }
-  .battle-field { padding: 20px 10px; }
-  .battle-pet .pet-icon { font-size: 40px; }
-  .battle-vs { font-size: 20px; }
-  .pet-select-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-title { font-size: 24px; }
+  .top-nav { padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
+  .nav-right { gap: 8px; }
+  .score-display, .badge-progress { padding: 4px 10px; font-size: 12px; }
+  .elements-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+  .element-card { padding: 10px 6px; }
+  .element-card .elem-sym { font-size: 22px; }
+  .pet-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .fighter { gap: 10px; padding: 12px; }
+  .fighter-icon { font-size: 40px; }
+  .battle-btn { padding: 12px 18px; font-size: 14px; min-width: 90px; }
+  .rewards-list { flex-direction: column; align-items: center; }
+}
+@media (max-width: 400px) {
+  .elements-grid { grid-template-columns: repeat(3, 1fr); }
+  .pet-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 
-<!-- 顶部导航 -->
+<!-- ===== 顶部导航 ===== -->
 <div class="top-nav">
-  <a href="index.html" class="back-link">← 返回日记</a>
-  <div class="score-display">
-    <span class="score-icon">💰</span>
-    <span class="score-num" id="scoreNum">0</span>
+  <div class="nav-left">
+    <a href="index.html" class="back-link">&larr; 返回主页</a>
+  </div>
+  <div class="nav-right">
+    <div class="score-display">
+      <span class="score-icon">&#x1F4B0;</span>
+      <span class="score-num" id="navScore">0</span>
+    </div>
+    <div class="badge-progress">
+      <span class="badge-icon">&#x1F3C5;</span>
+      <span class="badge-num" id="navBadge">0/118</span>
+    </div>
   </div>
 </div>
 
-<!-- 标题 -->
-<div class="header">
-  <div class="header-title">⚔️ 宠物对战</div>
-  <div class="header-sub">组建化学宠物战队，挑战AI对手！学习等级越高，可挑战难度越大</div>
+<!-- ===== 页面标题 ===== -->
+<div class="page-header">
+  <div class="page-title">&#x2694;&#xFE0F; 元素徽章对战</div>
+  <div class="page-sub">用炼丹获得的宠物挑战元素守护者，集齐118枚元素徽章</div>
 </div>
 
-<!-- 战斗统计 -->
-<div class="battle-stats">
-  <div class="stat-badge">
-    <div class="label">胜场</div>
-    <div class="value" id="statWins" style="color:var(--gold)">0</div>
-  </div>
-  <div class="stat-badge">
-    <div class="label">战斗积分</div>
-    <div class="value" id="statBattleScore" style="color:var(--cyan)">0</div>
-  </div>
+<!-- ===== 阶段1：选择挑战元素 ===== -->
+<div class="phase active" id="phase1">
+  <div id="elementsContainer"></div>
 </div>
 
-<!-- 阶段1: 选择难度 -->
-<div class="phase" id="phaseDifficulty">
-  <div class="phase-title">选择挑战难度</div>
-  <div class="difficulty-grid" id="difficultyGrid">
-    <!-- 由JS动态生成 -->
-  </div>
-
-  <div class="phase-title" style="margin-top:30px;font-size:16px;">属性克制关系</div>
-  <div class="type-chart" id="typeChart"></div>
-</div>
-
-<!-- 阶段2: 选择宠物 -->
-<div class="phase" id="phaseSelect" style="display:none">
-  <div class="phase-title">选择3只宠物组成战队</div>
-  <div class="selected-team" id="selectedTeam">
-    <div class="team-slot" id="slot0">?</div>
-    <div class="team-slot" id="slot1">?</div>
-    <div class="team-slot" id="slot2">?</div>
-  </div>
-  <div class="pet-select-grid" id="petSelectGrid"></div>
-  <div class="action-btns">
-    <button class="action-btn secondary" onclick="backToDifficulty()">返回</button>
-    <button class="action-btn primary" id="startBattleBtn" disabled onclick="startBattle()">开始战斗</button>
+<!-- ===== 阶段2：选择出战宠物 ===== -->
+<div class="phase" id="phase2">
+  <div class="pet-select-title">选择出战宠物</div>
+  <div class="pet-select-sub" id="petSelectSub">选择一只宠物挑战 <span id="targetElemName" style="color:var(--gold)"></span> 的守护者</div>
+  <div class="pet-grid" id="petGrid"></div>
+  <div class="action-bar">
+    <button class="btn btn-secondary" onclick="goBackToPhase1()">返回选择</button>
+    <button class="btn btn-primary" id="confirmPetBtn" disabled onclick="confirmPet()">确认出战</button>
   </div>
 </div>
 
-<!-- 阶段3: 战斗 -->
-<div class="phase" id="phaseBattle" style="display:none">
-  <div class="battle-arena">
-    <!-- 玩家队伍 -->
-    <div class="team-list" id="playerTeamList"></div>
-
-    <!-- 战斗场地 -->
-    <div class="battle-field">
-      <div class="battle-pet" id="playerPet">
-        <div class="pet-icon">🧪</div>
-        <div class="pet-name">-</div>
-        <div class="hp-bar"><div class="hp-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="hp-text">-/-</div>
-        <div class="pet-skill">-</div>
+<!-- ===== 阶段3：对战界面 ===== -->
+<div class="phase" id="phase3">
+  <div class="battle-container">
+    <div class="battle-info-bar">
+      <span>挑战元素</span>
+      <span class="elem-badge" id="battleElemBadge">H</span>
+      <span id="battleElemName">氢</span>
+      <span style="margin-left:12px" class="turn-info">第 <span id="battleTurn">1</span> 回合</span>
+    </div>
+    <div class="fighter-area">
+      <div class="fighter" id="enemyFighter">
+        <div class="fighter-icon" id="enemyIcon">&#x1F9CA;</div>
+        <div class="fighter-info">
+          <div class="fighter-name" id="enemyName">守护者</div>
+          <div class="fighter-level" id="enemyLevel">Lv.1</div>
+          <div class="fighter-skill" id="enemySkill"></div>
+          <div class="fighter-hp-section">
+            <div class="fighter-hp-text">
+              <span>HP</span>
+              <span id="enemyHpText">100/100</span>
+            </div>
+            <div class="hp-bar-outer">
+              <div class="hp-bar-inner" id="enemyHpBar" style="width:100%"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="battle-vs">VS</div>
-      <div class="battle-pet" id="aiPet">
-        <div class="pet-icon">🧪</div>
-        <div class="pet-name">-</div>
-        <div class="hp-bar"><div class="hp-fill" style="width:100%;background:var(--red)"></div></div>
-        <div class="hp-text">-/-</div>
-        <div class="pet-skill">-</div>
+      <div class="vs-divider">
+        <span class="vs-text">VS</span>
+      </div>
+      <div class="fighter" id="playerFighter">
+        <div class="fighter-icon" id="playerIcon">&#x1F9EA;</div>
+        <div class="fighter-info">
+          <div class="fighter-name" id="playerName">我的宠物</div>
+          <div class="fighter-level" id="playerLevel">Lv.1</div>
+          <div class="fighter-skill" id="playerSkill"></div>
+          <div class="fighter-hp-section">
+            <div class="fighter-hp-text">
+              <span>HP</span>
+              <span id="playerHpText">100/100</span>
+            </div>
+            <div class="hp-bar-outer">
+              <div class="hp-bar-inner" id="playerHpBar" style="width:100%"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- AI队伍 -->
-    <div class="team-list" id="aiTeamList"></div>
-
-    <!-- 战斗日志 -->
-    <div class="battle-log" id="battleLog"></div>
-
-    <!-- 战斗操作 -->
+    <div class="battle-log-box" id="battleLog"></div>
     <div class="battle-actions" id="battleActions">
-      <button class="battle-action-btn" onclick="doAction('attack')">普通攻击</button>
-      <button class="battle-action-btn skill-btn" onclick="doAction('skill')">技能攻击</button>
+      <button class="battle-btn btn-attack" id="btnAttack" onclick="playerAction('attack')">&#x2694;&#xFE0F; 攻击</button>
+      <button class="battle-btn btn-skill" id="btnSkill" onclick="playerAction('skill')">&#x2728; 技能</button>
+      <button class="battle-btn btn-defend" id="btnDefend" onclick="playerAction('defend')">&#x1F6E1;&#xFE0F; 防御</button>
     </div>
   </div>
 </div>
 
-<!-- 阶段4: 结果 -->
-<div class="phase" id="phaseResult" style="display:none">
-  <div class="result-panel">
-    <div class="result-icon" id="resultIcon">🏆</div>
-    <div class="result-title" id="resultTitle">胜利！</div>
-    <div class="result-score" id="resultScore">+0 积分</div>
-    <div class="result-detail" id="resultDetail"></div>
-    <div class="action-btns">
-      <button class="action-btn secondary" onclick="backToDifficulty()">返回主页</button>
-      <button class="action-btn primary" onclick="selectDifficulty(currentDifficulty)">再来一局</button>
+<!-- ===== 阶段4：结算界面 ===== -->
+<div class="phase" id="phase4">
+  <div class="result-container">
+    <div class="result-panel" id="resultPanel">
+      <div class="result-icon" id="resultIcon">&#x1F3C6;</div>
+      <div class="result-title" id="resultTitle">胜利</div>
+      <div class="result-subtitle" id="resultSubtitle"></div>
+      <div class="badge-reveal" id="badgeReveal" style="display:none">
+        <div class="badge-big-icon" id="badgeBigIcon"></div>
+        <div class="badge-elem-sym" id="badgeElemSym"></div>
+        <div class="badge-elem-name" id="badgeElemName"></div>
+        <div class="badge-elem-num" id="badgeElemNum"></div>
+        <div class="badge-desc" id="badgeDesc"></div>
+      </div>
+      <div class="rewards-list" id="rewardsList"></div>
+      <div class="action-bar">
+        <button class="btn btn-secondary" onclick="goBackToPhase1()">返回选择</button>
+        <button class="btn btn-primary" onclick="continueChallenge()">继续挑战</button>
+      </div>
     </div>
   </div>
 </div>
 
-<script src="assets/game.js?v=5"></script>
+<!-- ===== 脚本引用 ===== -->
+<script src="assets/game.js?v=2"></script>
 <script src="assets/alchemy.js"></script>
-<script src="assets/battle.js"></script>
+<script src="assets/elements-data.js"></script>
+<script src="assets/battle-system.js"></script>
+
 <script>
 (function() {
+  'use strict';
+
+  // ===== 常量定义 =====
   var RARITY_NAMES = ['', '普通', '稀有', '史诗', '传说', '神话'];
   var RARITY_COLORS = ['', '#94a3b8', '#6ee7b7', '#67e8f9', '#a78bfa', '#f0c040'];
-  var TYPE_NAMES = {
-    metal: '金属', nonmetal: '非金属', noble: '稀有气体', oxide: '氧化物',
-    acid: '酸', base: '碱', salt: '盐', organic: '有机物', special: '特殊'
-  };
-  var TYPE_ICONS = {
-    metal: '🔩', nonmetal: '💎', noble: '🎈', oxide: '💨',
-    acid: '🧪', base: '💧', salt: '🧂', organic: '🌿', special: '⚡'
-  };
+  var DIFF_NAMES = { 1: '基础元素', 2: '进阶元素', 3: '高级元素', 4: '稀有元素', 5: '传说元素' };
+  var DIFF_ICONS = { 1: '\u{1F331}', 2: '\u{1F525}', 3: '\u{26A1}', 4: '\u{1F451}', 5: '\u{2622}\uFE0F' };
 
-  var DIFF_ICONS = { easy: '🌱', normal: '🔥', hard: '⚡', expert: '👑' };
-  var LEVEL_NAMES = ['', '化学萌新', '化学学徒', '化学达人', '化学高手', '化学学霸', '化学大师', '化学宗师', '化学之神'];
+  // ===== 页面状态 =====
+  var selectedElementId = null;
+  var selectedPetId = null;
+  var currentBattleId = null;
+  var isBattleAnimating = false;
 
-  var currentDifficulty = 'normal';
-  var selectedPets = [];
-  var myPets = [];
-
+  // ===== 页面初始化 =====
   function init() {
-    updateScore();
-    updateBattleStats();
-    renderTypeChart();
-    renderDifficultyGrid();
-    loadMyPets();
+    updateNavInfo();
+    renderElements();
   }
 
-  function updateScore() {
-    var score = ALCHEMY_SYSTEM.getScore();
-    document.getElementById('scoreNum').textContent = score;
+  // ===== 更新顶部导航栏信息 =====
+  function updateNavInfo() {
+    var score = 0;
+    try {
+      var s = JSON.parse(localStorage.getItem('hxbnx_game_v2') || '{}');
+      score = s.score || 0;
+    } catch(e) {}
+    document.getElementById('navScore').textContent = score;
+    var stats = BATTLE_SYSTEM.getBadgeStats();
+    document.getElementById('navBadge').textContent = stats.total + '/118';
   }
 
-  function updateBattleStats() {
-    var stats = BATTLE_SYSTEM.getBattleStats();
-    document.getElementById('statWins').textContent = stats.wins;
-    document.getElementById('statBattleScore').textContent = stats.totalScore;
+  // ===== 阶段切换控制 =====
+  function showPhase(id) {
+    var phases = ['phase1', 'phase2', 'phase3', 'phase4'];
+    for (var i = 0; i < phases.length; i++) {
+      var el = document.getElementById(phases[i]);
+      if (el) el.classList.remove('active');
+    }
+    var target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
-  function renderTypeChart() {
-    var advantages = BATTLE_SYSTEM.getTypeAdvantage();
+  // ===== 阶段1：渲染元素选择列表 =====
+  function renderElements() {
+    var container = document.getElementById('elementsContainer');
+    var elements = BATTLE_SYSTEM.getAvailableElements();
+    var stats = BATTLE_SYSTEM.getBadgeStats();
+    var diffRanges = BATTLE_SYSTEM.getDifficultyRanges();
+
+    // 按难度分组
+    var groups = {};
+    for (var i = 0; i < elements.length; i++) {
+      var elem = elements[i];
+      var diff = elem.difficulty;
+      if (!groups[diff]) groups[diff] = [];
+      groups[diff].push(elem);
+    }
+
     var html = '';
-    for (var type in advantages) {
-      var strongAgainst = advantages[type].map(function(t) { return TYPE_NAMES[t] || t; }).join('、');
-      html += '<div class="type-item">';
-      html += '<div class="type-name">' + (TYPE_ICONS[type] || '') + ' ' + (TYPE_NAMES[type] || type) + '</div>';
-      html += '<div class="type-strong">克制: ' + strongAgainst + '</div>';
+    for (var d = 1; d <= 5; d++) {
+      var range = diffRanges[d - 1];
+      var isUnlocked = BATTLE_SYSTEM.isDifficultyUnlocked(d);
+      var elems = groups[d] || [];
+      var wonCount = stats.byDifficulty[d] || 0;
+      var totalCount = range.maxZ - range.minZ + 1;
+
+      html += '<div class="difficulty-group diff-' + d + '">';
+      html += '<div class="difficulty-header">';
+      html += '<span class="difficulty-label">' + DIFF_ICONS[d] + ' ' + DIFF_NAMES[d] + '（难度' + d + '）</span>';
+      html += '<span class="difficulty-count">已收集 ' + wonCount + '/' + totalCount;
+      if (!isUnlocked) {
+        html += ' <span style="color:var(--red)">&#x1F512; 未解锁</span>';
+      }
+      html += '</span></div>';
+
+      if (!isUnlocked) {
+        var reqText = '';
+        if (d === 2) reqText = '需要收集10个难度1徽章';
+        else if (d === 3) reqText = '需要收集20个总徽章';
+        else if (d === 4) reqText = '需要收集40个总徽章';
+        else if (d === 5) reqText = '需要收集60个总徽章';
+        html += '<div style="text-align:center;padding:16px;color:var(--muted);font-size:13px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
+        html += '&#x1F512; ' + reqText + '（当前 ' + stats.total + ' 个）</div>';
+      } else if (elems.length === 0) {
+        html += '<div style="text-align:center;padding:16px;color:var(--green);font-size:13px;background:var(--card);border-radius:12px;border:1px solid var(--border)">';
+        html += '&#x2705; 该难度所有元素徽章已收集完毕！</div>';
+      } else {
+        html += '<div class="elements-grid">';
+        for (var j = 0; j < elems.length; j++) {
+          var e = elems[j];
+          var starsHtml = '';
+          for (var s = 0; s < (e.stars || 1); s++) starsHtml += '\u{2B50}';
+
+          if (e.alreadyWon) {
+            html += '<div class="element-card won">';
+            html += '<span class="elem-z">#' + e.num + '</span>';
+            html += '<span class="elem-won-mark">\u2713</span>';
+            html += '<div class="elem-sym">' + e.sym + '</div>';
+            html += '<div class="elem-name">' + e.name + '</div>';
+            html += '<div class="elem-stars">' + starsHtml + '</div>';
+            html += '<div class="elem-won-date">' + (e.wonDate || '') + '</div>';
+            html += '</div>';
+          } else {
+            html += '<div class="element-card" onclick="selectElement(\'' + e.sym + '\')">';
+            html += '<span class="elem-z">#' + e.num + '</span>';
+            html += '<div class="elem-sym">' + e.sym + '</div>';
+            html += '<div class="elem-name">' + e.name + '</div>';
+            html += '<div class="elem-stars">' + starsHtml + '</div>';
+            html += '</div>';
+          }
+        }
+        html += '</div>';
+      }
       html += '</div>';
     }
-    document.getElementById('typeChart').innerHTML = html;
+    container.innerHTML = html;
   }
 
-  // ===== 动态渲染难度按钮 =====
-  function renderDifficultyGrid() {
-    var config = BATTLE_SYSTEM.getDifficultyConfig();
-    var playerLevel = HXBNX_GAME.getLearnLevel ? HXBNX_GAME.getLearnLevel().lv : 1;
-    var playerScore = HXBNX_GAME.getStatus ? HXBNX_GAME.getStatus().state.score || 0 : 0;
-    var html = '';
-
-    for (var key in config) {
-      var c = config[key];
-      var locked = playerLevel < c.minLevel;
-      var noScore = playerScore < c.cost;
-
-      html += '<button class="diff-btn' + (locked ? ' locked' : '') + '" onclick="selectDifficulty(\'' + key + '\')"';
-      if (locked) html += ' disabled';
-      html += '>';
-      html += '<div class="diff-icon">' + DIFF_ICONS[key] + '</div>';
-      html += '<div class="diff-name">' + c.name + '</div>';
-      if (locked) {
-        html += '<div class="diff-desc" style="color:var(--red)">🔒 需要' + LEVEL_NAMES[c.minLevel] + '（等级' + c.minLevel + '）</div>';
-        html += '<div class="diff-desc">快去学习升级吧！</div>';
-      } else {
-        html += '<div class="diff-desc">AI宠物 ' + RARITY_NAMES[c.aiMinRarity] + '~' + RARITY_NAMES[c.aiMaxRarity] + '</div>';
-        if (c.cost > 0) {
-          html += '<div class="diff-desc" style="color:' + (noScore ? 'var(--red)' : 'var(--muted)') + '">挑战消耗: ' + c.cost + ' 积分</div>';
-        } else {
-          html += '<div class="diff-desc">免费挑战</div>';
-        }
+  // ===== 点击元素卡片（进入阶段2）=====
+  window.selectElement = function(sym) {
+    selectedElementId = sym;
+    selectedPetId = null;
+    var elemName = sym;
+    var allElems = BATTLE_SYSTEM.getAvailableElements();
+    for (var i = 0; i < allElems.length; i++) {
+      if (allElems[i].sym === sym) {
+        elemName = allElems[i].name;
+        break;
       }
-      html += '<div class="diff-reward">胜利 +' + c.reward + ' 积分</div>';
-      html += '</button>';
     }
-
-    document.getElementById('difficultyGrid').innerHTML = html;
-  }
-
-  function loadMyPets() {
-    myPets = ALCHEMY_SYSTEM.getMyPets();
-  }
-
-  // ===== 难度选择 =====
-  window.selectDifficulty = function(diff) {
-    currentDifficulty = diff;
-    selectedPets = [];
-    updateSelectedTeam();
+    document.getElementById('targetElemName').textContent = elemName;
     renderPetSelect();
-    showPhase('phaseSelect');
+    showPhase('phase2');
   };
 
-  window.backToDifficulty = function() {
-    selectedPets = [];
-    showPhase('phaseDifficulty');
-  };
-
-  function showPhase(phaseId) {
-    document.getElementById('phaseDifficulty').style.display = 'none';
-    document.getElementById('phaseSelect').style.display = 'none';
-    document.getElementById('phaseBattle').style.display = 'none';
-    document.getElementById('phaseResult').style.display = 'none';
-    document.getElementById(phaseId).style.display = 'block';
-  }
-
-  // ===== 宠物选择 =====
+  // ===== 阶段2：渲染宠物选择列表 =====
   function renderPetSelect() {
-    var grid = document.getElementById('petSelectGrid');
-    if (myPets.length === 0) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">还没有宠物，快去<a href="alchemy.html" style="color:var(--gold)">炼丹炉</a>获取吧！</div>';
+    var grid = document.getElementById('petGrid');
+    var pets = BATTLE_SYSTEM.getMyBattlePets();
+    if (pets.length === 0) {
+      grid.innerHTML = '<div class="no-pets-hint">还没有宠物，快去<a href="alchemy.html">炼丹炉</a>获取宠物吧！</div>';
+      document.getElementById('confirmPetBtn').disabled = true;
       return;
     }
-
     var html = '';
-    myPets.forEach(function(item) {
-      var pet = item.def;
-      var isSelected = selectedPets.indexOf(pet.id) >= 0;
-      var isDisabled = !isSelected && selectedPets.length >= 3;
-      html += '<div class="pet-select-card' + (isSelected ? ' selected' : '') + (isDisabled ? ' disabled' : '') + '" data-id="' + pet.id + '" onclick="togglePet(\'' + pet.id + '\')">';
-      html += '<div class="pet-icon">' + (pet.icon || TYPE_ICONS[pet.type] || '🧪') + '</div>';
+    for (var i = 0; i < pets.length; i++) {
+      var pet = pets[i];
+      var isSelected = (selectedPetId === pet.id);
+      html += '<div class="pet-card' + (isSelected ? ' selected' : '') + '" onclick="selectPet(\'' + pet.id + '\')">';
+      html += '<div class="pet-icon">' + (pet.icon || '\u{1F9EA}') + '</div>';
       html += '<div class="pet-name">' + pet.name + '</div>';
       html += '<div class="pet-formula">' + pet.formula + '</div>';
-      html += '<div class="pet-stats">攻' + pet.atk + ' 血' + pet.hp + ' 防' + pet.def + '</div>';
-      html += '<div class="pet-rarity" style="color:' + RARITY_COLORS[pet.rarity] + '">' + RARITY_NAMES[pet.rarity] + '</div>';
+      html += '<div class="pet-level">Lv.' + pet.level + '</div>';
+      html += '<div class="pet-power">&#x2694;&#xFE0F; 战力 ' + pet.power + '</div>';
+      html += '<div class="pet-stats-row">';
+      html += '<span class="stat-hp">HP ' + pet.hp + '</span>';
+      html += '<span class="stat-atk">ATK ' + pet.atk + '</span>';
+      html += '<span class="stat-def">DEF ' + pet.def + '</span>';
       html += '</div>';
-    });
+      html += '<div class="pet-rarity" style="color:' + (RARITY_COLORS[pet.rarity] || '#94a3b8') + '">' + (RARITY_NAMES[pet.rarity] || '') + '</div>';
+      html += '</div>';
+    }
     grid.innerHTML = html;
+    document.getElementById('confirmPetBtn').disabled = !selectedPetId;
   }
 
-  window.togglePet = function(petId) {
-    var idx = selectedPets.indexOf(petId);
-    if (idx >= 0) {
-      selectedPets.splice(idx, 1);
-    } else if (selectedPets.length < 3) {
-      selectedPets.push(petId);
-    }
-    updateSelectedTeam();
+  // ===== 选择/取消选择宠物 =====
+  window.selectPet = function(petId) {
+    selectedPetId = (selectedPetId === petId) ? null : petId;
     renderPetSelect();
   };
 
-  function updateSelectedTeam() {
-    for (var i = 0; i < 3; i++) {
-      var slot = document.getElementById('slot' + i);
-      if (selectedPets[i]) {
-        var pet = ALCHEMY_SYSTEM.getPetById(selectedPets[i]);
-        slot.textContent = pet.icon || TYPE_ICONS[pet.type] || '🧪';
-        slot.classList.add('filled');
-      } else {
-        slot.textContent = '?';
-        slot.classList.remove('filled');
-      }
-    }
-    document.getElementById('startBattleBtn').disabled = selectedPets.length < 3;
-  }
-
-  // ===== 开始战斗 =====
-  window.startBattle = function() {
-    if (selectedPets.length < 3) return;
-    var team = selectedPets.map(function(id) { return { id: id }; });
-    var result = BATTLE_SYSTEM.createBattle(team, currentDifficulty);
+  // ===== 确认出战（进入阶段3）=====
+  window.confirmPet = function() {
+    if (!selectedElementId || !selectedPetId) return;
+    var result = BATTLE_SYSTEM.startBattle(selectedElementId, selectedPetId);
     if (!result.ok) {
       alert(result.msg);
       return;
     }
-    showPhase('phaseBattle');
-    renderBattle();
-    updateScore();
-    addLog('战斗开始！第1回合', 'info');
+    currentBattleId = result.battleId;
+    var battle = result.battleState;
+    var elem = result.element;
+    document.getElementById('battleElemBadge').textContent = elem.sym;
+    document.getElementById('battleElemName').textContent = elem.name;
+    document.getElementById('battleTurn').textContent = '1';
+    renderBattleScene(battle);
+    document.getElementById('battleLog').innerHTML = '';
+    addLog('&#x1F3AE; 对战开始！挑战 ' + elem.name + '（' + elem.sym + '）的守护者', 'system');
+    setBattleButtons(true);
+    isBattleAnimating = false;
+    showPhase('phase3');
   };
 
   // ===== 渲染战斗场景 =====
-  function renderBattle() {
-    var battle = BATTLE_SYSTEM.getCurrentBattle();
-    if (!battle) return;
-
-    // 渲染玩家队伍
-    var playerHtml = '';
-    battle.playerTeam.forEach(function(pet, idx) {
-      var isActive = idx === battle.playerActive;
-      var isDead = pet.currentHp <= 0;
-      var hpPercent = Math.round(pet.currentHp / pet.maxHp * 100);
-      playerHtml += '<div class="team-member' + (isActive ? ' active' : '') + (isDead ? ' dead' : '') + '" onclick="switchPet(' + idx + ')">';
-      playerHtml += pet.icon || TYPE_ICONS[pet.type] || '🧪';
-      playerHtml += '<div class="hp-mini"><div class="hp-mini-fill" style="width:' + hpPercent + '%"></div></div>';
-      playerHtml += '</div>';
-    });
-    document.getElementById('playerTeamList').innerHTML = playerHtml;
-
-    // 渲染AI队伍
-    var aiHtml = '';
-    battle.aiTeam.forEach(function(pet, idx) {
-      var isActive = idx === battle.aiActive;
-      var isDead = pet.currentHp <= 0;
-      var hpPercent = Math.round(pet.currentHp / pet.maxHp * 100);
-      aiHtml += '<div class="team-member' + (isActive ? ' active' : '') + (isDead ? ' dead' : '') + '">';
-      aiHtml += pet.icon || TYPE_ICONS[pet.type] || '🧪';
-      aiHtml += '<div class="hp-mini"><div class="hp-mini-fill" style="width:' + hpPercent + '%"></div></div>';
-      aiHtml += '</div>';
-    });
-    document.getElementById('aiTeamList').innerHTML = aiHtml;
-
-    // 渲染当前宠物
-    var playerPet = battle.playerTeam[battle.playerActive];
-    var aiPet = battle.aiTeam[battle.aiActive];
-
-    if (playerPet) {
-      var pEl = document.getElementById('playerPet');
-      pEl.querySelector('.pet-icon').textContent = playerPet.icon || TYPE_ICONS[playerPet.type] || '🧪';
-      pEl.querySelector('.pet-name').textContent = playerPet.name;
-      var pHpPct = Math.round(playerPet.currentHp / playerPet.maxHp * 100);
-      var pHpFill = pEl.querySelector('.hp-fill');
-      pHpFill.style.width = pHpPct + '%';
-      pHpFill.style.background = pHpPct > 50 ? 'var(--green)' : (pHpPct > 20 ? 'var(--orange)' : 'var(--red)');
-      pEl.querySelector('.hp-text').textContent = playerPet.currentHp + '/' + playerPet.maxHp;
-      pEl.querySelector('.pet-skill').textContent = '💫 ' + playerPet.skill;
-    }
-
-    if (aiPet) {
-      var aEl = document.getElementById('aiPet');
-      aEl.querySelector('.pet-icon').textContent = aiPet.icon || TYPE_ICONS[aiPet.type] || '🧪';
-      aEl.querySelector('.pet-name').textContent = aiPet.name;
-      var aHpPct = Math.round(aiPet.currentHp / aiPet.maxHp * 100);
-      var aHpFill = aEl.querySelector('.hp-fill');
-      aHpFill.style.width = aHpPct + '%';
-      aHpFill.style.background = aHpPct > 50 ? 'var(--green)' : (aHpPct > 20 ? 'var(--orange)' : 'var(--red)');
-      aEl.querySelector('.hp-text').textContent = aiPet.currentHp + '/' + aiPet.maxHp;
-      aEl.querySelector('.pet-skill').textContent = '💫 ' + aiPet.skill;
-    }
+  function renderBattleScene(battle) {
+    var player = battle.player;
+    var enemy = battle.enemy;
+    document.getElementById('playerIcon').textContent = player.icon || '\u{1F9EA}';
+    document.getElementById('playerName').textContent = player.name;
+    document.getElementById('playerLevel').textContent = 'Lv.' + player.level;
+    document.getElementById('playerSkill').textContent = '\u2728 ' + (player.skill || '');
+    updateHpBar('player', player.hp, player.maxHp);
+    document.getElementById('enemyIcon').textContent = enemy.icon || '\u{1F9CA}';
+    document.getElementById('enemyName').textContent = enemy.name;
+    document.getElementById('enemyLevel').textContent = 'Lv.' + enemy.level;
+    document.getElementById('enemySkill').textContent = '\u2728 ' + (enemy.skill || '');
+    updateHpBar('enemy', enemy.hp, enemy.maxHp);
   }
 
-  // ===== 切换宠物 =====
-  window.switchPet = function(idx) {
-    var result = BATTLE_SYSTEM.switchPlayerActive(idx);
-    if (result.ok) {
-      renderBattle();
-      addLog('切换至 ' + result.battle.playerTeam[idx].name, 'info');
-    }
-  };
+  // ===== 更新HP条 =====
+  function updateHpBar(who, hp, maxHp) {
+    var pct = Math.max(0, Math.min(100, Math.round(hp / maxHp * 100)));
+    var bar = document.getElementById(who + 'HpBar');
+    var text = document.getElementById(who + 'HpText');
+    bar.style.width = pct + '%';
+    text.textContent = hp + '/' + maxHp;
+    bar.classList.remove('hp-mid', 'hp-low');
+    if (pct <= 20) bar.classList.add('hp-low');
+    else if (pct <= 50) bar.classList.add('hp-mid');
+  }
 
-  // ===== 执行动作 =====
-  window.doAction = function(action) {
-    var result = BATTLE_SYSTEM.executeTurn(action, 0);
+  // ===== 玩家操作 =====
+  window.playerAction = function(action) {
+    if (isBattleAnimating || !currentBattleId) return;
+    isBattleAnimating = true;
+    setBattleButtons(false);
+    var result = BATTLE_SYSTEM.executeTurn(currentBattleId, action);
     if (!result.ok) {
-      addLog(result.msg, 'error');
+      addLog(result.msg, 'system');
+      isBattleAnimating = false;
+      setBattleButtons(true);
       return;
     }
-
-    // 渲染日志
-    result.logs.forEach(function(log) {
-      if (log.type === 'ko') {
-        addLog(log.msg, 'ko');
-      } else if (log.type === 'status') {
-        addLog(log.msg, 'info');
-      } else {
-        var actorName = log.actor === 'player' ? '我方' : '敌方';
-        var targetName = log.actor === 'player' ? '敌方' : '我方';
-        var actionText = log.action === 'skill' ? '【技能】' : '【普攻】';
-        var critText = log.result.isCrit ? ' <span class="log-crit">暴击！</span>' : '';
-        var effectText = log.result.effects.length > 0 ? ' (' + log.result.effects.join('、') + ')' : '';
-
-        var typeText = '';
-        if (log.result.typeMultiplier > 1) typeText = ' <span class="log-crit">克制！</span>';
-        else if (log.result.typeMultiplier < 1) typeText = ' <span style="color:var(--muted)">被克制</span>';
-
-        var msg = actorName + log.pet.name + actionText + '对' + targetName + log.target.name + '造成 <span class="log-damage">' + log.result.damage + '</span> 点伤害' + critText + typeText + effectText;
-        addLog(msg, 'damage');
+    var battle = result.battle;
+    for (var i = 0; i < result.logs.length; i++) {
+      var log = result.logs[i];
+      var msgClass = '';
+      var msgHtml = '';
+      if (log.actor === 'player') {
+        msgClass = 'log-player';
+        if (log.action === 'defend') {
+          msgHtml = '&#x1F6E1;&#xFE0F; ' + log.msg;
+        } else {
+          msgHtml = '&#x1F9EA; ' + log.msg;
+          triggerAttackAnim('player');
+        }
+      } else if (log.actor === 'enemy') {
+        msgClass = 'log-enemy';
+        if (log.action === 'defend') {
+          msgHtml = '&#x1F6E1;&#xFE0F; ' + log.msg;
+        } else {
+          msgHtml = '&#x1F480; ' + log.msg;
+          triggerAttackAnim('enemy');
+        }
+      } else if (log.actor === 'system') {
+        msgClass = 'log-system';
+        msgHtml = log.msg;
       }
-    });
-
-    renderBattle();
-
-    // 检查战斗结果
-    if (result.result === 'win') {
-      setTimeout(function() { showResult(true); }, 800);
-    } else if (result.result === 'lose') {
-      setTimeout(function() { showResult(false); }, 800);
+      addLog(msgHtml, msgClass);
+    }
+    updateHpBar('player', battle.player.hp, battle.player.maxHp);
+    updateHpBar('enemy', battle.enemy.hp, battle.enemy.maxHp);
+    document.getElementById('battleTurn').textContent = battle.turn;
+    if (result.result === 'win' || result.result === 'lose') {
+      setTimeout(function() {
+        showResult(result.result === 'win', battle);
+        isBattleAnimating = false;
+      }, 1000);
+    } else {
+      setTimeout(function() {
+        isBattleAnimating = false;
+        setBattleButtons(true);
+      }, 500);
     }
   };
 
-  // ===== 战斗日志 =====
-  function addLog(msg, type) {
-    var logContainer = document.getElementById('battleLog');
-    var entry = document.createElement('div');
-    entry.className = 'log-entry';
-    entry.innerHTML = msg;
-    logContainer.appendChild(entry);
-    logContainer.scrollTop = logContainer.scrollHeight;
+  // ===== 触发攻击动画 =====
+  function triggerAttackAnim(who) {
+    var fighterEl = document.getElementById(who === 'player' ? 'playerFighter' : 'enemyFighter');
+    var targetEl = document.getElementById(who === 'player' ? 'enemyFighter' : 'playerFighter');
+    fighterEl.classList.remove('anim-attack', 'anim-enemy-attack');
+    void fighterEl.offsetWidth;
+    fighterEl.classList.add(who === 'player' ? 'anim-attack' : 'anim-enemy-attack');
+    setTimeout(function() {
+      targetEl.classList.remove('anim-shake', 'anim-hurt');
+      void targetEl.offsetWidth;
+      targetEl.classList.add('anim-shake');
+      setTimeout(function() {
+        targetEl.classList.add('anim-hurt');
+      }, 200);
+    }, 200);
   }
 
-  // ===== 显示结果 =====
-  function showResult(isWin) {
-    var rewards = BATTLE_SYSTEM.calcRewards();
-    showPhase('phaseResult');
+  // ===== 设置战斗按钮状态 =====
+  function setBattleButtons(enabled) {
+    var btns = ['btnAttack', 'btnSkill', 'btnDefend'];
+    for (var i = 0; i < btns.length; i++) {
+      document.getElementById(btns[i]).disabled = !enabled;
+    }
+  }
 
+  // ===== 添加战斗日志 =====
+  function addLog(html, cls) {
+    var logBox = document.getElementById('battleLog');
+    var line = document.createElement('div');
+    line.className = 'log-line' + (cls ? ' ' + cls : '');
+    line.innerHTML = html;
+    logBox.appendChild(line);
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  // ===== 阶段4：显示结算 =====
+  function showResult(isWin, battle) {
+    var panel = document.getElementById('resultPanel');
     var icon = document.getElementById('resultIcon');
     var title = document.getElementById('resultTitle');
-    var score = document.getElementById('resultScore');
-    var detail = document.getElementById('resultDetail');
-
+    var subtitle = document.getElementById('resultSubtitle');
+    var badgeReveal = document.getElementById('badgeReveal');
+    var rewardsList = document.getElementById('rewardsList');
+    if (currentBattleId) {
+      BATTLE_SYSTEM.cleanupBattle(currentBattleId);
+    }
     if (isWin) {
-      icon.textContent = '🏆';
+      panel.className = 'result-panel win-panel';
+      icon.textContent = '\u{1F3C6}';
       title.textContent = '胜利！';
       title.className = 'result-title win';
-      score.textContent = '+' + rewards.score + ' 积分';
-      detail.textContent = '难度: ' + getDiffName(rewards.difficulty) + ' | 回合: ' + rewards.turns;
-
-      // 添加积分
-      if (rewards.score > 0) {
-        ALCHEMY_SYSTEM.addScore(rewards.score);
-        updateScore();
+      subtitle.textContent = '你击败了 ' + battle.enemy.name + '！';
+      var elemId = battle.elementId;
+      var elemData = null;
+      if (typeof ELEMENTS_DATA !== 'undefined' && ELEMENTS_DATA) {
+        for (var i = 0; i < ELEMENTS_DATA.length; i++) {
+          if (ELEMENTS_DATA[i].symbol === elemId || ELEMENTS_DATA[i].sym === elemId) {
+            elemData = ELEMENTS_DATA[i];
+            break;
+          }
+        }
       }
+      if (elemData) {
+        badgeReveal.style.display = 'block';
+        document.getElementById('badgeBigIcon').textContent = elemData.badge || '\u{1F3C5}';
+        document.getElementById('badgeElemSym').textContent = elemData.symbol || elemData.sym || elemId;
+        document.getElementById('badgeElemName').textContent = elemData.name + '（' + (elemData.nameEn || '') + '）';
+        document.getElementById('badgeElemNum').textContent = '原子序数 #' + elemData.z;
+        document.getElementById('badgeDesc').textContent = elemData.desc || '';
+      } else {
+        badgeReveal.style.display = 'block';
+        document.getElementById('badgeBigIcon').textContent = '\u{1F3C5}';
+        document.getElementById('badgeElemSym').textContent = elemId;
+        document.getElementById('badgeElemName').textContent = '元素 ' + elemId;
+        document.getElementById('badgeElemNum').textContent = '';
+        document.getElementById('badgeDesc').textContent = '';
+      }
+      var rewards = BATTLE_SYSTEM.getBattleRewards();
+      var diffRewards = rewards[battle.difficulty] || rewards[1];
+      var scoreGain = diffRewards.winScore;
+      rewardsList.innerHTML =
+        '<div class="reward-item"><div class="reward-label">积分奖励</div><div class="reward-value score-val">+' + scoreGain + '</div></div>' +
+        '<div class="reward-item"><div class="reward-label">回合数</div><div class="reward-value exp-val">' + (battle.turn - 1) + ' 回合</div></div>';
+      spawnGoldParticles();
     } else {
-      icon.textContent = '💔';
+      panel.className = 'result-panel lose-panel';
+      icon.textContent = '\u{1F494}';
       title.textContent = '战败...';
       title.className = 'result-title lose';
-      score.textContent = '+0 积分';
-      detail.textContent = '不要气馁，调整队伍再来挑战！';
+      subtitle.textContent = '不要气馁，调整策略再来挑战！';
+      badgeReveal.style.display = 'none';
+      var rewards2 = BATTLE_SYSTEM.getBattleRewards();
+      var diffRewards2 = rewards2[battle.difficulty] || rewards2[1];
+      var consolationScore = diffRewards2.loseScore;
+      rewardsList.innerHTML =
+        '<div class="reward-item"><div class="reward-label">安慰积分</div><div class="reward-value score-val">+' + consolationScore + '</div></div>';
     }
-
-    updateBattleStats();
+    updateNavInfo();
+    showPhase('phase4');
   }
 
-  function getDiffName(diff) {
-    var names = { easy: '简单', normal: '普通', hard: '困难', expert: '专家' };
-    return names[diff] || diff;
+  // ===== 金色粒子特效 =====
+  function spawnGoldParticles() {
+    var container = document.createElement('div');
+    container.className = 'particle-container';
+    document.body.appendChild(container);
+    for (var i = 0; i < 40; i++) {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = (Math.random() * 100) + '%';
+      p.style.top = (50 + Math.random() * 40) + '%';
+      p.style.animationDelay = (Math.random() * 0.8) + 's';
+      p.style.animationDuration = (1 + Math.random() * 1) + 's';
+      var size = (4 + Math.random() * 6) + 'px';
+      p.style.width = size;
+      p.style.height = size;
+      var colors = ['#f0c040', '#fb923c', '#fbbf24', '#fde68a'];
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      container.appendChild(p);
+    }
+    setTimeout(function() {
+      if (container.parentNode) {
+        container.parentNode.removeChild(container);
+      }
+    }, 2500);
   }
 
+  // ===== 返回元素选择 =====
+  window.goBackToPhase1 = function() {
+    selectedElementId = null;
+    selectedPetId = null;
+    currentBattleId = null;
+    isBattleAnimating = false;
+    updateNavInfo();
+    renderElements();
+    showPhase('phase1');
+  };
+
+  // ===== 继续挑战 =====
+  window.continueChallenge = function() {
+    selectedElementId = null;
+    selectedPetId = null;
+    currentBattleId = null;
+    isBattleAnimating = false;
+    updateNavInfo();
+    renderElements();
+    showPhase('phase1');
+  };
+
+  // ===== 启动 =====
   init();
 })();
 </script>

@@ -60,7 +60,10 @@ const HXBNX_GAME = (function () {
       alchemyExp: 0,
       alchemyTotalCount: 0,
       alchemyDailyCount: 0,
-      alchemyLastDate: ''
+      alchemyLastDate: '',
+      // 元素徽章系统字段（与 battle-system.js 共享）
+      elementBadges: {},    // { "H": { won: true, date: "2026-06-24" }, ... }
+      battleRecord: { wins: 0, losses: 0 }
     };
   }
 
