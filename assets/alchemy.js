@@ -131,7 +131,7 @@ const ALCHEMY_SYSTEM = (function() {
       { id: 'samadhi', name: '三昧真火', cost: 100, color: '#a78bfa', desc: '顶级炉，产出传说宠物', weights: [5, 20, 35, 30, 10] },
       { id: 'chaos', name: '混沌神火', cost: 200, color: '#f0c040', desc: '至尊炉，产出神话宠物', weights: [0, 10, 25, 40, 25] },
     ],
-    dailyLimit: 10,
+    dailyLimit: 9999,
     cooldownMs: 3000,
     dailyElement: ['fire', 'water', 'metal', 'wood', 'earth', 'light', 'dark'],
     elementBonus: 0.2,
