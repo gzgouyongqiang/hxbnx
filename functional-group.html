@@ -236,12 +236,13 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 <script src="assets/game.js"></script>
 <script>
 // ==================== 官能团数据库 ====================
-// 注意：苯环不是官能团，卤原子现在叫碳卤键
+// 注意：苯环不是官能团，卤原子根据具体卤素命名为碳氯键/碳溴键等
 const FUNCTIONAL_GROUPS = {
   basic: [
     {name:'碳碳双键', symbol:'C=C', example:'CH₂=CH₂ (乙烯)', icon:'➿', type:'烯烃', desc:'含有碳碳双键的烃类'},
     {name:'碳碳三键', symbol:'C≡C', example:'CH≡CH (乙炔)', icon:'➰', type:'炔烃', desc:'含有碳碳三键的烃类'},
-    {name:'碳卤键', symbol:'C-X', example:'CH₃Cl (氯甲烷)', icon:'⚪', type:'卤代烃', desc:'碳原子与卤素原子相连'}
+    {name:'碳氯键', symbol:'C-Cl', example:'CH₃Cl (氯甲烷)', icon:'⚪', type:'卤代烃', desc:'碳原子与氯原子相连'},
+    {name:'碳溴键', symbol:'C-Br', example:'CH₃Br (溴甲烷)', icon:'⚪', type:'卤代烃', desc:'碳原子与溴原子相连'}
   ],
   oxygen: [
     {name:'羟基', symbol:'-OH', example:'C₂H₅OH (乙醇)', icon:'💧', type:'醇/酚', desc:'氧氢键连在饱和碳上为醇，连在苯环上为酚'},
@@ -263,14 +264,15 @@ const FUNCTIONAL_GROUPS = {
 };
 
 // ==================== 化合物题库（给出完整物质，指出官能团）====================
+// 卤代烃根据具体卤素标注碳氯键/碳溴键
 const COMPOUNDS = {
   basic: [
     {name:'乙烯', structure:'CH₂=CH₂', groups:['碳碳双键'], formula:'C₂H₄', icon:'🔥'},
     {name:'乙炔', structure:'CH≡CH', groups:['碳碳三键'], formula:'C₂H₂', icon:'🔥'},
-    {name:'氯乙烯', structure:'CH₂=CHCl', groups:['碳碳双键','碳卤键'], formula:'C₂H₃Cl', icon:'⚪'},
-    {name:'溴乙烷', structure:'CH₃CH₂Br', groups:['碳卤键'], formula:'C₂H₅Br', icon:'⚪'},
-    {name:'1,2-二溴乙烷', structure:'BrCH₂-CH₂Br', groups:['碳卤键'], formula:'C₂H₄Br₂', icon:'⚪'},
-    {name:'氯苯', structure:'C₆H₅Cl', groups:['碳卤键'], formula:'C₆H₅Cl', icon:'⬡'}
+    {name:'氯乙烯', structure:'CH₂=CHCl', groups:['碳碳双键','碳氯键'], formula:'C₂H₃Cl', icon:'⚪'},
+    {name:'溴乙烷', structure:'CH₃CH₂Br', groups:['碳溴键'], formula:'C₂H₅Br', icon:'⚪'},
+    {name:'1,2-二溴乙烷', structure:'BrCH₂-CH₂Br', groups:['碳溴键'], formula:'C₂H₄Br₂', icon:'⚪'},
+    {name:'氯苯', structure:'C₆H₅Cl', groups:['碳氯键'], formula:'C₆H₅Cl', icon:'⬡'}
   ],
   oxygen: [
     {name:'乙醇', structure:'CH₃CH₂OH', groups:['羟基'], formula:'C₂H₆O', icon:'🍶'},
@@ -311,7 +313,7 @@ const COMPOUNDS = {
 };
 
 const LEVELS = [
-  {id:'basic',name:'基础官能团',icon:'🔬',desc:'双键/三键/碳卤键',color:'#67e8f9',count:6},
+  {id:'basic',name:'基础官能团',icon:'🔬',desc:'双键/三键/碳氯键/碳溴键',color:'#67e8f9',count:6},
   {id:'oxygen',name:'含氧官能团',icon:'💧',desc:'羟基/醛/酮/羧酸/酯/醚',color:'#fb923c',count:10},
   {id:'nitrogen',name:'含氮官能团',icon:'💙',desc:'氨基/酰胺/硝基/氰基',color:'#6ee7b7',count:6},
   {id:'cyclic',name:'环状与复合',icon:'⭕',desc:'多官能团化合物',color:'#f0c040',count:6},
