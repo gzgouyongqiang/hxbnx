@@ -133,7 +133,7 @@ function renderSell(){
     html+='<div class="sell-icon">'+(pet.icon||TYPE_ICONS[pet.type]||'🧪')+'</div>';
     html+='<div class="sell-name">'+pet.name+'</div>';
     html+='<div class="sell-count">x'+item.count+'</div>';
-    html+='<button class="sell-btn" onclick="sellPet(''+pet.id+'')">卖出 +'+sellPrice+'</button>';
+    html+='<button class="sell-btn" onclick="sellPet(\''+pet.id+'\')">卖出 +'+sellPrice+'</button>';
     html+='</div>';
   });
   grid.innerHTML=html;
