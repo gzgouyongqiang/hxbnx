@@ -122,6 +122,42 @@ const ALCHEMY_SYSTEM = (function() {
     if (PETS_BY_RARITY[p.rarity]) PETS_BY_RARITY[p.rarity].push(p);
   });
 
+  // ===== 无名怒火心灵鸡汤 =====
+  const WRATH_MESSAGES = [
+    {
+      title: '💥 怒火燃尽，丹炉成灰',
+      text: '1000积分化作一缕青烟。愤怒就像剧烈的放热反应——来势汹汹，却只留下一堆无用的灰烬。深呼吸，冷静下来，真正的学霸从不会被情绪左右。'
+    },
+    {
+      title: '🌋 火山喷发，寸草不生',
+      text: '你投入了全部怒火，丹炉被炸得粉碎。门捷列夫当年排列周期表时，也经历了无数次失败。但他从未愤怒，只是不断尝试。失败不可怕，可怕的是让愤怒吞噬了理智。'
+    },
+    {
+      title: '🔥 无名之火，徒劳无功',
+      text: '怒火熊熊燃烧，却什么也没炼出来。化学告诉我们：反应条件不合适，再剧烈的反应也得不到想要的产物。调整心态，重新出发，下一次会更好。'
+    },
+    {
+      title: '💨 烟消云散，空空如也',
+      text: '丹炉里只剩下一阵黑烟。你失去了积分，但收获了一个重要的人生教训——冲动是魔鬼。保持平常心，比做对一千道题更难，也更重要。'
+    },
+    {
+      title: '😤 怒气冲天，一无所获',
+      text: '你的怒火太旺了，宠物都被吓跑了！记住：愤怒时做出的决定，90%都会后悔。下次感到烦躁时，不如去做几道题，用知识的力量平息内心的火焰。'
+    },
+    {
+      title: '⚠️ 反应失控，实验失败',
+      text: '就像忘记加催化剂的剧烈反应，你的怒火失控了。化学实验需要耐心和控制，人生也是如此。别让无名怒火毁了你的学习节奏，深呼吸，重新开始。'
+    },
+    {
+      title: '🌪️ 情绪风暴，片甲不留',
+      text: '一场情绪风暴席卷了丹炉，什么都没留下。高考路上难免有挫折，但每一次跌倒都是成长的机会。擦干眼泪，调整心态，你比想象中更强大。'
+    },
+    {
+      title: '🧯 灭火之后，冷静思考',
+      text: '怒火终于熄灭了。虽然损失了积分，但你学到了比化学方程式更重要的一课——情绪管理。保持冷静，才能看清前方的路。加油，你可以的！'
+    }
+  ];
+
   // ===== 炼丹配置 =====
   const ALCHEMY_CONFIG = {
     furnaces: [
@@ -130,6 +166,7 @@ const ALCHEMY_SYSTEM = (function() {
       { id: 'sky', name: '天火丹炉', cost: 60, color: '#67e8f9', desc: '高级炉，产出史诗宠物', weights: [15, 30, 35, 16, 4] },
       { id: 'samadhi', name: '三昧真火', cost: 100, color: '#a78bfa', desc: '顶级炉，产出传说宠物', weights: [5, 20, 35, 30, 10] },
       { id: 'chaos', name: '混沌神火', cost: 200, color: '#f0c040', desc: '至尊炉，产出神话宠物', weights: [0, 10, 25, 40, 25] },
+      { id: 'wrath', name: '无名怒火', cost: 1000, color: '#f87171', desc: '⚠️ 消耗巨大，大概率一无所获', weights: [0, 0, 0, 0, 0], isWrath: true },
     ],
     dailyLimit: 9999,
     cooldownMs: 3000,
@@ -303,6 +340,28 @@ const ALCHEMY_SYSTEM = (function() {
       }
 
       s.score -= furnace.cost;
+
+      // ===== 无名怒火特殊处理 =====
+      if (furnace.isWrath) {
+        s.alchemyDailyCount = (s.alchemyDailyCount || 0) + 1;
+        s.alchemyTotalCount = (s.alchemyTotalCount || 0) + 1;
+        s.alchemyExp = (s.alchemyExp || 0) + furnace.cost;
+        // 记录无名怒火使用次数
+        if (!s.wrathCount) s.wrathCount = 0;
+        s.wrathCount++;
+        save(s);
+
+        var msgIdx = Math.floor(Math.random() * WRATH_MESSAGES.length);
+        return {
+          ok: true,
+          isWrath: true,
+          wrathMessage: WRATH_MESSAGES[msgIdx],
+          wrathCount: s.wrathCount,
+          cost: furnace.cost,
+          remainingScore: s.score,
+          todayCount: s.alchemyDailyCount
+        };
+      }
 
       var weights = furnace.weights.slice();
       var r = Math.random();
