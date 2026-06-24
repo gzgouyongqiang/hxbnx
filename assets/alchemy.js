@@ -138,12 +138,55 @@ const ALCHEMY_SYSTEM = (function() {
   };
 
   // ===== 工具函数 =====
+  function defaultGameState() {
+    return {
+      checkinDates: [],
+      currentStreak: 0,
+      maxStreak: 0,
+      totalExp: 0,
+      wrongQuestions: [],
+      clearedWrong: 0,
+      score: 0,
+      clearedQuests: [],
+      version: 5,
+      weekTasks: {},
+      dailyPracticeDone: {},
+      lastCheckinReward: '',
+      petCollection: {},
+      pets: [],
+      alchemyExp: 0,
+      alchemyTotalCount: 0,
+      alchemyDailyCount: 0,
+      alchemyLastDate: '',
+      elementBadges: {},
+      battleRecord: { wins: 0, losses: 0 }
+    };
+  }
+
   function load() {
     try {
       var raw = localStorage.getItem(KEY);
-      if (!raw) return null;
-      return JSON.parse(raw);
-    } catch (e) { return null; }
+      if (!raw) {
+        // 自动初始化：首次访问时创建默认存档
+        var def = defaultGameState();
+        save(def);
+        return def;
+      }
+      var parsed = JSON.parse(raw);
+      // 合并默认字段，防止旧存档缺少新字段
+      var def = defaultGameState();
+      for (var key in def) {
+        if (!(key in parsed)) {
+          parsed[key] = def[key];
+        }
+      }
+      return parsed;
+    } catch (e) {
+      // JSON解析失败时重置存档
+      var def = defaultGameState();
+      save(def);
+      return def;
+    }
   }
 
   function save(state) {

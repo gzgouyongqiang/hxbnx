@@ -1151,6 +1151,29 @@ body::after {
   }
 
   /* ===== 显示元素详情弹窗 ===== */
+  // 族名转罗马数字
+  function groupToFamilyName(group, category) {
+    if (group === 18) return '0族';
+    if (group >= 8 && group <= 10) return '第Ⅷ族';
+    if (group === 1) return '第ⅠA族';
+    if (group === 2) return '第ⅡA族';
+    if (group === 13) return '第ⅢA族';
+    if (group === 14) return '第ⅣA族';
+    if (group === 15) return '第ⅤA族';
+    if (group === 16) return '第ⅥA族';
+    if (group === 17) return '第ⅦA族';
+    if (group === 3) return '第ⅢB族';
+    if (group === 4) return '第ⅣB族';
+    if (group === 5) return '第ⅤB族';
+    if (group === 6) return '第ⅥB族';
+    if (group === 7) return '第ⅦB族';
+    if (group === 11) return '第ⅠB族';
+    if (group === 12) return '第ⅡB族';
+    if (category === 'lanthanide') return '镧系元素';
+    if (category === 'actinide') return '锕系元素';
+    return '第' + group + '族';
+  }
+
   function showElementDetail(elem, isCollected, isUnlocked, badges) {
     var overlay = document.getElementById('modalOverlay');
     var body = document.getElementById('modalBody');
@@ -1236,7 +1259,7 @@ body::after {
       electronConfigHtml +
       '<div class="modal-info">' +
         '<div class="modal-info-item"><div class="label">分类</div><div class="value" style="color:' + catColor + '">' + catInfo.icon + ' ' + catInfo.name + '</div></div>' +
-        '<div class="modal-info-item"><div class="label">周期 / 族</div><div class="value">第' + elem.period + '周期 / 第' + elem.group + '族</div></div>' +
+        '<div class="modal-info-item"><div class="label">周期 / 族</div><div class="value">第' + elem.period + '周期 / ' + groupToFamilyName(elem.group, elem.category) + '</div></div>' +
         '<div class="modal-info-item"><div class="label">难度</div><div class="value">' + '★'.repeat(difficulty) + ' ' + diffName + '</div></div>' +
         '<div class="modal-info-item"><div class="label">原子序数</div><div class="value">' + elem.z + '</div></div>' +
       '</div>' +
