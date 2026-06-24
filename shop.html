@@ -62,6 +62,13 @@ body { font-family:'Microsoft YaHei',sans-serif; background:var(--bg); color:var
   <div class="shop-grid" id="shopGrid">
     <div class="shop-empty"><div class="shop-empty-icon">📦</div><div>正在加载...</div></div>
   </div>
+  <div class="sell-section" id="sellSection">
+    <div class="sell-title">💰 出售宠物</div>
+    <div class="sell-subtitle">卖出你不需要的宠物，获得积分（价格 = 稀有度 × 3，低于炼丹消耗）</div>
+    <div class="sell-grid" id="sellGrid">
+      <div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted);font-size:13px">加载中...</div>
+    </div>
+  </div>
   <div class="shop-links">
     <a href="alchemy.html">🔥 炼丹炉</a>
     <a href="pets.html">🎒 我的宠物</a>
@@ -75,7 +82,7 @@ var RARITY_NAMES=['','普通','稀有','史诗','传说','神话'];
 var RARITY_COLORS=['','#94a3b8','#6ee7b7','#67e8f9','#a78bfa','#f0c040'];
 var TYPE_ICONS={metal:'🔩',nonmetal:'💎',noble:'🎈',oxide:'💨',acid:'🧪',base:'💧',salt:'🧂',organic:'🌿',special:'⚡'};
 function todayStr(){return new Date().toISOString().slice(0,10);}
-function init(){updateScore();renderShop();document.getElementById('shopDate').textContent=todayStr();}
+function init(){updateScore();renderShop();renderSell();document.getElementById('shopDate').textContent=todayStr();}
 function updateScore(){var s=ALCHEMY_SYSTEM.getScore();document.getElementById('scoreNum').textContent=s;}
 function renderShop(){
   var grid=document.getElementById('shopGrid');
@@ -109,7 +116,31 @@ function renderShop(){
 function getPetById(id){try{return ALCHEMY_SYSTEM.getPetById(id);}catch(e){return null;}}
 window.buyPet=function(petId){
   var r=ALCHEMY_SYSTEM.buyPet(petId);
-  if(r.ok){alert('🎉 购买成功！获得 '+r.pet.name+'，花费 '+r.price+' 积分');updateScore();renderShop();}
+  if(r.ok){alert('🎉 购买成功！获得 '+r.pet.name+'，花费 '+r.price+' 积分');updateScore();renderShop();renderSell();}
+  else alert(r.msg);
+};
+function renderSell(){
+  var grid=document.getElementById('sellGrid');
+  var myPets;
+  try{myPets=ALCHEMY_SYSTEM.getMyPets();}catch(e){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted);font-size:13px">暂不可用</div>';return;}
+  if(!myPets||myPets.length===0){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted);font-size:13px">还没有宠物可以出售</div>';return;}
+  var html='';
+  myPets.forEach(function(item){
+    var pet=item.def;
+    var sellPrice=pet.rarity*3;
+    html+='<div class="sell-card">';
+    html+='<div class="sell-icon">'+(pet.icon||TYPE_ICONS[pet.type]||'🧪')+'</div>';
+    html+='<div class="sell-name">'+pet.name+'</div>';
+    html+='<div class="sell-count">x'+item.count+'</div>';
+    html+='<button class="sell-btn" onclick="sellPet(''+pet.id+'')">卖出 +'+sellPrice+'</button>';
+    html+='</div>';
+  });
+  grid.innerHTML=html;
+}
+window.sellPet=function(petId){
+  var r=ALCHEMY_SYSTEM.sellPet(petId);
+  if(r.ok){alert('出售 '+r.pet.name+' 成功！获得 '+r.price+' 积分');updateScore();renderShop();renderSell();}
   else alert(r.msg);
 };
 init();

@@ -570,6 +570,22 @@ const ALCHEMY_SYSTEM = (function() {
       s.shopBuyCount++;
       save(s);
       return { ok: true, pet: def, price: finalPrice, remainingScore: s.score };
+    },
+
+    // ===== 商店卖出 =====
+    sellPet: function(petId) {
+      var s = load();
+      if (!s || !s.petCollection || !s.petCollection[petId]) {
+        return { ok: false, msg: '没有该宠物' };
+      }
+      var def = getPetDef(petId);
+      if (!def) return { ok: false, msg: '宠物不存在' };
+      var sellPrice = def.rarity * 3;
+      s.petCollection[petId].count--;
+      if (s.petCollection[petId].count <= 0) delete s.petCollection[petId];
+      s.score = (s.score || 0) + sellPrice;
+      save(s);
+      return { ok: true, pet: def, price: sellPrice, remainingScore: s.score };
     }
   };
 
