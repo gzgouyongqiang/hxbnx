@@ -74,12 +74,36 @@ var BATTLE_SYSTEM = (function() {
   // ===== 工具函数 =====
 
   /** 从 localStorage 读取共享存档 */
+  function defaultState() {
+    return {
+      checkinDates: [], currentStreak: 0, maxStreak: 0,
+      totalExp: 0, wrongQuestions: [], clearedWrong: 0,
+      score: 0, clearedQuests: [], version: 5,
+      weekTasks: {}, dailyPracticeDone: {}, lastCheckinReward: '',
+      petCollection: {}, pets: [],
+      alchemyExp: 0, alchemyTotalCount: 0, alchemyDailyCount: 0, alchemyLastDate: '',
+      elementBadges: {}, battleRecord: { wins: 0, losses: 0 }
+    };
+  }
   function load() {
     try {
       var raw = localStorage.getItem(KEY);
-      if (!raw) return null;
-      return JSON.parse(raw);
-    } catch (e) { return null; }
+      if (!raw) {
+        var def = defaultState();
+        save(def);
+        return def;
+      }
+      var parsed = JSON.parse(raw);
+      var def = defaultState();
+      for (var key in def) {
+        if (!(key in parsed)) parsed[key] = def[key];
+      }
+      return parsed;
+    } catch (e) {
+      var def = defaultState();
+      save(def);
+      return def;
+    }
   }
 
   /** 写入共享存档到 localStorage */
@@ -733,7 +757,7 @@ var BATTLE_SYSTEM = (function() {
         stats.byCategory[cat] = (stats.byCategory[cat] || 0) + 1;
 
         // 按难度统计
-        var diff = getElementDifficulty(elemData.num);
+        var diff = getElementDifficulty(elemData.num || elemData.z);
         stats.byDifficulty[diff] = (stats.byDifficulty[diff] || 0) + 1;
       }
     }
@@ -876,7 +900,7 @@ var BATTLE_SYSTEM = (function() {
     }
 
     // 验证难度是否解锁
-    var difficulty = getElementDifficulty(elemData.num);
+    var difficulty = getElementDifficulty(elemData.num || elemData.z);
     if (!isDifficultyUnlocked(difficulty)) {
       return { ok: false, msg: '该难度尚未解锁！需要先收集更多低难度徽章。' };
     }

@@ -1523,24 +1523,34 @@ body::after {
 
   // ===== 返回元素选择 =====
   window.goBackToPhase1 = function() {
-    selectedElementId = null;
-    selectedPetId = null;
-    currentBattleId = null;
-    isBattleAnimating = false;
-    updateNavInfo();
-    renderElements();
-    showPhase('phase1');
+    try {
+      selectedElementId = null;
+      selectedPetId = null;
+      currentBattleId = null;
+      isBattleAnimating = false;
+      updateNavInfo();
+      renderElements();
+      showPhase('phase1');
+    } catch(e) {
+      console.error('goBackToPhase1 error:', e);
+      alert('返回出错: ' + e.message);
+    }
   };
 
   // ===== 继续挑战 =====
   window.continueChallenge = function() {
-    selectedElementId = null;
-    selectedPetId = null;
-    currentBattleId = null;
-    isBattleAnimating = false;
-    updateNavInfo();
-    renderElements();
-    showPhase('phase1');
+    try {
+      selectedElementId = null;
+      selectedPetId = null;
+      currentBattleId = null;
+      isBattleAnimating = false;
+      updateNavInfo();
+      renderElements();
+      showPhase('phase1');
+    } catch(e) {
+      console.error('continueChallenge error:', e);
+      alert('继续挑战出错: ' + e.message);
+    }
   };
 
   // ===== 启动 =====
