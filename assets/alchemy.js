@@ -523,6 +523,53 @@ const ALCHEMY_SYSTEM = (function() {
       var s = load();
       if (!s) return { count: 0 };
       return { count: s.evolveCount || 0 };
+    },
+
+    // ===== NPC商店系统 =====
+    getShopPets: function() {
+      var today = todayStr();
+      var s = load();
+      if (!s) s = {};
+      if (!s.shopDate || s.shopDate !== today) {
+        s.shopDate = today;
+        var all = PET_DB.slice();
+        var seed = 0;
+        for (var i = 0; i < today.length; i++) seed = ((seed << 5) - seed) + today.charCodeAt(i);
+        seed = Math.abs(seed);
+        for (var i = all.length - 1; i > 0; i--) {
+          var j = seed % (i + 1);
+          seed = (seed * 9301 + 49297) % 233280;
+          var tmp = all[i]; all[i] = all[j]; all[j] = tmp;
+        }
+        s.shopPets = all.slice(0, 3).map(function(p) {
+          return { id: p.id, price: p.rarity * 100, discount: Math.random() < 0.2 ? 0.8 : 1.0 };
+        });
+        save(s);
+      }
+      return s.shopPets || [];
+    },
+
+    buyPet: function(petId) {
+      var s = load();
+      if (!s) return { ok: false, msg: '存档异常' };
+      var shopPets = this.getShopPets();
+      var shopItem = null;
+      for (var i = 0; i < shopPets.length; i++) {
+        if (shopPets[i].id === petId) { shopItem = shopPets[i]; break; }
+      }
+      if (!shopItem) return { ok: false, msg: '该宠物不在今日商店中' };
+      var def = getPetDef(petId);
+      if (!def) return { ok: false, msg: '宠物不存在' };
+      var finalPrice = Math.floor(shopItem.price * shopItem.discount);
+      if ((s.score || 0) < finalPrice) return { ok: false, msg: '积分不足，需要 ' + finalPrice + ' 积分' };
+      s.score -= finalPrice;
+      if (!s.petCollection) s.petCollection = {};
+      if (!s.petCollection[petId]) s.petCollection[petId] = { count: 0, firstDate: todayStr() };
+      s.petCollection[petId].count++;
+      if (!s.shopBuyCount) s.shopBuyCount = 0;
+      s.shopBuyCount++;
+      save(s);
+      return { ok: true, pet: def, price: finalPrice, remainingScore: s.score };
     }
   };
 
