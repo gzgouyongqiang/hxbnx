@@ -957,9 +957,9 @@ var BATTLE_SYSTEM = (function() {
       battleId: battleId,
       battleState: battleState,
       element: {
-        sym: elemData.sym,
+        sym: elemData.symbol || elemData.sym,
         name: elemData.name,
-        num: elemData.num,
+        num: elemData.z || elemData.num,
         difficulty: difficulty
       }
     };

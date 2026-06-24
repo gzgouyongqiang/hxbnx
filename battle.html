@@ -1418,7 +1418,7 @@ body::after {
         document.getElementById('badgeBigIcon').textContent = elemData.badge || '\u{1F3C5}';
         document.getElementById('badgeElemSym').textContent = elemData.symbol || elemData.sym || elemId;
         document.getElementById('badgeElemName').textContent = elemData.name + '（' + (elemData.nameEn || '') + '）';
-        document.getElementById('badgeElemNum').textContent = '原子序数 #' + elemData.z;
+        document.getElementById('badgeElemNum').textContent = '原子序数 #' + (elemData.z || elemData.num);
         document.getElementById('badgeDesc').textContent = elemData.desc || '';
       } else {
         badgeReveal.style.display = 'block';
@@ -1552,6 +1552,20 @@ body::after {
       alert('继续挑战出错: ' + e.message);
     }
   };
+
+  // ===== 初始化结果按钮事件监听（双重保险，onclick + addEventListener）=====
+  (function bindResultButtons() {
+    var btns = document.querySelectorAll('#phase4 .action-bar .btn');
+    for (var i = 0; i < btns.length; i++) {
+      var btn = btns[i];
+      var onclickVal = btn.getAttribute('onclick');
+      if (onclickVal && onclickVal.indexOf('goBackToPhase1') >= 0) {
+        btn.addEventListener('click', function(e) { e.preventDefault(); window.goBackToPhase1(); });
+      } else if (onclickVal && onclickVal.indexOf('continueChallenge') >= 0) {
+        btn.addEventListener('click', function(e) { e.preventDefault(); window.continueChallenge(); });
+      }
+    }
+  })();
 
   // ===== 启动 =====
   init();
