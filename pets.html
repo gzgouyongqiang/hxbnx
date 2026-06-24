@@ -737,7 +737,7 @@ body {
       html += '<div class="pet-count">拥有 ' + item.count + ' 只</div>';
       html += '<div class="pet-actions">';
       if (item.count > 1) {
-        html += '<button class="pet-btn dismantle" onclick="event.stopPropagation();dismantlePet('' + pet.id + '')">分解(+' + (pet.rarity * 10) + '分)</button>';
+        html += '<button class="pet-btn dismantle" onclick="event.stopPropagation();dismantlePet(\'' + pet.id + '\')">分解(+' + (pet.rarity * 10) + '分)</button>';
       }
       html += '</div>';
       html += '</div>';
