@@ -222,6 +222,22 @@ const ALCHEMY_SYSTEM = (function() {
   }
 
   // ===== 核心API =====
+  // 商店宠物生成（提到api外部避免对象字面量中function声明问题）
+  function generateShopPets(today) {
+    var all = PET_DB.slice();
+    var seed = 0;
+    for (var i = 0; i < today.length; i++) seed = ((seed << 5) - seed) + today.charCodeAt(i);
+    seed = Math.abs(seed);
+    for (var i = all.length - 1; i > 0; i--) {
+      var j = seed % (i + 1);
+      seed = (seed * 9301 + 49297) % 233280;
+      var tmp = all[i]; all[i] = all[j]; all[j] = tmp;
+    }
+    return all.slice(0, 3).map(function(p) {
+      return { id: p.id, price: p.rarity * 100, discount: Math.random() < 0.2 ? 0.8 : 1.0 };
+    });
+  }
+
   var api = {
     getPetDB: function() { return PET_DB; },
     getPetById: getPetDef,
@@ -529,21 +545,13 @@ const ALCHEMY_SYSTEM = (function() {
     getShopPets: function() {
       var today = todayStr();
       var s = load();
-      if (!s) s = {};
+      if (!s) {
+        // 没有存档时，用内存计算商店宠物，不写入localStorage
+        return generateShopPets(today);
+      }
       if (!s.shopDate || s.shopDate !== today) {
         s.shopDate = today;
-        var all = PET_DB.slice();
-        var seed = 0;
-        for (var i = 0; i < today.length; i++) seed = ((seed << 5) - seed) + today.charCodeAt(i);
-        seed = Math.abs(seed);
-        for (var i = all.length - 1; i > 0; i--) {
-          var j = seed % (i + 1);
-          seed = (seed * 9301 + 49297) % 233280;
-          var tmp = all[i]; all[i] = all[j]; all[j] = tmp;
-        }
-        s.shopPets = all.slice(0, 3).map(function(p) {
-          return { id: p.id, price: p.rarity * 100, discount: Math.random() < 0.2 ? 0.8 : 1.0 };
-        });
+        s.shopPets = generateShopPets(today);
         save(s);
       }
       return s.shopPets || [];
