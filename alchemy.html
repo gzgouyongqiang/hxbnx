@@ -294,6 +294,86 @@ body {
 }
 .result-btn.secondary:hover { border-color: var(--gold); }
 
+/* ===== 无名怒火失败结果样式 ===== */
+.wrath-result-card {
+  display: none;
+  background: linear-gradient(135deg, #1a0a0a, #0f0505);
+  border: 2px solid var(--red);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  max-width: 360px;
+  animation: wrathShake 0.6s ease;
+}
+.wrath-result-card.active { display: block; }
+@keyframes wrathShake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-10px); }
+  20% { transform: translateX(10px); }
+  30% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  50% { transform: translateX(-5px); }
+  60% { transform: translateX(5px); }
+  70% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+  90% { transform: translateX(-1px); }
+}
+.wrath-icon {
+  font-size: 64px;
+  margin-bottom: 12px;
+  animation: wrathBurn 1.5s ease-in-out infinite;
+}
+@keyframes wrathBurn {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.1); filter: brightness(1.3); }
+}
+.wrath-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.wrath-cost {
+  font-size: 14px;
+  color: var(--red);
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+.wrath-message {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+  padding: 16px;
+  background: rgba(248,113,113,0.08);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.wrath-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.wrath-hint {
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.wrath-btn {
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--red), #dc2626);
+  color: #fff;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.wrath-btn:hover { transform: scale(1.05); }
+
 /* 底部提示 */
 .footer-tip {
   text-align: center;
@@ -365,6 +445,7 @@ body {
   <div class="alchemy-particles" id="particles"></div>
   <div class="furnace-visual" id="furnaceVisual">🔥</div>
   <div class="alchemy-text" id="alchemyText">炼丹中...</div>
+  <!-- 正常结果卡片 -->
   <div class="result-card" id="resultCard">
     <div class="result-rarity" id="resultRarity">⭐ 凡丹</div>
     <div class="result-pet-icon" id="resultPetIcon">🧪</div>
@@ -377,6 +458,16 @@ body {
       <button class="result-btn primary" onclick="continueAlchemy()">继续炼丹</button>
       <button class="result-btn secondary" onclick="viewPets()">查看宠物</button>
     </div>
+  </div>
+  <!-- 无名怒火失败结果卡片 -->
+  <div class="wrath-result-card" id="wrathResultCard">
+    <div class="wrath-icon" id="wrathIcon">💥</div>
+    <div class="wrath-title" id="wrathTitle">炼丹失败</div>
+    <div class="wrath-cost" id="wrathCost">-1000 积分</div>
+    <div class="wrath-message" id="wrathMessage">...</div>
+    <div class="wrath-count" id="wrathCount"></div>
+    <div class="wrath-hint" id="wrathHint">💡 提示：无名怒火伤身又伤分，不如去做几道题冷静一下~</div>
+    <button class="wrath-btn" onclick="continueAlchemy()">我冷静了，继续学习</button>
   </div>
 </div>
 
@@ -444,13 +535,19 @@ body {
 
       html += '<div class="furnace-card' + (disabled ? ' disabled' : '') + '"' +
               (disabled ? '' : ' onclick="startAlchemy(\'' + f.id + '\')"') + '>';
-      html += '<div class="furnace-icon">🔥</div>';
+      // 无名怒火使用特殊图标
+      html += '<div class="furnace-icon">' + (f.isWrath ? '😤' : '🔥') + '</div>';
       html += '<div class="furnace-name" style="color:' + f.color + '">' + f.name + '</div>';
       html += '<div class="furnace-cost">💰 ' + f.cost + ' 积分</div>';
       html += '<div class="furnace-desc">' + f.desc + '</div>';
-      html += '<div class="furnace-prob">概率: ' + f.weights.map(function(w, i) {
-        return w > 0 ? RARITY_NAMES[i+1] + ' ' + w + '%' : '';
-      }).filter(function(s) { return s; }).join(' / ') + '</div>';
+      // 无名怒火显示特殊提示而非概率
+      if (f.isWrath) {
+        html += '<div class="furnace-prob" style="color:#f87171">⚠️ 大概率一无所获</div>';
+      } else {
+        html += '<div class="furnace-prob">概率: ' + f.weights.map(function(w, i) {
+          return w > 0 ? RARITY_NAMES[i+1] + ' ' + w + '%' : '';
+        }).filter(function(s) { return s; }).join(' / ') + '</div>';
+      }
       html += '</div>';
     });
 
@@ -464,14 +561,27 @@ body {
 
     var anim = document.getElementById('alchemyAnimation');
     var result = document.getElementById('resultCard');
+    var wrathResult = document.getElementById('wrathResultCard');
     anim.classList.add('active');
     result.classList.remove('active');
+    wrathResult.classList.remove('active');
 
-    // 创建粒子
-    createParticles();
+    // 判断是否为无名怒火
+    var config = ALCHEMY_SYSTEM.getAlchemyConfig();
+    var isWrath = false;
+    for (var i = 0; i < config.furnaces.length; i++) {
+      if (config.furnaces[i].id === furnaceId && config.furnaces[i].isWrath) {
+        isWrath = true; break;
+      }
+    }
+
+    // 创建粒子（无名怒火用红色粒子）
+    createParticles(isWrath);
 
     // 炼丹过程
-    var steps = ['引火入炉...', '药材融合...', '丹气凝聚...', '丹成！'];
+    var steps = isWrath
+      ? ['怒火升腾...', '情绪失控...', '丹炉炸裂...', '💥 轰！！！']
+      : ['引火入炉...', '药材融合...', '丹气凝聚...', '丹成！'];
     var step = 0;
     var textEl = document.getElementById('alchemyText');
 
@@ -485,11 +595,15 @@ body {
     }, 800);
   };
 
-  function createParticles() {
+  function createParticles(isWrath) {
     var container = document.getElementById('particles');
     container.innerHTML = '';
-    var colors = ['#f0c040', '#f87171', '#67e8f9', '#a78bfa', '#fb923c'];
-    for (var i = 0; i < 30; i++) {
+    // 无名怒火使用红黑配色粒子
+    var colors = isWrath
+      ? ['#f87171', '#dc2626', '#991b1b', '#7f1d1d', '#ef4444']
+      : ['#f0c040', '#f87171', '#67e8f9', '#a78bfa', '#fb923c'];
+    var count = isWrath ? 50 : 30; // 无名怒火更多粒子
+    for (var i = 0; i < count; i++) {
       var p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + '%';
@@ -510,6 +624,22 @@ body {
       document.getElementById('alchemyAnimation').classList.remove('active');
       isAlchemying = false;
       renderFurnaces();
+      return;
+    }
+
+    // ===== 无名怒火特殊展示 =====
+    if (result.isWrath) {
+      document.getElementById('wrathTitle').textContent = result.wrathMessage.title;
+      document.getElementById('wrathMessage').textContent = result.wrathMessage.text;
+      document.getElementById('wrathCost').textContent = '-' + result.cost + ' 积分';
+      document.getElementById('wrathCount').textContent = '这是你第 ' + result.wrathCount + ' 次被无名怒火吞噬';
+
+      document.getElementById('wrathResultCard').classList.add('active');
+      document.getElementById('furnaceVisual').style.display = 'none';
+      document.getElementById('alchemyText').style.display = 'none';
+
+      updateScore();
+      renderAlchemistInfo();
       return;
     }
 
@@ -538,6 +668,7 @@ body {
   window.continueAlchemy = function() {
     document.getElementById('alchemyAnimation').classList.remove('active');
     document.getElementById('resultCard').classList.remove('active');
+    document.getElementById('wrathResultCard').classList.remove('active');
     document.getElementById('furnaceVisual').style.display = 'block';
     document.getElementById('alchemyText').style.display = 'block';
     isAlchemying = false;

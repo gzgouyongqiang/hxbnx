@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>宠物商店 | 化学不难学</title>
+<style>
+:root { --bg:#0a0e1a; --card:#11182b; --gold:#f0c040; --cyan:#67e8f9; --red:#f87171; --green:#6ee7b7; --purple:#a78bfa; --orange:#fb923c; --text:#e2e8f0; --muted:#94a3b8; --border:rgba(103,232,249,0.15); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+.top-nav { display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:rgba(17,24,43,0.9); border-bottom:1px solid var(--border); }
+.back-link { color:var(--cyan); text-decoration:none; font-size:14px; font-weight:600; }
+.score-display { display:flex; align-items:center; gap:6px; font-size:14px; }
+.score-icon { font-size:18px; }
+.score-num { color:var(--gold); font-weight:800; font-size:18px; }
+.header { text-align:center; padding:24px 16px 16px; }
+.header-title { font-size:26px; font-weight:800; color:var(--gold); }
+.header-sub { font-size:13px; color:var(--muted); margin-top:6px; }
+.shop-container { max-width:700px; margin:0 auto; padding:0 16px 40px; }
+.shop-info-box { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px 20px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; }
+.shop-info-text { font-size:13px; color:var(--muted); }
+.shop-info-text span { color:var(--gold); font-weight:700; }
+.shop-refresh { font-size:12px; background:rgba(240,192,64,0.1); padding:6px 14px; border-radius:20px; color:var(--gold); }
+.shop-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:16px; }
+.shop-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px 16px; text-align:center; position:relative; transition:transform 0.2s,box-shadow 0.2s; }
+.shop-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(240,192,64,0.12); }
+.shop-card.discount { border-color:rgba(240,192,64,0.35); }
+.shop-discount-badge { position:absolute; top:-8px; right:-8px; background:linear-gradient(135deg,#f0c040,#fb923c); color:#000; font-size:11px; font-weight:800; padding:4px 10px; border-radius:12px; }
+.shop-pet-icon { font-size:48px; margin-bottom:8px; }
+.shop-pet-name { font-size:16px; font-weight:700; margin-bottom:4px; }
+.shop-pet-formula { font-size:13px; color:var(--cyan); margin-bottom:4px; font-family:'Times New Roman',serif; }
+.shop-pet-rarity { font-size:12px; margin-bottom:12px; }
+.shop-price { font-size:15px; font-weight:700; margin-bottom:14px; }
+.shop-price.can-buy { color:var(--gold); }
+.shop-price.no-money { color:var(--red); }
+.shop-price .origin-price { text-decoration:line-through; color:var(--muted); font-size:12px; }
+.shop-buy-btn { width:100%; padding:10px; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; transition:transform 0.15s; }
+.shop-buy-btn.can-buy { background:linear-gradient(135deg,var(--gold),#fb923c); color:#000; }
+.shop-buy-btn.can-buy:hover { transform:scale(1.05); }
+.shop-buy-btn.disabled { background:#2a2a3a; color:#666; cursor:not-allowed; }
+.shop-empty { grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--muted); }
+.shop-empty-icon { font-size:48px; margin-bottom:12px; }
+.shop-links { text-align:center; margin-top:24px; display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.shop-links a { color:var(--cyan); text-decoration:none; font-size:13px; }
+
+/* ===== 出售区域 ===== */
+.sell-section { margin-top:40px; border-top:1px solid var(--border); padding-top:24px; }
+.sell-title { font-size:16px; font-weight:700; color:var(--orange); margin-bottom:4px; }
+.sell-subtitle { font-size:12px; color:var(--muted); margin-bottom:16px; }
+.sell-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+.sell-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 12px; text-align:center; display:flex; flex-direction:column; align-items:center; }
+.sell-card:hover { border-color:rgba(251,146,60,0.3); }
+.sell-icon { font-size:36px; margin-bottom:8px; height:40px; display:flex; align-items:center; justify-content:center; }
+.sell-name { font-size:13px; font-weight:600; margin-bottom:2px; }
+.sell-count { font-size:11px; color:var(--muted); margin-bottom:10px; }
+.sell-btn { padding:6px 16px; border:none; border-radius:8px; background:linear-gradient(135deg,var(--orange),#ef4444); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; }
+.sell-btn:hover { transform:scale(1.05); }
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <a href="pets.html" class="back-link">← 返回宠物中心</a>
+  <div class="score-display"><span class="score-icon">💰</span><span class="score-num" id="scoreNum">0</span><span>积分</span></div>
+</div>
+<div class="header">
+  <div class="header-title">🏪 化学宠物商店</div>
+  <div class="header-sub">用积分购买宠物，每日刷新3只，20%概率打折！</div>
+</div>
+<div class="shop-container">
+  <div class="shop-info-box">
+    <div class="shop-info-text">今日特供 <span id="shopDate">-</span></div>
+    <div class="shop-refresh" id="shopCount">已收集 0 种</div>
+  </div>
+  <div class="shop-grid" id="shopGrid">
+    <div class="shop-empty"><div class="shop-empty-icon">📦</div><div>正在加载...</div></div>
+  </div>
+  <div class="sell-section" id="sellSection">
+    <div class="sell-title">💰 出售宠物</div>
+    <div class="sell-subtitle">卖出你不需要的宠物，获得积分（价格 = 稀有度 × 3，低于炼丹消耗）</div>
+    <div class="sell-grid" id="sellGrid">
+      <div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted);font-size:13px">加载中...</div>
+    </div>
+  </div>
+  <div class="shop-links">
+    <a href="alchemy.html">🔥 炼丹炉</a>
+    <a href="pets.html">🎒 我的宠物</a>
+    <a href="index.html">📖 学习系统</a>
+  </div>
+</div>
+<script src="assets/alchemy.js"></script>
+<script>
+(function(){
+var RARITY_NAMES=['','普通','稀有','史诗','传说','神话'];
+var RARITY_COLORS=['','#94a3b8','#6ee7b7','#67e8f9','#a78bfa','#f0c040'];
+var TYPE_ICONS={metal:'🔩',nonmetal:'💎',noble:'🎈',oxide:'💨',acid:'🧪',base:'💧',salt:'🧂',organic:'🌿',special:'⚡'};
+function todayStr(){return new Date().toISOString().slice(0,10);}
+function init(){updateScore();renderShop();renderSell();document.getElementById('shopDate').textContent=todayStr();}
+function updateScore(){var s=ALCHEMY_SYSTEM.getScore();document.getElementById('scoreNum').textContent=s;}
+function renderShop(){
+  var grid=document.getElementById('shopGrid');
+  var myScore=ALCHEMY_SYSTEM.getScore();
+  var shopPets,stats;
+  try{shopPets=ALCHEMY_SYSTEM.getShopPets();stats=ALCHEMY_SYSTEM.getCollectionStats();}catch(e){
+    grid.innerHTML='<div class="shop-empty"><div class="shop-empty-icon">⚠️</div><div>商店暂不可用</div></div>';return;}
+  if(!shopPets||shopPets.length===0){
+    grid.innerHTML='<div class="shop-empty"><div class="shop-empty-icon">📦</div><div>今日已售罄，明天再来吧！</div></div>';return;}
+  document.getElementById('shopCount').textContent='已收集 '+stats.unique+' 种宠物';
+  var html='';
+  shopPets.forEach(function(item){
+    var pet=getPetById(item.id);if(!pet)return;
+    var price=Math.floor(item.price*item.discount);
+    var isDiscount=item.discount<1;
+    var canBuy=myScore>=price;
+    html+='<div class="shop-card'+(isDiscount?' discount':'')+'">';
+    if(isDiscount)html+='<div class="shop-discount-badge">8折</div>';
+    html+='<div class="shop-pet-icon">'+(pet.icon||TYPE_ICONS[pet.type]||'🧪')+'</div>';
+    html+='<div class="shop-pet-name">'+pet.name+'</div>';
+    html+='<div class="shop-pet-formula">'+(pet.formula||'')+'</div>';
+    html+='<div class="shop-pet-rarity" style="color:'+RARITY_COLORS[pet.rarity]+'">'+RARITY_NAMES[pet.rarity]+'</div>';
+    html+='<div class="shop-price '+(canBuy?'can-buy':'no-money')+'">';
+    if(isDiscount)html+='<span class="origin-price">'+item.price+'</span> ';
+    html+='💰 '+price+'</div>';
+    html+='<button class="shop-buy-btn '+(canBuy?'can-buy':'disabled')+'" '+(canBuy?'onclick="buyPet(\''+pet.id+'\')"':'disabled')+'>'+(canBuy?'购买':'积分不足')+'</button>';
+    html+='</div>';
+  });
+  grid.innerHTML=html;
+}
+function getPetById(id){try{return ALCHEMY_SYSTEM.getPetById(id);}catch(e){return null;}}
+window.buyPet=function(petId){
+  var r=ALCHEMY_SYSTEM.buyPet(petId);
+  if(r.ok){alert('🎉 购买成功！获得 '+r.pet.name+'，花费 '+r.price+' 积分');updateScore();renderShop();renderSell();}
+  else alert(r.msg);
+};
+function renderSell(){
+  var grid=document.getElementById('sellGrid');
+  var myPets;
+  try{myPets=ALCHEMY_SYSTEM.getMyPets();}catch(e){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted);font-size:13px">暂不可用</div>';return;}
+  if(!myPets||myPets.length===0){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--muted);font-size:13px">还没有宠物可以出售</div>';return;}
+  var html='';
+  myPets.forEach(function(item){
+    var pet=item.def;
+    var sellPrice=pet.rarity*3;
+    html+='<div class="sell-card">';
+    html+='<div class="sell-icon">'+(pet.icon||TYPE_ICONS[pet.type]||'🧪')+'</div>';
+    html+='<div class="sell-name">'+pet.name+'</div>';
+    html+='<div class="sell-count">x'+item.count+'</div>';
+    html+='<button class="sell-btn" onclick="sellPet(\''+pet.id+'\')">卖出 +'+sellPrice+'</button>';
+    html+='</div>';
+  });
+  grid.innerHTML=html;
+}
+window.sellPet=function(petId){
+  var r=ALCHEMY_SYSTEM.sellPet(petId);
+  if(r.ok){alert('出售 '+r.pet.name+' 成功！获得 '+r.price+' 积分');updateScore();renderShop();renderSell();}
+  else alert(r.msg);
+};
+init();
+})();
+</script>
+</body>
+</html>
