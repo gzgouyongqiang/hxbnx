@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>离子共存闪电战 | 化学不难学</title>
+<style>
+:root{
+  --bg:#0a0e1a;--card:#11182b;--gold:#f0c040;--cyan:#67e8f9;--red:#f87171;
+  --green:#6ee7b7;--orange:#fb923c;--text:#e2e8f0;--muted:#94a3b8;
+  --border:rgba(103,232,249,0.15);--accent:#67e8f9;--accent2:#22d3ee;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+.header{position:relative;z-index:10;text-align:center;padding:20px 16px 8px}
+.header h1{font-size:26px;background:linear-gradient(90deg,var(--cyan),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.header p{color:var(--muted);font-size:12px}
+
+.nav{position:relative;z-index:10;display:flex;justify-content:center;gap:8px;padding:0 16px 12px;flex-wrap:wrap}
+.nav-btn{padding:7px 16px;border-radius:18px;border:1px solid var(--border);background:rgba(17,24,43,0.8);color:var(--muted);font-size:12px;cursor:pointer;transition:all .3s}
+.nav-btn.active{background:linear-gradient(90deg,rgba(103,232,249,0.15),rgba(34,211,238,0.15));color:var(--cyan);border-color:var(--cyan)}
+.nav-btn:hover{transform:translateY(-1px)}
+
+.main{position:relative;z-index:10;max-width:750px;margin:0 auto;padding:0 16px 40px}
+
+/* 开始界面 */
+.start-screen{text-align:center;padding:30px 0}
+.start-icon{font-size:64px;margin-bottom:16px}
+.start-title{font-size:24px;font-weight:800;color:var(--cyan);margin-bottom:10px}
+.start-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:24px;max-width:540px;margin-left:auto;margin-right:auto}
+.start-btn{background:linear-gradient(90deg,var(--cyan),var(--accent2));color:#000;border:none;border-radius:12px;padding:12px 36px;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;margin:6px}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(103,232,249,.25)}
+.start-btn.hard-btn{background:linear-gradient(90deg,var(--red),#b91c1c);color:#fff}
+.start-btn.hard-btn:hover{box-shadow:0 8px 24px rgba(248,113,113,.3)}
+.rule-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:20px;text-align:left;font-size:12px;color:var(--muted);line-height:1.8}
+.rule-box strong{color:var(--cyan)}
+
+/* 游戏区域 */
+.game-area{display:none}
+.game-area.active{display:block}
+
+/* 顶部信息栏 */
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.score-box{display:flex;align-items:center;gap:12px}
+.score-item{text-align:center}
+.score-num{font-size:20px;font-weight:800;color:var(--cyan)}
+.score-label{font-size:10px;color:var(--muted)}
+.timer-box{position:relative;width:56px;height:56px}
+.timer-svg{transform:rotate(-90deg)}
+.timer-bg{fill:none;stroke:rgba(255,255,255,.05);stroke-width:5}
+.timer-fg{fill:none;stroke:var(--cyan);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .1s linear,stroke .3s}
+.timer-fg.warning{stroke:var(--orange)}
+.timer-fg.danger{stroke:var(--red)}
+.timer-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:16px;font-weight:800;color:var(--cyan)}
+.timer-text.warning{color:var(--orange)}
+.timer-text.danger{color:var(--red)}
+
+.timeout-msg{display:none;text-align:center;padding:6px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:8px;font-size:13px;color:var(--orange);margin-bottom:12px}
+.timeout-msg.show{display:block;animation:slideIn .3s ease-out}
+
+/* 进度 */
+.progress-bar{height:5px;background:rgba(255,255,255,.05);border-radius:3px;margin-bottom:14px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--accent2));border-radius:3px;transition:width .5s}
+
+/* 题目卡片 */
+.question-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.question-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--accent2))}
+.q-number{font-size:11px;color:var(--muted);margin-bottom:8px}
+.q-condition{font-size:13px;color:var(--accent2);background:rgba(103,232,249,.08);border:1px solid rgba(103,232,249,.15);border-radius:8px;padding:8px 12px;margin-bottom:14px;line-height:1.7}
+.q-text{font-size:16px;line-height:1.8;margin-bottom:16px;color:var(--text)}
+.q-text .ion{color:var(--cyan);font-weight:700;font-family:'Courier New',monospace;font-size:15px}
+.q-hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
+.q-source{font-size:11px;color:var(--muted);margin-bottom:14px;padding:4px 10px;background:rgba(255,255,255,.03);border-radius:6px;display:inline-block}
+
+/* 判断按钮 */
+.judge-btns{display:flex;gap:12px;justify-content:center}
+.judge-btn{flex:1;max-width:200px;padding:16px;border-radius:12px;border:2px solid;border:none;font-size:18px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit}
+.judge-btn.true-btn{background:rgba(110,231,183,0.1);border-color:var(--green);color:var(--green)}
+.judge-btn.true-btn:hover{background:rgba(110,231,183,0.2);transform:scale(1.03)}
+.judge-btn.false-btn{background:rgba(248,113,113,0.1);border-color:var(--red);color:var(--red)}
+.judge-btn.false-btn:hover{background:rgba(248,113,113,0.2);transform:scale(1.03)}
+.judge-btn:disabled{opacity:.4;cursor:not-allowed;transform:none !important}
+
+/* 反馈动画 */
+.feedback{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:72px;font-weight:900;pointer-events:none;z-index:100;animation:feedbackPop .8s ease-out forwards}
+@keyframes feedbackPop{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.5)}
+  30%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}
+}
+.combo-pop{position:fixed;top:30%;left:50%;transform:translate(-50%,-50%);font-size:24px;font-weight:800;color:var(--gold);pointer-events:none;z-index:100;animation:comboPop .6s ease-out forwards}
+@keyframes comboPop{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.8)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}
+}
+
+/* 解析卡片 */
+.analysis-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:12px;display:none}
+.analysis-card.show{display:block;animation:slideIn .3s ease-out}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.analysis-title{font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:8px}
+.analysis-text{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* 结果界面 */
+.result-screen{display:none;text-align:center;padding:30px 0}
+.result-screen.active{display:block}
+.result-icon{font-size:64px;margin-bottom:16px}
+.result-title{font-size:24px;font-weight:800;color:var(--cyan);margin-bottom:8px}
+.result-subtitle{font-size:14px;color:var(--muted);margin-bottom:24px}
+.result-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.result-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;min-width:100px}
+.result-stat-num{font-size:28px;font-weight:800}
+.result-stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+.result-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.result-btn{padding:12px 28px;border-radius:12px;border:none;font-size:14px;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit}
+.result-btn.primary{background:linear-gradient(90deg,var(--cyan),var(--accent2));color:#000}
+.result-btn.secondary{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text)}
+.result-btn:hover{transform:translateY(-2px)}
+
+/* 错题列表 */
+.wrong-list{margin-top:20px;text-align:left}
+.wrong-item{background:var(--card);border:1px solid rgba(248,113,113,0.2);border-radius:10px;padding:14px;margin-bottom:8px;font-size:13px;line-height:1.7}
+.wrong-item .wrong-q{color:var(--red);margin-bottom:6px}
+.wrong-item .wrong-a{color:var(--green)}
+.wrong-item .wrong-analysis{color:var(--muted);font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="header">
+  <h1>⚡ 离子共存闪电战</h1>
+  <p>限时作答，超时仍可答 · 连对加分，错入错题本</p>
+</div>
+
+<div class="nav">
+  <div class="nav-btn active" onclick="showScreen('start')">开始</div>
+  <div class="nav-btn" onclick="showScreen('wrong')">错题本</div>
+  <div class="nav-btn" onclick="window.location.href='index.html'">返回首页</div>
+</div>
+
+<div class="main">
+
+  <!-- 开始界面 -->
+  <div class="start-screen" id="startScreen">
+    <div class="start-icon">⚡</div>
+    <div class="start-title">离子共存闪电战</div>
+    <div class="start-desc">
+      给出<strong>条件</strong>和<strong>离子组</strong>，判断能否大量共存。<br>
+      每题限时内答对得<strong>10分</strong>并自动进入下一题，<strong>连对加分</strong>！<br>
+      超时未答仍可作答，本题得<strong>5分</strong>（半分）。
+    </div>
+    <div class="rule-box">
+      📌 <strong>游戏规则</strong><br>
+      • 🟢 普通模式：每题限时<strong>20秒</strong>，答对自动进入下一题<br>
+      • 🔴 地狱模式：每题限时<strong>10秒</strong>，速度挑战<br>
+      • 限时内答对：<strong>10分</strong> + 连击加成（×2起）<br>
+      • 超时答对：<strong>5分</strong>（半分），不中断连击<br>
+      • 答错：扣5分，连击归零，自动进入下一题<br>
+      • 覆盖<strong>广东高考高频陷阱</strong>：氧化还原、双水解、络合、颜色、pH条件
+    </div>
+    <div style="margin-top:20px">
+      <button class="start-btn" onclick="startGame('easy')">🟢 普通模式（20秒/题）</button>
+      <br>
+      <button class="start-btn hard-btn" onclick="startGame('hard')">🔴 地狱模式（10秒/题）</button>
+    </div>
+  </div>
+
+  <!-- 游戏区域 -->
+  <div class="game-area" id="gameArea">
+    <div class="top-bar">
+      <div class="score-box">
+        <div class="score-item">
+          <div class="score-num" id="scoreNum">0</div>
+          <div class="score-label">得分</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="comboNum" style="color:var(--orange)">×1</div>
+          <div class="score-label">连击</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="correctNum" style="color:var(--green)">0</div>
+          <div class="score-label">正确</div>
+        </div>
+      </div>
+      <div class="timer-box">
+        <svg class="timer-svg" width="56" height="56" viewBox="0 0 56 56">
+          <circle class="timer-bg" cx="28" cy="28" r="24"/>
+          <circle class="timer-fg" id="timerFg" cx="28" cy="28" r="24"
+            stroke-dasharray="150.8" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-text" id="timerText">20</div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+
+    <div class="timeout-msg" id="timeoutMsg">
+      ⏰ 时间到！仍可作答，本题得分减半（5分）
+    </div>
+
+    <div class="question-card" id="questionCard">
+      <div class="q-number" id="qNumber">第 1 / 15 题</div>
+      <div class="q-condition" id="qCondition"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-hint" id="qHint"></div>
+      <div class="q-source" id="qSource"></div>
+      <div class="judge-btns">
+        <button class="judge-btn true-btn" id="btnTrue" onclick="judge(true)">✅ 能共存</button>
+        <button class="judge-btn false-btn" id="btnFalse" onclick="judge(false)">❌ 不能共存</button>
+      </div>
+    </div>
+
+    <div class="analysis-card" id="analysisCard">
+      <div class="analysis-title">💡 解析</div>
+      <div class="analysis-text" id="analysisText"></div>
+    </div>
+  </div>
+
+  <!-- 结果界面 -->
+  <div class="result-screen" id="resultScreen">
+    <div class="result-icon" id="resultIcon">🏆</div>
+    <div class="result-title" id="resultTitle">判官评级</div>
+    <div class="result-subtitle" id="resultSubtitle"></div>
+    <div class="result-stats">
+      <div class="result-stat">
+        <div class="result-stat-num" id="rCorrect" style="color:var(--green)">0</div>
+        <div class="result-stat-label">正确数</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-num" id="rWrong" style="color:var(--red)">0</div>
+        <div class="result-stat-label">错误数</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-num" id="rScore" style="color:var(--cyan)">0</div>
+        <div class="result-stat-label">总得分</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-num" id="rCombo" style="color:var(--orange)">0</div>
+        <div class="result-stat-label">最高连击</div>
+      </div>
+    </div>
+    <div class="result-btns">
+      <button class="result-btn primary" onclick="startGame('easy')">🔄 再来一局</button>
+      <button class="result-btn secondary" onclick="showWrongBook()">📖 查看错题</button>
+      <button class="result-btn secondary" onclick="showScreen('start')">🏠 返回</button>
+    </div>
+    <div class="wrong-list" id="wrongList"></div>
+  </div>
+
+</div>
+
+<script>
+// ============ 题目库 ============
+const questions = [
+  {
+    condition: "无色透明溶液中，下列各组离子能大量共存的是：",
+    ions: "H⁺、Na⁺、MnO₄⁻、Cl⁻",
+    answer: false,
+    analysis: "❌ 不能共存。<strong>MnO₄⁻为紫色</strong>，无色透明溶液中不能含MnO₄⁻。常见有色离子：MnO₄⁻(紫)、Fe³⁺(棕黄)、Fe²⁺(浅绿)、Cu²⁺(蓝)、Cr₂O₇²⁻(橙)、Cr³⁺(绿)。",
+    hint: "注意：无色溶液 ≠ 透明溶液",
+    source: "颜色陷阱·广东卷高频"
+  },
+  {
+    condition: "pH = 1 的溶液中，下列各组离子能大量共存的是：",
+    ions: "K⁺、Cl⁻、NO₃⁻、Fe²⁺",
+    answer: false,
+    analysis: "❌ 不能共存。pH=1 ⇒ 溶液含大量<strong>H⁺</strong>，H⁺ + NO₃⁻ 具有强氧化性，可将 Fe²⁺ 氧化为 Fe³⁺：3Fe²⁺ + 4H⁺ + NO₃⁻ → 3Fe³⁺ + NO↑ + 2H₂O。",
+    hint: "H⁺ + NO₃⁻ 组合 = 隐形氧化剂",
+    source: "氧化还原陷阱"
+  },
+  {
+    condition: "下列各组离子在指定条件下能大量共存：",
+    ions: "Na⁺、K⁺、Cl⁻、SO₄²⁻",
+    answer: true,
+    analysis: "✅ 能共存。Na⁺、K⁺、Cl⁻、SO₄²⁻ 之间不发生反应（不生成沉淀、气体、弱电解质，不发生氧化还原或双水解），可以大量共存。",
+    hint: "这四张是「万能离子」，几乎哪里都能共存",
+    source: "基础共存题"
+  },
+  {
+    condition: "含大量 Fe³⁺ 的溶液中，下列离子能大量共存的是：",
+    ions: "Na⁺、SCN⁻、Cl⁻、SO₄²⁻",
+    answer: false,
+    analysis: "❌ 不能共存。Fe³⁺ 与 SCN⁻ 发生<strong>络合反应</strong>：Fe³⁺ + 3SCN⁻ ⇌ Fe(SCN)₃（血红色），不能大量共存。这也是 Fe³⁺ 的检验原理。",
+    hint: "Fe³⁺ + SCN⁻ → 血红色络合物",
+    source: "络合反应陷阱"
+  },
+  {
+    condition: "pH = 13（强碱性）溶液中，下列各组离子能大量共存的是：",
+    ions: "Na⁺、K⁺、CO₃²⁻、AlO₂⁻",
+    answer: true,
+    analysis: "✅ 能共存。pH=13 为强碱性溶液，含大量 OH⁻。Na⁺、K⁺、CO₃²⁻、AlO₂⁻ 在碱性条件下均稳定，且彼此不反应。注意：Al³⁺、NH₄⁺、Fe³⁺ 等在碱性溶液中不能大量存在。",
+    hint: "碱性溶液中：不能有 +OH⁻→↓ 或 +OH⁻→NH₃·H₂O 的离子",
+    source: "pH条件·碱性"
+  },
+  {
+    condition: "含大量 H⁺ 的溶液中，下列各组离子能大量共存的是：",
+    ions: "Na⁺、ClO⁻、Cl⁻、K⁺",
+    answer: false,
+    analysis: "❌ 不能共存。含大量 H⁺ 时，ClO⁻ + Cl⁻ + 2H⁺ → Cl₂↑ + H₂O（次氯酸根在酸性条件下氧化 Cl⁻ 生成氯气）。类似地，ClO₃⁻、ClO₄⁻ 在酸性条件下也有强氧化性。",
+    hint: "ClO⁻/ClO₃⁻ + Cl⁻ + H⁺ → Cl₂",
+    source: "氧化还原反应·广东卷"
+  },
+  {
+    condition: "无色溶液中，下列各组离子能大量共存的是：",
+    ions: "K⁺、Na⁺、Cr₂O₇²⁻、Cl⁻",
+    answer: false,
+    analysis: "❌ 不能共存。<strong>Cr₂O₇²⁻（重铬酸根）为橙色</strong>，无色溶液中不能含 Cr₂O₇²⁻。Cr³⁺ 为绿色，也有颜色。",
+    hint: "Cr₂O₇²⁻ 橙色，CrO₄²⁻ 黄色，均有色",
+    source: "颜色陷阱"
+  },
+  {
+    condition: "常温下，水电离出的 c(H⁺) = 1×10⁻¹² mol/L 的溶液中，下列各组离子能大量共存的是：",
+    ions: "Na⁺、K⁺、CO₃²⁻、NO₃⁻",
+    answer: true,
+    analysis: "✅ 能共存。水电离出的 c(H⁺)=10⁻¹² mol/L < 10⁻⁷ mol/L，说明水的电离被<strong>抑制</strong>，溶液可能为<strong>强酸性或强碱性</strong>。Na⁺、K⁺、CO₃²⁻、NO₃⁻ 在碱性条件下稳定共存（酸性时 CO₃²⁻ + 2H⁺ → CO₂↑ + H₂O，但题意为「能大量共存」，且 CO₃²⁻ 在碱性OK）。若溶液为酸性则不行，但碱性时可以，题目表述「能大量共存」指存在条件使之共存。",
+    hint: "水电离受抑制 ⇒ 强酸或强碱，需分别判断",
+    source: "水的电离·条件判断"
+  },
+  {
+    condition: "含大量 Al³⁺ 的溶液中，下列离子能大量共存的是：",
+    ions: "Na⁺、CO₃²⁻、Cl⁻、SO₄²⁻",
+    answer: false,
+    analysis: "❌ 不能共存。Al³⁺ 与 CO₃²⁻ 发生<strong>双水解</strong>：2Al³⁺ + 3CO₃²⁻ + 3H₂O → 2Al(OH)₃↓ + 3CO₂↑。类似地，Al³⁺ 与 HCO₃⁻、S²⁻、AlO₂⁻ 均发生双水解，不能共存。",
+    hint: "Al³⁺ + CO₃²⁻/HCO₃⁻/S²⁻/AlO₂⁻ → 双水解",
+    source: "双水解陷阱·高频"
+  },
+  {
+    condition: "与 Al 粉反应产生 H₂ 的溶液中，下列各组离子能大量共存的是：",
+    ions: "Na⁺、K⁺、NO₃⁻、SO₄²⁻",
+    answer: false,
+    analysis: "❌ 不能共存。与 Al 反应产生 H₂ 的溶液可能为<strong>强酸性或强碱性</strong>。若为酸性，则含 H⁺，H⁺ + NO₃⁻ 具有强氧化性，与 Al 反应<strong>不产生 H₂</strong>（生成 NO 等氮氧化物）。因此含 NO₃⁻ 的酸性溶液与 Al 反应不产生 H₂，题目自相矛盾。此题核心：酸性+NO₃⁻ 与 Al 反应无 H₂。",
+    hint: "Al + HNO₃ → NO/NO₂，不产生H₂！",
+    source: "Al与酸反应·NO₃⁻干扰"
+  },
+  {
+    condition: "无色透明溶液中，下列各组离子能大量共存的是：",
+    ions: "NH₄⁺、Na⁺、Cl⁻、NO₃⁻",
+    answer: true,
+    analysis: "✅ 能共存。NH₄⁺、Na⁺、Cl⁻、NO₃⁻ 均为无色离子，彼此不反应（NH₄⁺ 水解显酸性，但不影响共存；若要生成 NH₃ 需加热或加强碱）。注意：若溶液为强碱性，则 NH₄⁺ 不能大量存在。",
+    hint: "NH₄⁺ 在碱性溶液中 → NH₃·H₂O，但题目未说碱性",
+    source: "基础共存·无色条件"
+  },
+  {
+    condition: "含大量 SO₄²⁻ 的溶液中，下列离子能大量共存的是：",
+    ions: "Ca²⁺、Ba²⁺、Na⁺、Cl⁻",
+    answer: false,
+    analysis: "❌ 不能共存。SO₄²⁻ 与 <strong>Ba²⁺ 生成 BaSO₄↓</strong>（白色沉淀，不溶于酸），也不能与 Ca²⁺ 大量共存（CaSO₄ 微溶）。BaSO₄ 是检验 SO₄²⁻ 的特征沉淀。",
+    hint: "Ba²⁺ + SO₄²⁻ → BaSO₄↓（白色，不溶于酸）",
+    source: "沉淀反应·SO₄²⁻检验"
+  },
+  {
+    condition: "c(H⁺) > c(OH⁻) 的溶液中，下列各组离子能大量共存的是：",
+    ions: "Na⁺、CH₃COO⁻、Cl⁻、K⁺",
+    answer: false,
+    analysis: "❌ 不能共存。c(H⁺) > c(OH⁻) ⇒ 溶液呈<strong>酸性</strong>。CH₃COO⁻ + H⁺ ⇌ CH₃COOH（弱酸），在酸性溶液中 CH₃COO⁻ 不能大量存在。弱酸根离子（CO₃²⁻、CH₃COO⁻、S²⁻等）在酸性溶液中不能大量共存。",
+    hint: "弱酸根离子 + H⁺ → 弱酸分子（不能大量共存）",
+    source: "弱酸根·酸性条件"
+  },
+  {
+    condition: "下列各组离子在强碱性溶液中能大量共存的是：",
+    ions: "Na⁺、K⁺、AlO₂⁻、CO₃²⁻",
+    answer: true,
+    analysis: "✅ 能共存。强碱性溶液中含大量 OH⁻。Na⁺、K⁺ 稳定；AlO₂⁻（偏铝酸根）只在<strong>碱性</strong>条件下稳定存在（酸性时 AlO₂⁻ + H⁺ + H₂O → Al(OH)₃↓）；CO₃²⁻ 在碱性条件下也稳定。",
+    hint: "AlO₂⁻ 只能在碱性溶液中存在！",
+    source: "碱性条件·AlO₂⁻"
+  },
+  {
+    condition: "同时含 Fe³⁺ 和 Cu²⁺ 的溶液中，下列离子能大量共存的是：",
+    ions: "Na⁺、SO₄²⁻、NO₃⁻、Cl⁻",
+    answer: true,
+    analysis: "✅ 能共存。Na⁺、SO₄²⁻、NO₃⁻、Cl⁻ 与 Fe³⁺、Cu²⁺ 均不反应。Fe³⁺ 和 Cu²⁺ 共存时，需注意 I⁻（被 Fe³⁺ 氧化）、SCN⁻（与 Fe³⁺ 络合）、S²⁻（与两者都沉淀）等不能共存。",
+    hint: "Fe³⁺ 不能共存的离子：I⁻、SCN⁻、S²⁻、CO₃²⁻、AlO₂⁻等",
+    source: "离子干扰·综合判断"
+  }
+];
+
+// ============ 游戏状态 ============
+let state = {
+  current: 0, score: 0, correct: 0, wrong: 0,
+  combo: 0, maxCombo: 0, timer: null, timeLeft: 20,
+  total: 15, mode: 'easy', timeUp: false,
+  wrongQuestions: [], answered: false
+};
+
+// ============ 粒子背景 ============
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+function createParticles(){
+  particles = [];
+  for(let i=0;i<40;i++){
+    particles.push({
+      x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+      vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4,
+      r:Math.random()*1.5+0.5, a:Math.random()*0.3+0.1
+    });
+  }
+}
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height; if(p.y>canvas.height)p.y=0;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(103,232,249,${p.a})`; ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+createParticles();
+animateParticles();
+
+// ============ 界面切换 ============
+function showScreen(screen){
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.remove('active');
+  if(screen==='start') document.getElementById('startScreen').style.display='block';
+  if(screen==='wrong') showWrongBook();
+}
+
+// ============ 开始游戏 ============
+function startGame(mode){
+  state.mode = mode;
+  state.current = 0; state.score = 0; state.correct = 0;
+  state.wrong = 0; state.combo = 0; state.maxCombo = 0;
+  state.timeUp = false; state.wrongQuestions = [];
+  shuffleArray(questions);
+  state.total = Math.min(15, questions.length);
+  showScreen('game');
+  document.getElementById('gameArea').classList.add('active');
+  document.getElementById('analysisCard').classList.remove('show');
+  document.getElementById('timeoutMsg').classList.remove('show');
+  document.getElementById('scoreNum').textContent = '0';
+  document.getElementById('comboNum').textContent = '×1';
+  document.getElementById('correctNum').textContent = '0';
+  loadQuestion();
+}
+
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+}
+
+// ============ 加载题目 ============
+function loadQuestion(){
+  const q = questions[state.current];
+  const maxTime = state.mode==='hard' ? 10 : 20;
+  document.getElementById('qNumber').textContent = `第 ${state.current+1} / ${state.total} 题`;
+  document.getElementById('qCondition').textContent = q.condition;
+  document.getElementById('qText').innerHTML = `离子组：<span class="ion">${q.ions}</span>`;
+  document.getElementById('qHint').innerHTML = q.hint ? `💡 提示：${q.hint}` : '';
+  document.getElementById('qSource').textContent = q.source;
+  document.getElementById('analysisText').innerHTML = q.analysis;
+  document.getElementById('analysisCard').classList.remove('show');
+  document.getElementById('timeoutMsg').classList.remove('show');
+  state.timeUp = false; state.timeLeft = maxTime; state.answered = false;
+  const btnT = document.getElementById('btnTrue');
+  const btnF = document.getElementById('btnFalse');
+  btnT.disabled = false; btnT.style.opacity=1; btnT.style.background='';
+  btnF.disabled = false; btnF.style.opacity=1; btnF.style.background='';
+  document.getElementById('progressFill').style.width = `${(state.current/state.total)*100}%`;
+  startTimer();
+}
+
+// ============ 计时器 ============
+function startTimer(){
+  clearInterval(state.timer);
+  updateTimerDisplay();
+  state.timer = setInterval(()=>{
+    if(state.answered) return;
+    state.timeLeft--;
+    updateTimerDisplay();
+    if(state.timeLeft <= 0){ clearInterval(state.timer); onTimeUp(); }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  const maxTime = state.mode==='hard' ? 10 : 20;
+  const circumference = 2*Math.PI*24;
+  const pct = Math.max(0, state.timeLeft / maxTime);
+  const offset = circumference * (1 - pct);
+  const fg = document.getElementById('timerFg');
+  const txt = document.getElementById('timerText');
+  fg.style.strokeDashoffset = offset;
+  txt.textContent = Math.max(0, state.timeLeft);
+  fg.classList.remove('warning','danger');
+  txt.classList.remove('warning','danger');
+  if(state.timeLeft<=3 && state.timeLeft>0){fg.classList.add('danger');txt.classList.add('danger')}
+  else if(state.timeLeft<=Math.floor(maxTime/2)){fg.classList.add('warning');txt.classList.add('warning')}
+}
+
+function onTimeUp(){
+  state.timeUp = true;
+  document.getElementById('timeoutMsg').classList.add('show');
+}
+
+// ============ 判断 ============
+function judge(userAnswer){
+  if(state.answered) return;
+  state.answered = true;
+  clearInterval(state.timer);
+  const q = questions[state.current];
+  const btnT = document.getElementById('btnTrue');
+  const btnF = document.getElementById('btnFalse');
+  const isTimeout = state.timeUp;
+
+  if(userAnswer === q.answer){
+    state.correct++;
+    if(!isTimeout){
+      state.combo++;
+      if(state.combo > state.maxCombo) state.maxCombo = state.combo;
+      let pts = 10;
+      if(state.combo >= 5) pts = 30;
+      else if(state.combo >= 3) pts = 20;
+      state.score += pts;
+      if(state.combo>=3) showCombo(state.combo, pts);
+      showFeedback('✓','#6ee7b7');
+    } else {
+      state.combo++;
+      if(state.combo > state.maxCombo) state.maxCombo = state.combo;
+      state.score += 5;
+      showFeedback('⏰ +5','#fb923c');
+    }
+    if(userAnswer) btnT.style.background='rgba(110,231,183,0.3)';
+    else btnF.style.background='rgba(110,231,183,0.3)';
+  } else {
+    state.combo = 0;
+    state.wrong++;
+    state.score = Math.max(0, state.score - 5);
+    showFeedback('✗','#f87171');
+    state.wrongQuestions.push({...q, userAnswer});
+    if(userAnswer) btnT.style.background='rgba(248,113,113,0.3)';
+    else btnF.style.background='rgba(248,113,113,0.3)';
+    if(q.answer) btnT.style.background='rgba(110,231,183,0.3)';
+    else btnF.style.background='rgba(110,231,183,0.3)';
+  }
+
+  document.getElementById('scoreNum').textContent = state.score;
+  document.getElementById('comboNum').textContent = `×${state.combo >= 3 ? (state.combo>=5?3:2) : 1}`;
+  document.getElementById('correctNum').textContent = state.correct;
+  disableButtons();
+  showAnalysis();
+  const delay = (userAnswer === q.answer) ? 1200 : 2500;
+  setTimeout(nextQuestion, delay);
+}
+
+function disableButtons(){
+  document.getElementById('btnTrue').disabled = true;
+  document.getElementById('btnFalse').disabled = true;
+}
+function showFeedback(symbol, color){
+  const el = document.createElement('div');
+  el.className='feedback'; el.style.color=color;
+  el.style.fontSize = symbol.length>2 ? '36px' : '72px';
+  el.textContent = symbol; document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 800);
+}
+function showCombo(n, pts){
+  const el = document.createElement('div');
+  el.className='combo-pop';
+  el.textContent = `🔥 连击 ×${n}！+${pts}分`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 600);
+}
+function showAnalysis(){
+  document.getElementById('analysisCard').classList.add('show');
+}
+
+// ============ 下一题 ============
+function nextQuestion(){
+  state.current++;
+  if(state.current >= state.total){ endGame(); }
+  else { loadQuestion(); }
+}
+
+// ============ 结束 ============
+function endGame(){
+  clearInterval(state.timer);
+  document.getElementById('gameArea').classList.remove('active');
+  const rs = document.getElementById('resultScreen');
+  rs.classList.add('active');
+  document.getElementById('rCorrect').textContent = state.correct;
+  document.getElementById('rWrong').textContent = state.wrong;
+  document.getElementById('rScore').textContent = state.score;
+  document.getElementById('rCombo').textContent = state.maxCombo;
+  const pct = state.correct / state.total;
+  let icon, title, subtitle;
+  if(pct>=0.93){icon='👑';title='共存大宗师';subtitle='离子共存已无死角'}
+  else if(pct>=0.8){icon='🏆';title='共存高手';subtitle='高频陷阱基本躲过'}
+  else if(pct>=0.6){icon='⚡';title='共存学徒';subtitle='建议系统复习离子反应'}
+  else {icon='💀';title='共存小白';subtitle='建议从离子反应基础开始'}
+  document.getElementById('resultIcon').textContent = icon;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultSubtitle').textContent = subtitle;
+  const wl = document.getElementById('wrongList');
+  wl.innerHTML = '';
+  if(state.wrongQuestions.length > 0){
+    wl.innerHTML = '<h3 style="color:var(--red);margin-bottom:12px">📕 本次错题</h3>';
+    state.wrongQuestions.forEach((q,i)=>{
+      const div = document.createElement('div');
+      div.className='wrong-item';
+      const userAns = q.userAnswer===null?'超时未答':(q.userAnswer?'选了「能共存」':'选了「不能共存」');
+      div.innerHTML = `
+        <div class="wrong-q">${i+1}. ${q.condition}<br>离子组：${q.ions}</div>
+        <div style="color:var(--red);font-size:12px">你的答案：${userAns}</div>
+        <div class="wrong-a">正确答案：${q.answer?'能共存':'不能共存'}</div>
+        <div class="wrong-analysis">${q.analysis}</div>
+      `;
+      wl.appendChild(div);
+    });
+  }
+  saveWrongQuestions();
+}
+
+function saveWrongQuestions(){
+  let allWrong = JSON.parse(localStorage.getItem('ion_wrong')||'[]');
+  state.wrongQuestions.forEach(q=>{
+    allWrong.push({
+      condition: q.condition, ions: q.ions, answer: q.answer,
+      analysis: q.analysis, source: q.source, time: new Date().toLocaleString()
+    });
+  });
+  const unique = []; const seen = new Set();
+  allWrong.forEach(q=>{
+    const key = q.ions.slice(0,30);
+    if(!seen.has(key)){seen.add(key);unique.push(q)}
+  });
+  localStorage.setItem('ion_wrong', JSON.stringify(unique.slice(-50)));
+}
+
+// ============ 错题本 ============
+function showWrongBook(){
+  const allWrong = JSON.parse(localStorage.getItem('ion_wrong')||'[]');
+  const rs = document.getElementById('resultScreen');
+  rs.classList.add('active');
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('resultIcon').textContent = '📖';
+  document.getElementById('resultTitle').textContent = `错题本（共${allWrong.length}题）`;
+  document.getElementById('resultSubtitle').textContent = '点击「清除错题本」可清空所有记录';
+  document.getElementById('rCorrect').textContent = allWrong.length;
+  document.getElementById('rWrong').textContent = '-';
+  document.getElementById('rScore').textContent = '-';
+  document.getElementById('rCombo').textContent = '-';
+  const wl = document.getElementById('wrongList');
+  wl.innerHTML = '';
+  if(allWrong.length===0){
+    wl.innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px">暂无错题，太强了！</p>';
+  } else {
+    allWrong.forEach((q,i)=>{
+      const div = document.createElement('div');
+      div.className='wrong-item';
+      div.innerHTML = `
+        <div class="wrong-q">${i+1}. ${q.condition}<br>离子组：${q.ions}</div>
+        <div class="wrong-a">正确答案：${q.answer?'能共存':'不能共存'}</div>
+        <div class="wrong-analysis">${q.analysis}</div>
+      `;
+      wl.appendChild(div);
+    });
+  }
+  const btns = document.querySelector('.result-btns');
+  btns.innerHTML = `
+    <button class="result-btn primary" onclick="startGame('easy')">🔄 开始游戏</button>
+    <button class="result-btn secondary" onclick="localStorage.removeItem('ion_wrong');showWrongBook()">🗑️ 清除错题本</button>
+    <button class="result-btn secondary" onclick="showScreen('start')">🏠 返回</button>
+  `;
+}
+
+// ============ 初始化 ============
+showScreen('start');
+</script>
+</body>
+</html>
