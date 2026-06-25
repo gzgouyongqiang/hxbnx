@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NA快闪判官 | 化学不难学</title>
+<style>
+:root{
+  --bg:#0a0e1a;--card:#11182b;--gold:#f0c040;--cyan:#67e8f9;--red:#f87171;
+  --green:#6ee7b7;--orange:#fb923c;--text:#e2e8f0;--muted:#94a3b8;
+  --border:rgba(240,192,64,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+.header{position:relative;z-index:10;text-align:center;padding:20px 16px 8px}
+.header h1{font-size:26px;background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.header p{color:var(--muted);font-size:12px}
+
+.nav{position:relative;z-index:10;display:flex;justify-content:center;gap:8px;padding:0 16px 12px;flex-wrap:wrap}
+.nav-btn{padding:7px 16px;border-radius:18px;border:1px solid var(--border);background:rgba(17,24,43,0.8);color:var(--muted);font-size:12px;cursor:pointer;transition:all .3s}
+.nav-btn.active{background:linear-gradient(90deg,rgba(240,192,64,0.2),rgba(251,146,60,0.2));color:var(--gold);border-color:var(--gold)}
+.nav-btn:hover{transform:translateY(-1px)}
+
+.main{position:relative;z-index:10;max-width:750px;margin:0 auto;padding:0 16px 40px}
+
+/* 开始界面 */
+.start-screen{text-align:center;padding:30px 0}
+.start-icon{font-size:64px;margin-bottom:16px}
+.start-title{font-size:24px;font-weight:800;color:var(--gold);margin-bottom:10px}
+.start-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
+.start-btn{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000;border:none;border-radius:12px;padding:12px 36px;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;margin:6px}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,192,64,.3)}
+.start-btn.hard-btn{background:linear-gradient(90deg,var(--red),#b91c1c);color:#fff}
+.start-btn.hard-btn:hover{box-shadow:0 8px 24px rgba(248,113,113,.3)}
+.rule-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:20px;text-align:left;font-size:12px;color:var(--muted);line-height:1.8}
+.rule-box strong{color:var(--gold)}
+
+/* 游戏区域 */
+.game-area{display:none}
+.game-area.active{display:block}
+
+/* 顶部信息栏 */
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.score-box{display:flex;align-items:center;gap:12px}
+.score-item{text-align:center}
+.score-num{font-size:20px;font-weight:800;color:var(--gold)}
+.score-label{font-size:10px;color:var(--muted)}
+.timer-box{position:relative;width:56px;height:56px}
+.timer-svg{transform:rotate(-90deg)}
+.timer-bg{fill:none;stroke:rgba(255,255,255,.05);stroke-width:5}
+.timer-fg{fill:none;stroke:var(--gold);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .1s linear,stroke .3s}
+.timer-fg.warning{stroke:var(--orange)}
+.timer-fg.danger{stroke:var(--red)}
+.timer-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:16px;font-weight:800;color:var(--gold)}
+.timer-text.warning{color:var(--orange)}
+.timer-text.danger{color:var(--red)}
+
+/* 时间到提示 */
+.timeout-msg{display:none;text-align:center;padding:6px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:8px;font-size:13px;color:var(--orange);margin-bottom:12px}
+.timeout-msg.show{display:block;animation:slideIn .3s ease-out}
+.point-hint{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* 进度 */
+.progress-bar{height:5px;background:rgba(255,255,255,.05);border-radius:3px;margin-bottom:14px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:3px;transition:width .5s}
+
+/* 题目卡片 */
+.question-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.question-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--orange))}
+.q-number{font-size:11px;color:var(--muted);margin-bottom:8px}
+.q-text{font-size:16px;line-height:1.8;margin-bottom:16px;color:var(--text)}
+.q-text .na{color:var(--gold);font-weight:700;font-size:18px}
+.q-source{font-size:11px;color:var(--muted);margin-bottom:14px;padding:4px 10px;background:rgba(255,255,255,.03);border-radius:6px;display:inline-block}
+
+/* 判断按钮 */
+.judge-btns{display:flex;gap:12px;justify-content:center}
+.judge-btn{flex:1;max-width:200px;padding:16px;border-radius:12px;border:2px solid;border:none;font-size:18px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit}
+.judge-btn.true-btn{background:rgba(110,231,183,0.1);border-color:var(--green);color:var(--green)}
+.judge-btn.true-btn:hover{background:rgba(110,231,183,0.2);transform:scale(1.03)}
+.judge-btn.false-btn{background:rgba(248,113,113,0.1);border-color:var(--red);color:var(--red)}
+.judge-btn.false-btn:hover{background:rgba(248,113,113,0.2);transform:scale(1.03)}
+.judge-btn:disabled{opacity:.4;cursor:not-allowed;transform:none !important}
+
+/* 反馈动画 */
+.feedback{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:72px;font-weight:900;pointer-events:none;z-index:100;animation:feedbackPop .8s ease-out forwards}
+@keyframes feedbackPop{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.5)}
+  30%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}
+}
+.combo-pop{position:fixed;top:30%;left:50%;transform:translate(-50%,-50%);font-size:24px;font-weight:800;color:var(--gold);pointer-events:none;z-index:100;animation:comboPop .6s ease-out forwards}
+@keyframes comboPop{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.8)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}
+}
+
+/* 解析卡片 */
+.analysis-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:12px;display:none}
+.analysis-card.show{display:block;animation:slideIn .3s ease-out}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.analysis-title{font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:8px}
+.analysis-text{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* 结果界面 */
+.result-screen{display:none;text-align:center;padding:30px 0}
+.result-screen.active{display:block}
+.result-icon{font-size:64px;margin-bottom:16px}
+.result-title{font-size:24px;font-weight:800;color:var(--gold);margin-bottom:8px}
+.result-subtitle{font-size:14px;color:var(--muted);margin-bottom:24px}
+.result-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.result-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;min-width:100px}
+.result-stat-num{font-size:28px;font-weight:800}
+.result-stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+.result-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.result-btn{padding:12px 28px;border-radius:12px;border:none;font-size:14px;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit}
+.result-btn.primary{background:linear-gradient(90deg,var(--gold),#d4a017);color:#000}
+.result-btn.secondary{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text)}
+.result-btn:hover{transform:translateY(-2px)}
+
+/* 错题列表 */
+.wrong-list{margin-top:20px;text-align:left}
+.wrong-item{background:var(--card);border:1px solid rgba(248,113,113,0.2);border-radius:10px;padding:14px;margin-bottom:8px;font-size:13px;line-height:1.7}
+.wrong-item .wrong-q{color:var(--red);margin-bottom:6px}
+.wrong-item .wrong-a{color:var(--green)}
+.wrong-item .wrong-analysis{color:var(--muted);font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="header">
+  <h1>⚡ NA快闪判官</h1>
+  <p>限时作答，超时仍可答 · 连对加分，错入错题本</p>
+</div>
+
+<div class="nav">
+  <div class="nav-btn active" onclick="showScreen('start')">开始</div>
+  <div class="nav-btn" onclick="showScreen('wrong')">错题本</div>
+  <div class="nav-btn" onclick="window.location.href='index.html'">返回首页</div>
+</div>
+
+<div class="main">
+
+  <!-- 开始界面 -->
+  <div class="start-screen" id="startScreen">
+    <div class="start-icon">⚡</div>
+    <div class="start-title">NA快闪判官</div>
+    <div class="start-desc">
+      每题限时内答对得<strong>10分</strong>并自动进入下一题，<strong>连对加分</strong>！<br>
+      超时未答题目不会跳过，仍可作答，答对得<strong>5分</strong>（半分），答错不得分。<br>
+      题目全部来自<strong>广东高考真题</strong>，覆盖NA所有高频陷阱。
+    </div>
+    <div class="rule-box">
+      📌 <strong>游戏规则</strong><br>
+      • 🟢 普通模式：每题限时<strong>20秒</strong>，答对自动进入下一题<br>
+      • 🔴 地狱模式：每题限时<strong>10秒</strong>，速度挑战<br>
+      • 限时内答对：<strong>10分</strong> + 连击加成（×2起）<br>
+      • 超时答对：<strong>5分</strong>（半分），不中断连击<br>
+      • 答错：扣5分，连击归零，自动进入下一题<br>
+      • 答错题目自动进入错题本，方便针对性复习
+    </div>
+    <div style="margin-top:20px">
+      <button class="start-btn" onclick="startGame('easy')">🟢 普通模式（20秒/题）</button>
+      <br>
+      <button class="start-btn hard-btn" onclick="startGame('hard')">🔴 地狱模式（10秒/题）</button>
+    </div>
+  </div>
+
+  <!-- 游戏区域 -->
+  <div class="game-area" id="gameArea">
+    <div class="top-bar">
+      <div class="score-box">
+        <div class="score-item">
+          <div class="score-num" id="scoreNum">0</div>
+          <div class="score-label">得分</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="comboNum" style="color:var(--orange)">×1</div>
+          <div class="score-label">连击</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="correctNum" style="color:var(--green)">0</div>
+          <div class="score-label">正确</div>
+        </div>
+      </div>
+      <div class="timer-box">
+        <svg class="timer-svg" width="56" height="56" viewBox="0 0 56 56">
+          <circle class="timer-bg" cx="28" cy="28" r="24"/>
+          <circle class="timer-fg" id="timerFg" cx="28" cy="28" r="24"
+            stroke-dasharray="150.8" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-text" id="timerText">20</div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+
+    <!-- 时间到提示 -->
+    <div class="timeout-msg" id="timeoutMsg">
+      ⏰ 时间到！仍可作答，本题得分减半（5分）
+    </div>
+
+    <div class="question-card" id="questionCard">
+      <div class="q-number" id="qNumber">第 1 / 15 题</div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-source" id="qSource"></div>
+      <div class="judge-btns">
+        <button class="judge-btn true-btn" id="btnTrue" onclick="judge(true)">✅ 正确</button>
+        <button class="judge-btn false-btn" id="btnFalse" onclick="judge(false)">❌ 错误</button>
+      </div>
+    </div>
+
+    <div class="analysis-card" id="analysisCard">
+      <div class="analysis-title">💡 解析</div>
+      <div class="analysis-text" id="analysisText"></div>
+    </div>
+  </div>
+
+  <!-- 结果界面 -->
+  <div class="result-screen" id="resultScreen">
+    <div class="result-icon" id="resultIcon">🏆</div>
+    <div class="result-title" id="resultTitle">判官评级</div>
+    <div class="result-subtitle" id="resultSubtitle"></div>
+    <div class="result-stats">
+      <div class="result-stat">
+        <div class="result-stat-num" id="rCorrect" style="color:var(--green)">0</div>
+        <div class="result-stat-label">正确数</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-num" id="rWrong" style="color:var(--red)">0</div>
+        <div class="result-stat-label">错误数</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-num" id="rScore" style="color:var(--gold)">0</div>
+        <div class="result-stat-label">总得分</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-stat-num" id="rCombo" style="color:var(--orange)">0</div>
+        <div class="result-stat-label">最高连击</div>
+      </div>
+    </div>
+    <div class="result-btns">
+      <button class="result-btn primary" onclick="startGame('easy')">🔄 再来一局</button>
+      <button class="result-btn secondary" onclick="showWrongBook()">📖 查看错题</button>
+      <button class="result-btn secondary" onclick="showScreen('start')">🏠 返回</button>
+    </div>
+    <div class="wrong-list" id="wrongList"></div>
+  </div>
+
+</div>
+
+<script>
+// ============ 题目库（广东高考真题NA题） ============
+const questions = [
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol·L⁻¹ NaCl溶液中，Na⁺数目为<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。溶液<strong>体积未知</strong>，无法计算Na⁺数目。1 mol·L⁻¹只是浓度，不是物质的量。若体积为1 L，则Na⁺数目为<span class='na'>N<sub>A</sub></span>。",
+    source: "浓度体积陷阱·广东卷高频"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>标准状况下，22.4 L H₂O所含分子数为<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。标准状况下H₂O为<strong>液态</strong>（或固态），不能用22.4 L/mol计算。22.4 L/mol只适用于标准状况下的<strong>气体</strong>。注意：HF、SO₃、Br₂、CCl₄标准状况下也非气体。",
+    source: "状态判断陷阱"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol Cl₂与足量Fe反应，转移电子数为3<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。Cl₂与Fe反应生成FeCl₃，但按<strong>Cl₂的量</strong>计算电子转移。1 mol Cl₂完全反应得2 mol e⁻，转移电子数为<strong>2<span class='na'>N<sub>A</sub></span></strong>。",
+    source: "电子转移计算"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>常温常压下，16 g CH₄所含<strong>共价键数</strong>为4<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。16 g CH₄为1 mol，每个CH₄分子含<strong>4个C-H共价键</strong>，故共价键数为4<span class='na'>N<sub>A</sub></span>。注意区分「共价键数」和「共用电子对数」（后者为2<span class='na'>N<sub>A</sub></span>）。",
+    source: "共价键计算"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol Na₂O₂与足量CO₂反应，转移电子数为<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。2Na₂O₂ + 2CO₂ = 2Na₂CO₃ + O₂，每<strong>2 mol Na₂O₂</strong>转移2 mol e⁻（O⁻¹ → O⁰和O⁻²），故1 mol Na₂O₂转移<span class='na'>N<sub>A</sub></span>个电子。",
+    source: "Na₂O₂歧化反应"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 L 0.1 mol·L⁻¹ Na₂CO₃溶液中，CO₃²⁻数目为0.1<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。CO₃²⁻在水溶液中发生<strong>水解</strong>（CO₃²⁻ + H₂O ⇌ HCO₃⁻ + OH⁻），故CO₃²⁻数目<strong>小于</strong>0.1<span class='na'>N<sub>A</sub></span>。类比：弱酸根离子会水解，数目减少。",
+    source: "水解陷阱·广东卷经典"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>标准状况下，2.24 L Cl₂所含<strong>原子数</strong>为0.2<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。标准状况下2.24 L Cl₂为0.1 mol，每个Cl₂分子含<strong>2个Cl原子</strong>，故原子数为0.2<span class='na'>N<sub>A</sub></span>。",
+    source: "气体摩尔体积"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol N₂与3 mol H₂在一定条件下反应，生成NH₃分子数为2<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。N₂ + 3H₂ ⇌ 2NH₃是<strong>可逆反应</strong>，反应不能进行到底，生成NH₃分子数<strong>小于</strong>2<span class='na'>N<sub>A</sub></span>。可逆反应相关计算是NA题高频陷阱。",
+    source: "可逆反应陷阱"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>18 g H₂O中所含<strong>质子数</strong>为10<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。18 g H₂O为1 mol，每个H₂O分子含<strong>10个质子</strong>（O: 8个 + H×2: 各1个），故质子数为10<span class='na'>N<sub>A</sub></span>。",
+    source: "质子/电子数计算"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>标准状况下，11.2 L <strong>HF</strong>所含分子数为0.5<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。标准状况下HF为<strong>液态</strong>（沸点19.5°C），不能用22.4 L/mol计算。常见的标准状况下非气体：H₂O、HF、SO₃、Br₂、I₂、CCl₄、苯等。",
+    source: "状态判断·易忽略"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol Na完全反应（无论生成Na₂O或Na₂O₂），转移电子数为<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。Na反应后均为+1价，1 mol Na失去<strong>1 mol e⁻</strong>，转移电子数为<span class='na'>N<sub>A</sub></span>，与生成Na₂O还是Na₂O₂<strong>无关</strong>。",
+    source: "转移电子数·经典"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>常温常压下，32 g O₂和O₃的<strong>混合气体</strong>所含氧原子数为2<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。32 g混合气体中，O原子总质量为32 g，即<strong>2 mol O原子</strong>，故氧原子数为2<span class='na'>N<sub>A</sub></span>。技巧：混合物计算只看<strong>目标原子的总质量</strong>，与各物质比例无关。",
+    source: "混合物计算技巧"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol Fe与足量稀HNO₃反应，转移电子数为3<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。Fe与<strong>足量</strong>稀HNO₃反应生成Fe³⁺，看似转移3 mol e⁻。但稀HNO₃浓度较低时可能生成Fe²⁺，且若HNO₃过量但Fe少量，Fe被氧化为Fe³⁺。此题<strong>条件表述不严谨</strong>时易错，需注意「足量」的含义。实际高考题会明确产物价态。",
+    source: "转移电子·易错题"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>1 mol <strong>D₂O</strong>（重水）所含中子数为10<span class='na'>N<sub>A</sub></span>",
+    answer: true,
+    analysis: "✅ 正确。D（²H）原子核含<strong>1个中子</strong>，¹⁶O含8个中子，故1个D₂O分子含中子数 = 1×2 + 8 = <strong>10</strong>，1 mol D₂O含中子数为10<span class='na'>N<sub>A</sub></span>。对比：普通H₂O含中子数为8<span class='na'>N<sub>A</sub></span>（¹H无中子）。",
+    source: "核素·中子数计算"
+  },
+  {
+    text: "设<span class='na'>N<sub>A</sub></span>为阿伏加德罗常数的值。下列说法正确的是：<br>25℃时，1 L pH=1的H₂SO₄溶液中，H⁺数目为0.2<span class='na'>N<sub>A</sub></span>",
+    answer: false,
+    analysis: "❌ 错误。pH=1 ⇒ c(H⁺)=0.1 mol·L⁻¹，1 L溶液中H⁺数目为<strong>0.1<span class='na'>N<sub>A</sub></span></strong>，与H₂SO₄是二元酸无关。pH直接给出c(H⁺)，不需乘以2。",
+    source: "pH计算陷阱"
+  }
+];
+
+// ============ 游戏状态 ============
+let state = {
+  current: 0,
+  score: 0,
+  correct: 0,
+  wrong: 0,
+  combo: 0,
+  maxCombo: 0,
+  timer: null,
+  timeLeft: 20,
+  total: 15,
+  mode: 'easy',       // easy=20s, hard=10s
+  timeUp: false,       // 时间是否已到
+  wrongQuestions: [],
+  answered: false
+};
+
+// ============ 粒子背景 ============
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+function createParticles(){
+  particles = [];
+  for(let i=0;i<40;i++){
+    particles.push({
+      x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+      vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4,
+      r:Math.random()*1.5+0.5, a:Math.random()*0.3+0.1
+    });
+  }
+}
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height; if(p.y>canvas.height)p.y=0;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(240,192,64,${p.a})`; ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+createParticles();
+animateParticles();
+
+// ============ 界面切换 ============
+function showScreen(screen){
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.remove('active');
+  if(screen==='start') document.getElementById('startScreen').style.display='block';
+  if(screen==='wrong') showWrongBook();
+}
+
+// ============ 开始游戏 ============
+function startGame(mode){
+  state.mode = mode;
+  state.current = 0;
+  state.score = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.combo = 0;
+  state.maxCombo = 0;
+  state.timeUp = false;
+  state.wrongQuestions = [];
+
+  // 洗牌题目
+  shuffleArray(questions);
+  state.total = Math.min(15, questions.length);
+
+  showScreen('game');
+  document.getElementById('gameArea').classList.add('active');
+  document.getElementById('analysisCard').classList.remove('show');
+  document.getElementById('timeoutMsg').classList.remove('show');
+  document.getElementById('scoreNum').textContent = '0';
+  document.getElementById('comboNum').textContent = '×1';
+  document.getElementById('correctNum').textContent = '0';
+  loadQuestion();
+}
+
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+}
+
+// ============ 加载题目 ============
+function loadQuestion(){
+  const q = questions[state.current];
+  const maxTime = state.mode==='hard' ? 10 : 20;
+
+  document.getElementById('qNumber').textContent = `第 ${state.current+1} / ${state.total} 题`;
+  document.getElementById('qText').innerHTML = q.text;
+  document.getElementById('qSource').textContent = q.source;
+  document.getElementById('analysisText').innerHTML = q.analysis;
+  document.getElementById('analysisCard').classList.remove('show');
+  document.getElementById('timeoutMsg').classList.remove('show');
+
+  state.timeUp = false;
+  state.timeLeft = maxTime;
+  state.answered = false;
+
+  // 重置按钮
+  const btnT = document.getElementById('btnTrue');
+  const btnF = document.getElementById('btnFalse');
+  btnT.disabled = false; btnT.style.opacity=1;
+  btnF.disabled = false; btnF.style.opacity=1;
+  btnT.style.background=''; btnF.style.background='';
+
+  // 进度
+  document.getElementById('progressFill').style.width = `${(state.current/state.total)*100}%`;
+
+  // 启动计时器
+  startTimer();
+}
+
+// ============ 计时器 ============
+function startTimer(){
+  clearInterval(state.timer);
+  updateTimerDisplay();
+
+  state.timer = setInterval(()=>{
+    if(state.answered) return;   // 已作答，暂停倒计时显示（但timer仍在跑）
+    state.timeLeft--;
+    updateTimerDisplay();
+    if(state.timeLeft <= 0){
+      clearInterval(state.timer);
+      onTimeUp();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  const maxTime = state.mode==='hard' ? 10 : 20;
+  const circumference = 2*Math.PI*24;
+  const pct = Math.max(0, state.timeLeft / maxTime);
+  const offset = circumference * (1 - pct);
+  const fg = document.getElementById('timerFg');
+  const txt = document.getElementById('timerText');
+  fg.style.strokeDashoffset = offset;
+  txt.textContent = Math.max(0, state.timeLeft);
+  fg.classList.remove('warning','danger');
+  txt.classList.remove('warning','danger');
+  if(state.timeLeft<=3 && state.timeLeft>0){fg.classList.add('danger');txt.classList.add('danger')}
+  else if(state.timeLeft<=Math.floor(maxTime/2)){fg.classList.add('warning');txt.classList.add('warning')}
+}
+
+function onTimeUp(){
+  // 时间到：不跳题，等学生答，显示提示
+  state.timeUp = true;
+  document.getElementById('timeoutMsg').classList.add('show');
+  // 按钮仍然可用，学生可以继续答
+}
+
+// ============ 判断 ============
+function judge(userAnswer){
+  if(state.answered) return;
+  state.answered = true;
+  clearInterval(state.timer);
+
+  const q = questions[state.current];
+  const btnT = document.getElementById('btnTrue');
+  const btnF = document.getElementById('btnFalse');
+  const isTimeout = state.timeUp;
+
+  if(userAnswer === q.answer){
+    // 正确
+    state.correct++;
+    if(!isTimeout){
+      // 限时内答对：10分 + 连击
+      state.combo++;
+      if(state.combo > state.maxCombo) state.maxCombo = state.combo;
+      let pts = 10;
+      if(state.combo >= 5) pts = 30;
+      else if(state.combo >= 3) pts = 20;
+      state.score += pts;
+      if(state.combo>=3) showCombo(state.combo, pts);
+      showFeedback('✓','#6ee7b7');
+    } else {
+      // 超时答对：5分，不中断连击
+      state.combo++;
+      if(state.combo > state.maxCombo) state.maxCombo = state.combo;
+      state.score += 5;
+      showFeedback('⏰ +5','#fb923c');
+    }
+    if(userAnswer) btnT.style.background='rgba(110,231,183,0.3)';
+    else btnF.style.background='rgba(110,231,183,0.3)';
+  } else {
+    // 错误
+    state.combo = 0;
+    state.wrong++;
+    state.score = Math.max(0, state.score - 5);
+    showFeedback('✗','#f87171');
+    state.wrongQuestions.push({...q, userAnswer});
+    if(userAnswer) btnT.style.background='rgba(248,113,113,0.3)';
+    else btnF.style.background='rgba(248,113,113,0.3)';
+    // 显示正确答案
+    if(q.answer) btnT.style.background='rgba(110,231,183,0.3)';
+    else btnF.style.background='rgba(110,231,183,0.3)';
+  }
+
+  document.getElementById('scoreNum').textContent = state.score;
+  document.getElementById('comboNum').textContent = `×${state.combo >= 3 ? (state.combo>=5?3:2) : 1}`;
+  document.getElementById('correctNum').textContent = state.correct;
+  disableButtons();
+  showAnalysis();
+
+  // 答错或超时后答对：延迟进入下一题
+  // 限时内答对：立即进入下一题
+  const delay = (userAnswer === q.answer) ? 1200 : 2500;
+  setTimeout(nextQuestion, delay);
+}
+
+function disableButtons(){
+  document.getElementById('btnTrue').disabled = true;
+  document.getElementById('btnFalse').disabled = true;
+}
+
+function showFeedback(symbol, color){
+  const el = document.createElement('div');
+  el.className='feedback';
+  el.style.color = color;
+  el.style.fontSize = symbol.length>2 ? '36px' : '72px';
+  el.textContent = symbol;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 800);
+}
+
+function showCombo(n, pts){
+  const el = document.createElement('div');
+  el.className='combo-pop';
+  el.textContent = `🔥 连击 ×${n}！+${pts}分`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 600);
+}
+
+function showAnalysis(){
+  document.getElementById('analysisCard').classList.add('show');
+}
+
+// ============ 下一题 ============
+function nextQuestion(){
+  state.current++;
+  if(state.current >= state.total){
+    endGame();
+  } else {
+    loadQuestion();
+  }
+}
+
+// ============ 结束 ============
+function endGame(){
+  clearInterval(state.timer);
+  document.getElementById('gameArea').classList.remove('active');
+  const rs = document.getElementById('resultScreen');
+  rs.classList.add('active');
+
+  document.getElementById('rCorrect').textContent = state.correct;
+  document.getElementById('rWrong').textContent = state.wrong;
+  document.getElementById('rScore').textContent = state.score;
+  document.getElementById('rCombo').textContent = state.maxCombo;
+
+  // 评级
+  const pct = state.correct / state.total;
+  let icon, title, subtitle;
+  if(pct>=0.93){icon='👑';title='NA大宗师';subtitle='阿伏加德罗常数已向你低头'}
+  else if(pct>=0.8){icon='🏆';title='NA高手';subtitle='陷阱基本躲过了，继续加油'}
+  else if(pct>=0.6){icon='⚡';title='NA学徒';subtitle='还需努力，建议复习NA常见陷阱'}
+  else {icon='💀';title='NA小白';subtitle='建议系统复习物质的量章节'}
+
+  document.getElementById('resultIcon').textContent = icon;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultSubtitle').textContent = subtitle;
+
+  // 错题列表
+  const wl = document.getElementById('wrongList');
+  wl.innerHTML = '';
+  if(state.wrongQuestions.length > 0){
+    wl.innerHTML = '<h3 style="color:var(--red);margin-bottom:12px">📕 本次错题</h3>';
+    state.wrongQuestions.forEach((q,i)=>{
+      const div = document.createElement('div');
+      div.className='wrong-item';
+      const userAns = q.userAnswer===null?'超时未答':(q.userAnswer?'选了「正确」':'选了「错误」');
+      div.innerHTML = `
+        <div class="wrong-q">${i+1}. ${q.text.replace(/<[^>]+>/g,'')}</div>
+        <div style="color:var(--red);font-size:12px">你的答案：${userAns}</div>
+        <div class="wrong-a">正确答案：${q.answer?'正确':'错误'}</div>
+        <div class="wrong-analysis">${q.analysis}</div>
+      `;
+      wl.appendChild(div);
+    });
+  }
+
+  // 保存错题到localStorage
+  saveWrongQuestions();
+}
+
+function saveWrongQuestions(){
+  let allWrong = JSON.parse(localStorage.getItem('na_wrong')||'[]');
+  state.wrongQuestions.forEach(q=>{
+    allWrong.push({
+      text: q.text,
+      answer: q.answer,
+      analysis: q.analysis,
+      source: q.source,
+      time: new Date().toLocaleString()
+    });
+  });
+  // 去重（按题目文字）
+  const unique = [];
+  const seen = new Set();
+  allWrong.forEach(q=>{
+    const key = q.text.replace(/<[^>]+>/g,'').slice(0,50);
+    if(!seen.has(key)){seen.add(key);unique.push(q)}
+  });
+  localStorage.setItem('na_wrong', JSON.stringify(unique.slice(-50)));
+}
+
+// ============ 错题本 ============
+function showWrongBook(){
+  const allWrong = JSON.parse(localStorage.getItem('na_wrong')||'[]');
+  const rs = document.getElementById('resultScreen');
+  rs.classList.add('active');
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('startScreen').style.display='none';
+
+  document.getElementById('resultIcon').textContent = '📕';
+  document.getElementById('resultTitle').textContent = `错题本（共${allWrong.length}题）`;
+  document.getElementById('resultSubtitle').textContent = '点击「清除错题本」可清空所有记录';
+  document.getElementById('rCorrect').textContent = allWrong.length;
+  document.getElementById('rWrong').textContent = '-';
+  document.getElementById('rScore').textContent = '-';
+  document.getElementById('rCombo').textContent = '-';
+
+  const wl = document.getElementById('wrongList');
+  wl.innerHTML = '';
+  if(allWrong.length===0){
+    wl.innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px">暂无错题，太强了！</p>';
+  } else {
+    allWrong.forEach((q,i)=>{
+      const div = document.createElement('div');
+      div.className='wrong-item';
+      div.innerHTML = `
+        <div class="wrong-q">${i+1}. ${q.text.replace(/<[^>]+>/g,'')}</div>
+        <div class="wrong-a">正确答案：${q.answer?'正确':'错误'}</div>
+        <div class="wrong-analysis">${q.analysis}</div>
+      `;
+      wl.appendChild(div);
+    });
+  }
+
+  // 替换按钮
+  const btns = document.querySelector('.result-btns');
+  btns.innerHTML = `
+    <button class="result-btn primary" onclick="startGame('easy')">🔄 开始游戏</button>
+    <button class="result-btn secondary" onclick="localStorage.removeItem('na_wrong');showWrongBook()">🗑️ 清除错题本</button>
+    <button class="result-btn secondary" onclick="showScreen('start')">🏠 返回</button>
+  `;
+}
+
+// ============ 初始化 ============
+showScreen('start');
+</script>
+</body>
+</html>
