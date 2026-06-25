@@ -238,7 +238,13 @@ function showResult(){
   document.getElementById('statCorrect').textContent=correctCount;
   document.getElementById('statWrong').textContent=wrongCount;
   document.getElementById('statLate').textContent=lateCount;
+
+  // 同步积分到总积分系统
+  if(typeof HXBNX_GAME !== 'undefined' && score > 0){
+    HXBNX_GAME.addSideScore('side-apparatus-master', score);
+  }
 }
 </script>
+<script src="assets/game.js?v=2"></script>
 </body>
 </html>

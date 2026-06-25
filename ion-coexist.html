@@ -624,6 +624,11 @@ function endGame(){
     });
   }
   saveWrongQuestions();
+
+  // 同步积分到总积分系统
+  if(typeof HXBNX_GAME !== 'undefined' && state.score > 0){
+    HXBNX_GAME.addSideScore('side-ion-coexist', state.score);
+  }
 }
 
 function saveWrongQuestions(){
@@ -683,5 +688,6 @@ function showWrongBook(){
 // ============ 初始化 ============
 showScreen('start');
 </script>
+<script src="assets/game.js?v=2"></script>
 </body>
 </html>
