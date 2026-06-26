@@ -27,6 +27,19 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 .nav-btn.active{background:linear-gradient(90deg,rgba(240,192,64,0.2),rgba(103,232,249,0.2));color:var(--gold);border-color:var(--gold)}
 .nav-btn:hover{transform:translateY(-1px)}
 
+/* 顶部导航 */
+.top-nav{
+  position:relative;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 20px;border-bottom:1px solid var(--border);
+}
+.back-link{
+  color:var(--muted);text-decoration:none;font-size:14px;
+  transition:color .2s;
+}
+.back-link:hover{color:var(--gold)}
+.back-link span{margin-right:4px}
+
 /* 主内容 */
 .main{position:relative;z-index:10;max-width:720px;margin:0 auto;padding:0 16px 40px}
 
@@ -143,6 +156,9 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
 </style>
 </head>
 <body>
+<div class="top-nav">
+  <a href="index.html" class="back-link"><span>←</span> 返回上层</a>
+</div>
 <canvas id="particles"></canvas>
 
 <div class="header">

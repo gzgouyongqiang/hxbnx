@@ -151,9 +151,25 @@ body{font-family:'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t
   .result-stats{grid-template-columns:1fr}
   .compound-structure{font-size:14px}
 }
+
+/* 顶部导航 */
+.top-nav{
+  position:relative;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 20px;border-bottom:1px solid var(--border);
+}
+.back-link{
+  color:var(--muted);text-decoration:none;font-size:14px;
+  transition:color .2s;
+}
+.back-link:hover{color:var(--gold)}
+.back-link span{margin-right:4px}
 </style>
 </head>
 <body>
+<div class="top-nav">
+  <a href="index.html" class="back-link"><span>←</span> 返回上层</a>
+</div>
 <canvas id="particles"></canvas>
 
 <div class="header">
