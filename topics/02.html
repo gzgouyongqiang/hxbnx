@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2讲 离子反应 离子方程式 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第2讲　离子反应　离子方程式</h1>
+</header>
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出醋酸（CH₃COOH）的电离方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P7</span> · 考点一「电解质的电离及微观探析」· 4.电离方程式的书写（酸的电离②）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CH₃COOH <span class="em">⇌</span> CH₃COO⁻ ＋ H⁺</b>　（弱电解质，用可逆号）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出NaHSO₄溶于水的电离方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P4</span> · 考点一「电解质的电离及微观探析」· 4.电离方程式的书写（盐的电离②）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>NaHSO₄ <span class="em">＝</span> Na⁺ ＋ H⁺ ＋ SO₄²⁻</b>　（溶于水完全电离；熔融时写 NaHSO₄ ＝ Na⁺ ＋ HSO₄⁻）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出Cl₂溶于水的离子方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P7</span>· 考点二「离子反应 离子方程式」· 2.离子方程式（书写注意①·c）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Cl₂ ＋ H₂O <span class="em">⇌</span> H⁺ ＋ Cl⁻ ＋ HClO</b>　（HClO是弱酸不拆，Cl₂是单质不拆）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 电解质判断</b>：电解质/非电解质、强电解质/弱电解质</li>
+  <li><b>② 离子方程式正误"六看"</b>（广东卷每年必考）</li>
+  <li><b>③ 离子共存</b>：不共存四大类 ＋ 隐含条件（颜色、酸碱性）</li>
+</ul>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 电解质判断 -->
+<h3>知识点① · 电解质判断<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P6</span> · 考点一「电解质的电离及微观探析」· 1.电解质与非电解质 · 2.强电解质与弱电解质</span>
+
+<div class="quiz">
+  <div class="ask">思考：什么是电解质？什么是非电解质？（从"化合物/水溶液/熔融态"三个关键词说）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>电解质：</b>在水溶液里或熔融状态下能够导电的<span class="em">化合物</span><br>
+      <b>非电解质：</b>两种情况下均不导电的<span class="em">化合物</span><br>
+      <span style="color:var(--dim);font-size:15px;">⚠ 前提是化合物——单质（Fe、Cl₂）、混合物（盐酸、氨水）既不是电解质也不是非电解质</span>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">分类：下列物质，哪些是强电解质？哪些是弱电解质？哪些是非电解质？哪些能导电？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>①熔融的NaCl</span><span>②盐酸</span><span>③氯气</span><span>④冰醋酸</span><span>⑤铜</span><span>⑥酒精</span><span>⑦硫酸氢钠</span><span>⑧液氨</span><span>⑨SO₂</span><span>⑩CaO</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <b>强电解质：</b>①⑦⑩（熔融NaCl、NaHSO₄、CaO）　<b>弱电解质：</b>④（冰醋酸CH₃COOH）<br>
+      <b>非电解质：</b>⑥⑧⑨（酒精、液氨、SO₂）　<b>能导电：</b>①②⑤<br>
+      <span style="color:var(--dim);font-size:15px;">注意：③氯气是单质、②盐酸是混合物，既不是电解质也不是非电解质；NH₃、SO₂导电靠生成物（NH₃·H₂O、H₂CO₃），本身不电离</span>
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背分类（直接记忆）</div>
+  <p>强电解质：强酸、强碱、绝大多数盐　|　弱电解质：弱酸、弱碱、极少数盐、水</p>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P6</span> · 易错辨析（抢答5题）</span>
+<details class="bianxi"><summary><span class="q">1</span>铁能导电，所以铁是电解质；液溴不导电，所以溴不是电解质</summary>
+  <div class="ans"><b>×</b>　铁、液溴都是<span class="em">单质</span>，单质既不是电解质也不是非电解质。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>BaSO₄投入水中，溶液导电性弱，故BaSO₄是弱电解质</summary>
+  <div class="ans"><b>×</b>　BaSO₄难溶但<span class="em">熔融态导电</span>，是强电解质。强弱看电离程度，不看溶解度。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>HClO是弱酸，但NaClO是强电解质</summary>
+  <div class="ans"><b>√</b>　HClO是弱酸，但NaClO是<span class="em">盐</span>，盐绝大多数是强电解质。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>强电解质都是离子化合物，弱电解质都是共价化合物</summary>
+  <div class="ans"><b>×</b>　<span class="em">HCl是共价化合物但是强电解质</span>（在水中完全电离）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>强电解质溶液导电性比弱电解质溶液的导电性强</summary>
+  <div class="ans"><b>×</b>　导电性看<span class="em">离子浓度</span>，与强弱电解质无关（稀盐酸导电性弱于浓醋酸）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>电解质先看化合物，单质混合物靠边站；强酸强碱多数盐，弱酸弱碱水最弱</p>
+</div>
+
+<!-- 知识点② 离子方程式正误 -->
+<h3>知识点② · 离子方程式正误"六看"<span class="p">（约14分钟·每年必考）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P7</span> · 考点二「离子反应 离子方程式」· 2.离子方程式</span>
+
+<div class="quiz">
+  <div class="ask">思考：判断一个离子方程式正误，要从哪六个角度检查？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>一看原理</b>：反应是否真实发生<br>
+      <b>二看拆分</b>：<span style="color: rgb(231, 89, 64);">拆</span><span style="color: rgb(231, 98, 64);">：</span>易溶于水的强电解质（所有物质中，只拆这一种）；弱酸弱碱、难溶物、气体、氧化物、单质<span class="rd" style="color: rgb(255, 82, 82);">不拆</span><br>
+      <b>三看符号</b>：＝ 、⇌ 、↑ 、↓ 是否用对<br>
+      <b>四看条件</b>：加热（△）、通电等是否标注<br>
+      <b>五看守恒</b>：电荷守恒、原子守恒<br>
+      <b>六看用量</b>：少量/过量，产物可能不同
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">书写闯关：先写后对——下列4个离子方程式怎么写？（注意拆分规则）</div>
+  <div class="mat" style="flex-direction:column;gap:6px;">
+    <span>① Na₂O₂溶于水（氧化物不拆）</span>
+    <span>② AlCl₃溶液 ＋ 过量氨水（Al(OH)₃不溶于氨水）</span>
+    <span>③ 澄清石灰水 ＋ 少量CO₂（微溶物Ca(OH)₂拆）</span>
+    <span>④ 铵盐溶液 ＋ NaOH并加热（产物是NH₃↑不是NH₃·H₂O）</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① <b>2Na₂O₂ ＋ 2H₂O ＝ 4Na⁺ ＋ 4OH⁻ ＋ O₂↑</b><br>
+      ② <b>Al³⁺ ＋ 3NH₃·H₂O ＝ Al(OH)₃↓ ＋ 3NH₄⁺</b><br>
+      ③ <b>Ca²⁺ ＋ 2OH⁻ ＋ CO₂ ＝ CaCO₃↓ ＋ H₂O</b><br>
+      ④ <b>NH₄⁺ ＋ OH⁻ <span class="em">＝</span> NH₃↑ ＋ H₂O</b>（加热）<br>
+      <span style="color:var(--dim);font-size:15px;">对比：石灰乳＋Na₂CO₃时Ca(OH)₂<span class="rd">不拆</span>（悬浊液写化学式）；稀NH₄Cl＋稀NaOH不加热产物写NH₃·H₂O</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P10</span> · 练真题 明考向 · 第2题（2021·广东T15）</span>
+<div class="quiz">
+  <div class="ask">真题：下列物质性质实验对应的反应方程式书写正确的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. Na₂O₂放入水中：Na₂O₂ ＋ H₂O ＝ 2NaOH ＋ O₂↑</span>
+    <span>B. H₂O(g)通过灼热铁粉：3H₂O ＋ 2Fe ＝ Fe₂O₃ ＋ 3H₂</span>
+    <span>C. 铜丝插入热的浓硫酸：Cu ＋ H₂SO₄ ＝ CuSO₄ ＋ H₂↑</span>
+    <span>D. SO₂通入酸性KMnO₄溶液：5SO₂ ＋ 2H₂O ＋ 2MnO₄⁻ ＝ 5SO₄²⁻ ＋ 4H⁺ ＋ 2Mn²⁺</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b><br>
+      A错：配平应为 2Na₂O₂＋2H₂O ＝ 4NaOH＋O₂↑；B错：高温生成<span class="em">Fe₃O₄</span>不是Fe₂O₃；C错：浓硫酸有强氧化性，生成<span class="em">SO₂</span>不是H₂
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>一理二拆三符号，四条件五守恒六用量；弱酸弱碱沉淀气，单质氧化物都不拆</p>
+</div>
+
+<!-- 知识点③ 离子共存 -->
+<h3>知识点③ · 离子共存<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P9</span> · 考点三「溶液中离子大量共存的判断」· 1.离子共存的本质 · 2.常考限定条件</span>
+
+<div class="quiz">
+  <div class="ask">思考：哪些情况下离子之间不能大量共存？（说四大类）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>① 生成沉淀</b>（Ba²⁺＋SO₄²⁻、Ag⁺＋Cl⁻）<br>
+      <b>② 生成气体</b>（H⁺＋CO₃²⁻、H⁺＋S²⁻）<br>
+      <b>③ 生成弱电解质</b>（H⁺＋OH⁻、NH₄⁺＋OH⁻）<br>
+      <b>④ 发生氧化还原反应</b>（Fe³⁺＋I⁻、MnO₄⁻＋Fe²⁺）<br>
+      <span style="color:var(--dim);font-size:15px;">再加一类：生成配合物（Fe³⁺＋SCN⁻）</span>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">判断：下列各组离子能否大量共存？（先判断，再揭晓）</div>
+  <div class="mat" style="flex-direction:column;gap:6px;">
+    <span>① H⁺、CO₃²⁻　② Fe³⁺、SCN⁻　③ Fe³⁺、I⁻　④ Ba²⁺、SO₄²⁻　⑤ K⁺、Cl⁻　⑥ NH₄⁺、OH⁻</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① 不能（生成<span class="em">气体</span>CO₂）　② 不能（生成<span class="em">配合物</span>Fe(SCN)₃）　③ 不能（<span class="em">氧化还原</span>）<br>
+      ④ 不能（生成<span class="em">沉淀</span>BaSO₄）　⑤ <b>能</b>　⑥ 不能（生成<span class="em">弱电解质</span>NH₃·H₂O）<br>
+      <span style="color:var(--dim);font-size:15px;">记法：看"沉淀、气体、弱电解质、氧化还原"四关键词，四者都不沾就能共存</span>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">限定条件：下列溶液中的离子能否大量共存？（注意隐含条件）</div>
+  <div class="mat" style="flex-direction:column;gap:6px;">
+    <span>① 无色溶液：Cu²⁺、K⁺、Cl⁻、NO₃⁻</span>
+    <span>② pH＝1的溶液：Na⁺、K⁺、Cl⁻、CO₃²⁻</span>
+    <span>③ 强碱溶液：Na⁺、K⁺、[Al(OH)₄]⁻、CO₃²⁻</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① 不能（Cu²⁺是<span class="em">蓝色</span>，无色溶液排除）<br>
+      ② 不能（pH＝1是<span class="em">酸性</span>，CO₃²⁻＋H⁺生成气体）<br>
+      ③ <b>能</b>（[Al(OH)₄]⁻、CO₃²⁻在强碱中稳定）<br>
+      <span style="color:var(--dim);font-size:15px;">必记有色离子：Fe³⁺黄、Cu²⁺蓝、Fe²⁺浅绿、MnO₄⁻紫红；"加铝粉产生H₂"酸碱性都可能</span>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P349</span> · 课时精练</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1~10题</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第11~12题</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第13~14题</li></ul>
+  </div>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 1;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+
+
+
+<!-- 讲次导航栏 -->
+<style>
+.lesson-nav{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.96);border-top:1px solid rgba(103,232,249,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lesson-nav a{color:#cbd5e1;text-decoration:none;font-size:15px;padding:8px 22px;border:1px solid rgba(103,232,249,.28);border-radius:22px;background:rgba(17,24,43,.7);transition:all .2s;white-space:nowrap}
+.lesson-nav a:hover{color:#f0c040;border-color:#f0c040;transform:translateY(-1px)}
+.lesson-nav a.disabled{opacity:.3;pointer-events:none;cursor:not-allowed}
+.lesson-nav a.home{color:#f0c040;border-color:#f0c040;background:rgba(240,192,64,.08)}
+.lesson-nav a.home:hover{color:#67e8f9;border-color:#67e8f9}
+body{padding-bottom:88px !important}
+</style>
+<div class="lesson-nav">
+  <a href="01.html">← 上一讲</a>
+  <a href="../index.html" class="home">🏠 回到首页</a>
+  <a href="03.html">下一讲 →</a>
+</div>
+
+</body></html>
