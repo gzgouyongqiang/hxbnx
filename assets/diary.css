@@ -141,9 +141,10 @@ body {
 }
 
 .week-num {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text);
+  white-space: nowrap;
 }
 
 .week-cell.active .week-num {
@@ -417,7 +418,7 @@ body {
   }
 
   .week-num {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .week-content {
