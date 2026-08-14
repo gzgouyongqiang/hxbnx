@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1讲 物质的组成、性质和转化 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第1讲　物质的组成、性质和转化</h1>
+</header>
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出制备Fe(OH)₃胶体的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P3</span> · 考点二「分散系 胶体」· 提升关键能力</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>FeCl₃ ＋ 3H₂O <span class="em"><span class="eqw">＝<span class="eqw-c">煮沸</span></span></span> Fe(OH)₃(胶体) ＋ 3HCl</b>　（饱和FeCl₃滴入沸水，煮至红褐色）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出Na₂O₂与水反应的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P1</span> · 考点一「物质的组成与分类」· 2.物质的分类——氧化物的再分类（过氧化物）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Na₂O₂ ＋ 2H₂O <span class="em">＝</span> 4NaOH ＋ O₂↑</b>　（过氧化物放O₂，考试高频）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出少量CO₂通入NaOH溶液的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P4</span> · 考点三「物质的性质与转化」· 应用举例（价类二维图⑦·酸性氧化物→盐）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CO₂ ＋ 2NaOH <span class="em">＝</span> Na₂CO₃ ＋ H₂O</b>　（少量CO₂；过量则生成NaHCO₃，高考常考）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 变化辨析</b>：物理变化 vs 化学变化——判断标准 ＋ 高频变化归类</li>
+  <li><b>② 物质分类</b>：纯净物/混合物、同素异形体、氧化物的五分类</li>
+  <li><b>③ 胶体</b>：分散系分类、丁达尔效应、Fe(OH)₃胶体制备</li>
+</ul>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 变化辨析 -->
+<h3>知识点① · 物理变化 vs 化学变化<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P4</span> · 考点三「物质的性质与转化」· 1.多角度认识物理变化与化学变化</span>
+
+<div class="quiz">
+  <div class="ask">思考：判断物理变化与化学变化的标准是什么？从宏观、微观两个角度说</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>宏观：</b>有无<span class="em">新物质生成</span>——有则化学变化，无则物理变化<br>
+      <b>微观：</b>有<span class="em">旧键断裂 ＋ 新键形成</span>，本质是原子的重新组合
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P4</span> · 应用举例（15种变化中选8种必考）</span>
+<div class="quiz">
+  <div class="ask">判断：下列变化，哪些是物理变化？哪些是化学变化？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>石油分馏</span><span>煤的干馏</span><span>焰色试验</span><span>蛋白质变性</span><span>盐析</span><span>裂化·裂解</span><span>潮解</span><span>石墨→金刚石</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <b>✅ 物理变化：</b>石油分馏、焰色试验、盐析、潮解<br>
+      <b>❌ 化学变化：</b>煤的干馏、蛋白质变性、裂化·裂解、石墨→金刚石<br>
+      <span style="color:var(--dim);font-size:15px;">注：同素异形体互变（石墨→金刚石）有新物质生成，是化学变化</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P4</span> · 易错辨析（抢答3题）</span>
+<details class="bianxi"><summary><span class="q">1</span>点燃爆竹后，硫燃烧生成SO₃</summary>
+  <div class="ans"><b>×</b>　硫燃烧只生成 <span class="em">SO₂</span>（SO₃需催化剂＋高温）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>石墨在一定条件下转化为金刚石是化学变化</summary>
+  <div class="ans"><b>√</b>　同素异形体互变，有新物质生成。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>从海水中提取物质都必须通过化学反应才能实现</summary>
+  <div class="ans"><b>×</b>　<span class="em">海水晒盐（蒸发结晶）是物理变化</span>。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>干馏化学焰色物理，盐析物理皂化化，裂化裂解都是化</p>
+</div>
+
+<!-- 知识点② 物质分类 -->
+<h3>知识点② · 物质分类六大陷阱<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P1</span> · 考点一「物质的组成与分类」· 1.物质的组成——同素异形体</span>
+<p>定义：<span class="em">同一种元素</span>形成的几种性质不同的<span class="em">单质</span>；互变是<b>化学变化</b>。</p>
+
+<div class="quiz">
+  <div class="ask">找一找：下列物质中，哪些两两互为同素异形体？</div>
+  <div class="mat">
+    <span>O₂</span><span>O₃</span><span>金刚石</span><span>石墨</span><span>C₆₀</span><span>白磷</span><span>红磷</span><span>CO₂</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>O₂ / O₃</b>；<b>金刚石 / 石墨 / C₆₀</b>；<b>白磷 / 红磷</b>　（CO₂是化合物，不是单质，排除）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P1</span> · 应用举例（纯净物 / 混合物）</span>
+<div class="quiz">
+  <div class="ask">判断：下列物质，哪些是纯净物？哪些是混合物？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>冰水混合物</span><span>盐酸</span><span>液氯</span><span>漂白粉</span><span>明矾</span><span>水玻璃</span><span>TNT</span><span>福尔马林</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <b>✅ 纯净物：</b>冰水混合物（同种物质H₂O）、液氯（Cl₂）、明矾 KAl(SO₄)₂·12H₂O、TNT<br>
+      <b>❌ 混合物：</b>盐酸（HCl水溶液）、漂白粉（Ca(ClO)₂＋CaCl₂）、水玻璃（Na₂SiO₃溶液）、福尔马林（40%甲醛水溶液）<br>
+      <span style="color:var(--dim);font-size:15px;">判据：看"化学式唯一"还是"多种物质混合"，不看名字！</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P2</span> · 2.物质的分类——氧化物的再分类</span>
+<div class="quiz">
+  <div class="ask">分类：下列氧化物分别属于哪一类？（酸性 / 碱性 / 两性 / 不成盐 / 过氧化物）</div>
+  <div class="mat">
+    <span>CO₂</span><span>SO₂</span><span>SO₃</span><span>Na₂O</span><span>CaO</span><span>Al₂O₃</span><span>CO</span><span>NO</span><span>Na₂O₂</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th>类别</th><th>实例</th><th>要点</th></tr>
+        <tr><td>酸性氧化物</td><td>CO₂、SO₂、SO₃</td><td>与碱反应只生成一种盐和水</td></tr>
+        <tr><td>碱性氧化物</td><td>Na₂O、CaO</td><td>与酸反应只生成一种盐和水</td></tr>
+        <tr><td>两性氧化物</td><td>Al₂O₃</td><td>既与酸又与碱反应</td></tr>
+        <tr><td>不成盐氧化物</td><td>CO、NO</td><td>不与酸碱反应生成盐和水</td></tr>
+        <tr><td>过氧化物</td><td>Na₂O₂</td><td>含过氧键—O—O—；与水放O₂，<span class="rd">不是碱性氧化物</span></td></tr>
+      </tbody></table>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P2</span> · 易错辨析（抢答6题）</span>
+<details class="bianxi"><summary><span class="q">1</span>由同一种元素组成的物质一定是单质</summary>
+  <div class="ans"><b>×</b>　O₂与O₃混合：同种元素，但<span class="em">混合物</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>Cu、NaCl、SiO₂、H₂SO₄都称为分子式</summary>
+  <div class="ans"><b>×</b>　Cu、NaCl、SiO₂是<span class="em">化学式</span>（非分子构成，无分子式）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>金属氧化物一定是碱性氧化物，非金属氧化物一定是酸性氧化物</summary>
+  <div class="ans"><b>×</b>　Mn₂O₇是<span class="em">酸性</span>氧化物；CO、NO是<span class="em">不成盐</span>氧化物。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>酸性氧化物、碱性氧化物不一定都能与水反应生成相应的酸、碱</summary>
+  <div class="ans"><b>√</b>　SiO₂、Fe₂O₃不溶于水——记结论。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>酸溶于水一定能电离出H⁺，但能电离出H⁺的不一定是酸</summary>
+  <div class="ans"><b>√</b>　NaHSO₄电离出H⁺但是<span class="em">盐</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>CO₂、NO₂都能和水反应生成酸，故两者都是酸性氧化物</summary>
+  <div class="ans"><b>×</b>　2NO₂＋2NaOH→NaNO₃＋<span class="em">NaNO₂+H</span><span style="color: rgb(232, 212, 143); font-weight: 700;">₂O</span>（有化合价变化，不是酸性氧化物。)</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>纯碱非碱盐酸混，冰水纯净过氧非碱，铝氧两性漂白混</p>
+</div>
+
+<!-- 知识点③ 胶体 -->
+<h3>知识点③ · 胶体<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P3</span> · 考点二「分散系 胶体」· 3.三种分散系的比较</span>
+
+<div class="quiz">
+  <div class="ask">思考：溶液、胶体、浊液的本质区别是什么？如何鉴别胶体？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th></th><th>溶液</th><th>胶体</th><th>浊液</th></tr>
+        <tr><td>粒子直径</td><td>&lt;1 nm</td><td><span class="em">1~100 nm</span></td><td>&gt;100 nm</td></tr>
+        <tr><td>稳定性</td><td>稳定</td><td>介稳定</td><td>不稳定</td></tr>
+        <tr><td>过滤</td><td>透过滤纸＋半透膜</td><td>透过滤纸，<span class="rd">不透半透膜</span></td><td>均不能</td></tr>
+        <tr><td>鉴别</td><td>无丁达尔效应</td><td><span class="em">有丁达尔效应</span></td><td>静置分层/沉淀</td></tr>
+      </tbody></table>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P3</span> · 提升关键能力（Fe(OH)₃胶体制备）</span>
+<div class="quiz">
+  <div class="ask">填空：向____中逐滴加入____，继续煮沸至液体呈____，停止加热</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">向<span class="em">沸水</span>中逐滴加入<span class="em">饱和FeCl₃溶液</span>，继续煮沸至液体呈<span class="em">红褐色</span>，停止加热。<br>
+    <span style="color:var(--dim);font-size:15px;">⚠ 三防：不滴NaOH（得沉淀不是胶体）、不用稀FeCl₃、不长时间煮沸（胶体聚沉）</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P3</span> · 易错辨析（抢答2题）</span>
+<details class="bianxi"><summary><span class="q">1</span>可用过滤的方法将胶体粒子与分散剂分开</summary>
+  <div class="ans"><b>×</b>　胶体能<span class="em">透过滤纸</span>，需用<span class="em">渗析</span>（半透膜）提纯。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>胶体的丁达尔效应属于物理变化</summary>
+  <div class="ans"><b>√</b>　光散射，无新物质生成。</div>
+</details>
+
+<!-- 真题验证 -->
+<h3>真题验证<span class="p">（2025·广东卷 T1）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P6</span> · 练真题 明考向 · 第1题</span>
+<div class="quiz">
+  <div class="ask">中华传统技艺，凸显人民智慧。下列材料的主要成分属于<span class="em">合金</span>的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. 纸哪吒（纸——纤维素）</span>
+    <span>B. 石印章（硅酸盐）</span>
+    <span>C. 木活字（木材——纤维素）</span>
+    <span>D. 不锈钢针（铁、铬等）</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　判断模型：识别对象 → 定位概念 → 核对陷阱。看到"XX是XX的原料"，先想化学式对不对（硅芯片原料是高纯Si，不是硅酸盐）。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P347</span> · 课时精练</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1~8题</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第9~12题</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第13~14题</li></ul>
+  </div>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 1;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 1;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+
+
+
+<!-- 讲次导航栏 -->
+<style>
+.lesson-nav{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.96);border-top:1px solid rgba(103,232,249,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lesson-nav a{color:#cbd5e1;text-decoration:none;font-size:15px;padding:8px 22px;border:1px solid rgba(103,232,249,.28);border-radius:22px;background:rgba(17,24,43,.7);transition:all .2s;white-space:nowrap}
+.lesson-nav a:hover{color:#f0c040;border-color:#f0c040;transform:translateY(-1px)}
+.lesson-nav a.disabled{opacity:.3;pointer-events:none;cursor:not-allowed}
+.lesson-nav a.home{color:#f0c040;border-color:#f0c040;background:rgba(240,192,64,.08)}
+.lesson-nav a.home:hover{color:#67e8f9;border-color:#67e8f9}
+body{padding-bottom:88px !important}
+</style>
+<div class="lesson-nav">
+  <a class="disabled">← 上一讲</a>
+  <a href="../index.html" class="home">🏠 回到首页</a>
+  <a href="02.html">下一讲 →</a>
+</div>
+
+</body></html>
