@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3讲 氧化还原反应的概念和规律 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第3讲　氧化还原反应的概念和规律</h1>
+</header>
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 Cl₂ 与冷 NaOH 溶液反应的化学方程式（歧化：Cl₂ 一身兼氧化剂与还原剂）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P12</span> · 考点二「价态规律」· 4.歧化规律</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Cl₂＋2NaOH ＝ NaCl＋NaClO＋H₂O</b>　（Cl(0)→−1、+1，自身歧化）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出铝热反应（铝粉与氧化铁）的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P13</span> · 考点一「常见氧化剂还原剂」· 应用</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Al＋Fe₂O₃ <span class="eqw">＝<span class="eqw-c">高温</span></span> 2Fe＋Al₂O₃</b>　（Al 是还原剂，Fe₂O₃ 被还原）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 H₂S 与 SO₂ 反应的化学方程式（归中：生成单质硫）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P14</span> · 考点二「价态规律」· 3.归中规律</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2H₂S＋SO₂ ＝ 3S↓＋2H₂O</b>　（S(−2) 与 S(+4) → S(0)，只靠拢不交叉）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 氧化还原判断</b>：本质＝电子转移（得失或偏移），特征＝化合价变化；置换反应全是，复分解反应全不是</li>
+  <li><b>② 四对概念</b>：口诀「升失氧还、降得还氧」；氧化剂/还原剂/氧化产物/还原产物 ＋ 常见氧化剂还原剂</li>
+  <li><b>③ 价态规律</b>：最高价只氧化、最低价只还原、中间价两可；归中（靠拢不交叉）、歧化（中→高＋低）</li>
+  <li><b>④ 强弱规律</b>：氧化剂＞氧化产物、还原剂＞还原产物；强弱顺序必背 ＋ 先后规律（强者先反应）</li>
+</ul>
+
+<!-- 本讲广东卷考点落点（据考点分析报告） -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷氧化还原考点与难度研究报告》）</b>
+  <p>· <b style="color:var(--accent)">A类 基本概念 / 电子转移 / 价态</b>：几乎都<b>镶嵌</b>在电化学、流程题、离子方程式里，选择题顺带考，难度 0.65–0.85，基础必须拿。</p>
+  <p>· <b style="color:var(--accent)">B类 氧化性 / 还原性判断与比较</b>：<b>年年必考</b>、稳定落在选择题中后段，难度 0.65–0.85，是<span class="em">必拿分基本盘</span>。典型考点：浓硫酸/硝酸强氧化性、Cl₂/次氯酸、SO₂ 双性、Fe²⁺/Fe³⁺ 铁三角、NH₃/I⁻/乙醇还原性。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约35分钟</span></div>
+
+<!-- 知识点① 概念与判断 -->
+<h3>知识点① · 氧化还原反应的概念与判断<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P12</span> · 考点一「氧化还原反应及相关概念」· 1.氧化还原反应</span>
+
+<div class="quiz">
+  <div class="ask">思考：氧化还原反应的本质和特征分别是什么？判断下列反应是否属于氧化还原反应？</div>
+  <div class="mat">
+    <span>2Na＋2H₂O ＝ 2NaOH＋H₂↑</span><span>CaO＋H₂O ＝ Ca(OH)₂</span><span>NaCl＋AgNO₃ ＝ AgCl↓＋NaNO₃</span><span>Fe＋CuSO₄ ＝ FeSO₄＋Cu</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>本质：</b>电子转移（得失或偏移）；<b>特征：</b>化合价发生变化<br>
+      <span class="gr">✅ 是：</span>2Na＋2H₂O、Fe＋CuSO₄（均有化合价变化）<br>
+      <span class="rd">❌ 否：</span>CaO＋H₂O（化合价不变）、NaCl＋AgNO₃（复分解，无化合价变化）
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>升失氧还、降得还氧；置换反应全是氧化还原，复分解反应全不是</p>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P12</span> · 考点一「氧化还原反应及相关概念」· 3.常见的氧化剂和还原剂</span>
+<div class="quiz">
+  <div class="ask">分类：下列物质，哪些是常见的氧化剂？哪些是常见的还原剂？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>O₂</span><span>金属Na</span><span>Cl₂</span><span>C</span><span>浓H₂SO₄</span><span>H₂</span><span>HNO₃</span><span>CO</span><span>KMnO₄</span><span>I⁻</span><span>Fe³⁺</span><span>Fe²⁺</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <b>✅ 常见氧化剂（得电子降价）：</b>O₂、Cl₂、浓H₂SO₄、HNO₃、KMnO₄、Fe³⁺<br>
+      <b>✅ 常见还原剂（失电子升价）：</b>金属（Na）、C、H₂、CO、I⁻、Fe²⁺<br>
+      口诀：氧化剂多为「高价含氧酸、非金属单质」；还原剂多为「金属、低价离子」。Fe²⁺ 既有氧化性又有还原性（中间价）
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">练一练：判断下列反应中的氧化剂、还原剂、氧化产物、还原产物</div>
+  <div class="mat"><span>① Fe ＋ CuSO₄ ＝ FeSO₄ ＋ Cu</span><span>② 2H₂S ＋ O₂ = 2S ＋ 2H₂O</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① 氧化剂：CuSO₄（Cu +2→0）；还原剂：Fe（0→+2）；氧化产物：FeSO₄；还原产物：Cu<br>
+      ② 氧化剂：O₂（0→−2）；还原剂：H₂S（S −2→0）；氧化产物：S；还原产物：H₂O<br>
+      <span style="color:var(--dim);font-size:15px;">口诀套用：升失氧还——化合价升高的物质是还原剂、被氧化、生成氧化产物</span>
+    </div>
+  </details>
+</div>
+
+<!-- 双线桥/单线桥电子转移（docx复习目标明确要求，报告A类考点） -->
+<span class="loc">📖 讲义 <span class="pg">P13</span> · 提升关键能力 · 一、电子转移方向和数目的分析方法</span>
+<div class="quiz">
+  <div class="ask">用双线桥表示下列反应电子转移的方向和数目：2Na ＋ 2H₂O ＝ 2NaOH ＋ H₂↑</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      Na：0 → +1，<span class="em">失 2×e⁻</span>（连到 NaOH 中 Na）<br>
+      H₂O 中 H：+1 → 0，<span class="em">得 2×e⁻</span>（连到 H₂）<br>
+      <b>电子转移总数：2e⁻</b>　（变价原子数 × 价变数；2 个 Na 各升 1，共失 2e⁻）<br>
+      <span style="color:var(--dim);font-size:15px;">双线桥：一条标「失2e⁻」从 Na 指向 NaOH，一条标「得2e⁻」从 H₂O 中 H 指向 H₂</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P13</span> · 考点一「氧化还原反应及相关概念」· 易错辨析（抢答5题）</span>
+<details class="bianxi"><summary><span class="q">1</span>置换反应一定是氧化还原反应</summary>
+  <div class="ans"><b>√</b>　单质参加、单质生成，必有化合价变化。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>复分解反应可能是氧化还原反应</summary>
+  <div class="ans"><b>×</b>　复分解是双交换、价不变，一定不是氧化还原。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>有单质参加的化合反应一定是氧化还原反应</summary>
+  <div class="ans"><b>√</b>　单质→化合物，化合价必变（如 2Fe＋3Cl₂ ＝ 2FeCl₃）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>有单质生成的分解反应一定是氧化还原反应</summary>
+  <div class="ans"><b>√</b>　化合物→单质，化合价必变（如 2H₂O <span class="eqw">＝<span class="eqw-c">电解</span></span> 2H₂↑＋O₂↑）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>有单质参加或生成的化学反应一定是氧化还原反应</summary>
+  <div class="ans"><b>×</b>　同素异形体互变：3O₂ ⇌ 2O₃，有单质参加和生成，但无化合价变化。</div>
+</details>
+
+<!-- 知识点② 价态规律 -->
+<h3>知识点② · 价态规律<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P14</span> · 考点二「氧化还原反应的价态规律」· 1.价态与氧化性和还原性的规律</span>
+<div class="quiz">
+  <div class="ask">判断：下列物质中的划线元素，只具有氧化性？只具有还原性？还是两者兼有？</div>
+  <div class="mat"><span>H₂S 中的 S(−2)</span><span>浓H₂SO₄ 中的 S(+6)</span><span>SO₂ 中的 S(+4)</span><span>Cl₂ 中的 Cl(0)</span><span>NaClO 中的 Cl(+1)</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th>化合价位置</th><th>性质</th><th>实例</th></tr>
+        <tr><td>最高价</td><td>只有氧化性</td><td>S(+6)浓H₂SO₄、Cl(+1)NaClO</td></tr>
+        <tr><td>最低价</td><td>只有还原性</td><td>S(−2)H₂S</td></tr>
+        <tr><td>中间价</td><td>既有氧化性又有还原性</td><td>S(+4)SO₂、Cl(0)Cl₂</td></tr>
+      </tbody></table>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P14</span> · 考点二「氧化还原反应的价态规律」· 3.归中规律 4.歧化规律</span>
+<div class="quiz">
+  <div class="ask">规律判断：①归中——不同价态同种元素「只靠拢，不交叉」；②歧化——同一元素「中间价→高价＋低价」。判断下列属于归中还是歧化？</div>
+  <div class="mat"><span>Cl₂＋2NaOH ＝ NaCl＋NaClO＋H₂O</span><span>2H₂S＋SO₂ ＝ 3S＋2H₂O</span><span>3NaClO ＝ 2NaCl＋NaClO₃</span><span>2Na＋Cl₂ ＝ 2NaCl</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>歧化（中→高＋低）：</b>Cl₂＋2NaOH（0→−1、+1）；3NaClO（+1→−1、+5）<br>
+      <b>归中（高＋低→中）：</b>2H₂S＋SO₂（−2、+4→0）<br>
+      <b>都不是（化合）：</b>2Na＋Cl₂ ＝ 2NaCl（两个不同元素，正常电子转移）
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P14</span> · 考点二「氧化还原反应的价态规律」· 易错辨析（抢答3题）</span>
+<details class="bianxi"><summary><span class="q">1</span>Na₂SO₃＋H₂SO₄(浓) ＝ Na₂SO₄＋SO₂↑＋H₂O 中浓硫酸是氧化剂</summary>
+  <div class="ans"><b>×</b>　该反应无化合价变化，不是氧化还原反应，浓硫酸只体现酸性。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>Cl₂ 与 NaOH 反应中，电子转移方向由 Cl₂ 指向 NaOH</summary>
+  <div class="ans"><b>×</b>　歧化反应电子由 Cl 原子自身转移——一部分 Cl(0) 失电子给另一部分 Cl(0)，Cl₂ 既是氧化剂又是还原剂。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>2Na₂O₂＋2H₂O ＝ 4NaOH＋O₂↑ 与 Cl₂＋H₂O⇌HCl＋HClO 中，H₂O 均作还原剂</summary>
+  <div class="ans"><b>×</b>　两反应中 H₂O 的 H、O 化合价均不变，H₂O 既不是氧化剂也不是还原剂（Na₂O₂ 中 O 自身歧化：−1→−2、0）。</div>
+</details>
+
+<!-- 知识点③ 强弱与先后 -->
+<h3>知识点③ · 强弱规律与先后规律<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P15</span> · 考点三「强弱规律和先后规律」· 1.强弱规律</span>
+<div class="koujue">
+  <div class="t">🗣 必背规律（直接记忆）</div>
+  <p>同一反应中：氧化性：氧化剂＞氧化产物；还原性：还原剂＞还原产物。「强者优先」：氧化性强的先被还原，还原性强的先被氧化</p>
+</div>
+<div class="quiz">
+  <div class="ask">强弱排序：利用反应 2FeCl₃＋Cu ＝ 2FeCl₂＋CuCl₂，判断氧化性 Fe³⁺ 与 Cu²⁺ 谁强？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">氧化剂 FeCl₃ ＞ 氧化产物 CuCl₂，即 <b>氧化性：Fe³⁺ ＞ Cu²⁺</b><br>
+      <span style="color:var(--dim);font-size:15px;">套路：找氧化剂和氧化产物 → 氧化剂必强于氧化产物，还原剂必强于还原产物</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P15</span> · 考点三「强弱规律和先后规律」· 1.(3)熟记常见的强弱顺序</span>
+<div class="koujue">
+  <div class="t">🗣 必背强弱顺序（直接记忆）</div>
+  <p>氧化性：MnO₄⁻(H⁺) ＞ MnO₂ ＞ Cl₂ ＞ Br₂ ＞ Fe³⁺ ＞ I₂ ＞ S<br>还原性：Mn²⁺ ＜ Cl⁻ ＜ Br⁻ ＜ Fe²⁺ ＜ I⁻ ＜ S²⁻　（口诀：氯溴碘硫排着来，铁三在碘前）</p>
+</div>
+<div class="quiz">
+  <div class="ask">应用：比较下列物质的氧化性或还原性强弱（利用记忆顺序直接排序）</div>
+  <div class="mat"><span>Cl₂、Br₂、I₂、S 的氧化性</span><span>Fe²⁺、I⁻、Br⁻ 的还原性</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">氧化性：<b>Cl₂ ＞ Br₂ ＞ I₂ ＞ S</b>；还原性：<b>I⁻ ＞ Fe²⁺ ＞ Br⁻</b>（注意还原性顺序与氧化性顺序相反）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P15</span> · 考点三「强弱规律和先后规律」· 2.先后规律</span>
+<div class="quiz">
+  <div class="ask">先后顺序：①向 FeBr₂ 溶液中通入少量 Cl₂，先氧化谁？②向含 Fe³⁺、Cu²⁺、H⁺ 的溶液中加入铁粉，铁先与谁反应？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① 先氧化 <b>Fe²⁺</b>　理由：还原性 Fe²⁺＞Br⁻，还原性强的先被氧化（Cl₂ 少量时 Br⁻ 不反应）<br>
+      ② 先与 <b>Fe³⁺</b> 反应　理由：氧化性 Fe³⁺＞Cu²⁺＞H⁺，氧化性强的先被还原（Fe＋2Fe³⁺ ＝ 3Fe²⁺）
+    </div>
+  </details>
+</div>
+
+<!-- 练真题 明考向：保留重庆T1 + 新增北京T5、浙江T6（B类必拿分） -->
+<span class="loc">📖 讲义 <span class="pg">P16</span> · 练真题 明考向 · 第1题（A类·概念判断）</span>
+<div class="quiz">
+  <div class="ask">真题验证（2025·重庆卷 T1）：抗日战争时期，根据地军民就地取材生产化工产品，其中利用了氧化还原反应原理的是（　　）</div>
+  <div class="mat"><span>A. 用石磨碾碎硝化棉</span><span>B. 以硫黄为原料生产硫酸</span><span>C. 蒸馏法生产工业酒精</span><span>D. 水解法以植物油制甘油</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B</b>　硫黄 S(0)→硫酸 H₂SO₄(+6)，化合价升高，是氧化还原。A研磨、C蒸馏是物理变化；D水解无化合价变化。<br>
+      <span style="color:var(--dim);font-size:15px;">方法：先看有无化合价变化 → 无变化一定不是氧化还原</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P16</span> · 练真题 明考向 · 第2题（B类·还原性判断，必拿分）</span>
+<div class="quiz">
+  <div class="ask">（2025·北京，5）下列反应中，体现 NH₄⁺ 还原性的是（　　）</div>
+  <div class="mat"><span>A. NH₄HCO₃ 加热分解有 NH₃ 生成</span><span>B. NH₄Cl 和 NaNO₂ 混合溶液加热有 N₂ 生成</span><span>C. Mg(OH)₂ 在 NH₄Cl 溶液中溶解</span><span>D. (NH₄)₂SO₄ 滴加 BaCl₂ 出现白色沉淀</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B</b>　NH₄⁺ 中 N(−3)→N₂(0)，化合价升高被氧化，体现<b>还原性</b>。A为分解、C为复分解溶解、D为复分解沉淀，均无化合价变化。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P16</span> · 练真题 明考向 · 第3题（B类·氧化性比较，必拿分）</span>
+<div class="quiz">
+  <div class="ask">（2025·浙江1月选考，6）关于溴的性质，下列说法不正确的是（　　）</div>
+  <div class="mat"><span>A. Br⁻ 可被 Cl₂ 氧化为 Br₂</span><span>B. Br₂ 与 SO₂ 水溶液反应还原产物为 Br⁻</span><span>C. Br₂＋2Fe²⁺＝2Br⁻＋2Fe³⁺，氧化性 Br₂＞Fe³⁺</span><span>D. 1 mol Br₂ 与足量 NaOH 生成 NaBr 和 NaBrO₃，转移 5 mol 电子</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　3Br₂＋6NaOH＝5NaBr＋NaBrO₃＋3H₂O，3 mol Br₂ 转移 5 mol e⁻，故 1 mol 转移 <span class="rd">5/3 mol</span>（非 5 mol）。A、B、C 均正确（C 由强制弱）。</div>
+  </details>
+</div>
+
+<!-- 知识点④ 课本基础题精选（强哥要求：选用课本优质基础题） -->
+<h3>知识点④ · 课本基础题精选<span class="p">（约10分钟）</span></h3>
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 16px;margin:8px 0;">
+  <b style="color:var(--blue);">📚 课本检索：人教版《必修 第一册》 P27 · 第三节 练习与应用</b>
+  <p style="color:var(--dim);font-size:15px;">以下为课本氧化还原节「练习与应用」基础概念送分盘原题，课堂直接练，巩固本讲 65 分基础盘。</p>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P27 · 练习与应用 第1题（强哥点名题）</span>
+<div class="quiz">
+  <div class="ask">在实验室中制取 O₂ 有多种方法，写出下列制取 O₂ 反应的化学方程式：(1)以双氧水为原料　(2)以氯酸钾为原料　(3)以高锰酸钾为原料。从反应类型看，三个反应的共同特点是？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      (1) <b>2H₂O₂ <span class="eqw">＝<span class="eqw-c">MnO₂</span></span> 2H₂O＋O₂↑</b><br>
+      (2) <b>2KClO₃ <span class="eqw">＝<span class="eqw-c">MnO₂,△</span></span> 2KCl＋3O₂↑</b><br>
+      (3) <b>2KMnO₄ <span class="eqw">＝<span class="eqw-c">△</span></span> K₂MnO₄＋MnO₂＋O₂↑</b><br>
+      共同特点：<span class="em">都是分解反应</span>（且均有元素化合价变化，都是氧化还原反应）
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P27 · 练习与应用 第5题</span>
+<div class="quiz">
+  <div class="ask">下列 4 种基本类型的反应中，一定是氧化还原反应的是（　　），一定不是氧化还原反应的是（　　），可能是氧化还原反应的是（　　）。①化合 ②分解 ③置换 ④复分解</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>一定③置换</b>；<b>一定不④复分解</b>；<b>可能①②化合、分解</b><br>
+      <span style="color:var(--dim);font-size:15px;">联想：有单质生成的分解、有单质参加的化合必为氧化还原</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P27 · 练习与应用 第7题</span>
+<div class="quiz">
+  <div class="ask">下列反应中，HCl 做还原剂的是（　　），HCl 做氧化剂的是（　　）。A. NaOH＋HCl＝NaCl＋H₂O　B. Zn＋2HCl＝ZnCl₂＋H₂↑　C. MnO₂＋4HCl(浓)＝MnCl₂＋2H₂O＋Cl₂↑　D. CuO＋2HCl＝CuCl₂＋H₂O</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>HCl 做还原剂：C</b>（Cl(−1)→Cl₂(0)，失电子）；<b>HCl 做氧化剂：B</b>（H(+1)→H₂(0)，得电子）。A、D 为非氧化还原，HCl 仅体现酸性。</div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P27 · 练习与应用 第8题</span>
+<div class="quiz">
+  <div class="ask">实现下列物质之间的转化，需要加入还原剂才能实现的是（　　）。A. SO₃→H₂SO₄　B. Cu→Cu(NO₃)₂　C. CuO→Cu　D. CO→CO₂</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　CuO(+2)→Cu(0) 化合价降低，被还原，<span class="em">需加还原剂</span>。A、D 化合价升高需氧化剂；B 化合价升高需氧化剂。</div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P27 · 练习与应用 第9题</span>
+<div class="quiz">
+  <div class="ask">氢化钠（NaH）可在野外用作生氢剂，其中氢元素为 −1 价。NaH＋H₂O＝NaOH＋H₂↑，下列有关该反应的说法正确的是（　　）。A. 属于置换反应　B. 属于复分解反应　C. NaH 是氧化剂　D. H₂O 中的氢元素被还原</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　NaH 中 H(−1)→H₂(0) 失电子被氧化，H₂O 中 H(+1)→H₂(0) 得电子被还原。A 错（非单质换单质）；B 错（非复分解）；C 错（NaH 是还原剂）。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P351</span> · 课时精练（[分值：100分] 1~11 每小题 7 分，12 题 14 分，13 题 9 分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底）</h4>
+    <ul>
+      <li>第 1~8 题：氧化还原判断、变化过程、制备反应、离子反应、还原性比较、实验结论等基础送分</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档）</h4>
+    <ul>
+      <li>第 9~11 题：氧化性比较、流程转化、氙氟化物等中档题</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分）</h4>
+    <ul>
+      <li>第 12~13 题：H₂O₂ 配平与 CuI 推断计算，含电子守恒——<span class="rd">✂ 可放弃</span></li>
+    </ul>
+  </div>
+</div>
+<p class="tip">📖 课本 人教版必修第一册 P27 练习与应用 第 2/3/4/6/10 题，可作课后巩固续练（强化四种基本反应类型、铝热、氧化剂还原剂辨识）。</p>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+
+
+
+<!-- 讲次导航栏 -->
+<style>
+.lesson-nav{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.96);border-top:1px solid rgba(103,232,249,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lesson-nav a{color:#cbd5e1;text-decoration:none;font-size:15px;padding:8px 22px;border:1px solid rgba(103,232,249,.28);border-radius:22px;background:rgba(17,24,43,.7);transition:all .2s;white-space:nowrap}
+.lesson-nav a:hover{color:#f0c040;border-color:#f0c040;transform:translateY(-1px)}
+.lesson-nav a.disabled{opacity:.3;pointer-events:none;cursor:not-allowed}
+.lesson-nav a.home{color:#f0c040;border-color:#f0c040;background:rgba(240,192,64,.08)}
+.lesson-nav a.home:hover{color:#67e8f9;border-color:#67e8f9}
+body{padding-bottom:88px !important}
+</style>
+<div class="lesson-nav">
+  <a href="02.html">← 上一讲</a>
+  <a href="../index.html" class="home">🏠 回到首页</a>
+  <a href="04.html">下一讲 →</a>
+</div>
+
+</body></html>
