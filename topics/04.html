@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第4讲 氧化还原反应方程式的配平与书写 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top:empty::before,.chem-rxn .chem-cond-bottom:empty::before{content:attr(data-ph);opacity:.45;font-size:12px;}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{outline:1px dashed rgba(80,140,255,.7);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第4讲　氧化还原反应方程式的配平与书写</h1>
+</header>
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出铜与稀硝酸反应的化学方程式（并标出体现酸性的HNO₃）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P17</span> · 考点「配平」· 一、配平的一般步骤 (2)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>3Cu ＋ 8HNO₃(稀) ＝ 3Cu(NO₃)₂ ＋ 2NO↑ ＋ 4H₂O</b><br>
+    8个HNO₃中只有<b>2个</b>作氧化剂（N +5→+2），<span class="em">6个体现酸性</span>（进入Cu(NO₃)₂）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出KClO₃与浓盐酸反应的化学方程式（归中配平）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P17</span> · 考点「配平」· 二、配平的技巧·1.从左侧配平 (1)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>KClO₃ ＋ 6HCl(浓) ＝ KCl ＋ 3Cl₂↑ ＋ 3H₂O</b>　<span class="em">归中：Cl +5→0，Cl −1→0，只靠拢不交叉</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出氯气与氢氧化钠溶液反应的化学方程式（歧化配平）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P17</span> · 考点「配平」· 二、配平的技巧·2.从右侧配平</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Cl₂ ＋ 2NaOH ＝ NaCl ＋ NaClO ＋ H₂O</b>　<span class="em">歧化：Cl 0→−1、+1，自身氧化还原从右往左配</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 配平三步</b>：标价态 → 算升降（最小公倍数定系数）→ 配平查守恒（原子守恒）</li>
+  <li><b>② 部分氧化还原</b>：Cu＋HNO₃型——HNO₃一部分作氧化剂、一部分体现酸性，看清"谁被还原"</li>
+  <li><b>③ 从左侧配平</b>：归中反应、化合反应（氧化剂还原剂是两种不同物质）</li>
+  <li><b>④ 从右侧配平</b>：歧化反应、分解反应（同一物质既升又降）</li>
+</ul>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 配平一般步骤 -->
+<h3>知识点① · 配平一般步骤与部分氧化还原<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P17</span> · 考点「配平」· 一、氧化还原反应方程式配平的一般步骤</span>
+
+<div class="quiz">
+  <div class="ask">思考：配平氧化还原方程式的一般步骤是什么？先想清楚顺序，再揭晓</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>标价态</b>：标出变价元素化合价<br>
+    ② <b>算升降</b>：算每种元素化合价升高/降低总数<br>
+    ③ <b>最小公倍数</b>：求出升降总数的最小公倍数，定出氧化剂、还原剂系数<br>
+    ④ <b>查守恒</b>：用原子守恒配平其余物质，最后检查</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>标价态、算升降、最小公倍定系数，原子守恒来收尾</p>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P17</span> · 一、配平的一般步骤 (1)</span>
+<div class="quiz">
+  <div class="ask">练一练：配平 MnO₂ ＋ HCl(浓) ＝ MnCl₂ ＋ Cl₂↑ ＋ H₂O（标价态→算升降→定系数）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">Mn +4→+2 <span class="rd">降2</span>；Cl −1→0 <span class="gr">升1×2＝2</span>（每生成1个Cl₂升2）<br>
+    最小公倍数＝2 → MnO₂系数1、Cl₂系数1 → 配平：<br>
+    <b>MnO₂ ＋ 4HCl(浓) <span class="eqw">＝<span class="eqw-c">△</span></span> MnCl₂ ＋ Cl₂↑ ＋ 2H₂O</b><br>
+    <span style="color:var(--dim);font-size:15px;">注：4个HCl中2个被氧化生成Cl₂，2个体现酸性进入MnCl₂</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P17</span> · 一、配平的一般步骤 (2)</span>
+<div class="quiz">
+  <div class="ask">思考：3Cu＋8HNO₃(稀) ＝ 3Cu(NO₃)₂＋2NO↑＋4H₂O 中，8个HNO₃全部作氧化剂吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>不是！</b>只有<span class="em">2个</span>HNO₃作氧化剂（N +5→+2，被还原为NO）<br>
+    其余<span class="em">6个体现酸性</span>（N价态不变，进入Cu(NO₃)₂）——这叫<span class="rd">部分氧化还原</span><br>
+    <span style="color:var(--dim);font-size:15px;">口诀：谁降价谁是氧化剂，酸根不都变价！</span></div>
+  </details>
+</div>
+
+<!-- 知识点② 左侧配平 -->
+<h3>知识点② · 从左侧配平（归中/化合）<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P17</span> · 考点「配平」· 二、配平的技巧·1.从左侧配平</span>
+<p>适用：被氧化、被还原的元素<span class="em">分别在不同物质中</span>（归中反应、化合反应等）——氧化剂、还原剂是两种物质，<b>从反应物左侧开始配</b>。</p>
+
+<div class="quiz">
+  <div class="ask">练一练：配平 KClO₃ ＋ HCl(浓) ＝ KCl ＋ Cl₂↑ ＋ H₂O（注意Cl₂系数怎么定）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">KClO₃中Cl <span class="rd">+5→0 降5</span>；HCl中Cl <span class="gr">−1→0 升1</span><br>
+    最小公倍数＝5 → KClO₃系数1、被氧化的HCl系数5 → 6个HCl中5个被氧化、1个生成KCl：<br>
+    <b>KClO₃ ＋ 6HCl(浓) ＝ KCl ＋ 3Cl₂↑ ＋ 3H₂O</b><br>
+    <span class="em">只靠拢不交叉：+5和−1都归中到0，不会出现+5→−1、−1→+5</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">判断：下列反应，哪些用"从左侧配平"（氧化剂还原剂是两种物质）？</div>
+  <div class="mat">
+    <span>KClO₃＋浓HCl</span><span>Cl₂＋NaOH</span><span>2H₂S＋SO₂ ＝ 3S</span><span>2H₂O<span class="eqw">＝<span class="eqw-c">电解</span></span>2H₂↑＋O₂↑</span><span>Cu＋稀HNO₃</span><span>3NaClO ＝ 2NaCl＋NaClO₃</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>✅ 从左侧（两种物质）：</b>KClO₃＋浓HCl（归中）、2H₂S＋SO₂（归中）、Cu＋稀HNO₃<br>
+      <b>❌ 从右侧（自身氧化还原）：</b>Cl₂＋NaOH（歧化）、2H₂O电解（分解）、3NaClO（歧化）<br>
+      <span style="color:var(--dim);font-size:15px;">口诀：两种物质变价→从左边配；一种物质变价→从右边配</span>
+    </div>
+  </details>
+</div>
+
+<!-- 知识点③ 右侧配平 -->
+<h3>知识点③ · 从右侧配平（歧化/分解）<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P17</span> · 考点「配平」· 二、配平的技巧·2.从右侧配平</span>
+<p>适用：<span class="em">自身氧化还原反应</span>（歧化反应、分解反应）——同一物质中同一元素一部分升、一部分降，<b>从产物右侧开始配</b>。</p>
+
+<div class="quiz">
+  <div class="ask">练一练：配平 P₄ ＋ KOH ＋ H₂O ＝ K₃PO₄ ＋ PH₃↑（磷的歧化）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">P <span class="gr">0→+5 升5</span>（K₃PO₄中1个P）、<span class="rd">0→−3 降3</span>（PH₃中1个P）<br>
+    最小公倍数＝15 → 升5×3、降3×5：<br>
+    <b>2P₄ ＋ 9KOH ＋ 3H₂O ＝ 3K₃PO₄ ＋ 5PH₃↑</b><br>
+    <span style="color:var(--dim);font-size:15px;">看右边配：K₃PO₄系数3（升15）、PH₃系数5（降15），再回推左边</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">练一练：配平 (NH₄)₂PtCl₆ ＝ Pt ＋ N₂↑ ＋ NH₃↑ ＋ HCl↑（分解反应）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">Pt <span class="rd">+4→0 降4</span>；N <span class="gr">−3→0 升3</span>（每生成1个N₂升6）<br>
+    最小公倍数＝12 → Pt系数3、N₂系数2 → 配平：<br>
+    <b>3(NH₄)₂PtCl₆ <span class="eqw">＝<span class="eqw-c">△</span></span> 3Pt ＋ 2N₂↑ ＋ 2NH₃↑ ＋ 18HCl↑</b><br>
+    <span style="color:var(--dim);font-size:15px;">3个(NH₄)₂PtCl₆含6个N：4个N ＝ N₂（被氧化），2个N ＝ NH₃（价态不变）</span></div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>两种物质变价→左侧配；一种物质变价→右侧配；<br>先定升降数，最小公倍定系数，最后原子守恒查一遍</p>
+</div>
+
+<!-- 当堂检验 -->
+<h3>当堂检验<span class="p">（课时精练第1题）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P353</span> · 课时精练 · 第1题</span>
+<div class="quiz">
+  <div class="ask">下列反应的化学方程式或离子方程式书写<span class="em">不正确</span>的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. NO₂通入水中：3NO₂＋H₂O ＝ 2H⁺＋2NO₃⁻＋NO</span>
+    <span>B. 铜与稀硝酸：Cu＋4H⁺＋2NO₃⁻ ＝ Cu²⁺＋2NO₂↑＋2H₂O</span>
+    <span>C. SO₂通入碘水：SO₂＋I₂＋2H₂O ＝ 4H⁺＋SO₄²⁻＋2I⁻</span>
+    <span>D. 氨的催化氧化：4NH₃＋5O₂<span class="eqw">＝<span class="eqw-c">催化剂△</span></span>4NO＋6H₂O</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B</b>　铜与<b>稀</b>硝酸生成的是<b>NO</b>不是NO₂（NO₂是浓硝酸产物）：<br>
+    3Cu＋8H⁺＋2NO₃⁻ ＝ 3Cu²⁺＋2NO↑＋4H₂O<br>
+    <span class="em">口诀：稀硝酸出NO，浓硝酸出NO₂——看浓度定产物</span></div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P353</span> · 课时精练</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2、3、4、5、10题（方程式书写正误判断）</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第6、9题（自身氧化还原与电子转移）</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第7、8、11、12、13、14题（陌生情境配平）</li></ul>
+  </div>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 1;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+
+
+
+<!-- 讲次导航栏 -->
+<style>
+.lesson-nav{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.96);border-top:1px solid rgba(103,232,249,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lesson-nav a{color:#cbd5e1;text-decoration:none;font-size:15px;padding:8px 22px;border:1px solid rgba(103,232,249,.28);border-radius:22px;background:rgba(17,24,43,.7);transition:all .2s;white-space:nowrap}
+.lesson-nav a:hover{color:#f0c040;border-color:#f0c040;transform:translateY(-1px)}
+.lesson-nav a.disabled{opacity:.3;pointer-events:none;cursor:not-allowed}
+.lesson-nav a.home{color:#f0c040;border-color:#f0c040;background:rgba(240,192,64,.08)}
+.lesson-nav a.home:hover{color:#67e8f9;border-color:#67e8f9}
+body{padding-bottom:88px !important}
+</style>
+<div class="lesson-nav">
+  <a href="03.html">← 上一讲</a>
+  <a href="../index.html" class="home">🏠 回到首页</a>
+  <a href="05.html">下一讲 →</a>
+</div>
+
+</body></html>
