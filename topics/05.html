@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5讲 物质的量 气体摩尔体积 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第5讲　物质的量　气体摩尔体积</h1>
+</header>
+
+<!-- ==================== 一、核心公式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>核心公式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 本讲无方程式，默写三大核心公式 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出物质的量 n 与微粒数 N、阿伏加德罗常数 NA 的关系式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P20</span> · 考点一「物质的量 摩尔质量」· 1.物质的量 (4)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>n ＝ N / Nₐ</b>　（Nₐ ≈ 6.02×10²³ mol⁻¹，1 mol 任何粒子的粒子数）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出物质的量 n 与质量 m、摩尔质量 M 的关系式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P20</span> · 考点一「物质的量 摩尔质量」· 2.摩尔质量 (4)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>n ＝ m / M</b>　（M 单位 g·mol⁻¹，数值 ＝ 相对分子/原子质量）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出标准状况下，物质的量 n 与气体体积 V 的关系式（并写出 22.4 的适用条件）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P21</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 1.气体摩尔体积 (3)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>n ＝ V / Vₘ</b>，标准状况下 Vₘ ＝ <b>22.4 L·mol⁻¹</b>，即 <b>V ＝ n × 22.4 L</b><br>
+    <span class="rd">适用条件：标准状况 ＋ 气体</span>　（固体、液体一律不能套 22.4）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 物质的量 摩尔质量</b>：n＝N/Nₐ＝m/M；摩尔质量数值＝相对分子质量，与物质的量多少无关</li>
+  <li><b>② 气体摩尔体积</b>：标况 22.4 L·mol⁻¹ 只适用于气体；SO₃、H₂O、CCl₄、苯、乙醇是高频陷阱</li>
+  <li><b>③ NA判断三审</b>：一审状态（标况气体）、二审可逆（2NO₂⇌N₂O₄）、三审组成（分子/原子/电子）——每年必考</li>
+  <li><b>④ 阿伏加德罗定律</b>：同温同压同体积→同分子数；推论：V∝n、ρ∝M、p∝n</li>
+</ul>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 物质的量 摩尔质量 -->
+<h3>知识点① · 物质的量 摩尔质量<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P20</span> · 考点一「物质的量 摩尔质量」· 1.物质的量 2.摩尔质量</span>
+
+<div class="quiz">
+  <div class="ask">填空：①物质的量是表示____的物理量，单位____；②1 mol 任何粒子的粒子数叫____，符号____；③摩尔质量单位____，其数值上等于____</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① <b>含有一定数目粒子的集合体</b>；<b>摩尔（mol）</b><br>
+      ② <b>阿伏加德罗常数</b>；<b>Nₐ</b>（≈6.02×10²³ mol⁻¹）<br>
+      ③ <b>g·mol⁻¹</b>；<b>该粒子的相对分子（或原子）质量</b>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">算一算：12.4 g Na₂R 含 0.4 mol Na⁺，求 Na₂R 的摩尔质量、R 的相对原子质量</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">0.4 mol Na⁺ → 含 <b>0.2 mol Na₂R</b><br>
+    M(Na₂R) ＝ m/n ＝ 12.4 g ÷ 0.2 mol ＝ <b>62 g·mol⁻¹</b><br>
+    R 的相对原子质量 ＝ 62 − 2×23 ＝ <b>16</b>（O）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P20</span> · 考点一「物质的量 摩尔质量」· 易错辨析（抢答6题）</span>
+<details class="bianxi"><summary><span class="q">1</span>1 mol 任何物质都含有约 6.02×10²³ 个原子</summary>
+  <div class="ans"><b>×</b>　是"<span class="em">粒子</span>"不是"原子"——1 mol O₂含 2 mol 原子；NaCl是离子不是分子。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>H₂O 的摩尔质量与它的相对分子质量相等</summary>
+  <div class="ans"><b>×</b>　<span class="em">数值</span>相等（都是18），但摩尔质量带单位 g·mol⁻¹，相对分子质量无单位。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>1 mol S 的质量为 96 g·mol⁻¹</summary>
+  <div class="ans"><b>×</b>　质量的单位是 <span class="em">g</span>（32 g）；96 g·mol⁻¹ 是摩尔质量的单位写法，且数值也不对（M(S)＝32 g·mol⁻¹）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>2 mol 水的摩尔质量是 1 mol 水的摩尔质量的 2 倍</summary>
+  <div class="ans"><b>×</b>　<span class="em">摩尔质量与物质的量无关</span>，H₂O 的摩尔质量恒为 18 g·mol⁻¹。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>17 g —OH 与 17 g OH⁻ 所含电子数均为 10Nₐ</summary>
+  <div class="ans"><b>×</b>　—OH 含 <b>9 个</b>电子，OH⁻ 含 <b>10 个</b>电子——差一个电子，数目不等。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>相同质量的 CO 与 N₂ 所含分子数、原子数均相同</summary>
+  <div class="ans"><b>√</b>　M(CO)＝M(N₂)＝28 g·mol⁻¹，等质量→等物质的量→分子数、原子数（双原子）均相同。</div>
+</details>
+
+<!-- 知识点② 气体摩尔体积 标况陷阱 -->
+<h3>知识点② · 气体摩尔体积与标况陷阱<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P21</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 1.气体摩尔体积</span>
+
+<div class="quiz">
+  <div class="ask">判断：标准状况（0℃、101 kPa）下，下列物质能否用 22.4 L·mol⁻¹ 算体积？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>O₂</span><span>SO₃</span><span>H₂O</span><span>CO₂</span><span>CCl₄</span><span>苯</span><span>NH₃</span><span>乙醇</span><span>Cl₂</span><span>CH₄</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>✅ 气体（能套22.4）：</b>O₂、CO₂、NH₃、Cl₂、CH₄<br>
+      <b>❌ 非气体（不能套）：</b>SO₃（固）、H₂O（液）、CCl₄（液）、苯（液）、乙醇（液）<br>
+      <span class="em">口诀：标况22.4，只给气体用；三氧化硫固态水，四氯苯醇都是液</span>
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>NA判断三审：一审状态（标况＋气体）、二审可逆（2NO₂⇌N₂O₄）、三审组成（分子原子电子数）</p>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P21</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 易错辨析（抢答5题）</span>
+<details class="bianxi"><summary><span class="q">1</span>22 g CO₂ 气体的体积为 11.2 L</summary>
+  <div class="ans"><b>×</b>　<span class="em">未指明标准状况</span>，不能套 22.4 L·mol⁻¹。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>标准状况下，11.2 L SO₃ 中含有的原子数为 2Nₐ</summary>
+  <div class="ans"><b>×</b>　标况下 <span class="em">SO₃ 是固体</span>，不能用 22.4 算物质的量。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>标准状况下，11.2 L O₂ 和 H₂ 的混合气体所含分子数约为 3.01×10²³</summary>
+  <div class="ans"><b>√</b>　混合气体总体积 11.2 L ＝ n＝0.5 mol → 分子数 0.5Nₐ ＝ 3.01×10²³（不用管比例）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>同温、同体积下，等质量的 SO₂ 和 O₂ 的压强之比为 2∶1</summary>
+  <div class="ans"><b>×</b>　等质量 → n 与 M 成反比：n(SO₂)∶n(O₂)＝32∶64＝1∶2 → 压强比 <span class="em">1∶2</span>（p∝n）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>同温同压下，ρ(H₂) &lt; ρ(O₂)</summary>
+  <div class="ans"><b>√</b>　同温同压 → ρ∝M，M(H₂)＝2 &lt; M(O₂)＝32。</div>
+</details>
+
+<span class="loc">📖 讲义 <span class="pg">P21</span> · 考点二·提升关键能力·一、n＝m/M＝V/Vₘ 关系的应用 (1)</span>
+<div class="quiz">
+  <div class="ask">算一算：标准状况下，4.8 g 甲烷（CH₄）所占的体积是多少升？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">n(CH₄) ＝ 4.8 g ÷ 16 g·mol⁻¹ ＝ <b>0.3 mol</b><br>
+    V ＝ 0.3 mol × 22.4 L·mol⁻¹ ＝ <b>6.72 L</b></div>
+  </details>
+</div>
+
+<!-- 知识点③ 阿伏加德罗定律 -->
+<h3>知识点③ · 阿伏加德罗定律及推论<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P21</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 2.阿伏加德罗定律</span>
+
+<div class="koujue">
+  <div class="t">🗣 必背规律（直接记忆）</div>
+  <p>定律：同温、同压、同体积的任何气体，含有<b>相同的分子数（物质的量）</b><br>
+  推论① 同温同压：V₁∶V₂ ＝ n₁∶n₂（体积比＝物质的量比）<br>
+  推论② 同温同压：ρ₁∶ρ₂ ＝ M₁∶M₂（密度比＝摩尔质量比）<br>
+  推论③ 同温同体积：p₁∶p₂ ＝ n₁∶n₂（压强比＝物质的量比）</p>
+</div>
+
+<div class="quiz">
+  <div class="ask">应用：标准状况下，①6.72 L NH₃；②1.204×10²³个 H₂S；③5.6 g CH₄；④0.5 mol HCl。谁的体积最大？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">先换算成物质的量：① n＝6.72/22.4＝<b>0.3 mol</b>；② n＝0.2 mol；③ n＝5.6/16＝<b>0.35 mol</b>；④ <b>0.5 mol</b><br>
+    体积最大：<b>④（0.5 mol HCl）</b>　→ 顺序 ④&gt;③&gt;①&gt;②<br>
+    <span class="em">思路：同温同压比体积 → 先全部化成物质的量再比</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考：同温同压下，等质量的 O₂ 和 O₃，原子数之比是多少？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>1∶1</b>　O₂ 和 O₃ 都由氧原子组成，等质量 → 含氧原子质量相等 → <span class="em">原子数相同</span><br>
+    <span style="color:var(--dim);font-size:15px;">陷阱：很多人先比分子数（3∶2），但题目问的是原子数——抓住"组成元素相同"</span></div>
+  </details>
+</div>
+
+<!-- 真题验证 -->
+<h3>真题验证<span class="p">（2025·广东卷 T10 NA判断）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P22</span> · 练真题 明考向 · 第2题</span>
+<div class="quiz">
+  <div class="ask">设 Nₐ 为阿伏加德罗常数的值，下列说法<span class="em">正确</span>的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. 1 mol ¹⁸O₂ 的中子数比 1 mol ¹⁶O₂ 的多 2Nₐ</span>
+    <span>B. 1 mol Fe 与水蒸气完全反应，生成 H₂ 的数目为 2Nₐ</span>
+    <span>C. 1 L 0.1 mol·L⁻¹ NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1Nₐ</span>
+    <span>D. 标准状况下 22.4 L Cl₂ 与足量 H₂ 反应，形成共价键数目为 2Nₐ</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　逐项三审：<br>
+    A：¹⁸O₂ 中子数 ＝ (18−8)×2＝20；¹⁶O₂ ＝ 16 → 差 <b>4Nₐ</b>（不是2）<br>
+    B：3Fe＋4H₂O ＝ Fe₃O₄＋4H₂，1 mol Fe 生成 H₂ 为 <b>4/3 mol</b>（不是2）<br>
+    C：NH₄⁺ 会<span class="em">水解</span>，数目 &lt; 0.1Nₐ<br>
+    D：Cl₂＋H₂ ＝ 2HCl，1 mol Cl₂ 形成 2 mol H—Cl 键 → <b>2Nₐ</b> ✓</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P355</span> · 课时精练</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2题（基本概念与换算）</li><li>第9题（填空计算，直接套公式）</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第3、4、5、7题（定律推论与陷阱判断）</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第6题（气球体积）、第8题（混合气体计算）</li></ul>
+  </div>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.8), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+
+
+
+<!-- 讲次导航栏 -->
+<style>
+.lesson-nav{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.96);border-top:1px solid rgba(103,232,249,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lesson-nav a{color:#cbd5e1;text-decoration:none;font-size:15px;padding:8px 22px;border:1px solid rgba(103,232,249,.28);border-radius:22px;background:rgba(17,24,43,.7);transition:all .2s;white-space:nowrap}
+.lesson-nav a:hover{color:#f0c040;border-color:#f0c040;transform:translateY(-1px)}
+.lesson-nav a.disabled{opacity:.3;pointer-events:none;cursor:not-allowed}
+.lesson-nav a.home{color:#f0c040;border-color:#f0c040;background:rgba(240,192,64,.08)}
+.lesson-nav a.home:hover{color:#67e8f9;border-color:#67e8f9}
+body{padding-bottom:88px !important}
+</style>
+<div class="lesson-nav">
+  <a href="04.html">← 上一讲</a>
+  <a href="../index.html" class="home">🏠 回到首页</a>
+  <a href="06.html">下一讲 →</a>
+</div>
+
+</body></html>
