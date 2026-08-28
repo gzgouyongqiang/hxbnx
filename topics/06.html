@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6讲 物质的量浓度及溶液配制 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第6讲　物质的量浓度及溶液配制</h1>
+</header>
+
+<!-- ==================== 一、方程式与公式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式·公式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 Na₂O₂ 与水反应的化学方程式（提示：Na₂O₂ 溶于水后溶质是什么？）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P23</span> · 考点一「物质的量浓度」· 2.溶质的判断 (1)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Na₂O₂ ＋ 2H₂O ＝ 4NaOH ＋ O₂↑</b><br>
+    Na₂O₂ 溶于水<span class="em">与水反应生成NaOH</span>，溶质按 <b>NaOH</b> 计算</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 SO₃ 与水反应的化学方程式（提示：SO₃ 溶于水后溶质是什么？）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P23</span> · 考点一「物质的量浓度」· 2.溶质的判断 (1)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>SO₃ ＋ H₂O ＝ H₂SO₄</b><br>
+    SO₃ 溶于水生成 H₂SO₄，溶质按 <b>H₂SO₄</b> 计算（同理 CO₂ ＝ H₂CO₃、SO₂ ＝ H₂SO₃）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出溶液稀释守恒公式（稀释前后什么量不变？）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P24</span> · 考点一「物质的量浓度」· 提升关键能力·三、溶液的稀释与混合</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>c₁V₁ ＝ c₂V₂</b>（稀释前后溶质的物质的量 n(B) 不变）<br>
+    <span class="rd">注意：V₂ ≠ V₁ ＋ V(水)，稀溶液题中"忽略体积变化"才可近似相加</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① c＝n/V 定义</b>：V是<b>溶液体积</b>（＝溶液质量/密度），不是溶剂体积也不是两体积之和</li>
+  <li><b>② 溶质判断</b>：与水反应生成新物质（Na₂O₂ ＝ NaOH、SO₃ ＝ H₂SO₄）；NH₃按NH₃算；结晶水合物按无水物算</li>
+  <li><b>③ 稀释守恒与换算</b>：c₁V₁＝c₂V₂；c ＝ 1000ρω/M 必背</li>
+  <li><b>④ 配制九字流程 ＋ 误差分析</b>：称量→溶解→冷却→转移→洗涤→定容→摇匀→装瓶→贴签；俯视偏大、仰视偏小、未冷却偏大、未洗涤偏小</li>
+</ul>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 物质的量浓度概念 -->
+<h3>知识点① · c＝n/V 概念与溶质判断<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P23</span> · 考点一「物质的量浓度」· 1.溶液组成的两种表示方法</span>
+
+<div class="quiz">
+  <div class="ask">填空：物质的量浓度 c(B)＝____，单位____；溶质质量分数 w(B)＝____。两者的V分别指什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>c(B) ＝ n(B) / V(溶液)</b>，单位 mol·L⁻¹　——V指<span class="em">溶液体积</span><br>
+      <b>w(B) ＝ m(溶质) / m(溶液) × 100%</b>　——指溶液质量<br>
+      <span class="rd">溶液体积 ≠ 溶剂体积 ≠ 溶质体积＋溶剂体积！V ＝ 溶液质量 ÷ 密度</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P23</span> · 考点一「物质的量浓度」· 2.溶质的判断</span>
+<div class="quiz">
+  <div class="ask">判断：下列物质溶于水后，溶质分别是什么？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>Na</span><span>Na₂O</span><span>Na₂O₂</span><span>CO₂</span><span>SO₃</span><span>NH₃</span><span>CuSO₄·5H₂O</span><span>Na₂CO₃·10H₂O</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th>投入物质</th><th>溶质</th><th>理由</th></tr>
+        <tr><td>Na、Na₂O、Na₂O₂</td><td><b>NaOH</b></td><td>与水反应生成新物质</td></tr>
+        <tr><td>CO₂、SO₂、SO₃</td><td><b>H₂CO₃、H₂SO₃、H₂SO₄</b></td><td>与水反应生成酸</td></tr>
+        <tr><td>NH₃</td><td><b>NH₃</b></td><td>溶质按NH₃计算（NH₃·H₂O不稳定）</td></tr>
+        <tr><td>CuSO₄·5H₂O、Na₂CO₃·10H₂O</td><td><b>CuSO₄、Na₂CO₃</b></td><td>结晶水不算溶质，按无水物算</td></tr>
+      </tbody></table>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P23</span> · 考点一「物质的量浓度」· 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>在100 mL烧杯中加10 g食盐，注入90 mL水，充分溶解后溶质质量分数为10%</summary>
+  <div class="ans"><b>√</b>　10 g ÷ (10+90) g ×100% ＝ <span class="em">10%</span>（质量分数用质量算，与体积无关）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>10.6 g Na₂CO₃ 与 28.6 g Na₂CO₃·10H₂O 分别投入 1 L 水中，浓度均为 0.1 mol·L⁻¹</summary>
+  <div class="ans"><b>×</b>　①投入1 L<span class="em">水</span>，溶液体积≠1 L；②28.6 g Na₂CO₃·10H₂O含0.1 mol Na₂CO₃但溶液体积不是1 L——两个都错。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>将62 g Na₂O 溶于水中配成 1 L 溶液，所得溶质的物质的量浓度为 1 mol·L⁻¹</summary>
+  <div class="ans"><b>×</b>　Na₂O ＝ NaOH：n(Na₂O)＝1 mol → 生成 <b>2 mol NaOH</b> → c(NaOH)＝<b>2</b> mol·L⁻¹（不是1）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>将 40 g SO₃ 溶于 60 g 水中，所得溶质的质量分数为 40%</summary>
+  <div class="ans"><b>×</b>　SO₃＋H₂O ＝ H₂SO₄：40 g SO₃ (0.5 mol) ＝ 49 g H₂SO₄ ＝ w ＝ 49/(40+60) ＝ <b>49%</b>（不是40%）。</div>
+</details>
+
+<!-- 知识点② 稀释与换算 -->
+<h3>知识点② · 稀释守恒与 c＝1000ρω/M<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P24</span> · 考点一「物质的量浓度」· 提升关键能力·三、溶液的稀释与混合</span>
+
+<div class="koujue">
+  <div class="t">🗣 必背公式（直接记忆）</div>
+  <p>稀释守恒：<b>c₁V₁ ＝ c₂V₂</b>（溶质物质的量不变）<br>
+  浓度换算：<b>c ＝ 1000ρω / M</b>（ρ单位g·mL⁻¹，ω为质量分数，M为摩尔质量）</p>
+</div>
+
+<div class="quiz">
+  <div class="ask">算一算：现有浓H₃PO₄质量分数85%、密度1.7 g·mL⁻¹。要配100 mL 1.7 mol·L⁻¹的H₃PO₄溶液，需浓H₃PO₄多少mL？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">先算浓磷酸浓度：c ＝ 1000×1.7×85% ÷ 98 ≈ <b>14.7 mol·L⁻¹</b><br>
+    稀释守恒：14.7×V ＝ 1.7×0.1 → V ≈ <b>0.0115 L ＝ 11.5 mL</b><br>
+    <span class="em">套路：求浓溶液浓度→稀释守恒→算所需体积</span></div>
+  </details>
+</div>
+
+<!-- 知识点③ 溶液配制 -->
+<h3>知识点③ · 一定物质的量浓度溶液的配制<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P24</span> · 考点二「一定物质的量浓度溶液的配制」· 2.配制过程及操作</span>
+
+<div class="koujue">
+  <div class="t">🗣 必背九字流程（直接记忆）</div>
+  <p><b>称量 → 溶解 → 冷却 → 转移 → 洗涤 → 定容 → 摇匀 → 装瓶 → 贴签</b><br>
+  <span style="color:var(--dim);font-size:15px;">考点：①冷却至室温再转移（热胀冷缩）；②洗涤烧杯2~3次，洗涤液一并转入；③定容时液面距刻度线1~2 cm改滴管滴加</span></p>
+</div>
+
+<div class="quiz">
+  <div class="ask">填空：配制 480 mL 0.5 mol·L⁻¹ NaOH 溶液——①应选用____mL容量瓶；②需称NaOH____g；③NaOH固体应放在____（托盘/烧杯）中称量</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① 选 <b>500 mL</b> 容量瓶（<span class="rd">没有480 mL容量瓶，只能选500 mL</span>）<br>
+      ② m ＝ 0.5 mol·L⁻¹ × 0.5 L × 40 g·mol⁻¹ ＝ <b>10.0 g</b><br>
+      ③ 放<b>小烧杯</b>中称量（NaOH易潮解、有腐蚀性，不能直接放纸上）<br>
+      <span class="em">口诀：配多少选规格，无此规格取大不取小</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P25</span> · 考点二·提升关键能力·二、误差分析</span>
+<div class="quiz">
+  <div class="ask">误差判断（用"偏大/偏小/无影响"作答）：①未洗涤烧杯及玻璃棒；②定容时俯视刻度线；③定容时仰视刻度线；④未冷却就转移定容；⑤摇匀后发现液面下降又加水</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th>操作</th><th>n(溶质)</th><th>V(溶液)</th><th>结果</th></tr>
+        <tr><td>①未洗涤烧杯</td><td>↓偏小</td><td>—</td><td><span class="rd">偏小</span></td></tr>
+        <tr><td>②俯视定容</td><td>—</td><td>↓偏小</td><td><span class="rd">偏大</span></td></tr>
+        <tr><td>③仰视定容</td><td>—</td><td>↑偏大</td><td><span class="rd">偏小</span></td></tr>
+        <tr><td>④未冷却转移</td><td>—</td><td>冷却后↓</td><td><span class="rd">偏大</span></td></tr>
+        <tr><td>⑤摇匀后加水</td><td>—</td><td>↑偏大</td><td><span class="rd">偏小</span></td></tr>
+      </tbody></table>
+      <span class="em">口诀：俯大仰小；未冷却偏大；未洗涤偏小；容量瓶有水无影响；摇匀后加水偏小</span>
+    </div>
+  </details>
+</div>
+
+<!-- 真题验证 -->
+<h3>真题验证<span class="p">（2021·广东卷 T7）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P26</span> · 练真题 明考向 · 第2题</span>
+<div class="quiz">
+  <div class="ask">测定浓硫酸中H₂SO₄含量：①量取浓硫酸稀释；②转移定容得待测液；③移取20.00 mL待测液用NaOH溶液滴定。上述操作中<span class="em">不需要用到</span>的仪器是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. 容量瓶</span>
+    <span>B. 分液漏斗</span>
+    <span>C. 锥形瓶</span>
+    <span>D. 碱式滴定管</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B（分液漏斗）</b><br>
+    ①稀释：量筒、烧杯、玻璃棒；②定容：容量瓶、胶头滴管；③滴定：酸/碱式滴定管、锥形瓶<br>
+    <span class="em">方法：按九字流程逐个操作想仪器，对不上号的排除</span></div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P356</span> · 课时精练</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2、3题（离子浓度、仪器选择、配制操作）</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第4、5题（误差分析、浓度计算）</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第6题（浓硫酸稀释）、第7题（稀释图像＋电荷守恒）</li></ul>
+  </div>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.8), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+
+
+
+<!-- 讲次导航栏 -->
+<style>
+.lesson-nav{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;background:rgba(10,14,26,.96);border-top:1px solid rgba(103,232,249,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lesson-nav a{color:#cbd5e1;text-decoration:none;font-size:15px;padding:8px 22px;border:1px solid rgba(103,232,249,.28);border-radius:22px;background:rgba(17,24,43,.7);transition:all .2s;white-space:nowrap}
+.lesson-nav a:hover{color:#f0c040;border-color:#f0c040;transform:translateY(-1px)}
+.lesson-nav a.disabled{opacity:.3;pointer-events:none;cursor:not-allowed}
+.lesson-nav a.home{color:#f0c040;border-color:#f0c040;background:rgba(240,192,64,.08)}
+.lesson-nav a.home:hover{color:#67e8f9;border-color:#67e8f9}
+body{padding-bottom:88px !important}
+</style>
+<div class="lesson-nav">
+  <a href="05.html">← 上一讲</a>
+  <a href="../index.html" class="home">🏠 回到首页</a>
+  <a href="07.html">下一讲 →</a>
+</div>
+
+</body></html>
