@@ -396,6 +396,26 @@ body {
   opacity: 0.6;
 }
 
+/* ===== 不蒜子访问计数 ===== */
+.busuanzi {
+  text-align: center;
+  padding: 0 20px 26px;
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  opacity: 0.75;
+}
+/* 计数未加载成功时保持隐藏，避免露出空白文本 */
+.busuanzi [id^="busuanzi_container"] { display: none; }
+.busuanzi b {
+  color: var(--cyan);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ===== 响应式 ===== */
 @media (max-width: 600px) {
   .diary-title {
