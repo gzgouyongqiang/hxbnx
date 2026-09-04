@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>氯碱分家记 | 条漫屋</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+    background:#f0e8d5;
+    color:#2C2C2A;
+    padding:16px 12px 40px;
+  }
+  .wrap { max-width:720px; margin:0 auto; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+  .top-nav a {
+    color:#633806; text-decoration:none; font-size:14px;
+    background:#FAEEDA; border:2px solid #633806; border-radius:10px; padding:6px 14px;
+  }
+  .top-nav a:active { background:#e8d48f; }
+  .paper {
+    background:#fdf9f0; border:2px solid #2C2C2A; border-radius:16px;
+    padding:10px 6px; box-shadow:6px 6px 0 rgba(44,44,42,0.15);
+  }
+  .paper svg { width:100%; height:auto; display:block; }
+  .foot-nav { display:flex; gap:10px; margin-top:16px; }
+  .foot-nav a {
+    flex:1; text-align:center; text-decoration:none; color:#633806;
+    background:#FAEEDA; border:2px solid #633806; border-radius:12px; padding:10px;
+    font-size:14px; font-weight:500;
+  }
+  .tag { font-size:12px; color:#854F0B; background:#FAEEDA; border:1px solid #854F0B;
+    border-radius:10px; padding:3px 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top-nav">
+    <a href="comics.html">← 条漫屋</a>
+    <span class="tag">氯碱工业 · 电解食盐水</span>
+    <a href="index.html">🏠 主页</a>
+  </div>
+
+  <div class="paper">
+<svg viewBox="0 0 680 1640" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>氯碱分家记</title>
+  <desc>电解饱和食盐水的趣味条漫：阳极氯气阴极氢气和NaOH，离子交换膜防爆</desc>
+  <style>
+    text { font-family: "PingFang SC","Microsoft YaHei",sans-serif; fill:#2C2C2A; }
+    .bd { stroke:#2C2C2A; stroke-width:2; }
+    .bub { fill:#FFFFFF; stroke:#2C2C2A; stroke-width:1.5; }
+    .say { font-size:13px; }
+    .note { font-size:12px; fill:#633806; }
+    .ttl { font-size:18px; font-weight:500; }
+    .eq { font-size:11.5px; fill:#633806; }
+  </style>
+  <defs>
+    <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#712B13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="340" y="46" text-anchor="middle" class="ttl" font-weight="600">氯碱分家记</text>
+  <text x="340" y="72" text-anchor="middle" font-size="12" fill="#854F0B">一池盐水通上电 · 一家三口各奔前程</text>
+
+  <!-- P1 椭圆：通电令下 -->
+  <ellipse cx="340" cy="205" rx="290" ry="115" fill="#D6EDFB" class="bd"/>
+  <text x="340" y="128" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C">第1幕：通电令下，池水炸锅</text>
+  <!-- 食盐水池 -->
+  <rect x="110" y="190" width="260" height="88" rx="12" fill="#8FC7EA" opacity="0.85"/>
+  <path d="M126 214 Q150 202 174 214 T222 214 T270 214 T318 214" fill="none" stroke="#2F7D5B" stroke-width="2"/>
+  <text x="240" y="256" text-anchor="middle" font-size="12" fill="#082E52">饱和食盐水 · Na⁺和Cl⁻泡澡中</text>
+  <!-- 电极 -->
+  <rect x="88" y="158" width="16" height="90" rx="4" fill="#5F5E5A"/>
+  <rect x="376" y="158" width="16" height="90" rx="4" fill="#5F5E5A"/>
+  <text x="96" y="148" text-anchor="middle" font-size="11" fill="#B33B2E">阳极</text>
+  <text x="384" y="148" text-anchor="middle" font-size="11" fill="#2F5D46">阴极</text>
+  <!-- 闪电 -->
+  <path d="M228 92 L216 118 L228 116 L218 140" fill="none" stroke="#F7C948" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="262" y="112" font-size="11" fill="#712B13">通电！</text>
+  <rect x="70" y="335" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="352" text-anchor="middle" class="note">总账：2NaCl + 2H₂O =通电= 2NaOH + H₂↑ + Cl₂↑</text>
+
+  <!-- P2 斜切格：阳极氯气出走 -->
+  <polygon points="70,388 610,376 594,556 86,568" fill="#EAF3DC" class="bd"/>
+  <text x="102" y="414" font-size="13" font-weight="500" fill="#4A6B1F">第2幕：阳极大哥——Cl₂拖家出走</text>
+  <!-- 氯气大哥 -->
+  <circle cx="470" cy="470" r="34" fill="#9CCB5C" stroke="#4A6B1F" stroke-width="2"/>
+  <circle cx="458" cy="462" r="2.8" fill="#2E420F"/>
+  <circle cx="482" cy="462" r="2.8" fill="#2E420F"/>
+  <path d="M458 482 Q470 477 482 482" fill="none" stroke="#2E420F" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M448 444 L452 434 M470 438 L470 428 M492 444 L488 434" stroke="#4A6B1F" stroke-width="2" stroke-linecap="round"/>
+  <path d="M506 452 Q524 440 540 434 M508 470 Q528 468 546 462" fill="none" stroke="#9CCB5C" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <rect x="380" y="512" width="190" height="40" rx="14" class="bub"/>
+  <text x="392" y="530" class="say">黄绿是我，呛人也是我，</text>
+  <text x="392" y="546" class="say">离我远点！（Cl₂）</text>
+  <!-- 警示牌 -->
+  <path d="M150 430 L184 490 L116 490 Z" fill="#F7C948" stroke="#712B13" stroke-width="2"/>
+  <text x="150" y="468" text-anchor="middle" font-size="16" fill="#712B13">!</text>
+  <text x="150" y="484" text-anchor="middle" font-size="9" fill="#712B13">毒气出口</text>
+  <rect x="86" y="522" width="270" height="20" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="221" y="536" text-anchor="middle" class="eq">湿润淀粉碘化钾试纸遇它变蓝</text>
+  <rect x="70" y="582" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="599" text-anchor="middle" class="note">阳极出氯气：黄绿色、刺激性气味——闻到请立刻开窗（口诀位：阳氯）</text>
+
+  <!-- P3 圆形：阴极双宝 -->
+  <circle cx="340" cy="745" r="125" fill="#FBE8E8" class="bd"/>
+  <text x="340" y="658" text-anchor="middle" font-size="13" font-weight="500" fill="#712B13">第3幕：阴极双宝</text>
+  <!-- H2气泡 -->
+  <circle cx="290" cy="720" r="10" fill="#FFFFFF" stroke="#888780" stroke-width="1.5"/>
+  <circle cx="310" cy="698" r="8" fill="#FFFFFF" stroke="#888780" stroke-width="1.5"/>
+  <circle cx="298" cy="678" r="6.5" fill="#FFFFFF" stroke="#888780" stroke-width="1.5"/>
+  <text x="258" y="668" font-size="10.5" fill="#5F5E5A">H₂↑</text>
+  <!-- NaOH小妹让酚酞脸红 -->
+  <circle cx="398" cy="740" r="30" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="2"/>
+  <rect x="378" y="714" width="40" height="16" rx="8" fill="#B33B2E"/>
+  <text x="398" y="726" text-anchor="middle" font-size="9.5" fill="#FFFFFF">NaOH</text>
+  <circle cx="388" cy="738" r="2.4" fill="#2C2C2A"/>
+  <circle cx="408" cy="738" r="2.4" fill="#2C2C2A"/>
+  <path d="M388 754 Q398 759 408 754" fill="none" stroke="#2C2C2A" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="376" cy="748" r="5" fill="#F5A9A9" opacity="0.8"/>
+  <circle cx="420" cy="748" r="5" fill="#F5A9A9" opacity="0.8"/>
+  <text x="398" y="800" text-anchor="middle" font-size="11" fill="#712B13">滴酚酞？整池羞红脸</text>
+  <text x="340" y="838" text-anchor="middle" font-size="11" fill="#712B13">（口诀位：阴氢碱留守）</text>
+  <rect x="70" y="885" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="902" text-anchor="middle" class="note">阴极出H₂+NaOH：红在哪，碱在哪——这是考试最爱画的图</text>
+
+  <!-- P4 六边形：一堵膜墙保平安 -->
+  <polygon points="205,1035 270,927 410,927 475,1035 410,1143 270,1143" fill="#EFE9F7" class="bd"/>
+  <text x="340" y="958" text-anchor="middle" font-size="13" font-weight="500" fill="#4A2E73">第4幕：一堵膜墙保平安</text>
+  <!-- 左室 氯气 -->
+  <rect x="228" y="978" width="88" height="120" rx="10" fill="#EAF3DC" stroke="#4A6B1F" stroke-width="1.5"/>
+  <text x="272" y="1006" text-anchor="middle" font-size="11" fill="#4A6B1F">阳极区</text>
+  <circle cx="256" cy="1032" r="10" fill="#9CCB5C" stroke="#4A6B1F" stroke-width="1.5"/>
+  <circle cx="286" cy="1048" r="10" fill="#9CCB5C" stroke="#4A6B1F" stroke-width="1.5"/>
+  <text x="272" y="1082" text-anchor="middle" font-size="10" fill="#4A6B1F">Cl₂不得过界</text>
+  <!-- 膜墙 -->
+  <rect x="322" y="972" width="16" height="132" rx="6" fill="#534AB7" stroke="#2C2C2A" stroke-width="1.5"/>
+  <text x="330" y="1124" text-anchor="middle" font-size="9.5" fill="#534AB7">交换膜</text>
+  <circle cx="330" cy="1000" r="7" fill="#F7C948" stroke="#A8720A" stroke-width="1.5"/>
+  <text x="352" y="992" font-size="9" fill="#A8720A">Na⁺请过</text>
+  <path d="M322 1000 L306 1000 M338 1000 L354 1000" stroke="#A8720A" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- 右室 氢气+碱 -->
+  <rect x="344" y="978" width="88" height="120" rx="10" fill="#FBE8E8" stroke="#712B13" stroke-width="1.5"/>
+  <text x="388" y="1006" text-anchor="middle" font-size="11" fill="#712B13">阴极区</text>
+  <circle cx="372" cy="1032" r="8" fill="#FFFFFF" stroke="#888780" stroke-width="1.5"/>
+  <circle cx="404" cy="1048" r="8" fill="#FFFFFF" stroke="#888780" stroke-width="1.5"/>
+  <text x="388" y="1082" text-anchor="middle" font-size="10" fill="#712B13">H₂ + NaOH</text>
+  <!-- 爆炸warning -->
+  <path d="M250 1098 L258 1082 L264 1094 L272 1080" fill="none" stroke="#B33B2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="272" y="1122" text-anchor="middle" font-size="10" fill="#B33B2E">氯氢相见=爆炸</text>
+  <rect x="70" y="1160" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="1177" text-anchor="middle" class="note">阳离子交换膜：只放Na⁺过境——Cl₂和H₂永远见不着面，防爆全靠它</text>
+
+  <!-- P5 梯形：就业去向 -->
+  <polygon points="90,1210 590,1210 560,1360 120,1360" fill="#E1F5EE" class="bd"/>
+  <text x="340" y="1242" text-anchor="middle" font-size="13" font-weight="500" fill="#2F5D46">第5幕：三兄妹就业去向</text>
+  <!-- 三张名片 -->
+  <rect x="126" y="1262" width="140" height="72" rx="10" fill="#FFFFFF" stroke="#2F7D5B" stroke-width="1.5"/>
+  <text x="196" y="1286" text-anchor="middle" font-size="12" font-weight="500" fill="#2F7D5B">Cl₂</text>
+  <text x="196" y="1306" text-anchor="middle" font-size="10" fill="#5F5E5A">84消毒液·PVC</text>
+  <text x="196" y="1322" text-anchor="middle" font-size="10" fill="#5F5E5A">漂白消毒一把手</text>
+  <rect x="272" y="1262" width="140" height="72" rx="10" fill="#FFFFFF" stroke="#B33B2E" stroke-width="1.5"/>
+  <text x="342" y="1286" text-anchor="middle" font-size="12" font-weight="500" fill="#B33B2E">NaOH</text>
+  <text x="342" y="1306" text-anchor="middle" font-size="10" fill="#5F5E5A">造纸·肥皂·炼油</text>
+  <text x="342" y="1322" text-anchor="middle" font-size="10" fill="#5F5E5A">碱界全能王</text>
+  <rect x="418" y="1262" width="140" height="72" rx="10" fill="#FFFFFF" stroke="#0C447C" stroke-width="1.5"/>
+  <text x="488" y="1286" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C">H₂</text>
+  <text x="488" y="1306" text-anchor="middle" font-size="10" fill="#5F5E5A">清洁燃料·合成盐酸</text>
+  <text x="488" y="1322" text-anchor="middle" font-size="10" fill="#5F5E5A">燃烧只出水</text>
+  <rect x="70" y="1378" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="1395" text-anchor="middle" class="note">彩蛋：Cl₂通进NaOH溶液=84消毒液（Cl₂+2NaOH=NaCl+NaClO+H₂O）</text>
+
+  <!-- P6 黑金结尾 -->
+  <rect x="40" y="1428" width="600" height="188" rx="14" fill="#2C2C2A"/>
+  <text x="340" y="1466" text-anchor="middle" font-size="15" style="fill:#e8d48f;" font-weight="600">氯碱工业 · 结案陈词：</text>
+  <text x="340" y="1500" text-anchor="middle" font-size="14" style="fill:#F7C948;">2NaCl + 2H₂O =通电= 2NaOH + H₂↑ + Cl₂↑</text>
+  <text x="340" y="1536" text-anchor="middle" font-size="14" style="fill:#9ccb8c;" font-weight="500">口诀：阳氯阴氢碱留守，隔膜防爆记心头</text>
+  <text x="340" y="1566" text-anchor="middle" font-size="12" style="fill:#B8B6AC;">阳极氯气黄绿呛人 · 阴极氢气配火碱 · 酚酞红在哪碱就在哪</text>
+  <text x="340" y="1596" text-anchor="middle" font-size="11" style="fill:#8A8880;">—— 电解饱和食盐水 = 氯碱工业（高考工业流程图常客）</text>
+</svg>
+  </div>
+
+  <div class="foot-nav">
+    <a href="comic-transform.html">← 上一篇：钠的变形七部曲</a>
+    <a href="comics.html">条漫屋</a>
+  </div>
+</div>
+</body>
+</html>
