@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>高炉夺氧记 | 条漫屋</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+    background:#f0e8d5;
+    color:#2C2C2A;
+    padding:16px 12px 40px;
+  }
+  .wrap { max-width:720px; margin:0 auto; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+  .top-nav a {
+    color:#633806; text-decoration:none; font-size:14px;
+    background:#FAEEDA; border:2px solid #633806; border-radius:10px; padding:6px 14px;
+  }
+  .top-nav a:active { background:#e8d48f; }
+  .paper {
+    background:#fdf9f0; border:2px solid #2C2C2A; border-radius:16px;
+    padding:10px 6px; box-shadow:6px 6px 0 rgba(44,44,42,0.15);
+  }
+  .paper svg { width:100%; height:auto; display:block; }
+  .foot-nav { display:flex; gap:10px; margin-top:16px; }
+  .foot-nav a {
+    flex:1; text-align:center; text-decoration:none; color:#633806;
+    background:#FAEEDA; border:2px solid #633806; border-radius:12px; padding:10px;
+    font-size:14px; font-weight:500;
+  }
+  .tag { font-size:12px; color:#854F0B; background:#FAEEDA; border:1px solid #854F0B;
+    border-radius:10px; padding:3px 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top-nav">
+    <a href="comics.html">← 条漫屋</a>
+    <span class="tag">铁 · 高炉夺氧记</span>
+    <a href="index.html">🏠 主页</a>
+  </div>
+
+  <div class="paper">
+<svg viewBox="0 0 680 1770" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>高炉夺氧记</title>
+  <desc>高炉炼铁：焦炭燃烧供热并生成CO，CO夺走Fe2O3中的氧，石灰石造渣，产物是生铁不是纯铁，主反应不是置换反应</desc>
+  <style>
+    text { font-family: "PingFang SC","Microsoft YaHei",sans-serif; fill:#2C2C2A; }
+    .bub { fill:#FFFFFF; stroke:#2C2C2A; stroke-width:1.5; }
+    .say { font-size:12.5px; }
+    .note { font-size:12px; fill:#633806; }
+  </style>
+  <defs>
+    <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#C0392B"/>
+    </marker>
+    <marker id="fb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#5E8C4A"/>
+    </marker>
+  </defs>
+
+  <!-- ============ P1 开场：高炉大厦 ============ -->
+  <rect x="40" y="28" width="600" height="46" rx="23" fill="#8E2318"/>
+  <text x="340" y="59" text-anchor="middle" font-size="19" font-weight="600" style="fill:#F7C948;">高炉夺氧记 · 开炉</text>
+  <text x="340" y="98" text-anchor="middle" font-size="13" style="fill:#633806;">任务：把石头里的铁"抢"出来 —— 焦炭大叔带队，CO 敢死队主攻</text>
+
+  <!-- 高炉剖面 -->
+  <polygon points="286,128 454,128 492,318 248,318" fill="#8A5A2B" stroke="#5E3A16" stroke-width="2.5"/>
+  <polygon points="300,142 440,142 470,306 270,306" fill="#E2603C" stroke="#C0392B" stroke-width="1.5"/>
+  <polygon points="310,230 430,230 452,306 288,306" fill="#F4A83C" stroke="none"/>
+  <!-- 炉顶进料 -->
+  <polygon points="336,108 404,108 440,128 300,128" fill="#5E3A16" stroke="#2C2C2A" stroke-width="1.5"/>
+  <circle cx="330" cy="120" r="7" fill="#C0392B" stroke="#2C2C2A" stroke-width="1.5"/>
+  <circle cx="370" cy="116" r="7" fill="#2C2C2A" stroke="#2C2C2A" stroke-width="1.5"/>
+  <circle cx="410" cy="120" r="7" fill="#F5F0E0" stroke="#2C2C2A" stroke-width="1.5"/>
+  <text x="330" y="104" text-anchor="middle" font-size="9" style="fill:#8E2318;">矿石</text>
+  <text x="370" y="100" text-anchor="middle" font-size="9" style="fill:#2C2C2A;">焦炭</text>
+  <text x="410" y="104" text-anchor="middle" font-size="9" style="fill:#854F0B;">石灰石</text>
+  <!-- 热空气 -->
+  <rect x="176" y="262" width="76" height="18" rx="4" fill="#7FB3D5" stroke="#2C2C2A" stroke-width="1.5"/>
+  <path d="M188 256 Q200 248 212 256 M200 270 Q212 262 224 270" fill="none" stroke="#7FB3D5" stroke-width="2" stroke-linecap="round"/>
+  <text x="214" y="246" text-anchor="middle" font-size="10" style="fill:#2C5477;">热空气</text>
+  <!-- 出铁/出渣 -->
+  <circle cx="310" cy="330" r="8" fill="#F7C948" stroke="#C07A2E" stroke-width="1.5"/>
+  <text x="310" y="356" text-anchor="middle" font-size="9.5" style="fill:#8E5A1E;">出铁水</text>
+  <circle cx="440" cy="330" r="8" fill="#B8B6AC" stroke="#6E6C64" stroke-width="1.5"/>
+  <text x="440" y="356" text-anchor="middle" font-size="9.5" style="fill:#6E6C64;">出炉渣</text>
+
+  <!-- 右侧解说 -->
+  <text x="540" y="150" text-anchor="middle" font-size="12" font-weight="600" style="fill:#8E2318;">火焰大厦</text>
+  <text x="540" y="172" text-anchor="middle" font-size="10.5" style="fill:#633806;">炉温 1000℃+</text>
+  <text x="540" y="196" text-anchor="middle" font-size="10.5" style="fill:#633806;">三路人马从顶入：</text>
+  <text x="540" y="216" text-anchor="middle" font-size="10.5" style="fill:#C0392B;">铁矿石 Fe₂O₃</text>
+  <text x="540" y="236" text-anchor="middle" font-size="10.5" style="fill:#2C2C2A;">焦炭 C</text>
+  <text x="540" y="256" text-anchor="middle" font-size="10.5" style="fill:#854F0B;">石灰石 CaCO₃</text>
+  <text x="540" y="280" text-anchor="middle" font-size="10.5" style="fill:#4A6BA5;">热空气侧腰吹入</text>
+
+  <rect x="70" y="376" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="393" text-anchor="middle" class="note">石头抱氧不撒手？先派焦炭大叔点火造兵——看好了，两连击</text>
+
+  <!-- ============ P2 造CO两连击 ============ -->
+  <rect x="40" y="428" width="200" height="28" rx="14" fill="#2C2C2A"/>
+  <text x="140" y="447" text-anchor="middle" font-size="13" font-weight="600" style="fill:#F7C948;">第一棒 · 焦炭两连击造CO</text>
+
+  <!-- 左圆：C+O2 -->
+  <circle cx="195" cy="585" r="118" fill="#FFF3D6" stroke="#C07A2E" stroke-width="2"/>
+  <g>
+    <rect x="128" y="512" width="54" height="60" rx="9" fill="#2C2C2A" stroke="#2C2C2A" stroke-width="2"/>
+    <rect x="144" y="502" width="22" height="12" rx="3" fill="#4A4A44" stroke="#2C2C2A" stroke-width="1.5"/>
+    <circle cx="145" cy="530" r="2.8" fill="#F7C948"/>
+    <circle cx="165" cy="530" r="2.8" fill="#F7C948"/>
+    <path d="M147 548 Q155 553 163 548" fill="none" stroke="#F7C948" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="155" y="566" text-anchor="middle" font-size="11" font-weight="700" style="fill:#F7C948;">C 焦炭</text>
+  </g>
+  <!-- 火焰 -->
+  <g>
+    <path d="M215 556 Q226 540 220 524 Q238 534 236 556 Q244 552 246 544 Q256 564 244 578 Q234 590 220 588 Q204 586 202 570 Q200 558 208 550 Q210 558 215 556 Z" fill="#F4A83C" stroke="#C07A2E" stroke-width="1.5"/>
+    <path d="M222 582 Q227 572 224 564 Q234 570 232 582 Q228 590 220 588 Q216 586 218 580 Z" fill="#F7C948"/>
+  </g>
+  <text x="195" y="646" text-anchor="middle" font-size="11.5" font-weight="600" style="fill:#8E5A1E;">C + O₂ →(点燃) CO₂</text>
+  <text x="195" y="666" text-anchor="middle" font-size="10" style="fill:#633806;">先烧自己，把炉温拉满（放热）</text>
+
+  <!-- 右圆：CO2+C 回马枪 -->
+  <circle cx="485" cy="585" r="118" fill="#EAF4E2" stroke="#5E8C4A" stroke-width="2"/>
+  <g>
+    <ellipse cx="438" cy="512" rx="26" ry="17" fill="#B8C9E0" stroke="#4A6BA5" stroke-width="1.5"/>
+    <text x="438" y="517" text-anchor="middle" font-size="10.5" font-weight="600" style="fill:#2C5477;">CO₂</text>
+    <path d="M438 532 L438 552" stroke="#5E8C4A" stroke-width="2" marker-end="url(#fb)"/>
+  </g>
+  <g>
+    <rect x="480" y="546" width="52" height="58" rx="9" fill="#2C2C2A" stroke="#2C2C2A" stroke-width="2"/>
+    <circle cx="497" cy="566" r="2.8" fill="#F7C948"/>
+    <circle cx="517" cy="566" r="2.8" fill="#F7C948"/>
+    <path d="M499 584 Q507 589 515 584" fill="none" stroke="#F7C948" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="506" y="598" text-anchor="middle" font-size="10.5" font-weight="700" style="fill:#F7C948;">焦炭</text>
+  </g>
+  <!-- CO小兵出厂 -->
+  <circle cx="428" cy="628" r="14" fill="#4A6BA5" stroke="#2C2C2A" stroke-width="1.5"/>
+  <text x="428" y="633" text-anchor="middle" font-size="9.5" font-weight="700" style="fill:#FFFFFF;">CO</text>
+  <circle cx="462" cy="632" r="14" fill="#4A6BA5" stroke="#2C2C2A" stroke-width="1.5"/>
+  <text x="462" y="637" text-anchor="middle" font-size="9.5" font-weight="700" style="fill:#FFFFFF;">CO</text>
+  <text x="485" y="660" text-anchor="middle" font-size="11.5" font-weight="600" style="fill:#3D6B2F;">CO₂ + C →(高温) 2CO</text>
+  <text x="485" y="680" text-anchor="middle" font-size="10" style="fill:#633806;">回马枪！烧完不退休，再抢一次氧</text>
+
+  <!-- ============ P3 主战役：夺氧三连 ============ -->
+  <rect x="40" y="712" width="190" height="28" rx="14" fill="#C0392B"/>
+  <text x="135" y="731" text-anchor="middle" font-size="13" font-weight="600" style="fill:#FFFFFF;">第二棒 · CO敢死队夺氧</text>
+
+  <!-- 炉内梯形场景 -->
+  <polygon points="60,770 620,770 590,1060 90,1060" fill="#FFF0E0" stroke="#C0392B" stroke-width="2"/>
+  <polygon points="80,786 600,786 574,1044 106,1044" fill="none" stroke="#E2603C" stroke-width="1" stroke-dasharray="5 4"/>
+
+  <!-- 红石头军团 -->
+  <g>
+    <polygon points="120,900 160,872 200,900 190,936 130,936" fill="#C0392B" stroke="#8E2318" stroke-width="2"/>
+    <text x="160" y="916" text-anchor="middle" font-size="10.5" font-weight="700" style="fill:#FFFFFF;">Fe₂O₃</text>
+    <polygon points="240,900 280,872 320,900 310,936 250,936" fill="#C0392B" stroke="#8E2318" stroke-width="2"/>
+    <text x="280" y="916" text-anchor="middle" font-size="10.5" font-weight="700" style="fill:#FFFFFF;">Fe₂O₃</text>
+    <polygon points="360,900 400,872 440,900 430,936 370,936" fill="#C0392B" stroke="#8E2318" stroke-width="2"/>
+    <text x="400" y="916" text-anchor="middle" font-size="10.5" font-weight="700" style="fill:#FFFFFF;">Fe₂O₃</text>
+    <text x="280" y="862" text-anchor="middle" font-size="10" style="fill:#8E2318;">抱氧不撒手的石头军团</text>
+  </g>
+
+  <!-- CO敢死队冲锋 -->
+  <g>
+    <circle cx="150" cy="986" r="13" fill="#4A6BA5" stroke="#2C2C2A" stroke-width="1.5"/>
+    <text x="150" y="991" text-anchor="middle" font-size="9" font-weight="700" style="fill:#FFFFFF;">CO</text>
+    <circle cx="270" cy="990" r="13" fill="#4A6BA5" stroke="#2C2C2A" stroke-width="1.5"/>
+    <text x="270" y="995" text-anchor="middle" font-size="9" font-weight="700" style="fill:#FFFFFF;">CO</text>
+    <circle cx="390" cy="986" r="13" fill="#4A6BA5" stroke="#2C2C2A" stroke-width="1.5"/>
+    <text x="390" y="991" text-anchor="middle" font-size="9" font-weight="700" style="fill:#FFFFFF;">CO</text>
+    <path d="M150 970 L154 944" stroke="#4A6BA5" stroke-width="2" marker-end="url(#fa)"/>
+    <path d="M270 974 L276 944" stroke="#4A6BA5" stroke-width="2" marker-end="url(#fa)"/>
+    <path d="M390 970 L396 944" stroke="#4A6BA5" stroke-width="2" marker-end="url(#fa)"/>
+    <text x="470" y="992" font-size="10.5" font-weight="600" style="fill:#2C5477;">每个抱走一个 O</text>
+  </g>
+
+  <!-- 战果：铁水滴+CO2 -->
+  <g>
+    <path d="M130 1022 Q138 1008 146 1022 Q150 1028 146 1034 Q138 1042 130 1034 Q126 1028 130 1022 Z" fill="#F7C948" stroke="#C07A2E" stroke-width="1.5"/>
+    <path d="M250 1024 Q258 1010 266 1024 Q270 1030 266 1036 Q258 1044 250 1036 Q246 1030 250 1024 Z" fill="#F7C948" stroke="#C07A2E" stroke-width="1.5"/>
+    <path d="M370 1022 Q378 1008 386 1022 Q390 1028 386 1034 Q378 1042 370 1034 Q366 1028 370 1022 Z" fill="#F7C948" stroke="#C07A2E" stroke-width="1.5"/>
+    <text x="470" y="1032" font-size="10.5" font-weight="600" style="fill:#8E5A1E;">铁水落炉底（0价！）</text>
+  </g>
+
+  <!-- 主方程式大字 -->
+  <rect x="40" y="1086" width="600" height="46" rx="12" fill="#2C2C2A"/>
+  <text x="340" y="1108" text-anchor="middle" font-size="15" font-weight="600" style="fill:#F7C948;">Fe₂O₃ + 3CO →(高温) 2Fe + 3CO₂</text>
+  <text x="340" y="1126" text-anchor="middle" font-size="11" style="fill:#e8d48f;">夺氧主战役 · 一个 CO 换一个 O，三点齐发全带走</text>
+
+  <!-- 还原剂点睛 -->
+  <rect x="40" y="1146" width="600" height="40" rx="12" fill="#FDEBD0" stroke="#C07A2E" stroke-width="1.5"/>
+  <text x="340" y="1164" text-anchor="middle" font-size="12.5" font-weight="600" style="fill:#8E2318;">划重点：真正夺氧的还原剂是 CO 气体兵！</text>
+  <text x="340" y="1180" text-anchor="middle" font-size="10.5" style="fill:#633806;">焦炭只是"造CO的幕后+供热引擎"——考卷最爱在这里挖坑</text>
+
+  <!-- ============ P4 第三棒：石灰石造渣 + 两大彩蛋 ============ -->
+  <rect x="40" y="1214" width="200" height="28" rx="14" fill="#854F0B"/>
+  <text x="140" y="1233" text-anchor="middle" font-size="13" font-weight="600" style="fill:#FFFFFF;">第三棒 · 石灰石造渣护航</text>
+
+  <!-- 左斜格：造渣 -->
+  <polygon points="40,1272 330,1272 300,1440 40,1440" fill="#EAF4E2" stroke="#5E8C4A" stroke-width="1.5"/>
+  <g>
+    <circle cx="86" cy="1302" r="18" fill="#F5F0E0" stroke="#854F0B" stroke-width="2"/>
+    <text x="86" y="1307" text-anchor="middle" font-size="8.5" font-weight="700">CaCO₃</text>
+  </g>
+  <path d="M112 1302 Q126 1302 138 1302" fill="none" stroke="#5E8C4A" stroke-width="2" marker-end="url(#fb)"/>
+  <!-- CaO 抓 SiO2 -->
+  <g>
+    <circle cx="150" cy="1326" r="16" fill="#E8B33C" stroke="#C07A2E" stroke-width="1.5"/>
+    <text x="150" y="1331" text-anchor="middle" font-size="9" font-weight="700">CaO</text>
+    <circle cx="210" cy="1326" r="16" fill="#B8B6AC" stroke="#6E6C64" stroke-width="1.5"/>
+    <text x="210" y="1331" text-anchor="middle" font-size="9" font-weight="700" style="fill:#4A4A44;">SiO₂</text>
+    <path d="M168 1326 Q182 1320 192 1326" fill="none" stroke="#5E8C4A" stroke-width="2" marker-end="url(#fb)"/>
+  </g>
+  <text x="170" y="1374" text-anchor="middle" font-size="10" font-weight="600" style="fill:#3D6B2F;">CaCO₃ →(高温) CaO + CO₂↑</text>
+  <text x="170" y="1396" text-anchor="middle" font-size="10" font-weight="600" style="fill:#3D6B2F;">CaO + SiO₂ →(高温) CaSiO₃</text>
+  <text x="170" y="1422" text-anchor="middle" font-size="10" style="fill:#633806;">石灰石抱走沙子 SiO₂，炉渣浮在铁水上排走</text>
+
+  <!-- 右斜格：两大彩蛋 -->
+  <polygon points="364,1272 640,1272 640,1440 394,1440" fill="#FDEBD0" stroke="#C07A2E" stroke-width="1.5"/>
+  <text x="517" y="1298" text-anchor="middle" font-size="12" font-weight="600" style="fill:#8E5A1E;">出炉彩蛋 · 考点两连</text>
+  <rect x="382" y="1312" width="240" height="56" rx="10" fill="#FFF7E0" stroke="#C07A2E" stroke-width="1.2"/>
+  <text x="502" y="1334" text-anchor="middle" font-size="11.5" font-weight="600" style="fill:#8E2318;">① 出炉的是生铁，不是纯铁！</text>
+  <text x="502" y="1354" text-anchor="middle" font-size="10.5" style="fill:#633806;">含碳 2%~4.3%，还泡在焦炭堆里呢</text>
+  <rect x="382" y="1378" width="240" height="56" rx="10" fill="#FFF0F0" stroke="#C0392B" stroke-width="1.2"/>
+  <text x="502" y="1400" text-anchor="middle" font-size="11.5" font-weight="600" style="fill:#8E2318;">② 主反应不是置换反应！</text>
+  <text x="502" y="1420" text-anchor="middle" font-size="10.5" style="fill:#633806;">CO 是化合物，不符合"单质+化合物"套路</text>
+
+  <!-- ============ P5 黑金终局 ============ -->
+  <rect x="40" y="1468" width="600" height="252" rx="14" fill="#2C2C2A"/>
+  <text x="340" y="1498" text-anchor="middle" font-size="15" style="fill:#e8d48f;" font-weight="600">高炉夺氧 · 反应链全图：</text>
+
+  <text x="80" y="1530" font-size="12.5" style="fill:#F7C948;">① 供热：C + O₂ →(点燃) CO₂（放热，炉温拉满）</text>
+  <text x="80" y="1558" font-size="12.5" style="fill:#F7C948;">② 造气：CO₂ + C →(高温) 2CO（焦炭回马枪）</text>
+  <text x="80" y="1586" font-size="12.5" style="fill:#F7C948;">③ 夺氧：Fe₂O₃ + 3CO →(高温) 2Fe + 3CO₂（主反应）</text>
+  <text x="80" y="1614" font-size="12.5" style="fill:#F7C948;">④ 造渣：CaCO₃→CaO+CO₂↑；CaO+SiO₂→CaSiO₃</text>
+
+  <text x="80" y="1648" font-size="12" style="fill:#B8B6AC;">三大易错：还原剂是 CO 不是 C ｜ 产物是生铁不是纯铁 ｜ 不是置换反应</text>
+
+  <text x="340" y="1684" text-anchor="middle" font-size="14" style="fill:#9ccb8c;" font-weight="500">口诀：一烧二造三夺氧，石灰石造渣帮下场；夺氧先锋CO兵，出炉生铁非纯铁</text>
+  <text x="340" y="1706" text-anchor="middle" font-size="10.5" style="fill:#8A8880;">—— 铁系条漫六篇完结！下个元素想看谁？铜哥？铝妹？硫家三兄弟？</text>
+
+  <!-- 底部考点 -->
+  <rect x="70" y="1730" width="540" height="26" rx="13" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="340" y="1747" text-anchor="middle" class="note">考试速答："高炉中还原铁矿石的物质"→ CO；"能否用C直接还原"→ 能但气体CO接触更充分、反应更快更彻底</text>
+</svg>
+  </div>
+
+  <div class="foot-nav">
+    <a href="comic-ironpurge.html">← 上一篇：除铁光荣战役</a>
+    <a href="comics.html">条漫屋 · 更多敬请期待</a>
+  </div>
+</div>
+</body>
+</html>
