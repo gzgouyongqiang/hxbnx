@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第11讲 碱金属 钠及其重要化合物的转化 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:17px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第11讲　碱金属　钠及其重要化合物的转化 · 课堂展示</h1>
+</header>
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出侯氏制碱法的总反应方程式（NaCl、CO₂、NH₃、H₂O）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P51</span> · 考点二「钠及其重要化合物的转化」· 侯氏制碱法·原理</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CO₂ ＋ NH₃ ＋ NaCl ＋ H₂O ＝ NaHCO₃↓ ＋ NH₄Cl</b><br>
+      原理：NaHCO₃ 溶解度在体系中最小，优先析出——先通 NH₃ 后通 CO₂</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出碳酸氢钠受热分解的化学方程式（转化主线关键一步）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P51</span> · 考点二「钠及其重要化合物的转化」· 侯氏制碱法·原理</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2NaHCO₃ <span class="eqw">＝<span class="eqw-c">△</span></span> Na₂CO₃ ＋ H₂O ＋ CO₂↑</b>　（煅烧 NaHCO₃ 制纯碱，CO₂ 循环利用）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 CO₂ 过量时与 NaOH 溶液反应的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P50</span> · 考点二「钠及其重要化合物的转化」· 转化关系图（过量CO₂）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CO₂(过量) ＋ NaOH ＝ NaHCO₃</b>　（CO₂ 少量则生成 Na₂CO₃：CO₂＋2NaOH ＝ Na₂CO₃＋H₂O）<br>
+      口诀：少量 CO₂ 出碳酸钠，过量 CO₂ 出碳酸氢钠</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 碱金属递变</b>：Li→Cs 半径增大、金属性增强、还原性增强；与 O₂ 反应越来越剧烈、产物越来越复杂</li>
+  <li><b>② 焰色试验</b>：物理变化、元素性质；Na 黄、K 紫（透过蓝色钴玻璃）；铂丝用盐酸洗</li>
+  <li><b>③ 钠的转化主线</b>：Na→Na₂O→NaOH→Na₂CO₃→NaHCO₃→NaCl；CO₂ 少量→Na₂CO₃、过量→NaHCO₃</li>
+  <li><b>④ 侯氏制碱</b>：CO₂＋NH₃＋NaCl＋H₂O＝NaHCO₃↓＋NH₄Cl；先通 NH₃ 后通 CO₂</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷钠元素考点与难度研究报告》）</b>
+  <p>· <b style="color:var(--accent)">侯氏制碱法</b>（钠报告 C类）：先 NH₃ 后 CO₂、NaHCO₃ 溶解度最小析出——2023 广东 Q11、2024 广东 Q17 落点，<span class="em">必拿分</span>。</p>
+  <p>· <b style="color:var(--accent)">焰色试验</b>（钠报告 A类）：Na 黄、K 紫（钴玻璃），<span class="em">送分</span>，常与碱金属递变捆绑考。</p>
+  <p>· <b style="color:var(--accent)">钠转化主线 / 价类二维图</b>（钠报告 A类"分类价态图"，2023 Q10、2025 Q7）：中档，露置空气最终变 Na₂CO₃。</p>
+  <p>· <span class="rd">✂ 放弃</span>：侯氏 vs 索尔维流程对比、Na₂O₂ 与 SO₂ 反应、分步定量图像。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 碱金属递变 -->
+<h3>知识点① · 碱金属的相似性与递变性<span class="p">（约9分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P49</span> · 考点一「碱金属 焰色试验」· 1.碱金属性质</span>
+<div class="quiz">
+  <div class="ask">填空：碱金属（Li、Na、K、Rb、Cs）递变规律——原子半径____，金属性____，与 O₂ 反应产物____，与水反应剧烈程度____</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th>性质</th><th>递变（Li→Cs）</th></tr>
+        <tr><td>原子半径</td><td>逐渐增大</td></tr>
+        <tr><td>金属性 / 还原性</td><td>逐渐增强</td></tr>
+        <tr><td>与 O₂ 反应</td><td>越来越剧烈，产物越来越复杂（Li→Li₂O；Na→Na₂O₂；K→KO₂）</td></tr>
+        <tr><td>与水反应</td><td>越来越剧烈（K 可能爆炸）</td></tr>
+        <tr><td>物理性质</td><td>密度逐渐增大（K 反常比 Na 小）、熔点逐渐降低</td></tr>
+      </tbody></table>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P49</span> · 考点一「碱金属 焰色试验」· 2.用批判性思维看碱金属</span>
+<div class="quiz">
+  <div class="ask">找茬：碱金属的四个"反常规"——①钾的密度；②锂的保存；③锂与 O₂ 产物；④LiOH 溶解度，各是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① 钾的密度比钠小（K 0.86 ＜ Na 0.97，一般规律被打破）<br>
+      ② 锂密封在石蜡油中（锂密度比煤油小，会浮在煤油上）<br>
+      ③ Li 与 O₂ 只生成 Li₂O（无论常温还是加热，不生成 Li₂O₂）<br>
+      ④ LiOH 溶解度很小（Li 的氟化物、碳酸盐、磷酸盐都难溶）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P50</span> · 考点一「碱金属 焰色试验」· 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>焰火中红色来源于钠盐灼烧</summary>
+  <div class="ans"><b>×</b>　钠的焰色是黄色；红色焰火来自锶/锂盐（Ca 砖红、Ba 黄绿）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>非金属单质燃烧时火焰均为无色</summary>
+  <div class="ans"><b>×</b>　如 H₂（淡蓝）、S（蓝紫）、C（明亮）等都有颜色。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>Na₂SO₄ 与 NaOH 灼烧时火焰颜色相同</summary>
+  <div class="ans"><b>√</b>　焰色试验是元素的性质，含 Na 元素的化合物灼烧都呈黄色。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>焰色试验均应透过蓝色钴玻璃观察</summary>
+  <div class="ans"><b>×</b>　只有观察钾（紫色）时才需要蓝色钴玻璃（滤去钠的黄色干扰），钠不用。</div>
+</details>
+
+<!-- 知识点② 焰色试验 -->
+<h3>知识点② · 焰色试验<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P49</span> · 考点一「碱金属 焰色试验」· 3.检验碱金属元素的实验方法</span>
+<div class="quiz">
+  <div class="ask">填空：焰色试验属于____变化；钠的焰色____，钾的焰色____（透过____观察）；操作时铂丝先蘸____洗涤，再灼烧至____色</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">物理变化（无新物质生成，是元素的性质）<br>
+      Na：黄色；K：紫色（透过蓝色钴玻璃）<br>
+      操作：铂丝蘸盐酸洗涤 → 灼烧至无色（除去杂质）→ 蘸取试样灼烧观察</div>
+  </details>
+</div>
+
+<!-- 知识点③ 钠转化主线 -->
+<h3>知识点③ · 钠及其化合物的转化主线<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P50</span> · 考点二「钠及其重要化合物的转化」· 1.转化关系图</span>
+<div class="quiz">
+  <div class="ask">排序：把钠的转化主线按顺序排好（Na → ____ → ____ → ____ → ____ → NaCl）</div>
+  <div class="mat"><span>Na₂CO₃</span><span>NaHCO₃</span><span>NaOH</span><span>Na₂O</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Na → Na₂O → NaOH → Na₂CO₃ → NaHCO₃ → NaCl</b><br>
+      关键转化：Na₂CO₃→NaHCO₃（通 CO₂ 或加盐酸少量）；NaHCO₃→Na₂CO₃（加热或加 NaOH）<br>
+      金属钠露置空气中最终变为 <span class="em">Na₂CO₃</span>（不是 Na₂O₂！）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P51</span> · 考点二·提升关键能力·一、钠元素价类二维图分析</span>
+<div class="quiz">
+  <div class="ask">判断：金属钠露置在空气中，最终会变为过氧化钠（　　）——先讨论，再揭晓</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>×</b>　钠露置空气：Na → Na₂O → NaOH → Na₂CO₃·xH₂O → Na₂CO₃<br>
+      最终产物是碳酸钠（Na₂O 也可直接与 CO₂ 反应生成 Na₂CO₃），不是 Na₂O₂</div>
+  </details>
+</div>
+
+<!-- 知识点④ 侯氏制碱 -->
+<h3>知识点④ · 侯氏制碱法<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P51</span> · 考点二「钠及其重要化合物的转化」· 侯氏制碱法·原理与操作</span>
+<div class="koujue">
+  <div class="t">🗣 必背要点（直接记忆）</div>
+  <p>总反应：CO₂＋NH₃＋NaCl＋H₂O ＝ NaHCO₃↓＋NH₄Cl<br>① 先通 NH₃ 后通 CO₂　② NaHCO₃ 溶解度最小优先析出　③ 2NaHCO₃＝(△)Na₂CO₃＋H₂O＋CO₂↑（CO₂ 循环）</p>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考：为什么侯氏制碱要"先通 NH₃ 后通 CO₂"？调换顺序行不行？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">不行！<br>
+      ① NH₃ 在水中溶解度极大（1 体积水溶 700 体积），先通 NH₃ 得到浓氨水<br>
+      ② 氨水呈碱性，能吸收更多 CO₂（CO₂ 是酸性气体，碱性环境利于吸收）<br>
+      若先通 CO₂，溶解量少且溶液酸性不利后续反应——<span class="em">顺序是送分考点</span></div>
+  </details>
+</div>
+
+<!-- 真题验证（课时精练里的带年份题） -->
+<span class="loc">📖 讲义 <span class="pg">P365</span> · 课时精练 · 第5题（侯氏制碱）</span>
+<div class="quiz">
+  <div class="ask">NaCl＋CO₂＋NH₃＋H₂O＝NaHCO₃↓＋NH₄Cl 是侯氏制碱的重要反应，四位同学发表见解，其中不正确的是（　　）</div>
+  <div class="mat"><span>A. 该条件下 NaHCO₃ 的溶解度较小</span><span>B. NaHCO₃ 不是纯碱</span><span>C. 析出 NaHCO₃ 固体后的溶液中只含氯化铵</span><span>D. 该反应是在饱和食盐水中先通入氨气，再通入二氧化碳</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　析出 NaHCO₃ 后，溶液中还含 NaCl、NaHCO₃（少量）、NH₄Cl、NH₃·H₂O 等——"只含氯化铵"太绝对。A：NaHCO₃ 溶解度最小才析出 ✓；B：纯碱是 Na₂CO₃ ✓；D：先 NH₃ 后 CO₂ ✓</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P365</span> · 课时精练 · 第1题（2025·重庆模拟）</span>
+<div class="quiz">
+  <div class="ask">在嫦娥五号带回的月壤中，发现了一种富含水分子和铵根离子的矿物晶体[(NH₄、K、Cs、Rb)MgCl₃·6H₂O]。下列有关该晶体的说法错误的是（　　）</div>
+  <div class="mat"><span>A. 该晶体的熔点很低</span><span>B. 溶于水后溶液呈酸性</span><span>C. 可以用焰色试验检验其中所含的 K 元素</span><span>D. 所含的金属元素中 Cs 的金属性最强</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A</b>　离子晶体熔点通常较高，A 错；NH₄⁺ 水解使溶液显酸性，B 对；K 焰色紫色（透过蓝色钴玻璃）可检验，C 对；同主族金属性 Cs＞Rb＞K＞Mg，Cs 最强，D 对。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P365</span> · 课时精练（[分值：100分] 1~8 每小题 6 分，9~12 每小题 7 分，13、14 各 12 分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底）</h4>
+    <ul>
+      <li>第 1~8 题：碱金属递变、焰色试验、钠转化、侯氏制碱基础判断（48 分，送分盘）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档）</h4>
+    <ul>
+      <li>第 9~12 题：Na₂O₂+NaHCO₃ 加热、侯氏制碱流程、锂流程等（28 分）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分）</h4>
+    <ul>
+      <li>第 13~14 题：侯氏制碱装置、钠与 CO₂ 燃烧探究（24 分，<span class="rd">✂ 可放弃</span>）</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+<script src="hxbnx-handwrite.js"></script>
+
+
+<canvas id="hxbnx-draw-canvas" width="1870" height="813" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh; pointer-events: none; z-index: 99998; touch-action: none;"></canvas><div id="hxbnx-draw-toolbar" style="position: fixed; top: 12px; right: 12px; z-index: 99999; display: flex; flex-direction: column; align-items: flex-end; gap: 0px; background: rgba(30, 30, 40, 0.92); border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 20px; font-family: sans-serif; user-select: none; transition: background 0.25s, padding 0.2s; padding: 0px;"><button id="hxbnx-draw-toggle" title="点击开启手写标注，再点关闭（Ctrl+H）" style="width: 44px; height: 44px; border: none; border-radius: 12px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; margin: 4px; transform: rotate(0deg);">✏️</button><div id="hxbnx-draw-menu" style="display: none; flex-direction: column; align-items: flex-end; gap: 8px; padding: 10px 0px 0px;"></div><div id="hxbnx-draw-menu" style="display: none; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0px 4px;"><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(231, 76, 60); cursor: pointer; padding: 0px;"></button><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(241, 196, 15); cursor: pointer; padding: 0px;"></button><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(46, 204, 113); cursor: pointer; padding: 0px;"></button><button title="加粗" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">＋</button><span style="color: rgb(255, 255, 255); font-size: 14px; line-height: 24px; min-width: 24px; text-align: center;">3</span><button title="变细" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">－</button><button title="橡皮擦" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">🧽</button><button title="清空画板（Ctrl+Shift+C）" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">🗑</button></div></div></body></html>

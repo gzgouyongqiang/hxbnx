@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10讲 钠及其重要化合物 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:17px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+</style>
+<style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style><style>.sel-el{outline:2px dashed #e74c3c !important; outline-offset:1px; cursor:move;}.chem-rxn .chem-cond-top,.chem-rxn .chem-cond-bottom{background:transparent;border:none;border-radius:3px;padding:0 3px;}.chem-rxn .chem-cond-top:empty,.chem-rxn .chem-cond-bottom:empty{border:1px dashed rgba(140,140,140,.55);}.chem-rxn .chem-cond-top:focus,.chem-rxn .chem-cond-bottom:focus{border:1px dashed rgba(80,140,255,.75);}</style></head>
+<body>
+
+<header>
+  <h1>第10讲　钠及其重要化合物 · 课堂展示</h1>
+</header>
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出钠与水反应的化学方程式（并回忆现象五字诀）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P45</span> · 考点一「单质钠」· 2.钠的化学性质及制备 ③</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Na ＋ 2H₂O ＝ 2NaOH ＋ H₂↑</b><br>
+      现象口诀：<span class="em">浮、熔、游、响、红</span>——浮（密度比水小）、熔（放热熔点低）、游（产气推动）、响（剧烈）、红（酚酞变红生成 NaOH）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出过氧化钠与二氧化碳反应的化学方程式（呼吸面具供氧原理）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P46</span> · 考点二「氧化钠和过氧化钠」· 2.Na₂O₂既表现氧化性又表现还原性</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Na₂O₂ ＋ 2CO₂ ＝ 2Na₂CO₃ ＋ O₂</b><br>
+      Na₂O₂ 既是氧化剂又是还原剂（O −1→−2、0），<span class="em">每 mol Na₂O₂ 转移 1 mol e⁻</span>——呼吸面具/潜水艇供氧</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出碳酸氢钠受热分解的化学方程式（小苏打作膨松剂原理）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P48</span> · 考点三「碳酸钠和碳酸氢钠」· 2.碳酸氢钠的性质</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2NaHCO₃ <span class="eqw">＝<span class="eqw-c">△</span></span> Na₂CO₃ ＋ H₂O ＋ CO₂↑</b><br>
+      Na₂CO₃ 热稳定（加热不分解），NaHCO₃ 受热分解——鉴别两盐的第一招：加热法</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 单质钠</b>：银白软、熔点低、密度比水小比煤油大；保存于煤油；Na＋H₂O 现象"浮熔游响红"；与盐溶液先水后盐</li>
+  <li><b>② 过氧化钠</b>：淡黄色，阴离子 O₂²⁻；与 H₂O、CO₂ 反应均放 O₂（供氧剂）；酚酞先变红后褪色（H₂O₂ 漂白）</li>
+  <li><b>③ 碳酸钠 vs 碳酸氢钠</b>：纯碱 vs 小苏打；NaHCO₃ 受热分解、加盐酸立即冒泡；鉴别三法（加热/加CaCl₂/滴盐酸）</li>
+  <li><b>④ 钠的用途与安全</b>：钠钾合金导热剂、冶炼金属 Ti；钠着火用沙土，不用水/泡沫灭火器</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷钠元素考点与难度研究报告》）</b>
+  <p>· <b style="color:var(--accent)">B类 过氧化钠 Na₂O₂</b>：广东卷<b>严重超配、年年考</b>（2021–2024 连续四年），是<span class="em">必拿分中的必拿分</span>。核心「2Na₂O₂＋2H₂O/2CO₂ ＋ 1 mol 转 1 mol e⁻」必须秒答。</p>
+  <p>· <b style="color:var(--accent)">C类 碳酸钠 / 碳酸氢钠</b>：第二稳定考点（俗称、热稳定性、鉴别、侯氏制碱），难度 0.65–0.85。</p>
+  <p>· <b style="color:var(--accent)">A类 钠单质</b>：轻量考（分类价态图、转化关系），不深挖性质。</p>
+  <p>· <span class="rd">✂ 放弃</span>：含钠流程除杂综合（2021 Q18，0.40）、纯碱除杂的"速率＋平衡"探究——本质是沉淀转化（Ksp），不追求整题满分。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 单质钠 -->
+<h3>知识点① · 单质钠<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P45</span> · 考点一「单质钠」· 1.钠的物理性质及保存方法</span>
+<div class="quiz">
+  <div class="ask">填空：钠是____色固体，质地____，熔点____（&lt;100℃），密度比水____、比煤油____。保存方法：____</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">银白色；质地柔软；熔点低；密度比水小、比煤油大；密封保存在煤油（或石蜡油）中<br>
+      <span style="color:var(--dim);font-size:15px;">为什么不用 CCl₄？钠密度比 CCl₄ 小会浮在液面上接触空气——必须用比钠轻的煤油</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P46</span> · 考点一「单质钠」· 提升关键能力·一、钠与溶液的反应</span>
+<div class="quiz">
+  <div class="ask">思考：把钠投入 CuSO₄ 溶液，会置换出铜吗？写出实际反应的离子方程式</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">不会！钠先与水反应，NaOH 再与盐反应——<span class="em">"先水后盐"</span>：<br>
+      <b>2Na ＋ 2H₂O ＋ Cu²⁺ ＝ Cu(OH)₂↓ ＋ 2Na⁺ ＋ H₂↑</b><br>
+      口诀：钠与盐溶液，先水后盐；有酸酸在前，无酸水为先</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">比较：钠与水、盐酸、乙醇反应的剧烈程度，并说明原因</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>盐酸 ＞ 水 ＞ 乙醇</b>　（本质都是 Na 与 H⁺ 的置换反应）<br>
+      电离出 H⁺ 能力：盐酸（强酸）＞ 水（弱电离）＞ 乙醇（羟基 H 更难电离）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P45</span> · 考点一「单质钠」· 易错辨析（抢答7题）</span>
+<details class="bianxi"><summary><span class="q">1</span>取用金属钠时，所需用品一般有小刀、镊子、滤纸、玻璃片</summary>
+  <div class="ans"><b>√</b>　钠质软用刀切，镊子夹取，滤纸吸干煤油，玻璃片垫底。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>金属钠着火时，可用泡沫灭火器或干燥的沙土灭火</summary>
+  <div class="ans"><b>×</b>　钠燃烧生成 Na₂O₂，Na₂O₂ 与 CO₂ 反应放 O₂ 助燃——只能用干燥沙土盖灭。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>钠表面自然形成的氧化层能够保护内层金属不被空气氧化</summary>
+  <div class="ans"><b>×</b>　Na₂O 不是致密保护膜（Al₂O₃ 才是），钠很快被氧化透。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>金属钠可保存在煤油中，也可保存在 CCl₄ 中</summary>
+  <div class="ans"><b>×</b>　钠密度小于 CCl₄，会浮在液面接触空气——只能存煤油/石蜡油。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>钠投入水中立即熔化成小球，说明其熔点低且反应放热</summary>
+  <div class="ans"><b>√</b>　放热＋熔点低（&lt;100℃）→熔成闪亮小球。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>钠与乙醇反应时钠浮于液面上四处游动</summary>
+  <div class="ans"><b>×</b>　钠密度大于乙醇（沉底），且乙醇与钠反应平缓，不游动。</div>
+</details>
+<details class="bianxi"><summary><span class="q">7</span>实验结束后剩余的金属钠不能随意丢弃，应放回原试剂瓶中</summary>
+  <div class="ans"><b>√</b>　钠是危险品，剩余钠放回原瓶（严禁入下水道）。</div>
+</details>
+
+<!-- 知识点② 氧化钠与过氧化钠 -->
+<h3>知识点② · 氧化钠与过氧化钠<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P47</span>&nbsp;· 考点二「氧化钠和过氧化钠」· 1.氧化钠和过氧化钠的比较</span>
+<div class="quiz">
+  <div class="ask">比较：Na₂O 与 Na₂O₂——颜色、氧元素价态、阴离子、与水反应产物各是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tbody><tr><th></th><th>Na₂O</th><th>Na₂O₂</th></tr>
+        <tr><td>颜色</td><td>白色</td><td>淡黄色</td></tr>
+        <tr><td>O 的价态</td><td>−2</td><td>−1（过氧键）</td></tr>
+        <tr><td>阴离子</td><td>O²⁻</td><td>O₂²⁻（1 mol 含 2 mol 离子）</td></tr>
+        <tr><td>与 H₂O</td><td>Na₂O＋H₂O ＝ 2NaOH</td><td>2Na₂O₂＋2H₂O ＝ 4NaOH＋O₂↑</td></tr>
+        <tr><td>与 CO₂</td><td>Na₂O＋CO₂ ＝ Na₂CO₃</td><td>2Na₂O₂＋2CO₂ ＝ 2Na₂CO₃＋O₂</td></tr>
+      </tbody></table>
+      Na₂O₂ 是非碱性氧化物（放 O₂），但习惯归为"过氧化物"</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">实验现象：Na₂O₂ 投入滴有酚酞的水中，先____后____，为什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>先变红</b>（生成 NaOH 碱性）<b>后褪色</b>（生成的 H₂O₂ 有漂白性，氧化了酚酞）<br>
+      Na₂O₂＋H₂O 实际两步：先 <b>Na₂O₂＋2H₂O ＝ 2NaOH＋H₂O₂</b>，H₂O₂ 再分解 <b>2H₂O₂ ＝ 2H₂O＋O₂↑</b></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P47</span> · 考点二「氧化钠和过氧化钠」· 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>氧化钠、过氧化钠均为离子化合物</summary>
+  <div class="ans"><b>√</b>　都由 Na⁺ 与阴离子（O²⁻ / O₂²⁻）构成。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>1 mol Na₂O₂ 固体中含离子总数为 4N<sub>A</sub></summary>
+  <div class="ans"><b>×</b>　含 2 mol Na⁺ ＋ 1 mol O₂²⁻ ＝ 3 mol 离子（O₂²⁻ 是一个整体阴离子），应为 3N<sub>A</sub>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>H₂O₂ 和 Na₂O₂ 都属于过氧化物，含有的化学键类型完全相同</summary>
+  <div class="ans"><b>×</b>　H₂O₂ 是共价化合物（只有共价键），Na₂O₂ 是离子化合物（离子键＋非极性共价键）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>78 g Na₂O₂ 与足量水完全反应，转移的电子数为 2N<sub>A</sub></summary>
+  <div class="ans"><b>×</b>　78 g ＝ 1 mol Na₂O₂，歧化反应中每 mol Na₂O₂ 只转移 1 mol e⁻ → <span class="rd">1N<sub>A</sub></span>（别翻倍！广东卷高频送分点）。</div>
+</details>
+
+<!-- 知识点③ 碳酸钠与碳酸氢钠 -->
+<h3>知识点③ · 碳酸钠与碳酸氢钠<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P48</span> · 考点三「碳酸钠和碳酸氢钠」· Na₂CO₃和NaHCO₃的比较</span>
+<div class="quiz">
+  <div class="ask">填空：①Na₂CO₃ 俗名____、____；NaHCO₃ 俗名____；②热稳定性：____强；③与盐酸反应速率：____快（立即冒泡）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① Na₂CO₃：纯碱、苏打；NaHCO₃：小苏打（都显碱性可作食用碱）<br>
+      ② 热稳定性：<b>Na₂CO₃ ＞ NaHCO₃</b>（NaHCO₃ 受热分解）<br>
+      ③ 与盐酸反应：<b>NaHCO₃ 立即冒泡</b>（HCO₃⁻＋H⁺ 一步出 CO₂）；Na₂CO₃ 分两步（CO₃²⁻ → HCO₃⁻ → CO₂）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P48</span> · 考点三「碳酸钠和碳酸氢钠」· 提升关键能力·二、鉴别</span>
+<div class="quiz">
+  <div class="ask">鉴别：如何用三种方法区分 Na₂CO₃ 和 NaHCO₃ 两种白色固体？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① <b>加热法</b>：固体受热，能分解产气（使澄清石灰水变浑浊）的是 NaHCO₃<br>
+      ② <b>加 CaCl₂ 溶液</b>：立即产生白色沉淀的是 Na₂CO₃（CO₃²⁻＋Ca²⁺ ＝ CaCO₃↓），NaHCO₃ 无明显现象<br>
+      ③ <b>滴加盐酸</b>：立即产生气泡的是 NaHCO₃，Na₂CO₃ 先无现象后冒泡<br>
+      <span style="color:var(--dim);font-size:15px;">注意：加 CaCl₂ 能区分（Ca(OH)₂ 不行，两者都沉淀）</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P48</span> · 考点三「碳酸钠和碳酸氢钠」· 提升关键能力·一、转化与除杂</span>
+<div class="quiz">
+  <div class="ask">除杂：①Na₂CO₃(s) 中混 NaHCO₃；②NaHCO₃(aq) 中混 Na₂CO₃——各用什么方法？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 固体除 NaHCO₃：充分灼烧　<b>2NaHCO₃ <span class="eqw">＝<span class="eqw-c">△</span></span> Na₂CO₃＋H₂O＋CO₂↑</b><br>
+      ② 溶液中除 Na₂CO₃：通入足量 CO₂　<b>Na₂CO₃＋H₂O＋CO₂ ＝ 2NaHCO₃</b><br>
+      口诀：<span class="em">固体除碳酸氢钠用烧，溶液除碳酸钠通 CO₂</span></div>
+  </details>
+</div>
+
+<!-- 练真题 明考向 -->
+<span class="loc">📖 讲义 <span class="pg">P49</span> · 练真题 明考向 · 正误判断（4题）</span>
+<div class="quiz">
+  <div class="ask">判断正误（正确的打√，错误的打×）</div>
+  <div class="mat">
+    <span>(1) Na₂O₂ 分别与 H₂O 和 CO₂ 反应，生成的气体相同（2023·重庆 3C）</span>
+    <span>(2) 钠起火，可以使用水基灭火器扑灭（2023·天津 4D）</span>
+    <span>(3) 检验 Na₂O₂ 是否失效：2Na₂O₂＋2H₂O ＝ 4NaOH＋O₂↑（2024·广东 7B）</span>
+    <span>(4) 制作面点时加入食用纯碱，利用 NaHCO₃ 中和发酵过程产生的酸（2024·安徽 3D）</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">(1) <b>√</b>（都生成 O₂）　(2) <span class="rd">×</span>（钠与水剧烈反应，用沙土）　(3) <b>√</b>（失效即变质为 Na₂CO₃ 不产 O₂）　(4) <span class="rd">×</span>（食用纯碱是 Na₂CO₃，不是 NaHCO₃）</div>
+  </details>
+</div>
+
+<!-- 知识点④ 课本基础题 -->
+<h3>知识点④ · 课本基础题精选<span class="p">（约6分钟）</span></h3>
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 16px;margin:8px 0;">
+  <b style="color:var(--blue);">📚 课本检索：人教版《必修 第一册》 P43–44 · 第一节 练习与应用</b>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P43 · 练习与应用 第1题</span>
+<div class="quiz">
+  <div class="ask">除去 Na₂CO₃ 粉末中混有的少量 NaHCO₃ 的方法是____，所涉及反应的化学方程式为____。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>充分加热（灼烧）</b>；<b>2NaHCO₃ <span class="eqw">＝<span class="eqw-c">△</span></span> Na₂CO₃＋H₂O＋CO₂↑</b></div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P43 · 练习与应用 第3题</span>
+<div class="quiz">
+  <div class="ask">下列关于钠的叙述中，不正确的是（　　）。A. 钠燃烧时发出黄色的火焰　B. 钠燃烧时生成氧化钠　C. 钠具有很强的还原性　D. 钠原子的最外电子层上只有 1 个电子</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B</b>　钠在空气中燃烧生成 <span class="em">Na₂O₂</span>（淡黄色），不是 Na₂O。A、C、D 均正确。</div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P43 · 练习与应用 第4题</span>
+<div class="quiz">
+  <div class="ask">下列物质放置在空气中，因发生氧化还原反应而变质的是（　　）。A. Na　B. NaOH　C. NaCl　D. Na₂CO₃</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A</b>　Na 与 O₂ 反应（0 → +1 被氧化，<span class="em">氧化还原</span>）；B 是吸收 CO₂（复分解）、C/D 稳定不变质。</div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P44 · 练习与应用 第2题（节选）</span>
+<div class="quiz">
+  <div class="ask">从氧化剂和还原剂的角度分析：Na₂O₂ 与 CO₂ 反应中，Na₂O₂ 的作用是____（呼吸面具供氧原理）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">Na₂O₂ <b>既是氧化剂又是还原剂</b>（O：−1 → −2、0），<span class="em">1 mol Na₂O₂ 转移 1 mol e⁻</span>——供氧剂。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P363</span> · 课时精练（[分值：100分] 1~9 每小题 6 分，10~12 每小题 8 分，13 题 10 分，14 题 12 分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底）</h4>
+    <ul>
+      <li>第 1~9 题：钠/过氧化钠/碳酸钠碳酸氢钠的基础判断（54 分，送分盘）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档）</h4>
+    <ul>
+      <li>第 10~12 题：Na₂CO₃/NaHCO₃ 探究、Na₂O₂ 酚酞、膨松剂（24 分）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分）</h4>
+    <ul>
+      <li>第 13~14 题：钠与 CO₂ 探究、Na₂O₂ 漂白供氧实验（22 分，<span class="rd">✂ 可放弃</span>）</li>
+    </ul>
+  </div>
+</div>
+<p class="tip">📖 课本 人教版必修第一册 P43 练习与应用 第5题（Na₂CO₃/NaHCO₃ 混合物测定）、第6题（Na₂CO₃ 性质探究）可作课后巩固续练。</p>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div><div style="position: fixed; top: 14px; right: 14px; z-index: 99999; background: rgba(0, 0, 0, 0.8); color: rgb(232, 212, 143); font-size: 14px; padding: 6px 14px; border-radius: 6px; transition: opacity 1s; pointer-events: none; opacity: 0;">遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停</div>
+<script src="hxbnx-handwrite.js"></script>
+
+
+<canvas id="hxbnx-draw-canvas" width="1870" height="813" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh; pointer-events: none; z-index: 99998; touch-action: none;"></canvas><div id="hxbnx-draw-toolbar" style="position: fixed; top: 12px; right: 12px; z-index: 99999; display: flex; flex-direction: column; align-items: flex-end; gap: 0px; background: rgba(30, 30, 40, 0.92); border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 20px; font-family: sans-serif; user-select: none; transition: background 0.25s, padding 0.2s; padding: 0px;"><button id="hxbnx-draw-toggle" title="点击开启手写标注，再点关闭（Ctrl+H）" style="width: 44px; height: 44px; border: none; border-radius: 12px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; margin: 4px; transform: rotate(0deg);">✏️</button><div id="hxbnx-draw-menu" style="display: none; flex-direction: column; align-items: flex-end; gap: 8px; padding: 10px 0px 0px;"></div><div id="hxbnx-draw-menu" style="display: none; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0px 4px;"><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(231, 76, 60); cursor: pointer; padding: 0px;"></button><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(241, 196, 15); cursor: pointer; padding: 0px;"></button><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(46, 204, 113); cursor: pointer; padding: 0px;"></button><button title="加粗" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">＋</button><span style="color: rgb(255, 255, 255); font-size: 14px; line-height: 24px; min-width: 24px; text-align: center;">3</span><button title="变细" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">－</button><button title="橡皮擦" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">🧽</button><button title="清空画板（Ctrl+Shift+C）" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">🗑</button></div></div><canvas id="hxbnx-draw-canvas" width="1537" height="754" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh; pointer-events: none; z-index: 99998; touch-action: none;"></canvas><div id="hxbnx-draw-toolbar" style="position: fixed; top: 12px; right: 12px; z-index: 99999; display: flex; flex-direction: column; align-items: flex-end; gap: 0px; background: rgba(30, 30, 40, 0.92); border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 20px; font-family: sans-serif; user-select: none; transition: background 0.25s, padding 0.2s; padding: 0px;"><button id="hxbnx-draw-toggle" title="点击开启手写标注，再点关闭（Ctrl+H）" style="width: 44px; height: 44px; border: none; border-radius: 12px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; margin: 4px; transform: rotate(0deg);">✏️</button><div id="hxbnx-draw-menu" style="display: none; flex-direction: column; align-items: flex-end; gap: 8px; padding: 10px 0px 0px;"></div><div id="hxbnx-draw-menu" style="display: none; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0px 4px;"><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(231, 76, 60); cursor: pointer; padding: 0px;"></button><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(241, 196, 15); cursor: pointer; padding: 0px;"></button><button title="选择画笔颜色" style="width: 34px; height: 34px; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgb(46, 204, 113); cursor: pointer; padding: 0px;"></button><button title="加粗" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">＋</button><span style="color: rgb(255, 255, 255); font-size: 14px; line-height: 24px; min-width: 24px; text-align: center;">3</span><button title="变细" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">－</button><button title="橡皮擦" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">🧽</button><button title="清空画板（Ctrl+Shift+C）" style="min-width: 40px; height: 40px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.12); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;">🗑</button></div></div></body></html>
