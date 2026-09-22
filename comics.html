@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>条漫屋 | 化学不难学</title>
+<meta name="description" content="化学不难学·条漫屋：15 篇趣味化学小剧场，一格一屏竖屏版，手机滑动即读完。">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -12,107 +13,141 @@
     background:#1c2320; color:#e8e4d8;
     min-height:100vh; padding:20px 14px 50px;
   }
-  .wrap { max-width:760px; margin:0 auto; }
+  .wrap { max-width:860px; margin:0 auto; }
   .home { color:#e8d48f; text-decoration:none; font-size:14px; }
   h1 { font-size:22px; font-weight:500; margin:14px 0 4px;
     background:linear-gradient(90deg,#e8d48f,#9ccb8c); -webkit-background-clip:text;
     background-clip:text; color:transparent; display:inline-block; }
-  .sub { font-size:13px; color:#9aa79a; margin-bottom:22px; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+  .sub { font-size:13px; color:#9aa79a; margin-bottom:8px; line-height:1.7; }
+  .badge { display:inline-block; font-size:12px; color:#1c2320; background:#9ccb8c;
+    border-radius:20px; padding:3px 12px; margin-bottom:20px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; }
   a.card {
-    display:block; text-decoration:none; color:inherit;
+    display:block; text-decoration:none; color:inherit; overflow:hidden;
     background:#2a342c; border:1px solid rgba(156,203,140,0.25); border-radius:14px;
-    padding:16px; transition:transform .15s, border-color .15s;
+    transition:transform .15s, border-color .15s;
   }
   a.card:hover { transform:translateY(-3px); border-color:#e8d48f; }
-  .icon { font-size:34px; margin-bottom:8px; }
-  .ct { font-size:15px; font-weight:500; color:#e8d48f; margin-bottom:4px; }
-  .cd { font-size:12.5px; color:#9aa79a; line-height:1.5; }
-  .card.soon { opacity:0.5; cursor:default; }
-  .card.soon:hover { transform:none; border-color:rgba(156,203,140,0.25); }
+  .thumb { background:#fdf9f0; }
+  .thumb img { width:100%; height:auto; display:block; }
+  .body { padding:11px 13px 13px; }
+  .cd { font-size:12.5px; color:#c3cfc0; line-height:1.6; }
+  .ic { margin-right:5px; }
+  .cf { font-size:11px; color:#6f7d6f; margin-top:8px; border-top:1px dashed rgba(156,203,140,0.2); padding-top:6px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <a class="home" href="index.html">← 返回主页</a>
   <h1>🎨 条漫屋</h1>
-  <div class="sub">趣味化学小剧场 · 笑完顺便记住一个考点 · 持续更新</div>
+  <div class="sub">趣味化学小剧场 · 笑完顺便记住一个考点 · 每篇 5~6 格，一格一屏，手机往下滑就读完</div>
+  <div class="badge">竖屏重制版 · 15 篇 / 79 格 · 1080×1440</div>
 
   <div class="grid">
-    <a class="card" href="comic-na-water.html">
-      <div class="icon">💦</div>
-      <div class="ct">钠小弟投水记</div>
-      <div class="cd">钠与水反应 · 第10讲<br>浮 → 熔 → 游 → 响 → 红（卒）</div>
+    <a class="card" href="comic-na-water.html" aria-label="钠小弟投水记 —— 钠与水反应 · 浮 → 熔 → 游 → 响 → 红（卒）">
+      <div class="thumb"><img src="comic-v3/na-water/thumb.png" width="500" height="500" loading="lazy" alt="钠小弟投水记（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">💦</span>钠与水反应 · 浮 → 熔 → 游 → 响 → 红（卒）</div>
+        <div class="cf">第10讲 · 钠及其化合物 · 共 6 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-na2o2.html">
-      <div class="icon">🔥</div>
-      <div class="ct">过氧化钠侠救场记</div>
-      <div class="cd">Na₂O₂ + CO₂ · 第10讲<br>吸碳吐氧，潜水艇救命侠</div>
+    <a class="card" href="comic-na2o2.html" aria-label="过氧化钠侠救场记 —— Na₂O₂ + CO₂ · 吸碳吐氧，潜水艇救命侠">
+      <div class="thumb"><img src="comic-v3/na2o2/thumb.png" width="500" height="500" loading="lazy" alt="过氧化钠侠救场记（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🔥</span>Na₂O₂ + CO₂ · 吸碳吐氧，潜水艇救命侠</div>
+        <div class="cf">第10讲 · 钠及其化合物 · 共 6 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-carbonate.html">
-      <div class="icon">🍞</div>
-      <div class="ct">双胞胎鉴别大赛</div>
-      <div class="cd">Na₂CO₃ vs NaHCO₃ · 第10讲<br>一烤现形·二酸比疯·三钙照妖</div>
+    <a class="card" href="comic-carbonate.html" aria-label="双胞胎鉴别大赛 —— Na₂CO₃ vs NaHCO₃ · 一烤现形·二酸比疯·三钙照妖">
+      <div class="thumb"><img src="comic-v3/carbonate/thumb.png" width="500" height="500" loading="lazy" alt="双胞胎鉴别大赛（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🍞</span>Na₂CO₃ vs NaHCO₃ · 一烤现形·二酸比疯·三钙照妖</div>
+        <div class="cf">第10讲 · 钠及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-naoh-co2.html">
-      <div class="icon">⚖️</div>
-      <div class="ct">配比法庭</div>
-      <div class="cd">NaOH + CO₂ 产物之争 · 第10讲<br>碱多生正盐，气多酸式盐</div>
+    <a class="card" href="comic-naoh-co2.html" aria-label="配比法庭 —— NaOH + CO₂ 产物之争 · 碱多生正盐，气多酸式盐">
+      <div class="thumb"><img src="comic-v3/naoh-co2/thumb.png" width="500" height="500" loading="lazy" alt="配比法庭（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">⚖️</span>NaOH + CO₂ 产物之争 · 碱多生正盐，气多酸式盐</div>
+        <div class="cf">第10讲 · 钠及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-hou.html">
-      <div class="icon">🏊</div>
-      <div class="ct">侯氏派对入场指南</div>
-      <div class="cd">侯氏制碱法 · 先氨后碳<br>氨是社牛，碳是高冷</div>
+    <a class="card" href="comic-hou.html" aria-label="侯氏派对入场指南 —— 侯氏制碱法 · 先氨后碳，氨是社牛碳是高冷">
+      <div class="thumb"><img src="comic-v3/hou/thumb.png" width="500" height="500" loading="lazy" alt="侯氏派对入场指南（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🏊</span>侯氏制碱法 · 先氨后碳，氨是社牛碳是高冷</div>
+        <div class="cf">第11讲 · 钠及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-flame.html">
-      <div class="icon">🔦</div>
-      <div class="ct">焰色灯光大赛</div>
-      <div class="cd">焰色试验 · 钠黄钾紫<br>看钾要戴防抢镜墨镜</div>
+    <a class="card" href="comic-flame.html" aria-label="焰色灯光大赛 —— 焰色试验 · 钠黄钾紫，看钾要戴防抢镜墨镜">
+      <div class="thumb"><img src="comic-v3/flame/thumb.png" width="500" height="500" loading="lazy" alt="焰色灯光大赛（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🔦</span>焰色试验 · 钠黄钾紫，看钾要戴防抢镜墨镜</div>
+        <div class="cf">第11讲 · 碱金属 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-na-cuso4.html">
-      <div class="icon">🥊</div>
-      <div class="ct">钠抢铜失败记</div>
-      <div class="cd">钠 + CuSO₄溶液 · 先水后盐<br>想抢铜？先问水保安</div>
+    <a class="card" href="comic-na-cuso4.html" aria-label="钠抢铜失败记 —— 钠 + CuSO₄ 溶液 · 想抢铜？先问水保安">
+      <div class="thumb"><img src="comic-v3/na-cuso4/thumb.png" width="500" height="500" loading="lazy" alt="钠抢铜失败记（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🥊</span>钠 + CuSO₄ 溶液 · 想抢铜？先问水保安</div>
+        <div class="cf">第10讲 · 钠及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-transform.html">
-      <div class="icon">🦋</div>
-      <div class="ct">钠的变形七部曲</div>
-      <div class="cd">露置空气 · 最终产物<br>氧水碳风四连击，变纯碱</div>
+    <a class="card" href="comic-transform.html" aria-label="钠的变形七部曲 —— 露置空气 · 氧水碳风四连击，变纯碱">
+      <div class="thumb"><img src="comic-v3/transform/thumb.png" width="500" height="500" loading="lazy" alt="钠的变形七部曲（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🦋</span>露置空气 · 氧水碳风四连击，变纯碱</div>
+        <div class="cf">第11讲 · 碱金属 · 共 6 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-chloralkali.html">
-      <div class="icon">🏭</div>
-      <div class="ct">氯碱分家记</div>
-      <div class="cd">电解食盐水 · 阳氯阴氢<br>隔膜防爆记心头</div>
+    <a class="card" href="comic-chloralkali.html" aria-label="氯碱分家记 —— 电解食盐水 · 阳氯阴氢，隔膜防爆记心头">
+      <div class="thumb"><img src="comic-v3/chloralkali/thumb.png" width="500" height="500" loading="lazy" alt="氯碱分家记（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🏭</span>电解食盐水 · 阳氯阴氢，隔膜防爆记心头</div>
+        <div class="cf">第16讲 · 氯及其化合物 · 共 6 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-fe-faces.html">
-      <div class="icon">⚙️</div>
-      <div class="ct">铁哥的两副面孔</div>
-      <div class="cd">铁的价态与氧化物 · +2/+3/+6<br>先丢俩再丢仨，半满最稳</div>
+    <a class="card" href="comic-fe-faces.html" aria-label="铁哥的两副面孔 —— 铁的价态与氧化物 · 先丢俩再丢仨，半满最稳">
+      <div class="thumb"><img src="comic-v3/fe-faces/thumb.png" width="500" height="500" loading="lazy" alt="铁哥的两副面孔（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">⚙️</span>铁的价态与氧化物 · 先丢俩再丢仨，半满最稳</div>
+        <div class="cf">第12讲 · 铁及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-colors.html">
-      <div class="icon">🌈</div>
-      <div class="ct">颜色选美大赛</div>
-      <div class="cd">铁系化合物颜色 · 变色三连<br>记色就是拿分</div>
+    <a class="card" href="comic-colors.html" aria-label="颜色选美大赛 —— 铁系化合物颜色 · 变色三连，记色就是拿分">
+      <div class="thumb"><img src="comic-v3/colors/thumb.png" width="500" height="500" loading="lazy" alt="颜色选美大赛（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🌈</span>铁系化合物颜色 · 变色三连，记色就是拿分</div>
+        <div class="cf">第12讲 · 铁及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-kscn.html">
-      <div class="icon">🔍</div>
-      <div class="ct">测谎仪与牵手事件</div>
-      <div class="cd">KSCN验铁 · 配合物<br>一滴血红，孤对牵手</div>
+    <a class="card" href="comic-kscn.html" aria-label="测谎仪与牵手事件 —— KSCN 验铁 · 一滴血红，孤对牵手">
+      <div class="thumb"><img src="comic-v3/kscn/thumb.png" width="500" height="500" loading="lazy" alt="测谎仪与牵手事件（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🔍</span>KSCN 验铁 · 一滴血红，孤对牵手</div>
+        <div class="cf">第12讲 · 铁及其化合物 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-fetriangle.html">
-      <div class="icon">🔺</div>
-      <div class="ct">铁三角争霸赛</div>
-      <div class="cd">Fe/Fe²⁺/Fe³⁺互转 · 稀硝酸<br>谁多听谁的：酸多黄铁多绿</div>
+    <a class="card" href="comic-fetriangle.html" aria-label="铁三角争霸赛 —— Fe/Fe²⁺/Fe³⁺ 互转 · 酸多黄铁多绿">
+      <div class="thumb"><img src="comic-v3/fetriangle/thumb.png" width="500" height="500" loading="lazy" alt="铁三角争霸赛（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🔺</span>Fe/Fe²⁺/Fe³⁺ 互转 · 酸多黄铁多绿</div>
+        <div class="cf">第13讲 · 铁及其化合物转化 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-ironpurge.html">
-      <div class="icon">🛡️</div>
-      <div class="ct">除铁光荣战役</div>
-      <div class="cd">先氧化再调pH · 广东卷流程题<br>pH 3.2~4：铁走铜留</div>
+    <a class="card" href="comic-ironpurge.html" aria-label="除铁光荣战役 —— 先氧化再调 pH · pH 3.2~4：铁走铜留">
+      <div class="thumb"><img src="comic-v3/ironpurge/thumb.png" width="500" height="500" loading="lazy" alt="除铁光荣战役（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🛡️</span>先氧化再调 pH · pH 3.2~4：铁走铜留</div>
+        <div class="cf">第13讲 · 铁及其化合物转化 · 共 5 格</div>
+      </div>
     </a>
-    <a class="card" href="comic-blastfurnace.html">
-      <div class="icon">🏭</div>
-      <div class="ct">高炉夺氧记</div>
-      <div class="cd">工业炼铁 · 反应链四步<br>夺氧先锋CO兵，出炉是生铁</div>
+    <a class="card" href="comic-blastfurnace.html" aria-label="高炉夺氧记 —— 工业炼铁 · 夺氧先锋 CO 兵，出炉是生铁">
+      <div class="thumb"><img src="comic-v3/blastfurnace/thumb.png" width="500" height="500" loading="lazy" alt="高炉夺氧记（封面）"></div>
+      <div class="body">
+        <div class="cd"><span class="ic">🏭</span>工业炼铁 · 夺氧先锋 CO 兵，出炉是生铁</div>
+        <div class="cf">第15讲 · 金属材料与冶炼 · 共 5 格</div>
+      </div>
     </a>
   </div>
 </div>
