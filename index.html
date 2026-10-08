@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>2027届高考日记 | 化学不难学</title>
-<link rel="stylesheet" href="assets/diary.css">
+<link rel="stylesheet" href="assets/diary.css?v=4">
 </head>
 <body>
 
@@ -27,6 +27,10 @@
     <div class="top-stat-num" id="weekNum">67</div>
     <div class="top-stat-label">总讲次</div>
   </div>
+  <div class="top-stat">
+    <div class="top-stat-num" id="uploadNum">0</div>
+    <div class="top-stat-label">已上传</div>
+  </div>
 </div>
 
 <!-- 封面 -->
@@ -37,8 +41,8 @@
 
 <!-- 周次网格 -->
 <div class="week-grid-section">
-  <div class="week-grid" id="weekGrid">
-    <!-- JS 生成 1~40 -->
+  <div class="week-grid-root" id="weekGrid">
+    <!-- JS 按大单元分组生成，详见 assets/lessons.js -->
   </div>
 </div>
 
@@ -128,6 +132,7 @@
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script src="assets/game.js?v=2"></script>
-<script src="assets/diary.js?v=2"></script>
+<script src="assets/lessons.js?v=1"></script>
+<script src="assets/diary.js?v=3"></script>
 </body>
 </html>
