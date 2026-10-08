@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10讲 钠及其重要化合物 · 缺口真题训练</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+  table.opt{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.opt th{background:var(--panel3);color:var(--gold);padding:6px 8px;border:1px solid var(--border);text-align:left;}
+  table.opt td{padding:6px 8px;border:1px solid var(--border);color:var(--text);vertical-align:top;}
+  table.opt td.k{color:var(--blue);font-weight:700;text-align:center;width:56px;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  :root{
+    --fs-base:24px;--fs-h1:38px;--fs-part:30px;--fs-stem:21px;
+    --fs-opt:20px;--fs-sm:18px;--fs-sub:16px;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+  table.opt{font-size:var(--fs-opt);}
+
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>第10讲 · 钠及其重要化合物 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">Na<sub>2</sub>O<sub>2</sub> 电子转移</span> · <span class="em">Na<sub>2</sub>CO<sub>3</sub>/NaHCO<sub>3</sub> 辨析</span> · <span class="em">钠的保存与起火处置</span> · <span class="em">电解熔融 NaCl 制钠</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">3分钟</span></div>
+<p class="tip">📖 钠这条线就两块：<b>钠单质（活泼金属的"头号样板"）</b>与<b>"二嫂二叔"（Na<sub>2</sub>O<sub>2</sub>、NaOH、Na<sub>2</sub>CO<sub>3</sub>、NaHCO<sub>3</sub>）</b>。判断题八成落在 <b>Na<sub>2</sub>O<sub>2</sub> 的供氧反应</b>和 <b>纯碱/小苏打的辨识</b>上，先建立弹药库。</p>
+<ul class="kps">
+  <li><b>钠单质三件套</b>：<b>保存</b>——密封、少量存于<b>煤油</b>（沉底，隔绝空气与水；Li 密度 0.53 g/cm<sup>3</sup> 比煤油小会浮起，须存石蜡油）；<b>起火处置</b>——用<b>干燥沙土</b>盖灭，<span class="rd">严禁水、泡沫灭火器（都含水）、严禁 CO<sub>2</sub> 灭火器（Na 燃烧产物 Na<sub>2</sub>O<sub>2</sub> 会与 CO<sub>2</sub> 反应放 O<sub>2</sub> 助燃）</span>；<b>与水反应</b>——浮、熔、游、响、红（滴酚酞），本质：<span class="em">2Na＋2H<sub>2</sub>O＝2NaOH＋H<sub>2</sub>↑</span>。</li>
+  <li><b>Na<sub>2</sub>O 与 Na<sub>2</sub>O<sub>2</sub> 一眼分清</b>：Na<sub>2</sub>O 是<b>碱性氧化物</b>（O 为 −2 价，白色）；Na<sub>2</sub>O<sub>2</sub> 是<b>过氧化物</b>（O 为 <b>−1 价</b>，淡黄色，含 O<sub>2</sub><sup>2−</sup> 阴离子，电子式中两 O 间共 1 对共用电子）。<span class="em">1 mol Na<sub>2</sub>O<sub>2</sub> 含 1 mol 阴离子；Na<sub>2</sub>O<sub>2</sub> 不属于碱性氧化物——与水反应还放出 O<sub>2</sub>，不符合"遇水只生成碱"的定义</span>。</li>
+  <li><b>Na<sub>2</sub>O<sub>2</sub> 供氧双反应（核心考点）</b>：<span class="em">2Na<sub>2</sub>O<sub>2</sub>＋2H<sub>2</sub>O＝4NaOH＋O<sub>2</sub>↑</span>；<span class="em">2Na<sub>2</sub>O<sub>2</sub>＋2CO<sub>2</sub>＝2Na<sub>2</sub>CO<sub>3</sub>＋O<sub>2</sub></span>。两条规律：① <b>歧化反应</b>——O 从 −1 价既升到 0（O<sub>2</sub>）又降到 −2（化合物），<b>1 mol Na<sub>2</sub>O<sub>2</sub> 转移 1 mol e<sup>−</sup></b>，气体系数永远是"<b>2 摩生 1 摩</b>"；② 产物里还有"供氧剂—防毒面具""检验是否失效"等用途钩子。</li>
+  <li><b>Na<sub>2</sub>CO<sub>3</sub> vs NaHCO<sub>3</sub> 对比表（纯碱 ≠ 小苏打！）</b>：<b>俗名</b>——Na<sub>2</sub>CO<sub>3</sub>＝纯碱/苏打，<b>NaHCO<sub>3</sub>＝小苏打</b>；<b>热稳定性</b>——Na<sub>2</sub>CO<sub>3</sub> 受热<b>不分解</b>，NaHCO<sub>3</sub> 受热分解 <span class="em">2NaHCO<sub>3</sub>─→Na<sub>2</sub>CO<sub>3</sub>＋H<sub>2</sub>O＋CO<sub>2</sub>↑</span>（鉴别首选<b>加热</b>）；<b>与盐酸反应</b>——NaHCO<sub>3</sub> <b>更快</b>（一步放气，Na<sub>2</sub>CO<sub>3</sub> 先变 NaHCO<sub>3</sub> 再放气）；<b>与碱</b>——NaOH 只跟 NaHCO<sub>3</sub> 反应（<span class="em">NaHCO<sub>3</sub>＋NaOH＝Na<sub>2</sub>CO<sub>3</sub>＋H<sub>2</sub>O</span>）；<b>鉴别再加两招</b>——滴加 BaCl<sub>2</sub>/CaCl<sub>2</sub> 溶液只有 Na<sub>2</sub>CO<sub>3</sub> 产白色沉淀（NaHCO<sub>3</sub> 与 BaCl<sub>2</sub> <b>不</b>反应）、<b>同浓度滴盐酸看谁先冒泡</b>。</li>
+  <li><b>转化三角（过关题落点）</b>：Na<sub>2</sub>CO<sub>3</sub> ⇌ NaHCO<sub>3</sub>——正转（CO<sub>2</sub>＋H<sub>2</sub>O）、加 NaOH；逆转（<b>加热</b>）。<span class="rd">"碱变盐、盐变碱"先认谁多谁少：NaOH 与 NaHCO<sub>3</sub> 反应按配比可生成 Na<sub>2</sub>CO<sub>3</sub> 或 NaOH 过量体系，判断题爱挖"一定生成"这种绝对表述</span>。</li>
+  <li><b>易错总清单</b>：① <b>纯碱不是碱</b>——是盐，水溶液显碱性是因为 CO<sub>3</sub><sup>2−</sup> 水解；② <b>Na<sub>2</sub>O<sub>2</sub> 与 CO<sub>2</sub> 反应的 CO<sub>2</sub> 里的 O 全部"留家"</b>，O<sub>2</sub> 全来自 Na<sub>2</sub>O<sub>2</sub>；③ <b>电解熔融 NaCl 制钠必须加 CaCl<sub>2</sub> 作助熔剂</b>（降熔点省能耗；电解 NaCl <b>水溶液</b>得 NaOH，不是 Na）；④ <b>焰色试验是元素的性质、物理变化</b>——黄色只能证明"含 Na 元素"，不能说明溶质一定是 NaCl（NaOH、Na<sub>2</sub>CO<sub>3</sub> 都黄）。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">双栏 · 左题右答</span></div>
+
+<!-- 核心题1 -->
+<div class="quiz">
+  <div class="ask">核心题1 · 劳动项目四联表：Na<sub>2</sub>O<sub>2</sub> 检验失效＋同素异形体辨析<span class="bl">〔本讲板演题〕</span></div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2024·广东·高考真题·T7】</span>
+      <div class="qsub"><span class="t">劳动情境 × 钠化合物 × 概念辨析</span>"光荣属于劳动者，幸福属于劳动者。"下列劳动项目与所述化学知识<b>没有关联</b>的是（　　）</div>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr><th style="border:1px solid var(--border2);padding:4px 6px;">选项</th><th style="border:1px solid var(--border2);padding:4px 6px;">劳动项目</th><th style="border:1px solid var(--border2);padding:4px 6px;">化学知识</th></tr>
+        <tr><td style="border:1px solid var(--border2);padding:4px 6px;text-align:center;">A</td><td style="border:1px solid var(--border2);padding:4px 6px;">水质检验员：用滴定法测水中 Cl<sup>−</sup> 含量</td><td style="border:1px solid var(--border2);padding:4px 6px;">Ag<sup>+</sup>＋Cl<sup>−</sup>＝AgCl↓</td></tr>
+        <tr><td style="border:1px solid var(--border2);padding:4px 6px;text-align:center;">B</td><td style="border:1px solid var(--border2);padding:4px 6px;">化学实验员：检验 Na<sub>2</sub>O<sub>2</sub> 是否失效</td><td style="border:1px solid var(--border2);padding:4px 6px;">2Na<sub>2</sub>O<sub>2</sub>＋2H<sub>2</sub>O＝4NaOH＋O<sub>2</sub>↑</td></tr>
+        <tr><td style="border:1px solid var(--border2);padding:4px 6px;text-align:center;">C</td><td style="border:1px solid var(--border2);padding:4px 6px;">化工工程师：进行顺丁橡胶硫化</td><td style="border:1px solid var(--border2);padding:4px 6px;">碳碳双键可打开与硫形成二硫键</td></tr>
+        <tr><td style="border:1px solid var(--border2);padding:4px 6px;text-align:center;">D</td><td style="border:1px solid var(--border2);padding:4px 6px;">考古研究员：通过 <sup>14</sup>C 测定化石年代</td><td style="border:1px solid var(--border2);padding:4px 6px;"><sup>14</sup>C 与石墨烯互为同素异形体</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 5 分钟）</b>
+        <p>① <b>B 项动笔</b>：Na<sub>2</sub>O<sub>2</sub> 检验"失效"的原理是什么？失效的 Na<sub>2</sub>O<sub>2</sub> 变成了什么物质，为什么就"检不出"了？</p>
+        <p>② <b>D 项追问</b>：同素异形体的定义是什么？<sup>14</sup>C、<sup>12</sup>C 一字之差差在哪——是"同素异形体"还是别的什么关系？</p>
+        <p>③ <b>归纳</b>：这类"劳动项目×化学知识"题，判断标准只有一句话——知识能不能<b>直接解释</b>项目里的操作。</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① <b>Na<sub>2</sub>O<sub>2</sub> 失效检验原理</b>：失效＝Na<sub>2</sub>O<sub>2</sub> 已与空气中水汽/CO<sub>2</sub> 反应变质为 NaOH/Na<sub>2</sub>CO<sub>3</sub>。<b>有效</b>的 Na<sub>2</sub>O<sub>2</sub> 遇水放 O<sub>2</sub>（带火星木条复燃）；失效后无 Na<sub>2</sub>O<sub>2</sub>，遇水<b>不再放 O<sub>2</sub></b>。</p>
+            <p>② <b>同素异形体三要素</b>：<b>同一元素</b>＋<b>单质</b>＋<b>结构不同</b>。C<sub>60</sub>、石墨、石墨烯、金刚石都是碳的同素异形体。<b><sup>14</sup>C 与 <sup>12</sup>C 是同位素</b>（同元素、不同中子数的<b>原子</b>），不是单质关系——"D 与石墨烯互为同素异形体"的说法张冠李戴。</p>
+            <p>③ <b>硫化橡胶</b>：顺丁橡胶（聚丁二烯）链上有 C＝C，硫化即 C＝C 打开与 S 交联成二硫键（—S—S—），分子由线型变网型。</p>
+          </div>
+        </details>
+      </div>
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>四行表逐行核"知识↔操作"的因果链：A 沉淀称量法测 Cl<sup>−</sup> ✔；B 放氧气检验有效性 ✔；C 双键交联硫化 ✔；<b>D——操作用"同位素半衰期"，知识栏却写"同素异形体"，概念错位（唯一无关项）</b>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>① <b>D 是答案</b>：<sup>14</sup>C 测年用的是<b>放射性同位素的半衰期</b>——<sup>14</sup>C 是<b>原子</b>，石墨烯是<b>单质</b>，两者根本不是"同素异形体"关系 ✘（<span class="rd">同素异形体必须是"单质 vs 单质"；同位素是"原子 vs 原子"——这两个词出现在同一选项就是命题人挖的坑</span>）；<br>
+      ② <b>B 正确关联</b>：失效检验的完整逻辑链——有效 Na<sub>2</sub>O<sub>2</sub> 遇水放 <b>O<sub>2</sub></b>（带火星木条复燃）；若已失效（变成 NaOH/Na<sub>2</sub>CO<sub>3</sub>），遇水无 O<sub>2</sub>、木条不复燃 ✔；<br>
+      ③ <b>A 正确关联</b>：AgNO<sub>3</sub> 滴定、AgCl 沉淀称量求 Cl<sup>−</sup> 含量——沉淀法测氯的经典劳动应用 ✔；<br>
+      ④ <b>C 正确关联</b>：硫化＝线型→网型（交联），补一句"橡胶硫化后不能再塑形"更稳 ✔。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口"概念辨析"）<b>三组高频概念对照</b>：同位素（原子↔原子）｜同素异形体（单质↔单质）｜同分异构体（化合物↔化合物）。广东卷 2022 T2、2024 T7 连续把"劳动/生活情境＋概念错位"做成固定题型——<b>见到"<sup>14</sup>C""重水""D<sub>2</sub>O"先想同位素，见到"石墨烯/C<sub>60</sub>/金刚石"先想同素异形体</b>。</p></div>
+      <div class="banyan">
+        <div class="bt">🤝 板演互评 · 核心题1（2024·广东·T7）</div>
+        <div class="task">全班一起做：<b>黑板上完整写出"检验一瓶久置 Na<sub>2</sub>O<sub>2</sub> 是否失效"的实验方案（操作＋现象＋结论）</b>。<b>板演标准：三段式齐全，试剂用量带"取样"二字。</b></div>
+        <table>
+          <tr><th style="width:90px;">步骤</th><th>规范表述</th><th style="width:150px;">踩分点</th></tr>
+          <tr><td>取样</td><td class="k">取少量样品于试管中，加适量水</td><td>"取样""少量"缺一扣分</td></tr>
+          <tr><td>现象</td><td class="k">产生气泡，将带火星木条伸入试管口，木条复燃</td><td>必须写"带火星木条复燃"</td></tr>
+          <tr><td>结论</td><td class="k">木条复燃说明仍含 Na<sub>2</sub>O<sub>2</sub>（未失效）；不复燃说明已失效</td><td>结论与现象对应</td></tr>
+        </table>
+        <p class="task"><b>⚠ 互评提醒</b>：同桌互相追问"<b>为什么不用检验 NaOH？</b>"——能答出"<b>目的是检验 Na<sub>2</sub>O<sub>2</sub> 剩不剩，放 O<sub>2</sub> 的只有 Na<sub>2</sub>O<sub>2</sub>，与生成物无关</b>"才算过关。<span class="rd">别把"检验失效"写成"检验变质产物"——方向反了</span>。</p>
+        <details class="aux">
+          <summary>📋 踩点表 · 学生自评互评（每项 1 分，共 4 分）</summary>
+          <div class="auxbox">
+            <table>
+              <tr><th style="width:40px;">得分</th><th>踩点</th><th style="width:150px;">常见失分</th></tr>
+              <tr><td class="sc">□ 1</td><td>操作有"<b>取样</b>、加<b>水</b>"</td><td class="wr">直接"加稀盐酸"（引入干扰）</td></tr>
+              <tr><td class="sc">□ 1</td><td>现象含"<b>带火星木条复燃</b>"</td><td class="wr">只写"有气泡"（H<sub>2</sub> 也能点但不是复燃）</td></tr>
+              <tr><td class="sc">□ 1</td><td>结论与现象<b>对应</b>（复燃↔未失效）</td><td class="wr">结论写成"生成 O<sub>2</sub>"（那是现象不是结论）</td></tr>
+              <tr><td class="sc">□ 1</td><td>能口头解释 <b>D 为何无关</b></td><td class="wr">"同位素/同素异形体"混说</td></tr>
+            </table>
+          </div>
+        </details>
+      </div>
+      <div class="myq">
+        <button class="myq-btn" type="button">✏ 我来编一道</button>
+        <div class="myq-panel" hidden>
+          <p class="task"><b>任务</b>：仿照本题"劳动项目＋化学知识"表格，编一行"食品厂质检员：检验生石灰干燥剂是否失效"＋对应化学知识，并自判关联是否成立。<br><b>参考</b>：知识＝CaO＋H<sub>2</sub>O＝Ca(OH)<sub>2</sub>（成立；若写"CaO 是碱性氧化物遇水放热"也算关联）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心题2 -->
+<div class="quiz">
+  <div class="ask">核心题2 · 金属钠的工业制备与过氧化钠：电解熔融 NaCl 五连问</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2022·天津·高考真题·T13(1)(2)(3)(4)(6)】</span>
+      <div class="qsub"><span class="t">制备主线 × 结构用语 × 气体除杂 × 计算</span>金属钠及其化合物在人类生产生活中起着重要作用。<b>（本课只做第 (1)(2)(3)(4)(6) 小问）</b></div>
+      <p class="qsub">(1) 基态 Na 原子的价层电子<b>轨道表示式</b>为<span class="blank">＿＿＿</span>。</p>
+      <p class="qsub">(2) NaCl 熔点为 800.8 ℃，工业上采用<b>电解熔融 NaCl</b> 制备金属 Na：<span class="em">2NaCl(熔融) —电解→ 2Na＋Cl<sub>2</sub>↑</span>。加入 CaCl<sub>2</sub> 的目的是<span class="blank">＿＿＿</span>。</p>
+      <p class="qsub">(3) Na<sub>2</sub>O<sub>2</sub> 的<b>电子式</b>为<span class="blank">＿＿＿</span>。</p>
+      <p class="qsub">(4) 采用空气和 Na 为原料可直接制备 Na<sub>2</sub>O<sub>2</sub>。空气与熔融金属 Na 反应前需依次通过<span class="blank">＿＿＿</span>、<span class="blank">＿＿＿</span>（填字母）。<br>
+      a．浓硫酸　　b．饱和食盐水　　c．NaOH 溶液　　d．KMnO<sub>4</sub> 溶液</p>
+      <p class="qsub">(6) 天然碱的主要成分为 Na<sub>2</sub>CO<sub>3</sub>·NaHCO<sub>3</sub>·2H<sub>2</sub>O，1 mol Na<sub>2</sub>CO<sub>3</sub>·NaHCO<sub>3</sub>·2H<sub>2</sub>O 经充分加热得到的 Na<sub>2</sub>CO<sub>3</sub> 的质量为<span class="blank">＿＿＿</span> g。</p>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 8 分钟）</b>
+        <p>① <b>(2) 动手</b>：不加 CaCl<sub>2</sub> 行不行？回忆"冰晶石降 Al<sub>2</sub>O<sub>3</sub> 熔点"——同款思路迁移过来。</p>
+        <p>② <b>(4) 画箭头</b>：空气里的"捣乱分子"有哪些（H<sub>2</sub>O、CO<sub>2</sub>）？两个装置各除谁、为什么<b>顺序不能反</b>？</p>
+        <p>③ <b>(6) 列算式</b>：1 mol 天然碱里碳原子守恒得多少 mol Na<sub>2</sub>CO<sub>3</sub>？结晶水去哪了？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① <b>助熔剂</b>：CaCl<sub>2</sub> 溶于熔融 NaCl 降低熔点，<b>降低能耗</b>（NaCl 单独熔融要 800.8 ℃）。同款：电解 Al<sub>2</sub>O<sub>3</sub> 加冰晶石。</p>
+            <p>② <b>Na<sub>2</sub>O<sub>2</sub> 电子式</b>：<b>Na<sup>＋</sup>[:O⋮⋮O:]<sup>2－</sup>Na<sup>＋</sup></b>——两个 O 之间共用<b>1 对</b>电子（过氧根 O<sub>2</sub><sup>2−</sup>），别画成 O＝O 双键（那是 O<sub>2</sub>）。</p>
+            <p>③ <b>制备 Na<sub>2</sub>O<sub>2</sub> 的空气除杂</b>：Na 遇 O<sub>2</sub> 之外还遇 H<sub>2</sub>O、CO<sub>2</sub> 生成杂质——先用 <b>NaOH 溶液</b>除 CO<sub>2</sub>，再用<b>浓硫酸</b>干燥除水。<b>顺序不能反</b>：先干燥后过溶液会重新带入水汽。</p>
+            <p>④ <b>天然碱加热</b>：结晶水汽化跑掉、NaHCO<sub>3</sub> 分解 2NaHCO<sub>3</sub>─→Na<sub>2</sub>CO<sub>3</sub>＋H<sub>2</sub>O＋CO<sub>2</sub>↑，<b>所有碳原子都收进 Na<sub>2</sub>CO<sub>3</sub></b>。</p>
+          </div>
+        </details>
+      </div>
+      <div class="anscard">✅ 正确答案：(1) 略（3s<sup>1</sup>）　(2) 作助熔剂，降低 NaCl 的熔点，节省能耗　(3) Na<sup>＋</sup>[:O⋮⋮O:]<sup>2－</sup>Na<sup>＋</sup>　(4) c、a　(6) 159</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>五个小问五个刀口：结构用语（轨道式）→ 工业条件（助熔剂）→ 结构用语（电子式）→ <b>气体除杂顺序（本大题的"化学主菜"）</b>→ 守恒计算。<b>(4) 是全题核心：制备 Na<sub>2</sub>O<sub>2</sub> 时空气必须"无水无碳"</b>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>① <b>(2)</b>：答"助熔剂"必须落到"<b>降低熔点、节省能耗</b>"两个得分点，只写"加快反应"不给分；另注意电解 <b>NaCl 水溶液</b>得 NaOH＋H<sub>2</sub>＋Cl<sub>2</sub>——"熔融"两字是钠与碱的分界线；<br>
+      ② <b>(4)</b>：顺序 <b>c→a</b>（先 NaOH 溶液除 CO<sub>2</sub>、后浓硫酸干燥）。<span class="rd">选 d（KMnO<sub>4</sub>）多余——空气里没有还原性杂质要除；选 b（饱和食盐水）是"洗气增湿"装置用反了</span>；<br>
+      ③ <b>(6)</b>：碳守恒——1 mol 天然碱含 1 mol Na<sub>2</sub>CO<sub>3</sub> 骨架＋1 mol NaHCO<sub>3</sub>（再产 0.5 mol Na<sub>2</sub>CO<sub>3</sub>）＝ <b>1.5 mol Na<sub>2</sub>CO<sub>3</sub></b>，质量 1.5×106＝<b>159 g</b>（漏乘 1.5 是最高频错误，学生爱直接写 106）；<br>
+      ④ <b>(1)(3) 书写规范</b>：轨道式要画全 1s/2s/2p/3s（价层 3s<sup>1</sup> 只画 3s 也可按价层理解，但须标明↑）；电子式的过氧根<b>中括号＋2− 上标</b>一个都不能少。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口"金属冶炼＋气体净化"）<b>活泼金属制备三兄弟</b>：K、Na、Ca、Mg、Al 一律<b>电解熔融盐/氧化物</b>（加助熔剂降熔点）；Zn~Cu 用<b>热还原</b>；Hg、Ag 用<b>热分解</b>。<b>"溶液先过除杂塔、干燥塔永远放最后"是气体净化铁律</b>——顺序反了等于白洗。</p></div>
+      <div class="myq">
+        <button class="myq-btn" type="button">✏ 我来编一道</button>
+        <div class="myq-panel" hidden>
+          <p class="task"><b>任务</b>：仿照 (4)，编一问"以空气和金属 Mg 为原料制备 Mg<sub>3</sub>N<sub>2</sub>，空气需依次通过哪些试剂？"并写出每步除去的杂质。<br><b>参考</b>：先通过<b>浓硫酸</b>（除水），再通过<b>灼热铜网</b>（除 O<sub>2</sub>）——与本题"先溶液后干燥"对照：制备 Mg<sub>3</sub>N<sub>2</sub> 连 O<sub>2</sub> 都不能要，除杂清单要重排。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 过关题 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 过关题<span class="tm">限时 · 每题3分钟</span></div>
+
+<!-- 过关1 -->
+<div class="quiz">
+  <div class="ask">过关1 · 四选项四反应：Na<sub>2</sub>O<sub>2</sub> 的"双供氧"是不是 Unique</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2023·重庆·高考真题·T3】</span>
+      <div class="qsub">下列叙述<b>正确</b>的是（　　）<br>
+      A．Mg 分别与空气和 O<sub>2</sub> 反应，生成的产物相同<br>
+      B．SO<sub>2</sub> 分别与 H<sub>2</sub>O 和 H<sub>2</sub>S 反应，反应的类型相同<br>
+      <span class="em">C．Na<sub>2</sub>O<sub>2</sub> 分别与 H<sub>2</sub>O 和 CO<sub>2</sub> 反应，生成的气体相同</span><br>
+      D．浓 H<sub>2</sub>SO<sub>4</sub> 分别与 Cu 和 C 反应，生成的酸性气体相同</div>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：<span class="em">这类"X 分别与 Y、Z 反应比产物"题，逐项写出两套方程式再比对——绝不凭印象。四个选项四条反应线，做完等于把镁/硫/钠/浓硫酸四大反应群各过一遍</span>。
+        <details>
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① Mg 与 O<sub>2</sub> → MgO；Mg 在空气中燃烧<b>还与 N<sub>2</sub> 反应生成 Mg<sub>3</sub>N<sub>2</sub></b>（甚至与 CO<sub>2</sub> 镁条燃烧续写）——产物不同。</p>
+            <p>② SO<sub>2</sub>＋H<sub>2</sub>O＝H<sub>2</sub>SO<sub>3</sub>（化合、非氧化还原）；SO<sub>2</sub>＋2H<sub>2</sub>S＝3S↓＋2H<sub>2</sub>O（<b>氧化还原、归中</b>）——类型不同。</p>
+            <p>③ Na<sub>2</sub>O<sub>2</sub> 两线：2Na<sub>2</sub>O<sub>2</sub>＋2H<sub>2</sub>O＝4NaOH＋O<sub>2</sub>↑；2Na<sub>2</sub>O<sub>2</sub>＋2CO<sub>2</sub>＝2Na<sub>2</sub>CO<sub>3</sub>＋O<sub>2</sub>——气体都是 <b>O<sub>2</sub></b>。</p>
+            <p>④ 浓 H<sub>2</sub>SO<sub>4</sub>＋Cu─Δ→SO<sub>2</sub>↑；浓 H<sub>2</sub>SO<sub>4</sub>＋C─Δ→SO<sub>2</sub>↑＋CO<sub>2</sub>↑——酸性气体"有 SO<sub>2</sub> 还有 CO<sub>2</sub>"，不同。</p>
+          </div>
+        </details>
+      </div>
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">⚠ 逐项判</p><p>① <b>A 错</b>：空气里有 N<sub>2</sub>——Mg<sub>3</sub>N<sub>2</sub> 混进来（镁条在空气里燃烧"又白又淡黄"就是这个原因）；<br>
+      ② <b>B 错</b>：一条化合、一条归中——"有单质生成的反应必是氧化还原"，SO<sub>2</sub>→S 价态在变；<br>
+      ③ <b>C 对（答案）</b>：两条反应的气体系数都是"2 摩 Na<sub>2</sub>O<sub>2</sub> 生 1 摩 O<sub>2</sub>"——<span class="em">O 全部来自 Na<sub>2</sub>O<sub>2</sub> 的 −1 价氧，CO<sub>2</sub>/H<sub>2</sub>O 只当"氧的搬运工"</span>；<br>
+      ④ <b>D 错</b>：Cu 那条只出 SO<sub>2</sub>，C 那条 SO<sub>2</sub>＋CO<sub>2</sub> 双出——"生成的酸性气体相同"不成立。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>Na<sub>2</sub>O<sub>2</sub> 与 H<sub>2</sub>O/CO<sub>2</sub> 的反应是<b>歧化</b>：O（−1）一半升 0 价、一半降 −2 价。<b>电子转移口诀："2 摩过氧化钠、转移 2 摩电子、生成 1 摩氧气"——Na<sub>2</sub>O<sub>2</sub> 既是氧化剂又是还原剂</b>，水/CO<sub>2</sub> 既不是氧化剂也不是还原剂（判断题高频）。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 过关2 -->
+<div class="quiz">
+  <div class="ask">过关2 · 青少年帮厨：纯碱与小苏打到底谁管发酵</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2024·安徽·高考真题·T3】</span>
+      <div class="qsub">青少年帮厨既可培养劳动习惯，也能将化学知识应用于实践。下列有关解释<b>合理</b>的是（　　）<br>
+      A．清洗铁锅后及时擦干，能减缓铁锅因发生吸氧腐蚀而生锈<br>
+      B．烹煮食物的后期加入食盐，能避免 NaCl 长时间受热而分解<br>
+      C．将白糖熬制成焦糖汁，利用蔗糖高温下充分炭化为食物增色<br>
+      <span class="em">D．制作面点时加入食用纯碱，利用 NaHCO<sub>3</sub> 中和发酵过程产生的酸</span></div>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：<span class="em">D 项把"纯碱"和"小苏打"故意调包——纯碱是 Na<sub>2</sub>CO<sub>3</sub>、小苏打才是 NaHCO<sub>3</sub>。俗名对不上化学式，解释直接作废</span>。
+        <details>
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① <b>吸氧腐蚀</b>：铁＋水＋O<sub>2</sub>（电解质溶液）——擦干＝移走"电解质溶液"这根线，腐蚀链条断。</p>
+            <p>② <b>食盐加碘</b>：加的是 KIO<sub>3</sub>（碘酸钾），受热易分解——"加碘盐晚放"保护的是 <b>KIO<sub>3</sub></b>，不是 NaCl。NaCl 受热不分解。</p>
+            <p>③ <b>焦糖化 ≠ 炭化</b>：蔗糖高温脱水生焦糖色（糖类缩合物＋醛酮等），不是"充分炭化"成单质碳。</p>
+            <p>④ <b>发面化学</b>：发酵产生的酸被碳酸（氢）盐中和放 CO<sub>2</sub>，面团蓬松——但用对盐：纯碱 Na<sub>2</sub>CO<sub>3</sub> 也能中和酸，只是 D 项把"纯碱"解释成"NaHCO<sub>3</sub>"，俗名与化学式错配。</p>
+          </div>
+        </details>
+      </div>
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">⚠ 逐项判</p><p>① <b>A 对（答案）</b>：擦干→无电解质溶液膜→吸氧腐蚀链断 ✔（腐蚀三要素：铁、水、O<sub>2</sub> 缺一不可）；<br>
+      ② <b>B 错</b>：怕分解的是 <b>KIO<sub>3</sub></b>（加碘剂），NaCl 热稳定性极好——"避免 NaCl 分解"张冠李戴；<br>
+      ③ <b>C 错</b>：焦糖化是"高温脱水缩合/降解"，<b>不是炭化</b>（炭化＝变成单质碳，那是浓硫酸的脱水性）；<br>
+      ④ <b>D 错（本题题眼）</b>：<span class="rd">食用纯碱主要成分是 Na<sub>2</sub>CO<sub>3</sub>——选项却写"利用 NaHCO<sub>3</sub> 中和"，俗名与化学式对不上；同时"纯碱不是碱"这一点也在暗处设卡</span>。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口"俗名对应"）<b>钠家族俗名卡背死</b>：纯碱/苏打＝Na<sub>2</sub>CO<sub>3</sub>｜小苏打＝NaHCO<sub>3</sub>｜烧碱/火碱/苛性钠＝NaOH｜芒硝＝Na<sub>2</sub>SO<sub>4</sub>·10H<sub>2</sub>O。<b>"见俗名→写化学式→再判性质"三步走，俗名题先做"名实核对"</b>。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 过关3 -->
+<div class="quiz">
+  <div class="ask">过关3 · 物质用途四连判：钠起火为什么不能用水基灭火器</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2023·天津·高考真题·T4】</span>
+      <div class="qsub">下列常见物质及用途，<b>错误</b>的是（　　）<br>
+      A．碳酸氢钠俗称小苏打，可用于食品发酵<br>
+      B．SiO<sub>2</sub> 可用于制造光导纤维<br>
+      C．Fe<sub>2</sub>O<sub>3</sub> 是铁红，可以用作染料<br>
+      <span class="em">D．钠起火，可以使用水基灭火器扑灭</span></div>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：<span class="em">"钠起火"处置三条铁律——能沙土、不能水、不能泡沫/CO<sub>2</sub>。原理一句话：钠与水反应放 H<sub>2</sub>（易燃），Na<sub>2</sub>O<sub>2</sub> 与 CO<sub>2</sub> 反应放 O<sub>2</sub>（助燃）——两边的灭火剂都在"喂火"</span>。
+        <details>
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① <b>小苏打发面</b>：NaHCO<sub>3</sub> 受热分解 2NaHCO<sub>3</sub>─→Na<sub>2</sub>CO<sub>3</sub>＋H<sub>2</sub>O＋CO<sub>2</sub>↑，CO<sub>2</sub> 使面团松软——"食品发酵"✔。</p>
+            <p>② <b>光导纤维</b>：主要成分 SiO<sub>2</sub>（高纯度石英拉丝），利用全反射传光。</p>
+            <p>③ <b>铁红</b>：Fe<sub>2</sub>O<sub>3</sub> 红棕色粉末——红色油漆/染料/抛光粉三用。</p>
+            <p>④ <b>钠起火</b>：2Na＋2H<sub>2</sub>O＝2NaOH＋H<sub>2</sub>↑——水基灭火器喷水，H<sub>2</sub> 越产越多，火势升级。</p>
+          </div>
+        </details>
+      </div>
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">⚠ 逐项判</p><p>① <b>A 对</b>：小苏打＝NaHCO<sub>3</sub>，受热放 CO<sub>2</sub> 发面 ✔（顺带记：做馒头直接用纯碱是"中和发面的酸"，用小苏打是"热分解自产气"——两条路径都成立）；<br>
+      ② <b>B 对</b>：SiO<sub>2</sub> 光导纤维 ✔（易混提醒：Si 是半导体芯片材料，SiO<sub>2</sub> 才是光纤）；<br>
+      ③ <b>C 对</b>：铁红 Fe<sub>2</sub>O<sub>3</sub> 染料 ✔；<br>
+      ④ <b>D 错（答案）</b>：<span class="em">钠起火生成 Na<sub>2</sub>O<sub>2</sub>，遇 CO<sub>2</sub>（灭火器喷出的）还要放 O<sub>2</sub> 助燃；遇水基灭火器的水则放 H<sub>2</sub>——都不行，唯一正解＝干燥沙土盖灭</span> ✘。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口"活泼金属安全"）<b>活泼金属火灾处置对照</b>：Na/K/Mg 起火——<b>沙土</b>；Mg 起火还要防"CO<sub>2</sub> 也反应"（Mg＋CO<sub>2</sub> 点燃→MgO＋C，镁条在 CO<sub>2</sub> 里能烧）——<b>凡是"与水、与 CO<sub>2</sub> 都反应"的金属，灭火剂只剩沙土</b>。这条 2023 天津、2025 浙江 1 月卷连续考，判断题眼熟度极高。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 四、知识清单（挖空） ==================== -->
+<div class="part"><span class="no">四</span>知识清单 · 挖空自测<span class="tm">2分钟</span></div>
+<p class="tip">📝 先口头填空，再展开核对。能脱口而出的直接跳过，卡壳的划到错题本。</p>
+<ul class="klist">
+  <li>① 金属钠保存在<span class="blank">＿＿＿</span>中（少量）；钠起火用<span class="blank">＿＿＿</span>盖灭，严禁用<span class="blank">＿＿＿</span>、<span class="blank">＿＿＿</span>灭火器。</li>
+  <li>② Na<sub>2</sub>O<sub>2</sub> 中氧为<span class="blank">＿＿＿</span>价，属于<span class="blank">＿＿＿</span>（填"碱性氧化物/过氧化物"）；与水反应的方程式：<span class="blank">＿＿＿＿＿＿＿＿＿＿</span>。</li>
+  <li>③ 1 mol Na<sub>2</sub>O<sub>2</sub> 与足量 CO<sub>2</sub> 反应转移电子<span class="blank">＿＿＿</span> mol，生成 O<sub>2</sub><span class="blank">＿＿＿</span> mol。</li>
+  <li>④ 俗名连线：纯碱＝<span class="blank">＿＿＿</span>；小苏打＝<span class="blank">＿＿＿</span>；烧碱＝<span class="blank">＿＿＿</span>。</li>
+  <li>⑤ 鉴别 Na<sub>2</sub>CO<sub>3</sub> 与 NaHCO<sub>3</sub> 固体首选<span class="blank">＿＿＿</span>法（现象：<span class="blank">＿＿＿</span>）；两者溶液加 BaCl<sub>2</sub> 只有<span class="blank">＿＿＿</span>产生白色沉淀。</li>
+  <li>⑥ 工业电解熔融 NaCl 制钠，加 CaCl<sub>2</sub> 的目的是<span class="blank">＿＿＿＿＿＿＿＿＿＿</span>。</li>
+  <li>⑦ 除去空气中的 CO<sub>2</sub> 用<span class="blank">＿＿＿</span>溶液，干燥空气用<span class="blank">＿＿＿</span>；两者顺序：先<span class="blank">＿＿＿</span>后<span class="blank">＿＿＿</span>（防重带水汽）。</li>
+</ul>
+<details>
+  <summary>核对答案</summary>
+  <div class="keyline">① 煤油｜干燥沙土｜水基（水）、泡沫、CO<sub>2</sub></div>
+  <div class="keyline">② −1｜过氧化物｜2Na<sub>2</sub>O<sub>2</sub>＋2H<sub>2</sub>O＝4NaOH＋O<sub>2</sub>↑</div>
+  <div class="keyline">③ 1｜0.5（"2摩生1摩"）</div>
+  <div class="keyline">④ Na<sub>2</sub>CO<sub>3</sub>｜NaHCO<sub>3</sub>｜NaOH</div>
+  <div class="keyline">⑤ 加热（受热分解）｜NaHCO<sub>3</sub> 加热放无色气体使澄清石灰水变浑浊（或"受热质量减少"）｜Na<sub>2</sub>CO<sub>3</sub></div>
+  <div class="keyline">⑥ 作助熔剂，降低 NaCl 熔点、节省能耗</div>
+  <div class="keyline">⑦ NaOH｜浓硫酸｜NaOH 溶液｜浓硫酸</div>
+</details>
+
+<!-- ==================== 五、分层作业 ==================== -->
+<div class="part"><span class="no">五</span>分层作业<span class="tm">课后完成</span></div>
+<div class="hw">
+  <p class="task"><b>A1（全员·10 分钟）</b>：把本讲核心题1 板演的"检验 Na<sub>2</sub>O<sub>2</sub> 是否失效"方案、核心题2 的 (3) 电子式与 (4) 除杂顺序，整理进错题本，并用一句话写出 D 项"同素异形体 vs 同位素"的区别。</p>
+  <p class="task"><b>A2（进阶·15 分钟）</b>：完成《课时精练》第 2、3、6 题（试剂保存、NaHCO<sub>3</sub> 与酸反应速率、Na<sub>2</sub>O<sub>2</sub> 投入酚酞水的"先红后褪"现象解释）。</p>
+  <p class="task"><b>B（挑战·选做）</b>：把"侯氏制碱法"主线画成流程图：饱和食盐水 → 通 NH<sub>3</sub> → 通 CO<sub>2</sub> → 析出 NaHCO<sub>3</sub> → 煅烧得纯碱；并标注每步的化学方程式与"先通 NH<sub>3</sub> 后通 CO<sub>2</sub>"的原因（NH<sub>3</sub> 极易溶提高溶液碱性，促 CO<sub>2</sub> 吸收）。（衔接第 11 讲《碱金属　钠及其重要化合物的转化》）</p>
+</div>
+
+<!-- ==================== 📋 备课卡 ==================== -->
+<details class="beike">
+  <summary>📋 备课卡 · 教师用（课堂不投影）</summary>
+  <div class="bkbox">
+    <p><b>本讲落点（广东卷读表结论）</b>：钠及其化合物在广东卷 2021–2026 的<b>独立选择题落点极稀</b>——六年仅 2024 T7（劳动项目关联，本讲核心题1）与 2023 T11（侯氏制碱 NA 题，已被热点强化2 板块口径占用）两处；其余钠落点全埋在 T18/T19 大题（已被水溶液/流程各讲切分）。故本讲配比 <b>1 广东＋1 津大题＋3 外省</b>：重庆 T3（Na<sub>2</sub>O<sub>2</sub> 双供氧）、安徽 T3（纯碱/小苏打调包）、天津 T4（钠起火灭火）都是"选项级直击钠考点"的标准题——<span class="em">这是题库事实，不是选题偷懒</span>。</p>
+    <p><b>课堂节奏（45 分钟）</b>：速览 3′ → 核心1（板演＋互评）12′ → 核心2 10′ → 过关 3 题 12′ → 清单挖空 3′ → 小结发作业 5′。基础弱班可把过关3 改为口头抢答，腾 2 分钟给核心2 的 (6) 守恒计算再讲一遍。</p>
+    <p><b>防撞题</b>：2024 广东 T7、2023 重庆 T3、2024 安徽 T3、2023 天津 T4、2022 天津 T13 均为首次动用（`_used_locs.txt` 复核）；2022 天津 T13 与第 30 讲"物质结构"共用 (1) 轨道式问法的背景，但本讲只取 (2)(3)(4)(6) 钠化合物部分，考查点不重叠。</p>
+    <p><b>数据来源</b>：2024 广东 T7／2023 T11 原文与详解取自广东卷 docx（题干表格选项含 OLE 丢字，选项内容按【详解】＋21cnjy《专题3 金属及其化合物》收录版双重还原）；2022 天津 T13 取自讲义"真题体验"栏（附官方答案：助熔剂/c a/159）；2023 重庆 T3、2023 天津 T4、2024 安徽 T3 按"宁弃勿错"原则三源互证（21cnjy 精品解析／人人文库／高考直通车 PDF）后录用，答案 C/D/A 三源一致。</p>
+    <p><b>易错预警（本班常发）</b>：① "纯碱/小苏打"俗名错配（过关2 题眼）——建议课前 1 分钟默写四组俗名；② Na<sub>2</sub>O<sub>2</sub> 电子式画成 O＝O 双键；③ (6) 守恒计算漏乘 1.5；④ "检验失效"方向写成"检验变质产物"。</p>
+  </div>
+</details><div class="foot">第10讲 钠及其重要化合物 · 缺口真题训练 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* 亮度五档 */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7讲 化学实验基础知识与技能 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .opt4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 6px;}
+  @media (max-width:900px){.opt4{grid-template-columns:repeat(2,1fr);}}
+  .opt4 .c{background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center;}
+  .opt4 .c img{max-width:100%;max-height:200px;display:block;margin:0 auto;background:#fff;border-radius:6px;}
+  .opt4 .c b{color:var(--gold);font-size:16px;}
+  .wideimg{background:#fff;border-radius:8px;max-width:100%;display:block;margin:8px auto;}
+  .note{background:var(--card-blue);border-left:4px solid var(--blue);color:var(--blue);padding:8px 14px;border-radius:0 8px 8px 0;margin:8px 0;font-size:14.5px;}
+  table.qtb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.qtb th{background:var(--panel3);color:var(--accent);}
+  table.qtb th,table.qtb td{border:1px solid var(--border);padding:6px 10px;text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第7讲 化学实验基础知识与技能 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 实验室用二氧化锰与浓盐酸共热制氯气（气密性检查、分液漏斗都是这套装置的主角）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「常用化学仪器」· 气体发生装置</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>MnO₂ ＋ 4HCl（浓）<span class="em">＝(△)</span> MnCl₂ ＋ Cl₂↑ ＋ 2H₂O</b>　<br>必须用<b>浓盐酸</b>、必须<b>加热</b>；稀盐酸不反应</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 实验室加热高锰酸钾制氧气（固体加热型：试管口略向下倾斜）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「常用化学仪器」· 可加热仪器</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2KMnO₄ <span class="em">＝(△)</span> K₂MnO₄ ＋ MnO₂ ＋ O₂↑</b>　<br>试管口要放<b>一团棉花</b>，防止 KMnO₄ 粉末进入导管</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 锌与稀硫酸制氢气（可燃性气体——点燃前必验纯！）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「实验安全」· 可燃性气体</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Zn ＋ H₂SO₄（稀）＝ ZnSO₄ ＋ H₂↑</b>　<br>点燃 H₂、CO、CH₄ 等可燃性气体前<span class="rd">必须先检验纯度</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 可加热仪器三分法</b>：直接加热（试管、蒸发皿、坩埚、燃烧匙）｜垫石棉网（烧杯、烧瓶、锥形瓶）｜<span class="em">不可加热</span>（量筒、容量瓶、集气瓶、胶头滴管）</li>
+  <li><b>② 计量仪器精度</b>：量筒 0.1 mL、滴定管 0.01 mL、托盘天平 0.1 g；<span class="em">容量瓶、分液漏斗用前必须检漏</span></li>
+  <li><b>③ 试纸规矩</b>：pH试纸<span class="em">不能润湿</span>（会稀释待测液）｜KI淀粉试纸、红色石蕊试纸<span class="em">要润湿</span></li>
+  <li><b>④ 保存与安全</b>：见光分解用棕色瓶（浓HNO₃、AgNO₃、氯水）；钠存煤油、镊子取、着火用<span class="em">砂土</span>；酸入水、气验纯</li>
+</ul>
+
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据广东卷 2021–2025 统计）</b>
+  <p>· 实验操作/目的是广东卷选择题<span class="em">必考筐</span>：2025 T6（镀铜操作）、2024 T8（氯气装置）、2021 T12（操作与目的）——几乎年年有，难度 0.65~0.80，<span class="em">必拿分</span>。</p>
+  <p>· 试剂保存偶考（2025 T8 陈述因果里考浓硝酸棕色瓶），难度 0.75，<span class="em">稳拿分</span>。</p>
+  <p>· <span class="rd">✂ 可放弃</span>：复杂仪器串联的全面分析——超出65分目标。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约26分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 仪器识别与加热方式<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「常用化学仪器及使用」· 可加热的仪器</span>
+<div class="quiz">
+  <div class="ask">分类抢答：试管、烧杯、量筒、蒸发皿、容量瓶、锥形瓶、坩埚、集气瓶——谁能直接加热？谁要垫石棉网？谁坚决不能加热？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tr><th>类别</th><th>仪器</th><th>要点</th></tr>
+        <tr><td><b>直接加热</b></td><td>试管、蒸发皿、坩埚、燃烧匙</td><td>试管加热固体：口略向下倾斜；坩埚配泥三角</td></tr>
+        <tr><td><b>垫石棉网</b></td><td>烧杯、烧瓶（圆底/平底/蒸馏）、锥形瓶</td><td>受热均匀，防炸裂</td></tr>
+        <tr><td><b>不可加热</b></td><td>量筒、容量瓶、集气瓶、胶头滴管、水槽</td><td><span class="rd">量筒不能配液溶解、容量瓶不能长期存放溶液</span></td></tr>
+      </table>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「常用化学仪器及使用」· 计量仪器</span>
+<div class="quiz">
+  <div class="ask">填空：量筒读数精确到 ____ mL；滴定管精确到 ____ mL；托盘天平精确到 ____ g。<br>容量瓶和分液漏斗使用前的第一步操作是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">量筒 <b>0.1 mL</b>｜滴定管 <b>0.01 mL</b>｜托盘天平 <b>0.1 g</b><br>
+      第一步：<b>检漏（检查是否漏水）</b>——容量瓶加水塞倒立观察、分液漏斗加水试活塞与上口塞<br>
+      <span class="rd">⚠ 量筒不能加热、不能配液、不能作反应容器</span></div>
+  </details>
+</div>
+
+<details class="bianxi"><summary><span class="q">1</span>可以用量筒溶解 NaCl 固体配制溶液，一举两得</summary>
+  <div class="ans"><b>×</b>　量筒只能量取液体体积，<span class="rd">不能溶解、不能加热、不能作反应容器</span>——溶解要在烧杯中进行。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>试管加热固体时，试管口应略向下倾斜，防止冷凝水倒流炸裂试管</summary>
+  <div class="ans"><b>√</b>　固体中湿存水/反应生成水在管口冷凝，倒流到热试管底会炸裂——如 KMnO₄ 制 O₂。</div>
+</details>
+
+<!-- 知识点② -->
+<h3>知识点② · 试纸与试剂保存<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「试纸及使用」· 考点二「试剂的保存」</span>
+<div class="quiz">
+  <div class="ask">判断：① 用pH试纸测某溶液pH，先把试纸用蒸馏水润湿；② 检验氨气用红色石蕊试纸，要先润湿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>×</b>　pH试纸<span class="em">不能润湿</span>——润湿等于稀释待测液，酸性偏大、碱性偏小（只有中性溶液恰好不受影响）<br>
+      ② <b>√</b>　气体检验时试纸<span class="em">必须润湿</span>——干燥的试纸不电离、不变色；KI淀粉试纸同理</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">连线抢答：浓硝酸、AgNO₃、氯水、金属钠、氢氧化钠——各怎么保存？为什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tr><th>试剂</th><th>保存方法</th><th>原因</th></tr>
+        <tr><td>浓硝酸、AgNO₃、氯水</td><td>棕色瓶、阴凉处</td><td>见光易分解</td></tr>
+        <tr><td>金属钠</td><td>煤油中、镊子取</td><td>隔绝空气和水；<span class="rd">着火用砂土，严禁用水</span></td></tr>
+        <tr><td>NaOH溶液</td><td>橡胶塞玻璃瓶</td><td>水解玻璃中SiO₂，磨口塞会粘连打不开</td></tr>
+        <tr><td>氢氟酸</td><td>塑料瓶</td><td>腐蚀玻璃（SiO₂ + 4HF = SiF₄↑ + 2H₂O）</td></tr>
+      </table>
+    </div>
+  </details>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 实验安全与事故处理<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「实验安全」· 常见事故处理</span>
+<div class="quiz">
+  <div class="ask">抢答：① 钠着火能不能用水扑？② 酒精灯打翻了怎么办？③ 浓硫酸溅到皮肤上第一步做什么？④ 点燃H₂前做什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>严禁用水！</b>钠与水剧烈反应助燃——用<span class="em">砂土盖灭</span>（不能用泡沫灭火器）<br>
+      ② 立即用<span class="em">湿抹布盖灭</span><br>
+      ③ 先用<span class="em">干布拭去</span>大量酸液，再用大量水冲洗，最后涂 3%~5% NaHCO₃ 溶液（<span class="rd">不能先用水冲浓硫酸！放热灼伤</span>）<br>
+      ④ <span class="em">先验纯</span>——不纯的可燃性气体点燃可能爆炸</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">易错辨析：闻气体气味时，把鼻孔凑到瓶口深吸一口气，对吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>×</b>　应用<span class="em">手在瓶口轻轻扇动</span>，仅使极少量气体飘入鼻孔（招气入鼻式）——Cl₂、SO₂、NH₃ 都有毒/刺激性。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>直热试管坩埚皿，烧杯烧瓶垫个网；量筒容量不能热，容瓶分液先检漏；pH试纸不润湿，气体试纸要润湿；钠着火用砂土，可燃气点前验纯</p>
+</div>
+
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（第7讲：1~10题每题3分，11~12题每题4分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做</h4>
+    <ul>
+      <li>第1题 · 钠与水反应实验图标辨识</li>
+      <li>第2题 · 图示实验操作规范判断（2025·广东期中）</li>
+      <li>第3题 · 试剂保存方法正误（2025·山东）</li>
+      <li>第4题 · 实验安全要求（2025·河北）</li>
+      <li>第5题 · 实验操作或处理方法（2024·黑吉辽）</li>
+      <li>第6题 · 实验安全做法判断</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>🏆 挑战</h4>
+    <ul>
+      <li>第7题 · 实验叙述综合判断（2025·湛江模拟）</li>
+      <li>第8题 · 操作或试剂选择合理性</li>
+      <li>第9题 · Na₂CO₃ 标定盐酸的步骤排序（2025·广东阶段练习）</li>
+      <li>第10题 · 装置或操作能否达到实验目的</li>
+      <li>第11题 · 玻璃仪器选用是否齐全正确</li>
+      <li>第12题 · 装置气密性良好现象判断</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ==================== 遥控脚本 ==================== -->
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：酸式滴定管不能装NaOH（碱腐蚀玻璃活塞）、量筒不能加热不能配液；酒精灯禁止吹灭、外焰温度最高…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：'防倒吸''防污染'各对应哪些操作？装置气密性检查有哪几类？操作与目的配对题怎么逐项走？…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script src="../hxbnx-handwrite.js"></script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c07_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c07_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条：字号三档切换（标准/大/特大）===== */
+(function(){
+  var FS = {
+    s:{base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px'},
+    l:{base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 's';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1); r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-h3',v.h3); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* ===== 左下角控制条：亮度五档（80%-120%）===== */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur)+1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body></html>

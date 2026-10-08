@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1讲 物质的组成、性质和转化 · 缺口真题训练</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+  table.opt{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.opt th{background:var(--panel3);color:var(--gold);padding:6px 8px;border:1px solid var(--border);text-align:left;}
+  table.opt td{padding:6px 8px;border:1px solid var(--border);color:var(--text);vertical-align:top;}
+  table.opt td.k{color:var(--blue);font-weight:700;text-align:center;width:56px;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  :root{
+    --fs-base:24px;--fs-h1:38px;--fs-part:30px;--fs-stem:21px;
+    --fs-opt:20px;--fs-sm:18px;--fs-sub:16px;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+  table.opt{font-size:var(--fs-opt);}
+
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+<header>
+  <h1>第1讲 · 物质的组成、性质和转化 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">G01 胶体粒子数与 N_A</span> · <span class="em">G02 新型碳材料归类</span> · <span class="em">G03 文物材料分类</span> · <span class="em">G04 气溶胶/固溶胶</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">2分钟</span></div>
+<ul class="kps">
+  <li><b>G01 · 胶体粒子数与 N_A 结合的定量计算</b>：胶体粒子是<b>多个分子聚集的聚集体</b>，粒子数<span class="em">远小于</span>按分子数推算的 N_A 值。N_A 题中"水解形成的胶体粒子数为 0.1N_A"<span class="rd">必为陷阱选项</span>。</li>
+  <li><b>G02 · 新型碳材料归类（石墨烯、碳纳米管、碳纤维）</b>：石墨烯、碳纳米管、富勒烯是<span class="em">碳单质</span>（互为同素异形体）；碳纤维、氧化石墨烯含杂元素，<span class="rd">不是</span>同素异形体，但碳纤维仍属<b>新型无机非金属材料</b>。</li>
+  <li><b>G03 · 传统文化中的物质分类（文物材质）</b>：广东卷固定考点——合金、陶瓷（硅酸盐）、丝绸（蛋白质）、纸张（纤维素）、玛瑙（SiO₂）等材质归类。<span class="em">关键字判断法</span>：陶瓷→硅酸盐，丝绸/纸→有机物，青铜/不锈钢→合金。</li>
+  <li><b>G04 · 分散系细化辨析（气溶胶/固溶胶）</b>：按分散剂状态分——<span class="em">气溶胶</span>（雾、云、烟）、<span class="em">液溶胶</span>（Fe(OH)₃ 胶体、豆浆）、<span class="em">固溶胶</span>（烟水晶、有色玻璃）。口诀：<span class="em">分散剂状态定类型、1~100 nm 定胶体</span>。真题常以 STSE 背景间接嵌入（豆浆、舞台云雾）。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">讲 ≈10′ · 学生说评 ≈12′</span></div>
+<p class="tip">左边原题常驻，按住中间分隔条可左右拖动调宽</p>
+
+<!-- 核心题1 -->
+<div class="quiz">
+  <div class="ask">核心题1 · 纸哪吒、石印章、木活字、不锈钢针——一句话定材质<span class="bl">〔本讲说题入口〕</span></div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2025·广东·高考真题·T1】</span>
+      <div class="qsub"><span class="t">原题</span>中华传统技艺，凸显人民智慧。下列选项所涉及材料的主要成分属于<b>合金</b>的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>纸哪吒（纸的主要成分是纤维素）</td></tr>
+        <tr><td class="k">B</td><td>石印章（天然矿物，主要成分为硅酸盐或碳酸盐）</td></tr>
+        <tr><td class="k">C</td><td>木活字（木材，主要成分为纤维素）</td></tr>
+        <tr><td class="k">D</td><td>不锈钢针（铁碳合金）</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 3 分钟）</b>
+        <p>① 四件文物的"主要成分"分别是什么？A~D 逐个说一遍。</p>
+        <p>② 合金的定义里哪两个词是命门？纸、石、木为什么都不沾边？</p>
+        <p>③ 2025 考"纸哪吒"、2024 考"龙文物"、2023 考"古乐器"——你手里的关键字速记表能覆盖几行？</p>
+        <p>④ 若换成"玉琮""丝绸""青铜鼎"三件，各归哪一族？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 合金两要素：<b>熔合而成</b>＋<b>具有金属特性的混合物</b>。不锈钢 = 铁与碳、铬、镍等熔合，两要素全占。</p>
+            <p>② 关键字速记：陶瓷/玻璃/水泥→<span class="em">硅酸盐</span>；丝绸/纸张/木材→<span class="em">纤维素/蛋白质（有机高分子）</span>；青铜/黄铜/不锈钢/生铁→<span class="em">合金</span>；玉/玛瑙/水晶→<span class="em">SiO₂（氧化物）</span>。</p>
+            <p>③ 高频易混：骨骼（羟基磷灰石）不是硅酸盐；SiO₂ 是氧化物、也不是硅酸盐。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：材质归类只走三步——<span class="em">识别对象 → 定位主要成分 → 核对概念</span>。见"陶瓷"想硅酸盐，见"丝绸/纸"想有机高分子，见"青铜/不锈钢"想合金，见"玉/玛瑙"想 SiO₂。广东卷 T1 年年送分，靠的就是这张关键字速记表。
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>合金 = 金属与金属（或非金属）熔合而成的具有金属特性的<b>混合物</b>。逐项定位"主要成分"再对照概念：纤维素（有机物）、矿物（硅酸盐/碳酸盐）、木材（纤维素）均非金属，只有不锈钢是铁基合金。</p></div>
+          <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：纸是纤维素，有机高分子材料，不属于合金，<span class="rd">不选</span>；</p><p><b>B</b>：石印章为天然矿物（如寿山石），成分复杂，属无机非金属材料，非合金，<span class="rd">不选</span>；</p><p><b>C</b>：木活字是木材，纤维素，天然有机高分子，非合金，<span class="rd">不选</span>；</p><p><b>D</b>：<span class="gr">不锈钢是铁与碳、铬、镍等熔合而成的合金</span>，具有金属光泽和良好的耐腐蚀性，<span class="gr">选 D</span>。</p></div>
+          <div class="seg"><p class="t">⚠ 易错提醒</p><p>误区：看到"金属光泽"或"含金属元素"就判合金。合金必须是<b>熔合而成的混合物</b>（如青铜 Cu-Sn、黄铜 Cu-Zn、不锈钢），纯金属单质不是合金。</p></div>
+          <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口 G03）广东卷 T1 固定考"文物/传统技艺材料归类"，<b>判断模型：识别对象 → 定位主要成分 → 核对概念</b>。关键字速记：陶瓷→硅酸盐，丝绸/纸张→纤维素/蛋白质（有机物），青铜/铁器/不锈钢→合金，玉/玛瑙→SiO₂ 或硅酸盐。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l01a')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l01a">
+          <p class="myq-tip">三个方向任选：换文物（玉琮／越王勾践剑／兵马俑彩绘）设问"主要成分属无机非金属材料的是"· 换问法（"属于复合材料的是"——钢筋混凝土、玻璃钢）· 加干扰（把"主要成分"偷换成"所含元素"）</p>
+          <textarea id="qa-in-l01a" placeholder="把你改编的题目写在这里……" oninput="saveQA('l01a')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心题2 -->
+<div class="quiz">
+  <div class="ask">核心题2 · 16.25 g FeCl₃ 水解，胶体粒子数凭什么"远小于" 0.1N<sub>A</sub></div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2018·全国Ⅰ卷·高考真题·T10】</span>
+      <div class="qsub"><span class="t">原题</span>N<sub>A</sub> 是阿伏加德罗常数的值。下列说法正确的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>16.25 g FeCl₃ 水解形成的 Fe(OH)₃ 胶体粒子数为 0.1N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>22.4 L（标准状况）氩气含有的质子数为 18N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>92.0 g 甘油（丙三醇）中含有羟基数为 1.0N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>1.0 mol CH₄ 与 Cl₂ 在光照下反应，生成的 CH₃Cl 分子数为 1.0N<sub>A</sub></td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 4 分钟）</b>
+        <p>① 16.25 g FeCl₃ 是多少 mol？若水解后全部变成 Fe(OH)₃，"分子数"是多少？</p>
+        <p>② 一个胶体粒子 = 一个 Fe(OH)₃ 分子吗？它由什么构成？粒子数与分子数谁大谁小？</p>
+        <p>③ B 项：标况 22.4 L Ar 是多少 mol？Ar 是单原子还是双原子？质子数怎么算？</p>
+        <p>④ C 项数羟基、D 项数 CH₃Cl——各自埋了什么陷阱？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① FeCl₃ 摩尔质量 162.5 g/mol，16.25 g = <span class="em">0.1 mol</span>；若"完全水解"（假设），Fe(OH)₃ 单元 0.1 mol。</p>
+            <p>② <span class="em">胶体粒子 = 聚集体</span>：几十~几百个 Fe(OH)₃ 单元聚成一个胶粒，故<b>粒子数 ≪ 分子数</b>——"0.1N_A"必错。</p>
+            <p>③ Ar 是<b>单原子分子</b>，质子数 18；标况 22.4 L 任何气体 = 1 mol，与单/双原子无关。</p>
+            <p>④ 甘油 C₃H₈O₃ 每分子含 <span class="em">3 个 −OH</span>；CH₄ 与 Cl₂ 光照是<b>连锁取代</b>，四种氯代物共存，CH₃Cl 不足 1.0N_A。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：N_A 题遇"胶体粒子数"<span class="em">立即亮红灯</span>——胶粒是聚集体，粒子数必小于分子数。通用套路：<span class="em">先算 n → 再数粒子 → 检查状态条件</span>（标况？单原子？）；四个选项里先找"最确定"的一项（如标况惰性气体）往往最快锁定答案。
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：B</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>N_A 题逐项"先算物质的量，再数粒子"。B 项：标况 22.4 L Ar = 1 mol，Ar 原子核有 18 个质子（1 mol Ar 含 18N<sub>A</sub> 质子），直接锁定正确项；其余三项逐一识别陷阱。</p></div>
+          <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> G01 核心陷阱：Fe(OH)₃ 胶体粒子是多个 Fe(OH)₃ 分子聚集而成的聚集体，16.25 g FeCl₃（0.1 mol）水解形成的胶体粒子数<span class="rd">远小于 0.1N<sub>A</sub></span>；</p><p><b>B</b>：<span class="gr">√ 标况下 22.4 L Ar 为 1 mol，氩原子含 18 个质子，共 18N<sub>A</sub> 个质子</span>；</p><p><b>C</b>：<span class="rd">×</span> 92.0 g 甘油（C₃H₈O₃）= 1 mol，1 个甘油分子含 3 个羟基，应含 <b>3.0N<sub>A</sub></b> 个羟基；</p><p><b>D</b>：<span class="rd">×</span> CH₄ 与 Cl₂ 光照取代是<b>连锁取代</b>，产物是 CH₃Cl、CH₂Cl₂、CHCl₃、CCl₄ 的混合物，CH₃Cl 少于 1.0N<sub>A</sub>。</p></div>
+          <div class="seg"><p class="t">⚠ 易错提醒</p><p>G01 缺口点：胶体粒子 ≠ 单个分子！"FeCl₃ 完全水解 → 胶体粒子数 = 分子数"是 N_A 题的<b>标准错误选项</b>，遇"胶体粒子数"字样立即触发陷阱警觉。另记：甘油 1 分子 3 个羟基、取代反应不彻底，都是 N_A 高频陷阱。</p></div>
+          <div class="seg"><p class="t">📐 规律总结</p><p>N_A 题五大陷阱速查：①胶体粒子数（远小于分子数）②弱电解质部分电离 ③盐类水解微粒减少 ④连锁反应不彻底（取代/酯化）⑤可逆反应不进行到底。先找<b>最确定的一项</b>（如标况气体+惰性气体）往往最快。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l01b')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l01b">
+          <p class="myq-tip">三个方向任选：换金属（0.1 mol AlCl₃ 水解制 Al(OH)₃ 胶体粒子数）· 换对象（0.1 mol H₃PO₄ 含氧原子数／原子数）· 加干扰（把"标况"换成"常温"，或把"单原子"换成"双原子"）</p>
+          <textarea id="qa-in-l01b" placeholder="把你改编的题目写在这里……" oninput="saveQA('l01b')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 过关题 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 过关题<span class="tm">自主限时 ≈8′</span></div>
+<p class="tip">先独立作答，再点开详解自查</p>
+
+<!-- 过关1 -->
+<div class="quiz">
+  <div class="ask">过关1 · 玉龙、铜龙、丝绸、瓷瓶——龙文物里谁是有机高分子</div>
+  <span class="loc">【2024·广东·高考真题·T1】</span>
+  <p>龙是中华民族重要的精神象征和文化符号。下列与龙有关的历史文物中，主要材质为<b>有机高分子</b>的是（　　）</p>
+  <table class="opt">
+    <tr><td class="k">A</td><td>红山玉龙（玉——硅酸盐矿物）</td></tr>
+    <tr><td class="k">B</td><td>鎏金铁芯铜龙（主要成分为铜）</td></tr>
+    <tr><td class="k">C</td><td>云龙纹丝绸（蚕丝——蛋白质）</td></tr>
+    <tr><td class="k">D</td><td>云龙纹瓷瓶（瓷器——硅酸盐）</td></tr>
+  </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>有机高分子材料 = 含碳的<b>大分子化合物</b>（天然：蛋白质、纤维素、天然橡胶；合成：塑料、合成纤维、合成橡胶）。蚕丝是蛋白质，属于天然有机高分子。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：玉的主要成分是硅酸盐矿物，属无机非金属材料，<span class="rd">不选</span>；</p><p><b>B</b>：铜龙以铜为主，属金属材料（非高分子），<span class="rd">不选</span>；</p><p><b>C</b>：<span class="gr">蚕丝是蛋白质，天然有机高分子材料</span>，<span class="gr">选 C</span>；</p><p><b>D</b>：瓷瓶由黏土烧制，主要成分为硅酸盐，属无机非金属材料，<span class="rd">不选</span>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>误区："含碳"≠"有机高分子"。SiO₂ 含硅不含碳；碳酸盐虽含碳但属无机物。有机高分子必须是由大量<b>小分子聚合</b>而成的化合物。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口 G03）三大材料家族：<b>金属材料</b>（纯金属+合金）、<b>无机非金属材料</b>（硅酸盐：陶瓷/玻璃/水泥，新型：光导纤维/半导体）、<b>有机高分子材料</b>（蛋白质/纤维素/塑料/橡胶/纤维）。先归大类再细辨，是 G03 的核心解题路径。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- 过关2 -->
+<div class="quiz">
+  <div class="ask">过关2 · 古乐器四件——谁由硅酸盐烧制</div>
+  <span class="loc">【2023·广东·高考真题·T1】</span>
+  <p>"高山流水觅知音"。下列中国古乐器中，主要由<b>硅酸盐材料</b>制成的是（　　）</p>
+  <table class="opt">
+    <tr><td class="k">A</td><td>九霄环佩木古琴（木材、动物筋）</td></tr>
+    <tr><td class="k">B</td><td>裴李岗文化骨笛（动物骨骼）</td></tr>
+    <tr><td class="k">C</td><td>商朝后期陶埙（陶瓷）</td></tr>
+    <tr><td class="k">D</td><td>曾侯乙青铜编钟（铜合金）</td></tr>
+  </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>硅酸盐材料 = 以 SiO₂ 和金属氧化物为主要成分的无机材料，典型代表是<b>陶瓷、玻璃、水泥</b>。陶埙由黏土（硅酸盐）烧制而成。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：木古琴：木材（纤维素）+ 动物筋（蛋白质），均为有机物，<span class="rd">不选</span>；</p><p><b>B</b>：骨笛：动物骨骼，主要成分是钙盐（羟基磷灰石等），非硅酸盐，<span class="rd">不选</span>；</p><p><b>C</b>：<span class="gr">陶埙是陶瓷制品，由黏土（硅酸盐）高温烧制</span>，<span class="gr">选 C</span>；</p><p><b>D</b>：青铜编钟：铜锡合金，属金属材料，<span class="rd">不选</span>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>陷阱：骨骼含"钙"元素，易误判为无机材料甚至硅酸盐。骨的主要成分是<b>羟基磷灰石 Ca₅(PO₄)₃(OH)</b>，不是硅酸盐。同理玛瑙（SiO₂）是氧化物不是硅酸盐——G03 高频易错点。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>判定硅酸盐的三大标志物：<b>陶瓷（陶/瓷/埙）、玻璃、水泥</b>。凡是"烧制/烧结"的土制品，基本是硅酸盐材料；玉、玛瑙是 SiO₂（氧化物），要单独区分。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- 过关3 -->
+<div class="quiz">
+  <div class="ask">过关3 · 石墨烯"含碳"却不是有机物——新型碳材料的归属</div>
+  <span class="loc">【2023·浙江·6月选考·T1】</span>
+  <p>材料是人类赖以生存和发展的物质基础。下列材料主要成分属于<b>有机物</b>的是（　　）</p>
+  <table class="opt">
+    <tr><td class="k">A</td><td>石墨烯（单层碳原子构成的单质）</td></tr>
+    <tr><td class="k">B</td><td>不锈钢（铁碳合金）</td></tr>
+    <tr><td class="k">C</td><td>石英光导纤维（SiO₂）</td></tr>
+    <tr><td class="k">D</td><td>聚酯纤维（合成纤维）</td></tr>
+  </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>有机物 = 含碳的化合物（通常还含 H、O、N 等）。判断关键：<b>单质不是有机物</b>。石墨烯是碳单质，虽含碳但不是有机物；聚酯纤维是合成有机高分子化合物。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：石墨烯：由碳原子构成的<b>单质</b>，属无机物；与金刚石、C₆₀、碳纳米管互为同素异形体，<span class="rd">不选</span>；</p><p><b>B</b>：不锈钢：铁碳合金，混合物，金属材料，<span class="rd">不选</span>；</p><p><b>C</b>：石英光导纤维：SiO₂，无机非金属材料，<span class="rd">不选</span>；</p><p><b>D</b>：<span class="gr">聚酯纤维是合成有机高分子（聚对苯二甲酸乙二醇酯）</span>，<span class="gr">选 D</span>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>G02 核心辨析：①石墨烯/碳纳米管/富勒烯/金刚石/石墨都是<b>碳单质</b>，互为同素异形体；②<b>碳纤维</b>（含少量其他元素）、氧化石墨烯（含氧）因含杂元素，<b>不是</b>同素异形体；③"含碳"与"有机物"不能画等号——碳单质、CO、CO₂、碳酸盐都是无机物。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口 G02）判断有机物三连问：是单质吗？（是→无机物）→ 是 CO/CO₂/碳酸盐/碳化物吗？（是→无机物）→ 否则为有机物。新型碳材料归类同理：先问"是不是碳单质"。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- 过关4 -->
+<div class="quiz">
+  <div class="ask">过关4 · 破冰、液化、燃烧、养鱼——"变没变"只看新物质</div>
+  <span class="loc">【2024·广东·高考真题·T2】</span>
+  <p>"极地破冰""太空养鱼"等彰显了我国科技发展的巨大成就。下列说法正确的是（　　）</p>
+  <table class="opt">
+    <tr><td class="k">A</td><td>"雪龙 2"号破冰船极地科考：破冰过程中水发生了化学变化</td></tr>
+    <tr><td class="k">B</td><td>大型液化天然气运输船成功建造：天然气液化过程中形成了新的化学键</td></tr>
+    <tr><td class="k">C</td><td>嫦娥六号运载火箭采用液氧煤油发动机：燃烧时存在化学能转化为热能</td></tr>
+    <tr><td class="k">D</td><td>神舟十八号乘组带水和斑马鱼进入空间站：水的电子式为 H:O:H</td></tr>
+  </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>逐项先判断"变没变"：破冰（冰→水，状态变）、液化（气→液，状态变）均无新物质生成，是物理变化；燃烧是剧烈氧化，化学变化，化学能→热能；D 项考查电子式规范书写。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 破冰只是水的状态改变（固态→液态），无新物质生成，是物理变化；</p><p><b>B</b>：<span class="rd">×</span> 液化是物理变化，<b>不形成新的化学键</b>（分子间距离变化而已）；</p><p><b>C</b>：<span class="gr">√ 煤油燃烧是化学变化，释放热量，化学能→热能</span>（火箭推力做功又转化为动能）；</p><p><b>D</b>：<span class="rd">×</span> 水的电子式必须标出氧的孤对电子：H:Ö:H（O 上下各一对孤对电子），H:O:H 书写不完整。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>高频陷阱："状态改变=物理变化"（液化、升华、破冰、结晶）与"放热=化学变化"（NaOH 溶于水放热是物理变化；乙酸钠过饱和溶液析出晶体放热也是物理变化）——放不放热不是判断依据，<b>有无新物质生成</b>才是。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>必背分类清单——<b>物理变化</b>：分馏、蒸馏、升华、潮解、盐析、焰色试验、液化、破冰；<b>化学变化</b>：干馏、裂化/裂解、皂化、变性、同素异形体互变（石墨→金刚石）。口诀：干馏化学焰色物理，盐析物理皂化化。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- 过关5 -->
+<div class="quiz">
+  <div class="ask">过关5 · 豆浆照光一条亮路——性质与用途的因果对不对</div>
+  <span class="loc">【2023·全国甲卷·高考真题·T7】</span>
+  <p>化学与生活密切相关。下列说法正确的是（　　）</p>
+  <table class="opt">
+    <tr><td class="k">A</td><td>苯甲酸钠可作为食品防腐剂，是由于其具有酸性</td></tr>
+    <tr><td class="k">B</td><td>豆浆能产生丁达尔效应，是由于胶体粒子对光线的散射</td></tr>
+    <tr><td class="k">C</td><td>SO₂ 可用于丝织品漂白，是由于其能氧化丝织品中有色成分</td></tr>
+    <tr><td class="k">D</td><td>维生素 C 可用作水果罐头的抗氧化剂，是由于其难以被氧化</td></tr>
+  </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：B</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>本题是"性质决定用途"的因果判断题。丁达尔效应是胶体特有的光学性质，本质是<b>胶体粒子对光的散射</b>；豆浆是蛋白质液溶胶，能产生丁达尔效应。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 苯甲酸钠防腐靠<b>抑制微生物生长</b>，其水溶液呈碱性而非酸性；</p><p><b>B</b>：<span class="gr">√ 豆浆是胶体（分散质粒子 1~100 nm），丁达尔效应是胶体粒子对光的散射</span>；</p><p><b>C</b>：<span class="rd">×</span> SO₂ 漂白是<b>化合型漂白</b>（与有色物质化合生成不稳定无色物质），不是氧化漂白；</p><p><b>D</b>：<span class="rd">×</span> 维生素 C 作抗氧化剂，恰恰是因为它<b>易被氧化</b>（强还原性），优先消耗氧气保护水果。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>三类漂白对比：SO₂ 化合型（可逆）、活性炭吸附型（物理）、HClO/O₃/H₂O₂ 氧化型（不可逆）。"难被氧化才能抗氧化"是典型因果倒置陷阱。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>（关联缺口 G04）豆浆、牛奶、蛋清、Fe(OH)₃ 胶体是<b>液溶胶</b>；雾、云、烟是<b>气溶胶</b>；烟水晶、有色玻璃是<b>固溶胶</b>——"分散剂状态定类型"。丁达尔效应只用于鉴别<b>胶体与溶液</b>，不能区分两种胶体。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- 过关6 -->
+<div class="quiz">
+  <div class="ask">过关6 · 价-类二维图四判断——Fe(OH)₃ 胶体到底怎么制</div>
+  <span class="loc">【2021·广东·高考真题·T10】</span>
+  <p>部分含铁物质的分类与相应化合价关系如图所示（价-类二维图：a=Fe，b=Fe²⁺ 盐，c=Fe(OH)₂，d=Fe(OH)₃，e=Fe³⁺ 盐）。下列推断<b>不合理</b>的是（　　）</p>
+  <table class="opt">
+    <tr><td class="k">A</td><td>a 可与 e 反应生成 b</td></tr>
+    <tr><td class="k">B</td><td>b 既可被氧化，也可被还原</td></tr>
+    <tr><td class="k">C</td><td>可将 FeCl₃ 加入浓碱液中制得 Fe(OH)₃ 胶体</td></tr>
+    <tr><td class="k">D</td><td>可存在 c → d → e 的循环转化关系</td></tr>
+  </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>价-类二维图横轴为物质类别、纵轴为化合价。逐项对照图与性质：A 项 Fe+2Fe³⁺=3Fe²⁺；B 项 +2 价铁可升降；C 项考查<b>胶体制备的规范操作</b>；D 项 Fe(OH)₂→Fe(OH)₃→Fe³⁺ 盐转化成立。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：合理：Fe + 2Fe³⁺ = 3Fe²⁺（归中反应）；</p><p><b>B</b>：合理：Fe²⁺ 既可被氧化为 Fe³⁺，也可被还原为 Fe；</p><p><b>C</b>：<span class="rd">不合理：Fe(OH)₃ 胶体的正确制法是把饱和 FeCl₃ 溶液滴入沸水中，继续煮沸至液体呈红褐色；滴入浓碱液（NaOH）只能生成 Fe(OH)₃ 沉淀，不是胶体</span>；</p><p><b>D</b>：合理：Fe(OH)₂ →(氧化)→ Fe(OH)₃ →(与酸)→ Fe³⁺ 盐。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>胶体制备"三防"：①不滴 NaOH（得沉淀）；②不用稀 FeCl₃（浓度不够难聚集成胶粒）；③不长时间煮沸（胶体受热聚沉）。制取口诀：<b>沸水 + 饱和 FeCl₃ + 红褐色即停</b>。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>价-类二维图是"同类物质性质相似、不同价态可转化"的可视化工具。读图三步：定类别 → 定价态 → 想性质。Fe²⁺ 居中价态"既能被氧化又能被还原"是必考结论。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 教师备课卡 ==================== -->
+<details class="beike"><summary>📋 备课卡（教师用）</summary>
+  <div class="bkbox">
+    <p><b>课堂节奏（40'）</b>：缺口速览 2' → 核心题1 10'（<span class="em">说3' → 评2' → 讲4' → 收口1'</span>）→ 核心题2 10'（说3' + 讲5' + 收口2'）→ 过关 1–6 学生自主 8' → 小结·作业布置 4' → 机动 6'。</p>
+    <p><b>导入话术（难题前置）</b>：一上课先把 2018 全国Ⅰ卷 A 项甩出来——"<span class="em">16.25 g FeCl₃ 水解，胶体粒子数是不是 0.1N_A？这题全国卷考过，广东卷的 N_A 题年年变着花样考同一个点。40 分钟后你们自己收它。</span>"然后再进缺口速览，让学生带着未解决的题听完整节课。</p>
+    <p><b>操作要点</b>：① 左栏原题 sticky 常驻，讨论时无需来回滚动；中间分隔条可拖动调宽（窄屏自动单栏）；② 任务卡限时，同桌互说完必须<span class="em">定人向全班说</span>；③"金钥匙"只收口方法，不替代讨论；④ 四段详解由学生点开自查（首行即"正确答案"卡片）；⑤ 本讲无装置图，核心题1 可让学生先在草稿上列"关键字→材料族"对应再讨论。</p>
+    <p><b>页面留白说明（学生页刻意不放的东西）</b>：<span class="em">课堂流程、组织步骤、教师话术一律不上学生页面</span>——页面只留"原题 + 任务 + 详解"。"同桌说 → 定人向全班说 → 看详解自查"这条主线只在本卡留底。</p>
+    <p><b>左下角控制条（字号 ＋ 亮度）</b>：两个透明按钮，点一下换一档，选过自动记住（存在本机浏览器里）。<span class="em">字号</span>三档——1080p 屏用「标准」20px、一般大屏「大」24px（默认）、4K 屏且浏览器未缩放时用「特大」28px。<span class="em">亮度</span>五档 80%–120%——教室灯亮、屏幕泛白看不清时往上切；投影环境暗、屏幕刺眼时往下切。</p>
+    <p><b>65分口径（备课依据，不进学生页面）</b>：广东卷 T1（材料分类）、T2（变化辨析）属<span class="em">必拿分</span>——开头两题年年送分，靠关键字速记表即可稳收；N_A 题控制在 1 题内拿稳（熟背五大陷阱）；胶体制备与价-类二维图属能力层，价类图读图三步法要过手。</p>
+    <p><b>📈 真题落点表（本讲 8 题清单，教师用，课堂不投影）</b></p>
+    <table>
+      <tr><th style="width:64px;">年份卷别</th><th style="width:56px;">题号</th><th style="width:110px;">考查形式</th><th>落点与本讲位置</th></tr>
+      <tr><td class="hl">2025 广东</td><td class="hl">T1</td><td class="hl">选择·文物材料</td><td class="hl">材料分类·合金（核心题1）</td></tr>
+      <tr><td>2024 广东</td><td>T1</td><td>选择·文物材料</td><td>材料分类·有机高分子（过关1）</td></tr>
+      <tr><td>2023 广东</td><td>T1</td><td>选择·文物材料</td><td>材料分类·硅酸盐（过关2）</td></tr>
+      <tr><td>2023 浙江 6月</td><td>T1</td><td>选择·新材料</td><td>新型碳材料·有机物判断（过关3）</td></tr>
+      <tr><td>2024 广东</td><td>T2</td><td>选择·STSE</td><td>物理变化 vs 化学变化（过关4）</td></tr>
+      <tr><td>2023 全国甲</td><td>T7</td><td>选择·因果</td><td>丁达尔效应·性质决定用途（过关5）</td></tr>
+      <tr><td>2021 广东</td><td>T10</td><td>选择·图像</td><td>价-类二维图·Fe(OH)₃ 胶体制备（过关6）</td></tr>
+      <tr><td class="hl">2018 全国Ⅰ</td><td class="hl">T10</td><td class="hl">选择·N_A</td><td class="hl">胶体粒子数陷阱（核心题2）</td></tr>
+    </table>
+    <p><b>📊 读表结论（选题依据）</b>：广东卷 T1 连年考"文物/传统技艺材料归类"（2023/2024/2025 三年连考，仅换载体），T2 考 STSE 变化辨析——两者构成<span class="em">稳定的开头送分区</span>。N_A 胶体粒子数以 2018 全国Ⅰ卷为母题（缺口 G01 的锚定题），广东卷近年 N_A 题以此为蓝本变式。浙江卷 T1 补新型碳材料视角（G02）。</p>
+    <p><b>数据来源</b>：广东卷试卷原文（2021–2025 逐题定位）＋ 2023 浙江 6 月选考 / 2023 全国甲卷 / 2018 全国Ⅰ卷原文＋ 缺口卡片 G01–G04（「连接基础知识和高考考点的缺口」）＋ 讲义第1讲三层次分层学案。</p>
+  </div>
+</details>
+
+
+<div class="foot">第1讲 物质的组成、性质和转化 · 缺口真题训练 3.0 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* 亮度五档 */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

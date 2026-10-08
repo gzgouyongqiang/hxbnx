@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6讲 物质的量浓度及溶液配制 · 缺口真题训练</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+  table.opt{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.opt th{background:var(--panel3);color:var(--gold);padding:6px 8px;border:1px solid var(--border);text-align:left;}
+  table.opt td{padding:6px 8px;border:1px solid var(--border);color:var(--text);vertical-align:top;}
+  table.opt td.k{color:var(--blue);font-weight:700;text-align:center;width:56px;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  :root{
+    --fs-base:24px;--fs-h1:38px;--fs-part:30px;--fs-stem:21px;
+    --fs-opt:20px;--fs-sm:18px;--fs-sub:16px;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+  table.opt{font-size:var(--fs-opt);}
+
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+<header>
+  <h1>第6讲 · 物质的量浓度及溶液配制 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">配制五步规范</span> · <span class="em">c=n/V 双因子误差分析</span> · <span class="em">滴定仪器选型</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">2分钟</span></div>
+<ul class="kps">
+  <li><b>物质的量浓度定义 c = n / V</b>：V 是"溶液体积"非溶剂体积；离子浓度 c(离子) = c(溶质) × 角标，与体积无关。含氯 ≠ 含 Cl⁻（如 NaClO 中氯为 ClO⁻）。</li>
+  <li><b>溶质判断规则</b>：与水反应按生成物算：Na/Na₂O/Na₂O₂ → NaOH，SO₂/SO₃ → H₂SO₃/H₂SO₄；结晶水合物按无水物算（CuSO₄·5H₂O → CuSO₄）；NH₃ 按 NH₃ 计。</li>
+  <li><b>浓度与质量分数换算</b>：c = 1000ρw / M（ρ 单位 g·cm⁻³）。浓溶液稀释三步：c(浓)=1000ρw/M → 按容量瓶规格定 V₂ → c₁V₁ = c₂V₂ 求量取体积。</li>
+  <li><b>稀释守恒与电荷守恒</b>：稀释：c₁V₁ = c₂V₂（溶质物质的量守恒）；混合体积 ≠ 加和。电荷守恒：阳离子浓度×电荷数之和 = 阴离子浓度×电荷数之和（求某离子捷径）。</li>
+  <li><b>配制七步 + 误差分析</b>：计算→称量→溶解→冷却→转移→洗涤→定容→摇匀。误差看 n、V：俯视偏高、仰视偏低、未洗涤偏低、未冷却偏高、容量瓶未干燥无影响。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">讲 ≈10′ · 学生说评 ≈12′</span></div>
+<p class="tip">左边原题常驻，按住中间分隔条可左右拖动调宽</p>
+
+<div class="quiz">
+  <div class="ask">核心题1 · 测浓硫酸含量：一条流程线"顺藤摸瓜"找仪器〔2021 广东 T7〕</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2021·广东卷 T7】</span>
+      <div class="qsub"><span class="t">原题</span>测定浓硫酸试剂中 H₂SO₄ 含量的主要操作包括：①量取一定量的浓硫酸，稀释；②转移定容得待测液；③移取 20.00 mL 待测液，用 0.1000 mol·L⁻¹ 的 NaOH 溶液滴定。上述操作中，<b>不需要</b>用到的仪器为（　　）<br><span style="color:var(--text-3);font-size:13px;">（原题选项为仪器示意图）</span></div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>量筒（或移液管）</td></tr>
+        <tr><td class="k">B</td><td>分液漏斗</td></tr>
+        <tr><td class="k">C</td><td>碱式滴定管</td></tr>
+        <tr><td class="k">D</td><td>容量瓶</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 3 分钟）</b>
+        <p>① 操作①量取浓硫酸——用量筒还是移液管？能不能用碱式滴定管量？</p>
+        <p>② 稀释浓硫酸"酸入水"用什么仪器？玻璃棒前后干两件什么活？</p>
+        <p>③ 定容必须用什么仪器？它的"一个刻度线"意味着什么？</p>
+        <p>④ 滴定用酸式还是碱式滴定管？为什么？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 量筒（或移液管）量取；<span class="em">碱式滴定管不能量浓硫酸</span>（腐蚀橡胶管）。</p>
+            <p>② 烧杯稀释＋玻璃棒搅拌散热；转移时玻璃棒<span class="em">引流</span>。</p>
+            <p>③ <span class="em">容量瓶</span>是唯一"定容"仪器（一条刻度线）＋胶头滴管补加。</p>
+            <p>④ 滴 NaOH 用<span class="em">碱式滴定管</span>（碱液腐蚀玻璃活塞，酸式管会粘死）。全程不出现分液漏斗。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 仪器选择题万能套路：把操作拆成"<span class="em">量取 → 稀释 → 转移 → 定容 → 移取 → 滴定</span>"六步，每步对应仪器列清单——<span class="em">分液漏斗只在"萃取分液"出现</span>，配制与滴定全程用不到它。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 答案：B（分液漏斗）</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>按流程"顺藤摸瓜"列仪器：①量取浓硫酸→量筒/移液管；②稀释→烧杯、玻璃棒；转移定容→容量瓶、胶头滴管；③滴定→碱式滴定管、锥形瓶。逐项对照，找出全程用不到的。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√ 用到</span>量取浓硫酸用（酸式）移液管或量筒。</p>
+                <p><b>B</b>：<span class="gr">分液漏斗用于分离互不相溶的液体（分液），本实验是"配制 + 滴定"，全程无分液操作——选 B。</span></p>
+                <p><b>C</b>：<span class="gr">√ 用到</span>NaOH 是强碱，用碱式滴定管盛放滴定。</p>
+                <p><b>D</b>：<span class="gr">√ 用到</span>转移定容得待测液需容量瓶。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①"分液漏斗" vs "漏斗"——过滤用漏斗，分液才用分液漏斗，本实验两者都不需要；②NaOH 滴定盛在碱式滴定管（橡胶管），不能装在酸式滴定管（磨口玻璃塞会被碱腐蚀）；③量取浓硫酸用移液管/量筒，不是用托盘天平（液体用量体积）。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 仪器选择题按流程走：<b>量取（量筒/移液管）→ 稀释（烧杯+玻璃棒）→ 定容（容量瓶+胶头滴管）→ 滴定（滴定管+锥形瓶）</b>。配制 + 滴定的组合题，分液漏斗、温度计、坩埚几乎必是"用不到"的干扰项。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l06a')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l06a">
+          <p class="myq-tip">三个方向任选：换情境（配 100 mL 1.0 mol·L⁻¹ Na₂CO₃ 标准液）· 加干扰（"容量瓶用待测液润洗"对不对）· 改设问（"哪些步骤必须用玻璃棒"）</p>
+          <textarea id="qa-in-l06a" placeholder="把你改编的题目写在这里……" oninput="saveQA('l06a')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz">
+  <div class="ask">核心题2 · 四幅操作图挑错：天平、定容、摇匀、滴定〔2026 广东开学考〕</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2026·广东开学考（讲义课时精练 T3）】</span>
+      <div class="qsub"><span class="t">原题</span>下列实验操作规范的是（　　）<br><span style="color:var(--text-3);font-size:13px;">（原题为四幅操作示意图）</span></div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>在托盘天平上直接放称量纸称量 NaOH 固体</td></tr>
+        <tr><td class="k">B</td><td>向容量瓶中定容时，眼睛俯视刻度线加水</td></tr>
+        <tr><td class="k">C</td><td>容量瓶定容后倒置摇匀</td></tr>
+        <tr><td class="k">D</td><td>用酸式滴定管盛装 NaOH 标准液滴定醋酸</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 4 分钟）</b>
+        <p>① NaOH 固体垫纸称量行不行？为什么？</p>
+        <p>② 定容时俯视刻度线——实际液面偏高还是偏低？浓度偏高还是偏低？</p>
+        <p>③ 定容倒置摇匀后液面低于刻度线——要不要再加水？</p>
+        <p>④ 用 NaOH 标准液滴定醋酸——选酸式还是碱式滴定管？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① NaOH 潮解＋腐蚀：垫纸会粘且吸水称不准——<span class="em">用小烧杯</span>（左物右码）。</p>
+            <p>② 俯视定容：实际液面<span class="em">低于</span>刻度 → V 偏小 → c 偏高（c=n/V 双因子）。</p>
+            <p>③ 倒置摇匀后液面低是<span class="em">正常现象</span>（部分溶液挂壁回流中），不能再加水。</p>
+            <p>④ 碱液用<span class="em">碱式滴定管</span>；口诀"碱碱酸酸"——碱液碱式管、酸液酸式管。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 配制五步"查错表"：<span class="em">计算 → 称量（腐蚀性用烧杯）→ 溶解冷却 → 转移洗涤 → 定容摇匀（平视！倒置后不再加水）</span>。误差分析认准 c=n/V 双因子：n 怎么变、V 怎么变，直接定 c 的方向。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：C</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>逐图审查"操作对象、仪器匹配、视线、指示剂"：称量（腐蚀性物质用烧杯）、定容（胶头滴管＋平视）、摇匀（倒置振荡）、滴定（酸式/碱式管选型＋指示剂）。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>NaOH 强腐蚀性＋吸水性，不能放称量纸上，应置于<b>小烧杯</b>中称量。</p>
+                <p><b>B</b>：<span class="rd">×</span>定容需用<b>胶头滴管</b>逐滴加水至刻度，且眼睛<b>平视</b>刻度线（俯视导致偏高）。</p>
+                <p><b>C</b>：<span class="gr">√</span>定容后应将容量瓶<b>倒置摇匀</b>，使溶液混合均匀。</p>
+                <p><b>D</b>：<span class="rd">×</span>NaOH 是强碱，应装<b>碱式滴定管</b>；滴定醋酸（终点 CH₃COONa 呈碱性）用<b>酚酞</b>指示剂。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①NaOH 称量必须用小烧杯（腐蚀性＋吸水性）；②定容两要素——胶头滴管＋平视，缺一不可；③滴定管选型——酸式管装酸/氧化性液，碱式管装碱液；NaOH 滴定醋酸用酚酞，不用甲基橙。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 实验操作图题"四查"：<b>①称量（腐蚀性物质用烧杯）②定容（胶头滴管＋平视）③摇匀（倒置振荡）④滴定（管选型＋指示剂变色范围）</b>。一个图对应一个规范，逐图排除。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l06b')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l06b">
+          <p class="myq-tip">三个方向任选：换操作（量筒读数俯视的误差）· 加图（移液管放液后残留 1 滴要不要吹出）· 改设问（仰视定容，浓度偏高还是偏低）</p>
+          <textarea id="qa-in-l06b" placeholder="把你改编的题目写在这里……" oninput="saveQA('l06b')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 过关题 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 过关题<span class="tm">自主限时 ≈8′</span></div>
+<p class="tip">先独立作答，再点开详解自查</p>
+
+<div class="quiz">
+  <div class="ask">过关1 · 仪器清单缺谁——容量瓶与分液漏斗辨用途</div>
+  <span class="loc">【2023·全国甲卷 T9】</span>
+  <p>实验室将粗盐提纯并配制 0.1000 mol·L⁻¹ 的 NaCl 溶液。下列仪器中，本实验<b>必须用到</b>的有（　　）<br>①天平　②温度计　③坩埚　④分液漏斗　⑤容量瓶　⑥烧杯　⑦滴定管　⑧酒精灯</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>①②④⑥</td></tr>
+        <tr><td class="k">B</td><td>③⑤⑦⑧</td></tr>
+        <tr><td class="k">C</td><td>①③⑤⑥</td></tr>
+        <tr><td class="k">D</td><td>①⑤⑥⑧</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 答案：D（①⑤⑥⑧）</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>把"粗盐提纯"与"配制 NaCl 溶液"两个流程的仪器分别列出，再取并集。粗盐提纯：溶解（烧杯、玻璃棒）→过滤（漏斗）→蒸发结晶（蒸发皿、酒精灯）；配液：称量（天平）→溶解（烧杯）→移液定容（容量瓶、胶头滴管）。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><span class="opt"><span class="o">①</span><span class="gr">✓</span>天平——配制称量 NaCl 用。</span>
+            <span class="opt"><span class="o">⑤</span><span class="gr">✓</span>容量瓶——配制定容用。</span>
+            <span class="opt"><span class="o">⑥</span><span class="gr">✓</span>烧杯——提纯溶解、配液溶解均用。</span>
+            <span class="opt"><span class="o">⑧</span><span class="gr">✓</span>酒精灯——提纯蒸发结晶用。</span>
+            <span class="opt"><span class="o">②③④⑦</span><span class="rd">×</span>温度计（测蒸汽温度）、坩埚（灼烧固体，蒸发结晶用蒸发皿）、分液漏斗（分液）、滴定管（滴定）——均不必要。</span></p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①蒸发结晶用<b>蒸发皿</b>，灼烧固体才用坩埚——③坩埚是高频干扰项；②过滤用漏斗，分液才用分液漏斗——④别混；③配液不需要温度计和滴定管，二者都是"其他实验"的仪器。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ "仪器清单"题按流程顺藤摸瓜：提纯流程＝溶解→过滤→蒸发（烧杯、玻璃棒、漏斗、蒸发皿、酒精灯）；配液流程＝计算→称量→溶解→移液→洗涤→定容→摇匀（天平、烧杯、玻璃棒、容量瓶、胶头滴管）。两流程并集即答案。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关2 · 操作目的题——转移前为什么必须"冷却"</div>
+  <span class="loc">【2024·全国甲卷 T(4)】</span>
+  <p>下图为"溶液配制"的部分过程，操作 a 应重复 3 次，目的是 <span class="em">____</span>，定容后还需要的操作为 <span class="em">____</span>。</p>
+
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 答案：将烧杯和玻璃棒上残留的溶质全部转移至容量瓶（避免溶质损失）；摇匀（盖好瓶塞，上下颠倒摇匀）</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>操作 a 是"洗涤"——用少量蒸馏水洗涤烧杯和玻璃棒 2~3 次，洗涤液全部转入容量瓶。其目的从"溶质是否损失"角度答；定容后的操作是"摇匀"使浓度均匀。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p>第一空：洗涤并转移的目的是<b>保证溶质全部进入容量瓶</b>——若烧杯、玻璃棒上残留溶质，则 n(溶质) 偏小，浓度偏低。<br>第二空：定容后需<b>盖好瓶塞、上下颠倒摇匀</b>，使溶液混合均匀，浓度上下一致。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①洗涤液<b>必须</b>转入容量瓶，漏转 = 溶质损失 = 偏低；②摇匀后液面下降是挂壁所致，<b>不能再加水</b>，否则稀释、浓度偏低；③答"目的"要落到"避免溶质损失/保证全部转移"，不能只写"洗涤"。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 配制流程中"洗涤→转移"是保证溶质不损失的关键步骤，"摇匀"是保证浓度均匀的收尾步骤。广东卷实验题常以填空形式考"某操作的目的/作用"，答案务必落到 c = n/V 的 n 或 V 上。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关3 · 离子浓度比较——c=n/V 双因子拆解</div>
+  <span class="loc">【讲义课时精练 T1】</span>
+  <p>下列溶液中 c(Cl⁻) 最大的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>200 mL 2 mol·L⁻¹ MgCl₂ 溶液</td></tr>
+        <tr><td class="k">B</td><td>100 mL 2.5 mol·L⁻¹ NaCl 溶液</td></tr>
+        <tr><td class="k">C</td><td>100 mL 2 mol·L⁻¹ NaClO 溶液</td></tr>
+        <tr><td class="k">D</td><td>300 mL 1 mol·L⁻¹ AlCl₃ 溶液</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>离子浓度只由"溶质浓度 × 化学式中该离子个数"决定，与溶液体积无关！逐一算出 c(Cl⁻) 比较大小即可。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√</span>MgCl₂：c(Cl⁻) = 2 × 2 = 4 mol·L⁻¹，最大。</p>
+                <p><b>B</b>：<span class="rd">×</span>NaCl：c(Cl⁻) = 2.5 × 1 = 2.5 mol·L⁻¹。</p>
+                <p><b>C</b>：<span class="rd">×</span>NaClO 中氯以 ClO⁻ 形式存在，没有 Cl⁻，c(Cl⁻) = 0——陷阱项。</p>
+                <p><b>D</b>：<span class="rd">×</span>AlCl₃：c(Cl⁻) = 1 × 3 = 3 mol·L⁻¹。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①浓度与体积无关——200 mL 与 2 L 的 2 mol·L⁻¹ MgCl₂ 中 c(Cl⁻) 都是 4 mol·L⁻¹，体积只影响物质的量；②NaClO 中的 Cl 是 +1 价（ClO⁻），不是 Cl⁻——"含氯"≠"含 Cl⁻"。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 离子浓度公式：<b>c(离子) = c(溶质) × 化学式中离子角标</b>。比较 c(Cl⁻) 只看 c(溶质)×角标，与体积、离子总数无关。此考点广东卷高频，10 秒一题。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关4 · 误差分析——俯视仰视配对定浓度</div>
+  <span class="loc">【讲义课时精练 T4】</span>
+  <p>配制一定物质的量浓度的溶液时，下列操作会使所配溶液浓度<b>偏高</b>的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>称量时左盘高、右盘低（药品放在左盘）</td></tr>
+        <tr><td class="k">B</td><td>定容时俯视刻度线</td></tr>
+        <tr><td class="k">C</td><td>容量瓶洗净后未干燥</td></tr>
+        <tr><td class="k">D</td><td>摇匀后液面下降，再加水至刻度线</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：B</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>误差分析统一用 c = n/V 双因子法：使"溶质 n 偏大"或"体积 V 偏小"→偏高；反之偏低；与 n、V 无关→无影响。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>左盘高、右盘低（左物右码）：左盘轻→药品质量偏小→n 偏小→<b>偏低</b>。</p>
+                <p><b>B</b>：<span class="gr">√</span>定容俯视：视线偏低→加水不足→V 偏小→<b>偏高</b>。</p>
+                <p><b>C</b>：<span class="rd">×</span>容量瓶未干燥：瓶壁残留水不影响最终定容体积→n、V 均不变→<b>无影响</b>。</p>
+                <p><b>D</b>：<span class="rd">×</span>摇匀后补水：正常挂壁导致液面下降，补水→V 偏大→<b>偏低</b>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①摇匀后液面下降<b>不能补水</b>——刻度线按定容时确定，下降是挂壁所致，补水即稀释；②容量瓶不干燥<b>无影响</b>（定容时会补足体积）；③视线口诀：容量瓶俯视→体积偏小→偏高，仰视→偏低（与量筒方向相反）。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 误差分析"十字诀"：看 n（溶质）与 V（体积）谁变了。高频结论：称量偏小/溅出→偏低；洗涤液未转移→偏低；定容俯视→偏高、仰视→偏低；摇匀后补水→偏低；容量瓶未干燥→无影响。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关5 · 浓硫酸稀释选容量瓶——规格与计算一起想</div>
+  <span class="loc">【讲义课时精练 T6】</span>
+  <p>配制 200 mL 1.84 mol·L⁻¹ 的稀硫酸（浓硫酸密度 1.84 g·cm⁻³，质量分数 98%），下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>稀释时可将水缓慢倒入浓硫酸中</td></tr>
+        <tr><td class="k">B</td><td>应选用 200 mL 容量瓶，用托盘天平称量浓硫酸</td></tr>
+        <tr><td class="k">C</td><td>应量取 20.0 mL 浓硫酸</td></tr>
+        <tr><td class="k">D</td><td>量取浓硫酸时仰视、定容时俯视，均使浓度偏高</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>①稀释操作：酸入水；②无 200 mL 容量瓶，配制 200 mL 按 250 mL 规格计；③由 c=1000ρw/M 求浓硫酸浓度，再用稀释定律 n 守恒求量取体积；④仰视/俯视分别作用于"量取"和"定容"。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>稀释浓硫酸必须"<b>酸入水</b>"（将浓硫酸缓慢注入水中并搅拌），"水入酸"危险。</p>
+                <p><b>B</b>：<span class="rd">×</span>无 200 mL 容量瓶，应选 <b>250 mL</b>；量取浓硫酸用量筒（液体），不用托盘天平。</p>
+                <p><b>C</b>：<span class="rd">×</span>c(浓) = 1000×1.84×98%÷98 = 18.4 mol·L⁻¹。按 250 mL：n = 1.84×0.25 = 0.46 mol，V(浓) = 0.46÷18.4 = 0.025 L = <b>25.0 mL</b>（非 20.0 mL）。</p>
+                <p><b>D</b>：<span class="gr">√</span>量取仰视→实际量取偏多→n 偏大→偏高；定容俯视→V 偏小→偏高，两者都偏高。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①容量瓶规格只能选<b>恰好 ≥ 目标体积</b>的常用规格（100/250/500/1000 mL）——"200 mL 用 200 mL 容量瓶"是错误认知；②稀释定律 V 用 250 mL（规格）而非 200 mL，20.0 mL 是拿 200 算的错解；③量筒俯仰视与容量瓶<b>相反</b>：量筒仰视读数偏小（实际多）。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 浓溶液稀释三步：<b>①c(浓)=1000ρw/M 求浓度 → ②按容量瓶规格定 V₂（非目标体积）→ ③c₁V₁=c₂V₂ 求量取体积</b>。浓硫酸稀释永远"酸入水"。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关6 · 稀释＋电荷守恒——两步计算一条链</div>
+  <span class="loc">【讲义课时精练 T7】</span>
+  <p>某溶液（0.2 L）含 K⁺、SO₄²⁻、Na⁺、Mg²⁺、Cl⁻。已知图甲为各离子浓度条形图（K⁺ 2 mol·L⁻¹、SO₄²⁻ 1 mol·L⁻¹、Na⁺ 1 mol·L⁻¹），图乙为该溶液稀释过程中 c(Mg²⁺) 随总体积的变化曲线（稀释后总体积 1.0 L 时 c(Mg²⁺) = 0.2 mol·L⁻¹）。回答：<br>
+    (1) 原溶液中 c(Mg²⁺) = <span class="em">____</span> mol·L⁻¹；<br>
+    (2) 原溶液中 c(Cl⁻) = <span class="em">____</span> mol·L⁻¹。</p>
+
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 答案：(1) 1 (2) 7</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>(1) 由图乙稀释曲线 + 稀释定律求 c(Mg²⁺)；(2) 由图甲读出各离子浓度，用<b>电荷守恒</b>求 c(Cl⁻)——这是求某未知离子浓度的唯一捷径。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p>(1) 稀释定律 n 守恒：c(原)·V(原) = c(稀)·V(稀)，即 c(Mg²⁺)×0.2 = 0.2×1.0，c(Mg²⁺) = <b>1 mol·L⁻¹</b>。<br>
+            (2) 电荷守恒：2c(K⁺) + 2c(Mg²⁺) + c(Na⁺) = 2c(SO₄²⁻) + c(Cl⁻)，代入 2×2 + 2×1 + 1 = 2×1 + c(Cl⁻)，得 c(Cl⁻) = <b>7 mol·L⁻¹</b>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①电荷守恒中离子浓度<b>必须乘电荷数</b>（Mg²⁺ 乘 2、SO₄²⁻ 乘 2），漏乘是最大失分点；②稀释定律的 V 用稀释前后总体积（0.2 L 与 1.0 L）；③读数带单位（mol·L⁻¹），K⁺ 是 2 mol·L⁻¹ 不是 2 mol。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 电荷守恒式：<b>阳离子浓度×电荷数之和 = 阴离子浓度×电荷数之和</b>。已知大部分离子浓度求某一离子时，电荷守恒是唯一捷径；稀释曲线题"找稀释后某点回代稀释定律"。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 教师备课卡 ==================== -->
+<details class="beike"><summary>📋 备课卡（教师用）</summary>
+  <div class="bkbox">
+    <p><b>课堂节奏（40'）</b>：缺口速览 2' → 核心题1 10'（<span class="em">说3' → 评2' → 讲4' → 收口1'</span>）→ 核心题2 10'（说3' + 讲5' + 收口2'）→ 过关 1–6 学生自主 8' → 小结·作业布置 4' → 机动 6'。</p>
+    <p><b>导入话术（难题前置）</b>："<span class="em">2021 广东 T7 全程没让你算一个数——考的是'这条流水线上每个岗位是谁'。列清单，3 分钟。</span>"</p>
+    <p><b>操作要点</b>：① 左栏原题 sticky 常驻，讨论时无需来回滚动；中间分隔条可拖动调宽（窄屏自动单栏）；② 任务卡限时，同桌互说完必须<span class="em">定人向全班说</span>；③"金钥匙"只收口方法，不替代讨论；④ 四段详解由学生点开自查（首行即"正确答案"卡片）。⑤ 核心题2 是操作图题，条件允许时用实物或投屏实验视频对照：俯视/仰视用"激光笔模拟视线"演示一次，比讲三遍有效。</p>
+    <p><b>页面留白说明（学生页刻意不放的东西）</b>：<span class="em">课堂流程、组织步骤、教师话术一律不上学生页面</span>——页面只留"原题 + 任务 + 详解"。"同桌说 → 定人向全班说 → 看详解自查"这条主线只在本卡留底。</p>
+    <p><b>左下角控制条（字号 ＋ 亮度）</b>：两个透明按钮，点一下换一档，选过自动记住（存在本机浏览器里）。<span class="em">字号</span>三档——1080p 屏用「标准」20px、一般大屏「大」24px（默认）、4K 屏且浏览器未缩放时用「特大」28px。<span class="em">亮度</span>五档 80%–120%——教室灯亮、屏幕泛白看不清时往上切；投影环境暗、屏幕刺眼时往下切。</p>
+    <p><b>65分口径（备课依据，不进学生页面）</b>：配制与滴定的仪器/操作是广东实验选择题常客（2021 T7、2026 开学考）——"六步清单 + 五步查错表"属必拿分；c=n/V 双因子误差分析要过手；离子浓度与电荷守恒计算属能力层。</p>
+    <p><b>📈 真题落点表（本讲 8 题清单，教师用，课堂不投影）</b></p>
+    <table>
+      <tr><th style="width:120px;">年份·卷别</th><th style="width:130px;">形式/缺口</th><th>落点与本讲位置</th></tr>
+      <tr><td class="hl">2021 广东</td><td class="hl">T7</td><td class="hl">选择·仪器（配制+滴定）</td><td class="hl">流程线找仪器（核心题1）</td><td class="hl">True</td></tr>
+      <tr><td class="hl">2026 广东开学考</td><td class="hl">T3</td><td class="hl">选择·操作图</td><td class="hl">四图挑错（核心题2）</td><td class="hl">True</td></tr>
+      <tr><td>2023 全国甲</td><td>T9</td><td>选择·仪器清单</td><td>缺谁补谁（过关1）</td><td>False</td></tr>
+      <tr><td>2024 全国甲</td><td>—</td><td>选择·操作目的</td><td>冷却/转移/摇匀（过关2）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T1</td><td>选择·浓度计算</td><td>c=n/V 双因子（过关3）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T4</td><td>选择·误差分析</td><td>俯视仰视（过关4）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T6</td><td>选择·稀释</td><td>容量瓶规格（过关5）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T7</td><td>填空·稀释+守恒</td><td>电荷守恒（过关6）</td><td>False</td></tr>
+    </table>
+    <p><b>📊 读表结论（选题依据）</b>：广东卷以"仪器/操作规范"考配制（2021 T7），全国卷补"操作目的"视角（2023/2024 甲卷）；讲义课时精练承接计算与误差分析——"规范"与"计算"两条线在 c=n/V 汇合。</p>
+    <p><b>数据来源</b>：广东卷试卷原文（2021 T7 逐字核对）＋ 2026 广东开学考 / 2023·2024 全国甲卷原文＋ 讲义第6讲课时精练 T1/T4/T6/T7＋ 缺口卡片（配制规范、误差分析）＋ 讲义第6讲三层次分层学案。</p>
+  </div>
+</details>
+
+<div class="foot">第6讲 · 物质的量浓度及溶液配制 · 缺口真题训练 3.0 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* 亮度五档 */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

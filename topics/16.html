@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第16讲 氯及其重要化合物 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第16讲　氯及其重要化合物 · 课堂展示</h1>
+</header>
+
+<div class="twocol">
+<main class="colMain">
+
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出实验室用 MnO₂ 和浓盐酸制 Cl₂ 的化学方程式（舍勒法）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「氯气的实验室制法」· 1.实验室制Cl₂的一般方法</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>MnO₂ ＋ 4HCl(浓) <span class="eqw">＝<span class="eqw-c">△</span></span> MnCl₂ ＋ Cl₂↑ ＋ 2H₂O</b>　（浓盐酸 + 加热，MnO₂ 作氧化剂）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 Cl₂ 与水反应的离子方程式（氯水成分来源，歧化）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「氯气和氯水」· 2.氯水的组成（歧化）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Cl₂ ＋ H₂O ⇌ H⁺ ＋ Cl⁻ ＋ HClO</b>　（Cl₂ 既作氧化剂又作还原剂，歧化）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 Cl₂ 与 NaOH 溶液反应的化学方程式（尾气处理 / 制漂白液）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「氯气的实验室制法」· 1.尾气处理</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Cl₂ ＋ 2NaOH ＝ NaCl ＋ NaClO ＋ H₂O</b>　（Cl₂ 歧化，0 价 → −1 和 +1）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 制取五步</b>：发生（MnO₂＋浓HCl△）→ 净化（饱和食盐水除HCl）→ 干燥（浓硫酸）→ 收集（向上排空气/排饱和食盐水）→ 尾气（NaOH溶液）</li>
+  <li><b>② Cl₂ 的氧化性</b>：与 Cu（棕黄色烟）、Fe（→FeCl₃）、H₂（苍白色火焰）；氧化 I⁻、Br⁻、Fe²⁺</li>
+  <li><b>③ 歧化反应</b>：Cl₂ 与水、与碱反应，既作氧化剂又作还原剂</li>
+  <li><b>④ 氯水成分</b>：三分子（Cl₂、H₂O、HClO）＋三离子（H⁺、Cl⁻、ClO⁻）；石蕊先变红后褪色</li>
+  <li><b>⑤ 次氯酸及其盐</b>：HClO 弱酸、强氧化、光照分解；漂白粉有效成分 Ca(ClO)₂、84 消毒液 NaClO，禁止与洁厕灵混用</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷氯和卤素考点与难度研究报告》）</b>
+  <p>· 氯是广东卷<span class="em">"装置实验型"元素</span>——6 年 5 道氯气制备/氯碱/性质装置题，密度全国独一份。</p>
+  <p>· <b style="color:var(--accent)">A类 氯气制备与性质</b>：MnO₂+浓盐酸△、净化干燥收集、H₂ 在 Cl₂ 中苍白色火焰（2021Q17 舍勒法、2022Q8、2024Q8 戴维法）——<span class="em">保分 0.65~0.80</span>。</p>
+  <p>· <b style="color:var(--accent)">B类 氯水/次氯酸/漂白粉</b>：三分四离、HClO 漂白、漂白粉变质、Ag⁺ 检验 Cl⁻——<span class="em">保分 0.70~0.80</span>。</p>
+  <p>· <b style="color:var(--accent)">C类 氯碱工业/电解食盐水</b>：阳极 Cl⁻ 放电得 Cl₂、阴极 H₂＋NaOH、阳离子交换膜（2023Q13、2024Q16）——<span class="em">突破 0.55~0.65，年年考</span>（本讲先吃透元素，氯碱在第35讲专练）；<span class="em">2024 Q16"阳极室减少 351 g"（3 mol Cl₂＋6 mol Na⁺ 迁移守恒）是能力层模板题</span>。</p>
+  <p>· <b style="color:var(--accent)">能力层补充</b>：AgX 定量三步法（Ksp→溶解度→沉淀滴定）——2021 Q17 电导率法测 AgCl 溶解度、2024 滴定测 Cl⁻；<span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：次氯酸 Ka 测定变式（2025Q17 已考）、氯流电池、含氯配离子（[AuCl₄]⁻ 浸金等）——<span class="em">"配位＋定量"是氯的新高地，2024–2026 连续三年进大题</span>。</p>
+  <p>· 📌 STSE 逐字复用与设错：海水制溴镁素材 2021Q4 与 2022Q12 原样重现；聚氯乙烯单体是<span class="em">氯乙烯</span>不是 CH₃CH₂Cl（2025 设错）；卤化银感光、自来水消毒（2026 新素材）——教材原话直接进选项，按素材复习。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① 制Cl₂ -->
+<h3>知识点① · 实验室制 Cl₂：装置流程五步<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「氯气的实验室制法」· 1.实验室制Cl₂的一般方法</span>
+<div class="quiz">
+  <div class="ask">排序：实验室制取并收集干燥 Cl₂，下列装置的连接顺序是？（先讨论，再揭晓）</div>
+  <div class="mat"><span>发生装置（MnO₂＋浓HCl△）</span><span>饱和食盐水（除HCl）</span><span>浓硫酸（干燥）</span><span>向上排空气收集</span><span>NaOH尾气吸收</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">发生 → 饱和食盐水除 HCl → 浓硫酸干燥 → 向上排空气法收集 → NaOH 溶液尾气处理<br>
+      为什么饱和食盐水除 HCl？——Cl₂ 在饱和食盐水中的溶解度极小（同离子效应抑制溶解），而 HCl 极易溶</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">挖空：Cl₂ 的收集方法有____（密度比空气大）和____（Cl₂ 在饱和 NaCl 中溶解度小）；验满可用____试纸靠近瓶口变____即满；尾气用____吸收</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">收集：向上排空气法＋排饱和食盐水法<br>
+      验满：湿润的淀粉-KI 试纸（Cl₂ 氧化 I⁻→I₂→变蓝）或观察瓶口黄绿色<br>
+      尾气：NaOH 溶液（不用石灰水——Ca(OH)₂ 浓度太小，吸收不完全）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考：① KMnO₄ 与浓盐酸制 Cl₂ 需要加热吗？② 用 50 mL 12 mol/L 浓盐酸与足量 MnO₂ 共热，实际收集到的 Cl₂ 为什么远小于理论值？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 不需要加热——KMnO₄、KClO₃、Ca(ClO)₂ 氧化性比 MnO₂ 强：2MnO₄⁻＋10Cl⁻＋16H⁺ ＝ 2Mn²⁺＋5Cl₂↑＋8H₂O<br>
+      ② 原因有二：浓盐酸挥发＋随反应进行盐酸变稀，稀盐酸不再与 MnO₂ 反应——所以 MnO₂ 过量也制不满理论量</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「氯气的实验室制法」· 易错辨析（抢答2题）</span>
+<details class="bianxi"><summary><span class="q">1</span>尾气吸收用NaOH溶液，而不用澄清石灰水——因为NaOH是强碱、吸收更快</summary>
+  <div class="ans"><b>×</b>　真正原因是澄清石灰水中 Ca(OH)₂ 浓度太小，Cl₂ 吸收不完全；NaOH 溶液浓度大、吸收充分。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>实验室用MnO₂和浓盐酸制Cl₂，正确操作顺序是"检查气密性→加MnO₂→加浓盐酸→加热→收集→尾气处理"</summary>
+  <div class="ans"><b>√</b>　标准顺序：①检查气密性 ②加入 MnO₂ 粉末 ③分液漏斗加浓盐酸并滴入 ④缓缓加热 ⑤向上排空气法收集 ⑥NaOH 吸收尾气。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>二氧化锰浓盐酸，加热制氯要记牢；食盐除酸硫酸干，向上排气尾碱泡</p>
+</div>
+
+<!-- 知识点② Cl₂性质 -->
+<h3>知识点② · Cl₂ 的化学性质：氧化性与歧化<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「氯气和氯水」· 1.氯气（2）化学性质</span>
+<div class="quiz">
+  <div class="ask">连线：Cl₂ 与下列物质反应的现象/产物（先讨论，再揭晓）</div>
+  <div class="mat"><span>Cu（点燃）</span><span>Fe（点燃）</span><span>H₂（点燃）</span><span>KI溶液</span><span>FeCl₂溶液</span><span>棕黄色烟</span><span>FeCl₃</span><span>苍白色火焰</span><span>变蓝（I₂）</span><span>棕黄色（Fe³⁺）</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">CuCl₂ ——棕黄色烟<br>
+      2Fe＋3Cl₂<span class="eqw">＝<span class="eqw-c">点燃</span></span> 2FeCl₃（直接生成 +3 价）<br>
+      H₂＋Cl₂<span class="eqw">＝<span class="eqw-c">点燃</span></span> 2HCl——苍白色火焰<br>
+      Cl₂＋2I⁻ ＝ 2Cl⁻＋I₂（淀粉变蓝）；Cl₂＋2Fe²⁺ ＝ 2Cl⁻＋2Fe³⁺（棕黄色）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考：Cl₂ 与水、与碱反应中，Cl₂ 的化合价如何变化？为什么说 Cl₂"既作氧化剂又作还原剂"？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">Cl₂ 中 Cl 为 0 价，反应后一部分降到 −1（Cl⁻），一部分升到 +1（HClO/ClO⁻）——<span class="em">歧化反应</span>，Cl₂ 既被还原又被氧化。<br>
+      关键方程式：Cl₂＋H₂O ⇌ H⁺＋Cl⁻＋HClO；Cl₂＋2NaOH ＝ NaCl＋NaClO＋H₂O</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「氯气和氯水」· 易错辨析（抢答3题）</span>
+<details class="bianxi"><summary><span class="q">1</span>过量的铁粉在少量氯气中加热，充分反应后产物为FeCl₂</summary>
+  <div class="ans"><b>×</b>　Cl₂ 氧化性强，Fe 与 Cl₂ 反应无论 Fe 过量与否都生成 FeCl₃（FeCl₂ 是 Fe³⁺＋Fe 生成的，需在溶液中）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>氯气与强碱反应时既是氧化剂又是还原剂</summary>
+  <div class="ans"><b>√</b>　Cl₂＋2NaOH ＝ NaCl＋NaClO＋H₂O，Cl₂ 发生歧化，既作氧化剂又作还原剂。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>可以用pH试纸测定氯水的pH</summary>
+  <div class="ans"><b>×</b>　氯水中的 HClO 有漂白性，会把 pH 试纸漂白，测不出准确 pH（应用 pH 计）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>铜燃棕黄烟，铁燃三价盐，氢气苍白焰；氯水遇碱歧化，氯气自身既氧又还</p>
+</div>
+
+<!-- 知识点③ 氯水与次氯酸 -->
+<h3>知识点③ · 氯水与次氯酸及其盐<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「氯气和氯水」· 2.氯水的组成与性质（应用举例）</span>
+<div class="quiz">
+  <div class="ask">推理：根据下列实验事实，判断氯水中含有哪种粒子？（先讨论，再揭晓）</div>
+  <div class="mat"><span>新制氯水显黄绿色有刺激性气味</span><span>加AgNO₃生成白色沉淀</span><span>加Na₂CO₃有气泡</span><span>滴石蕊先变红后褪色</span><span>Cl₂</span><span>H⁺</span><span>Cl⁻</span><span>H⁺和HClO</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">显黄绿色 → 含 Cl₂（三分子之一）<br>
+      AgNO₃ 白色沉淀 → 含 Cl⁻（Ag⁺＋Cl⁻＝AgCl↓）<br>
+      Na₂CO₃ 气泡 → 含 H⁺（酸性）<br>
+      石蕊先红后褪色 → 含 H⁺（红）＋HClO（褪色）<br>
+      完整成分：三分子（Cl₂、H₂O、HClO）＋三离子（H⁺、Cl⁻、ClO⁻）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考：将干燥的 Cl₂ 分别通过干燥红布条和湿润红布条，现象有何不同？说明什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">干燥红布条不褪色，湿润红布条褪色——<span class="em">干燥 Cl₂ 无漂白性</span>，Cl₂ 与水反应生成的 HClO 才有漂白性。<br>
+      高频考点：氯气本身不漂白，漂白的是 HClO——Cl₂＋H₂O ⇌ H⁺＋Cl⁻＋HClO</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「次氯酸及其盐」· 1.次氯酸 / 2.漂白液 / 3.漂白粉</span>
+<div class="quiz">
+  <div class="ask">连线：消毒剂与它的有效成分（先讨论，再揭晓）</div>
+  <div class="mat"><span>漂白粉</span><span>漂白液/84消毒液</span><span>氯水</span><span>Ca(ClO)₂</span><span>NaClO</span><span>HClO</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">漂白粉——有效成分 Ca(ClO)₂（2Cl₂＋2Ca(OH)₂ ＝ CaCl₂＋Ca(ClO)₂＋2H₂O）<br>
+      漂白液/84 消毒液——有效成分 NaClO（Cl₂＋2NaOH ＝ NaCl＋NaClO＋H₂O）<br>
+      氯水——漂白靠 HClO<br>
+      漂白原理统一：ClO⁻＋H₂O ⇌ HClO＋OH⁻，HClO 起漂白消毒作用</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「次氯酸及其盐」· 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>"84"消毒液的消毒原理和H₂O₂相同，都是利用其强氧化性</summary>
+  <div class="ans"><b>√</b>　NaClO 有效成分 ClO⁻ 水解生成 HClO，HClO 具强氧化性，能杀菌消毒。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>漂白粉与盐酸可混合使用以提高消毒效果</summary>
+  <div class="ans"><b>×</b>　禁止混用——ClO⁻＋Cl⁻＋2H⁺ ＝ Cl₂↑＋H₂O，产生有毒 Cl₂（归中反应）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>向漂白粉溶液中通入SO₂，生成白色沉淀CaSO₃</summary>
+  <div class="ans"><b>×</b>　SO₂ 有还原性，会被 ClO⁻ 氧化为 SO₄²⁻，生成 CaSO₄（且漂白性减弱）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>NaClO溶液呈碱性，因此可用作消毒剂</summary>
+  <div class="ans"><b>×</b>　作消毒剂是因为 HClO 的强氧化性，不是因为碱性（因果关系错）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>氯水三分子三离子，石蕊先红后褪色；干燥氯气不漂白，漂白全靠次氯酸</p>
+</div>
+
+<!-- 知识点④ 课本基础题 -->
+<h3>知识点④ · 课本基础题精选<span class="p">（约4分钟）</span></h3>
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 16px;margin:8px 0;">
+  <b style="color:var(--blue);">📚 课本检索：人教版《必修 第一册》 P51–52 · 第二节 练习与应用</b>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P52 · 练习与应用 第3题</span>
+<div class="quiz">
+  <div class="ask">在 A 处通入未经干燥的氯气，当关闭 B 处弹簧夹时，C 处红布条看不到明显现象；打开 B 后，C 处红布条逐渐褪色。则 D 瓶中盛放的溶液可能是（　　）①饱和 NaCl 溶液　②NaOH 溶液　③H₂O　④浓硫酸</div>
+  <div class="mat"><span>A. ①②</span><span>B. ①③</span><span>C. ②④</span><span>D. ③④</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　关闭 B 时氯气经过 D 瓶：若 D 是 NaOH（吸收 Cl₂）或浓硫酸（干燥 Cl₂），C 处红布条不褪色；打开 B 后氯气不经 D 直接进 C，湿润氯气使红布条褪色。呼应"干燥 Cl₂ 不漂白，漂白靠 HClO"。</div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P52 · 练习与应用 第4题</span>
+<div class="quiz">
+  <div class="ask">填空：(1) 常温下将 Cl₂ 通入 NaOH 溶液得到漂白液，反应的离子方程式为____，该漂白液的有效成分是____；(2) 检验某溶液中是否含 Cl⁻ 的方法是____</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">(1) <b>Cl₂＋2OH⁻ ＝ Cl⁻＋ClO⁻＋H₂O</b>，有效成分是<b>次氯酸钠（NaClO）</b><br>
+      (2) 取样 → 加稀硝酸酸化 → 加 AgNO₃ 溶液 → 有白色沉淀（Ag⁺＋Cl⁻＝AgCl↓）不溶于稀 HNO₃，则含 Cl⁻</div>
+  </details>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P51 · 练习与应用 第1题</span>
+<div class="quiz">
+  <div class="ask">下列生活中的物质与其有效成分的化学式、用途的对应关系中，不正确的是（　　）A. 食盐 NaCl 做调味品　B. 小苏打 Na₂CO₃ 做发酵粉　C. 复方氢氧化铝片 Al(OH)₃ 做抗酸药　D. 漂白粉 Ca(ClO)₂ 做消毒剂</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B</b>　小苏打的有效成分是 <b>NaHCO₃</b>（不是 Na₂CO₃，Na₂CO₃ 是纯碱/苏打）。A、C、D 均正确（漂白粉有效成分 Ca(ClO)₂ 做消毒剂）。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~6 每小题 3 分，7~9 每小题 4 分，10 题 20 分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底）</h4>
+    <ul>
+      <li>第 1~6 题：制氯气、Cl₂ 性质、氯水、漂白粉基础判断（18 分，送分盘）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档）</h4>
+    <ul>
+      <li>第 7~9 题：氯水成分、漂白性、次氯酸盐性质（12 分）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分）</h4>
+    <ul>
+      <li>第 10 题：盐酸与 MnO₂ 反应探究、装置与电极实验（20 分，<span class="rd">✂ 可放弃</span>）</li>
+    </ul>
+  </div>
+</div>
+<p class="tip">📖 课本 人教版必修第一册 P51 练习与应用 第5题（NaCl 转化：氯碱/漂白粉）、第6题（漂白粉存放）可作课后巩固续练。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：氯水三分子四离子，新制久置变稀盐酸；干燥Cl₂不漂白，漂白靠HClO…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：液氯与氯水成分为什么不同？Cl₂通入紫色石蕊试液先红后褪的两步原因？"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏JS（已改键名） ===== */
+
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c16_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c16_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+
+</script>
+
+<script>
+/* ===== 左下角控制条：字号三档切换（标准/大/特大）===== */
+(function(){
+  var FS = {
+    s:{base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px'},
+    l:{base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 's';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1); r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-h3',v.h3); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* ===== 左下角控制条：亮度五档（80%-120%）===== */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur)+1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

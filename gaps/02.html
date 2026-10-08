@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2讲 离子反应 离子方程式 · 缺口真题训练</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+  table.opt{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.opt th{background:var(--panel3);color:var(--gold);padding:6px 8px;border:1px solid var(--border);text-align:left;}
+  table.opt td{padding:6px 8px;border:1px solid var(--border);color:var(--text);vertical-align:top;}
+  table.opt td.k{color:var(--blue);font-weight:700;text-align:center;width:56px;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  :root{
+    --fs-base:24px;--fs-h1:38px;--fs-part:30px;--fs-stem:21px;
+    --fs-opt:20px;--fs-sm:18px;--fs-sub:16px;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+  table.opt{font-size:var(--fs-opt);}
+
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+<header>
+  <h1>第2讲 · 离子反应 离子方程式 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">G13 与量有关·连续型</span> · <span class="em">G14 与量有关·配比型/竞争型</span> · <span class="em">G26 氧化还原型共存</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">2分钟</span></div>
+<ul class="kps">
+  <li><b>与量有关·反应连续型</b>：同一反应物用量不同产物不同：第一步生成物与过量反应物继续反应。典型体系：CO₂/SO₂ 与碱（少量→正盐、过量→酸式盐）、Al³⁺ 与强碱（先生成 Al(OH)₃ 后溶解）。</li>
+  <li><b>与量有关·物质配比型（少定多变）</b>：少量物质定为 1 mol（"少定"），多离子按组成配比（"多变"）。典型：NaHCO₃ 与少量 Ba(OH)₂、Ba(OH)₂ 与 NH₄HSO₄ 按 1:2、Ca(HCO₃)₂ 与 NaOH。</li>
+  <li><b>与量有关·先后反应型（竞争）</b>：多种离子竞争同一反应物，遵循"先强后弱"：OH⁻ 先中和 H⁺ 再与 NH₄⁺ 反应；Cl₂ 先氧化还原性强的离子（Fe²⁺&gt;Br⁻、I⁻&gt;Fe²⁺）。</li>
+  <li><b>氧化还原竞争反应与共存判断</b>：还原性顺序：S²⁻&gt;SO₃²⁻&gt;I⁻&gt;Fe²⁺&gt;Br⁻。共存判断四大模型：H⁺+NO₃⁻ 有强氧化性、Fe³⁺ 氧化 I⁻/S²⁻ 不氧化 Br⁻、ClO⁻ 全条件氧化、多还原剂竞争氧化。另注意络合（Fe³⁺+SCN⁻/CN⁻）与双水解。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">讲 ≈10′ · 学生说评 ≈12′</span></div>
+<p class="tip">左边原题常驻，按住中间分隔条可左右拖动调宽</p>
+
+<div class="quiz">
+  <div class="ask">核心题1 · 无色、酸性、碱性、"加铝放氢"——四组离子的四道门<span class="bl">〔本讲说题入口〕</span></div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2025·广东卷 T3】</span>
+      <div class="qsub"><span class="t">原题</span>下列各组离子在指定溶液中能大量共存的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>在无色透明溶液中：K⁺、Cu²⁺、NO₃⁻、SO₄²⁻</td></tr>
+        <tr><td class="k">B</td><td>在酸性溶液中：Fe²⁺、NO₃⁻、Cl⁻、Na⁺</td></tr>
+        <tr><td class="k">C</td><td>在碱性溶液中：Na⁺、CO₃²⁻、SO₄²⁻、K⁺</td></tr>
+        <tr><td class="k">D</td><td>加入铝粉能产生氢气的溶液中：NH₄⁺、Cl⁻、HCO₃⁻、SO₄²⁻</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 3 分钟）</b>
+        <p>① 逐组先读"门牌"：无色／酸性／碱性／加铝放氢，各自先排除什么？</p>
+        <p>② A 组的 Cu²⁺ 撞了哪扇门？B 组的 Fe²⁺ 撞了哪扇（注意 NO₃⁻ 在酸性里变什么）？</p>
+        <p>③ D 组"加铝放氢"为什么是"酸或碱"双门？NH₄⁺、HCO₃⁻ 各撞哪一扇？</p>
+        <p>④ C 组四个离子在碱性里还互相反应吗？四道门全过得通吗？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 无色排除有色离子：Cu²⁺（蓝）、Fe³⁺（黄）、Fe²⁺（浅绿）、MnO₄⁻（紫）。</p>
+            <p>② 隐性氧化还原第一杀手：<span class="em">H⁺ ＋ NO₃⁻</span> 组合逢还原性离子（Fe²⁺、I⁻、S²⁻、SO₃²⁻）必反应——B 组就是死在这。</p>
+            <p>③ "加入铝粉放 H₂"的溶液<span class="em">可能是酸也可能是强碱</span>：酸性时 HCO₃⁻ 不共存，碱性时 NH₄⁺、HCO₃⁺ 都不行——D 组两头堵死。</p>
+            <p>④ C 组 Na⁺、CO₃²⁻、SO₄²⁻、K⁺ 在碱性下互不反应，四道门全过。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 共存题四道门按序过——<span class="em">先"无色"再"酸碱"再"氧化还原"最后"特殊表述"</span>；酸性＋NO₃⁻ 是最强的隐形杀手，逢 Fe²⁺/I⁻/S²⁻ 必死。C 组走完全部四道门一个不撞，才敢说"大量共存"。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：C</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>共存题先抓"限定条件"：无色（排有色离子）→ 酸碱性（排与 H⁺/OH⁻ 反应的离子）→ 氧化还原（H⁺+NO₃⁻ 强氧化）→ 特殊表述（与 Al 放 H₂ 的溶液是酸或碱）。逐组核对，A/B/D 各有硬伤，C 组互不反应。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> Cu²⁺ 呈<b>蓝色</b>，与"无色透明"矛盾——隐含条件"无色"优先排除有色离子（Cu²⁺蓝、Fe³⁺棕黄、Fe²⁺浅绿、MnO₄⁻紫红）。</p>
+                <p><b>B</b>：<span class="rd">×</span> 酸性溶液中 H⁺+NO₃⁻ 组合具<b>强氧化性</b>，将 Fe²⁺ 氧化为 Fe³⁺——G26 核心模型。</p>
+                <p><b>C</b>：<span class="gr">√ Na⁺、CO₃²⁻、SO₄²⁻、K⁺ 在碱性条件下互不反应</span>。</p>
+                <p><b>D</b>：<span class="rd">×</span> "加入铝粉能产生氢气"的溶液为<b>强酸性（无 NO₃⁻）或强碱性</b>：HCO₃⁻ 与 H⁺、OH⁻ 均反应（两性离子），NH₄⁺ 与 OH⁻ 生成 NH₃·H₂O，酸性碱性都不能共存。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①"无色"≠"透明"，透明可有色；②"与 Al 反应放 H₂"的溶液酸碱性不定，但<b>酸性中不能含 NO₃⁻</b>（否则生成 NO 不放 H₂）；③HCO₃⁻ 是两性离子，遇强酸强碱都不共存。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 共存判断五步法：<b>颜色 → 酸碱性 → 复分解（沉淀/气体/弱电解质）→ 氧化还原 → 络合/双水解</b>。看到"酸性+NO₃⁻"立即联想氧化 Fe²⁺、I⁻、S²⁻、SO₃²⁻——这是 G26 的命题锚点。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l02a')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l02a">
+          <p class="myq-tip">三个方向任选：换限定（"加铝放氢"改"滴加 KSCN 显红色"）· 换离子组（把 Fe²⁺ 换成 I⁻ 再判 B）· 加无色陷阱（把 MnO₄⁻ 藏进 C 组）</p>
+          <textarea id="qa-in-l02a" placeholder="把你改编的题目写在这里……" oninput="saveQA('l02a')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz">
+  <div class="ask">核心题2 · Ba(OH)₂ 撞上 NH₄HSO₄：1:2 里 OH⁻ 到底给谁</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2022·全国甲卷 T11】</span>
+      <div class="qsub"><span class="t">原题</span>能正确表示下列反应的离子方程式为（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>硫化钠溶液和硝酸混合：S²⁻+2H⁺=H₂S↑</td></tr>
+        <tr><td class="k">B</td><td>明矾溶液与过量氨水混合：Al³⁺+4NH₃+2H₂O=AlO₂⁻+4NH₄⁺</td></tr>
+        <tr><td class="k">C</td><td>硅酸钠溶液中通入二氧化碳：SiO₃²⁻+CO₂+H₂O=HSiO₃⁻+HCO₃⁻</td></tr>
+        <tr><td class="k">D</td><td>将等物质的量浓度的 Ba(OH)₂ 和 NH₄HSO₄ 溶液以体积比 1:2 混合：Ba²⁺+2OH⁻+2H⁺+SO₄²⁻=BaSO₄↓+2H₂O</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 4 分钟）</b>
+        <p>① "少定多变"：把 1 mol Ba(OH)₂ 定下来，Ba²⁺ 和 OH⁻ 各多少 mol？</p>
+        <p>② 2 mol NH₄HSO₄ 提供 2 mol H⁺——OH⁻ 先中和 H⁺ 还是先跟 NH₄⁺ 反应？</p>
+        <p>③ OH⁻ 用完后 NH₄⁺ 还动得了吗？正确方程式里该不该出现 NH₄⁺？</p>
+        <p>④ B 项氨水"过量"为什么不能写 AlO₂⁻？C 项产物 HSiO₃⁻ 为什么不对？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 竞争顺序：<span class="em">OH⁻ 先中和强酸性 H⁺</span>，H⁺ 耗尽才轮到 NH₄⁺。</p>
+            <p>② 1:2 恰好把 2 mol OH⁻ 全耗在 2 mol H⁺ 上，NH₄⁺ 全程旁观——D 正确。</p>
+            <p>③ Ba²⁺ 与 SO₄²⁻ 按 1:1 恰好沉淀完，方程式里不能漏。</p>
+            <p>④ 氨水是弱碱<span class="em">不拆</span>、过量氨水也不能溶解 Al(OH)₃（B 错）；硅酸是难溶弱酸，SiO₃²⁻ 遇 CO₂ 应得 H₂SiO₃ 沉淀，不写 HSiO₃⁻（C 错）。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 "少定多变"三步：<span class="em">把少量物质定 1 mol → 按组成写全离子 → 让"最需要的"（H⁺）先反应</span>。配比型方程式对错，先看 OH⁻ 的分配，再看沉淀完不完整，最后查电荷——顺序错一步，全盘皆错。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>A 硝酸强氧化（G26）、B 氨水弱碱不拆+产物、C 硅酸沉淀与用量、D 配比型"少定多变"。D 按 1:2 的量比：1 mol Ba(OH)₂ 提供 1 mol Ba²⁺+2 mol OH⁻，恰好与 2 mol NH₄HSO₄ 中的 2 mol H⁺ 中和，<b>OH⁻ 全部消耗，不涉及 NH₄⁺</b>。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 硝酸有<b>强氧化性</b>，S²⁻ 被氧化（生成 S 或 SO₄²⁻），不是简单的 S²⁻+2H⁺=H₂S↑。</p>
+                <p><b>B</b>：<span class="rd">×</span> NH₃·H₂O 是弱电解质不拆，且 <b>Al(OH)₃ 不溶于过量氨水</b>：Al³⁺+3NH₃·H₂O=Al(OH)₃↓+3NH₄⁺。</p>
+                <p><b>C</b>：<span class="rd">×</span> 硅酸酸性弱于碳酸，应生成 H₂SiO₃↓：SiO₃²⁻+CO₂+H₂O=H₂SiO₃↓+CO₃²⁻（CO₂ 过量时生成 HCO₃⁻）——连续型（G13）。</p>
+                <p><b>D</b>：<span class="gr">√ 配比型：以 Ba(OH)₂ 为基准（少定），1 Ba²⁺ 配 1 SO₄²⁻、2 OH⁻ 配 2 H⁺</span>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ G15 竞争顺序：OH⁻ 与 H⁺、NH₄⁺ 反应有先后——<b>先中和 H⁺，再与 NH₄⁺ 反应</b>。所以 1:2 混合时 OH⁻ 恰好只与 H⁺ 反应；若 OH⁻ 过量，才进一步与 NH₄⁺ 生成 NH₃·H₂O。Al(OH)₃ 只溶于强碱，不溶于氨水。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 配比型书写流程：<b>定少（少量物质=1 mol）→ 配比（各离子按化学式组成比）→ 写式（另一物质按需提供离子）</b>。Ba(OH)₂ 与 NH₄HSO₄ 的 1:1 / 1:2 / 2:3 三式是 G14 的经典变式，务必会写。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l02b')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l02b">
+          <p class="myq-tip">三个方向任选：改配比（Ba(OH)₂:NH₄HSO₄ = 1:1 时方程式怎么变）· 换体系（NaHSO₄ 与 Ba(OH)₂ 等体积等浓度混合）· 改设问（单独写"OH⁻ 与 NH₄⁺"反应的离子方程式）</p>
+          <textarea id="qa-in-l02b" placeholder="把你改编的题目写在这里……" oninput="saveQA('l02b')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 过关题 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 过关题<span class="tm">自主限时 ≈8′</span></div>
+<p class="tip">先独立作答，再点开详解自查</p>
+
+<div class="quiz">
+  <div class="ask">过关1 · "六看"查正误——拆不拆、量多少、电荷平不平</div>
+  <span class="loc">【2021·广东卷 T15】</span>
+  <p>宏观辨识与微观探析是化学学科核心素养之一。下列物质性质实验对应的反应方程式书写正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>Na₂O₂ 放入水中：Na₂O₂+H₂O=2NaOH+O₂↑</td></tr>
+        <tr><td class="k">B</td><td>H₂O(g) 通过灼热铁粉：3H₂O+2Fe=Fe₂O₃+3H₂</td></tr>
+        <tr><td class="k">C</td><td>铜丝插入热的浓硫酸中：Cu+H₂SO₄=CuSO₄+H₂↑</td></tr>
+        <tr><td class="k">D</td><td>将 SO₂ 通入酸性 KMnO₄ 溶液中：5SO₂+2MnO₄⁻+2H₂O=5SO₄²⁻+2Mn²⁺+4H⁺</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>方程式正误"六看"：一看拆分、二看反应原理、三看符号（↑↓⇌）、四看条件（浓稀/温度）、五看守恒（质量/电荷/电子）、六看用量。逐项套用，A 配平、B 产物、C 浓稀条件均错，D 全部符合。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 未配平：应为 2Na₂O₂+2H₂O=4NaOH+O₂↑。</p>
+                <p><b>B</b>：<span class="rd">×</span> 铁与水蒸气高温生成 Fe₃O₄ 而非 Fe₂O₃：3Fe+4H₂O(g) <span class="eq">△</span> Fe₃O₄+4H₂。</p>
+                <p><b>C</b>：<span class="rd">×</span> 铜与<b>浓</b>H₂SO₄ 加热生成 SO₂ 不是 H₂：Cu+2H₂SO₄(浓) <span class="eq">△</span> CuSO₄+SO₂↑+2H₂O（浓稀条件决定产物）。</p>
+                <p><b>D</b>：<span class="gr">√ SO₂ 被 MnO₄⁻ 氧化为 SO₄²⁻，得失电子（5:2）、电荷、原子全部守恒</span>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 浓稀条件三连：<b>浓 H₂SO₄ 氧化性产物 SO₂、稀 H₂SO₄ 与活泼金属放 H₂；浓硝酸产物 NO₂、稀硝酸产物 NO；MnO₄⁻ 酸性强氧化、中性/碱性变弱</b>。Na₂O₂ 与水的方程式"配平"是送分陷阱。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 广东卷"方程式书写正误"年年考，锁定三高频坑：<b>配平（原子/电荷守恒）、产物与条件（浓稀、温度）、物质的拆分（氧化物/难溶物/弱电解质不拆）</b>。先快速排除"原理明显错"的选项，再细算守恒。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关2 · 难溶物不拆——2024 广东 T17(3) 的"沉钴"怎么写</div>
+  <span class="loc">【2024·广东卷 T17(3)】</span>
+  <p>工业锅炉需定期除水垢，其中的硫酸钙用纯碱溶液处理时，发生反应：<br>
+    <span class="eq">CaSO₄(s) + CO₃²⁻(aq) = ＿＿＿＿＿＿</span>（沉淀转化）</p>
+
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 答案：CaCO₃(s) + SO₄²⁻(aq)</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>沉淀转化遵循"溶解度大的向溶解度小的转化"：CaCO₃ 比 CaSO₄ 更难溶，纯碱溶液中 CO₃²⁻ 置换出 SO₄²⁻。书写关键：<b>两种难溶盐都不拆</b>，可溶离子拆写。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><span class="gr">CaSO₄(s) + CO₃²⁻(aq) = CaCO₃(s) + SO₄²⁻(aq)</span><br>
+            CaSO₄、CaCO₃ 均难溶于水，在离子方程式中<b>保留化学式不拆</b>；CO₃²⁻、SO₄²⁻ 是可溶的，拆成离子形式。该式也是溶解平衡移动的体现：CO₃²⁻ 降低 c(Ca²⁺)，促使 CaSO₄ 不断溶解。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 三大拆分陷阱：①<b>难溶物</b>（CaCO₃、MgCO₃、FeS、BaSO₄）不拆；②<b>过氧化物</b>（Na₂O₂）不能拆成 O₂²⁻；③<b>弱电解质</b>（NH₃·H₂O、CH₃COOH、H₂O）不拆。CaSO₄ 微溶但此处作固体反应物，不拆。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 书写沉淀转化离子方程式模板：<b>难溶物(s)+可溶离子(aq)=更难溶物(s)+可溶离子(aq)</b>。2024 广东 T17、2024 湖南 T6C、2022 湖南等多卷考查，是"难溶物不拆"的必会题。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关3 · 强弱分明——NH₃·H₂O、浓硫酸里的拆写规则</div>
+  <span class="loc">【2024·新课标卷】</span>
+  <p>对于下列过程中发生的化学反应，相应离子方程式正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>试管壁上的银镜用稀硝酸清洗：Ag+2H⁺+NO₃⁻=Ag⁺+NO₂↑+H₂O</td></tr>
+        <tr><td class="k">B</td><td>工业废水中的 Pb²⁺ 用 FeS 去除：Pb²⁺+S²⁻=PbS↓</td></tr>
+        <tr><td class="k">C</td><td>海水提溴过程中将溴吹入 SO₂ 吸收塔：Br₂+SO₂+2H₂O=4H⁺+2Br⁻+SO₄²⁻</td></tr>
+        <tr><td class="k">D</td><td>用草酸标准溶液测定高锰酸钾溶液的浓度：5C₂O₄²⁻+2MnO₄⁻+16H⁺=10CO₂↑+2Mn²⁺+8H₂O</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>四选项四类陷阱：A 浓稀条件（稀硝酸产物）、B 难溶物拆分（FeS）、C 氧化还原离子方程式（正确）、D 弱酸拆分（草酸）。先排除拆分错误项，再核对守恒。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> <b>稀</b>硝酸还原产物是 NO 不是 NO₂：3Ag+4H⁺+NO₃⁻=3Ag⁺+NO↑+2H₂O。</p>
+                <p><b>B</b>：<span class="rd">×</span> FeS 是<b>难溶物</b>不能拆成 S²⁻：应写 Pb²⁺+FeS=PbS↓+Fe²⁺。</p>
+                <p><b>C</b>：<span class="gr">√ Br₂ 氧化 SO₂：Br₂+SO₂+2H₂O=4H⁺+2Br⁻+SO₄²⁻，电子、电荷、原子均守恒</span>。</p>
+                <p><b>D</b>：<span class="rd">×</span> 草酸 H₂C₂O₄ 是<b>弱酸</b>不能拆成 C₂O₄²⁻：应写 5H₂C₂O₄+2MnO₄⁻+6H⁺=10CO₂↑+2Mn²⁺+8H₂O。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 拆分判断口诀：<b>强酸强碱可溶盐，拆；弱酸弱碱难溶物，不拆；氧化物气体单质，不拆</b>。草酸、醋酸、氢氟酸、NH₃·H₂O 都是"看起来能拆实则不拆"的高频陷阱。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G17 关联：陌生反应的拆分判断，先写化学方程式配平，再逐物质判断"类别→溶解性→拆不拆"。稀硝酸产 NO、浓硝酸产 NO₂ 的浓稀条件辨析是氧化还原离子方程式的必考点。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关4 · 多因素共存——无色＋酸碱＋氧化还原三重门叠满</div>
+  <span class="loc">【2024·浙江 1 月选考】</span>
+  <p>在溶液中能大量共存的离子组是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>H⁺、I⁻、Ba²⁺、NO₃⁻</td></tr>
+        <tr><td class="k">B</td><td>Fe³⁺、K⁺、CN⁻、Cl⁻</td></tr>
+        <tr><td class="k">C</td><td>Na⁺、SiO₃²⁻、Br⁻、Ca²⁺</td></tr>
+        <tr><td class="k">D</td><td>NH₄⁺、SO₄²⁻、CH₃COO⁻、HCO₃⁻</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>四组离子四类陷阱：A 硝酸氧化 I⁻（G26）、B Fe³⁺ 与 CN⁻ 络合（G25）、C 生成沉淀、D 水解微弱互不促进。逐组按"氧化还原→络合→沉淀→双水解"排查。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> H⁺+NO₃⁻ 具强氧化性，<b>氧化 I⁻</b>：2I⁻+2H⁺+NO₃⁻=I₂+NO₂↑+H₂O（或生成 NO）。</p>
+                <p><b>B</b>：<span class="rd">×</span> Fe³⁺ 与 CN⁻ 发生<b>络合反应</b>生成 Fe(CN)₆³⁻（配离子），不能共存（G25）。</p>
+                <p><b>C</b>：<span class="rd">×</span> Ca²⁺ 与 SiO₃²⁻ 生成 <b>CaSiO₃ 沉淀</b>。</p>
+                <p><b>D</b>：<span class="gr">√ NH₄⁺、CH₃COO⁻、HCO₃⁻ 均可水解，但水解微弱、彼此不促进，能大量共存</span>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①"可水解"≠"不能共存"——只有<b>双水解相互促进</b>（Al³⁺ 与 HCO₃⁻/CO₃²⁻/S²⁻/AlO₂⁻）才不能共存；②络合反应是独立的一类不共存原因（Fe³⁺+SCN⁻、Fe³⁺+CN⁻、Cu²⁺+NH₃ 过量等），别漏判。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G26 还原性顺序速记：<b>S²⁻ &gt; SO₃²⁻ &gt; I⁻ &gt; Fe²⁺ &gt; Br⁻</b>。H⁺+NO₃⁻（硝酸）能氧化前四种；Fe³⁺ 只氧化 S²⁻、SO₃²⁻、I⁻，不氧化 Br⁻——遇到"Fe³⁺ 与 Br⁻ 共存"是对的组合。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关5 · 多选排查——逐项"找茬"式正误判断</div>
+  <span class="loc">【2022·湖南卷（多选）】</span>
+  <p>下列离子方程式正确的是（　　）<span class="q-type" style="border-color:var(--accent-dim);color:var(--tag);font-size:12.5px;border:1px dashed var(--accent-dim);padding:2px 10px;border-radius:999px;margin-left:8px;">不定项</span></p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>Cl₂ 通入冷的 NaOH 溶液：Cl₂+2OH⁻=Cl⁻+ClO⁻+H₂O</td></tr>
+        <tr><td class="k">B</td><td>用醋酸和淀粉-KI 溶液检验加碘盐中的 IO₃⁻：IO₃⁻+5I⁻+6H⁺=3I₂+3H₂O</td></tr>
+        <tr><td class="k">C</td><td>FeSO₄ 溶液中加入 H₂O₂ 产生沉淀：2Fe²⁺+H₂O₂+4H₂O=2Fe(OH)₃↓+4H⁺</td></tr>
+        <tr><td class="k">D</td><td>NaHCO₃ 溶液与少量的 Ba(OH)₂ 溶液混合：HCO₃⁻+Ba²⁺+OH⁻=BaCO₃↓+H₂O</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 答案：AC</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>多选逐一判定：A 歧化正确；B 醋酸弱酸拆分错误；C 氧化+水解配平正确；D 配比型"少定多变"经典错误——<b>少量 Ba(OH)₂ 为基准，1 个 Ba²⁺ 必须配 2 个 HCO₃⁻</b>。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√ Cl₂ 与冷 NaOH 歧化：Cl₂+2OH⁻=Cl⁻+ClO⁻+H₂O</span>（Cl₂ 单质不拆）。</p>
+                <p><b>B</b>：<span class="rd">×</span> <b>醋酸是弱酸</b>，不能拆成 H⁺：应写 IO₃⁻+5I⁻+6CH₃COOH=3I₂+3H₂O+6CH₃COO⁻。</p>
+                <p><b>C</b>：<span class="gr">√ Fe²⁺ 被 H₂O₂ 氧化为 Fe³⁺，水解生成 Fe(OH)₃ 沉淀，配平、电荷守恒均成立</span>。</p>
+                <p><b>D</b>：<span class="rd">×</span> NaHCO₃ 过量、Ba(OH)₂ 少量，<b>"少定多变"以 Ba(OH)₂ 为基准</b>：1 Ba²⁺ 配 2 OH⁻、2 HCO₃⁻，正确为 2HCO₃⁻+Ba²⁺+2OH⁻=BaCO₃↓+CO₃²⁻+2H₂O。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ G14 最经典陷阱：<b>HCO₃⁻+Ba²⁺+OH⁻=BaCO₃↓+H₂O 看似"原子守恒"但配比错误</b>——少量 Ba(OH)₂ 的 2 个 OH⁻ 必须有 2 个 HCO₃⁻ 去中和，多出的 CO₃²⁻ 留在溶液中。判断"少定多变"先找少量物质。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ Ca(HCO₃)₂/NaHCO₃ 与少量碱（Ba(OH)₂/Ca(OH)₂）反应固定模板：<b>2HCO₃⁻+M²⁺+2OH⁻=MCO₃↓+CO₃²⁻+2H₂O</b>；与过量碱反应：HCO₃⁻+OH⁻+M²⁺=MCO₃↓+H₂O。对比记忆，一题吃透 G14。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关6 · 守恒＋用量——连续反应按配比算到底</div>
+  <span class="loc">【2022·浙江 1 月选考 T16】</span>
+  <p>下列反应的离子方程式<b>不正确</b>的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>盐酸中滴加 Na₂SiO₃ 溶液：SiO₃²⁻+2H⁺=H₂SiO₃↓</td></tr>
+        <tr><td class="k">B</td><td>Na₂CO₃ 溶液中通入过量 SO₂：CO₃²⁻+2SO₂+H₂O=2HSO₃⁻+CO₂</td></tr>
+        <tr><td class="k">C</td><td>乙醇与 K₂Cr₂O₇ 酸性溶液反应：3CH₃CH₂OH+2Cr₂O₇²⁻+16H⁺=3CH₃COOH+4Cr³⁺+11H₂O</td></tr>
+        <tr><td class="k">D</td><td>溴与冷的 NaOH 溶液反应：Br₂+OH⁻=Br⁻+BrO⁻+H₂O</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>题目选"不正确"项。A 沉淀、B 过量 SO₂ 连续型、C 氧化还原配平均正确；D 是<b>电荷不守恒</b>的典型错误——左侧总电荷 -1，右侧 -2，必须配 2 个 OH⁻。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：√ 生成硅酸沉淀，正确。</p>
+                <p><b>B</b>：<span class="gr">√ G13 连续型：过量 SO₂ 使 CO₃²⁻ 转化为酸式盐 HSO₃⁻，并放出 CO₂——SO₂ 过量时绝不生成 SO₃²⁻</span>。</p>
+                <p><b>C</b>：√ 乙醇被 Cr₂O₇²⁻ 氧化为乙酸，有机物以分子形式书写，配平正确。</p>
+                <p><b>D</b>：<span class="rd">× 电荷不守恒：左边 (-1)×1，右边 (-1)+(-1)=-2</span>，应为 Br₂+2OH⁻=Br⁻+BrO⁻+H₂O。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 守恒三查：<b>质量守恒 → 电荷守恒 → 电子守恒</b>。D 项单看原子数"貌似平衡"，但左右电荷不等——凡写含 OH⁻ 的反应，先数左右电荷再动笔。连续型口诀：<b>CO₂/SO₂ 少量生成正盐，过量生成酸式盐</b>。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G13 连续型三大体系：CO₂（SO₂）与碱、Al³⁺ 与强碱、CO₂ 通入偏铝酸盐——"第一步产物被过量反应物继续消耗"。写连续型方程式的通法：<b>分步写 → 判断过量 → 合并总式</b>。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 教师备课卡 ==================== -->
+<details class="beike"><summary>📋 备课卡（教师用）</summary>
+  <div class="bkbox">
+    <p><b>课堂节奏（40'）</b>：缺口速览 2' → 核心题1 10'（<span class="em">说3' → 评2' → 讲4' → 收口1'</span>）→ 核心题2 10'（说3' + 讲5' + 收口2'）→ 过关 1–6 学生自主 8' → 小结·作业布置 4' → 机动 6'。</p>
+    <p><b>导入话术（难题前置）</b>：一上课把核心题2 的 D 项原样甩上屏——"<span class="em">1:2 混合，OH⁻ 到底先给谁？写完这道题，'少定多变'四个字就是你的了。</span>"再进缺口速览。</p>
+    <p><b>操作要点</b>：① 左栏原题 sticky 常驻，讨论时无需来回滚动；中间分隔条可拖动调宽（窄屏自动单栏）；② 任务卡限时，同桌互说完必须<span class="em">定人向全班说</span>；③"金钥匙"只收口方法，不替代讨论；④ 四段详解由学生点开自查（首行即"正确答案"卡片）。⑤ 本讲核心题2 是配比型样板，可让学生先在草稿上列"1 mol Ba(OH)₂ → 2 mol OH⁻ 的去向清单"再讨论。</p>
+    <p><b>页面留白说明（学生页刻意不放的东西）</b>：<span class="em">课堂流程、组织步骤、教师话术一律不上学生页面</span>——页面只留"原题 + 任务 + 详解"。"同桌说 → 定人向全班说 → 看详解自查"这条主线只在本卡留底。</p>
+    <p><b>左下角控制条（字号 ＋ 亮度）</b>：两个透明按钮，点一下换一档，选过自动记住（存在本机浏览器里）。<span class="em">字号</span>三档——1080p 屏用「标准」20px、一般大屏「大」24px（默认）、4K 屏且浏览器未缩放时用「特大」28px。<span class="em">亮度</span>五档 80%–120%——教室灯亮、屏幕泛白看不清时往上切；投影环境暗、屏幕刺眼时往下切。</p>
+    <p><b>65分口径（备课依据，不进学生页面）</b>：离子共存与正误判断是广东卷选择题主力区（2025 T3 共存、2021 T15 书写正误）——"四道门 + 六看"两套检查表必背，属必拿分；与量有关的离子方程式（G13/G14）属能力层主战场，配比型"少定多变"要过手；多选排查（湖南卷）练严谨度，广东不考多选但逻辑同源。</p>
+    <p><b>📈 真题落点表（本讲 8 题清单，教师用，课堂不投影）</b></p>
+    <table>
+      <tr><th style="width:120px;">年份·卷别</th><th style="width:130px;">形式/缺口</th><th>落点与本讲位置</th></tr>
+      <tr><td class="hl">2025 广东</td><td class="hl">T3</td><td class="hl">选择·离子共存（G26）</td><td class="hl">隐含条件四道门（核心题1）</td><td class="hl">True</td></tr>
+      <tr><td>2021 广东</td><td>T15</td><td>选择·方程式正误</td><td>书写"六看"检查（过关1）</td><td>False</td></tr>
+      <tr><td>2024 广东</td><td>T17(3)</td><td>大题·流程书写</td><td>难溶物不拆（过关2）</td><td>False</td></tr>
+      <tr><td>2024 新课标</td><td>—</td><td>选择·拆分规则</td><td>强弱电解质拆写（过关3）</td><td>False</td></tr>
+      <tr><td class="hl">2022 全国甲</td><td class="hl">T11</td><td class="hl">选择·配比型（G14）</td><td class="hl">少定多变·竞争顺序（核心题2）</td><td class="hl">True</td></tr>
+      <tr><td>2024 浙江 1月</td><td>—</td><td>选择·多因素共存（G26）</td><td>三重门叠加（过关4）</td><td>False</td></tr>
+      <tr><td>2022 湖南</td><td>—</td><td>多选·正误（G14）</td><td>找茬式排查（过关5）</td><td>False</td></tr>
+      <tr><td>2022 浙江 1月</td><td>T16</td><td>选择·守恒用量（G13）</td><td>连续反应配比计算（过关6）</td><td>False</td></tr>
+    </table>
+    <p><b>📊 读表结论（选题依据）</b>：广东卷共存题（2025 T3）与书写正误题（2021 T15）构成稳定轮换；"与量有关"的配比型以全国卷为母题库（2022 甲 T11），浙江 T16 的连续型做拔高。广东大题书写（2024 T17(3)）落实"难溶物不拆"的规范。</p>
+    <p><b>数据来源</b>：广东卷试卷原文（2021–2025 逐题定位）＋ 2024 新课标 / 2022 全国甲 / 2024·2022 浙江 / 2022 湖南卷原文＋ 缺口卡片 G13、G14、G26（「连接基础知识和高考考点的缺口」）＋ 讲义第2讲三层次分层学案。</p>
+  </div>
+</details>
+
+<div class="foot">第2讲 · 离子反应 离子方程式 · 缺口真题训练 3.0 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* 亮度五档 */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

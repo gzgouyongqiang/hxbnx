@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5讲 物质的量 气体摩尔体积 · 缺口真题训练</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+  table.opt{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.opt th{background:var(--panel3);color:var(--gold);padding:6px 8px;border:1px solid var(--border);text-align:left;}
+  table.opt td{padding:6px 8px;border:1px solid var(--border);color:var(--text);vertical-align:top;}
+  table.opt td.k{color:var(--blue);font-weight:700;text-align:center;width:56px;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  :root{
+    --fs-base:24px;--fs-h1:38px;--fs-part:30px;--fs-stem:21px;
+    --fs-opt:20px;--fs-sm:18px;--fs-sub:16px;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+  table.opt{font-size:var(--fs-opt);}
+
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+<header>
+  <h1>第5讲 · 物质的量 气体摩尔体积 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">G06 盐类水解</span> · <span class="em">G08 键数/结构</span> · <span class="em">G09 中子/质子/同位素</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">2分钟</span></div>
+<ul class="kps">
+  <li><b>特殊物质结构中的化学键数</b>：共享法：键数 =（原子数 × 配位数）÷ 2。金刚石 2、石墨 1.5、SiO₂ 中 Si—O 键 4；P₄ 六键、NH₄Cl 共价键 4（非 5）、乙炔 3σ。广东卷近 4 年 3 考。</li>
+  <li><b>同位素对微粒数计算的影响</b>：同位素只改中子数与摩尔质量，不改质子/电子数；但同质量下物质的量变、粒子总数全变。三步校验：写分子式 → 算摩尔质量 → 逐项清点中子数。</li>
+  <li><b>最简式相同混合物的 NA 计算</b>：最简式相同的混合物，用"总质量 ÷ 最简式式量"求单元物质的量，再乘粒子数，无需知道比例。NO₂/N₂O₄、O₂/O₃、乙烯/丙烯。只能求原子数，不能求分子数。</li>
+  <li><b>盐类水解对微粒数的影响</b>："有弱才水解，有水解必减少"：弱碱阳离子（NH₄⁺/Fe³⁺/Al³⁺）与弱酸根（CO₃²⁻/CH₃COO⁻/HCO₃⁻）水解后数目 &lt; 计量数。广东卷近 3 年 2 考。</li>
+  <li><b>可逆反应对计算的影响</b>："有 ⇌ 必可逆，产物粒子数必减少"：N₂+3H₂⇌2NH₃、2SO₂+O₂⇌2SO₃、Cl₂+H₂O、2NO₂⇌N₂O₄。密闭容器 + 温和条件 → 产物 &lt; 理论值。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">讲 ≈10′ · 学生说评 ≈12′</span></div>
+<p class="tip">左边原题常驻，按住中间分隔条可左右拖动调宽</p>
+
+<div class="quiz">
+  <div class="ask">核心题1 · N_A 题四兄弟：中子数、生成量、水解、键数〔2025 广东 T10〕</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2025·广东卷 T10】</span>
+      <div class="qsub"><span class="t">原题</span>设 N<sub>A</sub> 为阿伏加德罗常数的值。下列说法正确的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>1 mol ¹⁸O₂ 的中子数比 1 mol ¹⁶O₂ 的多 2N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>1 mol Fe 与水蒸气完全反应，生成 H₂ 的数目为 2N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>在 1 L 0.1 mol·L⁻¹ 的 NH₄Cl 溶液中，NH₄⁺ 的数目为 0.1N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>标准状况下 22.4 L Cl₂ 与足量 H₂ 反应，形成的共价键数目为 2N<sub>A</sub></td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 3 分钟）</b>
+        <p>① A 项 ¹⁸O₂ 与 ¹⁶O₂ 每"分子"差几个中子？1 mol 差多少？记得乘原子数。</p>
+        <p>② B 项 1 mol Fe 与水蒸气：产物是 Fe₃O₄，H₂ 的计量比是多少？</p>
+        <p>③ C 项 NH₄Cl 溶液里 NH₄⁺ 的数目守恒吗？</p>
+        <p>④ D 项标况 22.4 L Cl₂ 与足量 H₂：形成的共价键数目怎么算？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 同位素中子差：每 O 差 2，O₂ 双原子<span class="em">乘 2</span> → 1 mol 差 4N_A（A 错）。</p>
+            <p>② 3Fe+4H₂O(g)=Fe₃O₄+4H₂：Fe₃O₄ 是平均价态 +8/3，1 mol Fe → 4/3 mol H₂（B 错）。</p>
+            <p>③ NH₄⁺ 水解：数目 &lt; 0.1N_A（C 错）。</p>
+            <p>④ Cl₂+H₂=2HCl：标况 22.4 L = 1 mol Cl₂ → 2 mol H–Cl = 2N_A（D 对，锁定）。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 N_A 题先找"<span class="em">最确定的一项</span>"直接锁定，再回看其余三项的坑：<span class="em">中子差乘原子数、Fe₃O₄ 计量比 4:4:3、弱根必水解、键数看结构</span>。抢分节奏：确定项 30 秒，坑项各 1 分钟。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>N<sub>A</sub> 题"先找最确定的一项"：D 项 Cl₂ + H₂ = 2HCl，键数与计量关系完全确定，可直接锁定；再逐项找 A（同位素中子数）、B（产物量换算）、C（水解）的硬伤。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>¹⁸O 每个原子比 ¹⁶O 多 2 个中子（18−8=10，16−8=8），O₂ 分子多 4 个中子，1 mol 应多 <b>4N<sub>A</sub></b>（非 2N<sub>A</sub>）——G09 同位素陷阱。</p>
+                <p><b>B</b>：<span class="rd">×</span>3Fe + 4H₂O(g) <sup>高温</sup> Fe₃O₄ + 4H₂，1 mol Fe 只生成 <b>4/3 mol</b> H₂（非 2 mol）——产物价态/计量换算。</p>
+                <p><b>C</b>：<span class="rd">×</span>NH₄⁺ 是弱碱阳离子，水解后数目 &lt; 0.1N<sub>A</sub>——G06 水解陷阱。</p>
+                <p><b>D</b>：<span class="gr">√</span>Cl₂ + H₂ = 2HCl，1 mol Cl₂ 与 1 mol H₂ 生成 2 mol HCl，含 2 mol H—Cl 共价键 = 2N<sub>A</sub>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①同位素看"每分子差几个中子"：¹⁸O₂ 比 ¹⁶O₂ 差 4 个中子（每个 O 差 2，×2），不是 2；②铁与水蒸气生成 <b>Fe₃O₄</b>（Fe 平均 +8/3 价），不是 Fe₂O₃，H₂ 计量比 4∶3 别记错；③"体积→物质的量"必须标况 + 气体双条件齐备。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G09 三步校验法：<b>写分子式 → 算摩尔质量 → 逐项清点质子/中子/电子</b>。同位素只动中子数和摩尔质量，质子电子不变。广东卷 N<sub>A</sub> 题 2025 首现 ¹⁸O₂ 同位素选项，2026 需重点防范 D₂O、²⁸Si₃¹⁵N₄ 等变式。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l05a')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l05a">
+          <p class="myq-tip">三个方向任选：换同位素（H₂/D₂/T₂ 混合气体的中子数）· 换反应（Na₂O₂ 与 CO₂ 的键数）· 挖条件（非标况下 D 项还成立吗）</p>
+          <textarea id="qa-in-l05a" placeholder="把你改编的题目写在这里……" oninput="saveQA('l05a')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz">
+  <div class="ask">核心题2 · 侯氏制碱里的 N_A：离子键、双陷阱与质子速算〔2023 广东 T11〕</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2023·广东卷 T11】</span>
+      <div class="qsub"><span class="t">原题</span>设 N<sub>A</sub> 为阿伏加德罗常数的值。侯氏制碱法涉及 NaCl、NH₄Cl 和 NaHCO₃ 等物质。下列叙述正确的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>1 mol NH₄Cl 含有的共价键数目为 5N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>1 mol NaHCO₃ 完全分解，得到的 CO₂ 分子数目为 2N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>1 L 1 mol·L⁻¹ NaHCO₃ 溶液中，HCO₃⁻ 的数目为 N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>NaCl 与 NH₄Cl 混合物中含 1 mol Cl⁻，其质子总数为 28N<sub>A</sub></td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 4 分钟）</b>
+        <p>① NH₄Cl 里"共价键"只数哪几个？N 与 Cl⁻ 之间算什么键？</p>
+        <p>② NaHCO₃ 完全分解的计量比？1 mol 出多少 mol CO₂？</p>
+        <p>③ HCO₃⁻ 在水里"既水解又电离"——数目比 N_A 大还是小？</p>
+        <p>④ D 项 NaCl 与 NH₄Cl 混合物含 1 mol Cl⁻——质子总数有什么速算窍门？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① NH₄⁺ 内部 4 个 N–H 共价键；NH₄⁺ 与 Cl⁻ 之间是<span class="em">离子键</span>，不算（A 错）。</p>
+            <p>② 2NaHCO₃=Na₂CO₃+CO₂↑+H₂O：1 mol → 0.5 mol CO₂（B 错）。</p>
+            <p>③ HCO₃⁻<span class="em">既电离又水解</span>，数目 &lt; N_A（C 错）。</p>
+            <p>④ 质子速算：Na(11)+Cl(17)=28；NH₄(11)+Cl(17)=28——"<span class="em">每分子质子数相同</span>"，1 mol Cl⁻ 对应混合物整体 28N_A 质子（D 对）。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 三个高频武器：<span class="em">共价键只数"分子内部"</span>（离子键不算）；弱根<span class="em">"既水解又电离必减少"</span>；"<span class="em">阴阳搭水质子数相同</span>"可整体速算——Cl⁻ 配 Na⁺/NH₄⁺ 都是 28 质子组合。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>逐项定位陷阱：A 考 NH₄Cl 的共价键数（离子键不算）；B 考分解反应计量比；C 考 HCO₃⁻ 既水解又电离；D 考"每分子质子数相同"的守恒思维（G09 关联的质子数速算）。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>NH₄Cl 由 NH₄⁺ 与 Cl⁻ 靠离子键结合，共价键只有 NH₄⁺ 内 4 个 N—H，应为 <b>4N<sub>A</sub></b>（非 5N<sub>A</sub>）——G08 键数。</p>
+                <p><b>B</b>：<span class="rd">×</span>2NaHCO₃ <sup>△</sup> Na₂CO₃ + H₂O + CO₂↑，1 mol NaHCO₃ 只得 <b>0.5 mol</b> CO₂（非 2 mol）。</p>
+                <p><b>C</b>：<span class="rd">×</span>HCO₃⁻ 既水解又电离，数目 &lt; N<sub>A</sub>——G06 水解。</p>
+                <p><b>D</b>：<span class="gr">√</span>NaCl（11+17=28）与 NH₄Cl（7+4+17=28）每"式量单元"质子数均为 28，含 1 mol Cl⁻ 即 1 mol 单元，质子总数 28N<sub>A</sub>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①NH₄Cl 的"共价键"只数 NH₄⁺ 内部 4 个 N—H，NH₄⁺ 与 Cl⁻ 之间是离子键不算；②HCO₃⁻ 是"既水解又电离"的双重陷阱，无论如何都 &lt; N<sub>A</sub>；③D 项是"每分子质子数相同"的守恒技巧，不是简单加和——这是 G09 同位素卡片的同源思路。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G08 阴离子整体 + 键数：NH₄Cl 共价键 4、Na₂O₂ 阴离子是 O₂²⁻（整体 1 个，含 1 个 O—O 键）、CaC₂ 阴离子是 C₂²⁻。质子数速算：<b>每分子质子数 = 各原子序数之和</b>，混合物可先证"每单元质子数相同"再整体乘。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l05b')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l05b">
+          <p class="myq-tip">三个方向任选：换盐（NH₄NO₃ 的共价键数）· 换守恒（"1 mol Na⁺ 对应的质子总数"）· 双陷阱叠加（NaHSO₃ 既电离又水解）</p>
+          <textarea id="qa-in-l05b" placeholder="把你改编的题目写在这里……" oninput="saveQA('l05b')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 过关题 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 过关题<span class="tm">自主限时 ≈8′</span></div>
+<p class="tip">先独立作答，再点开详解自查</p>
+
+<div class="quiz">
+  <div class="ask">过关1 · 同位素与微粒数——中子差"乘原子数"</div>
+  <span class="loc">【2024·广东卷 T10】</span>
+  <p>设 N<sub>A</sub> 为阿伏加德罗常数的值。下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>26 g H–C≡C–H 中含有 σ 键的数目为 3N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>1 L 1 mol·L⁻¹ NH₄NO₃ 溶液中含 NH₄⁺ 的数目为 N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>1 mol CO 和 H₂ 的混合气体含有的分子数目为 3N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>Na 与 H₂O 反应生成 11.2 L H₂，转移电子数目为 N<sub>A</sub></td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>逐项验证：A 键数可数直接成立；B 水解、C 分子数概念、D 标况陷阱。N<sub>A</sub> 题"先找最确定的"——σ 键计数是广东卷连续高频考法（2024、2025 两年考）。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√</span>26 g C₂H₂ = 1 mol，含 2 个 C—H σ 键 + 1 个 C≡C 中的 1 个 σ 键（2 个 π 键不算），共 3N<sub>A</sub>——G08 键数。</p>
+                <p><b>B</b>：<span class="rd">×</span>NH₄⁺ 水解，数目小于 N<sub>A</sub>——G06 水解。</p>
+                <p><b>C</b>：<span class="rd">×</span>1 mol 混合气体分子数就是 N<sub>A</sub>，不是 3N<sub>A</sub>。</p>
+                <p><b>D</b>：<span class="rd">×</span>①未指明标准状况，11.2 L H₂ 无法换算；②2Na+2H₂O=2NaOH+H₂↑，1 mol Na 转移 1 mol e⁻ 只生成 0.5 mol H₂——即使标况也仅 0.5N<sub>A</sub> 电子。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①σ 键速记：单键 = 1σ、双键 = 1σ+1π、三键 = 1σ+2π——C≡C 里只有 1 个 σ，别把 π 也算进去；②"体积→物质的量"缺标况即失效；③D 项同时踩"标况缺失"与"电子数算错"两个坑。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ σ 键计数模型：C₂H₂ 3σ+2π、CO₂ 2σ、苯 12σ、C₂H₄ 5σ+1π。广东卷 N<sub>A</sub> 题 σ 键考点 2024、2025 连续两年出现，是 G08 键数缺口最直接的考查形式，必须熟记。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关2 · 摩尔质量概念辨析——"1 mol 氢"到底是谁</div>
+  <span class="loc">【讲义课时精练 T1】</span>
+  <p>下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>2 g H₂ 的物质的量为 1 mol</td></tr>
+        <tr><td class="k">B</td><td>氧气的摩尔质量为 64 g·mol⁻¹</td></tr>
+        <tr><td class="k">C</td><td>1 mol 任何物质都含有约 6.02×10²³ 个分子</td></tr>
+        <tr><td class="k">D</td><td>等质量的 CO 和 CO₂ 的物质的量之比为 2∶3</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>逐项卡"概念边界"：摩尔质量与物质的量无关；"粒子"≠"分子"；质量相同时物质的量与摩尔质量成反比。A 项直接算 n(H₂)=m/M 即可。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√</span>n(H₂) = 2 g ÷ 2 g·mol⁻¹ = 1 mol，含 1 mol 氢分子。</p>
+                <p><b>B</b>：<span class="rd">×</span>O₂ 的摩尔质量为 32 g·mol⁻¹，与物质的量无关；"64"是把 2 mol 的质量误当摩尔质量。</p>
+                <p><b>C</b>：<span class="rd">×</span>不是所有物质都由分子构成（NaCl 离子、金刚石原子），只能说含 6.02×10²³ 个"粒子"。</p>
+                <p><b>D</b>：<span class="rd">×</span>等质量 n(CO)∶n(CO₂) = M(CO₂)∶M(CO) = 44∶28 = 11∶7（反比），不是 2∶3。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①摩尔质量是定值（M(H₂O)=18 g·mol⁻¹），不随物质的量改变；②"1 mol 任何物质含 6.02×10²³ 个分子"只对分子晶体成立，离子/原子晶体要用"粒子"表述；③等质量时物质的量与摩尔质量<b>成反比</b>，方向别倒。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 三组核心公式：<b>n = m/M = N/N<sub>A</sub> = V/V<sub>m</sub></b>。等质量时 n₁∶n₂ = M₂∶M₁（反比），这是"质量相等比物质的量"题的通解，也是后续所有 N<sub>A</sub> 计算的枢纽。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关3 · 阿伏加德罗定律——同温同压同体积</div>
+  <span class="loc">【讲义课时精练 T5】</span>
+  <p>下列叙述正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>温度相同、体积相同的 O₂ 与 N₂ 分子数一定相同</td></tr>
+        <tr><td class="k">B</td><td>22.4 L CO₂ 与 5.6 g CO 所含碳原子数一定相同</td></tr>
+        <tr><td class="k">C</td><td>20 ℃、1×10⁵ Pa 下，相同体积的 O₂ 和 CO₂ 分子数相同</td></tr>
+        <tr><td class="k">D</td><td>1 mol 任何气体占 22.4 L 的体积都一定是在标准状况下</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>阿伏加德罗定律四条件（同温同压同体积 → 同分子数）逐项对照：A 缺压强、B 缺标况、D 反向推理不唯一，只有 C 完全满足定律条件。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>温度相同、体积相同，但压强未知，分子数不一定相同（需同温同压同体积才同分子数）。</p>
+                <p><b>B</b>：<span class="rd">×</span>22.4 L CO₂ 未注明标准状况，无法换算物质的量，无法比较碳原子数。</p>
+                <p><b>C</b>：<span class="gr">√</span>20 ℃、1×10⁵ Pa 是同温同压，相同体积的 O₂ 和 CO₂ → 分子数相同（阿伏加德罗定律）。</p>
+                <p><b>D</b>：<span class="rd">×</span>"1 mol 气体 22.4 L"是"标准状况"的充分非必要条件——改变温度、压强（如 273 ℃、2 atm）同样可使其占 22.4 L。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①阿伏加德罗定律必须<b>同温同压</b>——只有"温度相同、体积相同"不够，A 项是经典陷阱；②22.4 L/mol 只适用标准状况（0 ℃、101 kPa）；③"1 mol 气体 = 22.4 L"与"标准状况"是充分不必要关系，反过来推不成立。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 由 pV = nRT 直接推：同温同压 V∝n；同温同体积 p∝n；同温同压 ρ∝M。凡是"分子数/体积/压强"比较，先列条件清单（T、P、V），缺一项就不可比。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关4 · 密度比＝摩尔质量比——推论两连用</div>
+  <span class="loc">【讲义课时精练 T7】</span>
+  <p>下列说法<b>不正确</b>的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>温度相同、体积相同的 O₂(g) 与 N₂(g) 分子数一定相同</td></tr>
+        <tr><td class="k">B</td><td>同温同压下，SO₂ 与 CO₂ 的密度之比为 16∶11</td></tr>
+        <tr><td class="k">C</td><td>同温同体积下，5 mol O₂ 与 2 mol N₂ 的压强之比为 5∶2</td></tr>
+        <tr><td class="k">D</td><td>同温同压下，5 mol O₂ 与 2 mol N₂ 的体积之比为 5∶2</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>本题选"不正确"的。逐项核对推论使用条件：A 缺压强；B、C、D 分别对应"密度 ∝ M""同温同体积压强 ∝ n""同温同压体积 ∝ n"，条件都齐、推论正确。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>温度相同、体积相同，但压强未知，O₂ 与 N₂ 的分子数不一定相同——本题选 A。</p>
+                <p><b>B</b>：<span class="gr">√</span>同温同压密度比 = 摩尔质量比 = 64∶44 = 16∶11。</p>
+                <p><b>C</b>：<span class="gr">√</span>同温同体积，压强比 = 物质的量比 = 5 mol∶2 mol = 5∶2。</p>
+                <p><b>D</b>：<span class="gr">√</span>同温同压，体积比 = 物质的量比 = 5∶2。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①A 项只给"温度、体积"，缺压强——pV=nRT，V、T 相同但 p 不同时 n 不同；②密度比算的是摩尔质量比（64∶44=16∶11），SO₂ 的 M 是 64（不是 32）；③本题问"不正确"，与前面选"正确"的读法相反，先圈问法再作答。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 由 pV=nRT 直接推三推论：同温同压 V∝n；同温同体积 p∝n；同温同压 ρ∝M。凡是"分子数/体积/压强"比较，先列条件清单（T、P、V），缺一项就不可比。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关5 · 混合气体方程组——设 x 和 y 两分钟收工</div>
+  <span class="loc">【讲义课时精练 T8】</span>
+  <p>CO 与 CO₂ 的混合气体依次通过盛 NaOH 溶液的装置（CO₂ 被吸收），剩余 CO 收集于气球中。已知混合气体总质量 14.4 g、标况总体积 8.96 L。下列说法<b>错误</b>的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>混合气体中碳原子总数为 0.8N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>气球收集到 CO 的体积（标况）为 4.48 L</td></tr>
+        <tr><td class="k">C</td><td>NaOH 溶液增重 8.8 g</td></tr>
+        <tr><td class="k">D</td><td>CO 与 CO₂ 的体积之比为 1∶1</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>先列方程组：n 总 = 8.96÷22.4 = 0.4 mol。设 n(CO)=x、n(CO₂)=y：x+y=0.4；28x+44y=14.4。解得 x=y=0.2 mol，再逐项验证。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span>碳原子总数 = CO 中 0.2 mol + CO₂ 中 0.2 mol = 0.4 mol（0.4N<sub>A</sub>），题干说 0.8N<sub>A</sub>——本题选 A。</p>
+                <p><b>B</b>：<span class="gr">√</span>NaOH 只吸收 CO₂，气球收集 CO 0.2 mol，标况体积 0.2×22.4 = 4.48 L。</p>
+                <p><b>C</b>：<span class="gr">√</span>NaOH 溶液增重 = 吸收的 CO₂ 质量 = 0.2×44 = 8.8 g。</p>
+                <p><b>D</b>：<span class="gr">√</span>同温同压体积比 = 物质的量比 = 0.2∶0.2 = 1∶1。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①碳原子总数按 CO 和 CO₂ 各 1 个 C，n(C)=n(CO)+n(CO₂)=0.4 mol——若把 CO₂ 当成 2 个 C 就错；②气球收集的是 CO（CO₂ 被 NaOH 吸收），别把 0.4 mol 全算进气球；③NaOH 增重 = CO₂ 质量（8.8 g），是"溶液"增重。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 混合气体题标准流程：<b>①由总体积（标况）求总物质的量 → ②列"质量＋物质的量"二元方程组 → ③解得各组分 n 后再逐问计算</b>。装置题先明确每步"谁被吸收/剩余"，再代入数值。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关6 · n–m–N–V 大换算——一条链走到底</div>
+  <span class="loc">【讲义课时精练 T9】</span>
+  <p>按要求填空（N<sub>A</sub> 为阿伏加德罗常数的值）：<br>
+    (1) 0.5 mol H₂SO₄ 的质量为 <span class="em">____</span> g，其中含 H 原子 <span class="em">____</span> mol。<br>
+    (2) 等质量的 NH₃ 与 N₂ 的物质的量之比为 <span class="em">____</span>，所含原子数之比为 <span class="em">____</span>。<br>
+    (3) 标准状况下 22 g CO₂ 的体积为 <span class="em">____</span> L，含 O 原子 <span class="em">____</span> mol。</p>
+
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 答案：(1) 49 g；1 mol (2) 28∶17；56∶51 (3) 11.2 L；1 mol</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>全部用核心公式 n = m/M = N/N<sub>A</sub> = V/22.4（标况气体）换算。(2) 问"原子数之比"要乘分子内原子数；(3) 问标况体积才用 22.4 L·mol⁻¹。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p>(1) m(H₂SO₄) = 0.5×98 = <b>49 g</b>；n(H) = 0.5×2 = <b>1 mol</b>。<br>
+            (2) 等质量 n(NH₃)∶n(N₂) = M(N₂)∶M(NH₃) = 28∶17；原子数比 = n(NH₃)×4 ∶ n(N₂)×2 = 28×4 ∶ 17×2 = <b>56∶51</b>。<br>
+            (3) n(CO₂) = 22÷44 = 0.5 mol，标况 V = 0.5×22.4 = <b>11.2 L</b>；n(O) = 0.5×2 = <b>1 mol</b>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①(2) 第一空是原子数比，要乘分子内原子数（NH₃ 4 个、N₂ 2 个），直接用分子数比 1∶1 必错；②等质量物质的量比 = 摩尔质量反比（28∶17），方向别倒；③22.4 L·mol⁻¹ 只在标准状况可用，题目明确"标准状况下"才能用。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 物质的量"换算桥"：<b>n = m/M = N/N<sub>A</sub> = V/22.4（标况气体）</b>。等物质的量比粒子数（乘原子数/分子），等质量比物质的量（取摩尔质量反比），质量、粒子数、气体体积全部以 n 为枢纽互相转换。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 教师备课卡 ==================== -->
+<details class="beike"><summary>📋 备课卡（教师用）</summary>
+  <div class="bkbox">
+    <p><b>课堂节奏（40'）</b>：缺口速览 2' → 核心题1 10'（<span class="em">说3' → 评2' → 讲4' → 收口1'</span>）→ 核心题2 10'（说3' + 讲5' + 收口2'）→ 过关 1–6 学生自主 8' → 小结·作业布置 4' → 机动 6'。</p>
+    <p><b>导入话术（难题前置）</b>："<span class="em">2025 广东 T10 的四个选项里藏着中子、计量比、水解、键数四把刀——先别动笔，告诉我 D 为什么'最确定'。</span>"</p>
+    <p><b>操作要点</b>：① 左栏原题 sticky 常驻，讨论时无需来回滚动；中间分隔条可拖动调宽（窄屏自动单栏）；② 任务卡限时，同桌互说完必须<span class="em">定人向全班说</span>；③"金钥匙"只收口方法，不替代讨论；④ 四段详解由学生点开自查（首行即"正确答案"卡片）。⑤ 核心题2 的 D 项"质子速算"建议现场板演：把 NaCl 和 NH₄Cl 的质子数并排写出，让学生自己发现 28 的巧合。</p>
+    <p><b>页面留白说明（学生页刻意不放的东西）</b>：<span class="em">课堂流程、组织步骤、教师话术一律不上学生页面</span>——页面只留"原题 + 任务 + 详解"。"同桌说 → 定人向全班说 → 看详解自查"这条主线只在本卡留底。</p>
+    <p><b>左下角控制条（字号 ＋ 亮度）</b>：两个透明按钮，点一下换一档，选过自动记住（存在本机浏览器里）。<span class="em">字号</span>三档——1080p 屏用「标准」20px、一般大屏「大」24px（默认）、4K 屏且浏览器未缩放时用「特大」28px。<span class="em">亮度</span>五档 80%–120%——教室灯亮、屏幕泛白看不清时往上切；投影环境暗、屏幕刺眼时往下切。</p>
+    <p><b>65分口径（备课依据，不进学生页面）</b>：N_A 题广东卷几乎年年考（2023 T11、2024 T10、2025 T10 连续三年落点）——"先找最确定项"是抢分节奏，中子/水解/键数三大陷阱属必拿分；气体定律推论与混合气计算属能力层。</p>
+    <p><b>📈 真题落点表（本讲 8 题清单，教师用，课堂不投影）</b></p>
+    <table>
+      <tr><th style="width:120px;">年份·卷别</th><th style="width:130px;">形式/缺口</th><th>落点与本讲位置</th></tr>
+      <tr><td class="hl">2025 广东</td><td class="hl">T10</td><td class="hl">选择·N_A（G09+G06+G08）</td><td class="hl">中子/水解/键数（核心题1）</td><td class="hl">True</td></tr>
+      <tr><td>2024 广东</td><td>T10</td><td>选择·N_A（G08+G06）</td><td>同位素中子差（过关1）</td><td>False</td></tr>
+      <tr><td class="hl">2023 广东</td><td class="hl">T11</td><td class="hl">选择·N_A（G08+G06+G09）</td><td class="hl">侯氏制碱质子速算（核心题2）</td><td class="hl">True</td></tr>
+      <tr><td>讲义课时精练</td><td>T1</td><td>选择·概念</td><td>摩尔质量辨析（过关2）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T5</td><td>选择·定律</td><td>阿伏加德罗定律条件（过关3）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T7</td><td>选择·推论</td><td>密度比推论（过关4）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T8</td><td>选择·计算</td><td>混合气方程组（过关5）</td><td>False</td></tr>
+      <tr><td>讲义课时精练</td><td>T9</td><td>填空·换算</td><td>n–m–N–V 链（过关6）</td><td>False</td></tr>
+    </table>
+    <p><b>📊 读表结论（选题依据）</b>：广东卷 N_A 题连续三年落点（2023–2025 T10/T11），载体从单一概念升级为"多陷阱复合"——课堂按"先找最确定项+四大陷阱排查"训练；讲义课时精练补气体定律与计算基本功。</p>
+    <p><b>数据来源</b>：广东卷试卷原文（2023–2025 逐题定位）＋ 讲义第5讲课时精练 T1/T5/T7/T8/T9＋ 缺口卡片 G06、G08、G09＋ 讲义第5讲三层次分层学案。</p>
+  </div>
+</details>
+
+<div class="foot">第5讲 · 物质的量 气体摩尔体积 · 缺口真题训练 3.0 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* 亮度五档 */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

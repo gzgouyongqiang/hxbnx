@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5讲 物质的量 气体摩尔体积 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第5讲　物质的量　气体摩尔体积</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、核心公式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>核心公式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 本讲无方程式，默写三大核心公式 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出物质的量 n 与微粒数 N、阿伏加德罗常数 NA 的关系式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量 摩尔质量」· 1.物质的量 (4)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>n ＝ N / Nₐ</b>　（Nₐ ≈ 6.02×10²³ mol⁻¹，1 mol 任何粒子的粒子数）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出物质的量 n 与质量 m、摩尔质量 M 的关系式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量 摩尔质量」· 2.摩尔质量 (4)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>n ＝ m / M</b>　（M 单位 g·mol⁻¹，数值 ＝ 相对分子/原子质量）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出标准状况下，物质的量 n 与气体体积 V 的关系式（并写出 22.4 的适用条件）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 1.气体摩尔体积 (3)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>n ＝ V / Vₘ</b>，标准状况下 Vₘ ＝ <b>22.4 L·mol⁻¹</b>，即 <b>V ＝ n × 22.4 L</b><br>
+    <span class="rd">适用条件：标准状况 ＋ 气体</span>　（固体、液体一律不能套 22.4）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 物质的量 摩尔质量</b>：n＝N/Nₐ＝m/M；摩尔质量数值＝相对分子质量，与物质的量多少无关</li>
+  <li><b>② 气体摩尔体积</b>：标况 22.4 L·mol⁻¹ 只适用于气体；SO₃、H₂O、CCl₄、苯、乙醇是高频陷阱</li>
+  <li><b>③ NA判断三审</b>：一审状态（标况气体）、二审可逆（2NO₂⇌N₂O₄）、三审组成（分子/原子/电子）——每年必考</li>
+  <li><b>④ 阿伏加德罗定律</b>：同温同压同体积→同分子数；推论：V∝n、ρ∝M、p∝n</li>
+</ul>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 物质的量 摩尔质量 -->
+<h3>知识点① · 物质的量 摩尔质量<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量 摩尔质量」· 1.物质的量 2.摩尔质量</span>
+
+<div class="quiz">
+  <div class="ask">填空：①物质的量是表示____的物理量，单位____；②1 mol 任何粒子的粒子数叫____，符号____；③摩尔质量单位____，其数值上等于____</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① <b>含有一定数目粒子的集合体</b>；<b>摩尔（mol）</b><br>
+      ② <b>阿伏加德罗常数</b>；<b>Nₐ</b>（≈6.02×10²³ mol⁻¹）<br>
+      ③ <b>g·mol⁻¹</b>；<b>该粒子的相对分子（或原子）质量</b>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">算一算：12.4 g Na₂R 含 0.4 mol Na⁺，求 Na₂R 的摩尔质量、R 的相对原子质量</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">0.4 mol Na⁺ → 含 <b>0.2 mol Na₂R</b><br>
+    M(Na₂R) ＝ m/n ＝ 12.4 g ÷ 0.2 mol ＝ <b>62 g·mol⁻¹</b><br>
+    R 的相对原子质量 ＝ 62 − 2×23 ＝ <b>16</b>（O）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量 摩尔质量」· 易错辨析（抢答6题）</span>
+<details class="bianxi"><summary><span class="q">1</span>1 mol 任何物质都含有约 6.02×10²³ 个原子</summary>
+  <div class="ans"><b>×</b>　是"<span class="em">粒子</span>"不是"原子"——1 mol O₂含 2 mol 原子；NaCl是离子不是分子。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>H₂O 的摩尔质量与它的相对分子质量相等</summary>
+  <div class="ans"><b>×</b>　<span class="em">数值</span>相等（都是18），但摩尔质量带单位 g·mol⁻¹，相对分子质量无单位。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>1 mol S 的质量为 96 g·mol⁻¹</summary>
+  <div class="ans"><b>×</b>　质量的单位是 <span class="em">g</span>（32 g）；96 g·mol⁻¹ 是摩尔质量的单位写法，且数值也不对（M(S)＝32 g·mol⁻¹）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>2 mol 水的摩尔质量是 1 mol 水的摩尔质量的 2 倍</summary>
+  <div class="ans"><b>×</b>　<span class="em">摩尔质量与物质的量无关</span>，H₂O 的摩尔质量恒为 18 g·mol⁻¹。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>17 g —OH 与 17 g OH⁻ 所含电子数均为 10Nₐ</summary>
+  <div class="ans"><b>×</b>　—OH 含 <b>9 个</b>电子，OH⁻ 含 <b>10 个</b>电子——差一个电子，数目不等。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>相同质量的 CO 与 N₂ 所含分子数、原子数均相同</summary>
+  <div class="ans"><b>√</b>　M(CO)＝M(N₂)＝28 g·mol⁻¹，等质量→等物质的量→分子数、原子数（双原子）均相同。</div>
+</details>
+
+<!-- 知识点② 气体摩尔体积 标况陷阱 -->
+<h3>知识点② · 气体摩尔体积与标况陷阱<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 1.气体摩尔体积</span>
+
+<div class="quiz">
+  <div class="ask">判断：标准状况（0℃、101 kPa）下，下列物质能否用 22.4 L·mol⁻¹ 算体积？（先讨论，再揭晓）</div>
+  <div class="mat">
+    <span>O₂</span><span>SO₃</span><span>H₂O</span><span>CO₂</span><span>CCl₄</span><span>苯</span><span>NH₃</span><span>乙醇</span><span>Cl₂</span><span>CH₄</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>✅ 气体（能套22.4）：</b>O₂、CO₂、NH₃、Cl₂、CH₄<br>
+      <b>❌ 非气体（不能套）：</b>SO₃（固）、H₂O（液）、CCl₄（液）、苯（液）、乙醇（液）<br>
+      <span class="em">口诀：标况22.4，只给气体用；三氧化硫固态水，四氯苯醇都是液</span>
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>NA判断三审：一审状态（标况＋气体）、二审可逆（2NO₂⇌N₂O₄）、三审组成（分子原子电子数）</p>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 易错辨析（抢答5题）</span>
+<details class="bianxi"><summary><span class="q">1</span>22 g CO₂ 气体的体积为 11.2 L</summary>
+  <div class="ans"><b>×</b>　<span class="em">未指明标准状况</span>，不能套 22.4 L·mol⁻¹。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>标准状况下，11.2 L SO₃ 中含有的原子数为 2Nₐ</summary>
+  <div class="ans"><b>×</b>　标况下 <span class="em">SO₃ 是固体</span>，不能用 22.4 算物质的量。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>标准状况下，11.2 L O₂ 和 H₂ 的混合气体所含分子数约为 3.01×10²³</summary>
+  <div class="ans"><b>√</b>　混合气体总体积 11.2 L ＝ n＝0.5 mol → 分子数 0.5Nₐ ＝ 3.01×10²³（不用管比例）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>同温、同体积下，等质量的 SO₂ 和 O₂ 的压强之比为 2∶1</summary>
+  <div class="ans"><b>×</b>　等质量 → n 与 M 成反比：n(SO₂)∶n(O₂)＝32∶64＝1∶2 → 压强比 <span class="em">1∶2</span>（p∝n）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>同温同压下，ρ(H₂) &lt; ρ(O₂)</summary>
+  <div class="ans"><b>√</b>　同温同压 → ρ∝M，M(H₂)＝2 &lt; M(O₂)＝32。</div>
+</details>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二·提升关键能力·一、n＝m/M＝V/Vₘ 关系的应用 (1)</span>
+<div class="quiz">
+  <div class="ask">算一算：标准状况下，4.8 g 甲烷（CH₄）所占的体积是多少升？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">n(CH₄) ＝ 4.8 g ÷ 16 g·mol⁻¹ ＝ <b>0.3 mol</b><br>
+    V ＝ 0.3 mol × 22.4 L·mol⁻¹ ＝ <b>6.72 L</b></div>
+  </details>
+</div>
+
+<!-- 知识点③ 阿伏加德罗定律 -->
+<h3>知识点③ · 阿伏加德罗定律及推论<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「气体摩尔体积 阿伏加德罗定律」· 2.阿伏加德罗定律</span>
+
+<div class="koujue">
+  <div class="t">🗣 必背规律（直接记忆）</div>
+  <p>定律：同温、同压、同体积的任何气体，含有<b>相同的分子数（物质的量）</b><br>
+  推论① 同温同压：V₁∶V₂ ＝ n₁∶n₂（体积比＝物质的量比）<br>
+  推论② 同温同压：ρ₁∶ρ₂ ＝ M₁∶M₂（密度比＝摩尔质量比）<br>
+  推论③ 同温同体积：p₁∶p₂ ＝ n₁∶n₂（压强比＝物质的量比）</p>
+</div>
+
+<div class="quiz">
+  <div class="ask">应用：标准状况下，①6.72 L NH₃；②1.204×10²³个 H₂S；③5.6 g CH₄；④0.5 mol HCl。谁的体积最大？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">先换算成物质的量：① n＝6.72/22.4＝<b>0.3 mol</b>；② n＝0.2 mol；③ n＝5.6/16＝<b>0.35 mol</b>；④ <b>0.5 mol</b><br>
+    体积最大：<b>④（0.5 mol HCl）</b>　→ 顺序 ④&gt;③&gt;①&gt;②<br>
+    <span class="em">思路：同温同压比体积 → 先全部化成物质的量再比</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考：同温同压下，等质量的 O₂ 和 O₃，原子数之比是多少？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>1∶1</b>　O₂ 和 O₃ 都由氧原子组成，等质量 → 含氧原子质量相等 → <span class="em">原子数相同</span><br>
+    <span style="color:var(--dim);font-size:15px;">陷阱：很多人先比分子数（3∶2），但题目问的是原子数——抓住"组成元素相同"</span></div>
+  </details>
+</div>
+
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2题（基本概念与换算）</li><li>第9题（填空计算，直接套公式）</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第3、4、5、7题（定律推论与陷阱判断）</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第6题（气球体积）、第8题（混合气体计算）</li></ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：22.4 L/mol必须'标况+气态'双条件同时满足；N_A题三审（状态/可逆反应/电子转移数）；摩尔质量与相对分子质量数值相等但单位不同…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：等质量O₂和O₃原子数之比？同温同压密度比＝摩尔质量比怎么推？标况下HF为何不是气体？…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.8), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c05_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c05_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条：字号三档切换（标准/大/特大）===== */
+(function(){
+  var FS = {
+    s:{base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px'},
+    l:{base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 's';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1); r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-h3',v.h3); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* ===== 左下角控制条：亮度五档（80%-120%）===== */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur)+1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

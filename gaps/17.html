@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第17讲 卤素 氯及其化合物的转化关系 · 缺口真题训练 3.0</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  /* 任务卡里的知识支架 / 踩点表：原生折叠，默认收起（零 JS 依赖，任何环境都能点开） */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  /* 板演互评卡 */
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  /* 知识清单挖空 */
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  /* 备课卡里的落点表 */
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  /* 全页字号都由下面这 7 个变量控制，左下角"🔤 字号"按钮可现场切换三档 */
+  :root{
+    --fs-base:24px;   /* 正文 */
+    --fs-h1:38px;     /* 主标题 */
+    --fs-part:30px;   /* 区块标题 */
+    --fs-stem:21px;   /* 题干 */
+    --fs-opt:20px;    /* 选项、详解、表格 */
+    --fs-sm:18px;     /* 次级说明 */
+    --fs-sub:16px;    /* 角标、按钮、小注 */
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+
+  /* 左下角控制条：字号 ＋ 亮度（透明背景，避开右上角的手写笔图标） */
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+<header>
+  <h1>第17讲 · 卤素　氯及其化合物的转化关系 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">G15 与量有关的离子方程式（先后反应型）</span> · <span class="em">卤素递变与离子检验</span> · <span class="em">卤素互化物与氯的价类转化</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">2分钟</span></div>
+<ul class="kps">
+  <li><b>G15 · 与量有关的离子方程式（先后反应型）</b>：Cl₂ 遇到多种还原性离子时，按"<span class="em">先强后弱</span>"依次反应。记忆两条链——<span class="em">还原性：I⁻＞Fe²⁺＞Br⁻＞Cl⁻</span>；<span class="em">氧化性：Cl₂＞Br₂＞Fe³⁺＞I₂</span>。所以 FeBr₂ 中通少量 Cl₂ 只氧化 Fe²⁺，过量才把 Br⁻ 一起氧化；FeI₂ 中通少量（或等物质的量）Cl₂ 只氧化 I⁻。</li>
+  <li><b>卤素递变规律</b>：氧化性 Cl₂＞Br₂＞I₂，与水、与碱反应都由易到难；I₂ 与 Fe 反应只生成 <span class="em">FeI₂</span>，Cl₂、Br₂ 能把 Fe 氧化到 +3；氟无正价，F₂ 与水反应放出 O₂；HF 是弱酸且<span class="em">能腐蚀玻璃</span>。</li>
+  <li><b>卤素离子检验三法</b>：① AgNO₃ 沉淀法——AgCl 白、AgBr 淡黄、AgI 黄，<span class="em">均不溶于稀 HNO₃</span>；② 置换—萃取法——氯水＋CCl₄，下层呈紫红（I₂）；③ 氧化—淀粉法——I⁻ 遇氯水变蓝。</li>
+  <li><b>卤素互化物与氯的转化</b>：IBr、ICl、BrCl——<span class="em">非金属性弱的一方显正价</span>（IBr 中 I 为 +1、Br 为 −1），与 H₂O、NaOH 反应<span class="em">价态不变（非氧化还原）</span>；氯的"价—类"二维图把 Cl₂、HCl、HClO、ClO₂、ClO₃⁻ 串成一张网。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">讲 ≈12′ · 学生说评 ≈15′</span></div>
+<p class="tip">左边原题常驻，按住中间分隔条可左右拖动调宽</p>
+
+<!-- 核心题1 -->
+<div class="quiz">
+  <div class="ask">核心题1 · 一个"过量"，决定谁被氧化</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2019·海南·高考真题·T11（多选）】</span>
+      <div class="qsub"><span class="t">本课要做（文字题）</span>能正确表示下列反应的离子方程式为（　　）<br>A．向 FeBr₂ 溶液中通入过量 Cl₂：2Fe²⁺＋Cl₂＝2Fe³⁺＋2Cl⁻<br>B．向碳酸钠溶液中通入少量 CO₂：CO₃²⁻＋CO₂＋H₂O＝2HCO₃⁻<br>C．向碘化钾溶液中加入少量双氧水：3H₂O₂＋I⁻＝IO₃⁻＋3H₂O<br>D．向硫化钠溶液中通入过量 SO₂：2S²⁻＋5SO₂＋2H₂O＝3S↓＋4HSO₃⁻</div>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 3 分钟）</b>
+        <p>① FeBr₂ 溶液里有哪两员还原性"大将"？它们的还原性谁强谁弱？</p>
+        <p>② 题目写的是"<span class="em">过量</span> Cl₂"——方程式里应该出现谁被氧化？A 项漏了什么？</p>
+        <p>③ C 项 H₂O₂ 氧化 I⁻，产物是 I₂ 还是 IO₃⁻？</p>
+        <p>④ D 项过量 SO₂ 通入 Na₂S 溶液，最终生成了什么单质？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 还原性 <span class="em">I⁻＞Fe²⁺＞Br⁻＞Cl⁻</span>；氧化性 Cl₂＞Br₂＞Fe³⁺＞I₂</p>
+            <p>② <span class="em">过量／少量</span>决定反应终点——过量氧化剂把能氧化的全部氧化</p>
+            <p>③ H₂O₂ 把 I⁻ 氧化为 <span class="em">I₂</span>，不是 IO₃⁻</p>
+            <p>④ SO₂ 与 S²⁻ 归中生成 <span class="em">S</span>；少量 CO₂ 通入 Na₂CO₃ 生成 HCO₃⁻</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：做"与量有关"的离子方程式，先问一句——<span class="em">谁过量？过量到什么程度？</span>再看还原性顺序，把该氧化的全部氧化，一个都不能落下。
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：BD</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>四项都是离子方程式正误判断，逐项走"<span class="em">反应物→产物→配平→守恒</span>"这条流水线；涉及"量"的选项，先确定少量/过量对应谁的终点。</p></div>
+          <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：FeBr₂ 中 Fe²⁺、Br⁻ 都有还原性，通入<span class="em">过量</span> Cl₂ 时两者都被氧化，正确写法为 2Fe²⁺＋4Br⁻＋3Cl₂＝2Fe³⁺＋2Br₂＋6Cl⁻，<span class="rd">漏掉 Br⁻ 被氧化，错</span>；</p><p><b>B</b>：少量 CO₂ 通入 Na₂CO₃ 溶液生成 NaHCO₃，CO₃²⁻＋CO₂＋H₂O＝2HCO₃⁻，<span class="gr">正确</span>；</p><p><b>C</b>：H₂O₂ 把 I⁻ 氧化为 <span class="em">I₂</span>（不是 IO₃⁻），应为 H₂O₂＋2H⁺＋2I⁻＝I₂＋2H₂O，<span class="rd">错</span>；</p><p><b>D</b>：过量 SO₂ 与 S²⁻ 归中生成 S：2S²⁻＋5SO₂＋2H₂O＝3S↓＋4HSO₃⁻，<span class="gr">正确</span>。</p></div>
+          <div class="seg"><p class="t">⚠ 易错提醒</p><p>①"过量 Cl₂"是本题最大陷阱——只氧化 Fe²⁺ 是<span class="em">少量</span> Cl₂ 的答案；②H₂O₂ 作氧化剂时还原产物是 H₂O，不能把 I⁻ 直接氧化到 IO₃⁻；③SO₂ 过量时产物写成 HSO₃⁻ 而不是 SO₃²⁻。</p></div>
+          <div class="seg"><p class="t">📐 规律总结</p><p>G15 的核心就一句话：<span class="em">先强后弱，量定终点</span>。FeBr₂ 与 Cl₂ 有三种情形——少量只氧化 Fe²⁺；等物质的量时 Fe²⁺ 全氧化、Br⁻ 部分氧化；过量则两者全氧化。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('t17a')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-t17a">
+          <p class="myq-tip">三个方向任选：改量（把"过量"改成"等物质的量"，重写方程式）· 改体系（换成 FeI₂＋Cl₂）· 改设问（给出 n(FeBr₂):n(Cl₂)=1:1，写方程式）</p>
+          <textarea id="qa-in-t17a" placeholder="把你改编的题目写在这里……" oninput="saveQA('t17a')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心题2 -->
+<div class="quiz">
+  <div class="ask">核心题2 · 等物质的量：这份 Cl₂"刚好够"氧化谁　<span class="bl">〔本讲板演题〕</span></div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2023·浙江6月选考·T9】</span>
+      <div class="qsub"><span class="t">本课要做（文字题）</span>下列反应的离子方程式正确的是（　　）<br>A．碘化亚铁溶液与等物质的量的氯气：2Fe²⁺＋2I⁻＋2Cl₂＝2Fe³⁺＋I₂＋4Cl⁻<br>B．向次氯酸钙溶液中通入足量二氧化碳：ClO⁻＋CO₂＋H₂O＝HClO＋HCO₃⁻<br>C．铜与稀硝酸：Cu＋4H⁺＋NO₃⁻＝Cu²⁺＋NO↑＋2H₂O<br>D．向硫化钠溶液中通入足量二氧化硫：S²⁻＋SO₂＋H₂O＝S↓＋HSO₃⁻</div>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 2 分钟）</b>
+        <p>① FeI₂ 溶液中 I⁻ 与 Fe²⁺ 谁先被氧化？1 mol FeI₂ 里两种离子的物质的量各是多少？</p>
+        <p>② "等物质的量 Cl₂"——按电子守恒算一算，这份 Cl₂ 够氧化哪一种离子？A 项错在哪？</p>
+        <p>③ 次氯酸钙溶液里通<span class="em">足量</span> CO₂，产物是 HClO＋HCO₃⁻ 还是 HClO＋CO₃²⁻？为什么？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 还原性 <span class="em">I⁻＞Fe²⁺</span>——FeI₂ 溶液中 <span class="em">I⁻ 先被氧化</span></p>
+            <p>② 算"量"：1 mol FeI₂ 含 2 mol I⁻ ＋ 1 mol Fe²⁺；1 mol Cl₂ 得 2 mol 电子，<span class="em">恰好氧化 2 mol I⁻</span></p>
+            <p>③ 足量 CO₂ 与 ClO⁻ 生成 <span class="em">HCO₃⁻</span>（酸性 H₂CO₃＞HClO＞HCO₃⁻）</p>
+            <p>④ Cu 与稀 HNO₃：3Cu＋8H⁺＋2NO₃⁻＝3Cu²⁺＋2NO↑＋4H₂O</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：算"量"的两把尺子——<span class="em">还原性顺序定先后，电子守恒定量</span>。先排顺序，再用"得电子总数＝失电子总数"算到底够不够。
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：B</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>A 项先排先后（I⁻ 先于 Fe²⁺），再用电子守恒定量；B、D 项考"足量/少量"对产物的影响；C 项查配平。</p></div>
+          <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：还原性 I⁻＞Fe²⁺，等物质的量 Cl₂ 先氧化 I⁻——1 mol Cl₂ 恰好氧化 2 mol I⁻，Fe²⁺ 不动，正确写法 2I⁻＋Cl₂＝I₂＋2Cl⁻，<span class="rd">错</span>；</p><p><b>B</b>：足量 CO₂ 与 Ca(ClO)₂ 溶液反应生成 HClO 和 HCO₃⁻（酸性 H₂CO₃＞HClO，HClO 不能把 HCO₃⁻ 再变成 CO₃²⁻），<span class="gr">正确</span>；</p><p><b>C</b>：铜与稀硝酸未配平，应为 3Cu＋8H⁺＋2NO₃⁻＝3Cu²⁺＋2NO↑＋4H₂O，<span class="rd">错</span>；</p><p><b>D</b>：足量 SO₂ 与 S²⁻ 归中，应为 2S²⁻＋5SO₂＋2H₂O＝3S↓＋4HSO₃⁻，<span class="rd">错</span>。</p></div>
+          <div class="seg"><p class="t">⚠ 易错提醒</p><p>①FeI₂ 中 <span class="em">I⁻ 先于 Fe²⁺</span>（与 FeBr₂ 中 Fe²⁺ 先于 Br⁻ 相反）；②"足量 CO₂"生成 HCO₃⁻，"少量 CO₂"生成 CO₃²⁻ 残留——产物的酸式/正式，取决于气体的量。</p></div>
+          <div class="seg"><p class="t">📐 规律总结</p><p>把两题并起来记：<span class="em">FeBr₂：Fe²⁺先；FeI₂：I⁻先</span>——顺序取决于还原性强弱；数量关系一律用电子守恒算。这是 G15 缺口的全部家底。</p></div>
+        </div>
+      </details>
+
+      <!-- ===== 3.0 新增：板演互评 ===== -->
+      <div class="banyan">
+        <div class="bt">⭐ 板演互评</div>
+        <div class="task">
+          <b>任务</b>：写出 <span class="em">"等物质的量 Cl₂ 通入 FeI₂ 溶液"</span> 的离子方程式，并在旁边<b>用一句话</b>写出"为什么先氧化 I⁻ 而不是 Fe²⁺"。
+        </div>
+        <details class="aux">
+          <summary>🎯 踩点给分表（点开）</summary>
+          <div class="auxbox">
+        <table>
+          <tr><th>踩点（照这张表给分）</th><th style="width:64px;text-align:center;">分值</th><th style="width:34%;">常见错法（说错的那份最值钱）</th></tr>
+          <tr><td>① 先判断还原性顺序：I⁻ 强于 Fe²⁺</td><td class="sc">3′</td><td class="wr">把 Fe²⁺ 当成先被氧化</td></tr>
+          <tr><td>② 用"等物质的量"算出：1 mol Cl₂ 恰好氧化 2 mol I⁻</td><td class="sc">3′</td><td class="wr">当成 Cl₂ 过量，把 Fe²⁺ 也一起氧化</td></tr>
+          <tr><td>③ 方程式写对：2I⁻＋Cl₂＝I₂＋2Cl⁻（配平、电荷守恒）</td><td class="sc">3′</td><td class="wr">漏配平，或把 Fe²⁺ 写进方程式</td></tr>
+          <tr><td>④ 一句话理由说清：顺序由还原性强弱决定</td><td class="sc">1′</td><td class="wr">只答"因为题目说等量"，没回到还原性顺序</td></tr>
+        </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('t17b')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-t17b">
+          <p class="myq-tip">三个方向任选：改比例（n(FeI₂):n(Cl₂)=4:5，写方程式）· 改体系（把 Ca(ClO)₂ 换成 NaClO 溶液通少量 CO₂）· 改设问（判断"足量 SO₂ 通入 Na₂S 溶液只生成 S 和 HSO₃⁻"是否正确）</p>
+          <textarea id="qa-in-t17b" placeholder="把你改编的题目写在这里……" oninput="saveQA('t17b')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心题3 -->
+<div class="quiz">
+  <div class="ask">核心题3 · IBr：卤素互化物里，谁是"正价"的那一个</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2022·北京·高考真题】</span>
+      <div class="qsub"><span class="t">本课要做（文字题）</span>碘和溴可以形成卤素互化物 IBr（一氯化碘的同类物），下列关于 IBr 的说法<span class="em">错误</span>的是（　　）<br>A．I 与 Br 的电负性不同，形成极性共价键，IBr 属于共价化合物<br>B．IBr 中 I 为 +1 价，可被还原为 I⁻ 或 I₂，可作强氧化剂<br>C．IBr＋H₂O＝HBr＋HIO 中 I、Br 的化合价均未变化，IBr 既不是氧化剂也不是还原剂<br>D．IBr 与 NaOH 溶液反应生成 NaI 和 NaBrO</div>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 2 分钟）</b>
+        <p>① I 和 Br 谁的非金属性强？那么 IBr 中谁是正价、谁是负价？</p>
+        <p>② IBr 与水反应时，I、Br 的化合价变了吗？它算不算氧化剂？</p>
+        <p>③ 类比 Cl₂＋2NaOH＝NaCl＋NaClO＋H₂O，IBr 与 NaOH 应该生成哪两种盐？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 非金属性 Br＞I → IBr 中 <span class="em">Br 为 −1、I 为 +1</span>（弱的一方显正价）</p>
+            <p>② 卤素互化物的性质类似卤素单质，可类比 Cl₂ 与水、碱的反应</p>
+            <p>③ 与 H₂O、NaOH 反应<span class="em">价态不变</span>，属非氧化还原反应</p>
+            <p>④ 盐要"正价配负价"：IBr＋2NaOH＝<span class="em">NaBr＋NaIO＋H₂O</span></p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 全题"金钥匙"</b>：卤素互化物记一句——<span class="em">"强者得电子（显负价）、弱者失电子（显正价）"</span>；水解、碱解只要价态不变，就不是氧化还原反应。
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>先定 IBr 中两元素的价态（Br 非金属性强→Br 为 −1、I 为 +1），再逐项检查"性质描述"与"产物书写"是否与这个价态自洽。</p></div>
+          <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：I 与 Br 电负性不同，共用电子对偏移，形成<span class="em">极性共价键</span>，IBr 是共价化合物，<span class="gr">正确</span>；</p><p><b>B</b>：IBr 中 I 为 +1 价，可被还原为 I⁻ 或 I₂，<span class="gr">可作氧化剂，正确</span>；</p><p><b>C</b>：IBr＋H₂O＝HBr＋HIO 中 Br 仍为 −1、I 仍为 +1，<span class="gr">价态不变、非氧化还原，正确</span>；</p><p><b>D</b>：与 NaOH 反应应生成 <span class="em">NaBr（Br 为 −1）和 NaIO（I 为 +1）</span>，写成 NaI 与 NaBrO 就把价态弄反了，<span class="rd">错误，选 D</span>。</p></div>
+          <div class="seg"><p class="t">⚠ 易错提醒</p><p>①卤素互化物中<span class="em">非金属性弱的显正价</span>（IBr 中 I 为 +1）；②水解/碱解是非氧化还原反应，产物里元素的价态必须与反应前一致——这是判断题的"照妖镜"；③别把 IBr 当作"碘和溴简单相加"。</p></div>
+          <div class="seg"><p class="t">📐 规律总结</p><p>卤素互化物（IBr、ICl、BrCl）通式 XX′ₙ，性质介于两种卤素单质之间；判断产物的唯一依据是<span class="em">价态守恒</span>。同族推理：ICl 与 NaOH 生成 NaCl 和 NaIO。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('t17c')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-t17c">
+          <p class="myq-tip">三个方向任选：换互化物（ICl、BrCl 与 NaOH 反应）· 换介质（IBr 通入 KI 溶液，写出方程式）· 换设问（判断 IBr 与水的反应是否为氧化还原反应并说明理由）</p>
+          <textarea id="qa-in-t17c" placeholder="把你改编的题目写在这里……" oninput="saveQA('t17c')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 逐题过关 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 逐题过关<span class="tm">课后自查</span></div>
+<p class="tip">📖 课后独立完成，再点开四段详解对答案；错题抄进错题本，标上对应缺口编号</p>
+
+<div class="quiz">
+  <div class="ask">过关1 · 一步接一步，哪条转化链真的走得通</div>
+  <span class="loc">【2020·江苏·高考真题·T10】</span>
+  <p>下列选项所示的物质间转化均能实现的是（　　）</p>
+  <p class="mat"><span>A．NaCl(aq) <span class="eqw">→<span class="eqw-c">电解</span></span> Cl₂(g) <span class="eqw">→<span class="eqw-c">石灰水</span></span> 漂白粉(s)</span></p>
+  <p class="mat"><span>B．NaCl(aq) <span class="eqw">→<span class="eqw-c">CO₂(g)</span></span> NaHCO₃(s) <span class="eqw">→<span class="eqw-c">加热</span></span> Na₂CO₃(s)</span></p>
+  <p class="mat"><span>C．NaBr(aq) <span class="eqw">→<span class="eqw-c">Cl₂(g)</span></span> Br₂(aq) <span class="eqw">→<span class="eqw-c">NaI(aq)</span></span> I₂(aq)</span></p>
+  <p class="mat"><span>D．Mg(OH)₂(s) <span class="eqw">→<span class="eqw-c">HCl(aq)</span></span> MgCl₂(aq) <span class="eqw">→<span class="eqw-c">电解</span></span> Mg(s)</span></p>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>每一步都要问"反应物、条件、产物是否成立"——尤其是卤素置换（氧化性强弱）与"电解的是什么状态"。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：制漂白粉要用<span class="em">石灰乳</span>（Ca(OH)₂ 浓度足够），石灰水中 Ca(OH)₂ 溶解度太小，<span class="rd">第一步转化不成立</span>；</p><p><b>B</b>：向 NaCl 溶液中通 CO₂ 不反应（碳酸酸性弱于盐酸），<span class="rd">不成立</span>；</p><p><b>C</b>：Cl₂＋2NaBr＝2NaCl＋Br₂，Br₂＋2NaI＝2NaBr＋I₂，两步都是"强氧化性单质置换弱氧化性单质"，<span class="gr">均能实现，正确</span>；</p><p><b>D</b>：电解 MgCl₂ <span class="em">水溶液</span>得到的是 Mg(OH)₂、H₂、Cl₂，制 Mg 必须电解<span class="em">熔融</span> MgCl₂，<span class="rd">不成立</span>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>①"石灰水"与"石灰乳"只有一字之差，却是制漂白粉的关键；②电解制活泼金属一律用<span class="em">熔融盐/熔融氧化物</span>，水溶液电解得不到金属单质。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>卤素置换的判据只有一条：<span class="em">氧化性强的单质能置换氧化性弱的</span>——Cl₂＞Br₂＞I₂，对应离子还原性 I⁻＞Br⁻＞Cl⁻。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关2 · 氯水的平衡：稀释、加盐、加酸，往哪边走</div>
+  <span class="loc">【2022·浙江6月选考·T19】</span>
+  <p>关于反应 Cl₂(g)＋H₂O(l) <span class="eqw">⇌</span> HClO(aq)＋H⁺(aq)＋Cl⁻(aq)　ΔH＜0，达到平衡后，下列说法<span class="em">不正确</span>的是（　　）</p>
+  <p class="mat"><span>A．升高温度，氯水中的 c(HClO) 减小</span></p>
+  <p class="mat"><span>B．氯水中加入少量醋酸钠固体，上述平衡正向移动，c(HClO) 增大</span></p>
+  <p class="mat"><span>C．取氯水稀释，c(Cl⁻)/c(HClO) 增大</span></p>
+  <p class="mat"><span>D．取两份氯水，分别滴加 AgNO₃ 溶液和淀粉 KI 溶液，若前者有白色沉淀，后者溶液变蓝色，可以证明上述反应存在限度</span></p>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>逐项判断"改变条件→平衡怎么移动→浓度怎么变"；D 项换一个角度：要证明"存在限度"，必须说明<span class="em">反应物与生成物同时存在</span>。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：正反应放热（ΔH＜0），升温平衡逆向移动，且 HClO 受热易分解，c(HClO) 减小，<span class="gr">正确</span>；</p><p><b>B</b>：加入 CH₃COONa，CH₃COO⁻ 结合 H⁺ 使 c(H⁺) 减小，平衡正向移动，c(HClO) 增大，<span class="gr">正确</span>；</p><p><b>C</b>：稀释时上述平衡正向移动，同时 HClO 自身的电离平衡（HClO⇌H⁺＋ClO⁻）也正向移动，使 c(HClO) 减小得更多，故 c(Cl⁻)/c(HClO) 增大，<span class="gr">正确</span>；</p><p><b>D</b>：加 AgNO₃ 有白色沉淀只说明生成了 Cl⁻；加淀粉 KI 溶液变蓝只说明溶液中存在<span class="em">强氧化性微粒</span>——而 Cl₂ 和 HClO 都有强氧化性，<span class="rd">无法证明反应物与生成物共存，也就不能证明反应存在限度，错误，选 D</span>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>①证明"可逆反应存在限度"必须有<span class="em">反应物与生成物同时存在</span>的直接证据（如一分为二设计实验），只有一个方向的证据不够；②稀释氯水时"c(HClO) 减小得更多"是判断 C 项的关键。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>氯水是"多平衡体系"：Cl₂＋H₂O 的歧化平衡＋HClO 的电离平衡＋水的电离平衡。凡涉及"稀释/加酸碱盐"，都要<span class="em">把相关平衡一起写出来</span>再判断。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关3 · 往氯水里加点什么，漂白能力反而变强</div>
+  <span class="loc">【2016·上海·高考真题】</span>
+  <p>向新制氯水中加入少量下列物质，能增强溶液漂白能力的是（　　）</p>
+  <p class="mat"><span>A．碳酸钙粉末　B．稀硫酸　C．氯化钙溶液　D．二氧化硫水溶液</span></p>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>氯水的漂白能力由 <span class="em">HClO 的浓度</span>决定——凡是能让 Cl₂＋H₂O⇌HCl＋HClO 正向移动、且不消耗 HClO 的操作，都能增强漂白能力。</p></div>
+      <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：CaCO₃ 与氯水中的盐酸反应，消耗 H⁺，使上述平衡<span class="em">正向移动</span>，c(HClO) 增大（CaCO₃ 不与 HClO 反应），<span class="gr">漂白能力增强，选 A</span>；</p><p><b>B</b>：加稀硫酸使 c(H⁺) 增大，平衡<span class="rd">逆向移动</span>，c(HClO) 减小；</p><p><b>C</b>：CaCl₂ 溶液只稀释氯水，c(HClO) 减小；</p><p><b>D</b>：SO₂ 有还原性，会与 HClO 发生氧化还原反应把 HClO 消耗掉，<span class="rd">漂白能力下降</span>。</p></div>
+      <div class="seg"><p class="t">⚠ 易错提醒</p><p>①CaCO₃ 与 HClO 不反应（碳酸、次氯酸都是弱酸，但盐酸酸性更强）——这是本选项成立的前提；②SO₂ 与 HClO 反应是"强还原剂＋强氧化剂"，不是"漂白叠加"。</p></div>
+      <div class="seg"><p class="t">📐 规律总结</p><p>氯水体系的一切调节都回到同一个平衡：<span class="em">Cl₂＋H₂O⇌HCl＋HClO</span>——加碱（或碳酸盐）右移、加酸左移、加还原剂直接消耗 HClO。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 四、知识清单 ==================== -->
+<div class="part"><span class="no">四</span>本讲知识清单<span class="tm">先自己填，再核对</span></div>
+<p class="tip">✍️ 空白处先自己写出来再看答案——框架得自己搭，才记得住</p>
+<ul class="kps">
+  <li><b>📚 对应核心题1、2（G15 与量有关）</b>：还原性 <span class="blank">　　　　</span>＞<span class="blank">　　　　</span>＞Br⁻＞Cl⁻、氧化性 Cl₂＞Br₂＞<span class="blank">　　　　</span>＞I₂；FeBr₂ 溶液中通入少量 Cl₂ 只氧化 <span class="blank">　　　　</span>（2Fe²⁺＋Cl₂＝2Fe³⁺＋2Cl⁻），过量则 Br⁻ 也被氧化；FeI₂ 溶液中通入等物质的量 Cl₂ 只氧化 <span class="blank">　　　　</span>（2I⁻＋Cl₂＝I₂＋2Cl⁻）。</li>
+  <li><b>📚 对应核心题3（卤素互化物）</b>：IBr、ICl、BrCl——<span class="blank">　　　　</span> 非金属性弱 ／ 强（二选一）的一方显正价（IBr：I 为 <span class="blank">　　</span> 价、Br 为 −1 价）；与 H₂O、NaOH 反应价态不变（非氧化还原）；IBr＋2NaOH＝<span class="blank">　　　　　　　　</span>。</li>
+  <li><b>📚 对应过关1（卤素递变与转化）</b>：氧化性 Cl₂＞Br₂＞I₂；Cl₂＋2NaBr＝2NaCl＋Br₂、Br₂＋2NaI＝2NaBr＋I₂；制漂白粉用 <span class="blank">　　　　</span>（不是石灰水）；电解制 Mg 必须用 <span class="blank">　　　　</span> MgCl₂（不是水溶液）。</li>
+  <li><b>📚 对应过关2、3（氯水平衡与检验）</b>：Cl₂＋H₂O⇌HCl＋HClO（ΔH＜0）——加碳酸盐/碱促 <span class="blank">　　　</span> 移、加酸促 <span class="blank">　　　</span> 移、加还原剂直接消耗 HClO；检验 Cl⁻ 用 AgNO₃（白色沉淀不溶于稀 HNO₃），检验 I⁻ 用氯水＋淀粉（变蓝）。</li>
+  <li><b>📚 氟的特殊性</b>：F 无正价（只显 −1）；2F₂＋2H₂O＝<span class="blank">　　　　　　　　</span>；HF 为 <span class="blank">　　</span> 酸、能腐蚀玻璃（氢氟酸刻蚀玻璃）；F 只表现出强氧化性、不与金属置换。</li>
+  <li><b>📚 卤素离子的检验（Ag⁺ 法）</b>：AgCl <span class="blank">　　</span> 色、AgBr <span class="blank">　　　</span> 色、AgI <span class="blank">　　</span> 色；三者均不溶于稀 HNO₃；<span class="blank">　　　　</span> 元素的最高价含氧酸酸性最强（酸最强＝氧越多中心氧化数越高）。</li>
+  <li><b>📚 碘的检验与提纯</b>：置换—萃取法；用 <span class="blank">　　　　</span> 萃取（不能用水、酒精）；I₂ 的 CCl₄ 溶液呈 <span class="blank">　　　</span> 色且在 <span class="blank">　　</span> 层（因为 I₂ 的 CCl₄ 溶液密度大于水）；检验 I⁻ 须先加 <span class="blank">　　　　</span>（氯水或双氧水）把 I⁻ 氧化成 I₂，再加 <span class="blank">　　　　</span> 观察蓝色。</li>
+  <li><b>📚 氯水的多重平衡</b>：新制氯水中存在 <span class="blank">　　</span> 种平衡——Cl₂＋H₂O⇌HCl＋HClO（<span class="blank">　　</span>）、HClO⇌H⁺＋ClO⁻、H₂O⇌H⁺＋OH⁻；溶液呈 <span class="blank">　　　</span> 性（因为 <span class="blank">　　　　</span> 电离程度大于水解程度）。</li>
+  <li><b>📚 漂白能力与杀菌</b>：真正起作用的是 <span class="blank">　　　　</span>（不是 Cl₂）；凡是能让 Cl₂＋H₂O⇌HCl＋HClO <span class="blank">　　　　</span> 移动、且不消耗 HClO 的操作都能增强漂白；加热 <span class="blank">　　　　</span>（升高）会使 HClO 分解失效。</li>
+  <li><b>📚 液氯与氯气的制取</b>：工业上电解 <span class="blank">　　　　</span> 溶液制 Cl₂；实验室用 MnO₂ 与 <span class="blank">　　　　</span>（浓盐酸）共热；除去 Cl₂ 中混有的 HCl 用 <span class="blank">　　　　</span>（饱和食盐水），除干燥的 HCl 不用饱和食盐水而用 <span class="blank">　　　　</span>。</li>
+  <li><b>📚 含氯消毒剂</b>：漂白粉的有效成分是 <span class="blank">　　　　</span>（不是 Ca(ClO)₂ 纯物质，是混合物）；其失效原理是 <span class="blank">　　　　</span> 与空气中的 CO₂、水作用生成 HClO 分解；84 消毒液与洁厕灵（盐酸）<span class="blank">　　　</span> 混用（会产生氯气，危险）。</li>
+  <li><b>📚 卤素互化物的水解与碱解</b>：XX′ 中弱的一方显 <span class="blank">　　</span> 价；IBr＋H₂O＝HBr＋HIO；IBr＋2NaOH＝NaBr＋NaIO＋H₂O；水解与碱解 <span class="blank">　　　　</span>（是/不是）氧化还原反应，产物中各元素价态与反应前相同。</li>
+  <li><b>📚 卤素与金属反应</b>：氯气与变价金属（如 Fe）反应时，<span class="blank">　　　　</span> 条件下生成高价氯化物 FeCl<sub>3</sub>，<span class="blank">　　　　</span> 条件下生成 FeCl<sub>2</sub>；这与铁在氧气中燃烧的产物判断相同，都是"强氧化剂＋过量"。</li>
+  <li><b>🗣 口诀三句</b>：先强后弱量定终点（还原性 I⁻＞Fe²⁺＞Br⁻＞Cl⁻）；强者得电子、弱者失电子（卤素互化物正负价）；氯水一平衡，加碱右移加酸左移。</li>
+</ul>
+<details><summary>🔓 核对挖空答案（14 条清单 · 40 空）</summary>
+  <div class="ans">
+    <div class="keyline"><b>清单1（核心题1、2）</b>：还原性 <span class="em">I⁻</span>＞<span class="em">Fe²⁺</span>＞Br⁻＞Cl⁻、氧化性 Cl₂＞Br₂＞<span class="em">Fe³⁺</span>＞I₂；FeBr₂ 中通少量 Cl₂ 只氧化 <span class="em">Fe²⁺</span>；FeI₂ 中通等量 Cl₂ 只氧化 <span class="em">I⁻</span>。</div>
+    <div class="keyline"><b>清单2（核心题3）</b>：<span class="em">非金属性弱</span>的一方显正价；IBr 中 I 为 <span class="em">+1</span> 价、Br 为 −1 价；IBr＋2NaOH＝<span class="em">NaBr＋NaIO＋H₂O</span>。</div>
+    <div class="keyline"><b>清单3（过关1）</b>：制漂白粉用 <span class="em">石灰乳</span>（Ca(OH)₂ 悬浊液，不是澄清石灰水）；电解制 Mg 用 <span class="em">熔融</span> MgCl₂。</div>
+    <div class="keyline"><b>清单4（过关2、3）</b>：加碳酸盐/碱促 <span class="em">正</span> 移、加酸促 <span class="em">逆</span> 移。</div>
+    <div class="keyline"><b>清单5（氟）</b>：2F₂＋2H₂O＝<span class="em">4HF＋O₂</span>（F 只显 −1，无正价，所以被 O 反氧化）；HF 为 <span class="em">弱</span> 酸、能腐蚀玻璃。</div>
+    <div class="keyline"><b>清单6（Ag⁺ 检验）</b>：AgCl <span class="em">白</span> 色、AgBr <span class="em">淡黄</span> 色、AgI <span class="em">黄</span> 色；<span class="em">Cl</span> 的最高价含氧酸 HClO₄ 酸性最强。</div>
+    <div class="keyline"><b>清单7（碘）</b>：用 <span class="em">CCl₄</span>（或苯）萃取；I₂ 的 CCl₄ 溶液呈 <span class="em">紫红</span> 色且位于 <span class="em">下</span> 层；检验 I⁻ 先加 <span class="em">氯水（或双氧水）</span> 氧化成 I₂，再加 <span class="em">淀粉溶液</span>。</div>
+    <div class="keyline"><b>清单8（氯水多重平衡）</b>：新制氯水中有 <span class="em">三</span> 种平衡，Cl₂＋H₂O 的 <span class="em">歧化</span> 平衡最关键；溶液呈 <span class="em">酸</span> 性，因为 <span class="em">HCl（强酸）</span> 电离程度大于 HClO 的水解程度。</div>
+    <div class="keyline"><b>清单9（漂白）</b>：真正起作用的是 <span class="em">HClO</span>；让上述平衡 <span class="em">正向</span> 移动且不消耗 HClO 才能增强；加热 <span class="em">促进</span> HClO 分解使漂白失效。</div>
+    <div class="keyline"><b>清单10（制 Cl₂）</b>：电解 <span class="em">饱和食盐水（或 NaCl 水溶液）</span>；实验室用 MnO₂ 与 <span class="em">浓盐酸</span> 共热；除混在 Cl₂ 中的 HCl 用 <span class="em">饱和食盐水</span>，若同时要干燥则再用 <span class="em">浓硫酸（或无水 CaCl₂）</span> 干燥。</div>
+    <div class="keyline"><b>清单11（消毒剂）</b>：漂白粉有效成分是 <span class="em">Ca(ClO)₂ 与 CaCl₂ 的混合物</span>；失效原理是 <span class="em">Ca(ClO)₂＋CO₂＋H₂O</span> 生成 HClO 后分解；84 消毒液与洁厕灵 <span class="em">绝对不能</span> 混用。</div>
+    <div class="keyline"><b>清单12（互化物）</b>：弱的一方显 <span class="em">正</span> 价；IBr＋H₂O＝HBr＋HIO；水解与碱解 <span class="em">不是</span> 氧化还原反应。</div>
+    <div class="keyline"><b>清单13（氯与金属）</b>：<span class="em">Cl₂ 过量</span> 时生成 FeCl<sub>3</sub>，<span class="em">Fe 过量（Cl₂ 不足）</span> 时生成 FeCl<sub>2</sub>。</div>
+    <div class="keyline">⚠ 写完自己回看一遍：<span class="em">凡是填错的空，就是本讲要带走的东西</span>。</div>
+  </div>
+</details>
+<!-- ==================== 五、分层作业 ==================== -->
+<div class="part"><span class="no">五</span>分层作业<span class="tm">讲义课时精练</span></div>
+<p class="tip">📖 全部出自讲义第17讲 课时精练，对号入座，先保基础层</p>
+<div class="hw">
+  <div class="box b1">
+    <h4>🟢 基础层 · 必做</h4>
+    <ul>
+      <li>第1题 · 试剂保存方法正误（揭阳）</li>
+      <li>第2题 · 氯、溴、碘及其化合物的性质</li>
+      <li>第3题 · 含氯物质的价—类二维图</li>
+    </ul>
+  </div>
+  <div class="box b2">
+    <h4>🔵 能力层 · 选做其一</h4>
+    <ul>
+      <li>第5题 · 价—类二维图的应用（肇庆）</li>
+      <li>第6题 · 点滴板三孔穴对比新制氯水</li>
+      <li>第7题 · 盐酸与亚氯酸钠制 ClO₂ 的速率测定</li>
+      <li>第8题 · 卤素互化物（BrCl、IBr、ICl）（清远）</li>
+    </ul>
+  </div>
+  <div class="box b3">
+    <h4>🟡 冲刺层 · 挑战</h4>
+    <ul>
+      <li>第10题 · 无色溶液中的离子推断</li>
+      <li>第12题 · KIO₃ 的制备与含量测定（12分）</li>
+      <li>第13题 · S₂Cl₂ 的性质与流程分析（16分）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== 教师备课卡 ==================== -->
+<details class="beike"><summary>📋 备课卡（教师用）</summary>
+  <div class="bkbox">
+    <p><b>课堂节奏（40'）</b>：缺口速览 2' → 核心题1 10'（<span class="em">说3' → 评2' → 讲4' → 收口1'</span>）→ 核心题2 12'（说2' + 讲3' + <span class="em">板演互评5'</span> + 收口2'）→ 核心题3 8'（说2' + 讲4' + 收口2'）→ 小结·清单·作业布置 4' → 机动 4'。</p>
+    <p><b>时间口径（市教研院要求）</b>：<span class="em">教师讲授总量不超过课时的 1/3–1/2</span>（本讲 ≈12–14'，原来 2.0 版是 29'）。不设硬性分钟数，只守三条底线——① 每道核心题必须先让学生说；② 板演互评的 5 分钟不许挪作讲解；③ 详解由学生自己点开核对，教师只在争议处展开。</p>
+    <p><b>导入话术（难题前置）</b>：一上课直接把最难的那道摆出来——"<span class="em">等物质的量 Cl₂ 通入 FeI₂ 溶液，写方程式。这题你们现在多半写不对，40 分钟后回来解决它。</span>"然后再进缺口速览，让学生带着未解决的题听完整节课。</p>
+    <p><b>板演互评操作要点</b>：① 大屏只放"板演任务 + 踩点表"这一屏，<span class="em">全程不切换页面</span>（这正是放弃"投影两份学生答案"的原因——切屏既费时又打断注意力）；② 点 2 人同时上台，左板右板各写一份，建议搭配"中等生 + 中等偏上生"，<span class="em">写错的那份才有讲评价值</span>；③ 写完并排留着不擦，两份的差异就是讲评起点；④ 台下同学照踩点表给分、同桌交换核对，台上那 90 秒不冷场；⑤ 全班说扣分点，<span class="em">教师只圈错、先不判对错</span>。</p>
+    <p><b>操作要点</b>：①左栏原题 sticky 常驻，讨论时无需来回滚动；中间分隔条可拖动调宽（窄屏自动单栏）；②任务卡限时（核心题1 说 3 分钟、核心题2/3 说 2 分钟），同桌互说完必须<span class="em">定人向全班说</span>，不能只停在同桌层面；③"金钥匙"只收口方法，不替代讨论；④四段详解由学生点开自查（首行即"正确答案"卡片）；⑤本讲题目全是文字题，可让学生在任务卡上直接动笔写方程式再核对。</p>
+    <p><b>页面留白说明（学生页刻意不放的东西）</b>：<span class="em">课堂流程、组织步骤、教师话术一律不上学生页面</span>——页面只留"原题 + 任务 + 踩点表 + 详解"。原因：① 流程文案会让学生低头读字，注意力从题上跑掉；② 大屏是给学生看的，页面上印教学法语言既占版面又不专业。所以"<span class="em">同桌说 → 定人上黑板板演 → 全班照表互评 → 再看详解</span>"这条主线<b>只在本卡留底</b>，学生页仅保留必要性提示（"左边原题常驻可拖动"、"本讲板演题"标记）。课上用口头指令控场即可。任务卡的「📚 解决本任务需要的知识」与板演卡的「🎯 踩点给分表」都<span class="em">默认收起</span>——先让学生自己想、自己写，需要支架和评分标准时再点开；用的是原生折叠（零 JS 依赖），且已把回车"揭答案"设为跳过这两处，不会打乱揭答案的顺序。</p>
+    <p><b>左下角控制条（字号 ＋ 亮度）</b>：两个透明按钮，点一下换一档，选过自动记住（存在本机浏览器里）。<span class="em">字号</span>三档——1080p 屏用「标准」20px、一般大屏「大」24px（默认）、<span class="em">4K 屏且浏览器未缩放时用「特大」28px</span>（4K 不缩放下 24px 只抵 1080p 的 12px，务必切大）。<span class="em">亮度</span>五档 80%–120%——教室灯亮、屏幕泛白看不清时往上切（120% 底色提亮、文字纯白）；投影环境暗、屏幕刺眼时往下切（80% 整页变暗）。判断标准：后排看不看得清，以及一屏能不能容下"原题＋任务卡"。</p>
+    <p><b>65分口径（备课依据，不进学生页面）</b>：选择题 44 分目标 36 分＋大题 56 分目标 28 分。本讲"先强后弱＋量定终点"属<span class="em">必拿分</span>（选择题中离子方程式正误几乎每年必考）；卤素互化物的价态判断属能力层；涉及多重平衡的定量分析（如 KIO₃ 含量测定、S₂Cl₂ 流程计算）留冲刺层。</p>
+
+    <p><b>📈 广东卷落点表（2021–2026，教师用，课堂不投影）</b></p>
+    <table>
+      <tr><th style="width:52px;">年份</th><th style="width:52px;">题号</th><th style="width:56px;">难度</th><th style="width:96px;">考查形式</th><th>落点</th></tr>
+      <tr><td>2021</td><td>T6</td><td>0.65</td><td>选择·用途</td><td>漂白粉和漂粉精</td></tr>
+      <tr><td>2021</td><td>T17</td><td>0.65</td><td>实验大题</td><td>氯气的实验室制法 ＋ 化学实验方案设计与评价</td></tr>
+      <tr><td>2022</td><td>T8</td><td>0.65</td><td>选择·装置</td><td>氯气的化学性质、实验室制法、与碱溶液反应、气体的制备与收集</td></tr>
+      <tr><td>2022</td><td>T12</td><td>0.85</td><td>选择·STSE</td><td>海水提取溴</td></tr>
+      <tr><td>2022</td><td>T14</td><td>0.65</td><td>选择·离子方程式</td><td>离子方程式正误判断（含 Cl₂ 与碱溶液反应）</td></tr>
+      <tr><td>2023</td><td>T12</td><td>0.85</td><td>选择·性质</td><td>次氯酸盐的性质和用途</td></tr>
+      <tr><td>2024</td><td>T8</td><td>0.85</td><td>选择·装置</td><td>氯气的实验室制法、与非金属单质反应、气体的制备收集与净化干燥</td></tr>
+      <tr><td>2025</td><td>T12</td><td>—</td><td>选择·水溶液</td><td>CuCl 因生成 [CuCl₂]⁻、[CuCl₃]²⁻ 而溶解（电离方程式、电荷守恒）</td></tr>
+      <tr><td>2025</td><td>T17</td><td>—</td><td>实验大题</td><td>HClO 的 Ka 测定（次氯酸分解、ClO⁻ 水解常数）</td></tr>
+      <tr><td>2026</td><td>T13</td><td>—</td><td>选择·价类图</td><td>部分含 C 或 N 或 Cl 物质的分类与化合价关系图</td></tr>
+      <tr><td>2026</td><td>T19</td><td>—</td><td>大题</td><td>硫、氯单质及其化合物在科研和生产中的作用</td></tr>
+    </table>
+    <p><b>📊 读表结论（选题依据）</b>：六年 11 次落点，全部集中在"<span class="em">性质—制取—检验—转化</span>"这条主线，载体偏爱两种——<b>装置图</b>（2022/2024 T8）与<b>价类二维图</b>（2026 T13）；氯最爱出现在<b>实验大题</b>里（2021 T17、2025 T17）。而"<span class="em">与量有关的竞序反应</span>"广东卷只在 2021 T15 的离子方程式正误中擦过一次边，真正的主力是全国卷——2019 海南、2020 江苏、2022 与 2023 浙江连年考，考法几乎不变。故本讲采用"<b>外省卷补模型、广东卷给载体</b>"的组合打法。地市模拟题与自编题一律不用。</p>
+    <p><b>⚠ 数据勘误（2.0 版遗留）</b>：2.0 版此处曾写"2026 T9 流水线"。经核对 2026 年广东卷 T9 为"铁丝在氧气/水蒸气中燃烧"的实验装置题，<span class="em">与卤素无关</span>；2026 年的真实卤素落点是 T13（价类二维图）与 T19（硫、氯大题）。本表已更正，并补齐 2025、2026 两年（原表只到 2024）。</p>
+    <p><b>数据来源</b>：讲义第17讲（卤素 氯及其化合物的转化关系）＋ 广东卷细目表（2021–2024，逐题核对难度系数）＋ 广东卷试卷原文（2025、2026，逐题定位）＋ 缺口卡片 G15（与量有关的离子方程式——先后反应型）。</p>
+  </div>
+</details>
+
+<div class="foot">第17讲 卤素 氯及其化合物的转化关系 · 缺口真题训练 3.0 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      /* 触屏 */
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;   /* 知识支架、踩点表不参与"回车揭答案" */
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换（标准/大/特大），记住选择 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();   /* 不抢焦点，免得影响键盘遥控 */
+  });
+})();
+/* 亮度五档：按比例缩放整页配色（只改颜色变量，不动布局，手写层不受影响） */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

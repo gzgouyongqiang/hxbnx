@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第13讲 铁及其化合物转化关系 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .tfig{text-align:center;margin:4px 0 10px;}
+  .quiz .tfig img{max-width:58%;border:1px solid var(--border);border-radius:8px;background:#fff;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第13讲　铁及其化合物转化关系 · 课堂展示</h1>
+</header>
+
+<div class="twocol">
+<main class="colMain">
+
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 Fe²⁺ 被 Cl₂ 氧化为 Fe³⁺ 的离子方程式（FeCl₂ 溶液除 FeCl₃ 杂质原理）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 一、Fe²⁺和Fe³⁺的相互转化</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Fe²⁺ ＋ Cl₂ ＝ 2Fe³⁺ ＋ 2Cl⁻</b>　（加氯水或通 Cl₂，Fe²⁺ 被氧化为 Fe³⁺）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出用铁粉除去 FeCl₃ 杂质的离子方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 一、Fe²⁺和Fe³⁺的相互转化</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Fe³⁺ ＋ Fe ＝ 3Fe²⁺</b>　（铁粉过量，Fe³⁺ 被还原为 Fe²⁺，过滤除去多余铁粉）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 Fe³⁺ 与 I⁻ 反应的离子方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 铁三角转化关系（还原性：I⁻>Fe²⁺>Br⁻）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Fe³⁺ ＋ 2I⁻ ＝ 2Fe²⁺ ＋ I₂</b>　（I⁻ 还原性强于 Fe²⁺，能被 Fe³⁺ 氧化为 I₂）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 铁三角转化</b>：Fe²⁺ →(加氧化剂) Fe³⁺，Fe³⁺ →(加还原剂) Fe²⁺</li>
+  <li><b>② 还原性顺序</b>：I⁻ ＞ Fe²⁺ ＞ Br⁻——强还原剂与强氧化剂优先反应</li>
+  <li><b>③ 除杂</b>：FeCl₂(Fe³⁺) 加铁粉；FeCl₃(Fe²⁺) 通 Cl₂；Fe₂(SO₄)₃(FeSO₄) 滴 H₂O₂</li>
+  <li><b>④ 价类二维图</b>：横轴物质类别、纵轴化合价——看懂 Fe 的"价—类"地图</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷铁元素考点与难度研究报告》）</b>
+  <p>· <b style="color:var(--accent)">A类 铁三角与价态转化</b>（本讲核心）：广东卷走<span class="em">"图像化 + 实验化"</span>——分类-化合价关系图（2021 Q10、2024 Q14）、铁丝实验检验（2026 Q9），<b>不考 Fe(OH)₂ 制备操作题</b>。核心"价态-性质-颜色-检验"闭环，熟练即稳拿。</p>
+  <p>· 铁三角是铁元素的<span class="em">"心脏"</span>：Fe²⁺↔Fe³⁺ 互转 ＋ 还原性顺序 I⁻＞Fe²⁺＞Br⁻ ＋ 除杂不引杂。</p>
+  <p>· <span class="rd">✂ 放弃</span>：Fe 与 HNO₃ 用量的定量计算、竞争反应分步计算。</p>
+  <p>· <b style="color:var(--accent)">能力层必练</b>：流程"氧化沉铁"小问——2022 Q18（Fe²⁺ 是化合价有变化的金属离子，氧化＋调 pH 沉铁）、2024 Q18（加铝片还原，避免 Fe 以 [FeCl₄]⁻ 过膜）、2025 Q18（高压氧化成 Fe₂O₃ 沉铁）三年轮考，<span class="em">把"氧化—调 pH 沉铁"练成条件反射</span>；压轴定量问（Ksp 计算、画电解池）85+ 冲刺层再做。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约26分钟</span></div>
+
+<!-- 知识点① 铁三角 -->
+<h3>知识点① · 铁三角转化<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 一、Fe²⁺和Fe³⁺的相互转化 · 铁三角转化关系</span>
+<div class="quiz">
+  <div class="ask">思考：Fe²⁺ 与 Fe³⁺ 互转，各需加什么试剂？核心依据是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Fe²⁺ → Fe³⁺</b>：加氧化剂（Cl₂、氯水、H₂O₂、O₂、酸性 KMnO₄ 等）<br>
+      <b>Fe³⁺ → Fe²⁺</b>：加还原剂（Fe、Cu、I⁻、H₂S 等）<br>
+      核心依据：Fe²⁺ 是中间价态（+2），既有氧化性又有还原性，以还原性为主；Fe³⁺ 是最高价态，只有氧化性</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 一、Fe²⁺和Fe³⁺的相互转化 · 铁三角转化关系</span>
+<div class="quiz">
+  <div class="ask">分类：下列试剂中，哪些能把 Fe²⁺ 氧化为 Fe³⁺？哪些能把 Fe³⁺ 还原为 Fe²⁺？（先讨论，再揭晓）</div>
+  <div class="mat"><span>Cl₂</span><span>Fe粉</span><span>H₂O₂</span><span>Cu</span><span>酸性KMnO₄</span><span>KI溶液</span><span>氯水</span><span>H₂S</span></div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans"><b>→ 氧化 Fe²⁺ 为 Fe³⁺（氧化剂）：</b>Cl₂、氯水、H₂O₂、酸性 KMnO₄<br>
+      <b>→ 还原 Fe³⁺ 为 Fe²⁺（还原剂）：</b>Fe 粉、Cu、KI 溶液、H₂S</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 还原性顺序：I⁻>Fe²⁺>Br⁻（判断反应方向）</span>
+<div class="quiz">
+  <div class="ask">判断：下列反应能否发生？① FeCl₃ 溶液与 KI 溶液混合　② FeCl₃ 溶液与 NaBr 溶液混合　③ FeCl₂ 溶液与 Br₂ 水混合</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>能</b>：2Fe³⁺＋2I⁻ ＝ 2Fe²⁺＋I₂（I⁻ 还原性比 Fe²⁺ 强，优先被氧化）<br>
+      ② <b>不能</b>：Br⁻ 还原性比 Fe²⁺ 弱，Fe³⁺ 氧化不了 Br⁻（氧化性：Fe³⁺＜Br₂）<br>
+      ③ <b>能</b>：2Fe²⁺＋Br₂ ＝ 2Fe³⁺＋2Br⁻（Br₂ 氧化性强于 Fe³⁺）<br>
+      口诀：还原性 I⁻＞Fe²⁺＞Br⁻，前面的能把后面的从化合物中"顶"出来</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>二价铁升三价，氧化剂来帮忙（氯水、双氧水）；三价铁降二价，还原剂上场（铁粉、铜、碘离子）</p>
+</div>
+
+<!-- 知识点② 除杂 -->
+<h3>知识点② · 含铁物质除杂<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 一、Fe²⁺和Fe³⁺的相互转化 · 1.除去括号中的杂质</span>
+<div class="quiz">
+  <div class="ask">除杂连线：给下列"物质（杂质）"配除杂试剂（先讨论，再揭晓）</div>
+  <div class="mat"><span>FeCl₂(FeCl₃)</span><span>FeCl₃(FeCl₂)</span><span>Fe₂(SO₄)₃(FeSO₄)</span><span>FeCl₂(Cu²⁺)</span><span>过量铁粉</span><span>氯水/Cl₂</span><span>H₂O₂溶液</span><span>过量铁粉+过滤</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">FeCl₂(FeCl₃)：加过量铁粉，过滤（2Fe³⁺＋Fe＝3Fe²⁺）<br>
+      FeCl₃(FeCl₂)：通 Cl₂ 或加氯水（2Fe²⁺＋Cl₂＝2Fe³⁺＋2Cl⁻）<br>
+      Fe₂(SO₄)₃(FeSO₄)：滴加 H₂O₂（2Fe²⁺＋H₂O₂＋2H⁺＝2Fe³⁺＋2H₂O）<br>
+      FeCl₂(Cu²⁺)：加过量铁粉，过滤（Fe＋Cu²⁺＝Cu＋Fe²⁺）<br>
+      原理：<span class="em">除杂不引杂</span>——把杂质转化为被提纯物，或转化为沉淀/气体后过滤</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 一、Fe²⁺和Fe³⁺的相互转化 · 除杂第5题</span>
+<div class="quiz">
+  <div class="ask">思考：CuCl₂ 溶液混有少量 FeCl₂，怎么除？（Fe²⁺ 不能直接沉淀，需先转化）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">两步走：① 先加氧化剂（H₂O₂ 或氯水）把 Fe²⁺ 氧化为 Fe³⁺；② 再加 CuO 或 Cu(OH)₂ 调 pH，促进 Fe³⁺ 水解生成 Fe(OH)₃ 沉淀，过滤。<br>
+      <span class="rd">⚠ 不能用 NaOH 调 pH</span>——会把 Cu²⁺ 也沉淀掉。用 CuO/Cu(OH)₂ 只消耗 H⁺、不引入新杂质</div>
+  </details>
+</div>
+
+<span class="loc">📖 拓展真题 · 2024 广东 Q18 第(3)问（除铁试剂的选择）</span>
+<div class="quiz">
+  <div class="ask">拓展（2024·广东 18）：从炭渣提取镓的流程中，"还原"步骤加铝片，目的是避免____元素以____（填化学式）形式通过 LAEM 阴离子交换膜。想一想：这里除铁为什么选铝片？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">填：<b>铁</b>；<b>[FeCl₄]⁻</b>。浸取液 Cl⁻ 浓度大，Fe³⁺ 与 Cl⁻ 形成 [FeCl₄]⁻ 阴离子配离子，能穿过阴离子交换膜混入镓产品；加铝片把 Fe³⁺ 还原为 Fe²⁺（Fe²⁺ 最多配 2 个 Cl⁻，不透膜）。<br>
+      <span class="em">除铁试剂选择思路</span>：加铁粉（不引新杂质，Fe＋2Fe³⁺＝3Fe²⁺）或加铝片还原降价态（2024 真实情境）——按后续分离方式选试剂。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>除三价加铁粉，除二价通氯气；调 pH 沉三价，氧化剂先上场（CuCl₂ 除 FeCl₂）</p>
+</div>
+
+<!-- 知识点③ 价类二维图 -->
+<h3>知识点③ · 铁的"价—类"二维图<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 关系图构建与方程式填写</span>
+<div class="quiz">
+  <div class="ask">价类二维图：横轴＝物质类别（单质→氧化物→碱→盐），纵轴＝铁元素化合价（0→+2→+3）。看懂图，转化关系一目了然。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">关键落点：Fe（单质，0价）｜FeO/Fe₂O₃/Fe₃O₄（氧化物）｜Fe(OH)₂/Fe(OH)₃（碱）｜Fe²⁺盐/Fe³⁺盐（盐）<br>
+      纵向走（变价）＝氧化还原；横向走（不变价）＝复分解/水解</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">变式：铁与 O₂ 燃烧能实现 Fe→Fe₂O₃ 的转化吗？Fe(OH)₃ 与 HI 反应产物是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 铁在 O₂ 中燃烧生成 Fe₃O₄，得不到 Fe₂O₃（Fe₂O₃ 需 Fe(OH)₃ 受热分解等途径）<br>
+      ② Fe(OH)₃ 与 HI：不是单纯中和——Fe³⁺ 氧化 I⁻：2Fe(OH)₃＋6HI ＝ 2FeI₂＋I₂＋6H₂O（产物含 I₂）</div>
+  </details>
+</div>
+
+<!-- 知识点④ 课本基础题 -->
+<h3>知识点④ · 课本基础题精选<span class="p">（约5分钟）</span></h3>
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 16px;margin:8px 0;">
+  <b style="color:var(--blue);">📚 课本检索：人教版《必修 第一册》 P78 · 第一节 练习与应用 第5题</b>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P78 · 练习与应用 第5题</span>
+<div class="quiz">
+  <div class="ask">现欲探究铁及其化合物的氧化性或还原性，可选试剂：铁粉、FeCl₃ 溶液、FeCl₂ 溶液、氯水、锌片。完成实验报告：① 在 FeCl₂ 溶液中加入锌片，现象与结论？② 证明 Fe²⁺ 具有还原性，应选什么试剂？③ 在 FeCl₃ 溶液中加入足量铁粉，现象与结论？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 溶液由浅绿色变无色，Zn＋Fe²⁺＝Zn²⁺＋Fe——Fe²⁺ 具有氧化性<br>
+      ② 加氯水（或通 Cl₂）：Fe²⁺ 被氧化为 Fe³⁺（加 KSCN 变红验证）——Fe²⁺ 具有还原性<br>
+      ③ 铁粉溶解，溶液由棕黄色变浅绿色，2Fe³⁺＋Fe＝3Fe²⁺——Fe³⁺ 具有氧化性、Fe 具有还原性</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：100分] 1~8 每小题 7 分，9 题 12 分，10 题 18 分，11 题 14 分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底）</h4>
+    <ul>
+      <li>第 1~8 题：铁三角、还原性顺序、除杂、价类二维图基础判断（56 分，送分盘）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档）</h4>
+    <ul>
+      <li>第 9 题：硫酸亚铁晶体制备流程（12 分）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分）</h4>
+    <ul>
+      <li>第 10~11 题：Fe²⁺/Fe³⁺ 性质探究、共沉淀法制 Fe₃O₄ 流程（32 分，<span class="rd">✂ 可放弃</span>）</li>
+      <li>拓展真题：2025 Q18 "氧化沉铁"小问（高压下写生成 Fe₂O₃ 的离子方程式）——能力层必拿分；同题压轴（Ksp 沉淀 pH 计算、画电解池）85+ 再做</li>
+    </ul>
+  </div>
+</div>
+<p class="tip">📖 课本 人教版必修第一册 P77 练习与应用 第2题（Fe²⁺/Fe³⁺ 除杂）、第6题（转化关系推断）可作课后巩固续练。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：铁三角转化靠氧化剂/还原剂搭桥；FeCl₂中混FeCl₃加铁粉、FeCl₃中混FeCl₂通Cl₂…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：Fe₃O₄与足量盐酸反应产物有几种？除杂'不增不减易分离'怎么落到铁盐上？"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏JS（已改键名） ===== */
+
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c13_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c13_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+
+</script>
+
+<script>
+/* ===== 左下角控制条：字号三档切换（标准/大/特大）===== */
+(function(){
+  var FS = {
+    s:{base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px'},
+    l:{base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 's';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1); r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-h3',v.h3); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* ===== 左下角控制条：亮度五档（80%-120%）===== */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur)+1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

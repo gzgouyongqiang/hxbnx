@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3讲 氧化还原反应的概念和规律 · 缺口真题训练</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border2:#5a6d5f;--border-blue:#4a6a80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:34px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:6px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  header .sub{text-align:center;color:var(--dim);font-size:16px;margin-bottom:10px;}
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+    border-left:6px solid var(--accent);padding-left:12px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid var(--border2);border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  .quiz img{display:block;max-width:100%;width:auto;margin:8px auto;background:#fff;border-radius:6px;padding:6px;cursor:zoom-in;}
+  .quiz .stem{font-size:17px;line-height:1.85;}
+  details{
+    background:var(--panel3);border:1px solid var(--border2);
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  .seg{margin:8px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;}
+  .seg .t{color:var(--blue);font-weight:700;font-size:15.5px;margin-bottom:3px;}
+  .anscard{background:var(--card-gold);border:1px solid var(--gold);border-radius:8px;padding:6px 16px;color:var(--gold);font-weight:700;display:inline-block;margin:4px 0 10px;font-size:17px;}
+  .chain{text-align:center;background:var(--panel3);border:1px solid var(--border2);border-radius:8px;padding:12px;margin:10px 0;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  .luodian{background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;}
+  .luodian p{margin:5px 0;}
+  .beike{margin:34px 0 0;text-align:center;}
+  .beike summary{
+    display:inline-block;cursor:pointer;color:var(--dim);font-size:calc(var(--fs-sub) - 2px);
+    border:1px solid var(--border);border-radius:999px;padding:2px 16px;list-style:none;
+  }
+  .beike summary::before{content:"";}
+  .beike .bkbox{
+    text-align:left;background:var(--panel);border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;margin-top:10px;color:var(--dim);font-size:14.5px;
+  }
+  .beike .bkbox b{color:var(--gold);}
+  .beike .bkbox p{margin:5px 0;}
+  .myq{margin:8px 0 0;}
+  .myq-btn{background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:4px 16px;font-size:15px;cursor:pointer;font-family:inherit;}
+  .myq-btn:hover{background:var(--card-blue);}
+  .myq-box{display:none;margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:10px 14px;}
+  .myq-tip{color:var(--dim);font-size:14.5px;margin-bottom:6px;}
+  .myq-box textarea{width:100%;min-height:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:15.5px;font-family:inherit;resize:vertical;}
+  /* ===== 两栏（左：原题；右：任务卡与详解）===== */
+  .twocol{display:grid;grid-template-columns:46% 8px 1fr;align-items:start;margin-top:10px;}
+  .colL{position:sticky;top:12px;max-height:calc(100vh - 36px);overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .colL .loc{display:block;margin:0 0 6px;}
+  .colL img{width:100%;height:auto;border-radius:6px;background:#fff;padding:4px;cursor:zoom-in;display:block;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .colR{min-width:0;padding-left:12px;}
+  .qsub{margin-top:10px;font-size:16.5px;line-height:1.85;background:var(--panel2);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;}
+  .qsub .t{color:var(--blue);font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
+  @media (max-width:1000px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .colL{position:static;max-height:none;}
+    .colR{padding-left:0;margin-top:8px;}
+  }
+  .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:99998;align-items:center;justify-content:center;cursor:zoom-out;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:94vw;max-height:94vh;border-radius:6px;background:#fff;}
+  .foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;}
+
+  /* ==================== 3.0 新增 ==================== */
+  details.aux{margin:10px 0 0;background:transparent;border:none;}
+  details.aux summary{display:inline-flex;align-items:center;background:var(--panel3);color:var(--blue);border:1px dashed var(--border-blue);border-radius:8px;padding:3px 14px;font-size:15px;position:relative;z-index:99999;}
+  details.aux summary::before{color:var(--blue);}
+  details.aux[open] summary{border-style:solid;}
+  details.aux .auxbox{margin-top:8px;background:var(--card-blue);border:1px solid var(--border-blue);border-radius:8px;padding:8px 14px;font-size:16px;line-height:1.8;}
+  details.aux .auxbox p{margin:3px 0;}
+  .banyan{background:var(--card-gold);border:2px solid var(--gold);border-radius:12px;padding:12px 18px;margin:14px 0;}
+  .banyan .bt{color:var(--gold);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .banyan .task{background:var(--panel3);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:17px;}
+  .banyan .task b{color:var(--gold);}
+  .banyan table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16.5px;}
+  .banyan th{background:var(--panel3);color:var(--gold);font-weight:700;padding:6px 10px;text-align:left;border:1px solid var(--border);}
+  .banyan td{padding:6px 10px;border:1px solid var(--border);}
+  .banyan td.sc{color:var(--accent);font-weight:700;white-space:nowrap;text-align:center;}
+  .banyan td.wr{color:var(--dim);font-size:15.5px;}
+  .blank{display:inline-block;min-width:70px;border-bottom:2px dotted var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:1px;}
+  .keyline{background:var(--panel2);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 14px;margin:8px 0;font-size:16.5px;}
+  .beike .bkbox table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;}
+  .beike .bkbox th{background:var(--card-blue);color:var(--gold);font-weight:700;padding:5px 8px;border:1px solid var(--border);text-align:left;}
+  .beike .bkbox td{padding:5px 8px;border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+  .beike .bkbox td.hl{color:var(--accent);font-weight:700;}
+  table.opt{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.opt th{background:var(--panel3);color:var(--gold);padding:6px 8px;border:1px solid var(--border);text-align:left;}
+  table.opt td{padding:6px 8px;border:1px solid var(--border);color:var(--text);vertical-align:top;}
+  table.opt td.k{color:var(--blue);font-weight:700;text-align:center;width:56px;}
+
+  /* ==================== 教室大屏字号档 ==================== */
+  :root{
+    --fs-base:24px;--fs-h1:38px;--fs-part:30px;--fs-stem:21px;
+    --fs-opt:20px;--fs-sm:18px;--fs-sub:16px;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-sm);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);}
+  .quiz .stem{font-size:var(--fs-stem);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  .qsub{font-size:var(--fs-stem);}
+  .qsub .t{font-size:var(--fs-sub);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  .seg .t{font-size:var(--fs-sub);}
+  .anscard{font-size:var(--fs-opt);}
+  .chain{font-size:var(--fs-opt);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-opt);}
+  .keyline{font-size:var(--fs-opt);}
+  .hw .box h4{font-size:var(--fs-opt);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  details.aux summary{font-size:var(--fs-sub);}
+  details.aux .auxbox{font-size:var(--fs-sm);}
+  .banyan .bt{font-size:var(--fs-opt);}
+  .banyan .task{font-size:var(--fs-opt);}
+  .banyan table{font-size:var(--fs-opt);}
+  .banyan td.wr{font-size:var(--fs-sub);}
+  .myq-btn{font-size:var(--fs-sub);}
+  .myq-tip{font-size:var(--fs-sub);}
+  .myq-box textarea{font-size:var(--fs-sm);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike .bkbox{font-size:var(--fs-sub);}
+  .beike .bkbox table{font-size:calc(var(--fs-sub) - 2px);}
+  table.opt{font-size:var(--fs-opt);}
+
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+<header>
+  <h1>第3讲 · 氧化还原反应的概念和规律 · 缺口真题训练</h1>
+  <div class="sub">联动缺口：<span class="em">G22 归中与歧化</span> · <span class="em">G24 电子转移数目</span> · <span class="em">氧化剂/还原剂概念链</span>　｜　全部选自高考真题</div>
+</header>
+
+<!-- ==================== 一、缺口速览 ==================== -->
+<div class="part"><span class="no">一</span>缺口速览<span class="tm">2分钟</span></div>
+<ul class="kps">
+  <li><b>歧化 / 归中反应的深度配平</b>：歧化：中间价→高价+低价，从生成物逆向配平（Cl₂+2OH⁻、3S+6OH⁻）；归中：高价+低价→中间价，从反应物正向配平（2H₂S+SO₂=3S+2H₂O、8NH₃+6NO₂=7N₂+12H₂O）。口诀「只靠拢、不交叉」。</li>
+  <li><b>氧化还原电子转移数的综合判断</b>：五大陷阱：歧化取单侧（Na₂O₂ 每 mol 转移 1 mol e⁻）、变价元素按用量定价态、竞争分步求和、部分氧化、Fe₃O₄ 中 Fe 为 +8/3 价。先标化合价再算单侧。</li>
+  <li><b>多步氧化还原链式的电子转移</b>：同元素经历连续多步价变时，用「始态终态法」直接算总电子转移，不必分步。如 FeS₂ 焙烧（S 为 −1 价→+4 价）、KO₂ 歧化。注意歧化反应取净转移。</li>
+  <li><b>氧化还原竞争反应的电子转移</b>：多种还原剂共存按还原性顺序依次被氧化：I⁻&gt;Fe²⁺&gt;Br⁻。电子转移数按氧化剂用量分段计算（1 mol FeBr₂ 足量 Cl₂ 转移 3NA）。也是「先后规律」的应用。</li>
+</ul>
+
+<!-- ==================== 二、课堂区 · 核心题 ==================== -->
+<div class="part"><span class="no">二</span>课堂区 · 核心题<span class="tm">讲 ≈10′ · 学生说评 ≈12′</span></div>
+<p class="tip">左边原题常驻，按住中间分隔条可左右拖动调宽</p>
+
+<div class="quiz">
+  <div class="ask">核心题1 · N_A 题里的氧化还原——电子转移数"看得见"吗<span class="bl">〔本讲说题入口〕</span></div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2024·广东卷 T10】</span>
+      <div class="qsub"><span class="t">原题</span>设 N<sub>A</sub> 为阿伏加德罗常数的值。下列说法正确的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>¹⁸O 比 ¹⁶O 每个原子多 2 个中子，1 mol ¹⁸O₂ 比 ¹⁶O₂ 多 4N<sub>A</sub> 个中子</td></tr>
+        <tr><td class="k">B</td><td>3Fe + 4H₂O(g) <span class="eq">高温</span> Fe₃O₄ + 4H₂，1 mol Fe 反应生成 2 mol H₂</td></tr>
+        <tr><td class="k">C</td><td>1 L 0.1 mol·L⁻¹ NH₄Cl 溶液中 NH₄⁺ 数目为 0.1N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>1 mol Cl₂ 与足量 H₂ 反应生成 2 mol HCl，含 2N<sub>A</sub> 个 H–Cl 键</td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 3 分钟）</b>
+        <p>① A 项 ¹⁸O₂ 与 ¹⁶O₂ 每"分子"差几个中子？1 mol 气体差多少？别忘了乘 2。</p>
+        <p>② B 项 3Fe+4H₂O(g) 高温反应：Fe 从 0 到几价？1 mol Fe 转移几个电子、生成几 mol H₂？</p>
+        <p>③ C 项 NH₄Cl 溶液里 NH₄⁺ 数目守恒吗？谁在偷偷消耗它？</p>
+        <p>④ D 项 1 mol Cl₂ 生成 2 mol HCl，H–Cl 键怎么数？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 同位素只差中子：每 O 差 2，O₂ 双原子<span class="em">乘 2</span> → 1 mol 差 4N_A（A 错）。</p>
+            <p>② Fe→Fe₃O₄ 是<span class="em">平均价态 +8/3</span>：3Fe 转移 8e⁻，1 mol Fe 生成 4/3 mol H₂（B 错）。</p>
+            <p>③ NH₄⁺ 水解：数目 &lt; 0.1N_A（C 错）。</p>
+            <p>④ Cl₂+H₂=2HCl：1 mol Cl₂ → 2 mol H–Cl 键 = 2N_A（D 对，锁定答案）。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 N_A × 氧化还原的通用套路：<span class="em">先写方程式、标变价——转移电子数 = 变价原子数 × 每原子变价数</span>。遇"平均价态"（Fe₃O₄ 的 +8/3）别慌，电子守恒不会骗你。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>N<sub>A</sub> 题先找「最确定的一项」：D 项 1 mol Cl₂ 与 H₂ 生成 2 mol HCl，含 2N<sub>A</sub> 个 H–Cl 键，直接锁定。其余逐项找硬伤，B 项从氧化还原电子转移角度核查 Fe 的变价。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> ¹⁸O 比 ¹⁶O 每个原子多 2 个中子，O₂ 分子多 4 个，应多 <b>4N<sub>A</sub></b>（非 2N<sub>A</sub>）。</p>
+                <p><b>B</b>：<span class="rd">×</span> 3Fe+4H₂O(g)<span class="eq">高温</span>Fe₃O₄+4H₂，Fe 升到 +8/3 价，1 mol Fe 生成 <b>4/3 mol H₂</b>（非 2 mol）——G24 变价陷阱，电子转移按 8/3 mol/mol Fe 计。</p>
+                <p><b>C</b>：<span class="rd">×</span> NH₄⁺ 水解，数目小于 0.1N<sub>A</sub>。</p>
+                <p><b>D</b>：<span class="gr">√</span> Cl₂+H₂=2HCl，1 mol Cl₂ 生成 2 mol HCl，含 2N<sub>A</sub> 个 H–Cl 共价键。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 铁与水蒸气生成 Fe₃O₄（Fe 平均价 +8/3），电子转移按 8/3 mol/mol Fe 计——不要惯性写成 Fe₂O₃（+3 价）。「标况+气体」两条件缺一不可：11.2 L、22.4 L 必须带「标准状况」才能换算物质的量。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G24 解题链：写方程式 → 标化合价 → 定产物价态 → 算单侧电子转移。Fe 与 Cl₂（+3）、稀盐酸（+2）、水蒸气（+8/3）三产物对照记忆，一题吃透「产物价态决定电子数」。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l03a')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l03a">
+          <p class="myq-tip">三个方向任选：换反应（Fe 与水蒸气改 Cu 与硫）· 换问法（改问"转移电子数"）· 加陷阱（把"1 mol Cl₂ 与足量 H₂"改成"与足量 NaOH"——歧化后转移电子完全不同）</p>
+          <textarea id="qa-in-l03a" placeholder="把你改编的题目写在这里……" oninput="saveQA('l03a')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz">
+  <div class="ask">核心题2 · H₂S 与 SO₂ 归中、S 在碱里歧化——"取单侧"数电子</div>
+  <div class="twocol">
+    <div class="colL">
+      <span class="loc">【2024·新课标卷（黑吉辽）T4】</span>
+      <div class="qsub"><span class="t">原题</span>硫及其化合物部分转化关系如图（反应①：2H₂S+SO₂=3S+2H₂O；反应②：3S+6OH⁻ <span class="eq">△</span> 2S²⁻+SO₃²⁻+3H₂O）。设 N<sub>A</sub> 为阿伏加德罗常数的值，下列说法正确的是（　　）</div>
+      <table class="opt" style="margin-top:8px;">
+        <tr><td class="k">A</td><td>标准状况下，11.2 L SO₂ 中原子总数为 0.5N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>100 mL 0.1 mol·L⁻¹ Na₂SO₃ 溶液中，SO₃²⁻ 数目为 0.01N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>反应①每消耗 3.4 g H₂S，生成物中硫原子数目为 0.1N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>反应②每生成 1 mol 还原产物，转移电子数目为 2N<sub>A</sub></td></tr>
+      </table>
+    </div>
+    <div class="colDiv" title="按住左右拖动可调节宽度"></div>
+    <div class="colR">
+      <div class="luodian">
+        <b style="color:var(--gold);">🧭 任务卡（同桌讨论 4 分钟）</b>
+        <p>① 反应① 2H₂S+SO₂=3S+2H₂O：−2 价 S 与 +4 价 S 归中成 0 价，3.4 g H₂S 转移多少电子？</p>
+        <p>② 反应② 3S+6OH⁻=2S²⁻+SO₃²⁻+3H₂O：0 价 S"一分为二"——谁被氧化、谁被还原？</p>
+        <p>③ "生成 1 mol 还原产物"指哪种微粒？转移几 mol 电子？</p>
+        <p>④ A 项标况 11.2 L SO₂ 的原子数、B 项 SO₃²⁻ 水解，各自的坑在哪？</p>
+        <details class="aux">
+          <summary>📚 解决本任务需要的知识</summary>
+          <div class="auxbox">
+            <p>① 归中：每 2 mol H₂S（−2→0）失 4 mol e⁻；3.4 g H₂S = 0.1 mol → 0.1 mol S 变 0 价，生成物中硫原子 0.1N_A（C 对）。</p>
+            <p>② 歧化：3 个 S 中<span class="em">2 个降为 −2（还原产物 S²⁻）、1 个升为 +4（氧化产物 SO₃²⁻）</span>。</p>
+            <p>③ 数电子"取单侧"：只看升价侧（0→+4 失 4e⁻）或只看降价侧（2×0→−2 得 4e⁻）——生成 2 mol S²⁻ 对应 4 mol e⁻，1 mol S²⁻ 对应 2N_A（D 对）。</p>
+            <p>④ A 项 11.2 L SO₂ = 0.5 mol、原子 1.5N_A ≠ 0.5N_A；B 项 SO₃²⁻ 水解数目减少。</p>
+          </div>
+        </details>
+      </div>
+      <div class="luodian">
+        <b style="color:var(--gold);">🔑 归中/歧化数电子铁律：同种元素价态<span class="em">"只靠拢不交叉"</span>（归中），歧化则"一分为二各走一头"；<span class="em">转移电子只取单侧</span>——数升价侧或降价侧其一，两边相加必重复。</b>
+      </div>
+      <details><summary>显示四段详解（讨论完再展开）</summary>
+        <div class="ans">
+          <div class="anscard">✅ 正确答案：D</div>
+          <div class="seg"><p class="t">🧭 思路点拨</p><p>反应①是归中（−2 与 +4 价 S 归中为 0 价），反应②是歧化（0 价 S 歧化为 −2 与 +4 价）。逐项先算物质的量再核对电子守恒，D 项需按歧化「取单侧」仔细算。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 11.2 L SO₂=0.5 mol，每分子 3 个原子，原子总数为 1.5N<sub>A</sub>。</p>
+                <p><b>B</b>：<span class="rd">×</span> SO₃²⁻ 水解，数目小于 0.01N<sub>A</sub>。</p>
+                <p><b>C</b>：<span class="rd">×</span> 3.4 g H₂S=0.1 mol，反应①按计量 2H₂S~3S，生成 0.15 mol S=0.15N<sub>A</sub>（H₂S 中 −2 价 S 失 2 e⁻ 变 0 价）。</p>
+                <p><b>D</b>：<span class="gr">√</span> 反应② 3S+6OH⁻=2S²⁻+SO₃²⁻+3H₂O：3 mol S 中 2 mol 得 4 e⁻ 被还原为 S²⁻、1 mol 失 4 e⁻ 被氧化为 SO₃²⁻，故每生成 1 mol 还原产物 S²⁻ 转移 2 mol e⁻。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 歧化反应电子转移取单侧：只看被还原（或只被氧化）的一侧，不能把两侧相加。C 项是「归中反应的计量关系」陷阱——H₂S 与 S 的系数比 2:3，别按 1:1 算。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G22 双模型对比：归中（2H₂S+SO₂=3S+2H₂O）从反应物配平，氧化产物与还原产物是同一物质 S，要按来源区分；歧化（3S+6OH⁻）从生成物配平，电子转移只算单侧。硫、氯、氮三元素各背一组典型。</p></div>
+        </div>
+      </details>
+      <div class="myq">
+        <button class="myq-btn" onclick="toggleQA('l03b')">✏️ 我来编一道</button>
+        <div class="myq-box" id="qa-l03b">
+          <p class="myq-tip">三个方向任选：换体系（Cl₂ 与 NaOH 的歧化）· 改设问（反应②中氧化产物与还原产物物质的量之比）· 加情境（Na₂S₂O₃ 与酸反应的歧化）</p>
+          <textarea id="qa-in-l03b" placeholder="把你改编的题目写在这里……" oninput="saveQA('l03b')"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 三、训练区 · 过关题 ==================== -->
+<div class="part"><span class="no">三</span>训练区 · 过关题<span class="tm">自主限时 ≈8′</span></div>
+<p class="tip">先独立作答，再点开详解自查</p>
+
+<div class="quiz">
+  <div class="ask">过关1 · G24 电子转移——先标价再数数</div>
+  <span class="loc">【2021·广东卷 T11】</span>
+  <p>设 N<sub>A</sub> 为阿伏加德罗常数的值。下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>1 mol CHCl₃ 含有 C–Cl 键的数目为 3N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>1 L 1.0 mol·L⁻¹ 的盐酸含有阴离子总数为 2N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>11.2 L NO 与 11.2 L O₂ 混合后的分子数目为 N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>23 g Na 与足量 H₂O 反应生成的 H₂ 分子数目为 N<sub>A</sub></td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>A 键数确定成立；B 阴离子总数、C 混合气体分子数（＋氧化还原反应）、D Na 与水产物量——三坑逐项排除，其中 C、D 均属氧化还原电子转移视角。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√</span> 1 mol CHCl₃ 含 3 个 C–Cl 键，共 3N<sub>A</sub>。</p>
+                <p><b>B</b>：<span class="rd">×</span> 1 L 1 mol/L 盐酸中 Cl⁻ 约 1 mol，另有水电离的 OH⁻，阴离子总数介于 1N<sub>A</sub>~2N<sub>A</sub>，小于 2N<sub>A</sub>。</p>
+                <p><b>C</b>：<span class="rd">×</span> ①未指明标况；②即使标况，2NO+O₂=2NO₂ 是氧化还原反应，混合后分子数减少，不能简单相加——G11 竞争/反应损耗关联。</p>
+                <p><b>D</b>：<span class="rd">×</span> 2Na+2H₂O=2NaOH+H₂↑：1 mol Na（23 g）转移 1 mol e⁻，只生成 0.5 mol H₂=0.5N<sub>A</sub>——G24 产物量换算。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①Na→Na⁺ 只转移 1 e⁻，不要想成 2 e⁻（Mg→Mg²⁺ 才是 2 e⁻）；②「气体混合」要警惕发生反应（NO+O₂、H₂+Cl₂），分子数≠加和。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G24 产物量换算模板：先写方程式 → 定变价元素 → 电子转移数 = Δ价态 × 原子数 → 由电子守恒反推产物物质的量。Na、Fe、Cu 等金属与水的反应逐一过一遍。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关2 · KO₂ 供氧——歧化"取单侧"的经典</div>
+  <span class="loc">【2024·河北卷 T4】</span>
+  <p>超氧化钾（KO₂）可用作潜水或宇航装置的 CO₂ 吸收剂和供氧剂，反应为 4KO₂+2CO₂=2K₂CO₃+3O₂，N<sub>A</sub> 为阿伏加德罗常数的值。下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>44 g CO₂ 中 σ 键的数目为 2N<sub>A</sub></td></tr>
+        <tr><td class="k">B</td><td>1 mol KO₂ 晶体中离子的数目为 3N<sub>A</sub></td></tr>
+        <tr><td class="k">C</td><td>1 L 1 mol·L⁻¹ K₂CO₃ 溶液中 CO₃²⁻ 的数目为 N<sub>A</sub></td></tr>
+        <tr><td class="k">D</td><td>该反应中每转移 1 mol 电子生成 O₂ 的数目为 1.5N<sub>A</sub></td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>KO₂ 中 O 为 −1/2 价（O₂⁻ 超氧离子），歧化产物 O₂（0 价）与 K₂CO₃ 中 O（−2 价）。B 考晶体构成、C 考水解、D 考歧化取单侧，A 直接数 σ 键。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√</span> 44 g CO₂=1 mol，2 个 C=O 各含 1 个 σ 键，共 2N<sub>A</sub>。</p>
+                <p><b>B</b>：<span class="rd">×</span> KO₂ 由 K⁺ 和 O₂⁻ 构成，1 mol KO₂ 含 2 mol 离子（不是 3N<sub>A</sub>）。</p>
+                <p><b>C</b>：<span class="rd">×</span> CO₃²⁻ 水解，数目小于 N<sub>A</sub>。</p>
+                <p><b>D</b>：<span class="rd">×</span> O 从 −1/2→0 价：每生成 1 mol O₂ 转移 2×(1/2)=1 mol e⁻，故转移 1 mol e⁻ 只生成 1 mol O₂=N<sub>A</sub>，不是 1.5N<sub>A</sub>。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ G21/G24 联动：KO₂ 中 O 的 −1/2 价是「陌生价态」，先算准再算电子转移；超氧化物/过氧化物（Na₂O₂、KO₂）歧化都是单侧 1 e⁻/个 O。K₂CO₃ 溶液 C 项是「水解减少」常规坑。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 中间价态歧化三兄弟：Na₂O₂（−1→−2/0，1 e⁻/mol）、KO₂（−1/2→−2/0，0.5 e⁻/mol O 原子）、Cl₂（0→−1/+1，1 e⁻/mol）。见到「歧化」先问「取哪一侧、每 mol 转移几 e⁻」。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关3 · 氧化剂/还原剂对号入座——四要素连环</div>
+  <span class="loc">【2023·浙江 1 月选考 T6】</span>
+  <p>关于反应 2NH₂OH+4Fe³⁺=N₂O↑+4Fe²⁺+4H⁺+H₂O，下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>生成 1 mol N₂O，转移 4 mol 电子</td></tr>
+        <tr><td class="k">B</td><td>H₂O 是还原产物</td></tr>
+        <tr><td class="k">C</td><td>NH₂OH 既是氧化剂又是还原剂</td></tr>
+        <tr><td class="k">D</td><td>若设计成原电池，Fe²⁺ 为负极产物</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：A</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>先标化合价：NH₂OH 中 N 为 −1 价（H+1、O−2），N₂O 中 N 为 +1 价——2 个 N 共升 4 价；Fe³⁺→Fe²⁺ 4 个共得 4 e⁻。得失电子相等，生成 1 mol N₂O 转移 4 mol e⁻。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="gr">√</span> N 从 −1→+1（2 个 N 升 4 价），Fe³⁺ 得 4 e⁻，转移 4 mol 电子。</p>
+                <p><b>B</b>：<span class="rd">×</span> H₂O 中 H、O 价态未变，不是还原产物；N₂O 是氧化产物。</p>
+                <p><b>C</b>：<span class="rd">×</span> NH₂OH 中 N 只被氧化（失电子），只作还原剂。</p>
+                <p><b>D</b>：<span class="rd">×</span> 原电池负极失电子（氧化），Fe³⁺ 得电子在正极生成 Fe²⁺，Fe²⁺ 是正极产物。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ ①NH₂OH 中 N 价态易标错（H 为 +1 不是 −1，N 为 −1 价）；②「氧化产物/还原产物」看元素价态是否变化，H₂O 中元素未变就不是产物；③原电池电极判断：负极氧化、正极还原。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 四对概念判断流程：标价 → 定升降 → 升失氧还（还原剂被氧化）、降得还氧（氧化剂被还原）→ 产物对号入座。口诀：升失氧还、降得还氧——一句搞定氧化剂/还原剂/氧化产物/还原产物。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关4 · 归中产物来源——同种元素"不交叉"</div>
+  <span class="loc">【2021·浙江卷】</span>
+  <p>关于反应 8NH₃+6NO₂=7N₂+12H₂O，下列说法正确的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>NH₃ 中 H 元素被氧化</td></tr>
+        <tr><td class="k">B</td><td>NO₂ 在反应过程中失去电子</td></tr>
+        <tr><td class="k">C</td><td>还原剂与氧化剂的物质的量之比为 3:4</td></tr>
+        <tr><td class="k">D</td><td>氧化产物与还原产物的质量之比为 4:3</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：D</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>标化合价：NH₃ 中 N（−3）→N₂（0）失电子（还原剂），NO₂ 中 N（+4）→N₂（0）得电子（氧化剂）。归中反应中氧化产物与还原产物是同一物质 N₂，须按来源区分两者质量比。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> NH₃ 中 H 为 +1 价未变，被氧化的是 N（−3→0）。</p>
+                <p><b>B</b>：<span class="rd">×</span> NO₂ 中 N 从 +4→0 得电子（被还原），不是失去电子。</p>
+                <p><b>C</b>：<span class="rd">×</span> 还原剂 NH₃ 8 mol，氧化剂 NO₂ 6 mol，比为 8:6=<b>4:3</b>（不是 3:4）。</p>
+                <p><b>D</b>：<span class="gr">√</span> 8NH₃→4 mol N₂（氧化产物），6NO₂→3 mol N₂（还原产物），质量比 4:3。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 归中反应「氧化产物/还原产物」是同一物质（N₂），必须按<b>来源</b>区分：NH₃ 失电子生成的 N₂ 是氧化产物，NO₂ 得电子生成的 N₂ 是还原产物；还原剂/氧化剂按系数比，勿颠倒。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ G22 归中模型：2H₂S+SO₂=3S（S 既作氧化又作还原产物，按来源分）、8NH₃+6NO₂=7N₂（N₂ 同理）。口诀「只靠拢、不交叉」——两元素价态折向中间价，绝不发生交叉。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关5 · 氧化还原"过程"判断——谁升谁降看本质</div>
+  <span class="loc">【2024·山东卷 T1】</span>
+  <p>中国书画是世界艺术瑰宝，古人所用文房四宝制作过程中发生氧化还原反应的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>竹管、动物尾毫 → 湖笔</td></tr>
+        <tr><td class="k">B</td><td>松木 → 油烟 → 徽墨</td></tr>
+        <tr><td class="k">C</td><td>楮树皮 → 纸浆纤维 → 宣纸</td></tr>
+        <tr><td class="k">D</td><td>端石 → 端砚</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：B</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>判断标准唯一：有无元素化合价变化。逐项想「有没有新物质、有没有变价」：制笔/造纸/制砚是物理加工为主，松木燃烧制墨是化学变化且含碳被氧化。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 湖笔制作是物理加工（整形、胶粘），无化合价变化。</p>
+                <p><b>B</b>：<span class="gr">√</span> 松木燃烧（有机物中的 C 被氧化）生成油烟（含碳单质），化合价变化，属氧化还原反应。</p>
+                <p><b>C</b>：<span class="rd">×</span> 楮树皮→纸浆主要是物理分离（蒸煮漂白主要为物理变化）。</p>
+                <p><b>D</b>：<span class="rd">×</span> 端石打磨制砚是物理变化。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 判断口诀：化合价变→氧化还原；化合价不变→非氧化还原。燃烧、冶炼、电解、金属腐蚀一定是氧化还原；分馏、升华、溶解、结晶、焰色试验不是。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 氧化还原反应过程判断快速通道：先找「燃烧/冶炼/电解/氧化」关键词 → 必是氧化还原；「雕刻/分离/结晶/溶解」→ 大概率不是。本题与广东卷 STSE 命题风格一致，可作同源训练。</p></div>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">过关6 · 生活中的氧化还原——概念落地不丢分</div>
+  <span class="loc">【2023·全国乙卷 T7】</span>
+  <p>下列应用中涉及到氧化还原反应的是（　　）</p>
+      <table class="opt" style="margin:8px 0;">
+        <tr><td class="k">A</td><td>使用明矾对水进行净化</td></tr>
+        <tr><td class="k">B</td><td>雪天道路上撒盐融雪</td></tr>
+        <tr><td class="k">C</td><td>暖贴中的铁粉遇空气放热</td></tr>
+        <tr><td class="k">D</td><td>荧光指示牌被照发光</td></tr>
+      </table>
+  <details><summary>显示四段详解</summary>
+    <div class="ans">
+      <div class="anscard">✅ 正确答案：C</div>
+      <div class="seg"><p class="t">🧭 思路点拨</p><p>判断氧化还原反应唯一标准：有无元素化合价变化。逐项找「燃烧/被氧化/电化学」关键词——暖贴铁粉与氧气反应是典型氧化还原。</p></div>
+        <div class="seg"><p class="t">📌 逐项详解</p><p><b>A</b>：<span class="rd">×</span> 明矾净水靠 Al³⁺ 水解生成 Al(OH)₃ 胶体吸附悬浮物，无化合价变化。</p>
+                <p><b>B</b>：<span class="rd">×</span> 撒盐融雪是盐降低水的凝固点（溶解/物理过程），无化合价变化。</p>
+                <p><b>C</b>：<span class="gr">√</span> 暖贴中铁粉与 O₂ 发生氧化还原反应生成 Fe₂O₃·xH₂O 并放热，有化合价变化。</p>
+                <p><b>D</b>：<span class="rd">×</span> 荧光指示牌被光照激发发光是物理过程（电子跃迁），无化合价变化。</p></div>
+        <div class="seg"><p class="t">⚠ 易错提醒</p><p>⚠ 区分「化学变化 ≠ 氧化还原」：化学变化可能只是复分解/水解/电离（如明矾净水、醋除水垢）；只有「燃烧/电解/金属腐蚀/原电池/光合/呼吸」才是氧化还原。生活中的氧化还原：暖贴、铁生锈、食物腐败、燃料燃烧。</p></div>
+        <div class="seg"><p class="t">📐 规律总结</p><p>✅ 氧化还原概念判断快速通道：找「燃烧/冶炼/电解/氧化/腐蚀/电池」关键词→必是氧化还原；「溶解/结晶/吸附/发光/升华/分馏」→大概率不是。本题与第 7 题呼应，巩固「化合价是否变化」这一唯一判据。</p></div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 教师备课卡 ==================== -->
+<details class="beike"><summary>📋 备课卡（教师用）</summary>
+  <div class="bkbox">
+    <p><b>课堂节奏（40'）</b>：缺口速览 2' → 核心题1 10'（<span class="em">说3' → 评2' → 讲4' → 收口1'</span>）→ 核心题2 10'（说3' + 讲5' + 收口2'）→ 过关 1–6 学生自主 8' → 小结·作业布置 4' → 机动 6'。</p>
+    <p><b>导入话术（难题前置）</b>：黑板上先写 3S+6OH⁻=2S²⁻+SO₃²⁻+3H₂O——"<span class="em">0 价一分为二，谁是氧化剂谁是还原剂？生成 1 mol S²⁻ 转移几个电子？学会'取单侧'，这类题就终结了。</span>"</p>
+    <p><b>操作要点</b>：① 左栏原题 sticky 常驻，讨论时无需来回滚动；中间分隔条可拖动调宽（窄屏自动单栏）；② 任务卡限时，同桌互说完必须<span class="em">定人向全班说</span>；③"金钥匙"只收口方法，不替代讨论；④ 四段详解由学生点开自查（首行即"正确答案"卡片）。⑤ 歧化"取单侧"建议现场板演：把 3 个 S 标成 2 个降 + 1 个升，直观呈现"单侧计数"。</p>
+    <p><b>页面留白说明（学生页刻意不放的东西）</b>：<span class="em">课堂流程、组织步骤、教师话术一律不上学生页面</span>——页面只留"原题 + 任务 + 详解"。"同桌说 → 定人向全班说 → 看详解自查"这条主线只在本卡留底。</p>
+    <p><b>左下角控制条（字号 ＋ 亮度）</b>：两个透明按钮，点一下换一档，选过自动记住（存在本机浏览器里）。<span class="em">字号</span>三档——1080p 屏用「标准」20px、一般大屏「大」24px（默认）、4K 屏且浏览器未缩放时用「特大」28px。<span class="em">亮度</span>五档 80%–120%——教室灯亮、屏幕泛白看不清时往上切；投影环境暗、屏幕刺眼时往下切。</p>
+    <p><b>65分口径（备课依据，不进学生页面）</b>：N_A 电子转移数目为广东卷高频（2024 T10、2021 T11 连续落点），先标价再数数属必拿分；归中/歧化"取单侧"属能力层主战场；概念判断（山东/乙卷）作送分衬托。</p>
+    <p><b>📈 真题落点表（本讲 8 题清单，教师用，课堂不投影）</b></p>
+    <table>
+      <tr><th style="width:120px;">年份·卷别</th><th style="width:130px;">形式/缺口</th><th>落点与本讲位置</th></tr>
+      <tr><td class="hl">2024 广东</td><td class="hl">T10</td><td class="hl">选择·N_A（G24）</td><td class="hl">电子转移数（核心题1）</td><td class="hl">True</td></tr>
+      <tr><td>2021 广东</td><td>T11</td><td>选择·N_A（G24）</td><td>电子转移数（过关1）</td><td>False</td></tr>
+      <tr><td class="hl">2024 新课标</td><td class="hl">T4</td><td class="hl">选择·归中歧化（G22）</td><td class="hl">取单侧数电子（核心题2）</td><td class="hl">True</td></tr>
+      <tr><td>2024 河北</td><td>T4</td><td>选择·歧化（G24）</td><td>KO₂ 取单侧（过关2）</td><td>False</td></tr>
+      <tr><td>2023 浙江 1月</td><td>T6</td><td>选择·概念</td><td>氧化剂还原剂四要素（过关3）</td><td>False</td></tr>
+      <tr><td>2021 浙江</td><td>—</td><td>选择·归中（G22）</td><td>产物来源不交叉（过关4）</td><td>False</td></tr>
+      <tr><td>2024 山东</td><td>T1</td><td>选择·过程判断</td><td>升降价本质（过关5）</td><td>False</td></tr>
+      <tr><td>2023 全国乙</td><td>T7</td><td>选择·STSE</td><td>生活情境概念（过关6）</td><td>False</td></tr>
+    </table>
+    <p><b>📊 读表结论（选题依据）</b>：广东卷两处落点（2024/2021 T10、T11）均为"N_A × 电子转移"复合题——氧化还原概念落到计算上是广东的考法；归中/歧化由新课标、河北、浙江卷补位。山东 T1、乙卷 T7 做概念衬托。</p>
+    <p><b>数据来源</b>：广东卷试卷原文（2021、2024 逐题定位）＋ 2024 新课标黑吉辽 / 2024 河北 / 2023 浙江 1月 / 2021 浙江 / 2024 山东 / 2023 全国乙卷原文＋ 缺口卡片 G22、G24＋ 讲义第3讲三层次分层学案。</p>
+  </div>
+</details>
+
+<div class="foot">第3讲 · 氧化还原反应的概念和规律 · 缺口真题训练 3.0 ｜ 遥控：↓/空格 下翻，↑ 上翻，回车 揭答案，F9 暂停 ｜ 左下角可调字号（标准／大／特大）与亮度（80%–120%）</div>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：大</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="放大查看"></div>
+
+<script>
+function toggleQA(id){ var b=document.getElementById('qa-'+id); if(b) b.style.display = (b.style.display==='block')?'none':'block'; }
+function saveQA(id){ try{ localStorage.setItem('myq_'+id, document.getElementById('qa-in-'+id).value); }catch(e){} }
+document.addEventListener('DOMContentLoaded', function(){
+  var tas = document.querySelectorAll('textarea[id^="qa-in-"]');
+  for(var i=0;i<tas.length;i++){
+    var key = tas[i].id.replace('qa-in-','');
+    try{ var v = localStorage.getItem('myq_'+key); if(v) tas[i].value = v; }catch(e){}
+  }
+});
+/* 两栏拖拽调节宽度 */
+(function(){
+  var divs = document.querySelectorAll('.colDiv');
+  for(var i=0;i<divs.length;i++){
+    (function(div){
+      var wrap = div.parentNode;
+      var drag = false;
+      div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect='none'; });
+      window.addEventListener('mousemove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var pct = (e.clientX - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      });
+      window.addEventListener('mouseup', function(){ drag = false; document.body.style.userSelect=''; });
+      div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+      window.addEventListener('touchmove', function(e){
+        if(!drag) return;
+        var r = wrap.getBoundingClientRect();
+        var x = e.touches[0].clientX;
+        var pct = (x - r.left) / r.width * 100;
+        if(pct < 20) pct = 20; if(pct > 80) pct = 80;
+        wrap.style.gridTemplateColumns = pct + '% 8px 1fr';
+      }, {passive:true});
+      window.addEventListener('touchend', function(){ drag = false; });
+    })(divs[i]);
+  }
+})();
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t && t.tagName==='IMG' && t.closest('.quiz')){ e.preventDefault(); var lb=document.getElementById('lightbox'); lb.querySelector('img').src=t.src; lb.classList.add('show'); return; }
+  var lb = document.getElementById('lightbox');
+  if(lb && lb.classList.contains('show')){ lb.classList.remove('show'); }
+}, true);
+(function(){
+  var enabled = true;
+  var tips = null;
+  function findClosed(){
+    var ds = document.querySelectorAll('details:not([open])');
+    for (var i=0;i<ds.length;i++){
+      if(ds[i].classList.contains('aux')) continue;
+      if(!ds[i].closest('[hidden]')) return ds[i];
+    }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      document.querySelectorAll('details[open]').forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+/* 字号三档切换 */
+(function(){
+  var FS = {
+    s:{base:'20px',h1:'32px',part:'26px',stem:'18px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'24px',h1:'38px',part:'30px',stem:'21px',opt:'20px',sm:'18px',sub:'16px'},
+    l:{base:'28px',h1:'44px',part:'34px',stem:'24px',opt:'23px',sm:'20px',sub:'18px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 'm';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1);   r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-stem',v.stem); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* 亮度五档 */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', border2:'#5a6d5f', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', border2:'--border2', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur) + 1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

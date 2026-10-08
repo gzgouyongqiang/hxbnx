@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第14讲 铝、镁及其化合物 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第14讲　铝、镁及其化合物 · 课堂展示</h1>
+</header>
+
+<div class="twocol">
+<main class="colMain">
+
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出铝与 NaOH 溶液反应的化学方程式（铝的两性：与酸碱都放氢）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 2.铝单质（化学性质）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Al ＋ 2NaOH ＋ 6H₂O ＝ 2Na[Al(OH)₄] ＋ 3H₂↑</b>　（Al 是还原剂，H₂O 作氧化剂，NaOH 不作氧化剂）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出电解熔融 MgCl₂ 冶炼镁的化学方程式（海水提镁的最后一步）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「镁及其化合物」· 镁的工业制备</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>MgCl₂（熔融）<span class="eqw">＝<span class="eqw-c">电解</span></span> Mg ＋ Cl₂↑</b>　（海水提镁终点站；注意：电解 MgCl₂ 溶液得不到 Mg——生成 Mg(OH)₂、H₂ 和 Cl₂）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出电解熔融 Al₂O₃ 冶炼铝的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 铝的工业制备</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Al₂O₃（熔融）<span class="eqw">＝<span class="eqw-c">电解</span></span> 4Al ＋ 3O₂↑</b>　（加冰晶石 Na₃AlF₆ 降低熔点；不电解 AlCl₃——它是共价化合物熔融不导电）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① Al 的两性</b>：与酸、碱均产 H₂；等量 Al 与足量酸或碱产 H₂ 量相同</li>
+  <li><b>② Al₂O₃、Al(OH)₃ 两性</b>：既溶于强酸又溶于强碱；Al(OH)₃ 不溶于氨水——实验室用 Al³⁺＋氨水制备</li>
+  <li><b>③ 明矾净水 + 冶炼铝</b>：Al³⁺ 水解吸附，只净水不杀菌；电解熔融 Al₂O₃（加冰晶石），不电解 AlCl₃</li>
+  <li><b>④ Mg</b>：着火不能用 CO₂ 灭火；海水提镁：Ca(OH)₂→Mg(OH)₂→HCl→MgCl₂→电解熔融</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷镁铝考点与难度研究报告》）</b>
+  <p>· 铝是广东卷流程题<span class="em">"常驻元素"</span>（6 年 5 年大题含铝：沉铝/除铝/电解铝），但"两性/氢氧化铝制备<span class="em">几乎不单独考</span>"——藏进流程的"沉铝"环节（调 pH 使 Al³⁺→Al(OH)₃ 沉淀）。</p>
+  <p>· 镁<span class="em">"隐形"</span>：从不单考单质性质，重点是<span class="em">"MgO 调 pH"</span>和"Mg 在周期表中的位置"。</p>
+  <p>· 保分（0.65–0.85）：STSE、元素推断、转化关系、合金电化学；突破（0.50–0.65）：流程沉铝、MgO 调 pH。</p>
+  <p>· <b style="color:var(--accent)">能力层必练</b>："沉铝"主线 Ksp→pH 三步法——<span class="em">2021–2025 五年广东 Q18 一题多变</span>（上限由"下一位杂质"决定，2025 年"沉铝 pH 最高调至 5"卡的就是 Cu²⁺ 不许沉淀）；MgO/Mg(OH)₂ 转化与循环物质判断。</p>
+  <p>· <span class="rd">✂ 放弃</span>：冰晶石 Ksp/配离子、晶胞压轴（2026 AlSb）——<span class="em">85+ 冲刺层再做</span>；铝热反应、铝盐滴定图像为<span class="em">六年零落点</span>，不重锤。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① Al与酸碱 -->
+<h3>知识点① · Al 与酸、碱的反应<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 2.铝单质（化学性质）</span>
+<div class="quiz">
+  <div class="ask">思考：Al 与盐酸、NaOH 溶液反应都生成 H₂。两份等质量 Al 粉，分别与足量盐酸、足量 NaOH 反应，产 H₂ 质量相同吗？为什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>相同</b>。两个反应中 Al 都由 0 价升到 +3 价：<br>
+      2Al＋6H⁺ ＝ 2Al³⁺＋3H₂↑；2Al＋2OH⁻＋6H₂O ＝ 2[Al(OH)₄]⁻＋3H₂↑<br>
+      每 mol Al 都转移 3 mol e⁻、生成 1.5 mol H₂——产 H₂ 量只取决于 Al 的量，与酸/碱种类无关。<br>
+      推论：①等量 Al→等量 H₂；②等量 H₂→耗 Al 等量；③生成等量 H₂，耗盐酸与 NaOH 物质的量之比 3∶1</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 2.铝单质（化学性质③④）</span>
+<div class="quiz">
+  <div class="ask">挖空：Al 与稀盐酸：2Al＋6H⁺ ＝ ____＋____；Al 与 NaOH 溶液：2Al＋____＋6H₂O ＝ 2[Al(OH)₄]⁻＋3H₂↑</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">2Al＋6H⁺ ＝ 2Al³⁺＋3H₂↑；2Al＋2OH⁻＋6H₂O ＝ 2[Al(OH)₄]⁻＋3H₂↑<br>
+      <span class="rd">⚠ Al 与碱反应中，H₂O 是氧化剂（H⁺ 来自 H₂O），NaOH 不是氧化剂</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>铝制餐具不能长时间存放酸性、碱性食物</summary>
+  <div class="ans"><b>√</b>　Al 及表面 Al₂O₃ 都能与酸、碱反应。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>常温下，由于铝与浓硫酸不反应，所以可用铝制槽车运送浓硫酸</summary>
+  <div class="ans"><b>×</b>　是钝化（生成致密氧化膜），不是不反应。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>在铝与烧碱溶液的反应中，NaOH和H₂O均作氧化剂</summary>
+  <div class="ans"><b>×</b>　只有 H₂O 作氧化剂（H⁺ 来自 H₂O），NaOH 不参与氧化还原。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>两份相同质量的铝粉，分别与足量盐酸和足量NaOH溶液反应，产生H₂的质量一样多</summary>
+  <div class="ans"><b>√</b>　Al 都是 0→+3 价，失电子数相同。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>铝遇酸碱都放氢，等量铝产等量氢；算氢气只看铝，酸多碱多没关系</p>
+</div>
+
+<!-- 知识点② 两性与制备 -->
+<h3>知识点② · Al₂O₃、Al(OH)₃ 的两性与制备<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 3.氧化铝 / 4.氢氧化铝</span>
+<div class="quiz">
+  <div class="ask">分类：下列试剂中，哪些能溶解 Al(OH)₃？哪些不能？（先讨论，再揭晓）</div>
+  <div class="mat"><span>稀盐酸</span><span>NaOH溶液</span><span>氨水</span><span>KOH溶液</span><span>硫酸</span><span>Ba(OH)₂溶液</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>✅ 能溶解（强酸/强碱）：</b>稀盐酸、硫酸、NaOH 溶液、KOH 溶液、Ba(OH)₂ 溶液<br>
+      <b>❌ 不能溶解（弱碱）：</b>氨水<br>
+      结论：Al(OH)₃ 只溶于强酸、强碱，不溶于弱碱（氨水）——所以实验室用 Al³⁺＋氨水制备 Al(OH)₃，加过量氨水也不溶解</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 4.氢氧化铝（制备①）</span>
+<div class="quiz">
+  <div class="ask">挖空：实验室制备 Al(OH)₃：Al³⁺＋____ ＝ Al(OH)₃↓＋____；为什么不选 NaOH？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">Al³⁺＋3NH₃·H₂O ＝ Al(OH)₃↓＋3NH₄⁺<br>
+      不用 NaOH 的原因：Al(OH)₃ 溶于强碱，NaOH 过量会把沉淀溶解（Al(OH)₃＋OH⁻＝[Al(OH)₄]⁻）；氨水是弱碱，过量也不溶解 Al(OH)₃</div>
+  </details>
+</div>
+
+<span class="loc">📖 拓展一问 · Al 的"先溶后析"完整循环（两性收口）</span>
+<div class="quiz">
+  <div class="ask">拓展：向 Al(OH)₃ 溶于过量 NaOH 所得的 NaAlO₂ 溶液中通入过量 CO₂，会发生什么？写出方程式。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>NaAlO₂ ＋ CO₂ ＋ 2H₂O ＝ Al(OH)₃↓ ＋ NaHCO₃</b>（注意"过量 CO₂"产物是 NaHCO₃，不是 Na₂CO₃）<br>
+      沉淀→溶解→再沉淀，正是 Al(OH)₃ 两性的完整循环；铝土矿碱溶提铝走的就是这条线。<br>
+      <span style="color:var(--dim);font-size:15px;">📌 广东卷未直接考铝土矿流程综合题，此方程式作两性收口理解即可。</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 5.明矾</span>
+<div class="quiz">
+  <div class="ask">思考：明矾 KAl(SO₄)₂·12H₂O 净水的原理是什么？它能杀菌消毒吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">Al³⁺ 水解生成 Al(OH)₃ 胶体（Al³⁺＋3H₂O ⇌ Al(OH)₃(胶体)＋3H⁺），胶体吸附水中悬浮杂质沉降。<br>
+      <span class="em">只净水，不杀菌消毒</span>（杀菌靠 Cl₂、ClO₂、O₃ 等氧化性物质）<br>
+      <span style="color:var(--dim);font-size:15px;">📌 广东卷六年未直接考明矾，本点快讲过；"只净水不杀菌"的辨析保留。</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「铝及其化合物」· 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>Al(OH)₃能与盐酸反应，因而可用于治疗胃酸过多</summary>
+  <div class="ans"><b>√</b>　Al(OH)₃ 中和胃酸（HCl），且本身无毒、弱碱性。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>明矾可作净水剂，起到杀菌消毒的作用</summary>
+  <div class="ans"><b>×</b>　明矾净水靠吸附，不能杀菌消毒。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>实验室可用氧化铝坩埚熔化NaOH、Na₂CO₃固体</summary>
+  <div class="ans"><b>×</b>　Al₂O₃ 是两性氧化物，高温下与 NaOH、Na₂CO₃ 反应，会腐蚀坩埚。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>熔融态的AlCl₃几乎不导电，故工业上常采用电解熔融Al₂O₃冶炼铝</summary>
+  <div class="ans"><b>√</b>　AlCl₃ 是共价化合物，熔融态以分子存在、不导电；Al₂O₃ 熔融导电，加冰晶石降低熔点。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>铝氧铝氢两性物，强酸强碱都能溶；氨水弱碱溶不了，制氢氧化铝就用氨水</p>
+</div>
+
+<!-- 知识点③ 镁及冶炼 -->
+<h3>知识点③ · 镁及其化合物 + 金属冶炼<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「镁及其化合物」· 1.镁单质</span>
+<div class="quiz">
+  <div class="ask">思考：镁着火为什么不能用 CO₂ 灭火？还能用 N₂、H₂O 灭火吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">镁在 CO₂ 中仍能燃烧：2Mg＋CO₂ ＝(点燃) 2MgO＋C；Mg 也能与 N₂、H₂O(g) 反应——所以镁着火只能用<span class="em">沙土</span>盖灭，不能用水、CO₂、N₂</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「镁及其化合物」· 3.海水提取镁</span>
+<div class="quiz">
+  <div class="ask">排序：海水提镁流程中，下列操作的正确顺序是？（先讨论，再揭晓）</div>
+  <div class="mat"><span>加石灰乳沉淀Mg²⁺</span><span>加盐酸溶解</span><span>海水浓缩</span><span>MgCl₂·6H₂O在HCl气流中脱水</span><span>电解熔融MgCl₂</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans">海水 → 加石灰乳（Ca(OH)₂）→ Mg(OH)₂↓ → 加盐酸 → MgCl₂ 溶液 → 蒸发结晶 → MgCl₂·6H₂O → <span class="em">HCl 气流中脱水</span> → 电解熔融 MgCl₂ → Mg＋Cl₂<br>
+      关键方程式：Mg²⁺＋Ca(OH)₂ ＝ Mg(OH)₂↓＋Ca²⁺；Mg(OH)₂＋2HCl ＝ MgCl₂＋2H₂O；MgCl₂(熔融) <span class="eqw">＝<span class="eqw-c">电解</span></span> Mg＋Cl₂↑<br>
+      <span class="rd">⚠ MgCl₂·6H₂O 必须在 HCl 气流中脱水</span>——直接加热会水解生成 Mg(OH)₂，得不到无水 MgCl₂</div>
+  </details>
+</div>
+
+<span class="loc">📖 拓展 · MgO/Mg(OH)₂ 转化与"循环物质"判断（广东卷流程视角）</span>
+<div class="quiz">
+  <div class="ask">拓展：MgO 与 Mg(OH)₂ 怎么互转？流程题里"循环物质"怎么找？（广东卷"防沉淀＋循环"主线的固定考法）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>MgO ＋ H₂O ＝ Mg(OH)₂</b>（MgO 调 pH 的原理：缓慢消耗 H⁺ 调酸度，不引入新杂质）；Mg(OH)₂ <span class="eqw">＝<span class="eqw-c">Δ</span></span> MgO ＋ H₂O<br>
+      循环物质判断：<span class="em">前段投入、后段产出即为循环</span>——如 MgO 作调 pH 剂回用、MgSO₄ 回收再利用。<br>
+      镁在流程里的身份永远是"滤液里的共存离子"：算"别让它沉淀"的浓度上限，再走"盐晶体析出→循环利用"。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>镁火忌水忌 CO₂，只能沙土来盖灭；海水提镁石灰乳，HCl 气流来脱水；MgO 调 pH 循环转，前投后出找循环</p>
+</div>
+
+<!-- 知识点④ 课本基础题 -->
+<h3>知识点④ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:8px 16px;margin:8px 0;">
+  <b style="color:var(--blue);">📚 课本检索：人教版《必修 第一册》 P86 · 第二节 金属材料 练习与应用 第2题</b>
+</div>
+
+<span class="loc">📖 课本 人教版必修第一册 P86 · 练习与应用 第2题</span>
+<div class="quiz">
+  <div class="ask">Al₂O₃ 既可以与____反应，又可以与____反应，它是____氧化物</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">既可以与<b>酸（如盐酸）</b>反应，又可以与<b>碱（如 NaOH）</b>反应，它是<span class="em">两性氧化物</span>（Al₂O₃＋6HCl＝2AlCl₃＋3H₂O；Al₂O₃＋2NaOH＝2Na[Al(OH)₄]＋H₂O）</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~7 每小题 6 分，8 题 8 分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底）</h4>
+    <ul>
+      <li>第 1~7 题：铝两性、Al₂O₃/Al(OH)₃、明矾、镁性质、海水提镁基础判断（42 分，送分盘）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档）</h4>
+    <ul>
+      <li>第 8 题（前几问）：铝土矿碱溶提铝流程、离子方程式（8 分）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分）</h4>
+    <ul>
+      <li>第 8 题（计算小问）：铝土矿冶炼质量计算（<span class="rd">✂ 可放弃</span>）</li>
+      <li>拓展真题：2025 Q18 "沉铝"Ksp→pH 三步法（上限卡 Cu²⁺）——能力层必拿分；冰晶石 Ksp/配离子、晶胞压轴 85+ 再做</li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：Al(OH)₃只溶强酸强碱、不溶氨水——制Al(OH)₃用氨水不用NaOH；铝盐与强碱是分步沉淀…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：Mg能在CO₂、N₂中燃烧，为什么不能用CO₂灭火？'前投后出'循环怎么找？"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏JS（已改键名） ===== */
+
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c14_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c14_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+
+</script>
+
+<script>
+/* ===== 左下角控制条：字号三档切换（标准/大/特大）===== */
+(function(){
+  var FS = {
+    s:{base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px'},
+    m:{base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px'},
+    l:{base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px'}
+  };
+  var order = ['s','m','l'], names = {s:'标准',m:'大',l:'特大'};
+  var btn = document.getElementById('fsBtn');
+  if(!btn) return;
+  var cur = 's';
+  try{ var saved = localStorage.getItem('hxbnx_fs'); if(saved && FS[saved]) cur = saved; }catch(e){}
+  function apply(k){
+    cur = k; var v = FS[k], r = document.documentElement.style;
+    r.setProperty('--fs-base',v.base); r.setProperty('--fs-h1',v.h1); r.setProperty('--fs-part',v.part);
+    r.setProperty('--fs-h3',v.h3); r.setProperty('--fs-opt',v.opt); r.setProperty('--fs-sm',v.sm);
+    r.setProperty('--fs-sub',v.sub);
+    btn.textContent = '🔤 字号：' + names[k];
+    try{ localStorage.setItem('hxbnx_fs',k); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(order[(order.indexOf(cur)+1) % 3]);
+    btn.blur();
+  });
+})();
+/* ===== 左下角控制条：亮度五档（80%-120%）===== */
+(function(){
+  var BASE = {
+    bg:'#2a342c', panel:'#333f36', panel2:'#3a4840', panel3:'#425148',
+    cardBlue:'#2c3a45', cardGold:'#3a4433',
+    text:'#ffffff', dim:'#9fb09d',
+    border:'#46564c', borderBlue:'#4a6a80'
+  };
+  var VARS = {
+    bg:'--bg', panel:'--panel', panel2:'--panel2', panel3:'--panel3',
+    cardBlue:'--card-blue', cardGold:'--card-gold',
+    text:'--text', dim:'--dim',
+    border:'--border', borderBlue:'--border-blue'
+  };
+  var LV = [80, 90, 100, 110, 120];
+  var btn = document.getElementById('lumBtn');
+  if(!btn) return;
+  var cur = 100;
+  try{ var s = parseInt(localStorage.getItem('hxbnx_lum'), 10); if(LV.indexOf(s) >= 0) cur = s; }catch(e){}
+  function shade(hex, k){
+    var m = hex.slice(1).match(/../g), out = '#';
+    for(var i=0;i<3;i++){
+      var v = Math.round(parseInt(m[i],16) * k);
+      if(v > 255) v = 255;
+      out += ('0' + v.toString(16)).slice(-2);
+    }
+    return out;
+  }
+  function apply(v){
+    cur = v;
+    var k = v / 100, r = document.documentElement.style;
+    for(var key in VARS){ r.setProperty(VARS[key], shade(BASE[key], k)); }
+    btn.textContent = '☀️ 亮度：' + v + '%';
+    try{ localStorage.setItem('hxbnx_lum', v); }catch(e){}
+  }
+  apply(cur);
+  btn.addEventListener('click', function(){
+    apply(LV[(LV.indexOf(cur)+1) % LV.length]);
+    btn.blur();
+  });
+})();
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>
