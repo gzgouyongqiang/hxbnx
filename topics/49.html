@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第49讲 沉淀溶解平衡及应用 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第49讲　沉淀溶解平衡及应用 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——本讲默写＝Ksp 表达式＋沉淀转化方程式。⚠ 广东常把沉淀动作嵌在情境里考：2022-4 粗盐提纯试剂选择、2023-18(3) 依 Ksp 表写方程式、钡餐用 BaSO₄ 不用 BaCO₃（胃酸中溶解）——常识也要顺手拿。</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 AgCl 的沉淀溶解平衡方程式及其溶度积 Ksp 表达式；判断：AgCl、AgBr、AgI 三种同类型沉淀，溶解能力由大到小？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「沉淀溶解平衡及影响因素」· 2.沉淀溶解平衡 / 考点二「溶度积常数及简单计算」· 1~2</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>AgCl(s) ⇌ Ag⁺(aq)＋Cl⁻(aq)</b>　　<b>Ksp(AgCl)＝c(Ag⁺)·c(Cl⁻)</b><br>
+      同类型（阴阳离子个数比相同）Ksp 越大越易溶：<b>AgCl（1.8×10⁻¹⁰）＞ AgBr（5.4×10⁻¹³）＞ AgI（8.5×10⁻¹⁷）</b><br>
+      <span class="rd">⚠ Ksp 表达式只写离子浓度幂之积，固体不写；不同类型（如 AgCl 与 Mg(OH)₂）不能直接比 Ksp 大小判溶解性。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出锅炉除垢中 CaSO₄ 转化为 CaCO₃ 的离子方程式（用 Na₂CO₃ 溶液处理）。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点三「沉淀溶解平衡的应用」· 3.沉淀的转化（(3)实际应用①锅炉除垢）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CaSO₄(s)＋CO₃²⁻(aq) ⇌ CaCO₃(s)＋SO₄²⁻(aq)</b><br>
+      依据：Ksp(CaCO₃)≪Ksp(CaSO₄)——<b>溶解度大的沉淀转化为溶解度更小的沉淀容易实现</b>。<span class="em">2024 广东 T17 专门大题就考 CaSO₄→CaCO₃ 转化与动力学，本式是灵魂。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 Mg(OH)₂ 溶于稀盐酸的离子方程式；并判断：能否用稀硫酸代替水洗涤 BaSO₄ 沉淀以减少损耗？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点三「沉淀溶解平衡的应用」· 2.沉淀的溶解 / 考点一 判断第6题</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Mg(OH)₂＋2H⁺ ＝ Mg²⁺＋2H₂O</b>（加酸消耗 OH⁻，Q＜Ksp，平衡向溶解方向移动）<br>
+      判断：<b>能</b>（√）——稀硫酸提供 SO₄²⁻，同离子效应抑制 BaSO₄ 溶解，洗涤损耗更小。<br>
+      <span class="em">溶解三招</span>：加酸（碱性沉淀）、加 NH₄Cl/配位剂（AgCl 溶于氨水）、氧化还原（降离子浓度）。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 沉淀溶解平衡</b>：难溶≠不溶，v溶解＝v沉淀的动态平衡，服从平衡移动原理；影响因素：内因（溶解能力）、外因（温度、同离子效应）。<span class="em">⚑ 广东零落点</span>："逆等动定变"五特点独立概念选择题六年没考过——概念理解即可，不刷概念判断题。</li>
+  <li><b>② Ksp 与 Q 判沉淀（必背）</b>：Ksp＝平衡时离子浓度幂之积（只随温度变，升温多数增大）；Q＝任意时刻浓度幂之积。<span class="em">Q＞Ksp 析出沉淀；Q＝Ksp 饱和平衡；Q＜Ksp 沉淀溶解/未饱和</span>。<span class="em">三步法（保命动作）</span>：Ksp→c(OH⁻)→pH，"调 pH 至____范围"两头各算一遍——上限看下一个离子开始沉淀、下限看目标离子沉淀完全。</li>
+  <li><b>③ 同类型才可比</b>：阴阳离子个数比相同的难溶电解质，<b>Ksp 越大越易溶</b>（AgCl＞AgBr＞AgI）；不同类型必须换算成溶解度再比（Ksp 小的溶解度不一定小）。<span class="em">⚑ 广东零落点</span>：AgCl→AgI 式转化方向直问、同类型比溶解度直问六年零设问，外省也已降格——会判断即可，主练时间给三步法。</li>
+  <li><b>④ 沉淀转化规律（必背）</b>：溶解度大 → 更小 容易实现（AgCl→AgI→Ag₂S 白→黄→黑）；特定条件小→大也可实现（BaSO₄ 用饱和 Na₂CO₃ 多次处理转 BaCO₃）。<span class="rd">沉淀完全：c(离子)≤1×10⁻⁵ mol·L⁻¹</span>——"沉淀完全"必须落到 10⁻⁵ 这个数上，先焊死再谈计算。</li>
+  <li><b>⑤ 应用三件套</b>：生成——调 pH 法（加 CuO 除 Fe³⁺，不引杂质）、沉淀剂法（Na₂S 沉重金属）；溶解——酸溶、配位溶、氧化还原溶；转化——CaSO₄→CaCO₃ 除垢、ZnS→CuS 提铜。<span class="rd">✂ 放弃：调 pH 精细计算（开始/完全沉淀 pH 数值）、Ksp 与 pH 综合、分步沉淀可行性、转化平衡常数计算</span>。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷沉淀溶解平衡 Ksp 考点与难度研究报告》）</b>
+  <p>· <b>🎯 方法主线一句话：一条法则一把尺</b>——Q 与 Ksp 比大小定进出，算边界走 Ksp→c(OH⁻)→pH 三步法。</p>
+  <p>· <b>🟢 必保分（0.65–0.80，错不得）</b>：Ksp 计算<b>六年六连考</b>（2021-17(4) 电导率法 √Ksp、2021-18(3)② 双 Ksp 联立、2022-18(3)、2024-18(5)、2025-18(3)、2026-18(3)②）——设问就三款："调 pH 至____范围"（2022-18(2) 4.7≤pH＜6.2）、"pH 最高可调至____"（2025-18(3) 沉铝）、"列出算式"（2021-18(3)②）；阵地全在 17/18 大题内部小问，这是本讲第一保底考点。</p>
+  <p>· <b>🟠 主突破（0.55–0.65，拿分主力）</b>：沉淀转化 <span class="em">2024-17 整题 14 分 CaSO₄→CaCO₃</span>——⚠ <b>2024 转型信号</b>：落点不是算 K，而是"用 pH 随时间变化作平衡建立的证据"，答案正在从数字变成说法；数据表成标配（2022-18/2023-18/2024-18/2025-18）——命题人把数据全给你，考"取哪个数、列哪条式"，读表取数比记结论重要。</p>
+  <p>· <b>🔵 冲刺层预备区</b>：Qc 判据显性化（"恰好沉淀完全"用 Q＝Ksp 反推边界）＋沉淀-配位耦合——外省链条化考查（判据→先后→转化→窗口→耦合）的缺口，广东当前停在第 2-3 环。</p>
+  <p>· <b>✂ 放弃（0.45–0.55 区分度）</b>：五特点概念选择题、AgCl→AgI 转化直问、Ksp-溶解度换算直问（广东六年零落点，一轮不设专项）；Ksp 与 pH 综合计算、沉淀转化平衡常数、多离子分步沉淀——流程题末问，65 分只抢"方向判断"空。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 沉淀溶解平衡与 Ksp<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「沉淀溶解平衡及影响因素」· 2.沉淀溶解平衡 / 考点二·1~3</span>
+
+<table class="tb">
+  <tr><th>条件（AgCl 体系，ΔH＞0）</th><th>平衡移动</th><th>c(Ag⁺)</th></tr>
+  <tr><td>升高温度（固体有剩余）</td><td>右移</td><td>增大</td></tr>
+  <tr><td>加水（固体有剩余）</td><td>右移</td><td><b>不变</b>（仍饱和）</td></tr>
+  <tr><td>加少量 AgNO₃(s)</td><td>左移（同离子）</td><td>增大</td></tr>
+  <tr><td>通入 HCl</td><td>左移（同离子）</td><td>减小</td></tr>
+  <tr><td>通入 NH₃（配位溶）</td><td>右移</td><td>减小</td></tr>
+</table>
+<p class="tip">💡 关键区分：<b>加水不改变饱和溶液浓度</b>（固体还有剩余时 c(Ag⁺) 不变）；Ksp 只随温度变。</p>
+
+<div class="quiz">
+  <div class="ask">【判断抢答（讲义原文节选）】① 沉淀达到溶解平衡时，溶液中溶质离子浓度一定相等且保持不变？② 等体积等浓度 AgNO₃ 与 NaCl 混合后，体系中不存在 Ag⁺ 和 Cl⁻？③ 室温下 AgCl 在水中的溶解度小于在食盐水中的溶解度？④ 升高温度，沉淀溶解平衡一定正向移动？⑤ 为减少洗涤损耗，最好用稀硫酸代替水洗涤 BaSO₄ 沉淀？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>×</b>——浓度"保持不变"对，但"一定相等"错（如 Ag₂CrO₄ 中 c(Ag⁺)≠c(CrO₄²⁻)）；<br>
+      ② <b>×</b>——沉淀溶解平衡存在，溶液里仍有极少量 Ag⁺、Cl⁻；<br>
+      ③ <b>×</b>——食盐水含 Cl⁻ 抑制溶解，AgCl 在<b>水中</b>溶解度更大（应是"大于"）；<br>
+      ④ <b>×</b>——多数吸热正向，但 Ca(OH)₂ 等少数溶解度随温度降低（反向）；<br>
+      ⑤ <b>√</b>——SO₄²⁻ 同离子效应抑制 BaSO₄ 溶解。<br>
+      <span class="em">五个经典陷阱</span>：相等≠不变、沉淀溶解平衡有离子、同离子降溶解、升温未必都溶、洗涤选同离子试剂。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p><span class="em">Ksp 只随温度变，同类型越大越易溶</span>；加水不改变饱和浓度；洗涤沉淀选"含同离子的稀溶液"减少损耗。</p>
+</div>
+
+<!-- 知识点② -->
+<h3>知识点② · Q 与 Ksp：沉淀的生成与溶解判断<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「溶度积常数及简单计算」· 1.溶度积和离子积比较（表2）＋二、Ksp 的有关计算（例3）</span>
+
+<div class="quiz">
+  <div class="ask">【挖空】Q 与 Ksp 三态判断：① Q＿＿Ksp 析出沉淀；② Q＿＿Ksp 饱和平衡；③ Q＿＿Ksp 未饱和可继续溶解。<br>
+  【计算演示】取 5 mL 0.002 mol·L⁻¹ BaCl₂ 与等体积 0.02 mol·L⁻¹ Na₂SO₄ 混合（Ksp(BaSO₄)＝1.1×10⁻¹⁰）：有无沉淀？混合后 c(Ba²⁺) 多少？是否沉淀完全？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① Q<b>＞</b>Ksp 析出；② Q<b>＝</b>Ksp 平衡；③ Q<b>＜</b>Ksp 溶解。<br>
+      计算：混合后 c(Ba²⁺)＝0.001、c(SO₄²⁻)＝0.01 → <b>Q＝1×10⁻⁵＞Ksp，有沉淀</b>；SO₄²⁻ 过量，平衡时 c(Ba²⁺)＝Ksp/c(SO₄²⁻)＝1.1×10⁻¹⁰/9×10⁻³ ≈ <b>1.2×10⁻⁸ mol·L⁻¹＜1×10⁻⁵</b> → Ba²⁺ 已<b>沉淀完全</b>。<br>
+      <span class="em">模板</span>：先算混合后浓度（体积加倍浓度减半）→ 算 Q → 比 Ksp → 判方向；沉淀完全标准 c≤10⁻⁵。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p><span class="em">Q 大析出、Q 等平衡、Q 小溶解</span>；沉淀完全看 10⁻⁵；过量沉淀剂使残留离子浓度降到 Ksp÷过量浓度；"调 pH 至范围"两头各算一遍，只算一头必丢分。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 沉淀转化与应用（广东流程题配角）<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「沉淀溶解平衡的应用」· 1.生成 / 2.溶解 / 3.转化</span>
+
+<p><b style="color:var(--accent);">转化链条（必背）：</b><span class="em">AgCl(白)→AgI(黄)→Ag₂S(黑)</span>——Ksp 依次减小（1.8×10⁻¹⁰ → 8.5×10⁻¹⁷ → 6.3×10⁻⁵⁰），"小沉淀吃大沉淀"；工业转化：CaSO₄→CaCO₃（除垢）、ZnS＋Cu²⁺→CuS＋Zn²⁺（提铜）。</p>
+
+<div class="quiz">
+  <div class="ask">【应用判断】① 为什么可用 Na₂S 处理含 Cu²⁺、Hg²⁺ 的废水？② 除去 CuCl₂ 溶液中 Fe³⁺，为什么加 CuO/Cu(OH)₂ 调 pH 而不加 NaOH？③ Mg(OH)₂ 悬浊液加入 NH₄Cl 溶液为何能溶解？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 生成更难溶的 CuS、HgS 沉淀（Ksp 极小），重金属离子沉淀完全；<br>
+      ② CuO 等与 H⁺ 反应促进 Fe³⁺ 水解生成 Fe(OH)₃ 沉淀，<b>不引入新杂质</b>（加 NaOH 会引 Na⁺，且 Cu²⁺ 也可能沉淀）；<br>
+      ③ NH₄⁺ 水解出 H⁺ 消耗 OH⁻（Mg(OH)₂＋2NH₄⁺ ＝ Mg²⁺＋2NH₃·H₂O），Q＜Ksp 平衡向溶解方向移动。<br>
+      <span class="em">广东流程三动作</span>：除 Fe³⁺ 调 pH 用"金属氧化物/碳酸盐"（不引杂）、沉重金属用 S²⁻/OH⁻、防水解加酸——第51/52讲流程题继续用。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>转化方向：<span class="em">大的往小转（易），小的也能转大的（难，需高浓度试剂多次处理）</span>；调 pH 除杂质用"氧化物/碳酸盐不引杂"；沉淀剂选 S²⁻、OH⁻、CO₃²⁻ 专沉目标离子。</p>
+</div>
+
+<!-- 知识点④ -->
+<h3>知识点④ · 三步法实战：pH 窗口计算<span class="p">（约5分钟 · 广东设问三款之二）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三·二、Ksp 的有关计算（调 pH 除杂型）＋2022·广东 T18 数据表</span>
+
+<div class="quiz">
+  <div class="ask">【数据表取数】25 ℃ 下三种离子沉淀完全/开始沉淀的 pH：Fe³⁺ 完全 3.2、Al³⁺ 完全 4.7、RE³⁺（稀土）开始 6.2。要"让 Al³⁺ 沉淀完全而 RE³⁺ 不损失"，调 pH 至什么范围？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>4.7 ≤ pH ＜ 6.2</b>（2022 广东 T18(2) 原数据）。<br>
+      两头各算一遍：<b>下限</b>看目标离子沉淀完全（Al³⁺ 的 4.7）；<b>上限</b>看下一个离子开始沉淀（RE³⁺ 的 6.2）。<br>
+      <span class="em">答题模板</span>："使 Al³⁺ 沉淀完全需 pH≥4.7；为使 RE³⁺ 不沉淀需 pH＜6.2"——只算一头必丢分。<br>
+      <span class="em">进阶同款</span>："pH 最高可调至____"（2025 广东 18(3) 沉铝）＝同一动作反着问；防杂沉淀上限（2022-18(3) 月桂酸根 4.0×10⁻⁴）＝Ksp÷共存离子浓度反推，"尽可能多提取、又不许生成杂沉淀"。</div>
+  </details>
+</div>
+
+<!-- 知识点⑤ -->
+<h3>知识点⑤ · 外省镜子：广东还没考的角度<span class="p">（约3分钟 · 冲刺层）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展视野——外省 2024/2026 新高考卷高频，广东 2027 届可能跟进</span>
+<p class="tip">💡 <b>反向发现</b>：外省把 Ksp 考查链条化——"Q-K 判据→沉淀先后→转化方向→pH 窗口→与 Kb/K稳耦合求边界"一气呵成；广东当前停在第 2-3 环，"判据显性化"与"配位耦合"是两个缺口。老式"同类型比溶解度"直问各省基本不考了，别再拿十年前的全国卷题当主练材料。</p>
+<div class="quiz">
+  <div class="ask">【冲刺层八条镜子】① pAg-pX 负对数图（2024 辽宁 T15，含"以 CrO₄²⁻ 为指示剂"的浓度上限计算）② Qc 判据判"恰好沉淀完全"（2026 湖南 T16(3)、2024 重庆 T15(5)）③ Ksp 实验严谨性评价（2024 重庆 T4D、2024 江苏 T11、2026 湖南 T9C）④ 沉淀-配位耦合（2024 重庆 T11、2026 北京 T18）⑤ 银量法沉淀滴定（2024 浙江 6 月 T20）⑥ pH＋pM 双坐标图（2026 湖南 T14，pBa=4.3 算 Ksp）⑦ Ksp 表综合工艺（2026 湖北 T16(5)、2026 四川 T17）⑧ 沉淀转化方程式正误——难溶物不拆（2024 北京 T5D、2026 黑吉辽蒙 T3D）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">镜子用法：②⑥ 是"判据显性化"缺口——沉淀完全用 Q＝Ksp 反推，沉淀剂用量、pH 边界一步到位；④ 配位耦合——游离离子被配走→Q＜Ksp→沉淀溶解；③ 实验评价视角广东基本空白——转化现象不能直接证 Ksp 大小，缺控制变量不下结论（配 2024 广东 17 的 pH 证据链一起讲）；①⑤⑦ 冲刺层各走一题即可。</div>
+  </details>
+</div>
+
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第三章 第四节「沉淀溶解平衡」· 练习与应用（同源同型速练）</span>
+<p class="tip">以下 3 题与课本第四节练习同考点同型，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】向 AgCl 饱和溶液中分别：① 加少量 NaCl 固体；② 加少量 AgNO₃ 固体；③ 加水稀释。平衡如何移动？c(Ag⁺) 如何变？Ksp 变吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 加 NaCl：平衡<b>左移</b>（同离子效应），c(Ag⁺) 减小；② 加 AgNO₃：左移，c(Cl⁻) 减小、c(Ag⁺) 增大；③ 加水：有固体剩余时平衡右移但 <b>c(Ag⁺) 不变</b>（仍是饱和溶液）。Ksp 均<b>不变</b>（温度未变）。<br>
+      <span class="em">饱和溶液三操作</span>：加同离子左移、加水不动（浓度）、Ksp 永远只随温度。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】向盛有 AgCl 白色沉淀的试管中滴加 KI 溶液，沉淀变为黄色；继续滴加 Na₂S 溶液，变为黑色。写出转化关系并说明依据。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>AgCl(白) → AgI(黄) → Ag₂S(黑)</b><br>
+      依据 Ksp：AgCl(1.8×10⁻¹⁰)＞AgI(8.5×10⁻¹⁷)≫Ag₂S(6.3×10⁻⁵⁰)——沉淀向<b>更难溶</b>方向转化，Ksp 依次减小的经典颜色链（课本实验名场面）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③】Mg(OH)₂ 悬浊液中存在 Mg(OH)₂(s) ⇌ Mg²⁺＋2OH⁻。分别加入：① 盐酸；② NH₄Cl 溶液；③ FeCl₃ 溶液，各有什么现象？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 加盐酸：Mg(OH)₂ <b>溶解</b>（H⁺ 耗 OH⁻）；② 加 NH₄Cl：溶解（NH₄⁺ 水解耗 OH⁻）；③ 加 FeCl₃：白色沉淀变为<b>红褐色 Fe(OH)₃</b>（3Mg(OH)₂＋2Fe³⁺＝2Fe(OH)₃＋3Mg²⁺——Fe(OH)₃ 更难溶，转化）。<br>
+      <span class="em">三个方向各一例</span>：酸溶、盐水解溶、沉淀转化。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~12题每题3分 ＋ 13题14分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 9分）</h4>
+    <ul><li>第1题（3分）：沉淀溶解平衡说法——Ksp 只随温度（B）；</li>
+    <li>第2题（3分）：AgI 悬浊液加 NaCl 不能全转白（A 错，小转大难）；</li>
+    <li>第5题（3分）：AgCl 三实验——滤液 b 仍含 Ag⁺（B 错）。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 9分）</h4>
+    <ul><li>第3题（3分）：2025·揭阳 ZnS/CuS 共存——c(Zn²⁺)/c(Cu²⁺)＝Ksp 比＝2.5×10¹¹（A）；</li>
+    <li>第4题（3分）：Ksp 表判方程式——ZnS 在水中不能水解成 Zn(OH)₂（C 错）；</li>
+    <li>第6题（3分）：2023·浙江 CaCO₃ 上层清液——含碳微粒以 HCO₃⁻ 为主（B，Kh＝Kw/Ka₂ 水解为主的定量判断同款）。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 32分）</h4>
+    <ul><li>第7~12题（各3分）：AgCl 氨水配位溶解、Ksp 图像与多沉淀判断、流程沉金属等——<span class="rd">✂ 调 pH 精算与分步沉淀类 65 分可弃，只对答案理解方向</span>；</li>
+    <li>第13题（14分）：综合大题（含 2022·广东月桂酸沉 RE 型 c(C₁₁H₂₃COO⁻)＜4.0×10⁻⁴ 等）——先抢"先沉谁/转化方向/是否完全"约 6~8 分，Ksp-pH 联算<span class="rd">✂ 放弃</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 9＋9＋32＝50 分，与课时精练总分一致。必做＋选做守住三判据、三步法与"沉淀完全 10⁻⁵"送分盘，调 pH 精算大胆放。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：Ksp 只随温度变；Q>K 出沉淀、Q<K 不溶解（还会反向溶）；"沉淀完全"是离子浓度 ≤10⁻⁵ mol/L 不是 0…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：CaCO₃ 溶于盐酸而 CaSO₃ 难溶于盐酸，从 Q 与 Ksp 的角度说说差在哪？…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c49_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c49_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

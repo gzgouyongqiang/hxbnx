@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第29讲 分子的性质 配合物与超分子 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第29讲　分子的性质　配合物与超分子</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>滚动默写·必背结论<span class="tm">5分钟</span></div>
+<p class="tip">📖 本讲无化学方程式，滚动默写<b>分子极性＋氢键＋配合物组成</b>三大必背结论（广东卷配位/超分子近年升温）· 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 归类：下列分子哪些是极性分子、哪些是非极性分子？CO₂、BF₃、CH₄、CCl₄、NH₃、H₂O、HCl</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「键的极性与分子极性 分子的手性」· 分子的极性（65分清单必背）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>非极性：CO₂、BF₃、CH₄、CCl₄</b>（结构对称，正负电中心重合）<br>
+      <b>极性：NH₃、H₂O、HCl</b>（结构不对称，正负电中心不重合）<br>
+      口诀：<span class="em">直线/平面三角/正四面体且无孤对电子→非极性；有孤对电子→极性</span>（O₃除外）。
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 填“＞”或“＜”：熔沸点 NH₃＿PH₃、H₂O＿H₂S、HF＿HCl（氢键反常）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「分子间作用力」· 范德华力、氢键的对比（65分清单必背）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>NH₃＞PH₃、H₂O＞H₂S、HF＞HCl</b>（都比同族相邻氢化物高，反常！）<br>
+      原因：NH₃、H₂O、HF分子间存在<span class="em">氢键</span>（N、O、F三兄弟）；<span class="rd">氢键三元素：N、O、F</span>。
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 默写[Cu(NH₃)₄]SO₄的组成：中心离子＿、配体＿、配位数＿、外界＿</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点三「配合物 超分子」· 配位化合物（组成，65分清单必背）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>中心离子：Cu²⁺</b>（提供空轨道）　<b>配体：NH₃</b>（提供孤电子对）<br>
+      <b>配位数：4</b>（配体个数）　<b>外界：SO₄²⁻</b>（方括号外，可电离）<br>
+      口诀：<span class="em">方括号内是内界（中心＋配体），方括号外是外界；配位数＝配体个数</span>。
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 分子极性</b>：结构对称、正负电中心重合→非极性（<span class="em">CO₂、BF₃、CH₄、CCl₄</span>）；NH₃、H₂O、HCl为极性分子</li>
+  <li><b>② 键极性→羧酸酸性</b>：吸电子基（卤素）增强酸性（CF₃COOH最强）；烷基推电子减弱酸性（CH₃CH₂COOH最弱）</li>
+  <li><b>③ 氢键</b>：X—H…Y（X、Y为<span class="em">N、O、F</span>），有方向性饱和性，使NH₃＞PH₃、H₂O＞H₂S、HF＞HCl熔沸点反常</li>
+  <li><b>④ 配位键与配合物</b>：配体（NH₃、H₂O、CN⁻、Cl⁻）提供孤电子对＋中心离子（Cu²⁺、Fe³⁺）空轨道；<span class="em">[Cu(NH₃)₄]SO₄组成识别</span>（中心离子/配体/配位数/外界）</li>
+  <li><b>⑤ 超分子</b>：两种以上分子通过分子间作用力形成；特征＝<span class="em">分子识别＋自组装</span>（冠醚、DNA双螺旋）</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（综合《广东卷分子结构与性质考点与难度研究报告》＋65分清单）</b>
+  <p>· 广东卷分子结构板块中：<span class="em">氢键/分子间作用力（0.70~0.80）</span>与<span class="em">手性碳/分子极性/电子式（0.70~0.85）</span>是保分项；<span class="em">配位键/配合物/超分子（0.55~0.70）</span>是近年快速升温的新考向（2024冠醚Q13 → 2025配合物Q2 → 2026铜氨配合物Q17、超分子Q18）。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.70+）</b>：分子极性直接判断（2025浙江1月T1、2023广东Q5）、氢键与熔沸点（2021Q20/2022Q20）、配合物组成识别[Cu(NH₃)₄]²⁺（2026Q17）、键极性→羧酸酸性（2025广东17(4)）。</p>
+  <p>· <b style="color:var(--accent)">能力层必练（配合物＝大题半壁江山）</b>：氢键"一升一降"——<span class="em">分子间氢键升高熔沸点</span>（2024-12A NH₃ vs PH₃）、<span class="em">分子内氢键降低熔沸点</span>（2026-8C 邻羟基苯甲醛，六年最漂亮陷阱）；溶解性表述模板一字不差："分子中的—OH/—COOH与H₂O分子形成<span class="em">分子间氢键</span>，故易溶于水"（2021-20(5)、2022-21(3)、2024-20(3)C 三年三考）；配离子行为三规则（电离不拆 H[CuCl₂]＝H⁺＋[CuCl₂]⁻ 2025-12、电荷守恒整体计入、加配体促溶解/加沉淀剂促解离）；超分子双原因（"配位作用＋空腔大小与离子直径匹配"，2024-13B、2026-18(6)）；"铜氨全传"母题（2026-17 制备→组成→解离→滴定，拆五子问反复练）。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：氢键数量与强度双层辨析（2026湖南T5B：H₂O沸点高于HF是数目多不是键强）、氢键不是化学键（2026湖南T15(5)）、分子间氢键对熔点定量比较（2024山东T16(4)）、配离子平衡曲线（2024河北T11）、杯芳烃/环糊精拓展；配位数4平面正方形特例、超分子复杂应用（分子机器）；范德华力单独设问、氢键表示法书写——广东零考，口头带过。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约34分钟</span></div>
+
+<!-- 知识点① 键的极性与分子极性 -->
+<h3>知识点① · 键的极性与分子极性<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「键的极性与分子极性 分子的手性」· 分子的极性</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列分子哪些是极性分子？（看结构对称性＋孤电子对）</div>
+  <div class="mat">
+    <span>HCl</span><span>N₂</span><span>CO₂</span><span>NH₃</span><span>H₂O</span><span>CH₄</span><span>SO₂</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>极性：HCl、NH₃、H₂O、SO₂</b>　<b>非极性：N₂、CO₂、CH₄</b><br>
+      判断捷径：<span class="em">中心原子无孤电子对＋结构对称→非极性</span>（CO₂直线、CH₄正四面体）；有孤电子对→极性（NH₃、H₂O、SO₂都是V形/三角锥形）。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一 第6题</span>
+<div class="quiz">
+  <div class="ask">6.在HF、H₂O、NH₃、CS₂、CH₄、N₂分子中：<br>(1)以非极性键结合的非极性分子是＿＿。<br>(2)以极性键相结合，分子结构呈直线形的非极性分子是＿＿。<br>(3)以极性键相结合，分子结构呈正四面体形的非极性分子是＿＿。<br>(4)以极性键相结合，分子结构呈三角锥形的极性分子是＿＿。<br>(5)以极性键相结合，分子结构呈V形的极性分子是＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>(1)N₂</b>（非极性键＋非极性分子）　<b>(2)CS₂</b>（直线形，正负电中心重合）<br>
+      <b>(3)CH₄</b>（正四面体，对称）　<b>(4)NH₃</b>（三角锥，有孤对）<br>
+      <b>(5)H₂O</b>（V形，两对孤对电子）<br>
+      <span style="color:var(--dim);font-size:15px;">补充：分子极性最强的是HF（极性键＋不对称双原子）。</span>
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>直线、平面三角、正四面体无孤对→非极性；三角锥、V形有孤对→极性</p>
+</div>
+
+<!-- 知识点② 键的极性与羧酸酸性 -->
+<h3>知识点② · 键的极性与羧酸酸性<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「键的极性与分子极性」· 键的极性对化学性质的影响</span>
+
+<div class="quiz">
+  <div class="ask">排序：比较下列有机酸的酸性强弱（填“＞”）：CF₃COOH、CCl₃COOH、CHCl₂COOH、CH₂ClCOOH、CH₃COOH、CH₃CH₂COOH</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>CF₃COOH＞CCl₃COOH＞CHCl₂COOH＞CH₂ClCOOH＞CH₃COOH＞CH₃CH₂COOH</b><br>
+      规律：<span class="em">吸电子基（卤素）越多越强、电负性越大越强</span>；<span class="em">烷基是推电子基，越长酸性越弱</span>。
+    </div>
+  </details>
+</div>
+
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>吸电子基增强酸性（卤素越强越酸），推电子基减弱酸性（烷基越长越不酸）</p>
+</div>
+
+<!-- 知识点③ 分子间作用力与氢键 -->
+<h3>知识点③ · 分子间作用力与氢键<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「分子间作用力」· 范德华力、氢键的对比／分子的溶解性</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列比较熔沸点或溶解性的说法是否正确？</div>
+  <div class="mat">
+    <span>①NH₃熔沸点高于PH₃</span><span>②H₂O热稳定性强于H₂S与氢键有关</span><span>③乙醇与甲醚（同分异构体）常温状态不同与氢键有关</span><span>④苯胺沸点高于甲苯与氢键有关</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ①<b>√</b>　NH₃分子间有氢键<br>
+      ②<b>×</b>　热稳定性是<span class="rd">化学性质</span>，看共价键键能（O—H＞S—H），与氢键无关（2025惠州月考T4考过）<br>
+      ③<b>√</b>　乙醇分子间有氢键（液态），甲醚没有（气态）<br>
+      ④<b>√</b>　苯胺（—NH₂）分子间氢键使其沸点高于甲苯（2025年真题考过）
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">填空：在CO₂低压合成甲醇反应（CO₂＋3H₂ → CH₃OH＋H₂O）所涉及的4种物质中，沸点从高到低的顺序为＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>H₂O＞CH₃OH＞CO₂＞H₂</b>　H₂O、CH₃OH为极性分子且有氢键（H₂O氢键更多）；CO₂、H₂为非极性分子，CO₂相对分子质量大、范德华力大。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>氢键三兄弟N、O、F，熔沸点反常高；稳定性看键能，熔沸点看分子间作用力——两者别混</p>
+</div>
+
+<span class="loc">📖 拓展 · 氢键"一升一降"（2026·广东 8C 六年最漂亮陷阱）</span>
+<div class="quiz">
+  <div class="ask">判断：沸点：邻羟基苯甲醛＞水，原因是邻羟基苯甲醛可形成分子内氢键——这个解释对吗？溶解性表述怎么写才规范？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>×</b>　<span class="rd">分子内氢键使熔、沸点降低</span>——邻羟基苯甲醛形成分子内氢键，削弱了分子间作用力，沸点反而更低（对羟基苯甲醛形成分子间氢键，沸点更高）。与 2024-12A"分子间氢键升高熔沸点"合记：<span class="em">分子间升、分子内降</span>。<br>
+      <b>溶解性表述模板（一字不差）</b>："分子中的 —OH/—COOH 与 H₂O 分子形成<span class="em">分子间氢键</span>，故易溶于水"（2021-20(5)、2022-21(3)、2024-20(3)C 葡萄糖，三年三考）。</div>
+  </details>
+</div>
+
+<!-- 知识点④ 配合物 -->
+<h3>知识点④ · 配合物<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「配合物 超分子」· 配位键与配位化合物</span>
+
+<div class="quiz">
+  <div class="ask">识别：[Cu(NH₃)₄]SO₄中，中心离子、配体、配位数、外界分别是什么？配位键如何表示？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>中心离子：Cu²⁺</b>（提供空轨道，过渡金属离子常见）　<b>配体：NH₃</b>（N提供孤电子对）<br>
+      <b>配位数：4</b>　<b>外界：SO₄²⁻</b>（可电离）<br>
+      配位键表示：<span class="em">N→Cu</span>（箭头指向接受孤电子对的原子——中心离子）<br>
+      形成条件：<span class="rd">中心离子有空轨道＋配体有孤电子对</span>（NH₃、H₂O、CN⁻、Cl⁻、SCN⁻均可作配体）。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三 （一）第1题＋第2题</span>
+<div class="quiz">
+  <div class="ask">1.0.01 mol氯化铬(CrCl₃·6H₂O)在水溶液中用足量的AgNO₃处理，产生0.01 mol AgCl沉淀，此氯化铬最可能是（　　）<br>A.[Cr(H₂O)₆]Cl₃　B.[Cr(H₂O)₅Cl]Cl₂·H₂O　C.[Cr(H₂O)₄Cl₂]Cl·2H₂O　D.[Cr(H₂O)₃Cl₃]·3H₂O<br><br>2.[2021·全国乙卷，35(2)]三价铬离子能形成多种配位化合物。[Cr(NH₃)₃(H₂O)₂Cl]²⁺中提供电子对形成配位键的原子是＿＿，中心离子的配位数为＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>1.C</b>　0.01 mol配合物只产生0.01 mol AgCl → 1 mol配合物只有1 mol Cl⁻在外界 → <span class="em">[Cr(H₂O)₄Cl₂]Cl·2H₂O</span>。<br>
+      <b>2.N、O、Cl　6</b>　配位数＝配体原子数＝3（NH₃）＋2（H₂O）＋1（Cl）＝6。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>配位数数配体个数（多齿配体另算）；内界方括号里，外界可电离——AgNO₃沉淀数外界氯</p>
+  <p>📌 <span class="em">配离子行为三规则</span>：① 配离子是整体，电离不拆中心离子（H[CuCl₂]＝H⁺＋[CuCl₂]⁻，2025-12 设错点）　② 电荷守恒整体计入　③ 加配体促溶解、加沉淀剂促解离（CuCl 溶于盐酸）</p>
+</div>
+
+<span class="loc">📖 拓展 · 超分子识别"双原因"（2024-13B 冠醚 → 2026-18(6) 杂冠醚，新范式）</span>
+<div class="quiz">
+  <div class="ask">填空（2026·广东 18(6) 原句式）：杂冠醚选择性识别 Ag⁺ 的原因为＿＿＿＿与＿＿＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>配位作用</b>＋<b>空腔大小与 Ag⁺ 直径相匹配</b>——"分子识别＝配位作用＋尺寸匹配"双原因作答，已成新范式（2024-13B 冠醚识别 Li⁺ 同款：与 Li⁺ 能形成超分子、与 K⁺ 不能——离子半径匹配）。<br>
+      <span class="em">冲刺层提示</span>：氢键数量与强度双层辨析（H₂O 沸点高于 HF 是氢键数目多）、氢键不是化学键、配离子平衡曲线——外省新角度备广东回潮。</div>
+  </details>
+</div>
+
+<!-- 知识点⑤ 超分子 -->
+<h3>知识点⑤ · 超分子<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「配合物 超分子」· 超分子</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列哪些属于超分子？（超分子＝两种以上分子通过分子间作用力形成的聚集体）</div>
+  <div class="mat">
+    <span>DNA双螺旋结构</span><span>冠醚</span><span>烷基磺酸钠胶束</span><span>C₆₀和杯酚复合物</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>属于超分子：DNA双螺旋、烷基磺酸钠胶束、C₆₀和杯酚复合物</b><br>
+      <b>不属于：冠醚</b>——冠醚是<span class="rd">单个分子</span>，冠醚与碱金属离子形成的聚集体才是超分子（2023讲义原题）<br>
+      <span class="em">超分子两大特征：分子识别＋自组装</span>。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>超分子是聚集体（≥两种分子），特征识别＋自组装；单分子不是超分子（冠醚、环糊精本身不是）</p>
+</div>
+
+<!-- 知识点⑥ 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（人教版选择性必修2 2.2/2.3 练习与应用同源）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P＿＿</span> · 选择性必修2 第二章 第三节 分子结构与物质的性质（练习与应用同源）</span>
+<div class="quiz">
+  <div class="ask">1. 判断正误：CO₂、CH₄、CCl₄等分子结构对称、正负电中心重合，是非极性分子；NH₃、H₂O是极性分子。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>√</b>　分子极性看正负电中心是否重合：对称结构（直线、平面三角、正四面体）无孤对→非极性；NH₃、H₂O有孤对→极性。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 下列分子中，属于极性分子的是（　　）</div>
+  <p>A.CO₂　B.BF₃　C.NH₃　D.CCl₄</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　NH₃三角锥形（有孤对电子）→极性分子。<br>
+    A直线形、B平面三角形、D正四面体，均对称→非极性。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">3. 判断正误：冰的密度比液态水小，与氢键的方向性和饱和性有关；液态HF的化学式有时写成(HF)ₙ的形式，也与氢键有关。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>√</b>　冰中每个水分子只与周围4个水分子形成氢键（方向性饱和性），空间利用率低→密度小；HF分子间氢键使其聚合为(HF)ₙ。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>氢键有方向有饱和，冰的密度小、HF会聚合；极性分子看对称，对称无孤对即非极性</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值50分]：1~10题每题3分＋11~15题每题4分）</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2、3、5、8题（15分，送分盘）：范德华力破坏、氢键无关判断、极性键非极性分子、相似相溶、SF₆极性</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第4、6、7、9、11、12题（20分）：惠州月考实例解释、翠园月考、分子性质解释、超分子≠高分子、结构性质表、淀粉合成</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第10、13、14、15题（15分）：EDTA螯合物、福建CuCl探究、新课标肼合成酶、黑吉辽环六糊精，<span class="rd">✂放弃配位数4平面正方形特例、超分子复杂应用</span></li></ul>
+  </div>
+</div>
+<p class="tip">📖 本讲课时精练 50分制：1~10题每题3分（30分）＋11~15题每题4分（20分）。必做15＋选做20＋挑战15＝50分。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：键有极性分子未必有极性（CO₂直线对称）；有氢键熔沸点未必最高（看比较对象）；配离子写方括号、内外界电荷守恒…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：HF沸点为什么远高于HCl？邻硝基苯酚与对硝基苯酚哪个沸点高、为什么？[Cu(NH₃)₄]²⁺的配体、配位数…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var el = findClosed();
+    if(el){
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.transition='box-shadow .5s';
+      el.style.boxShadow='0 0 0 3px #e8d48f';
+      setTimeout(function(){ el.style.boxShadow=''; }, 2000);
+      showTip('已展开答案');
+    }else{
+      all.forEach(function(d){ d.open = false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c29_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c29_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

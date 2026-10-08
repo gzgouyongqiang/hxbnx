@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第26讲 元素周期表 元素的性质 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第26讲　元素周期表　元素的性质</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>滚动默写·必背结论<span class="tm">5分钟</span></div>
+<p class="tip">📖 本讲无化学方程式，滚动默写3组<b>必背比较结论</b>（广东卷周期律比较年年考）· 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 比较原子半径大小，填“＞”或“＜”：Na＿Mg＿Al；F⁻＿Cl⁻＿Br⁻</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「元素周期律与元素周期表」· 原子或离子半径比较（三看）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Na＞Mg＞Al</b>（同周期，核电荷数越大半径越小）　<b>F⁻＜Cl⁻＜Br⁻</b>（同主族，电子层数越多半径越大）<br>
+    口诀：<span class="em">一看电子层数（多者大），二看核电荷数（大者小），三看核外电子数（多者大）</span>。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 比较第一电离能，填“＞”或“＜”：Mg＿Al；N＿O（注意反常）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电离能 电负性」· 电离能的规律（同周期反常）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Mg＞Al</b>（ⅡA＞ⅢA，Mg的3s全充满稳定）　<b>N＞O</b>（ⅤA＞ⅥA，N的2p³半充满稳定）<br>
+    口诀：<span class="em">ⅡA、ⅤA电离能反常大</span>——全满半满更稳定，难失电子（Be＞B、Mg＞Al、N＞O、P＞S）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 填空：电负性最大的元素是＿＿；Cu元素位于周期表＿＿区（s/p/d/ds/f）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电离能 电负性」· 电负性＋考点一「元素周期表」· 分区</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>电负性最大：F（氟）</b>　<b>Cu在ds区</b>（价层3d¹⁰4s¹，ⅠB族）<br>
+    口诀：电负性氟最大，非金属性跟着强；ds区=ⅠB、ⅡB，Cu、Ag、Au都在。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 周期表结构与分区</b>：周期数＝电子层数，主族序数＝最外层电子数；分区s（ⅠAⅡA）／p（ⅢA~ⅦA、0族）／d（ⅢB~Ⅷ）／<span class="em">ds（ⅠBⅡB，Cu在此）</span>／f（镧系锕系）</li>
+  <li><b>② 同周期递变（左→右）</b>：原子半径减小、失电子能力减弱、金属性减弱、非金属性增强</li>
+  <li><b>③ 同主族递变（上→下）</b>：原子半径增大、金属性增强、非金属性减弱</li>
+  <li><b>④ 微粒半径三看</b>：一看电子层数（多者大）→二看核电荷数（大者小）→三看核外电子数（多者大）</li>
+  <li><b>⑤ 电离能与电负性</b>：同周期第一电离能增大趋势但<span class="em">ⅡA＞ⅢA、ⅤA＞ⅥA反常</span>；同族递减；电负性F最大，电负性越大非金属性越强</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（综合《广东卷原子结构与性质元素周期律考点与难度研究报告》＋65分清单）</b>
+  <p>· 广东卷「原子结构与性质·元素周期律」是<span class="em">推断为纲、排布送分</span>的稳定板块（0.65~0.85）。周期律比较是推断题选项的<span class="em">固定送分项</span>，2025年还单独考了Q9（第一电离能—原子序数图像，内核仍是周期律）。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.70+）</b>：周期表定位（Cu四周期ⅠB族/ds区）、微粒半径直接比较（同周期/同主族）、金属性非金属性直接判断（氢化物稳定性、最高价含氧酸碱性）、电负性大小（F最大）、第一电离能反常（ⅡAⅤA）。</p>
+  <p>· <b style="color:var(--accent)">能力层必练（六年六考、从不缺席）</b>：短周期推断 2021-13 结构式→2022-7 位置图→2023-14 化学式＋价层排布→2024-12 结构式→2025-9 I₁ 图像→2026-11 价层排布（载体逐年翻新）——"位构性三步法"：读线索→定元素→套规律，每步回头验证；数据类推断：由 I₁ 突变点推价电子数、由电负性反推元素与族（2025-9 图像题技能：<span class="em">先认峰、再定位、后套规律</span>）。</p>
+  <p>· <b style="color:var(--accent)">选项陷阱清单（贴错题本第一页）</b>：氢化物<span class="em">沸点≠稳定性</span>（2023-14B、2024-12A 用沸点混充稳定性设错）；<span class="em">电负性最大≠非金属性最强</span>的语境误用；半径比较别漏"核电荷数"；I₁ 别忘 ⅡA/ⅤA 反常。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：电负性判化合价写归中反应（2026湖南T15 范式）、键能推氢化物热稳定性（2024北京T12 范式）、价类二维图＋键角联动（2026陕晋青宁）；对角线规则、晶胞计算压轴；分区系统题、离子半径独立题、氢化物稳定性单独比较——<span class="em">广东六年零落点，基础层不设专题</span>。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约34分钟</span></div>
+
+<!-- 知识点① 周期表结构与分区 -->
+<h3>知识点① · 周期表结构与分区<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「元素周期律与元素周期表」· 元素周期表（结构／分区）</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列元素各位于周期表的哪个区？（s区／p区／d区／ds区／f区）</div>
+  <div class="mat">
+    <span>Na</span><span>Cl</span><span>Fe</span><span>Cu</span><span>He</span><span>La（镧）</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>Na → s区</b>（ⅠA族，3s¹）　<b>Cl → p区</b>（ⅦA族，3s²3p⁵）　<b>Fe → d区</b>（Ⅷ族，3d⁶4s²）<br>
+      <b>Cu → ds区</b>（ⅠB族，3d¹⁰4s¹）　<b>He → p区</b>（0族，1s²）　<b>La → f区</b>（镧系）<br>
+      <span class="rd">易错：He虽是s层排满，但属于p区</span>；判断分区看<span class="em">最后填入电子的能级</span>（价层电子排布）。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一 解答题 第1题（节选）</span>
+<div class="quiz">
+  <div class="ask">1.解答下列问题：<br>(1)[2024·安徽，15(1)]Cu位于元素周期表第＿＿周期第＿＿族。<br>(2)[2024·山东，16(1)节选]Mn在元素周期表中位于第＿＿周期第＿＿族。<br>(3)[2023·湖北，16(1)]Co位于元素周期表第＿＿周期第＿＿族。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>(1)四　ⅠB</b>（Cu价层3d¹⁰4s¹）<br>
+      <b>(2)四　ⅦB</b>（Mn价层3d⁵4s²）<br>
+      <b>(3)四　Ⅷ</b>（Co价层3d⁷4s²）<br>
+      <span style="color:var(--dim);font-size:15px;">口诀：周期数＝电子层数，族序数看价层电子——主族看最外层，过渡看（n-1)d＋ns。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答4题，选自8题）</span>
+<details class="bianxi"><summary><span class="q">1</span>所有非金属元素都分布在p区</summary>
+  <div class="ans"><b>×</b>　<span class="rd">H是s区元素</span>（1s¹），非金属元素H在s区。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>在元素周期表中，d区和ds区的元素都是金属元素</summary>
+  <div class="ans"><b>√</b>　d区（ⅢB~Ⅷ族）、ds区（ⅠB、ⅡB族）元素全部是金属。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>作半导体材料的元素大多数位于周期表中金属元素和非金属元素的分界线附近</summary>
+  <div class="ans"><b>√</b>　分界线附近元素（Si、Ge、As等）既显金属性又显非金属性，适合作半导体材料。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>构成催化剂的元素通常在元素周期表的左下方区域内</summary>
+  <div class="ans"><b>×</b>　催化剂元素通常在<span class="em">过渡元素区域</span>（d区），不是左下方（活泼金属区）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>周期数＝电子层数，主族数＝最外层电子数；s区ⅠAⅡA、ds区ⅠBⅡB，氢在s区、氦在p区</p>
+</div>
+
+<!-- 知识点② 元素周期律与递变规律 -->
+<h3>知识点② · 元素周期律与递变规律<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「元素周期律与元素周期表」· 同周期、同主族元素性质的递变规律</span>
+
+<div class="quiz">
+  <div class="ask">比较下列各组性质，填“＞”或“＜”：</div>
+  <div class="mat">
+    <span>金属性：K＿Na＿Mg</span><span>非金属性：F＿O＿S</span><span>酸性：HClO₄＿H₂SO₄＿HClO</span><span>热稳定性：NH₃＿H₂O＿HF</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>金属性：K＞Na＞Mg</b>（同族上小下大＋同周期左大右小）<br>
+      <b>非金属性：F＞O＞S</b>（同周期左弱右强＋同族上强下弱）<br>
+      <b>酸性：HClO₄＞H₂SO₄＞HClO</b>（HClO₄最强酸；<span class="rd">HClO不是最高价含氧酸</span>，不能与非金属性挂钩）<br>
+      <b>热稳定性：NH₃＜H₂O＜HF</b>（非金属性越强，简单氢化物越稳定）
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">判断：下列比较元素金属性相对强弱的方法或依据，正确的是（　　）</div>
+  <p>A.根据金属失电子的多少来确定，失电子较多的金属性较强<br>
+  B.用钠来置换MgCl₂溶液中的Mg，可验证钠的金属性强于Mg<br>
+  C.根据Mg和Al与水反应的剧烈程度来比较它们的金属性强弱<br>
+  D.根据碱性：NaOH＞Mg(OH)₂＞Al(OH)₃，可说明钠、镁、铝的金属性依次减弱</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　最高价氧化物水化物碱性越强，金属性越强，NaOH＞Mg(OH)₂＞Al(OH)₃ ⇒ 金属性Na＞Mg＞Al。<br>
+      A<span class="rd">×</span>：看失电子的<span class="em">难易</span>（不是多少）；B<span class="rd">×</span>：Na先与水反应，置换不出Mg；C<span class="rd">×</span>：Mg、Al与水反应均不明显，难比较。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>左金右非、上非下金；金属性看单质与水反应、最高价碱强弱；非金属性看氢化物稳定性、最高价含氧酸强弱</p>
+  <p>📌 短周期推断<span class="em">"五类线索"速查</span>（贴讲义首页）：① 原子序数关系　② 最外层/价电子数关系　③ 成键数目与结构式　④ 价层电子排布特征（如 3p 半充满）　⑤ 地壳含量与用途常识——见线索先定位，再套规律</p>
+</div>
+
+<!-- 知识点③ 微粒半径比较 -->
+<h3>知识点③ · 微粒半径比较<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「元素周期律与元素周期表」· 原子或离子半径比较（三看）</span>
+
+<div class="quiz">
+  <div class="ask">比较下列微粒半径大小，填“＞”或“＜”：</div>
+  <div class="mat">
+    <span>Na＿Mg＿Cl</span><span>F⁻＿Cl⁻＿Br⁻</span><span>Cl⁻＿O²⁻＿Na⁺＿Mg²⁺</span><span>Fe²⁺＿Fe³⁺</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>Na＞Mg＞Cl</b>（同周期，核电荷数越大半径越小）<br>
+      <b>F⁻＜Cl⁻＜Br⁻</b>（同主族，电子层数越多半径越大）<br>
+      <b>Cl⁻＞O²⁻＞Na⁺＞Mg²⁺</b>（Cl⁻三层电子最大；O²⁻/Na⁺/Mg²⁺同两层，核电荷数越大半径越小）<br>
+      <b>Fe²⁺＞Fe³⁺</b>（同元素离子，电荷越高半径越小）<br>
+      三看：<span class="em">一看电子层数（多者大）→二看核电荷数（大者小）→三看核外电子数（多者大）</span>。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一 解答题 第5题</span>
+<div class="quiz">
+  <div class="ask">5.下列有关微粒半径大小关系的比较中，正确的是（　　）</div>
+  <p>A.微粒X⁺与Y⁻的核外电子排布相同，则离子半径：X⁺＞Y⁻<br>
+  B.原子序数：X＞Y，则原子半径一定是X＜Y<br>
+  C.r(Cu)＞r(Cu⁺)＞r(Cu²⁺)<br>
+  D.同一主族非金属元素原子半径：X＞Y，则非金属性：X＞Y</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>C</b>　原子失电子变阳离子半径变小，失电子越多半径越小：r(Cu)＞r(Cu⁺)＞r(Cu²⁺)。<br>
+      A<span class="rd">×</span>：电子层结构相同的离子，核电荷数越大半径越小，X⁺＜Y⁻；B<span class="rd">×</span>：不同周期时原子序数大半径可能更大；D<span class="rd">×</span>：同主族半径大者非金属性弱。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>半径三看：层数多者大，同层核电荷大者小，同元素电荷高者小</p>
+</div>
+
+<!-- 知识点④ 电离能与电负性 -->
+<h3>知识点④ · 电离能与电负性<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电离能 电负性」· 电离能的规律／电负性</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列关于电离能叙述的正误</div>
+  <div class="mat">
+    <span>①第一电离能越小越易失电子</span><span>②同周期主族元素I₁从左到右越来越大</span><span>③同主族从上到下I₁递减</span><span>④所有元素中氟的I₁最大</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ①<b>√</b>　电离能越小越易失电子，金属性越强<br>
+      ②<b>×</b>　<span class="em">ⅡA、ⅤA反常</span>（全满/半满更稳定）<br>
+      ③<b>√</b>　同主族从上到下I₁逐渐减小<br>
+      ④<b>×</b>　电负性最大是F，但<span class="rd">第一电离能最大的是He</span>（惰性气体难失电子）
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二 真题组合正误判断（节选）</span>
+<div class="quiz">
+  <div class="ask">真题组合判断正误：</div>
+  <p>(2)基态原子的第一电离能：Cl＞P（2024·安徽，8B）（　　）<br>
+  (4)第一电离能：C＜N＜O（2024·甘肃，13B）（　　）<br>
+  (5)电负性：F＞Cl，则酸性：CF₃COOH＜CCl₃COOH（2024·广东，13A改编）（　　）<br>
+  (7)钠元素的第一电离能大于钾（2022·海南，5A）（　　）</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      (2)<b>√</b>　Cl＞P（Cl在P右边，I₁大）<br>
+      (4)<b>×</b>　N的2p³半充满，I₁反常大于O，正确为<span class="em">N＞O＞C</span><br>
+      (5)<b>×</b>　电负性越大吸电子能力越强，酸性应<span class="em">CF₃COOH＞CCl₃COOH</span>（广东卷考过同类）<br>
+      (7)<b>√</b>　同主族从上到下I₁递减，Na＞K
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>电离能ⅡAⅤA反常大，全满半满难失电子；电负性F最大，非金属性跟着强；酸性强弱看最高价含氧酸</p>
+</div>
+
+<!-- 知识点⑤ 课本基础题精选 -->
+<h3>知识点⑤ · 课本基础题精选<span class="p">（人教版必修第一册 4.2 元素周期律 练习与应用同源）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P＿＿</span> · 必修第一册 第四章 第二节 元素周期律（练习与应用同源）</span>
+<div class="quiz">
+  <div class="ask">1. 判断正误：在周期表中，金属元素与非金属元素分界线附近的元素，往往既表现金属性又表现非金属性，可作半导体材料。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>√</b>　分界线附近元素（B、Si、Ge、As等）可作半导体材料；<span class="em">周期表是寻找新材料（半导体、催化剂、合金、农药）的地图</span>。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 下列事实能说明氯元素的非金属性强于硫元素的是（　　）</div>
+  <p>A.Cl₂与H₂S溶液反应生成S<br>
+  B.HCl的酸性比H₂S强<br>
+  C.HClO的酸性比H₂SO₃强<br>
+  D.Cl₂的氧化性比S弱</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A</b>　Cl₂置换出H₂S中的S（单质氧化性强弱→非金属性强弱）。<br>
+    B<span class="rd">×</span>：HCl不是Cl的最高价含氧酸，酸性强弱不能直接说明非金属性；C<span class="rd">×</span>：HClO、H₂SO₃均非最高价含氧酸；D<span class="rd">×</span>：说反了，Cl₂氧化性强于S。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">3. 下列微粒半径大小比较正确的是（　　）</div>
+  <p>A.Na＜Mg＜Al　B.F⁻＜Cl⁻＜Br⁻　C.Na⁺＜Mg²⁺＜Al³⁺　D.K＞Na＞Li</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　同主族从上到下半径增大：K＞Na＞Li。<br>
+    A<span class="rd">×</span>：同周期应为Na＞Mg＞Al；B<span class="rd">×</span>：同主族应为F⁻＜Cl⁻＜Br⁻（方向反了）；C<span class="rd">×</span>：同电子层结构核电荷大者半径小，应为Na⁺＞Mg²⁺＞Al³⁺。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>非金属性比三招：氢化物稳不稳、单质能不能置换、最高价含氧酸强不强</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值100分]：1~12题每题6分＋13题16分＋14题12分）</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2、3、5、8题（30分，送分盘）：周期判断、s区/电负性、卤族曲线、周期律判断、ⅤA族递变</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第4、6、7、9、10、11、12题（42分）：31号元素定位、锂电池材料、合金元素、离子结构、电离能数据、实验目的、电负性图</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第13、14题（28分）：Se/Cu/As综合、周期表综合大题，<span class="rd">✂放弃电离能突变判化合价、对角线规则灵活应用</span></li></ul>
+  </div>
+</div>
+<p class="tip">📖 本讲课时精练 100分制：1~12题每题6分（72分）＋13题16分＋14题12分。必做30＋选做42＋挑战28＝100分。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：ⅠA的H不是碱金属；I₁在ⅡA、ⅤA反常大（Be＞B、N＞O）；比半径先比电子层数、同层比核电荷数；最高价含氧酸酸性只看非金属性…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：为什么I₁(N)＞I₁(O)？F到Cl电负性怎么变、为什么？"位—构—性"三角互推怎么组织答案…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var el = findClosed();
+    if(el){
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.transition='box-shadow .5s';
+      el.style.boxShadow='0 0 0 3px #e8d48f';
+      setTimeout(function(){ el.style.boxShadow=''; }, 2000);
+      showTip('已展开答案');
+    }else{
+      all.forEach(function(d){ d.open = false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c26_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c26_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

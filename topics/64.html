@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第64讲 简单实验方案的设计与评价 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:92%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  .route{
+    background:var(--panel3);border:1px solid #5a6d5f;border-radius:8px;
+    padding:10px 16px;margin:8px 0;text-align:center;
+  }
+  .route b{color:var(--gold);}
+  .route .ar{color:var(--accent);font-weight:700;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第64讲　简单实验方案的设计与评价 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>离子检验滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 个「试剂＋操作＋现象＋结论」一条龙，选择题前几题的送分本钱）</p>
+
+<div class="quiz">
+  <div class="ask">① 检验溶液中的 Fe³⁺：试剂？现象？结论？（写出离子方程式更好）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 类型一「3.显色法」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">滴加 KSCN 溶液，溶液变红色 ⇒ 含 Fe³⁺（Fe³⁺＋3SCN⁻ → Fe(SCN)₃）</b><br>
+      要点：<span class="em">KSCN 是 Fe³⁺ 的专属试剂</span>；变红即证，不用加热不排干扰。<br>
+      <span class="gr">✅ 65分清单必保「常见离子检验试剂现象必记」——Fe³⁺ 用 KSCN、Fe²⁺ 用铁氰化钾（蓝色沉淀）</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 检验溶液中的 NH₄⁺：试剂？操作？现象？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 类型一「2.气体法」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">加浓 NaOH 溶液并加热，产生刺激性气味气体，使湿润红色石蕊试纸变蓝 ⇒ 含 NH₄⁺</b><br>
+      <span class="rd">⚠ 两个易丢分点：①必须「加热」（不加热 NH₃ 极易溶于水逸不出来——讲义判断(3)）；②试纸是「湿润红色石蕊」变蓝，不是蓝色石蕊</span><br>
+      <span class="gr">✅ 检验题三件套：试剂→操作→现象，缺一不可</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 检验溶液中的 SO₄²⁻：操作顺序怎么走？为什么先加稀盐酸？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 类型一「1.沉淀法」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">先加稀盐酸（无明显现象）→ 再加 BaCl₂ 溶液（产生白色沉淀）⇒ 含 SO₄²⁻</b><br>
+      先加盐酸<span class="em">排除 Ag⁺、CO₃²⁻、SO₃²⁻ 干扰</span>——讲义判断(6)：直接滴硝酸再加 BaCl₂，若原溶液含 SO₃²⁻ 会被硝酸<span class="rd">氧化成 SO₄²⁻</span> 造成误判。<br>
+      <span class="gr">✅ 「先酸化后排干扰」是检验题的评价灵魂——顺序错了，现象再对也是 0 分</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 常见离子检验三法</b>：<span class="em">沉淀法</span>（Cl⁻/Br⁻/I⁻ 用稀 HNO₃＋AgNO₃；Fe²⁺ 用铁氰化钾）、<span class="em">气体法</span>（NH₄⁺/CO₃²⁻/SO₃²⁻ 加酸产气）、<span class="em">显色法</span>（Fe³⁺-KSCN 显红、I⁻-淀粉氯水显蓝、焰色试验 Na 黄 K 紫透过钴玻璃）。</li>
+  <li><b>② 检验方案评价三条尺</b>：试剂<span class="em">不干扰</span>（不与被检物反应、不生成被检物）、<span class="em">现象明显</span>、<span class="em">操作顺序排干扰</span>（先酸化/先排除再检验）。</li>
+  <li><b>③ 方案设计四原则</b>：<span class="em">科学性、安全性、可行性、绿色化</span>——评价题先扫这四条，一票否决。</li>
+  <li><b>④ 控制变量法</b>：探究多因素问题只<span class="em">变一个</span>、其余全相同；温度对速率的影响要先<span class="em">分别恒温再混合</span>（先混合就反应了）。⚑ 广东锚点：2024「a 加 0 水、b 加 x 水，总体积相同，仅浓度不同」；2026 年 19 题「Ⅰ~Ⅲ 仅初始 c(Z) 不同、Ⅳ 与 Ⅱ 仅温度不同」——<span class="em">「仅……不同」四个字圈出来再动手</span>（四年四考）。</li>
+  <li><b>⑤ 干扰排查意识（本讲得分核心）</b>：<span class="rd">KMnO₄ 褪色 ≠ 一定是 C=C</span>（醛基也褪色）、品红褪色 ≠ 一定是 SO₂（Cl₂/O₃ 也褪）、白烟 ≠ 一定是浓盐酸（浓硝酸也行）——「现象对≠结论对」。</li>
+  <li><b>⑥ 装置常识两句话</b>：洗气瓶<span class="em">长进短出</span>、安全瓶<span class="em">短进长出</span>；乙酸乙酯制备用<span class="em">饱和 Na₂CO₃</span>：吸收乙醇、中和乙酸、降低酯的溶解度。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《65分考点清单》）</b>
+  <p>· <b>必拿基础</b>：<span class="em">常见离子检验（沉淀法/气体法/显色法）试剂现象必记</span>——选择题前几题送分；<span class="em">洗气瓶长进短出、安全瓶短进长出</span>；<span class="em">方案设计四原则</span>；<span class="em">探究闭环五环节识别＋控制变量「仅……不同」句式</span>（2021/2024/2026 年年见）。</p>
+  <p>· <b>答题模板</b>：「操作-现象-结论」逻辑链——先查<span class="em">干扰排查意识</span>（KMnO₄ 褪色 ≠ 一定是双键）；「依据不足／不足以证明」＝ <span class="em">三视角找话</span>：①干扰是否排除 ②变量是否控制 ③操作是否可行（2025「不能用 pH 直接判断 Ka」即干扰视角）；验证排除法＝「滴加____沉淀完全溶解 → 继续滴加____无白色沉淀」两步各指向一个假设（2024）。</p>
+  <p>· <b>保分策略</b>：评价空不是不写——方案评价与优化<span class="em">五年五考</span>，按三视角写两句就是满分话术；<span class="rd">✂ 放弃</span>：复杂装置串联路径追踪、完整探究方案从头设计，以及多人假设证伪链／双方案优缺点对比／限用试剂补全方案（广东六年零落点）。</p>
+</div>
+
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约33分钟</span></div>
+
+<h3>考点① · 检验类「操作-现象-结论」排雷场<span class="p">（约9分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 类型一 判断题精选（讲义原题 14 判断，挑 6 雷）</span>
+
+<table class="tb">
+  <tr><th class="l">讲义原题（操作→现象→结论）</th><th>判断</th><th class="l">踩雷点</th></tr>
+  <tr><td class="l">焰色试验火焰呈黄色 →「一定不含 K⁺」</td><td><span class="rd">×</span></td><td class="l">黄光<span class="em">掩盖紫光</span>——K⁺ 必须透过<span class="em">蓝色钴玻璃</span>观察</td></tr>
+  <tr><td class="l">乙醇+浓硫酸加热，气体使酸性 KMnO₄ 褪色 →「是乙烯」</td><td><span class="rd">×</span></td><td class="l">未反应乙醇、<span class="em">SO₂</span> 也使 KMnO₄ 褪色</td></tr>
+  <tr><td class="l">气体使品红褪色 →「一定是 SO₂」</td><td><span class="rd">×</span></td><td class="l"><span class="em">Cl₂、O₃</span> 也使品红褪色（氧化漂白）</td></tr>
+  <tr><td class="l">淀粉在稀 H₂SO₄ 中水解后直接加新制 Cu(OH)₂ 加热 →「无沉淀说明未水解」</td><td><span class="rd">×</span></td><td class="l"><span class="em">未先加 NaOH 中和硫酸</span>，Cu(OH)₂ 被酸溶解——操作顺序雷</td></tr>
+  <tr><td class="l">酸性条件下滴 KSCN 变红 →「Fe(NO₃)₂ 已变质」</td><td><span class="rd">×</span></td><td class="l"><span class="em">NO₃⁻ 在酸性下氧化 Fe²⁺</span>——酸的选择雷</td></tr>
+  <tr><td class="l">加 NaOH 产生白色沉淀迅速变灰绿最后红褐 →「含 Fe²⁺」</td><td><span class="gr">√</span></td><td class="l">Fe²⁺ 的标准显色链：白→灰绿→红褐（讲义唯一全对题）</td></tr>
+</table>
+<p class="tip">▲ 14 判断只有 1 个 √——检验评价题的「雷点」就三类：<span class="em">干扰未排、顺序不对、专属试剂用错</span>。</p>
+
+<div class="quiz">
+  <div class="ask">【抢答】下列检验有无漏洞？说出「排除干扰」的改法：<br>A. 溴水中加苯振荡，水层变浅 →「溴与苯加成」<br>B. 溶液加稀 H₂SO₄ 产气，通入品红褪色 →「含 SO₃²⁻」<br>C. 溴乙烷+NaOH 水溶液共热后，直接滴 AgNO₃ →「产生浅黄沉淀证 Br⁻」</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 类型一 判断题延伸</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A 有坑：苯只萃取不反应</b>（水层变浅是萃取）——结论「加成」错。<br>
+      <b>B 有坑：应改用稀盐酸</b>——稀硫酸引入 SO₄²⁻ 无所谓但 H₂SO₄ 是强酸没问题，真正的雷在讲义判断(12)：<span class="em">硝酸不能用来酸化</span>（会把 SO₃²⁻ 氧化成 SO₄²⁻）。<br>
+      <b>C 有坑：必须「先加稀硝酸酸化」再加 AgNO₃</b>——否则剩余 NaOH 先与 AgNO₃ 反应生成 AgOH/Ag₂O 干扰（讲义判断(11)）。<br>
+      <span class="gr">✅ 口诀：<b>「验卤先酸化、验硫酸根先加盐酸、验醛先碱化」</b>——评价题一半的分在这句里</span></div>
+  </details>
+</div>
+
+<h3>考点② · 探究类评价：控制变量是命门<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 类型二 判断题精选（讲义原题 7 判断）</span>
+
+<table class="tb">
+  <tr><th class="l">讲义原题（操作→结论）</th><th>判断</th><th class="l">踩雷点</th></tr>
+  <tr><td class="l">Na₂S₂O₃ 与硫酸<span class="em">先混合</span>再水浴加热计时 →「探究温度对速率影响」</td><td><span class="rd">×</span></td><td class="l"><span class="em">先混合就反应了</span>——应先分别恒温到设定温度再混合</td></tr>
+  <tr><td class="l">蛋白质+饱和 NaCl 析出 + 蛋白质+CuSO₄ 析出 →「均变性」</td><td><span class="rd">×</span></td><td class="l">饱和 NaCl 是<span class="em">盐析（可逆）</span>，CuSO₄ 才是变性</td></tr>
+  <tr><td class="l">冰醋酸+Na₂CO₃ 产气直接通入苯酚钠 →「酸性：醋酸＞碳酸＞苯酚」</td><td><span class="rd">×</span></td><td class="l"><span class="em">醋酸挥发</span>跟着 CO₂ 过去了——浑浊可能是醋酸干的</td></tr>
+  <tr><td class="l">NaCl、NaI <span class="em">稀溶液浓度未知</span>滴 AgNO₃ →「比较 Ksp」</td><td><span class="rd">×</span></td><td class="l">浓度未控制相等，<span class="em">变量不唯一</span>，Ksp 比不了</td></tr>
+  <tr><td class="l">KI₃ 溶液加淀粉变蓝 + 加 AgNO₃ 出黄沉淀 →「存在 I₂ ⇌ I⁻ 平衡」</td><td><span class="gr">√</span></td><td class="l">两现象分别锁定 I₂ 与 I⁻ 共存（讲义判断(6)）</td></tr>
+</table>
+<p class="tip">▲ 探究评价两把刀：<span class="em">①变量唯一吗？②有干扰没排除吗？</span>——7 判断里 5 个 × 全栽在这两把刀上。</p>
+
+<div class="koujue">
+  <div class="t">📢 装置与操作常识（65分清单划重点）</div>
+  <p>洗气瓶<span class="em">长进短出</span>（气体插到底才洗得着）、安全瓶<span class="em">短进长出</span>（防倒吸）；乙酸乙酯制备中饱和 Na₂CO₃ 溶液<span class="em">三大作用：吸收乙醇、中和乙酸、降低酯的溶解度</span>——导管口不插入液面（防倒吸）。这两句是大题装置评价的万能句。</p>
+</div>
+
+<h3>考点③ · 「现象≠结论」高频陷阱串烧<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练高频选项提炼</span>
+
+<div class="quiz">
+  <div class="ask">【抢答】判断下列结论能否由现象得出，说理由：<br>A. 铁片插稀硝酸产无色气体、插浓硝酸无现象 →「稀硝酸氧化性强于浓硝酸」<br>B. 铁锈溶于浓盐酸滴 KMnO₄ 褪色 →「铁锈含 Fe²⁺」<br>C. 灼烧玻璃棒火焰呈黄色 →「溶液含 Na 元素」<br>D. 干冰中镁粉继续燃烧 →「CO₂ 不能灭镁火」</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 课时精练第 6/8/10 题选项</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A 错</b>：浓硝酸常温下使铁<span class="em">钝化</span>，「无现象」不是不强——钝化恰好说明浓硝酸氧化性极强。<br>
+      <b>B 错</b>：<span class="em">浓盐酸中 Cl⁻ 也能还原 KMnO₄</span> 使其褪色——干扰未排（讲义课时精练 8A）。<br>
+      <b>C 错</b>：<span class="em">玻璃本身含 Na</span>——灼烧玻璃棒黄色来自玻璃，不能证溶液（讲义课时精练 10A）。<br>
+      <b>D 对</b>：镁能在 CO₂ 中燃烧（2Mg+CO₂→<i>点燃</i> 2MgO+C），CO₂ 灭不了镁火（讲义课时精练 10B）。<br>
+      <span class="gr">✅ 「结论能不能推出」三连问：<b>有没有别的解释？试剂自带干扰吗？操作对象干净吗？</b></span></div>
+  </details>
+</div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 1</span>用湿润碘化钾淀粉试纸检验气体，试纸变蓝就说明气体是 Cl₂（　　）</summary>
+  <div class="ans"><b>×　</b>任何<span class="em">强氧化性气体</span>（Cl₂、O₃、NO₂）都能氧化 I⁻ 生成 I₂ 使试纸变蓝——「变蓝」只能得「有强氧化性气体」这一层结论（讲义判断(4)）。</div></details></div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 2</span>用盐酸酸化的 BaCl₂ 检验 Na₂SO₃ 是否被氧化成 Na₂SO₄，可行（　　）</summary>
+  <div class="ans"><b>×　</b>盐酸酸化后 SO₃²⁻ 转化为 <span class="em">HSO₃⁻/SO₂，仍可能有少量亚硫酸盐沉淀混入</span>；且讲义课时精练 5C 给的答案是不能达到目的——正规做法是<span class="em">先加盐酸把 SO₃²⁻ 赶净（至无气泡），再加 BaCl₂ 看是否有剩余白色沉淀</span>。</div></details></div>
+
+
+<!-- 考点④ 三大件句式（能力层主线） -->
+<h3>考点④ · 「假设→验证→优化」三大件：17 题探究问的固定三句（四年主导）<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 能力层主线 · 2021/2022/2024/2026 探究闭环</span>
+<p class="tip">⚑ <b>探究闭环是 17 题的骨架</b>（2021、2022、2024、2026 四年主导）：现象→假设→验证→结论→优化；2026 年升级出<span class="em">「与 AI 对话后提出假设」</span>新形态——形式在变、链条没变。假设必须<span class="em">可验证、可证伪</span>；优化先问「原方案哪里被干扰了、哪里不可行」，再从词库找动作：<span class="em">防干扰（2023 加酸防水解）／防副反应／补对照／换试剂换装置</span>。</p>
+<table class="tb">
+  <tr><th>三大件</th><th class="l">固定句式（照抄即得分）</th><th class="l">广东锚点</th></tr>
+  <tr><td><b>假设提出</b></td><td class="l">从「证据不足」提：「沉淀可能没有消耗完／可能被××包裹」；从「规律外推」提：「根据①中规律推测……」</td><td class="l">2024 双假设；2025 电负性规律推酸性顺序</td></tr>
+  <tr><td><b>验证设计</b></td><td class="l">要证「是 A 不是 B」→ 分别检验 A 和 B：「滴加____沉淀完全溶解（排除××类）→ 继续滴加____无白色沉淀（排除干扰离子）」</td><td class="l">2024 两步排除；2026「稀盐酸完全溶解后____」验新猜想</td></tr>
+  <tr><td><b>优化与判断依据</b></td><td class="l">「优化的实验方案：……」；判断依据＝<span class="em">现象或数据＋推理链</span>（「pH 不再随时间变化＝平衡建立」）</td><td class="l">2023「无气体生成的实验方案」；2024 优化＋判断依据；2021「猜想 b 成立的判断依据」</td></tr>
+</table>
+<div class="quiz">
+  <div class="ask">【2024·广东·17(4) 句式复写】CaSO₄ 转化探究，乙同学由「证据不足」提出双假设：假设 1 硫酸钙固体已完全消耗；假设 2 被 CaCO₃ 沉淀包裹。验证：ⅱ. 取少量沉淀滴加＿＿＿＿，沉淀完全溶解；ⅲ. 继续滴加＿＿＿＿，无白色沉淀生成——两步操作各指向哪个假设？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 类型二「探究类」（广东卷真题素材）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>答：</b>ⅱ. 滴加<span class="em">稀盐酸</span>——沉淀完全溶解，说明沉淀全是可溶于酸的 CaCO₃ 类、无 CaSO₄ 残留（指向「反应是否彻底」）；ⅲ. 继续滴加<span class="em">BaCl₂ 溶液</span>——无白色沉淀生成，排除 SO₄²⁻ 等干扰离子（指向「是否受阻碍／干扰」）。<br>
+    ⚑ 排除法模板＝「加什么 → 看什么 → 说明什么」三连写全，两步操作各自指向一个假设。</div>
+  </details>
+</div>
+
+<!-- 考点⑤ 外省镜子（冲刺） -->
+<h3>考点⑤ · 外省镜子：广东还没考的角度<span class="p">（约2分钟）</span></h3>
+<span class="loc">📌 冲刺 85+ 专供 · 2024/2026 三十余份外省原卷比对</span>
+<ul class="kps">
+  <li><b>批判-证伪-重设计链（北京招牌）</b>：2024/2026·北京19「乙认为该现象不能证明××，理由是（没有排除××的干扰）→用____代替重复操作」——广东只考到「证据不足」一步，<span class="em">证伪与重设计是空白</span>；</li>
+  <li><b>双制备方案优缺点对比</b>：2026·河北15(8)「方案Ⅰ的优点和不足各答 1 点」、2026·北京16(4)——广东未考；</li>
+  <li><b>异常结果归因大题化</b>：2026·江苏16(2)②「电流表读数下降更多，可能原因是____」、2026·河南16、2026·湖南18(2)③、2026·贵州15(7)——从平衡移动、副反应、杂质、操作四个方向找；</li>
+  <li><b>限用试剂补全方案</b>：2024/2026·江苏16「补充完整实验方案（必须使用的试剂：稀 HNO₃、NaCl 溶液……）」——限定条件下的方案组装，广东未考；</li>
+  <li><b>图表数据论证＋证伪型判断</b>：2026·江西18(6)「得出结论并说明理由」、2026·江西17(7)「结论不正确，理由是（水的用量不同，未控制变量）」——看到结论先自查：变量控住了吗、现象唯一吗；</li>
+  <li><b>排除理由句式</b>：「试剂 Y 不能选用，原因是____」（2024·山东）「KCl 不能用 HCl 替代的原因为____」（2026·云南）——从「是否引入新干扰」一句话作答；</li>
+  <li><b>应用型半开放设计</b>：2024·江西17(6)「利用变色原理设计温度传感装置」——原理到器件只需一句话。</li>
+</ul>
+<p class="tip">🔍 <b>反向发现</b>：纯定性「性质检验大题」外省也在退场——探究正与制备、定量合流成复合题；北京式八环节超长链是孤本不必模仿，广东补上<span class="em">「证伪」和「双方案对比」</span>两个环节即可接轨。</p>
+<div class="koujue">
+  <div class="t">📢 真题串联（强哥划重点）</div>
+  <p>广东卷实验评价题＝<span class="em">「一条逻辑链＋三处常见雷」</span>：链是「试剂→操作→现象→结论」，雷是<span class="em">干扰未排（KMnO₄ 褪色≠双键）、顺序不对（验卤先酸化、验水解先中和）、试剂用错（乙醇不能萃取、硝酸不能酸化验 SO₃²⁻）</span>。大题探究问抓<span class="em">「假设→验证→优化」三大件</span>：假设可证伪、验证两步排除、优化先找「干扰／不可行」——<span class="em">六条速查＋三大件句式背熟，评价空的分稳稳端走</span>（方案评价与优化五年五考，不是选做题）。</p>
+</div>
+
+<!-- ==================== 四、作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">课后完成</span></div>
+<p class="tip">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（分值50分：第1~5题每题4分，第6~11题每题5分）</p>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（共35分）</h4>
+    <ul>
+      <li><b>第1题（4分）</b>　只用蒸馏水的鉴别组合（答案 C——碳酸钠/氢氧化钠/硫酸钾加水无法互检）</li>
+      <li><b>第2题（4分）</b>　鉴别 SO₃(g)/SO₂、Br₂(g)/NO₂ 等可达目的项（答案 C——CO₂ 鉴别偏铝酸钠与醋酸钠）</li>
+      <li><b>第3题（4分）</b>　0.1 mol·L⁻¹ 溶液鉴别方法可行性（答案 D——氨水难分 AlCl₃ 与 MgCl₂）</li>
+      <li><b>第4题（4分）</b>　2024·黑吉辽 T8 实验方法合理性（答案 A——铁氰化钾检 Fe²⁺）</li>
+      <li><b>第5题（4分）</b>　2023·辽宁 T4 鉴别检验（答案 A——石灰水不能分碳酸钠与碳酸氢钠）</li>
+      <li><b>第6题（5分）</b>　2023·新课标卷 T11 操作现象推结论（答案 C——过量铁粉还原 FeCl₃）</li>
+      <li><b>第7题（5分）</b>　离子检验试剂与现象（答案 C——NH₄⁺ 检验试纸颜色错）</li>
+      <li><b>第8题（5分）</b>　操作现象结论正确项（答案 D——加稀硫酸产气使品红褪色，可能含 SO₃²⁻）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>🏆 挑战（共15分）</h4>
+    <ul>
+      <li><b>第9题（5分）</b>　2024·中山模拟 操作现象解释对应（答案 A——甲苯被 KMnO₄ 氧化证苯环活化甲基；<span class="rd">✂ B 蔗糖水解需先中和、C 乙醇消去伴 SO₂ 干扰</span>）</li>
+      <li><b>第10题（5分）</b>　2024·深圳阶段练习 操作现象结论（答案 B——镁在干冰中燃烧；<span class="rd">✂ C 由黑色沉淀反推 Ka1 大小</span>）</li>
+      <li><b>第11题（5分）</b>　2024·佛山二模 原理方法评价（答案 D——碳酸钠缓解蚁酸；<span class="rd">✂ A 尾气催化转化方程式配平</span>）</li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：方案评价漏"三看"（科学性/安全性/可行性，环保常被漏）；气体制备"除杂在前、干燥在后"顺序反；对照实验变量不唯一…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：完整方案四要素（操作→现象→结论→理由）你能一口气说全吗？哪一环最常被你漏掉？…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c64_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c64_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

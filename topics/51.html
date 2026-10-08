@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第51讲 无机化工流程题的解题策略(一) · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第51讲　无机化工流程题的解题策略(一) · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——化工流程大题的"送分空"全是这类术语与基础动作（广东 2021~2026 年年 Q18 流程大题、14 分）。⚠ <b>广东载体五式（滚动默写过关）</b>：沉铝 CO₂+NaAlO₂+2H₂O＝Al(OH)₃↓+NaHCO₃（2021）、配位浸取 Ga³⁺+4Cl⁻＝[GaCl₄]⁻（2024）、高压氧化 4Fe²⁺+O₂+4H₂O＝2Fe₂O₃+8H⁺（2025）、水化 MgO+H₂O＝Mg(OH)₂（2023）、循环 NaCl+NH₃+CO₂+H₂O＝NaHCO₃↓+NH₄Cl（2021 滤液Ⅲ）——对应<b>沉铝、配位、氧化、水化、循环</b>五大高频动作。</p>
+
+<div class="quiz">
+  <div class="ask">① 用电子守恒配平陌生方程式：水钴矿酸浸中 Co₂O₃ 与 SO₃²⁻ 的反应（Co₂O₃ ＋ SO₃²⁻ ＋ H⁺ → Co²⁺ ＋ SO₄²⁻ ＋ H₂O）——补全并配平。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 课时精练 第2题背景反应（水钴矿浸出，Co₂O₃＋SO₃²⁻＋4H⁺＝2Co²⁺＋SO₄²⁻＋2H₂O）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Co₂O₃＋SO₃²⁻＋4H⁺ ＝ 2Co²⁺＋SO₄²⁻＋2H₂O</b><br>
+      <span class="em">四步法</span>：标价（Co ＋3→＋2 降 1×2＝2；S ＋4→＋6 升 2）→ 升降相等 → 电荷配平（左 2−＋4＋＝＋2 与右 4＋？右 2×2＋＋2−＝＋2 需再 H⁺ 平衡）→ 补水。<span class="rd">缺项配平先补离子后补水——酸性补 H⁺、碱性补 OH⁻。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 分离操作名称三连：从 NaCl 溶液中提取 NaCl 晶体用＿＿；提取 KNO₃（溶解度随温度变化大）用＿＿；乙酰水杨酸粗品"纯化"用＿＿。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 3.(3) 常用的分离方法 ＋ 二、结晶与分离提纯操作应用（题 5、6）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>蒸发结晶</b>（NaCl 溶解度受温度影响小，蒸发至大量晶体析出趁热过滤）；<br>
+      ② <b>冷却结晶</b>（KNO₃ 溶解度变化大：加热浓缩→冷却结晶→过滤洗涤——KNO₃/结晶水合物/易水解盐的标配）；<br>
+      ③ <b>重结晶</b>（粗品纯化的通用操作，多次溶解结晶提高纯度）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 【2025·广东·T18(1)原题】"酸浸"中，提高浸取速率的措施有＿＿（写一条）。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 一、调控化学反应速率提高效率（真题 1 · 2025 广东 T18(1)）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>升高温度、粉碎多金属精矿、搅拌、增大酸的浓度（任写一条）</b><br>
+      <span class="em">广东送分样板</span>：2025 广东 T18(1) 原题答案，流程题第一空几乎必考——"提高浸取率/速率"答"粉碎/升温/搅拌/增大浓度"四选一，2 分到手。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">④ 【广东载体两连】① 2021 广东 T18"沉铝"：向 NaAlO₂ 溶液中通入<b>过量</b> CO₂ 的离子方程式；② 2024 广东 T18"浸取"：Ga³⁺ 形成 [GaCl₄]⁻ 的离子方程式。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>CO₂＋NaAlO₂＋2H₂O ＝ Al(OH)₃↓＋NaHCO₃</b>——过量 CO₂ 产物是 HCO₃⁻ 不是 CO₃²⁻（"过量"两字决定产物）；<br>
+      ② <b>Ga³⁺＋4Cl⁻ ＝ [GaCl₄]⁻</b>——配位与氧化还原同为流程"陌生方程式"两大来源，配位数看题干信息（2024 原题：Ga(Ⅲ) 以 [MClm](m-3)⁻ 形式存在，m＝0~4）。<br>
+      <span class="em">五式各管一个高频动作</span>：沉铝/配位/氧化/水化/循环——2027 届换情境再考，动作不变。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 七段骨架＋读图三线（必背）</b>：<span class="em">原料→预处理→浸取→净化→转化→分离→产品</span>；拿到题先"<b>看目的→圈元素→标操作</b>"，把每步"进去什么、出来什么"标清楚，前两问基本是送分。读图三线：<span class="em">进线＝投料；出线＝产品线（含产品元素的物质顺箭头走）/支线（副产物、杂质）；可逆线（箭头指回）＝物质循环利用</span>——先找"含产品元素的物质"沿流程追踪，主线优先。</li>
+  <li><b>② 原料预处理术语＋目的/原因三句式</b>：粉碎/研磨/搅拌——<b>增大接触面积、加快浸取速率</b>（2025 广东 T18(1)、2026"研磨成粉是为了"）；酸浸/碱浸——转可溶离子进溶液；灼烧/焙烧/煅烧——改变结构、除挥发性杂质、氧化分解。<span class="em">答题三句式（2023"提高浸取速率的原因"、2025"措施"、2026"研磨目的"连考三年同一句式）</span>：①"增大接触面积、加快浸取（反应）速率"；②"防止××水解（或被氧化）"；③"提高××的浸出率（产率、纯度）"。</li>
+  <li><b>③ 分离操作速查（必背）</b>：过滤（难溶/易溶，含趁热过滤）；蒸发结晶（NaCl，溶解度变化小）；冷却结晶（KNO₃、结晶水合物、易水解盐）；蒸馏（互溶液体沸点差）；萃取分液（溶解度差异，CCl₄/苯提溴）；重结晶（粗品纯化）。</li>
+  <li><b>④ 陌生方程式四步法</b>：标变价 → 列升降定系数 → 补介质（<b>酸性补 H⁺、碱性补 OH⁻</b>）→ 查三守恒（电荷/质量/电子）。<span class="em">广东载体</span>：2025"高压加热"生成 Fe₂O₃ 循环利用、2026 弱酸性"沉金"、2023 Co(OH)₃→[Co(NH₃)₆]²⁺（配位）——氧化还原与配位是两大来源。</li>
+  <li><b>⑤ 调 pH 除杂套路（必背）</b>：先用氧化剂（H₂O₂/NaClO₃/MnO₂）把 <b>Fe²⁺→Fe³⁺</b> → 用<b>不引入新杂质的物质</b>（ZnO、CuO、Na₂CO₃）调 pH 使 Fe³⁺、Al³⁺ 沉淀（Ksp 小的先沉）→ 过滤。检验 Fe²⁺ 用 K₃[Fe(CN)₆]（蓝色沉淀）、Fe³⁺ 用 KSCN。<span class="em">🔵 冲刺层预备区</span>：Ksp→pH 三步法定量（2025"沉铝时 pH 最高可调至"、2022 防共沉淀 4.0×10⁻⁴）——<b>四年四考，80 分的分水岭</b>。<span class="rd">✂ 65 分只抢"方向判断"空：Ksp 精算范围、多金属分步沉淀精细边界、复杂温度归因长答、流程末端多步计算</span>。</li>
+  <li><b>⑥ 循环物质判断三看（六年六考）</b>：①看"回收利用"箭头；②看首尾出现的同种物质；③看"回用/循环/再生"字样。<span class="em">广东明示循环</span>：2022 MgSO₄ 可再生循环、2023"热解"重复利用 HNO₃ 和 MgO、2024 冰晶石回用于电解铝、2026 电解回收沉锑试剂——问"可循环利用的物质"直接按这三看找。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《无机化工流程题》合并研读：2021~2026 年年 Q18、14 分）</b>
+  <p>· <b>🎯 方法主线一句话</b>：流程题是 Q18 的代名词——情境全是"战备资源"（钼→稀土→镍钴→镓→绿色冶铁→金锑），<b>考的是流程思维，不是元素记忆</b>；设问"老三样"（目的原因类/陌生方程式类/Ksp 定量类）年年见面。</p>
+  <p>· <b>🟢 必保分（前两问＋操作描述约 8 分"分母分"）</b>：读图要领与七段骨架、原料预处理目的（<span class="em">2025 广东 T18(1) 原题</span>）、分离操作名称（<span class="em">2022 广东 T18(4) 操作 X＝冷却结晶</span>）、目的/原因三句式（2023/2025/2026 连考三年）、滤渣成分判断——大题前 2~3 空全在此。</p>
+  <p>· <b>🟠 主突破（0.55–0.65）</b>：调 pH 沉杂<b>六年六考</b>（氧化 Fe²⁺→Fe³⁺＋不引杂调 pH）＋陌生方程式<b>六年六考</b>（四步法）＋循环物质判断<b>六年六考</b>——大题中间问主力。</p>
+  <p>· <b>🔵 冲刺层预备区</b>：Ksp 定量四年四考（80 分分水岭）；<b>末问晶胞近五年五考（2022-2026）——广东自己的新传统，不可弃守</b>；配合物分离上移四年四考（氨浸/膜分离/萃取）；半开放设问（2025 画电解池示意图、2026 补全"X"步骤）——从前考"读懂流程"，现在开始考"设计流程"。</p>
+  <p>· <b>✂ 放弃</b>：热重/焙烧失重曲线、电解精炼耦合流程、萃取反萃取操作、选择性/收率计算、分布分数图嵌入流程——<b>广东六年零落点</b>，一轮点到为止（热重图读法留保底一课时）。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约31分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 读图要领与原料预处理<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 1.常考呈现形式 / 2.读图要领 / 3.(1) 原料的预处理</span>
+
+<table class="tb">
+  <tr><th>预处理术语</th><th>目的/作用（答题模板）</th></tr>
+  <tr><td class="l">粉碎/研磨/搅拌</td><td>增大固体与溶液的接触面积，加快浸取（反应）速率，使反应更充分</td></tr>
+  <tr><td class="l">酸浸（硫酸/盐酸）</td><td>使金属氧化物/盐转成可溶性离子进入溶液，不溶物（SiO₂、PbSO₄、CaSO₄）过滤除去</td></tr>
+  <tr><td class="l">灼烧/焙烧/煅烧</td><td>改变矿物结构便于后续溶解；氧化/分解杂质；除去水分与挥发性杂质</td></tr>
+  <tr><td class="l">碱浸（NaOH）</td><td>溶解两性物质（Al₂O₃、[Al(OH)₄]⁻ 路线）或除酸性杂质</td></tr>
+</table>
+<p class="tip">💡 答题模板：凡问"粉碎目的"一律答"<b>增大接触面积、加快浸取速率、提高浸取率/使反应更充分</b>"；问"加热搅拌目的"＝加热升温加快反应＋搅拌增大接触。</p>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p><span class="em">箭头三读：进去是投料、出来循产品、回头是循环</span>；粉碎升温搅拌——提高浸取老三样。</p>
+</div>
+
+<!-- 知识点② -->
+<h3>知识点② · 分离提纯操作对号入座<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 3.(3) 常用的分离方法（六法）＋二、结晶与分离提纯操作应用（题 5~8）</span>
+
+<div class="quiz">
+  <div class="ask">【判断/选择 ×4】① 从硫酸铁与硫酸铵混合溶液制 NH₄Fe(SO₄)₂·12H₂O 晶体，操作是＿＿；② 萃取剂密度小于水时，分离萃取液的操作要点？③ 废镍催化剂流程"滤渣 2 经洗涤干燥后可制铁红"的操作名是＿＿；④ 制 NaF 晶体（溶解度受温度影响小）用蒸发至大量晶体析出后趁热过滤还是冷却结晶？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>加热浓缩→冷却结晶→过滤→洗涤</b>（含结晶水合物，必须冷却结晶防失水）——<span class="em">2022 广东 T18(4) "操作 X"＝先冷却结晶再固液分离（月桂酸熔点 44 ℃）同款判断</span>；<br>
+      ② 取下分液漏斗塞子→旋开活塞放出<b>下层</b>液体→下层放完立即关活塞→<b>从上口倒出</b>上层萃取液（密度小的在上层）；<br>
+      ③ <b>灼烧</b>（Fe(OH)₃ → Fe₂O₃ 铁红）；<br>
+      ④ <b>蒸发至大量晶体析出，趁热过滤</b>（NaF 溶解度受温度影响小——冷却结晶提不出多少，2025 湖北原题 a）。<br>
+      <span class="em">判断口诀</span>：溶解度"变"用冷却、"不变"用蒸发；带结晶水/易水解的用冷却结晶；粗品纯化用重结晶。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p><span class="em">蒸发结晶收 NaCl、冷却结晶收 KNO₃ 和水合盐；蒸馏收互溶液体、萃取分液收不互溶</span>；趁热过滤防析晶、冷却结晶保纯度。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 陌生方程式与调 pH 除杂<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 3.(2) 核心反应——陌生方程式书写 ＋ 四、调 pH 或加沉淀剂沉淀金属离子 / 课时精练 2（水钴矿）</span>
+
+<div class="quiz">
+  <div class="ask">【套路演示 · 2024 新课标 T27】湿法炼锌废渣（含 Co、Zn、Pb、Fe）硫酸酸浸后：<br>
+  ① 滤液中加入 MnO₂ 的作用是＿＿；② 取少量反应后溶液，加试剂＿＿检验＿＿，若出现蓝色沉淀需补加 MnO₂；③ 加 ZnO 调 pH≈4 的目的？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 将溶液中的 <b>Fe²⁺ 氧化为 Fe³⁺</b>，便于后续调 pH 时生成 Fe(OH)₃ 沉淀除去（MnO₂ 被还原成 Mn²⁺，不引新杂质）；<br>
+      ② 加 <b>K₃[Fe(CN)₆] 溶液检验 Fe²⁺</b>——蓝色沉淀说明 Fe²⁺ 未氧化完；<br>
+      ③ 调 pH≈4 使 <b>Fe³⁺（完全沉淀 pH≈2.8）沉淀</b>而 Zn²⁺、Co²⁺ 不沉——<span class="em">"氧化低价→调 pH 沉高价"是流程除铁的标准动作</span>（Fe³⁺ 沉淀 pH 低，先氧化再沉淀效率最高）。<br>
+      <span class="em">沉淀剂选 ZnO 不选 NaOH</span>：不引入 Na⁺ 新杂质且能缓冲 pH。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>流程除杂三件套：<span class="em">H₂O₂/MnO₂ 把 Fe²⁺ 氧化，金属氧化物调 pH 沉 Fe³⁺、Al³⁺，K₃[Fe(CN)₆] 验 Fe²⁺ 蓝沉淀</span>——陌生方程式：标价→判产物→守恒配平→补 H⁺/OH⁻ 再补水。</p>
+</div>
+
+<!-- 知识点④ -->
+<h3>知识点④ · 循环物质与副产品判断<span class="p">（约4分钟 · 六年六考）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 跨讲次高频动作——第52讲考点二「循环物质的确定 / 副产品的判断」＋2022/2023/2024/2026 真题</span>
+
+<div class="quiz">
+  <div class="ask">【循环三看抢答】① 2023·广东 T18(6)②："热解"对于提取 Ni、Co 工艺的意义，在于可重复利用 HNO₃ 和＿＿？② 2024·广东 T18：结晶析出的冰晶石回用于哪一工序？③ 判断：流程图首尾出现同种物质就一定是循环物质吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>MgO</b>——热解把溶液分解出 HNO₃ 和 MgO，两者重回"氨浸"工序（"热解的意义"标准答法：<b>回收试剂、降低成本</b>）；<br>
+      ② <b>"电解"工序</b>——冰晶石（Na₃[AlF₆]）是电解 Al₂O₃ 的助熔剂，首尾同物质＋箭头指回上游；<br>
+      ③ <b>不一定</b>——还要"该物质在前面工序确实投过料、箭头指回上游"才算循环；只顺线走向产品的不是循环。<br>
+      <span class="em">副产品判断</span>：与主线并肩的"支线出料"被有意回收（如 2021 侯氏制碱的 NH₄Cl）才是副产品——<b>循环物指回上游、副产品走出线，别混答</b>。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>循环三看：<span class="em">回收箭头、首尾同物、"回用/再生"字样</span>——2022 MgSO₄、2023 HNO₃＋MgO、2024 冰晶石、2026 沉锑试剂，广东六年六考全是明示循环。</p>
+</div>
+
+<!-- 知识点⑤ -->
+<h3>知识点⑤ · 外省镜子：广东还没考的角度<span class="p">（约3分钟 · 冲刺层）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展视野——外省 2023-2026 工艺流程题高频，广东 2027 届可能跟进</span>
+<p class="tip">💡 <b>反向发现</b>：海水提溴碘完整流程、硫酸工业/合成氨传统流程、侯氏制碱式循环设计——连外省近年也基本不再出整题（2021 广东 T18 留侯氏制碱一问属"古典考法"），一轮不必按老课本专题重锤。</p>
+<div class="quiz">
+  <div class="ask">【冲刺层八条镜子】① 热重/焙烧温度曲线定条件（2025 山东 T7 铁锰两段焙烧、2024 江苏 T28 钕铁硼失重曲线）② 电解精炼/电解耦合流程（2024 北京 T25 黄铜矿炼铜、2024 山东 T29 铅精矿提铅银）③ 萃取反萃取（2024 湖北 T30 提铍、2026 山东 T17"反萃取加 Na₂SO₃ 的两个作用"）④ 分布分数图/回收率图嵌流程（2025 陕晋青宁 T8、2025 江苏 T24）⑤ 选择性/收率定量设计（2025 安徽 T1 提锶）⑥ 更冷元素 V/Cr/Li/Be（2024 河北提钒、2025 河北铬铁矿闭环、2023 山东盐湖提锂）⑦ 生物冶金（2024 黑吉辽蒙载金硫化矿细菌冶金）⑧ 化学循环与物料衡算（2026 山东 T14 捕集 CO₂ 投料比）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">镜子用法：① 失重台阶列差量式，用残余固体组成反推焙烧产物——读法一课时讲透即可；②③ 记两句话——"萃取＝相似相溶＋配位，反萃取＝破坏配位＋还原"，电解耦合分清精炼/电沉积/膜电解三种装置；⑥ 冷元素不慌——化合价看清楚、守恒用起来，钒钛锗和铁铜铝在方程式面前一律平等；⑤⑦⑧ 冲刺层各见一题保"陌生不慌"，不铺开。</div>
+  </details>
+</div>
+
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版必修第一册/选必1 <span class="pg">P＿＿</span> · 化工生产与分离提纯相关练习（同源同型速练）</span>
+<p class="tip">以下 3 题与课本分离提纯、工业制备（海水提盐、铝土矿提铝等）同考点同型，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】从海水中提取粗盐采用＿＿结晶；从粗盐提纯得到精盐（除去泥沙）用＿＿操作；实验室从 KNO₃ 与 NaCl 混合溶液中分离 KNO₃ 用＿＿结晶。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">海水晒盐：<b>蒸发结晶</b>（NaCl 溶解度变化小，太阳能蒸发）；除泥沙：<b>过滤</b>（溶解→过滤→蒸发）；分离 KNO₃：<b>冷却结晶</b>（KNO₃ 溶解度随温度变化大，加热浓缩→降温析出，NaCl 留母液）。<br>
+      <span class="em">课本老题</span>：三个"结晶"选对——海水/盐田/混合盐分离，年年有学校考。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】铝土矿（Al₂O₃、Fe₂O₃、SiO₂）提铝：为什么先用 NaOH 碱浸而不是酸浸？滤渣是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">碱浸：Al₂O₃ 溶解（Al₂O₃＋2OH⁻＝2AlO₂⁻＋H₂O），Fe₂O₃、SiO₂ 中 SiO₂ 也会溶（生成 Na₂SiO₃）……实际经典流程用碱浸后通 CO₂ 沉铝：<br>
+      滤渣为 <b>Fe₂O₃</b>（碱性氧化物不溶于 NaOH）；SiO₂ 溶入碱液（需后续除硅）。<br>
+      <span class="em">两性利用</span>：选酸还是选碱，看杂质哪些能留下——"除杂选试剂不引新杂"是第一原则。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③】判断：① 分液时下层液体从下口放出、上层液体从上口倒出（√/×）；② 蒸馏时温度计水银球放在支管口处（√/×）；③ 蒸发结晶时蒸发皿中出现大量固体即停止加热（√/×）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>√</b>——分液漏斗操作标准（防上层液体被下层污染）；② <b>√</b>——温度计测馏分蒸气温度；③ <b>√</b>——利用余热蒸干，防晶体飞溅。<br>
+      <span class="em">操作三规范</span>：实验操作题最喜欢考这三句"对错"，第9讲分离提纯的复习回顾。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 第1题8分＋第2题16分＋第3题9分＋第4题9分＋第5题8分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 8分）</h4>
+    <ul><li>第1题（8分）：2024·湛江 闪锌矿渣提镓——(1) 浸取措施、(2) 滤渣 PbSO₄/H₂SiO₃、(3) ZnO 调 pH 离子方程式、(4) 过量 CO₂ 沉镓、全是本讲送分动作，全做。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 18分）</h4>
+    <ul><li>第3题（9分）：2024·广州 铬铁矿制铬酸钠——基态 Cr³⁺ 3d³、氧化剂∶还原剂 7∶4、除铝 NaAlSi₂O₆ 沉淀、溶质判断 CrCl₃/BaCl₂；(4) 沉铬精算 4.48 <span class="rd">✂ 可弃</span>；</li>
+    <li>第4题（9分）：2024·深圳 氧氯化锆制锆——(1) Hf＋4、(2) 络合萃取离子式、(5) 还原目的"除 FeCl₃ 杂质"约 5 分基础；(3)(4) 计算 <span class="rd">✂ 可弃</span>。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 24分）</h4>
+    <ul><li>第2题（16分）：2024·江门 铅渣回收 Cu/Fe/Pb/Zn/Sb——X 射线衍射、Fe₂SiO₄ 还原、酒石酸配位洗涤、沉锑 3.6×10⁷——<span class="rd">✂ 只抢 (1)(3)①(5)① 约 5~6 分，(4)(6) 定量放弃</span>；</li>
+    <li>第5题（8分）：钌回收——NaClO 氧化方程式与沉钴可做，<span class="rd">✂ 调 pH 范围 5.6≤pH＜8 精算放弃</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 8＋18＋24＝50 分，与课时精练总分一致。14 分大题算账：前两问＋操作描述约 8 分是"分母分"，Ksp 定量 2-4 分是 80 分的分水岭，末问晶胞和开放设问 2-4 分是尖子分——课上分层布置，别让全员硬啃末问。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：流程题只看箭头不看条件文字；"滤渣/滤液"成分判断漏一种；预处理环节的目的答不完整（溶解、防氧化、增大接触面…）…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：焙烧/酸浸/碱浸的目的，你能不能各用"两个角度"来答？流程题读题第一遍先画什么？（主线元素走向）…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c51_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c51_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

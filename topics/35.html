@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第35讲 电解原理及基本应用 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第35讲　电解原理及基本应用 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式为电解池打底）</p>
+
+<div class="quiz">
+  <div class="ask">① 用惰性电极电解 CuCl₂ 溶液，写出阴、阳极电极反应式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「电解池及工作原理」· 3.电解规律</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>阳极（接电源正极）：2Cl⁻ － 2e⁻ ＝ Cl₂↑</b>（氧化反应）<br>
+      <b>阴极（接电源负极）：Cu²⁺ ＋ 2e⁻ ＝ Cu</b>（还原反应）<br>
+      <span class="rd">⚠ 阳氧阴还</span>——阳极失电子（氧化）、阴极得电子（还原），与原电池的"负氧正还"正好相反</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出氯碱工业（电解饱和食盐水）的总反应离子方程式（65 分必保）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电解原理的应用」· 1.氯碱工业</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Cl⁻ ＋ 2H₂O =（电解）Cl₂↑ ＋ H₂↑ ＋ 2OH⁻</b><br>
+      阳极 2Cl⁻ － 2e⁻ ＝ Cl₂↑；阴极 2H₂O ＋ 2e⁻ ＝ H₂↑ ＋ 2OH⁻<br>
+      <span class="rd">⚠ 阴极出 H₂ 不出 Na</span>——H₂O 优先于 Na⁺ 放电，故阴极区生成 NaOH</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出工业上电解冶炼铝的化学方程式（电解冶炼六年四考）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电解原理的应用」· 4.电冶金</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2Al₂O₃(熔融) =（电解）4Al ＋ 3O₂↑</b>（加冰晶石作助熔剂降低熔点）<br>
+      <span class="rd">⚠ 不能电解熔融 AlCl₃</span>——AlCl₃ 是共价化合物，熔融态不导电、且易升华。<br>
+      <span class="em">同型落点</span>：2022 广东 10 熔融盐电解再生铝、2024 广东 18(1) 冶铝方程式、2025 广东 18(6)② Fe₂O₃ 制 Fe 画装置图</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 电解池构成条件（4个）</b>：外接直流电源 ＋ 两极材料（阳极接正极、阴极接负极） ＋ 电解质溶液（或熔融电解质） ＋ 闭合回路。</li>
+  <li><b>② 电极判断口诀</b>：「<span class="em">阳氧阴还</span>」——阳极失电子（氧化）、阴极得电子（还原）；与原电池的"负氧正还"<span class="rd">相反</span>。</li>
+  <li><b>③ 电子不下水，离子不上线</b>：电子不能通过电解质溶液（走外电路导线），离子不能通过外电路（走内电路溶液）。</li>
+  <li><b>④ 离子移动方向</b>：阳离子移向<span class="em">阴极</span>、阴离子移向<span class="em">阳极</span>（异性相吸）。</li>
+  <li><b>⑤ 三类电解规律</b>：<span class="em">电解水型</span>（NaOH/H₂SO₄/Na₂SO₄ 溶液，实质电解 H₂O）；<span class="em">电解电解质型</span>（CuCl₂/HCl 溶液，电解质本身放电）；<span class="em">电解质和水均参与型</span>（NaCl/CuSO₄ 溶液，二者都参与）。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（六年真题逐题核查）</b>
+  <p>· <b>位置高度固定、正在向大题迁移</b>：六年 A 类题全在选择题<b>第 10 题以后</b>（4 分综合段），<span class="em">第 16 题压轴四年命中</span>（2021、2022、2023、2024、2026）；仅 2022-10 一次在 2 分基础段。2024 起大题明显加强：2024-18(1) 写方程式 → 2025-18(6)② 画装置图并标注 → 2026-18(3) 写阴极式＋"列算式"——从"选判断"升级为"<span class="em">写与算</span>"。</p>
+  <p>· <b>阴阳极判断＋电极反应式：六年十考</b>（2021-16、2022-10/16、2023-13/16、2024-16、2025-14、2026-16/17/18）；离子交换膜<b>六年七考</b>（2021-16、2023-16、2024-16/18、2025-14、2026-16/18）——<span class="em">膜的升级史就是本讲的命题史</span>：三室双膜→"无需膜"对比→双极膜→阳离子膜＋LAEM→①②③多膜。</p>
+  <p>· <b>电子守恒＝"定量陷阱"战场（七年七考）</b>：错值选项几乎成套路——2021-16B"减少 16 g"、2022-16D"增加 23 g"（正确 46 g）、2024-16C"减少 213 g"（正确 351 g）。<span class="rd">凡见"每生成/消耗××"的数字选项，必须自己动手算一遍</span>。</p>
+  <p>· <b>能力层必练</b>：氯碱工业（2023-13、2024-16）＋电解冶炼（2021-16 制 Co、2022-10 熔融盐铝再生、2024-18 冶铝、2025-18(6)② 制 Fe——六年四考）＋pH 与质量/浓度变化（五年五考）。</p>
+  <p>· <b>⚑ 六年零落点（勿重锤）</b>：电解精炼（粗铜作阳极）完全未考、电镀完整原理（仅 2026-17(2) 考镀件极性）、完整"放电顺序表"排序、电解熔融 NaCl 制 Na、串联多电解池、电解制氢独立考点——<span class="rd">全部零出现</span>，一句话保底："粗铜作阳极、纯铜作阴极""镀层金属作阳极、镀件作阴极"；放电顺序只用两组对照（Cl⁻ 与 OH⁻、Cu²⁺ 与 H⁺），不背全表。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① 电解池工作原理 -->
+<h3>知识点① · 电解池工作原理<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「电解池及工作原理」· 1.电解与电解池 / 2.构建电解池模型</span>
+<div class="quiz">
+  <div class="ask">思考：电解池与原电池的能量转化、反应本质有何本质区别？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">原电池：<span class="em">化学能 → 电能</span>，发生<span class="em">自发</span>氧化还原反应（无外接电源）；<br>
+      电解池：<span class="em">电能 → 化学能</span>，发生<span class="em">非自发</span>氧化还原反应（需外接直流电源）。<br>
+      核心判据：<span class="rd">看有无外接电源</span>——有电源是电解池，无电源是原电池。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「电解池及工作原理」· 离子移动方向与电极放电顺序</span>
+<div class="quiz">
+  <div class="ask">电解池中阳离子、阴离子分别移向哪极？阳极、阴极的放电顺序如何？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>离子移动</b>：阳离子 → <span class="em">阴极</span>（得电子，还原）；阴离子 → <span class="em">阳极</span>（失电子，氧化）。<br>
+      <b>阳极放电顺序</b>（失电子能力）：<span class="rd">活性电极（Au、Pt 除外）&gt;</span> S²⁻ &gt; I⁻ &gt; Br⁻ &gt; Cl⁻ &gt; OH⁻ &gt; 含氧酸根 &gt; F⁻<br>
+      <b>阴极放电顺序</b>（得电子能力）：Ag⁺ &gt; Fe³⁺ &gt; Cu²⁺ &gt; H⁺（酸）&gt; Pb²⁺ &gt; Sn²⁺ &gt; Fe²⁺ &gt; Zn²⁺ &gt; H⁺（水）&gt; Al³⁺ &gt; Mg²⁺ &gt; Na⁺ &gt; Ca²⁺ &gt; K⁺<br>
+      <span class="rd">⚠ 阳极若为活性电极（如 Cu、Fe），电极本身优先放电</span>，不发生阴离子放电。<br><span class="rd">⚑ 全表排序六年零考</span>——广东只要求两组对照（阳极 Cl⁻ 与 OH⁻、阴极 Cu²⁺ 与 H⁺），不背全表。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「电解池及工作原理」· 易错辨析（抢答 4 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>电解池工作时电子经电解质溶液由阴极流向阳极</summary>
+  <div class="ans"><b>×</b>　<span class="em">电子不能通过电解质溶液</span>，只能经外电路导线从电源负极→阴极、从阳极→电源正极。溶液靠离子导电。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>电解池中阳离子移向阳极</summary>
+  <div class="ans"><b>×</b>　阳离子移向<span class="em">阴极</span>（异性相吸，阴极得电子吸引阳离子）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>用铜棒作阳极电解 NaCl 溶液，阳极反应是 2Cl⁻－2e⁻＝Cl₂↑</summary>
+  <div class="ans"><b>×</b>　<span class="em">Cu 是活性电极</span>，优先于 Cl⁻ 放电：<b>Cu － 2e⁻ ＝ Cu²⁺</b>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>电解 NaOH 溶液（实质电解水），阴极生成 Na 单质</summary>
+  <div class="ans"><b>×</b>　电解 NaOH 溶液实质是电解 H₂O，阴极反应 <b>2H₂O ＋ 2e⁻ ＝ H₂↑ ＋ 2OH⁻</b>，H⁺（来自水）放电不出 Na。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>阳氧阴还 · 电子不下水 · 阳离子奔阴极 · 活性阳极先溶解</p>
+</div>
+
+<!-- 知识点② 氯碱工业 -->
+<h3>知识点② · 氯碱工业<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电解原理的应用」· 1.氯碱工业（离子交换膜法）</span>
+<div class="quiz">
+  <div class="ask">氯碱工业（电解饱和食盐水）的电极反应式和总反应离子方程式？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>阳极</b>（接电源正极）：<b>2Cl⁻ － 2e⁻ ＝ Cl₂↑</b>（氧化反应，Cl⁻ 优先于 OH⁻ 放电）<br>
+      <b>阴极</b>（接电源负极）：<b>2H₂O ＋ 2e⁻ ＝ H₂↑ ＋ 2OH⁻</b>（还原反应，H₂O 优先于 Na⁺ 放电）<br>
+      <b>总反应离子方程式</b>：2Cl⁻ ＋ 2H₂O =（电解）Cl₂↑ ＋ H₂↑ ＋ 2OH⁻<br>
+      <span class="rd">⚠ 阳离子交换膜作用</span>：只允许 Na⁺ 从阳极区通过到阴极区，阻止 Cl₂ 与 OH⁻ 反应、阻止 H₂ 与 Cl₂ 混合爆炸。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">84 消毒液发生器：石墨电极电解饱和食盐水，让 Cl₂ 与 NaOH 充分混合反应生成 NaClO。请分析电极接法和反应式。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">设计思路：<span class="em">下端产生 Cl₂，上端产生 NaOH</span>，让上升的 Cl₂ 与 NaOH 溶液充分接触。<br>
+      电极接法：a 为电源<span class="em">负</span>极（接 b 电极使之为阴极）→ b 阴极区出 H₂↑ 和 NaOH；c 为电解池<span class="em">阳</span>极（接电源正极）→ c 阳极出 Cl₂↑。<br>
+      <b>阴极反应</b>：2H₂O ＋ 2e⁻ ＝ H₂↑ ＋ 2OH⁻<br>
+      <b>总反应</b>（Cl₂ ＋ 2NaOH ＝ NaCl ＋ NaClO ＋ H₂O 与电解合并）：<b>NaCl ＋ H₂O =（电解）NaClO ＋ H₂↑</b></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「氯碱工业」· 易错辨析（抢答 3 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>氯碱工业既可以用阳离子交换膜，也可以用阴离子交换膜</summary>
+  <div class="ans"><b>×</b>　只能用<span class="em">阳离子交换膜</span>——让 Na⁺ 透过；若用阴离子膜，OH⁻ 进入阳极区与 Cl₂ 反应（2NaOH+Cl₂=NaCl+NaClO+H₂O），得不到纯净 Cl₂。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>氯碱工业阴极的电极反应是 Na⁺ ＋ e⁻ ＝ Na</summary>
+  <div class="ans"><b>×</b>　水溶液电解，<span class="em">H₂O 优先于 Na⁺ 放电</span>：<b>2H₂O ＋ 2e⁻ ＝ H₂↑ ＋ 2OH⁻</b>。工业上制 Na 用电解熔融 NaCl。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>氯碱工业的产品是 Cl₂、H₂ 和 NaOH</summary>
+  <div class="ans"><b>√</b>　"氯碱"二字：氯＝Cl₂，碱＝NaOH，副产 H₂。氯碱工业也用于制盐酸和含氯消毒剂。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>氯碱工业阳 Cl⁻ 阴 H₂O，阳离子膜挡副反应，氯碱产品 Cl₂/H₂/NaOH</p>
+</div>
+
+<!-- 知识点③ 电镀、电解精炼、电冶金 -->
+<h3>知识点③ · 电镀、电解精炼、电冶金<span class="p">（约10分钟 · 电镀/精炼 ⚑ 六年零考一句话保底，电冶金是真考点）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电解原理的应用」· 2.电镀 / 3.电解精炼 / 4.电冶金</span>
+<div class="quiz">
+  <div class="ask">电镀、电解精炼铜、电冶金（制铝）三者的阳极、阴极、电解质有什么区别？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table class="tb">
+        <tr><th>工艺</th><th>阳极</th><th>阴极</th><th>电解质</th><th>特点</th></tr>
+        <tr><td class="l">电镀</td><td class="l">镀层金属（如 Cu）</td><td class="l">镀件</td><td class="l">含镀层金属离子（如 CuSO₄）</td><td class="l">阳极溶解、阴极沉积，浓度不变</td></tr>
+        <tr><td class="l">电解精炼铜</td><td class="l">粗铜（含 Zn/Fe/Ni/Ag/Au）</td><td class="l">纯铜</td><td class="l">CuSO₄ 溶液</td><td class="l">活泼杂质溶、不活泼沉（阳极泥含 Ag/Au）</td></tr>
+        <tr><td class="l">电冶金（制 Al）</td><td class="l">石墨</td><td class="l">碳块</td><td class="l">熔融 Al₂O₃（加冰晶石作助熔剂）</td><td class="l">不电解 AlCl₃（易升华/共价）</td></tr>
+      </table>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">电解精炼铜时：① 阳极 Cu 怎样放电？② 不活泼金属 Ag、Au 怎样处理？③ 阴极 Cu²⁺ 得电子沉积。两极质量变化是否相等？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 阳极：<b>Cu － 2e⁻ ＝ Cu²⁺</b>（主反应）；活泼杂质 Zn/Fe/Ni 优先于 Cu 放电 → Zn²⁺/Fe²⁺/Ni²⁺ 进入溶液。<br>
+      ② <b>Ag、Au 不放电</b>，从阳极脱落沉到槽底形成 <span class="rd">阳极泥</span>（含 Ag/Au/Pt 等贵金属）。<br>
+      ③ 阴极：只有 Cu²⁺ 放电（氧化性 Cu²⁺ &gt; Zn²⁺/Fe²⁺/Ni²⁺）→ <b>Cu²⁺ ＋ 2e⁻ ＝ Cu</b>。<br>
+      <span class="rd">⚠ 两极质量变化不相等</span>——阳极失电子的还有 Zn/Fe/Ni，阴极只沉积 Cu；且 Ag/Au 形成阳极泥不参与电子转移。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电镀/精炼/电冶金」· 易错辨析（抢答 3 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>电镀时，应把待镀金属置于电解槽的阴极</summary>
+  <div class="ans"><b>√</b>　待镀金属作阴极，<span class="em">镀层金属作阳极</span>，电解质含镀层金属离子。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>电解精炼铜时，阳极泥中含有 Zn、Fe、Ag、Au 等金属</summary>
+  <div class="ans"><b>×</b>　<span class="em">活泼金属 Zn、Fe 不形成阳极泥</span>（优先放电成离子进入溶液）；阳极泥只含不活泼金属 Ag、Au、Pt。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>工业上用电解熔融 AlCl₃ 的方法制金属铝</summary>
+  <div class="ans"><b>×</b>　<span class="em">电解熔融 Al₂O₃（加冰晶石作助熔剂）</span>制铝。AlCl₃ 是共价化合物，熔融态不电离，且易升华。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>电镀：阳镀层阴镀件；精炼：粗铜阳极 Ag/Au 沉底；电冶金：熔融 Al₂O₃ 加冰晶石</p>
+</div>
+
+<!-- 能力层①：膜的升级史与读法（六年七考） -->
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「离子交换膜」· 膜的升级史（广东命题主线）</span>
+<div class="quiz">
+  <div class="ask">广东卷"膜"的升级史：2021 三室双膜 → 2022"无需离子交换膜"对比 → 2023 双极膜（卯榫结构）→ 2024 阳离子膜＋新型 LAEM 阴离子交换膜 → 2026 ①②③多膜类型判断。读装置图的"膜读法三问"是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>膜读法三问</b>：① 这块膜该让谁过？（阳离子膜只过阳离子、阴离子膜只过阴离子、<span class="em">双极膜把 H₂O 解离成 H⁺ 与 OH⁻——H⁺ 移向阴极、OH⁻ 移向阳极</span>）；② 离子往哪移动？（阳离子→阴极、阴离子→阳极）；③ 移动之后哪一室变多、哪一室变少（pH 与浓度怎么变）？<br>
+      <span class="rd">⚠ 2023 广东 16 设错</span>："每生成 1 mol NH₃·H₂O，双极膜处有 9 mol 的 H₂O 解离"是<b>错值</b>——阴极得 8 mol e⁻，应解离 <b>8 mol</b> H₂O（双极膜解离数＝电子转移数）。</div>
+  </details>
+</div>
+
+<!-- 能力层②：电子守恒定量陷阱（七年七考） -->
+<div class="quiz">
+  <div class="ask">【定量陷阱·六年错值清单】① 2021 广东 16(B)："生成 1 mol Co，Ⅰ室溶液质量理论上减少 16 g"；② 2022 广东 16(D)："每生成 1 mol Cl₂，电极 a 质量理论上增加 23 g"；③ 2024 广东 16(C)："每消耗 1 mol Fe₂O₃，阳极室溶液减少 213 g"。这些数字对吗？应试纪律是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>全都是错值，凡数字必自算</b>：<br>
+      ② 2022-16 正解 <b>46 g</b>（不是 23 g）；③ 2024-16 正解 <b>351 g</b>——阳极室是"<b>两种物质同时迁移</b>"：3 mol Cl₂×71 g/mol ＋ 6 mol Na⁺×23 g/mol ＝ 213＋138＝351 g，干扰项 213 g 只算了 Cl₂。<br>
+      <span class="em">🎯 电子守恒四步法</span>：写准两极式 → 找电子转移数 → 按"电子数相等"列比例 → 换算质量/浓度/体积。<br>
+      <span class="rd">⚠ 本讲最实用应试纪律：凡见"每生成/消耗××"的数字选项，必须自己动手算一遍</span>——16 g、23 g、213 g 这些错值年年出现。</div>
+  </details>
+</div>
+
+<!-- 大题迁移提示 -->
+<div class="koujue">
+  <div class="t">🗣 广东卷风向：电解正在向大题迁移（2024 起）</div>
+  <p>2024-18(1) 写电解熔融 Al₂O₃ 的方程式（2Al₂O₃(熔融)＝电解＝4Al＋3O₂↑）→ 2025-18(6)② 画电解池示意图并标注（Fe 片、石墨棒为电极）→ 2026-18(3) 写阴极反应式并"列算式"算阳极室限量——从"选判断"升级为"<span class="em">写与算</span>"；画图要标齐：电源正负极、两极名称、电解质与电极材料。</p>
+</div>
+
+<!-- 冲刺层：外省新型电解情境 -->
+<h3>知识点④（冲刺·85+）· 外省新型电解情境与说理设问<span class="p">（广东零落点，提前备）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展（2024—2026 外省新高考卷比对）</span>
+<div class="quiz">
+  <div class="ask">【落地真题·2026 广东 17(2)】在铁件表面镀铜，铁件应连接直流电源的 ＿＿ 极？——并对照 2024 江苏 T3 的装置正误判断。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>负极</b>（镀件作阴极、镀层金属作阳极）。<br>
+      2024 江苏 T3 范式："铁钉与电源负极相连作阴极，锌片与电源正极相连作阳极"——装置正误判断广东虽只零星考极性、外省连考，回归概率不低。</div>
+  </details>
+</div>
+<div class="koujue">
+  <div class="t">🗣 冲刺层清单（外省高频 · 广东零落点）</div>
+  <p>① 双极膜解离定量：2026 山东 T12、2024 湖北 T14（"生成 1 mol 甘氨酸时双极膜中有 6 mol H₂O 解离"）；② 电化学合成氨：2024 北京 T16(3)（写阳极式＋解释副反应促进主反应）；③ 电催化 CO₂ 制高值品：2024 重庆 T9、2026 江苏 T17(3)①；④ 固体电解池：2024 甘肃 T7（只传导 O²⁻）；⑤ 多组串联与可逆装置：2026 河南 T12（"中间原电池、两侧电解池"）；⑥ 说理型设问：2026 四川 T17(6)（"pH 下降的原因"多角度作答）；⑦ 熔融盐电解添加剂：2024 湖北 T16(5)（加 NaCl 增强导电性）；⑧ 电解精炼杂质与电量：2024 北京 T18(5)（活泼杂质"吃掉"电量、纯铜产量降低）；⑨ 副反应对产量的影响：2024 海南 T13（"通过 1 mol 电子产生 0.5 mol H₂"）</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：100分] 共14题，按题号分必做/挑战）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 基础层（65 分必拿）</h4>
+    <ul>
+      <li><b>选择题</b>　第1题 装置识别（电解池 vs 原电池） · 第2题 离子方程式正误 · 第3题 惰性电极电解原理判断</li>
+      <li><b>选择题</b>　第5题 综合判断（Na₂SO₄/AgNO₃/CuCl₂/NaOH） · 第6题 电解精炼/电镀综合</li>
+      <li>滚动默写：五条必背结论 ＋ 氯碱总反应 ＋ 膜读法三问</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 能力层（80 分·中档生）</h4>
+    <ul>
+      <li><b>选择题</b>　第8题 汞阴极法电解饱和食盐水（氯碱＋膜）</li>
+      <li><b>非选择题</b>　第13题（8分）氯碱工业与燃料电池组合工艺</li>
+      <li>定量陷阱专练：2021-16、2022-16、2024-16 数字选项逐个自算（351 g 算路）＋ 2022 广东 10、2023 广东 13 真题重做</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 冲刺层（85+）</h4>
+    <ul>
+      <li><b>选择题</b>　第4题 熔盐电脱氧制备 Zr · 第7题 电解 Cu(NO₃)₂＋K · 第9题 电解海水制氢 · 第10题 铁上电镀铜 · 第11题 电催化 CO₂ 制尿素 · 第12题 电化学处理硝酸盐产氨</li>
+      <li><b>非选择题</b>　第14题（12分）电镀铜＋锌酸盐镀锌综合</li>
+      <li><span class="rd">⚠ 双极膜/多膜与说理设问，只对冲刺层开小灶</span></li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：阳极失电子阴极得电子，与电源正负极对应关系先定；放电顺序Cl⁻在OH⁻前；电镀液浓度保持不变的原理…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：电解精炼铜阳极泥怎么来的？氯碱工业隔膜防什么？串联电解各极转移电子怎么守恒…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c35_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c35_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

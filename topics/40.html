@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第40讲 化学平衡状态与化学平衡常数 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第40讲　化学平衡状态与化学平衡常数 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式为本讲 K 书写与平衡标志的载体反应；<span class="rd">广东锚点</span>：2021-T19(4)② Krp 不写 C(s)、2025-T19(3)③ K 不写 Ti(s)、2022-T19(2)② 守恒联立）</p>
+
+<div class="quiz">
+  <div class="ask">① 写出碳酸钙分解的化学方程式，并写出其平衡常数 K 表达式（纯固体处理示范）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「化学平衡常数」· 2.表达式 · 应用举例（1）｜广东锚点：2021-T19(4)②（K 不写 C(s)）、2026-T19(5)②</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CaCO₃(s) ⇌ CaO(s) ＋ CO₂(g)</b>　　<b>K ＝ c(CO₂)</b><br>
+      <span class="rd">⚠ 固体、纯液体浓度视为常数，不写入 K 表达式</span>——这是广东卷 K 表达式的第一送分点/第一失分点。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 2SO₂(g)＋O₂(g) ⇌ 2SO₃(g) 的平衡常数 K 表达式，并判断其 K 与逆反应 K′ 的关系</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「化学平衡常数」· 2.表达式 / 一、化学平衡常数与化学方程式的关系｜广东锚点：2025-T19(3)③“列出算式，无须化简”</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>K ＝ c²(SO₃) / [c²(SO₂)·c(O₂)]</b><br>
+      正、逆反应的平衡常数<b>互为倒数</b>：K′ ＝ 1/K。<br>
+      <span class="em">记忆</span>：生成物浓度幂之积做分子，反应物做分母；倒写方程式，K 取倒数。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 2NO(g)＋C(s) ⇌ N₂(g)＋CO₂(g) 的平衡常数 K 表达式（三段式计算载体，ΔH＝−213.5 kJ·mol⁻¹）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「化学平衡常数」· 二、平衡常数的简单计算及应用（例题3）｜广东锚点：2022-T19(2)②（守恒联立求 c(HCrO₄⁻)）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>K ＝ c(N₂)·c(CO₂) / c²(NO)</b>（C 是固体，不写入）<br>
+      该反应为放热反应：升温 K 减小、平衡逆向移动（例题 3 的 T₁＜T₂ 判断依据）。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 平衡五特征"逆等动定变"</b>：对象是可逆反应（逆）；动态平衡 v正＝v逆≠0（动·等）；各物质浓度保持不变（定）；条件改变平衡可移动（变）。</li>
+  <li><b>② 平衡判断两步法</b>：看物理量是否为"<span class="em">变量</span>"（随反应进行会改变）→ 变量不再变化即平衡；恒量（永远不变）不能作标志。</li>
+  <li><b>③ K 表达式</b>：生成物浓度幂之积/反应物浓度幂之积；<span class="em">纯固体、纯液体不写入</span>（2021 广东 T19(4)② Krp 不写 C(s)、2025 广东 T19(3)③ 不写 Ti(s)）；<b>K 只与温度有关</b>（催化剂/浓度/压强不改变 K）；<span class="em">答法规范</span>：“列出算式，无须化简”，结果保留两位有效数字（2025、2026 广东连续两年原文要求）。</li>
+  <li><b>④ Q 与 K 判方向</b>：Q＜K 正向进行；Q＝K 平衡；Q＞K 逆向进行——再加料时用它判断平衡是否移动。</li>
+  <li><b>⑤ 方程式变换对 K</b>：计量数×n → Kⁿ；倒写 → 取倒数；方程式相加（减）→ K 相乘（除）。<br><span class="em">🔵 冲刺层预备区</span>：Kp 分压计算（第 41 讲专项、本讲建立认知；外省年年考、广东未考）；✂ 放弃：ΔG°＝−RTlnK、范特霍夫方程、非整数指数。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷化学平衡考点与难度研究报告》＋2021—2026 六年逐题重查）</b>
+  <p><b>🎯 两个收分阵地，年年见：</b>①<b>第 19 题原理大题</b>——K 是“铁打小问”，六年无一年缺席（2021 Krp＋转化率 68% → 2022 K₂ 求 c(HCrO₄⁻) → 2023 K₁K₂＋98% → 2024 非水溶剂 Ka → 2025 反应(c) 的 K“列出算式” → 2026 吸收平衡求 0.22）；②<b>第 18 题工艺流程</b>——“Q 与 Ksp 边界”年年一问（2021 防 BaMoO₄ 混 BaCO₃、2022 月桂酸钠上限、2024 沉铝、2025 沉铝、2026 阳极室防沉淀）。<b>选择题</b>落点固定在 11~16 题综合区（2021-T14、2022-T13、2023-T15、2024-T15、2025-T12、2026-T15）。</p>
+  <p>· <b>🟢 必保分（0.65–0.80）</b>：K 表达式书写（三律：纯固体/纯液体不写入）、K 只随温度变、三段式求转化率、平衡状态判断标志、Q 与 Ksp 边界小问——大题“前 2~3 个基础空”＋一道 4 分选择题。</p>
+  <p>· <b>🟠 主突破（0.50–0.65）</b>：<span class="em">多重平衡运算（方程式相加 K 相乘）、守恒联立求平衡浓度、平衡建立的实验式判断、转化率的比较与代数式表达</span>——能力层主阵地，2022—2026 连续落点。</p>
+  <p>· <b>🔵 冲刺层预备区（外省年年考、广东未考，随时跟进）</b>：Kp 分压计算（分压＝总压×物质的量分数）、Q 与 K 显式判向、lgK-1/T 图像读 K——最优先补 Kp。</p>
+  <p>· <b>✂ 放弃</b>：等效平衡/极限转化思想、lnK-1/T 定量外推、K 的单位与“K 越大反应越彻底”文字辨析（广东六年未考、外省亦近乎绝迹）。<span class="rd">保分策略：K 书写三律＋“变量不变才是标志”＋令 Q＝Ksp 解边界。</span></p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约35分钟</span></div>
+
+<!-- 知识点① 可逆反应与平衡状态 -->
+<h3>知识点① · 可逆反应与化学平衡状态<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 1.可逆反应 / 2.化学平衡状态（(1)概念 (2)建立过程 (3)平衡特征）</span>
+
+<div class="quiz">
+  <div class="ask">思考：① 什么是可逆反应？② 反应达到平衡后，反应停止了吗？③ "反应物和生成物浓度相等"是平衡的标志吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 同一条件下既能正向又能逆向同时进行的反应——所以反应物<b>不可能 100% 转化</b>；<br>
+      ② <span class="rd">没有停止！</span>平衡是"动态平衡"：v正＝v逆≠0，正逆仍在进行，只是净效果为零；<br>
+      ③ <span class="rd">不是</span>——平衡标志是浓度<b>保持不变</b>，不是"相等"（相等与否取决于投料与计量数）。</div>
+  </details>
+</div>
+
+<p><b style="color:var(--accent);">平衡五特征（必背）：</b><span class="em">逆</span>（对象可逆反应）·<span class="em">动</span>（动态平衡）·<span class="em">等</span>（v正＝v逆≠0）·<span class="em">定</span>（各物质浓度/质量保持不变）·<span class="em">变</span>（条件改变，平衡移动，新条件下建立新平衡）</p>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答 5 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>Pb＋PbO₂＋2H₂SO₄ ⇌(充放电) 2PbSO₄＋2H₂O 为可逆反应</summary>
+  <div class="ans"><b>×</b>　充电、放电<b>条件不同</b>（电解 vs 原电池），不满足"同一条件下"双向进行，不是可逆反应。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>化学反应达到限度时，正、逆反应速率相等</summary>
+  <div class="ans"><b>√</b>　达平衡（限度）时 v正＝v逆≠0，各物质浓度保持不变。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>化学反应达到平衡后，反应物和生成物的浓度或百分含量相等</summary>
+  <div class="ans"><b>×</b>　达平衡是浓度<b>不再改变</b>，不是"相等"——相等只是某些特殊投料下的巧合。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>N₂＋3H₂ ⇌ 2NH₃ 达平衡时，3v正(H₂)＝2v逆(NH₃)</summary>
+  <div class="ans"><b>×</b>　应满足"速率之比＝计量数之比"：v正(H₂)∶v逆(NH₃)＝3∶2 → <b>2v正(H₂)＝3v逆(NH₃)</b>（方向相反且成比例才算）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>恒温恒容 2SO₂＋O₂ ⇌ 2SO₃，当 SO₃ 的生成速率与 SO₂ 的消耗速率相等时达平衡</summary>
+  <div class="ans"><b>×</b>　SO₃ 生成（正方向）与 SO₂ 消耗（正方向）<b>都是正反应速率</b>，方向不相反，永远相等，不能作标志。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>逆等动定变；平衡标志两步法：它是变量吗？——会变且不再变，才算平衡</p>
+</div>
+
+<!-- 知识点② 平衡标志两步法 -->
+<h3>知识点② · 化学平衡状态的判断（两步法专练）<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 提升关键能力·二、化学平衡状态的判断方法（例题2）＋归纳总结</span>
+
+<div class="quiz">
+  <div class="ask">【挖空】恒温恒容下，反应 2SO₂(g)＋O₂(g) ⇌ 2SO₃(g)（气体分子数减小）：<br>① 混合气体总压强不变，能否说明平衡？② 混合气体密度不变呢？③ 气体平均相对分子质量不变呢？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>能</b>——恒容下压强随气体分子数改变而变（Δn≠0），是"变量"，不变即平衡；<br>
+      ② <b>不能</b>——恒容＋气体总质量守恒 ⇒ 密度 ρ＝m/V 永远是恒量，不能作标志；<br>
+      ③ <b>能</b>——总质量不变但总物质的量在变，平均摩尔质量 M̄＝m/n 是变量，不变即平衡。<br>
+      <span class="em">判据核心</span>：先问"这个量会不会随反应进行而改变"——会变（变量）→ 可作标志；天生不变（恒量）→ 永远不能。</div>
+  </details>
+</div>
+
+<p><b style="color:var(--accent);">归纳总结（必背）：</b>平衡标志两类：<br>
+① <b>动态标志</b>：v正＝v逆——同种物质"生成速率＝消耗速率"；不同物质须方向相反且速率比＝计量数比（如 2v正(H₂)＝3v逆(NH₃)）；<br>
+② <b>静态标志</b>：各"变量"不变——各物质浓度/物质的量/百分含量不变；有颜色物质的颜色不变；绝热体系温度不变；Δn≠0 时恒容压强、恒压密度、平均摩尔质量不变。<br>
+<span class="rd">⚠ 浓度之比＝计量数之比 ≠ 平衡标志</span>（可能只是巧合）；Δn＝0 的反应，压强、密度、总物质的量都是恒量，不能作标志（只能看颜色/百分含量等）。</p>
+
+<p><b style="color:var(--accent);">🇨🇳 广东真题锚点（判断标志六年四考）：</b>2021-T14（两步反应 X→Y→2Z，t₂ 时 Y 的消耗速率大于生成速率）、2023-T15C（“使用Ⅱ时反应体系更快达到平衡”——催化剂只改变速率、不改变平衡本身）、2024-T17(4)（“t₂ min 后 pH 不变”≠平衡，见知识点⑤）、2026-T15C（“某子反应先达到平衡”是伪命题，见真题 1）。<span class="rd">共同内核：先辨“是不是变量”，再辨“是不是整个体系的平衡”。</span></p>
+
+<!-- 知识点③ 平衡常数K -->
+<h3>知识点③ · 化学平衡常数 K<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 1.化学平衡常数的概念 / 2.表达式（应用举例）/ 3.影响化学平衡常数的因素</span>
+
+<div class="quiz">
+  <div class="ask">写一写：① CaCO₃(s) ⇌ CaO(s)＋CO₂(g)；② Cr₂O₇²⁻(aq)＋H₂O(l) ⇌ 2CrO₄²⁻(aq)＋2H⁺(aq)。各自的 K 表达式是？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>K ＝ c(CO₂)</b>——CaCO₃、CaO 是固体不写入；<br>
+      ② <b>K ＝ c²(CrO₄²⁻)·c²(H⁺) / c(Cr₂O₇²⁻)</b>——H₂O 是纯液体不写入。<br>
+      <span class="rd">书写铁律：固、液（纯液体）不写，只写气态与溶液（aq）中的物质，且浓度取"幂"（计量数次方）。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">判断：① K 会随反应物浓度增大而改变吗？② 加入催化剂，K 改变吗？③ 升高温度，K 一定增大吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>不会</b>——K 只与温度有关；② <b>不会</b>——催化剂同倍加快正逆，不改变 K 与平衡状态；<br>
+      ③ <b>不一定</b>——升温时，<span class="em">吸热反应 K 增大、放热反应 K 减小</span>（勒夏特列：向吸热方向移动）。<br>
+      <span class="em">应用</span>：由 K 随温度的变化可判断反应热效应——T 升高 K 增大 ⇒ 正反应吸热。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>K＝生成除反应，固液纯液不掺和；K 只随温度走，催化剂压强都不管</p>
+</div>
+<p class="tip">📖 <b>广东锚点</b>：K 只随温度变——2021 广东 T19(4)①（lnKrp-1/T 判吸放热）、2025 广东 T19(3)②（平衡组成-温度图定物质与吸放热，“曲线Ⅰ对应的物质为＿＿”）、2026 广东 T19(5)①（升温降压释放 HCl）；<b>2021 广东 T19(2)C“加入反应 a 的催化剂，可提高 CH₄ 的平衡转化率”为<span class="rd">必错项</span></b>——催化剂只加快达平衡，不提高平衡转化率。</p>
+
+<!-- 知识点④ K变换与Q-K -->
+<h3>知识点④ · 方程式变换对 K 的影响 &amp; Q 与 K 判方向<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 4.平衡常数的意义及应用 / 一、化学平衡常数与化学方程式的关系 / 练后反思</span>
+
+<div class="quiz">
+  <div class="ask">已知：① H₂(g)＋S(s) ⇌ H₂S(g)　K₁；② S(s)＋O₂(g) ⇌ SO₂(g)　K₂。<br>则反应 H₂(g)＋SO₂(g) ⇌ O₂(g)＋H₂S(g) 的 K ＝ ？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>K ＝ K₁ / K₂</b><br>
+      思路：目标反应 ＝ ① − ②（H₂S 减 SO₂：① ＋ ②的逆反应）→ K ＝ K₁ × (1/K₂) ＝ K₁/K₂。<br>
+      <span class="em">三律速查</span>：① 倒写 → K⁻¹；② 计量数×n → Kⁿ；③ 方程式相加（减）→ K 相乘（除）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">思考（练后反思）：反应达平衡后，再向容器中加入一定量生成物，如何判断平衡移动方向？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>用 Q 与 K 比较</b>（不要凭感觉！）：<br>
+      算出此时浓度商 Q，若 Q＜K → 正向移动；Q＝K → 仍平衡；Q＞K → 逆向移动。<br>
+      <span class="em">例</span>：2NO＋C(s) ⇌ N₂＋CO₂，平衡后按 1.5 mol NO、0.75 mol N₂、0.75 mol CO₂ 再加料——代入发现 Q 恰好＝K，平衡<span class="rd">不移动</span>（例题3 D 选项）。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>倒写取倒数、翻倍 K 平方、加加减减乘乘除除；Q＜K 正向走、Q＞K 逆向走、Q＝K 按兵不动</p>
+</div>
+
+<!-- 知识点⑤ 平衡建立的实验式判断 -->
+<h3>知识点⑤ · 平衡建立的实验式判断（广东独家考法）<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 2024 广东 T17(4) · 探究反应 CaSO₄(s)＋CO₃²⁻(aq) ⇌ CaCO₃(s)＋SO₄²⁻(aq)(Ⅰ) 平衡的建立</span>
+<div class="quiz">
+  <div class="ask">【情境】将 1.00 g 硫酸钙（M＝136 g·mol⁻¹）加入 100.0 mL 0.100 mol·L⁻¹ Na₂CO₃ 溶液中，25℃ 搅拌，用 pH 计测 pH 随时间变化。甲同学据“t₂ min 后 pH 不改变”就断定已达平衡——证据足吗？<br>追①：“pH 不变”为什么不足以证明平衡？乙同学提出哪两条假设？<br>追②：如何设计实验证明反应(Ⅰ)平衡已建立？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">追①：pH 不变可能不是“平衡”，而是反应<b>停了</b>——<b>假设 1</b>：硫酸钙固体已完全消耗（反应物没了，自然不再变）；<b>假设 2</b>：硫酸钙有剩余，但被生成的碳酸钙沉淀<b>包裹</b>，反应无法继续。<br>
+      追②：将<b>最少 1.36 g</b> 硫酸钙加入 100.0 mL 0.100 mol·L⁻¹ Na₂CO₃ 溶液中，25℃ 搅拌，当 pH 不变时，<span class="em">加入 Na₂SO₄ 固体，若 pH 变大</span>，说明反应(Ⅰ)平衡已建立。<br>
+      <span class="em">“扰动-恢复”判据</span>：真平衡遇扰动会移动——加 SO₄²⁻ 使平衡逆向、c(CO₃²⁻) 回升 → 水解产生的 OH⁻ 增多 → pH 变大；若是“假平衡”（反应物耗尽/被包裹），则毫无响应。<span class="rd">这正是“变量不变才是标志”的实验化表达。</span></div>
+  </details>
+</div>
+<div class="koujue">
+  <div class="t">🗣 铁律</div>
+  <p>“不变”未必是平衡——先排除“反应物耗尽”与“被产物包裹”两种假象；确认平衡要“扰动一下，看它会不会动”</p>
+</div>
+
+<!-- 知识点⑥ Q与Ksp边界小问 -->
+<h3>知识点⑥ · 第18题“Q 与 Ksp 边界”固定小问<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 2021 T18(3)②、2022 T18(3)、2024 T18、2025 T18(3)、2026 T18(3)② · 工艺流程年年一问</span>
+<div class="quiz">
+  <div class="ask">【答题模板】工艺流程题里“为避免生成某沉淀 / 某离子浓度应不大于多少 / pH 最高可调至多少”——固定解题套路是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>令 Q ＝ Ksp 解边界</b>：把“恰好开始沉淀”当临界点，写出浓度商 Q，令 Q ＝ Ksp，解出临界浓度（或 pH/用量）。<br>
+      <span class="em">题干信号词</span>：“应不大于”“不超过”“最高可调至”“最多可加入”——见到就往“Q＝Ksp”上套。<br>
+      <b>广东六年落点</b>：2021 防 BaMoO₄ 中混入 BaCO₃（令 Q(BaCO₃)≤Ksp）；2022 月桂酸钠加入量上限（令 Q[(C₁₁H₂₃COO)₂Mg]≤Ksp）；2024 冰晶石 Na₃[AlF₆]、沉铝；2025“沉铝”pH 最高可调至？；2026 防阳极室沉淀，最终 c(OH⁻) 应不大于？（列算式）。</div>
+  </details>
+</div>
+<p><span class="rd">⚠ 答法规范</span>：这类空要求“应不大于（<b>列出算式</b>）”——先写 Q＝Ksp 的表达式再代入数据，只列式不化简，结果按要求保留两位有效数字（与第 19 题 K 计算同一套规范）。</p>
+
+<!-- 知识点⑦ 多重平衡与守恒计算 -->
+<h3>知识点⑦ · 多重平衡运算与守恒联立（能力层主攻）<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 2022 广东 T19(2)②③、2023 广东 T19(3) · 方程式相加 K 相乘；守恒联立求平衡浓度</span>
+<div class="quiz">
+  <div class="ask">【真题 · 能力层】2022 广东 T19(2)：25℃ 时 K₂Cr₂O₇ 溶液中存在<br>
+  (ⅰ) Cr₂O₇²⁻(aq)＋H₂O(l) ⇌ 2HCrO₄⁻(aq)　K₁＝3.0×10⁻²<br>
+  (ⅱ) HCrO₄⁻(aq) ⇌ CrO₄²⁻(aq)＋H⁺(aq)　K₂＝3.3×10⁻⁷<br>
+  ①0.10 mol·L⁻¹ K₂Cr₂O₇ 溶液中，平衡浓度 c(Cr₂O₇²⁻)＝x、c(HCrO₄⁻)＝y、c(CrO₄²⁻)＝z，写出 x、y、z 满足的关系式；②求 25℃ 时 c(HCrO₄⁻)＝？（写出计算过程，结果保留两位有效数字）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>Cr 守恒</b>：2x＋y＋z＝0.20，即 x＋½y＋½z＝0.10（0.10 mol·L⁻¹ K₂Cr₂O₇ 含 Cr 0.20 mol·L⁻¹，平衡后分存于 Cr₂O₇²⁻、HCrO₄⁻、CrO₄²⁻ 中）。<br>
+      ② pH＝9.00 时 c(H⁺)＝10⁻⁹ mol·L⁻¹，由 K₂＝c(CrO₄²⁻)·c(H⁺)/c(HCrO₄⁻) 得 c(CrO₄²⁻)/c(HCrO₄⁻)＝K₂/c(H⁺)＝3.3×10⁻⁷/10⁻⁹＝330 ≫ 1，说明 Cr₂O₇²⁻ 几乎全部转化为 HCrO₄⁻ 与 CrO₄²⁻，可忽略 x，得 y＋z＝0.20；联立解得 <b>c(HCrO₄⁻)＝6.0×10⁻⁴ mol·L⁻¹</b>。<br>
+      <span class="em">“三段式＋守恒”双流程</span>：写起始—转化—平衡，再用元素守恒把各物种串起来——广东 K 计算的标准打法，必须练到熟。</div>
+  </details>
+</div>
+<div class="quiz">
+  <div class="ask">【多重平衡速记】2023 广东 T19(3)：M＋L ⇌ ML（K₁）、ML＋L ⇌ ML₂（K₂）。这类“方程式怎么变，K 就怎么变”的统一规则是？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">①方程式<b>相加</b> → K <b>相乘</b>；②方程式<b>相减</b> → K <b>相除</b>；③方程式<b>倒写</b> → K 取<b>倒数</b>；④计量数<b>×n</b> → K 变 <b>n 次方</b>。<br>
+      广东只考“ΔH 的盖斯”，但 K 的乘除与外省偶联平衡（2024 湖北 T17、2025 湖南 T18、2026 陕晋青宁 T17）同源——记住这条统一规则，一通则通。</div>
+  </details>
+</div>
+
+<!-- 知识点⑧ 课本基础题精选 -->
+<h3>知识点⑧ · 课本基础题精选<span class="p">（约2分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第二章 第二节「化学平衡」· 练习与应用（同考点同型基础速练）</span>
+<p class="tip">以下 3 题为人教配套课后练习中与课本「练习与应用」同考点同型的基础题，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">1. 下列有关可逆反应的说法<b>不正确</b>的是（　　）</div>
+  <div class="mat"><span>A. 可逆反应指同一条件下能同时向正、逆两个方向进行的反应</span><span>B. 2HI ⇌ H₂＋I₂ 是可逆反应</span><span>C. 2H₂＋O₂＝2H₂O 与 2H₂O＝2H₂↑＋O₂↑ 互为可逆反应</span><span>D. 可逆反应中反应物和生成物同时存在</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　前者是化合（点燃）、后者是电解，<b>条件不同</b>，不互为可逆反应——可逆必须"同一条件"。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 工业合成氨 N₂＋3H₂ ⇌ 2NH₃，恒温恒容时，可作为平衡标志的是（　　）</div>
+  <div class="mat"><span>A. 混合气体总物质的量不再变化</span><span>B. 混合气体密度保持不变</span><span>C. 单位时间内生成 3 mol H₂ 同时消耗 2 mol NH₃</span><span>D. c(N₂)∶c(H₂)∶c(NH₃)＝1∶3∶2</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A</b>　Δn≠0，恒容下总物质的量是变量，不变即平衡。<br>
+      B 错：恒容＋质量守恒 ⇒ 密度恒量；C 错：生成 H₂（逆）与消耗 NH₃（逆）同方向；D 错：浓度比等于计量数比不是平衡标志（投料巧合）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">3. NO₂(g)＋SO₂(g) ⇌ NO(g)＋SO₃(g)，等体积 NO₂ 与 SO₂ 起始反应，<b>不能</b>说明达平衡的是（　　）</div>
+  <div class="mat"><span>A. v正(SO₂)＝v逆(SO₃)</span><span>B. 混合气体颜色保持不变</span><span>C. SO₃ 和 NO 的体积分数比保持不变</span><span>D. NO₂ 的浓度保持不变</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　该反应 Δn＝0 且 SO₃ 与 NO 计量数 1∶1、同进同出，两者体积分数比<b>恒为 1</b>（恒量），不能作标志。<br>
+      A 对：方向相反＋速率比等于计量数比（1∶1）；B、D 对：颜色（NO₂）与浓度不变。</div>
+  </details>
+</div>
+
+<!-- 知识点⑨ 外省镜子 -->
+<h3>知识点⑨（冲刺层）· 外省镜子：广东还没考的角度<span class="p">（约2分钟 · 略讲）</span></h3>
+<span class="loc">📖 对标 2024—2026 外省新高考卷 22 套 · 十条清单（冲刺层重点补）</span>
+<ul class="kps">
+  <li><b>① Kp 分压计算</b>：分压＝总压×物质的量分数，三段式求 Kp（新课标 2024-10 Kp＝9000、湖南 2025-18 Kp＝0.16）——<span class="rd">广东从未考、外省年年考，最优先补</span>。</li>
+  <li><b>② 由压强数据求 K</b>：恒容压差 Δp/p₀ 经三段式求转化率与 Kp（河北 2024-17），用好“恒温恒容下压强比＝物质的量比”。</li>
+  <li><b>③ Q 与 K 显式判向</b>：Q＞K 逆向、Q＜K 正向、Q＝K 平衡（北京 2024-12、江西 2024-9、河北 2026-14、四川 2026-18）——2026 广东 T19(5)② “最多可吸收”本质即 Q＝K 边界，已现苗头。</li>
+  <li><b>④ K-T 图像</b>：lgK-1/T、lnK-1/T 曲线斜率判吸放热并读 K（湖北 2024-17、广西 2024-17、陕晋青宁 2026-17）。</li>
+  <li><b>⑤ 偶联反应 K 运算</b>：K 相乘、相除与盖斯配合（湖北 2024-17、湖南 2025-18、辽宁 2024-15）。</li>
+  <li><b>⑥ 标志选项辨析</b>：密度恒定、平均摩尔质量、v生＝v耗、中间产物浓度极值（河北 2026-17 不定项、辽宁 2024-10、广西 2024-13）——广东的实验式判断（2024-17(4)）正是它的“变体”。</li>
+  <li><b>⑦ 催化剂不改 K/不改转化率</b>辨析（辽宁 2024-10、河南 2025-10）。</li>
+  <li><b>⑧ 多反应同时平衡联立求组成</b>（设 x、y 联立，山东 2024-20、2026-20）。</li>
+  <li><b>⑨ 平衡常数与半衰期/速率方程结合</b>（新课标 2024-10(4)、河南 2026-13）。</li>
+  <li><b>⑩ 实验转化率与理论平衡转化率双曲线</b>辨析（江苏 2026-13、山东 2026-10）。</li>
+</ul>
+<p class="tip">📌 反向发现：等效平衡在外省也几乎退场；“K 越大反应越彻底”、K 的单位考查各省同样不见。<b>结论</b>：等效平衡只作保底了解；真正的差距在 <b>Kp 分压计算</b>与 <b>Q/K 显式判向</b>——“随时可能跟进”的预备区。</p>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~10题每题3分 ＋ 11题20分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 15分）</h4>
+    <ul><li>第1、3、4、6、8题（各3分）：可逆反应无关过程 / K概念性质 / K与方程式变换 / SO₂-O₂平衡特征 / Ni(CO)₄ K-温度表＋Q-K判断——概念与基础判断送分盘。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 12分）</h4>
+    <ul><li>第2、5、7、9题（各3分）：CO₂催化氢化多反应平衡标志 / 清远 NO₂-SO₂平衡移动与K / CO-H₂合成甲醇平衡图像 / 广州 Fe³⁺-SCN⁻ 离子平衡 c-t 图——综合与读图中档题。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 23分）</h4>
+    <ul><li>第10题（3分）大湾区 P-Q 连续反应曲线分析；<br>第11题（20分）验证"Ag⁺＋Fe²⁺ ⇌ Fe³⁺＋Ag"可逆性并测 K 的实验探究——先抢 (1)(2)(3)(5) 可逆验证约 8~10 分；(6)~(8) 滴定测 K 与 Ag₂SO₄ 选用理由难度大，<span class="rd">✂ 可放弃末两问</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 15＋12＋23＝50 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：平衡标志是"变量不变"，一开始就恒定的量不算标志；K只随温度变；Q＞K逆向、Q＜K正向；固体纯液体不入K表达式…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：恒温恒容充惰性气体平衡为什么不动？多重平衡的K怎么组合？第18题Q与Ksp边界小问怎么套…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c40_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c40_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

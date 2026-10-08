@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第33讲 盖斯定律及应用 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第33讲　盖斯定律及应用 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案（3 式为盖斯定律打底）</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 1 mol C<sub>8</sub>H<sub>18</sub>(l) 完全燃烧生成 CO<sub>2</sub>(g) 和 H<sub>2</sub>O(l) 的热化学方程式（燃烧热 5 520 kJ·mol<sup>-1</sup>）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「热化学方程式」· 燃烧热范例</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C<sub>8</sub>H<sub>18</sub>(l) ＋ 25/2 O<sub>2</sub>(g) ＝ 8 CO<sub>2</sub>(g) ＋ 9 H<sub>2</sub>O(l)　ΔH ＝ －5 520 kJ·mol<sup>-1</sup></b><br>
+      五要素：标状态(g/l)、计量数可含分数 25/2、ΔH 带"－"号、单位 kJ·mol<sup>-1</sup>、指定产物 CO<sub>2</sub>(g) / H<sub>2</sub>O(l)</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 1 mol C(s,石墨) 完全燃烧生成 CO<sub>2</sub>(g) 的热化学方程式（ΔH ＝ －393.5 kJ·mol<sup>-1</sup>）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「热化学方程式」· 典型放热</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C(s,石墨) ＋ O<sub>2</sub>(g) ＝ CO<sub>2</sub>(g)　ΔH ＝ －393.5 kJ·mol<sup>-1</sup></b><br>
+      <span class="rd">⚠ 同素异形体要标名称</span>——"C(s,石墨)"不能只写 C(s)，金刚石/石墨燃烧热不同</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 已知：① 2H<sub>2</sub>(g)＋O<sub>2</sub>(g)＝2H<sub>2</sub>O(l)　ΔH<sub>1</sub>；② 2H<sub>2</sub>O(l)＝2H<sub>2</sub>O(g)　ΔH<sub>2</sub>。用 ΔH<sub>1</sub>、ΔH<sub>2</sub> 表示 2H<sub>2</sub>(g)＋O<sub>2</sub>(g)＝2H<sub>2</sub>O(g) 的 ΔH（盖斯定律组合）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盖斯定律」· 状态不同 ΔH 不同</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>ΔH ＝ ΔH<sub>1</sub> ＋ ΔH<sub>2</sub></b><br>
+      两式相加即得目标式（同向相加、H<sub>2</sub>O(l) 恰好消去）。<br>
+      <span class="rd">⚠ 铁律⑤：物质状态不同 ΔH 不同</span>——H<sub>2</sub>O(l) 与 H<sub>2</sub>O(g) 的 ΔH 不能混用，这正是本讲最容易掉的"状态坑"。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 盖斯定律（一句话）</b>：化学反应的反应热只与反应的<span class="em">始态和终态</span>有关，与反应<span class="em">途径</span>无关——"始态终态一条路"。</li>
+  <li><b>② 意义</b>：间接计算<span class="em">难以直接测量</span>的反应热（如 C 不完全燃烧），用易测的小反应组合成难测的大反应。</li>
+  <li><b>③ 三步消元法 ＋ 两条同步铁律</b>：三步＝<span class="em">配目标 → 套加减 → 验物质</span>；铁律＝①方程式<b>方向反转，ΔH 必变号</b>；②计量数<b>乘 n，ΔH 同乘 n</b>。物质状态不同则 ΔH 不同（H<sub>2</sub>O(l) 与 H<sub>2</sub>O(g) 不同）。</li>
+  <li><b>④ 反应热比较 4 注意</b>（<span class="rd">⚑ 六年零落点·工具式掌握</span>）：必须带符号比（－100 比 －50 小）；状态定能量 E(g)&gt;E(l)&gt;E(s)；用量越多 |ΔH| 越大；完全燃烧比不完全燃烧放热多。</li>
+  <li><b>⑤ 本质</b>：盖斯定律是<span class="em">能量守恒定律</span>在化学反应中的具体体现。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（六年真题逐题核查）</b>
+  <p>· <b>位置与设问高度固定</b>：盖斯定律六年<span class="em">每年必有 1 处、全部落在大题</span>（2021、2022、2024、2025、2026 在 19 题；2023 在 17 题）——<span class="rd">选择题六年从未出现过盖斯定律消元题</span>。答案以<span class="em">代数式为主</span>（2021-19(1)、2022-19(1)②、2024-19(1)②、2026-19(2)），仅 2025-19(3)① 一次要求数值。</p>
+  <p>· <b>两根主线（必练到条件反射）</b>：<span class="em">三步消元法</span>（配目标→套加减→验物质）＋<span class="em">两条同步铁律</span>（方向反转必变号、计量数乘 n 则 ΔH 同乘 n）。广东风格＝"用字母考消元思路、弱化数值计算"，训练重点是<span class="em">路径设计</span>而非算得准。</p>
+  <p>· <b>能力层必练（情境化·去裸题化）</b>：2021 纯字母消元（甲烷重整）→ 2024 溶解热符号陷阱（油路解堵）→ 2023 实验方案设计式（Fe＋Fe₂(SO₄)₃，ΔH₁＋ΔH₂）→ 2025 多过程数值组合 → 2026 真实生物情境（深海化能合成）；<span class="rd">裸的热化学方程式加减题六年一次都没考</span>。</p>
+  <p>· <b>⚠ 三个固定失分小坑</b>：①方向反转没变号（2024 溶解过程必须倒过来用）；②系数漏乘（已知反应放大后 ΔH 没同步放大）；③物质状态忽略（H₂O(l) 与 H₂O(g) 的 ΔH 不同）。</p>
+  <p>· <b>⚑ 六年零落点（勿重锤）</b>：标准摩尔生成焓求 ΔH、键能数据经盖斯定律求 ΔH、燃烧热数据求 ΔH、<span class="em">ΔH 大小比较与热化学不等式</span>、热化学方程式纯加减的选择题形式——<span class="rd">全部零出现</span>，冲刺层提前备、不设全员专题。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① 盖斯定律基础 -->
+<h3>知识点① · 盖斯定律内容与意义<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盖斯定律」· 1.内容 / 2.意义</span>
+<div class="quiz">
+  <div class="ask">思考：为什么 C(s) 不完全燃烧生成 CO 的反应热，可以直接测量吗？盖斯定律如何解决？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">C(s) 不完全燃烧<span class="em">难以直接测量</span>（很难控制只生成 CO 不生成 CO<sub>2</sub>）。<br>
+      盖斯定律解法：把"难测反应"拆成两个"易测反应"之和——<br>
+      ① C(s)＋O<sub>2</sub>(g)＝CO<sub>2</sub>(g)　ΔH<sub>1</sub>（易测）<br>
+      ② CO(g)＋1/2O<sub>2</sub>(g)＝CO<sub>2</sub>(g)　ΔH<sub>2</sub>（易测）<br>
+      则 C(s)＋1/2O<sub>2</sub>(g)＝CO(g) 的 ΔH ＝ ΔH<sub>1</sub> － ΔH<sub>2</sub>（① 减去 ②，消去 CO<sub>2</sub>）</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盖斯定律」· 易错辨析（抢答 4 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>可以直接测量任意一个反应的反应热</summary>
+  <div class="ans"><b>×</b>　并非所有反应热都能直接测量（如 C 不完全燃烧），需靠盖斯定律间接计算。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>盖斯定律遵守能量守恒定律</summary>
+  <div class="ans"><b>√</b>　盖斯定律是能量守恒定律在化学反应中的具体体现。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>化学反应的反应热只与反应体系的始态和终态有关，而与反应的途径无关</summary>
+  <div class="ans"><b>√</b>　这是盖斯定律的核心表述。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>可以用已经精确测定的反应热来计算难于测量的反应的反应热</summary>
+  <div class="ans"><b>√</b>　这正是盖斯定律的意义所在。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>始态终态定热值，途径无关盖斯律；能量守恒是本质，难测反应间接算</p>
+</div>
+
+<!-- 知识点② 图示/消元法计算 -->
+<h3>知识点② · 利用图示、消元法计算焓变<span class="p">（约12分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「利用盖斯定律计算」· 1.图示 / 2.消元法</span>
+<div class="quiz">
+  <div class="ask">例题 1（图示计算）：已知 ① CO<sub>2</sub>(g)＋H<sub>2</sub>(g)＝HCOOH(g)　ΔH<sub>1</sub>；② 2H<sub>2</sub>(g)＋O<sub>2</sub>(g)＝2H<sub>2</sub>O(g)　ΔH<sub>4</sub>；③ CO(g)＋1/2O<sub>2</sub>(g)＝CO<sub>2</sub>(g)　ΔH<sub>2</sub>；④ CO(g)＋H<sub>2</sub>O(g)＝HCOOH(g)　ΔH<sub>3</sub>。求 ΔH<sub>1</sub> 用 ΔH<sub>2</sub>、ΔH<sub>3</sub>、ΔH<sub>4</sub> 表示。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>ΔH<sub>1</sub> ＝ ΔH<sub>3</sub> ＋ ΔH<sub>4</sub> － ΔH<sub>2</sub></b><br>
+      目标 ① ＝ ④ ＋ ② － ③：④ 留 HCOOH，② 留 2H<sub>2</sub>，③ 反向消去 CO、CO<sub>2</sub>，O<sub>2</sub>、H<sub>2</sub>O 全部抵消 ✅<br>
+      <span class="rd">⚠ 逆向取反</span>：用了 ③ 的 ΔH<sub>2</sub> 必须加负号（写成"－ΔH<sub>2</sub>"）；<span class="rd">缩放同步</span>：系数变了 ΔH 要同步乘。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">例题 2（消元法）：已知 ① K(s)＋1/2Cl<sub>2</sub>(g)＝KCl(s)　ΔH＝－437；② K(s)＋1/2Cl<sub>2</sub>(g)＋3/2O<sub>2</sub>(g)＝KClO<sub>3</sub>(s)　ΔH＝－398；③ K(s)＋1/2Cl<sub>2</sub>(g)＋2O<sub>2</sub>(g)＝KClO<sub>4</sub>(s)　ΔH＝－433。求 4KClO<sub>3</sub>(s)＝3KClO<sub>4</sub>(s)＋KCl(s) 的 ΔH。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>ΔH ＝ －144 kJ·mol<sup>-1</sup></b><br>
+      目标 ＝ ① ＋ ③×3 － ②×4<br>
+      计算：(－437) ＋ 3×(－433) － 4×(－398) ＝ －437 － 1299 ＋ 1592 ＝ <b>－144</b> kJ·mol<sup>-1</sup><br>
+      <span class="em">消元四步法</span>：①列目标方程式 → ②找已知同物质 → ③定系数（目标系数＝已知×几）→ ④加减消（同向相加、逆向取反、系数同步缩放 ΔH）</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>列目标 · 找已知 · 定系数 · 加减消——四步走完，盖斯定律题 8 分稳拿</p>
+</div>
+
+<!-- 知识点③ 反应热比较 -->
+<h3>知识点③ · 反应热的大小比较<span class="p">（约10分钟 · ⚑ 六年零落点，工具式掌握）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「反应热的比较」· 状态定能量</span>
+<div class="quiz">
+  <div class="ask">例题 1：已知 ① S(g)＋O<sub>2</sub>(g)＝SO<sub>2</sub>(g)　ΔH<sub>1</sub>&lt;0；② S(s)＋O<sub>2</sub>(g)＝SO<sub>2</sub>(g)　ΔH<sub>2</sub>&lt;0。比较 ΔH<sub>1</sub> 与 ΔH<sub>2</sub>。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>ΔH<sub>1</sub> &lt; ΔH<sub>2</sub></b>（ΔH<sub>1</sub> 更负）<br>
+      能量 E(S,g) &gt; E(S,s)，两者终态都是 SO<sub>2</sub>(g)，S(g) 起点高、放热更多 → ΔH<sub>1</sub> 更小。<br>
+      <span class="em">核心</span>：反应物能量越高，放热越多，ΔH 越负。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">例题 2：已知石墨比金刚石稳定，C(s,石墨)＋O<sub>2</sub>(g)＝CO<sub>2</sub>(g)　ΔH<sub>1</sub>＝－a；C(s,金刚石)＋O<sub>2</sub>(g)＝CO<sub>2</sub>(g)　ΔH<sub>2</sub>＝－b。比较 ΔH<sub>1</sub> 与 ΔH<sub>2</sub>。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>ΔH<sub>2</sub> &lt; ΔH<sub>1</sub></b>（即 b &gt; a）<br>
+      石墨比金刚石稳定 → E(石墨) &lt; E(金刚石) → 燃烧时金刚石放热更多 → b &gt; a → ΔH<sub>1</sub>＝－a &gt; －b＝ΔH<sub>2</sub>。<br>
+      <span class="em">核心</span>：能量越低越稳定，燃烧放热越少（ΔH 越"大"）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">例题 3：已知 ① CuSO<sub>4</sub>·5H<sub>2</sub>O(s)＝CuSO<sub>4</sub>(s)＋5H<sub>2</sub>O(l)　ΔH<sub>1</sub>；② CuSO<sub>4</sub>·5H<sub>2</sub>O(s) 溶于水温度降低（ΔH<sub>2</sub>&gt;0）；③ CuSO<sub>4</sub>(s) 溶于水温度升高（ΔH<sub>3</sub>&lt;0）。则下列<span class="em">不正确</span>的是：</div>
+  <div class="mat"><span>A. ΔH<sub>1</sub>&gt;0</span><span>B. ΔH<sub>2</sub>&gt;ΔH<sub>3</sub></span><span>C. ΔH<sub>3</sub>&gt;ΔH<sub>1</sub></span><span>D. ΔH<sub>2</sub>＝ΔH<sub>1</sub>＋ΔH<sub>3</sub></span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>答案：C</b><br>
+      ①＝②－③ → ΔH<sub>1</sub>＝ΔH<sub>2</sub>－ΔH<sub>3</sub>&gt;0，A 对；ΔH<sub>2</sub>&gt;0、ΔH<sub>3</sub>&lt;0 → ΔH<sub>2</sub>&gt;ΔH<sub>3</sub>，B 对；ΔH<sub>3</sub>&lt;0&lt;ΔH<sub>1</sub> → C 错；D 是盖斯定律拆分，正确。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>带符号比 · 状态定能量 · 盖斯拆关系——比较题三件套</p>
+</div>
+
+<!-- 冲刺层：外省数据表消元与跨概念联结 -->
+<h3>知识点④（冲刺·85+）· 外省数据表消元与跨概念联结<span class="p">（广东零落点，提前备）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展（2024—2026 外省新高考卷比对）</span>
+<div class="quiz">
+  <div class="ask">【外省镜子·2024 贵州 T17(2)】已知 25℃ 时有关物质的燃烧热数据如表，则反应ⅱ的 ΔH ＝ ＿＿＿＿（用含 a、b、c 的代数式表示）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>两步走</b>：先各自写出完全燃烧的热化学方程式（1 mol 可燃物、生成稳定氧化物、水为液态），<b>再按盖斯定律组合</b>消元（参考答案形如 6a－b－9c）。<br>
+      <span class="em">燃烧热数据表消元</span>＝"写燃烧式 → 消元"，与字母消元同法，只是入口多了一步。</div>
+  </details>
+</div>
+<div class="koujue">
+  <div class="t">🗣 冲刺层清单（外省高频 · 广东零落点）</div>
+  <p>① 燃烧热／相对能量数据表消元：2024 贵州 T17(2)、2024 辽宁 T18(2)、2026 陕晋青宁 T17(1)①；② 键能数据估算 ΔH：2024 天津 T10（直接按键能差）、2024 重庆 T13（先盖斯组合、再按键能差——两步走）；③ ΔG 也遵循盖斯定律：2024.6 浙江 T19(5)（要求设计反应并注明 ΔG，理念最新）；④ ln K 与 1/T 斜率反推 ΔH（热化学不等式）：2026 四川 T18(5)、2026 黑吉辽蒙 T18(4)；⑤ 盖斯组合平衡常数：2024 重庆 T17(1)②（反应1－反应2 → K＝K₁/K₂）；⑥ 可逆反应 ΔH 与实际放热量之别、循环焓变和为 0：2026 江西 T17、2026 四川 T2(D)</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 按 65 分目标分层）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 基础层（65 分必拿）</h4>
+    <ul>
+      <li>盖斯定律内容与意义判断 4 题（8 分）</li>
+      <li>消元法算焓变 2 题（甲酸、KClO₃，12 分）</li>
+      <li>滚动默写：五条必背铁律 ＋ 三步消元法 ＋ 两条同步铁律</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 能力层（80 分·中档生）</h4>
+    <ul>
+      <li>2021 广东 19(1)、2024 广东 19(1)② 两道真题原题重做（符号反转陷阱）</li>
+      <li>2022 广东 19(1)② 分段能量加和（列式）＋ 2023 广东 17(4) 方案设计式组合</li>
+      <li>2025 广东 19(3)① 多过程数值组合（六年唯一一次要求数值，练"系数×数值"算术规范）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 冲刺层（85+）</h4>
+    <ul>
+      <li>外省四连：燃烧热数据表消元（2024 贵州／辽宁）、键能估算 ΔH（2024 天津／重庆）、ΔG 遵循盖斯定律（2024.6 浙江）、盖斯组合 K（2024 重庆）</li>
+      <li><span class="rd">⚠ 广东六年零落点，仅尖子生选做</span></li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：目标反应＝已知反应代数组合，ΔH同加减、翻转变号；系数翻倍ΔH跟着翻倍；固体S与气体SO₂状态陷阱…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：怎么用消元法处理"只在某步出现"的物质？分段能量加和与方案设计式怎么组合…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c33_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c33_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

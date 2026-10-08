@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第38讲 化学反应速率及影响因素 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第38讲　化学反应速率及影响因素 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式为本讲速率问题的载体反应）</p>
+
+<div class="quiz">
+  <div class="ask">① 写出工业合成氨的化学方程式（标条件）——速率压强/惰性气体讨论的载体反应</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「影响化学反应速率的因素」· 2.外因·压强（对点练习用反应）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>N₂ ＋ 3H₂ ⇌ 2NH₃</b>（条件：<span class="em">高温、高压、催化剂</span>；可逆反应用"⇌"）<br>
+      <span class="rd">⚠ 惰性气体讨论专用反应</span>：恒容充 He → 浓度不变、速率不变；恒压充 He → 浓度减小、速率减小。<br><span class="em">广东锚点</span>：2026-19(3) 速率数据题、2025-18"提高浸取速率的措施"——本讲速率问题的载体反应。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 CO 与 H₂ 合成甲醇（CH₃OH）的化学方程式——三段式计算示范载体</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应速率」· 提升关键能力·二、化学反应速率的表示方法（题2）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CO ＋ 2H₂ ⇌ CH₃OH</b>（催化剂）<br>
+      <span class="em">配比记忆</span>：CO 与 H₂ 计量数 1∶2，速率关系 v(H₂)＝2v(CO)。<br><span class="em">广东锚点</span>：2024-17(3)② 三段式——总体积相同时，v＝Δn/(VΔt) 的 V 可约去，<span class="em">速率比＝物质的量变化比（6∶5）</span>。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 配平酸性 KMnO₄ 溶液与草酸（H₂C₂O₄）反应的离子方程式——控制变量实验"褪色计时"原理</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 课时精练 第13题（实验原理：2KMnO₄＋5H₂C₂O₄＋3H₂SO₄＝…）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2MnO₄⁻ ＋ 5H₂C₂O₄ ＋ 6H⁺ ＝ 2Mn²⁺ ＋ 10CO₂↑ ＋ 8H₂O</b><br>
+      化学方程式：<b>2KMnO₄＋5H₂C₂O₄＋3H₂SO₄＝K₂SO₄＋2MnSO₄＋10CO₂↑＋8H₂O</b><br>
+      <span class="rd">⚠ 酸化必须用稀硫酸</span>，不用盐酸（Cl⁻ 会被 MnO₄⁻ 氧化干扰褪色）；紫红色褪去所需时间即反应速率"计时器"。<br><span class="em">广东锚点</span>：2026-19(3) 控制变量同款（"仅初始浓度不同""仅温度不同"），是本讲大题的主形态。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 速率表示</b>：v＝Δc/Δt，单位 mol·L⁻¹·s⁻¹（或 ·min⁻¹）；指一段时间内的<span class="em">平均速率</span>、恒取正值；固体、纯液体浓度视为常数，<span class="em">不能表示速率</span>。<span class="em">广东锚点</span>：2022-15D、2023-19(2)①、2024-17(3)②、2026-19(3)——四年四考，必须写全单位。</li>
+  <li><b>② 速率之比＝化学计量数之比</b>（v(A)∶v(B)∶v(C)∶v(D)＝m∶n∶p∶q）；比快慢先把不同物质"归一"到同一物质、同一单位（2022-15 归一后 v(X)＝½v(Y)）。</li>
+  <li><b>③ 内因＋外因四律</b>：<span class="em">内因（决定性）</span>——反应物本身性质；① 浓度↑→速率↑（固体、纯液体视为常数）；② <span class="em">升温→正逆速率都增大</span>（不区分吸放热）；③ 压强看浓度（有气体参加才影响）；④ 催化剂正逆同等加快、<span class="em">不改变平衡与 ΔH</span>。配一句"<span class="em">粉碎、搅拌加大接触面积</span>"（2025-18、2026-18"提高浸取速率的措施"送分）。</li>
+  <li><b>④ 惰性气体</b>：恒容充入→反应物浓度不变→速率不变；恒压充入→体积增大→浓度减小→速率减小。<span class="em">抓本质：看反应物浓度变没变</span>（外省江西 2024-9、16(3) 已回潮）。</li>
+  <li><b>⑤ ⚑ 新信号·速率常数 k 与速率方程</b>（2026-19(3)②首次登场）：实验数据点呈<b>直线</b>→速率与浓度成一次关系（速率方程思想的雏形）→由直线关系反推未知量（求 y＝3.2）。<span class="rd">这一条 2026 刚考，不能再放弃。</span></li>
+  <li><b>⑥ ✂ 放弃</b>：阿伦尼乌斯公式定量、活化分子数微观计算、速率测定方法独立设计题、半衰期、平行反应双图（广东六年零落点，外省亦少见独立设问）。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点（2026-09-16 对碰发言稿重写） -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《"化学反应速率及影响因素"分层教学设计发言稿》，2021—2026 六年逐题核查）</b>
+  <p>· <b>🟢 保分必拿（"两个窝"）</b>：① 11—16 题段 <span class="em">4 分综合选择题</span>（2021—2024 连续四年固定第 14/15 题位，2026 仍守第 15 题）；② 17—20 题 <span class="em">14 分原理大题</span>。外因四律＋催化剂"同等加快正逆、不改平衡与 ΔH"<span class="em">四年四考</span>，背稳即拿。</p>
+  <p>· <b>🟠 主突破</b>：① 速率图像（c-t 图／能量历程图）<span class="em">五年五考</span>；② 大题"控制变量法实验＋定量计算"<span class="em">连考三年</span>（2023-19(2)、2024-17(3)、2026-19(3)）；③ <span class="rd">2026 新信号</span>：实验数据"线性化"，考出速率方程思想（求 y＝3.2），速率常数 k 首次登场。</p>
+  <p>· <b>⚑ 节奏与警示</b>：2025 年全卷无直接速率题——六年唯一"零落点年"（仅 18 题"提高浸取速率的措施"、16 题活化能边缘出现）。六年里五年考、大题连考三年，<span class="em">2027 届要按"该考年"标准准备</span>。</p>
+  <p>· <b>✂ 放弃</b>：阿伦尼乌斯公式定量计算、活化分子数的微观计算、速率测定方法的独立设计题、半衰期、平行反应双图——广东六年没考、外省也少见独立设问（详见知识点⑤外省镜子）。</p>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 速率三铁律（硬底线，错一处丢一分）</div>
+  <p>① 平均速率必须写单位 mol·L⁻¹·s⁻¹ 或 mol·L⁻¹·min⁻¹（四年四考，漏写单位＝零分）；② "加催化剂提高转化率"必错——催化剂只改变速率、不改变平衡（2021 广东 T19(2)C 陷阱）；③ 归一法比快慢不能直接比数值，必须先换算成同一物质再比较。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约35分钟</span></div>
+
+<!-- 知识点① 速率的表示与计算 -->
+<h3>知识点① · 化学反应速率的表示与计算<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应速率」· 1.化学反应速率的表示方法 / 2.速率与化学计量数的关系 / 3.注意事项</span>
+
+<div class="quiz">
+  <div class="ask">思考：① v＝0.8 mol·L⁻¹·s⁻¹ 表示什么含义？② 为什么不用固体或纯液体的浓度变化表示速率？③ 同一反应中 v(A) 与 v(B) 有什么关系？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 表示某物质在<b>单位时间（1 s）内浓度的平均变化量</b>为 0.8 mol·L⁻¹——是平均速率，不是某时刻浓度，也不是瞬时速率；<br>
+      ② 固体、纯液体浓度视为常数（不随用量改变），用它们算不出速率；可用质量、气体体积等物理量表示但<span class="rd">不用"浓度"单位</span>；<br>
+      ③ <b>v(A)∶v(B)＝计量数之比</b>——数值不同但意义相同，都代表同一反应的快慢。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应速率」· 3.表示速率的注意事项 · 易错辨析（抢答 4 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>对于任何化学反应来说，反应速率越大，反应现象越明显</summary>
+  <div class="ans"><b>×</b>　速率快不等于现象明显——有些反应（如中和）速率极快但无明显现象；现象明显度还与产物性质有关。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>由 v＝Δc/Δt 计算平均速率，用反应物表示为正值，用生成物表示为负值</summary>
+  <div class="ans"><b>×</b>　速率是"浓度变化的大小"，无论反应物还是生成物表示都取<span class="em">正值</span>（浓度变化取绝对值）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>化学反应速率为 0.8 mol·L⁻¹·s⁻¹ 是指 1 s 时某物质的浓度为 0.8 mol·L⁻¹</summary>
+  <div class="ans"><b>×</b>　指单位时间（每 1 s）内浓度的<b>变化量</b>是 0.8 mol·L⁻¹，不是"1 s 时的浓度"。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>同一反应相同条件下，用不同物质表示的反应速率数值越大，反应越快</summary>
+  <div class="ans"><b>×</b>　必须折算到<span class="em">同一物质</span>（或除以各自计量数）才能比较——计量数大的物质数值天然偏大，不代表更快。</div>
+</details>
+
+<div class="quiz">
+  <div class="ask">【应用举例】反应 4CO ＋ 2NO₂ ⇌ N₂ ＋ 4CO₂（催化剂）在不同条件下测得：<br>① v(CO)＝1.5 mol·L⁻¹·min⁻¹；② v(NO₂)＝0.7 mol·L⁻¹·min⁻¹；③ v(N₂)＝0.4 mol·L⁻¹·min⁻¹；④ v(CO₂)＝1.1 mol·L⁻¹·min⁻¹；⑤ v(NO₂)＝0.01 mol·L⁻¹·s⁻¹。<br>这 5 种情况反应快慢由大到小的顺序是？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>③ ＞ ① ＞ ② ＞ ⑤ ＞ ④</b><br>
+      <b>方法：统统折算成 v(CO)（归一）</b>——<br>
+      ② v(CO)＝2×0.7＝<span class="em">1.4</span>；③ v(CO)＝4×0.4＝<span class="em">1.6</span>；④ v(CO)＝1×1.1＝<span class="em">1.1</span>；⑤ 先换单位 v(NO₂)＝0.01×60＝0.6 mol·L⁻¹·min⁻¹，v(CO)＝2×0.6＝<span class="em">1.2</span>；<br>
+      得 1.6 ＞ 1.5 ＞ 1.4 ＞ 1.2 ＞ 1.1。<br>
+      <span class="rd">两必做</span>：① 归一（按计量数折算到同一物质）；② 单位统一（s 换 min 或反之）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【三段式示范】2 L 恒容容器中充入 1 mol CO 和 3 mol H₂，发生 CO ＋ 2H₂ ⇌ CH₃OH，3 min 达平衡，测得 n(CO)＝0.25 mol。求 0~3 min 内 v(H₂)。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>三段式</b>：<br>
+      　　　　　　CO ＋ 2H₂ ⇌ CH₃OH<br>
+      起始 n/mol　1　　　3　　　0<br>
+      转化 n/mol　0.75　1.5　　0.75<br>
+      平衡 n/mol　0.25　1.5　　0.75<br>
+      v(H₂)＝Δc(H₂)/Δt ＝ (1.5 mol ÷ 2 L) ÷ 3 min ＝ <b>0.25 mol·L⁻¹·min⁻¹</b><br>
+      <span class="em">注意</span>：用 n 变化要先除以体积 V 换成 Δc，再用 v＝Δc/Δt。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>速率之比等于计量数之比；比快慢：归一 + 换单位，缺一不可</p>
+</div>
+
+<!-- 知识点② 影响因素 -->
+<h3>知识点② · 影响速率的因素：内因＋外因<span class="p">（约9分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「影响化学反应速率的因素」· 1.内因 / 2.外因</span>
+
+<p><b style="color:var(--accent);">内因（决定性）</b>：反应物本身的性质是主要因素——相同条件下 Mg、Al 与稀盐酸反应速率 Mg ＞ Al（金属活动性越强越快）。</p>
+
+<div class="quiz">
+  <div class="ask">填空：外因对速率的影响——① 增大反应物浓度，速率＿＿；② 升高温度，正、逆速率＿＿（吸热/放热反应都如此）；③ 对有气体参加的反应增大压强（压缩体积），速率＿＿；④ 加入催化剂，正、逆速率＿＿改变，＿＿平衡移动与反应焓变。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>增大</b>（减小浓度则减小）；② <b>都增大</b>（升温正逆同向加快，不区分吸热/放热）；③ <b>增大</b>（实质是气体浓度增大）；④ <b>同等程度加快</b>正逆速率，<span class="em">不改变</span>平衡移动方向与 ΔH。<br>
+      <span class="rd">⚠ 压强只对有气体参加的反应有影响</span>（无气体参与，改变压强速率不变）；催化剂不改变平衡与焓变是广东卷高频送分点。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「影响化学反应速率的因素」· 2.外因 · 易错辨析（抢答 6 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>升温时，吸热反应速率增大，放热反应速率减小</summary>
+  <div class="ans"><b>×</b>　升温使<span class="em">正、逆速率都增大</span>（活化分子百分数增大），只是增大的程度可能不同。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>一定量锌与过量稀硫酸反应制氢气，滴入少量 CuSO₄ 能提高反应速率</summary>
+  <div class="ans"><b>√</b>　Zn 置换出 Cu 附着在 Zn 表面，构成 <span class="em">Zn-Cu 原电池</span>，加快 Zn 的腐蚀（产氢速率提高）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>100 mL 2 mol·L⁻¹ 盐酸与锌片反应，加入适量醋酸钠，反应速率减小</summary>
+  <div class="ans"><b>√</b>　CH₃COO⁻ 与 H⁺ 结合生成弱酸 CH₃COOH，溶液中 <span class="em">c(H⁺) 减小</span>，速率减小（但不影响最终产氢量）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>锌和稀硫酸反应生成氢气的速率从开始到结束会一直减小</summary>
+  <div class="ans"><b>×</b>　反应<span class="em">放热使温度升高</span>，前期速率反而增大；后期浓度下降占主导，速率才减小——通常先快后慢，不是一直减小。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>向 2CrO₄²⁻＋2H⁺ ⇌ Cr₂O₇²⁻＋H₂O 体系中加水，v正不变、v逆增大</summary>
+  <div class="ans"><b>×</b>　加水稀释，CrO₄²⁻、Cr₂O₇²⁻、H⁺ 浓度<span class="em">都减小</span>，v正、v逆都减小（程度不同，平衡逆向移动）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>恒温恒压 N₂＋3H₂ ⇌ 2NH₃ 中通入 Ar 后，v正、v逆均不变</summary>
+  <div class="ans"><b>×</b>　恒温<span class="em">恒压</span>充入惰性气体 → 容器体积增大 → N₂、H₂、NH₃ 浓度都减小 → <span class="em">v正、v逆都减小</span>（速率减小）。恒温恒容充 Ar 才是"不变"。</div>
+</details>
+
+<div class="quiz">
+  <div class="ask">【惰性气体专练】反应 N₂(g)＋3H₂(g) ⇌ 2NH₃(g)：<br>（1）恒温恒容充入 N₂，速率＿＿，原因是＿＿＿＿；<br>（2）恒温恒容充入 He，总压＿＿，速率＿＿，原因是＿＿＿＿；<br>（3）恒温恒压充入 He，速率＿＿，原因是＿＿＿＿；<br>（4）恒温增大容器体积，正、逆速率都＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">（1）<b>增大</b>——容积不变，充 N₂ 使反应物 N₂ 浓度增大；<br>
+      （2）总压<b>增大</b>、速率<b>不变</b>——容积不变，N₂、H₂ 浓度均未改变；<br>
+      （3）<b>减小</b>——压强不变充 He，体积增大，N₂、H₂ 浓度减小；<br>
+      （4）都<b>减小</b>——体积增大，各气体浓度同比例减小。<br>
+      <span class="rd">一句话总结：惰性气体不参与反应，判断速率只看"反应物浓度变没变"。</span></div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>升温正逆一起加；加压有气才看它；惰气充入别上当，浓度变没变是真相</p>
+</div>
+
+<!-- 知识点③ 控制变量 -->
+<h3>知识点③ · 控制变量法探究外因<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「影响化学反应速率的因素」· 用"变量控制法"探究外因对反应速率的影响 · 解题策略</span>
+
+<div class="quiz">
+  <div class="ask">思考：为研究 CuSO₄ 浓度对 Zn 与稀 H₂SO₄ 产 H₂ 速率的影响，设计 A~F 六组实验：每组固定加 30 mL 4 mol·L⁻¹ H₂SO₄，另加不同体积饱和 CuSO₄ 溶液，再补加 H₂O 使每组的总体积均为 50 mL。<br>① 为什么要补加 H₂O 保持总体积相同？② CuSO₄ 加得越多，产氢速率越快吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>控制变量（定多变一）</b>——保证六组只有 CuSO₄ 浓度一个变量，H₂SO₄ 的量与总液量（浓度环境）一致，比较才有效；<br>
+      ② <span class="rd">不一定</span>——少量 CuSO₄：Zn 置换 Cu 形成 <span class="em">Zn-Cu 原电池加速</span>；<br>
+      CuSO₄ 过多：生成的 Cu 大量覆盖在 Zn 表面，<span class="em">阻碍 Zn 与酸接触</span>，速率反而下降，且置换阶段消耗更多酸。<br>
+      <span class="em">答题套路</span>：结论要加限定词"在一定范围内/其他条件相同时"，防绝对化。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>变量控制：定多变一、数据有效——想比哪个变哪个，其余全部锁死</p>
+</div>
+
+<!-- 知识点④ 图像读图与数据处理（能力层主攻） -->
+<h3>知识点④ · 图像读图与数据处理（能力层主攻）<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「影响化学反应速率的因素」· 图像分析（c-t 图／能量历程图）＋ 提升关键能力·速率计算模型</span>
+
+<p><b style="color:var(--accent);">c-t 图像读图三步（2021 广东 T14、2026 广东 T15 通用）：</b>① 看哪条曲线在动（下降＝反应物、上升＝生成物）；② 看何时转折（转折点＝该物质达到平衡的时刻）；③ 看斜率（斜率绝对值大＝浓度变化快＝速率快）。<span class="rd">"谁先达平衡"就看谁的曲线先变平。</span></p>
+
+<div class="quiz">
+  <div class="ask">【实验数据处理】0~t 内反应物 A 的浓度由 2.0×10⁻³ mol·L⁻¹ 降到 0.5×10⁻³ mol·L⁻¹，用时 30 s。求该时间内的平均速率。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">v(A)＝Δc/Δt＝(2.0×10⁻³ − 0.5×10⁻³) mol·L⁻¹ ÷ 30 s ＝ <b>5×10⁻⁵ mol·L⁻¹·s⁻¹</b>。<br>
+      <span class="rd">⚠ 三处扣分点</span>：① 必须写单位；② 用<span class="em">浓度变化量</span>而非某时刻浓度；③ 题给物质的量变化要先除以体积 V 换成 Δc。<br>
+      <span class="em">2023 广东 19(2)① 同款</span>（算得 5×10⁻⁵ mol·L⁻¹·min⁻¹，注意单位是 min）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【多组变量数据】两份实验 A、B（其他条件相同、仅初始浓度不同），相同时间内反应物物质的量分别变化 0.30 mol、0.25 mol，两容器体积相同。则 v(A)∶v(B)＝？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>v(A)∶v(B)＝6∶5</b><br>
+      体积相同时 v＝Δn/(V·Δt)，V 与 Δt 相同可约去 → <span class="em">速率比＝物质的量变化比</span>＝0.30∶0.25＝6∶5。<br>
+      <span class="em">这就是 2024 广东 17(3)② 的解题模型</span>——只求"比值"不必算出具体速率，用比例关系快速定证。</div>
+  </details>
+</div>
+
+<p><b style="color:var(--accent);">催化剂历程图与决速步：</b>能量历程图上<b>能量最高的峰</b>＝<span class="em">决速步</span>＝活化能最大的步骤（2021 广东 T19(3)）；换用催化剂后新路径的峰变低 → 活化能降低 → 速率加快 → <span class="em">更快达到平衡</span>（但平衡状态、转化率不变）——2023 广东 T15"反应先达到平衡"、2024 广东 T15。</p>
+
+<p><b style="color:var(--accent);">浓度-温度双因素判断：</b>两组实验"仅温度不同"→ 速率大者温度高（2026 广东 T19(3)①C）；若浓度与温度同时变化，<span class="em">先按浓度规律排除</span>，再判温度。</p>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>读图三步：看谁在动、何时转折、斜率多大；决速步找最高峰，催化剂降峰不降谷（平衡不动）</p>
+</div>
+
+<!-- 知识点④ 课本基础题精选 -->
+<h3>知识点④ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第二章 第一节「化学反应速率」· 练习与应用（同考点同型基础速练，课堂直接过）</span>
+<p class="tip">以下 3 题为人教配套课时训练中与课本「练习与应用」同考点同型的基础题，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">1. 下列有关化学反应速率的说法正确的是（　　）</div>
+  <div class="mat"><span>A. 化学反应速率为 0.8 mol·L⁻¹·s⁻¹ 是指 1 s 时某物质的浓度为 0.8 mol·L⁻¹</span><span>B. 任何化学反应都必须用单位时间内物质浓度的变化量表示速率</span><span>C. 在一定温度下，增加某固体物质的质量，不影响化学反应速率</span><span>D. 同一反应相同条件下，用不同物质表示的反应速率数值越大，表示反应越快</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　固体浓度视为常数，增加其质量不影响速率。<br>
+      A 错（是单位时间浓度变化量，非 1 s 时的浓度）；B 错（气体反应也可用压强变化等表示）；D 错（须折算到同一物质才能比较）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 一定条件下，向 1 L 恒容密闭容器中充入 1 mol N₂ 和 3 mol H₂ 进行合成氨反应，经 3 s 测得 c(NH₃)＝0.6 mol·L⁻¹。若 c(NH₃) 从 0.6 mol·L⁻¹ 增大到 1.2 mol·L⁻¹，所需时间可能（　　）</div>
+  <div class="mat"><span>A. 小于 3 s</span><span>B. 等于 3 s</span><span>C. 大于 3 s</span><span>D. 无法判断</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　前 3 s 内 v(NH₃)＝0.6÷3＝0.2 mol·L⁻¹·s⁻¹；若速率不变，再生成 0.6 mol·L⁻¹ 需 3 s；<br>
+      但随反应进行 <span class="em">c(N₂)、c(H₂) 减小，反应速率减慢</span>，故后 0.6 mol·L⁻¹ 所需时间 <b>大于 3 s</b>。<br>
+      <span class="em">结论</span>：同一反应不同阶段速率不同，越往后越慢（浓度下降主导）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">3. 2 L 密闭容器中发生反应 4A(s)＋3B(g) ⇌ 2C(g)＋D(g)，经 2 min 后 B 的物质的量减少 1.2 mol。下列有关反应速率的说法正确的是（　　）</div>
+  <div class="mat"><span>A. 2v(B)＝3v(C)＝6v(D)</span><span>B. 用 A 表示的反应速率是 0.4 mol·L⁻¹·min⁻¹</span><span>C. B 在 2 min 末的速率为 0.3 mol·L⁻¹·min⁻¹</span><span>D. 增加 A 的量，化学反应速率加快</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A</b>　v(B)∶v(C)∶v(D)＝3∶2∶1，即 2v(B)＝3v(C)＝6v(D)。<br>
+      B 错：A 是固体，不能用浓度变化表示速率；C 错：算得 0.3 是<span class="em">平均速率</span>，不是"2 min 末"的瞬时速率；D 错：增加固体 A 的量不影响速率。</div>
+  </details>
+</div>
+
+<!-- 知识点⑤ 外省镜子 -->
+<h3>知识点⑤ · 外省镜子：广东还没考的角度<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 据《"化学反应速率及影响因素"分层教学设计发言稿》· 2024—2026 外省新高考卷近二十套比对 · 冲刺视线，逐条点开</span>
+
+<details class="bianxi"><summary><span class="q">1</span>速率常数 k 与温度的定量关系</summary>
+  <div class="ans">山东 2024-15 给出 v＝k·c⁰·⁵(H₂)·c(CO₂) 判断不同温度下 k 的大小；黑吉辽蒙 2026-18 比较两种催化剂的 k；陕晋青宁 2026-17 用 lnK-1/T 图像。k 随温度升高而增大，同一反应用不同催化剂 k 不同。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>速率方程与反应级数</summary>
+  <div class="ans">河北 2024-17(2) 含 v＝kcⁿ，由恒 [Cl₂] 计时测浓度求速率；云南 2026-17(4) 由 v-c 图求级数 m 与 k 的计算式。<span class="em">与真题 5 "线性化"同源</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>半衰期</summary>
+  <div class="ans">新课标 2024-10(4) 由浓度-时间关系求反应一半所需时间（用 k 表示）；河南 2026-13 基元反应半衰期判断。<span class="rd">广东六年零落点，课本题第 11 题同款可跳过</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>决速步方程式的书写</summary>
+  <div class="ans">湖南 2026-18 写出决速步反应方程式；浙江 2026.1-18 按活化能排序补全反应历程——把能量最高峰前后的那一步写成方程式。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>催化剂"历程是否相同"的判定</summary>
+  <div class="ans">海南 2024-7：两种催化剂温度效应相同，但<span class="em">反应历程可以不同</span>——"同现象不等于同历程"，判断要回到能量图逐峰比较（与 2022 广东 T15 催化剂Ⅰ/Ⅱ同素材）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>速率-温度曲线"先升后降"</summary>
+  <div class="ans">天津 2024-16(4) NaBH₄ 水解：p 点前放热升温、速率加快；p 点后浓度降低占主导、速率减慢——<span class="em">复合因素题的解题模板</span>（与"锌与稀硫酸反应先快后慢"同理）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">7</span>惰性气体对速率与平衡的影响（广东零落点，外省已回潮）</summary>
+  <div class="ans">江西 2024-9：恒容充 N₂，各组分浓度不变 → 速率与平衡均不变；16(3)：恒压充 He 相当于减压。</div>
+</details>
+<details class="bianxi"><summary><span class="q">8</span>固体反应物恒浓度 → 匀速进行</summary>
+  <div class="ans">湖北 2024-17(3)②：固体反应物浓度恒定 → 恒温恒压下<span class="em">匀速进行</span>，反应物耗尽后速率为零。</div>
+</details>
+<details class="bianxi"><summary><span class="q">9</span>分压与沉积速率计算</summary>
+  <div class="ans">重庆 2026-14 由分压变化推速率比；17(1)② 用增重（或减重）除以时间求沉积速率。</div>
+</details>
+<details class="bianxi"><summary><span class="q">10</span>催化剂活性受 pH 与积碳影响 ＋ 反向发现</summary>
+  <div class="ans">贵州 2024-17 据转化率与积碳量选最佳 pH——控制变量思想的高级形态。<br>
+    <b>反向发现（敢做减法）</b>：活化分子数的独立定量计算、速率测定方法的独立设计题——广东六年没考，<span class="em">连外省也未回潮</span>（近年清一色只考"活化能"定性）。有效碰撞理论只保"催化剂降低活化能"一句，不重锤。</div>
+</details>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：100分] 1~11题每题7分 ＋ 12题5分 ＋ 13题18分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 40分）</h4>
+    <ul><li>第1~5题（各7分）：速率概念组合判断 / Fe与H₂O(g)条件改变 / HI分解速率计算 / 潮州图像 / pH-D浓度图像——概念与基础计算送分盘。<br>第12题（5分）：HCl＋O₂⇌Cl₂＋H₂O 表格速率计算（v(HCl)＝2v(Cl₂)三段式），纯送分。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 35分）</h4>
+    <ul><li>第6~10题（各7分）：H₂O₂分解图像 / 装置操作判断 / 气体法测速率 / CO₂-H₂平衡速率图 / 乙醛加成历程——图像与实验综合，突破档主练。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 25分）</h4>
+    <ul><li>第11题（7分）降冰片烯半衰期图像 —— <span class="rd">✂ 图像拔高，可放弃</span>；<br>第13题（18分）KMnO₄-H₂C₂O₄ 控制变量实验大题：先抢 (1) V₁＝2.0、V₂＝3.0，(3) 选②③，(4) v(KMnO₄)＝0.01——3 问基础空共约 10 分；✂ 放弃 (2) 结论规范表述与设计综合问。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 40＋35＋25＝100 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：速率之比＝化学计量数之比（同一反应统一折算）；催化剂只改速率不改限度；控制变量法一次只变一个条件…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：为什么增大压强本质是增大浓度？图像题先看轴、再看线、再看拐点的顺序怎么落地…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c38_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c38_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

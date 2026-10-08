@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第6讲 物质的量浓度及溶液配制 · 课堂展示</title>
+<title>第19讲 硫及其化合物的相互转化 · 课堂展示</title>
 <style>
   :root{
     --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
@@ -43,7 +43,6 @@
   h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
   h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
   p{margin:6px 0;}
-  /* 练习框：素材混排展示 + 答案按钮 */
   .quiz{
     background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
     padding:14px 18px;margin:10px 0;
@@ -56,7 +55,6 @@
     background:var(--panel3);border:1px solid var(--border);border-radius:6px;
     padding:3px 12px;font-size:17px;
   }
-  /* 答案按钮 */
   details{
     background:var(--panel3);border:1px solid #5a6d5f;
     border-radius:8px;margin:6px 0;padding:0;
@@ -78,28 +76,11 @@
   details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
   details .ans th{background:var(--panel3);color:var(--accent);}
   details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
-  /* 易错辨析（判断题） */
-  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
-  .bianxi summary{
-    cursor:pointer;font-size:17px;color:var(--text);
-    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
-  }
-  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
-  .bianxi[open] summary::before{content:"▾";}
-  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
-  .bianxi .ans{
-    border-top:1px dashed var(--border);padding:8px 14px;
-    color:var(--dim);font-size:16.5px;
-  }
-  .bianxi .ans b{color:var(--accent);}
-  /* 必背口诀（直接展示，无需思考） */
   .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
   .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
   .koujue p{color:var(--text);font-size:18px;}
-  /* 核心知识点清单 */
   .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
   .kps li b{color:var(--accent);}
-  /* 作业分层 */
   .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
   @media (max-width:900px){.hw{grid-template-columns:1fr;}}
   .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
@@ -113,21 +94,6 @@
   .gr{color:var(--accent);font-weight:700;}
   .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
   .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
-
-  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
-  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
-  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
-         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
-
-  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
-  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
-  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
-         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
-
-  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
-  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
-  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
-         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
 
   /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
   .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
@@ -150,7 +116,6 @@
     .colDiv{display:none;}
     .notesCol{position:static;max-height:none;margin-top:10px;}
   }
-
   /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
   :root{
     --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
@@ -202,161 +167,188 @@
 <body>
 
 <header>
-  <h1>第6讲　物质的量浓度及溶液配制</h1>
+  <h1>第19讲　硫及其化合物的相互转化 · 课堂展示</h1>
 </header>
+
 <div class="twocol">
 <main class="colMain">
 
-<!-- ==================== 一、方程式与公式滚动默写 ==================== -->
-<div class="part"><span class="no">一</span>方程式·公式滚动默写<span class="tm">5分钟</span></div>
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
 <p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
 
 <div class="quiz">
-  <div class="ask">① 写出 Na₂O₂ 与水反应的化学方程式（提示：Na₂O₂ 溶于水后溶质是什么？）</div>
-  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 2.溶质的判断 (1)</span>
+  <div class="ask">① 写出硫在氧气中燃烧的化学方程式（想一想：能否一步生成SO₃？）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 含硫物质的转化（0→+4价）</span>
   <details><summary>显示答案</summary>
-    <div class="ans"><b>2Na₂O₂ ＋ 2H₂O ＝ 4NaOH ＋ O₂↑</b><br>
-    Na₂O₂ 溶于水<span class="em">与水反应生成NaOH</span>，溶质按 <b>NaOH</b> 计算</div>
+    <div class="ans"><b>S ＋ O₂ <span class="eqw">＝<span class="eqw-c">点燃</span></span> SO₂</b>　<span class="rd">硫燃烧只生成SO₂，不能一步到SO₃</span>（SO₃需催化氧化）</div>
   </details>
 </div>
 
 <div class="quiz">
-  <div class="ask">② 写出 SO₃ 与水反应的化学方程式（提示：SO₃ 溶于水后溶质是什么？）</div>
-  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 2.溶质的判断 (1)</span>
+  <div class="ask">② 写出SO₂催化氧化生成SO₃的化学方程式（+4→+6价）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 含硫物质的转化（+4→+6价）</span>
   <details><summary>显示答案</summary>
-    <div class="ans"><b>SO₃ ＋ H₂O ＝ H₂SO₄</b><br>
-    SO₃ 溶于水生成 H₂SO₄，溶质按 <b>H₂SO₄</b> 计算（同理 CO₂ ＝ H₂CO₃、SO₂ ＝ H₂SO₃）</div>
+    <div class="ans"><b>2SO₂ ＋ O₂ <span class="eqw">⇌<span class="eqw-c">催化剂 △</span></span> 2SO₃</b>　（可逆反应用⇌；工业制硫酸关键一步）</div>
   </details>
 </div>
 
 <div class="quiz">
-  <div class="ask">③ 写出溶液稀释守恒公式（稀释前后什么量不变？）</div>
-  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 提升关键能力·三、溶液的稀释与混合</span>
+  <div class="ask">③ 写出H₂S与Cl₂反应的化学方程式（−2→0价，体现H₂S还原性）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 含硫物质的转化（−2→0价）</span>
   <details><summary>显示答案</summary>
-    <div class="ans"><b>c₁V₁ ＝ c₂V₂</b>（稀释前后溶质的物质的量 n(B) 不变）<br>
-    <span class="rd">注意：V₂ ≠ V₁ ＋ V(水)，稀溶液题中"忽略体积变化"才可近似相加</span></div>
+    <div class="ans"><b>H₂S ＋ Cl₂ ＝ S↓ ＋ 2HCl</b>　（−2价S被氧化为0价，析出淡黄色S沉淀）</div>
   </details>
 </div>
 
 <!-- ==================== 二、本讲核心知识点 ==================== -->
 <div class="part"><span class="no">二</span>本讲核心知识点</div>
 <ul class="kps">
-  <li><b>① c＝n/V 定义</b>：V是<b>溶液体积</b>（＝溶液质量/密度），不是溶剂体积也不是两体积之和</li>
-  <li><b>② 溶质判断</b>：与水反应生成新物质（Na₂O₂ ＝ NaOH、SO₃ ＝ H₂SO₄）；NH₃按NH₃算；结晶水合物按无水物算</li>
-  <li><b>③ 稀释守恒与换算</b>：c₁V₁＝c₂V₂；c ＝ 1000ρω/M 必背</li>
-  <li><b>④ 配制九字流程 ＋ 误差分析</b>：称量→溶解→冷却→转移→洗涤→定容→摇匀→装瓶→贴签；俯视偏大、仰视偏小、未冷却偏大、未洗涤偏小</li>
+  <li><b>① 价态链</b>：−2→0→+4→+6，<span class="em">相邻价态间氧化还原</span>；S不能一步到SO₃</li>
+  <li><b>② 核心反应</b>：H₂S＋Cl₂→S↓、S＋O₂→SO₂、2SO₂＋O₂⇌2SO₃（必背）</li>
+  <li><b>③ "价—类"二维图</b>：横坐标类别 × 纵坐标价态——推断题工具</li>
+  <li><b>④ SO₂三性</b>：氧化性、还原性、漂白性（<span class="rd">石蕊只变红不褪色</span>）</li>
+  <li><b>⑤ 浓硫酸</b>：吸水性、脱水性、强氧化性——与Cu、C共热放SO₂</li>
 </ul>
 
-<!-- ==================== 三、知识点选讲 ==================== -->
-<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷硫和氧族元素考点与难度研究报告》）</b>
+  <p>· 硫是广东卷<span class="em">"双栖"元素</span>——本讲是<span class="em">转化专题</span>：选择题考价—类二维图推断与基础归中/歧化（0.70~0.85），大题考含硫流程/氧族结构（0.45~0.70），常与铜、氯、铁混编。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.65~0.85）</b>：价—类二维图推断（相邻价态不反应、同素异形体）、基础归中 2H₂S＋SO₂＝3S↓＋2H₂O、SO₂三性辨析（2021·山东T8 母液无NaHCO₃）。</p>
+  <p>· <b style="color:var(--accent)">突破（0.55~0.65）</b>：含硫流程转化与沉淀 Ksp（2024·广东T17 烟气脱硫）、氧族结构 H₂S/H₂Se 沸点氢键（2021·广东T20、2022·广东T20，联动第25/26讲）。</p>
+  <p>· <b style="color:var(--accent)">能力层母题（2023-9"价态归中与歧化"）</b>：S₂O₃²⁻＋2H⁺＝S↓＋SO₂↑＋H₂O（遇酸歧化出浅黄色浑浊，广东已考）；2S²⁻＋SO₂＋2H₂O＝3S↓＋4OH⁻（隔价归中，干态对照 2H₂S＋SO₂＝3S↓＋2H₂O）——本讲湛江模拟、课本 P107 已练，两条方程式全员默写过关，配平抓电子守恒。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：多步电子守恒压轴、Na₂S₂O₃/连二亚硫酸钠制备流程（外省深水区：碘量法滴定、脱氯、配位浸金）——课时精练 T11/T12。</p>
+</div>
 
-<!-- 知识点① 物质的量浓度概念 -->
-<h3>知识点① · c＝n/V 概念与溶质判断<span class="p">（约10分钟）</span></h3>
-<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 1.溶液组成的两种表示方法</span>
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约25分钟</span></div>
+
+<!-- 知识点① 价类二维图 -->
+<h3>知识点① · "价—类"二维图中含硫物质的转化<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展综合应用一（例题1）</span>
 
 <div class="quiz">
-  <div class="ask">填空：物质的量浓度 c(B)＝____，单位____；溶质质量分数 w(B)＝____。两者的V分别指什么？</div>
+  <div class="ask">思考：在"价—类"二维图中，横坐标是类别（氢化物/单质/氧化物/酸/盐），纵坐标是硫的化合价。物质转化有哪两条路径？（看图先想）</div>
   <details><summary>显示答案</summary>
     <div class="ans">
-      <b>c(B) ＝ n(B) / V(溶液)</b>，单位 mol·L⁻¹　——V指<span class="em">溶液体积</span><br>
-      <b>w(B) ＝ m(溶质) / m(溶液) × 100%</b>　——指溶液质量<br>
-      <span class="rd">溶液体积 ≠ 溶剂体积 ≠ 溶质体积＋溶剂体积！V ＝ 溶液质量 ÷ 密度</span>
+      <b>① 同价态不同类别</b>：用<b>酸碱反应</b>转化（SO₂ → H₂SO₃ → Na₂SO₃/NaHSO₃）<br>
+      <b>② 不同价态</b>：用<b>氧化还原反应</b>转化（H₂S → S → SO₂ → SO₃/H₂SO₄）<br>
+      <span class="em">口诀：同价酸碱换，异价氧化还原</span>
     </div>
   </details>
 </div>
 
-<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 2.溶质的判断</span>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 例题1（2025·深圳模拟）</span>
 <div class="quiz">
-  <div class="ask">判断：下列物质溶于水后，溶质分别是什么？（先讨论，再揭晓）</div>
-  <div class="mat">
-    <span>Na</span><span>Na₂O</span><span>Na₂O₂</span><span>CO₂</span><span>SO₃</span><span>NH₃</span><span>CuSO₄·5H₂O</span><span>Na₂CO₃·10H₂O</span>
+  <div class="ask">"价—类"二维图是学习化学的重要工具和模型，硫元素的部分"价—类"二维图如图所示（见图）。下列说法正确的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. 存在a→b→c→d→e→f的转化关系</span>
+    <span>B. 实验室常用盐酸清洗附着于试管内壁的b物质</span>
+    <span>C. 将铁丝插入e的稀溶液中可得到c</span>
+    <span>D. c使高锰酸钾溶液和品红溶液褪色的原理相同</span>
   </div>
   <details><summary>显示答案</summary>
-    <div class="ans">
-      <table>
-        <tr><th>投入物质</th><th>溶质</th><th>理由</th></tr>
-        <tr><td>Na、Na₂O、Na₂O₂</td><td><b>NaOH</b></td><td>与水反应生成新物质</td></tr>
-        <tr><td>CO₂、SO₂、SO₃</td><td><b>H₂CO₃、H₂SO₃、H₂SO₄</b></td><td>与水反应生成酸</td></tr>
-        <tr><td>NH₃</td><td><b>NH₃</b></td><td>溶质按NH₃计算（NH₃·H₂O不稳定）</td></tr>
-        <tr><td>CuSO₄·5H₂O、Na₂CO₃·10H₂O</td><td><b>CuSO₄、Na₂CO₃</b></td><td>结晶水不算溶质，按无水物算</td></tr>
-      </table>
-    </div>
+    <div class="ans"><b>A</b>　由图可知a为H₂S、b为S、c为SO₂、d为H₂SO₃、e为H₂SO₄、f为硫酸盐。H₂S不完全燃烧→S，S＋O₂→SO₂，SO₂＋H₂O→H₂SO₃，H₂SO₃被氧化→H₂SO₄，H₂SO₄与碱→硫酸盐，A正确。<br>
+    B：S不溶于盐酸，应用<span class="em">CS₂或热的NaOH溶液</span>清洗；C：Fe与稀H₂SO₄反应生成H₂，不生成SO₂；D：c使高锰酸钾褪色是<span class="rd">还原性</span>，使品红褪色是<span class="rd">漂白性</span>，原理不同。</div>
   </details>
 </div>
 
-<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 易错辨析（抢答4题）</span>
-<details class="bianxi"><summary><span class="q">1</span>在100 mL烧杯中加10 g食盐，注入90 mL水，充分溶解后溶质质量分数为10%</summary>
-  <div class="ans"><b>√</b>　10 g ÷ (10+90) g ×100% ＝ <span class="em">10%</span>（质量分数用质量算，与体积无关）。</div>
-</details>
-<details class="bianxi"><summary><span class="q">2</span>10.6 g Na₂CO₃ 与 28.6 g Na₂CO₃·10H₂O 分别投入 1 L 水中，浓度均为 0.1 mol·L⁻¹</summary>
-  <div class="ans"><b>×</b>　①投入1 L<span class="em">水</span>，溶液体积≠1 L；②28.6 g Na₂CO₃·10H₂O含0.1 mol Na₂CO₃但溶液体积不是1 L——两个都错。</div>
-</details>
-<details class="bianxi"><summary><span class="q">3</span>将62 g Na₂O 溶于水中配成 1 L 溶液，所得溶质的物质的量浓度为 1 mol·L⁻¹</summary>
-  <div class="ans"><b>×</b>　Na₂O ＝ NaOH：n(Na₂O)＝1 mol → 生成 <b>2 mol NaOH</b> → c(NaOH)＝<b>2</b> mol·L⁻¹（不是1）。</div>
-</details>
-<details class="bianxi"><summary><span class="q">4</span>将 40 g SO₃ 溶于 60 g 水中，所得溶质的质量分数为 40%</summary>
-  <div class="ans"><b>×</b>　SO₃＋H₂O ＝ H₂SO₄：40 g SO₃ (0.5 mol) ＝ 49 g H₂SO₄ ＝ w ＝ 49/(40+60) ＝ <b>49%</b>（不是40%）。</div>
-</details>
-
-<!-- 知识点② 稀释与换算 -->
-<h3>知识点② · 稀释守恒与 c＝1000ρω/M<span class="p">（约8分钟）</span></h3>
-<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「物质的量浓度」· 提升关键能力·三、溶液的稀释与混合</span>
-
-<div class="koujue">
-  <div class="t">🗣 必背公式（直接记忆）</div>
-  <p>稀释守恒：<b>c₁V₁ ＝ c₂V₂</b>（溶质物质的量不变）<br>
-  浓度换算：<b>c ＝ 1000ρω / M</b>（ρ单位g·mL⁻¹，ω为质量分数，M为摩尔质量）</p>
-</div>
+<!-- 知识点② SO₂三性 -->
+<h3>知识点② · SO₂的三性<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展综合应用三（例题4）</span>
 
 <div class="quiz">
-  <div class="ask">算一算：现有浓H₃PO₄质量分数85%、密度1.7 g·mL⁻¹。要配100 mL 1.7 mol·L⁻¹的H₃PO₄溶液，需浓H₃PO₄多少mL？</div>
-  <details><summary>显示答案</summary>
-    <div class="ans">先算浓磷酸浓度：c ＝ 1000×1.7×85% ÷ 98 ≈ <b>14.7 mol·L⁻¹</b><br>
-    稀释守恒：14.7×V ＝ 1.7×0.1 → V ≈ <b>0.0115 L ＝ 11.5 mL</b><br>
-    <span class="em">套路：求浓溶液浓度→稀释守恒→算所需体积</span></div>
-  </details>
-</div>
-
-<!-- 知识点③ 溶液配制 -->
-<h3>知识点③ · 一定物质的量浓度溶液的配制<span class="p">（约8分钟）</span></h3>
-<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「一定物质的量浓度溶液的配制」· 2.配制过程及操作</span>
-
-<div class="koujue">
-  <div class="t">🗣 必背九字流程（直接记忆）</div>
-  <p><b>称量 → 溶解 → 冷却 → 转移 → 洗涤 → 定容 → 摇匀 → 装瓶 → 贴签</b><br>
-  <span style="color:var(--dim);font-size:15px;">考点：①冷却至室温再转移（热胀冷缩）；②洗涤烧杯2~3次，洗涤液一并转入；③定容时液面距刻度线1~2 cm改滴管滴加</span></p>
-</div>
-
-<div class="quiz">
-  <div class="ask">填空：配制 480 mL 0.5 mol·L⁻¹ NaOH 溶液——①应选用____mL容量瓶；②需称NaOH____g；③NaOH固体应放在____（托盘/烧杯）中称量</div>
-  <details><summary>显示答案</summary>
-    <div class="ans">
-      ① 选 <b>500 mL</b> 容量瓶（<span class="rd">没有480 mL容量瓶，只能选500 mL</span>）<br>
-      ② m ＝ 0.5 mol·L⁻¹ × 0.5 L × 40 g·mol⁻¹ ＝ <b>10.0 g</b><br>
-      ③ 放<b>小烧杯</b>中称量（NaOH易潮解、有腐蚀性，不能直接放纸上）<br>
-      <span class="em">口诀：配多少选规格，无此规格取大不取小</span>
-    </div>
-  </details>
-</div>
-
-<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二·提升关键能力·二、误差分析</span>
-<div class="quiz">
-  <div class="ask">误差判断（用"偏大/偏小/无影响"作答）：①未洗涤烧杯及玻璃棒；②定容时俯视刻度线；③定容时仰视刻度线；④未冷却就转移定容；⑤摇匀后发现液面下降又加水</div>
+  <div class="ask">思考：SO₂通入下列溶液各体现什么性质？①品红溶液 ②酸性KMnO₄溶液 ③石蕊溶液 ④Na₂S溶液</div>
   <details><summary>显示答案</summary>
     <div class="ans">
       <table>
-        <tr><th>操作</th><th>n(溶质)</th><th>V(溶液)</th><th>结果</th></tr>
-        <tr><td>①未洗涤烧杯</td><td>↓偏小</td><td>—</td><td><span class="rd">偏小</span></td></tr>
-        <tr><td>②俯视定容</td><td>—</td><td>↓偏小</td><td><span class="rd">偏大</span></td></tr>
-        <tr><td>③仰视定容</td><td>—</td><td>↑偏大</td><td><span class="rd">偏小</span></td></tr>
-        <tr><td>④未冷却转移</td><td>—</td><td>冷却后↓</td><td><span class="rd">偏大</span></td></tr>
-        <tr><td>⑤摇匀后加水</td><td>—</td><td>↑偏大</td><td><span class="rd">偏小</span></td></tr>
+        <tr><th>试剂</th><th>现象</th><th>体现性质</th></tr>
+        <tr><td>①品红溶液</td><td>褪色，加热复红</td><td><span class="em">漂白性</span>（化合漂白，可逆）</td></tr>
+        <tr><td>②酸性KMnO₄</td><td>紫红色褪去</td><td><span class="rd">还原性</span>（+4→+6）</td></tr>
+        <tr><td>③石蕊溶液</td><td><b>变红不褪色</b></td><td>酸性氧化物通性</td></tr>
+        <tr><td>④Na₂S溶液</td><td>淡黄色沉淀S</td><td><span class="em">氧化性</span>（+4→0）</td></tr>
       </table>
-      <span class="em">口诀：俯大仰小；未冷却偏大；未洗涤偏小；容量瓶有水无影响；摇匀后加水偏小</span>
+      <span class="rd">SO₂不漂白酸碱指示剂——石蕊只变红不褪色（与Cl₂不同）</span>
     </div>
   </details>
 </div>
 
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 例题4（2025·湛江模拟）</span>
+<div class="quiz">
+  <div class="ask">某兴趣小组利用如图装置探究硫及其化合物的相互转化（见图）。下列说法正确的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. Ⅰ的试管内的反应，只体现Na₂S₂O₃的还原性</span>
+    <span>B. Ⅱ的试管内的石蕊溶液先变红后褪色，体现SO₂的漂白性</span>
+    <span>C. 只有Ⅲ的试管中会出现浑浊现象</span>
+    <span>D. Ⅳ中加入用盐酸酸化的氯化钡溶液，产生白色沉淀</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　Na₂S₂O₃＋H₂SO₄＝Na₂SO₄＋S↓＋SO₂↑＋H₂O——<span class="em">歧化反应</span>，同时体现还原性和氧化性，A错；<br>
+    SO₂<span class="rd">不能漂白指示剂</span>，石蕊只变红不褪色，B错；Ⅰ中Na₂S₂O₃与酸反应本身即生成S浑浊，Ⅲ中2Na₂S＋3SO₂＝3S↓＋2Na₂SO₃也浑浊，C错；<br>
+    D：酸性KMnO₄把SO₂氧化为SO₄²⁻，加盐酸酸化的BaCl₂生成<span class="em">BaSO₄白色沉淀</span>，正确。</div>
+  </details>
+</div>
+
+<!-- 知识点③ 浓硫酸 -->
+<h3>知识点③ · 浓硫酸的特性<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展综合应用二（例题2）</span>
+
+<div class="quiz">
+  <div class="ask">填空：浓硫酸的三大特性——①____性（作干燥剂）；②____性（蔗糖变黑）；③____性（Cu＋浓H₂SO₄共热放SO₂）。写出Cu与浓硫酸共热的化学方程式</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① <b>吸水</b>性（干燥Cl₂、SO₂等，<span class="rd">不能干燥NH₃、H₂S</span>）<br>
+      ② <b>脱水</b>性（蔗糖炭化变黑）<br>
+      ③ <b>强氧化</b>性：<b>Cu ＋ 2H₂SO₄(浓) <span class="eqw">＝<span class="eqw-c">△</span></span> CuSO₄ ＋ SO₂↑ ＋ 2H₂O</b>　（+6价S被还原到+4价；<span class="em">常温下浓硫酸使Fe、Al钝化</span>）
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 例题2（物质推断）</span>
+<div class="quiz">
+  <div class="ask">已知M是一种常见酸的浓溶液，可使蔗糖变黑，Y是一种单质，构成Y的原子最外层电子数是次外层电子数的2倍。它们之间的转化关系如图所示（见图）。下列说法正确的是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. M与Y反应中，M起氧化作用</span>
+    <span>B. 金属钠着火可以用X扑灭</span>
+    <span>C. 将W气体通入石蕊溶液，溶液先变红后褪色</span>
+    <span>D. 工业上用水吸收Z制备M</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>A</b>　M为浓H₂SO₄（使蔗糖变黑——脱水性），Y为C（最外层4＝次外层2×2），W为SO₂，X为CO₂或H₂O，Z为SO₃。<br>
+    C与浓硫酸反应：C＋2H₂SO₄(浓)<span class="eqw">＝<span class="eqw-c">△</span></span>CO₂↑＋2SO₂↑＋2H₂O，浓硫酸中S从+6降到+4，<span class="em">起氧化作用</span>，A正确。<br>
+    B：钠着火用<span class="rd">沙土</span>扑灭（Na₂O₂与CO₂、H₂O反应放O₂助燃）；C：SO₂使石蕊<span class="rd">只变红不褪色</span>；D：工业上用<span class="em">98.3%浓硫酸</span>吸收SO₃，防止形成酸雾。</div>
+  </details>
+</div>
+
+<!-- 知识点④ 课本基础题精选 -->
+<h3>知识点④ · 课本基础题精选<span class="p">（人教版必修第一册 P106–107 练习与应用）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P106–107</span> · 第五章 不同价态含硫物质的转化</span>
+<div class="quiz">
+  <div class="ask">1. 实验室常用热的NaOH溶液洗去试管壁上沾有的硫，其反应为 3S＋6NaOH <span class="eqw">＝<span class="eqw-c">△</span></span> 2Na₂S＋Na₂SO₃＋3H₂O。在此反应中硫表现的性质是（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. 氧化性</span>
+    <span>B. 还原性</span>
+    <span>C. 既无氧化性又无还原性</span>
+    <span>D. 既有氧化性又有还原性</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　S元素价态变化：部分0→−2（生成Na₂S，<span class="rd">得电子显氧化性</span>），部分0→+4（生成Na₂SO₃，<span class="rd">失电子显还原性</span>）——<span class="em">歧化反应</span>，S既作氧化剂又作还原剂。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 工业上将Na₂CO₃和Na₂S以1∶2的物质的量之比配成溶液，再通入SO₂，可制取Na₂S₂O₃，同时放出CO₂。在该反应中（　　）</div>
+  <div class="mat" style="flex-direction:column;gap:4px;">
+    <span>A. 硫元素只被氧化</span>
+    <span>B. 氧化剂与还原剂的物质的量之比为1∶2</span>
+    <span>C. 每生成1 mol Na₂S₂O₃，转移4 mol电子</span>
+    <span>D. 相同条件下，每吸收10 m³ SO₂就会放出2.5 m³ CO₂</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　总反应 2Na₂S＋Na₂CO₃＋4SO₂＝3Na₂S₂O₃＋CO₂；Na₂S中S(−2)→+2（被氧化），SO₂中S(+4)→+2（被还原），硫元素<span class="rd">既被氧化又被还原</span>，A错；氧化剂(SO₂)∶还原剂(Na₂S)＝2∶1，B错；生成3 mol Na₂S₂O₃转移8 mol e⁻，每mol转移8/3 mol，C错；4 mol SO₂→1 mol CO₂，10 m³→2.5 m³，D正确。</div>
+  </details>
+</div>
 
 <!-- ==================== 四、课时作业分层 ==================== -->
 <div class="part"><span class="no">四</span>课时作业分层</div>
@@ -364,17 +356,18 @@
 <div class="hw">
   <div class="box b1">
     <h4>✅ 必做（保底）</h4>
-    <ul><li>第1、2、3题（离子浓度、仪器选择、配制操作）</li></ul>
+    <ul><li>第1~5题：硫循环、含硫物质推断、价类二维图、杠杆模型（35分，送分盘）</li></ul>
   </div>
   <div class="box b2">
     <h4>➕ 选做（进中档）</h4>
-    <ul><li>第4、5题（误差分析、浓度计算）</li></ul>
+    <ul><li>第6~8题：价态转化装置、红树林硫循环、SO₂催化氧化（21分）</li></ul>
   </div>
   <div class="box b3">
     <h4>🏆 挑战（冲高分）</h4>
-    <ul><li>第6题（浓硫酸稀释）、第7题（稀释图像＋电荷守恒）</li></ul>
+    <ul><li>第9~12题：T9电石渣制石膏(7)·T10矿渣制备(7)·T11工艺(18)·T12硫代硫酸钠(12)＝44分，<span class="rd">✂放弃多步电子守恒/归中比例计算</span></li></ul>
   </div>
 </div>
+<p class="tip">📖 课本 人教版必修第一册 第五章"不同价态含硫物质的转化"练习与应用（P106–107）可作课后巩固续练。</p>
 
 </main>
 <div class="colDiv" title="拖动调节左右栏宽"></div>
@@ -382,9 +375,9 @@
   <div class="nt">📝 课堂备注</div>
   <div class="nsub">随手记 · 自动暂存本机</div>
   <h4>⚠️ 易错点</h4>
-  <textarea data-key="err" placeholder="如：俯视定容浓度偏大、仰视偏小（画图讲最直观）；c＝1000ρω/M中ρ单位是g/mL；容量瓶不能溶解、不能久存溶液…"></textarea>
+  <textarea data-key="err" placeholder="如：SO₂漂白是化合（可逆）、氯水漂白是氧化（不可逆）；SO₂通入BaCl₂无沉淀…"></textarea>
   <h4>❓ 课堂追问</h4>
-  <textarea data-key="ask" placeholder="如：未洗涤烧杯为什么偏小？摇匀后加水为什么也偏小？哪些操作'无影响'？…"></textarea>
+  <textarea data-key="ask" placeholder="如：+6价S还能被浓硫酸氧化吗？为什么制SO₂用浓硫酸不用稀硫酸…"></textarea>
   <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
 </aside>
 </div>
@@ -442,17 +435,12 @@
   showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
 })();
 </script>
-<div id="uiBar">
-  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
-  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
-</div>
-
 <script>
 /* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
 (function(){
   var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
   if(!wrap || !div) return;
-  var KW = 'c06_colw';
+  var KW = 'c19_colw';
   try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
   var drag = false;
   function move(x){
@@ -473,15 +461,13 @@
   var tas = document.querySelectorAll('.notesCol textarea');
   for(var i=0; i<tas.length; i++){
     (function(t, i){
-      var k = 'c06_' + (t.getAttribute('data-key') || ('note_' + i));
+      var k = 'c19_' + (t.getAttribute('data-key') || ('note_' + i));
       try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
       t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
     })(tas[i], i);
   }
 })();
-
 </script>
-
 <script>
 /* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
 function __uibarInit(){
@@ -546,7 +532,10 @@ function __uibarInit(){
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
 </script>
-
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
 <script src="../hxbnx-handwrite.js"></script>
 </body>
 </html>

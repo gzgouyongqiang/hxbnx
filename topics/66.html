@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第66讲 以反应原理、物质性质探究为主的综合实验 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:92%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  .route{
+    background:var(--panel3);border:1px solid #5a6d5f;border-radius:8px;
+    padding:10px 16px;margin:8px 0;text-align:center;
+  }
+  .route b{color:var(--gold);}
+  .route .ar{color:var(--accent);font-weight:700;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第66讲　以反应原理、物质性质探究为主的综合实验 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式全是「特征反应」——性质探究题的检验弹药）</p>
+
+<div class="quiz">
+  <div class="ask">① 乙酸滴入 NaHCO₃ 溶液：比较酸性强弱的「标准动作」（写离子方程式）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 特征反应「酸性→产气」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">CH₃COOH ＋ HCO₃⁻ → CH₃COO⁻ ＋ CO₂↑ ＋ H₂O</b><br>
+      冒气泡 ⇒ 酸性：<span class="em">乙酸 ＞ 碳酸</span>。「强酸制弱酸」的探针。<br>
+      <span class="gr">✅ 65分清单必保「酸性→NaHCO₃ 产气」——苯甲酸、乳酸、苯酚酸性强弱探究全用它开头</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② Fe³⁺ 遇 KSCN 溶液：本讲苯酚显色探究的主角（写离子方程式）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 例 1（2025·珠海一模）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">Fe³⁺ ＋ 3SCN⁻ ⇌ Fe(SCN)₃（溶液变红色）</b><br>
+      注意是<span class="em">可逆反应（⇌）</span>——珠海题正是抓住「平衡」做文章：加 H⁺、换阴离子都会使平衡移动、颜色深浅变化。<br>
+      <span class="gr">✅ 看到颜色深浅比较，先想到「平衡被谁推了」：抑制方向 = 颜色变浅</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ FeCl₃ 溶液腐蚀铜板（电路板蚀刻）：Fe³⁺ 的氧化性应用（写离子方程式）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 例 2 (5)「FeCl₃ 的应用」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">2Fe³⁺ ＋ Cu → 2Fe²⁺ ＋ Cu²⁺</b><br>
+      例 2 (5) 答案方向：FeCl₃ 用于<span class="em">蚀刻覆铜板（制作印刷电路板）</span>、净水（水解产 Fe(OH)₃ 胶体吸附）等。<br>
+      <span class="gr">✅ 探究题最后一问常送「生活应用」开放分——写「蚀刻电路板」最稳</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 特征反应三招（性质探究的弹药库）</b>：验酸性 → <span class="em">NaHCO₃ 产气</span>；验还原性 → <span class="em">酸性 KMnO₄ 褪色</span>；验漂白性 → <span class="em">品红褪色</span>——先选对探针，再谈方案。</li>
+  <li><b>② 控制变量四步法</b>：<span class="em">定变量 → 控唯一 → 做对照 → 下结论</span>——探究多因素（浓度、温度、催化剂、颗粒规格）时，人为只变一个，其余完全相同。⚑ 广东锚点：2024「a 加 0 水、b 加 x 水，总体积相同，仅浓度不同」；2026 年 19 题「Ⅰ~Ⅲ 仅初始 c(Z) 不同、Ⅳ 与 Ⅱ 仅温度不同」——<span class="em">「仅……不同」四个字圈出来再动手</span>。</li>
+  <li><b>③ 对照实验的必要性（评价题必写）</b>：任何「现象差异」都必须先<span class="em">排除其他因素干扰</span>才能归因——珠海题 A₁＞A₂＞A₃＞A₄ 不够，就是没排除 Cl⁻/SO₄²⁻ 的影响。</li>
+  <li><b>④ 探究题五段固定结构</b>：<span class="em">查阅资料 → 提出猜想 → 设计实验（对照/变量）→ 现象结论 → 优化方案</span>——知道下一步考什么，读题就有方向。⚑ 2024 年 17(4) 的行文就是标准五段（初步实验→分析讨论→验证假设→实验小结→优化方案）；2026 年升级出<span class="em">「与 AI 对话后提出假设」</span>新形态——形式在变、链条没变（四年主导：2021/2022/2024/2026）。</li>
+  <li><b>⑤ 平衡探究的一句话原理</b>：颜色变浅/速率变慢 = <span class="em">平衡逆向或反应物有效碰撞减少</span>——从平衡常数表达式找「谁被推了」。</li>
+  <li><b>⑥ 绿色化学简判</b>：微量试剂、闭合循环、污染少——评价方案的「加分句」。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《65分考点清单》）</b>
+  <p>· <b>必拿基础</b>：<span class="em">特征反应选择</span>（酸性→NaHCO₃ 产气、还原性→KMnO₄ 褪色、漂白→品红褪色）；<span class="em">控制变量法</span>（四年四考：2021/2024/2026 全见「仅××不同」句式）；<span class="em">对照实验必要性</span>（排除干扰——评价题必写要点）；<span class="em">探究闭环五环节识别</span>（2021、2022、2024、2026 四年主导，17 题的骨架）。</p>
+  <p>· <b>答题模板</b>：「不足以证明／依据不足」＝ <span class="em">三视角找话</span>：①干扰是否排除（2025「不能用 pH 直接判断 Ka」）②变量是否控制 ③操作是否可行；「判断依据」＝ <span class="em">现象或数据＋推理链</span>（2024「pH 不再随时间变化＝平衡建立」）；「补一组对照」＝ 只改变要探究的那个因素，其余相同。</p>
+  <p>· <b>保分策略</b>：<span class="rd">✂ 放弃</span>：复杂因素平衡定量分析（K 值计算）、完整探究方案从头设计，以及多人假设证伪链／双方案优缺点对比／限用试剂补全方案（广东六年零落点）——只答「猜想、找茬、补对照」三类空。</p>
+</div>
+
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约33分钟</span></div>
+
+<h3>考点① · 控制变量四步法：把「探究」变成填空<span class="p">（约9分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 类型二「对某一原理或规律及影响因素的探究」</span>
+
+<table class="tb">
+  <tr><th>四步</th><th class="l">干什么</th><th class="l">答题句式（照抄即得分）</th></tr>
+  <tr><td><b>定变量</b></td><td class="l">从题干资料里找「可能影响结果的因素」</td><td class="l">「探究 ×× 对 ×× 的影响」</td></tr>
+  <tr><td><b>控唯一</b></td><td class="l">设计实验时只让这一个因素不同</td><td class="l">「其他条件相同，仅 ×× 不同」</td></tr>
+  <tr><td><b>做对照</b></td><td class="l">必须有基准组 + 空白对照（如加 0.5 mL 水排除稀释）</td><td class="l">「加入等体积蒸馏水，排除稀释对颜色的影响」（讲义课时精练 3(2)①原答案）</td></tr>
+  <tr><td><b>下结论</b></td><td class="l">现象差 → 归因到被控的那个变量</td><td class="l">「说明 ×× 促进/抑制了 ××」</td></tr>
+</table>
+<p class="tip">▲ 讲义原话：<span class="em">「人为控制其他因素完全相同，只有探究的因素不同」</span>——评价题挑错就看这条：变量多于一个 → 直接 ×。</p>
+
+<div class="quiz">
+  <div class="ask">【抢答】给下列探究补「变量」或「对照」：<br>A. 探究温度对速率：两份反应液应先＿＿再混合；<br>B. 探究浓度对速率：两份溶液除了浓度不同，<span class="em">温度、体积、颗粒规格</span>必须＿＿；<br>C. 讲义课时精练 3(2)：向 Fe(SCN)₃ 溶液中加 MgSO₄ 溶液，对照组要加等体积＿＿。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 控制变量＋第 64 讲判断题(1)回顾</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">A. 分别恒温到设定温度</b>（先混合就反应了）　<b style="color:var(--gold);">B. 完全相同</b>　<b style="color:var(--gold);">C. 蒸馏水（排除稀释影响）</b><br>
+      <span class="gr">✅ 三问三答全是「控唯一＋做对照」——探究题的空，八成是这两类话术的变装</span></div>
+  </details>
+</div>
+
+<h3>考点② · 找茬评价：「不足以证明」怎么写<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 例 1（2025·珠海一模）苯酚与 Fe³⁺ 显色探究</span>
+
+<div class="route"><b>珠海题背景：</b>Fe³⁺ ＋ 6C₆H₅OH ⇌ 紫色配合物 ＋ 6H⁺（可逆）｜猜想：H⁺ 抑制显色｜用盐酸/硫酸调 pH 做实验 1~4，结果吸光度 A₁＞A₂＞A₃＞A₄</div>
+
+<div class="quiz">
+  <div class="ask">只抢「找茬」和「补对照」两空：<br>① 结果 A₁＞A₂＞A₃＞A₄，小组认为<b>不足以证明</b>「H⁺ 有抑制作用」，理由是＿＿；<br>② 补做实验 5/6：向溶液中加入＿＿固体（M），把阴离子影响单独拎出来验。<br>③ 最终结论的依据：A₃=A₅ 且 A₁＿＿A₆（填＞/＜/=）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 例 1 (2)②③（讲义原题）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">① 实验中 Cl⁻（盐酸）或 SO₄²⁻（硫酸）的浓度也在变化，无法排除阴离子对显色反应的影响</b>——H⁺ 和阴离子「搭车」了，变量不唯一！<br>
+      <b style="color:var(--gold);">② M = NaCl（以及 K₂SO₄）固体</b>——只增阴离子不动 H⁺，把阴离子效应单独验证（讲义答案方向）。<br>
+      <b style="color:var(--gold);">③ A₁=A₆</b>——Cl⁻ 单独存在不影响（A₃=A₅ 证 SO₄²⁻ 抑制、NaCl 不影响），完整链闭环。<br>
+      <span class="gr">✅ 「不足以证明」万能句：<b>「还受 ×× 因素影响，未排除其干扰」</b>；「补对照」万能句：<b>「单独改变 ××，其余不变」</b></span></div>
+  </details>
+</div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 1</span>对比实验中观察到颜色更深，就说明生成物浓度更大、反应更快（　　）</summary>
+  <div class="ans"><b>×　</b>颜色深浅还可能来自<span class="em">平衡移动、络合、稀释不足</span>等——先排除干扰（加水的对照、阴离子对照），再归因。珠海题整道就是这句话的展开。</div></details></div>
+
+<h3>考点③ · 「pH 不能直接比 Ka」：平衡探究的高频结论<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 例 2（2025·广东高三开学考）乳酸探究</span>
+
+<div class="quiz">
+  <div class="ask">（讲义例 2(3)(4)＋2025 广东 T17(4) 同款逻辑）<br>① 乳酸的酸性强于乙酸：电离出的阴离子可与＿＿位的羟基形成＿＿，负离子更稳、酸性更强；<br>② 苯甲酸 Ka 大于乳酸，但其饱和溶液 pH 反而更大，能据此说「苯甲酸酸性弱」吗？为什么？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 例 2 (3)②（讲义原题＋2025 广东真题同款）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">① α 位（2 号位）　分子内氢键</b>——电离出的阴离子形成分子内氢键，稳定性↑，更易电离。<br>
+      <b style="color:var(--gold);">② 不能——常温下两种酸的饱和溶液的浓度不同</b>（讲义答案原句）：pH 只反映「饱和溶液里的 c(H⁺)」，浓度变量没控制，不能反推 Ka。2025 广东 T17(4)③ 的标准答案一字不差就是这句！<br>
+      <span class="rd">⚠ 严谨测 Ka 的替代法（讲义例 2(4)）：用其共轭碱（如苯酚钠）配成 0.100 mol·L⁻¹ 溶液，pH 计测 pH，由水解常数 Kh 反推 Ka</span><br>
+      <span class="gr">✅ 「浓度不同 → pH 不能比 Ka」是广东卷连续两年考的结论——背原句</span></div>
+  </details>
+</div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 2</span>向 NaHSO₃ 溶液中加 NaCl 固体产生了新反应，所以是 Cl⁻ 改变了 NaHSO₃ 的还原性（　　）</summary>
+  <div class="ans"><b>×　</b>要<span class="em">用原电池对照实验拆解</span>（讲义课时精练 2(3)）：若 NaHSO₃＋NaCl 单独无电流，说明 Cl⁻ 没改还原性；再验证 Cl⁻ 是否改氧化性（与 Cu²⁺ 生成 CuCl 沉淀，降低 Cu⁺ 浓度，推动氧化还原进行）——「猜想 a/b 二选一」必须各配对照。</div></details></div>
+
+
+<!-- 考点④ 三大件句式（能力层主线） -->
+<h3>考点④ · 「假设→验证→判断依据」三大件句式（四年主导）<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 能力层主线 · 2021/2022/2024/2026 探究闭环</span>
+<p class="tip">⚑ <b>三大件每件都有固定句式，当模板背</b>：①假设提出——从「证据不足」提（围绕反应是否彻底、是否受阻碍）或从「规律外推」提，假设必须<span class="em">可验证、可证伪</span>；②验证设计——要证「是 A 不是 B」，就分别检验 A 和 B，两步排除；③评价与判断依据——判断依据＝<span class="em">现象或数据＋推理链</span>。</p>
+<table class="tb">
+  <tr><th>三大件</th><th class="l">固定句式（照抄即得分）</th><th class="l">广东锚点</th></tr>
+  <tr><td><b>假设提出</b></td><td class="l">「沉淀可能没有消耗完／可能被××包裹」「根据①中规律推测……酸性顺序」</td><td class="l">2024「证据不足」后双假设；2025 规律外推；2026「与 AI 对话后提出假设」</td></tr>
+  <tr><td><b>验证设计</b></td><td class="l">「滴加____沉淀完全溶解（排除××类）→ 继续滴加____无白色沉淀（排除干扰离子）」</td><td class="l">2024 两步排除；2026「稀盐酸完全溶解后____」验新猜想；2021「完善方案，进行实验 4 和 5」补对照</td></tr>
+  <tr><td><b>评价与判断依据</b></td><td class="l">「结合表中数据给出判断理由」「pH 不再随时间变化＝平衡建立」——<span class="em">数据不变即平衡</span></td><td class="l">2021「猜想 b 成立的判断依据」；2022 判断理由；2024 平衡判断依据</td></tr>
+</table>
+<div class="quiz">
+  <div class="ask">【2024·广东·17(4) 句式复写】CaSO₄ 转化探究，乙同学由「证据不足」提出双假设：假设 1 硫酸钙固体已完全消耗；假设 2 被 CaCO₃ 沉淀包裹。验证：ⅰ. 将反应混合物固液分离；ⅱ. 取少量沉淀滴加＿＿＿＿，沉淀完全溶解；ⅲ. 继续向ⅱ的试管中滴加＿＿＿＿，无白色沉淀生成——两步操作各自指向哪个假设？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 类型一「性质探究」（广东卷真题素材）</span>
+  <div class="ans"><b>答：</b>ⅱ. 滴加<span class="em">稀盐酸</span>——若沉淀完全溶解，说明沉淀全是可溶于盐酸的 CaCO₃ 类，没有 CaSO₄ 残留（指向「反应是否彻底」）；ⅲ. 继续滴加<span class="em">BaCl₂ 溶液</span>——无白色沉淀生成，排除溶液中残留 SO₄²⁻ 的干扰（指向「是否受阻碍／干扰」）。⚑ 排除法模板＝「加什么 → 看什么 → 说明什么」三连写全，两步操作各自指向一个假设。</div>
+</div>
+
+<!-- 考点⑤ 外省镜子（冲刺） -->
+<h3>考点⑤ · 外省镜子：广东还没考的角度<span class="p">（约2分钟）</span></h3>
+<span class="loc">📌 冲刺 85+ 专供 · 2024/2026 三十余份外省原卷比对</span>
+<ul class="kps">
+  <li><b>批判-证伪-重设计链（北京招牌）</b>：2024/2026·北京19「乙认为该现象不能证明××，理由是（没有排除××的干扰）→用____代替重复操作」——广东只考到「证据不足」一步，<span class="em">证伪与重设计是空白</span>；</li>
+  <li><b>双制备方案优缺点对比</b>：2026·河北15(8)「方案Ⅰ的优点和不足各答 1 点」、2026·北京16(4)——广东未考；</li>
+  <li><b>异常结果归因大题化</b>：2026·江苏16(2)②「电流表读数下降更多，可能原因是____」、2026·河南16、2026·湖南18(2)③、2026·贵州15(7)——从平衡移动、副反应、杂质、操作四个方向找；</li>
+  <li><b>限用试剂补全方案</b>：2024/2026·江苏16「补充完整实验方案（必须使用的试剂：稀 HNO₃、NaCl 溶液……）」——限定条件下的方案组装，广东未考；</li>
+  <li><b>图表数据论证＋证伪型判断</b>：2026·江西18(6)「得出结论并说明理由」、2026·江西17(7)「结论不正确，理由是（水的用量不同，未控制变量）」——看到结论先自查：变量控住了吗、现象唯一吗；</li>
+  <li><b>应用型半开放设计</b>：2024·江西17(6)「利用变色原理设计温度传感装置」——原理到器件只需一句话。</li>
+</ul>
+<p class="tip">🔍 <b>反向发现</b>：纯定性「性质检验大题」外省也在退场——探究正与制备、定量合流成复合题；北京式八环节超长链是孤本不必模仿，广东补上<span class="em">「证伪」和「双方案对比」</span>两个环节即可接轨。</p>
+
+<div class="koujue">
+  <div class="t">📢 真题串联（强哥划重点）</div>
+  <p>广东卷探究题＝<span class="em">「五段剧本」</span>：查阅资料 → 提出猜想 → 设计实验 → 现象结论 → 优化方案（2021、2022、2024、2026 四年主导；2026 年「与 AI 对话后提出假设」是新形态）。能拿的分在三处：<span class="em">填猜想</span>（假设必须可验证、可证伪）、<span class="em">找茬</span>（三视角：干扰排了吗／变量控住了吗／操作可行吗）、<span class="em">补对照</span>（「只改一个变量，其余相同」）。<span class="em">「饱和溶液浓度不同，pH 不能比 Ka」</span>——背死，两年真题原句；<span class="rd">✂ 证伪链、双方案对比、限用试剂补全方案</span>——广东零落点，放手。</p>
+</div>
+
+<!-- ==================== 四、作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">课后完成</span></div>
+<p class="tip">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（分值50分：第1题16分 · 第2题14分 · 第3题20分）</p>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（共21分）</h4>
+    <ul>
+      <li><b>第1题（16分）</b>　2025·广州一模 SO₂ 通入 AgNO₃ 回收银探究<br><span class="rd">⚠ 先拿(1)装置接口 b→a→e、(2)①红棕色气体＋SO₂ 氧化 Ag 的方程式、(2)②品红验 SO₃²⁻、(2)③Ksp 比较；<span class="rd">✂ (2)④复分解/氧化还原速率比计算</span></span></li>
+      <li><b>第2题 (1)(2)（约5分）</b>　2025·深圳 NaHSO₃ 制备与探究<br><span class="rd">⚠ 先拿(1)圆底烧瓶＋S 价层电子轨道表示式、(2)SO₂＋OH⁻ 离子方程式</span></li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>🏆 挑战（共29分）</h4>
+    <ul>
+      <li><b>第2题 (3)(4)（约9分）</b>　原电池探究 Cl⁻ 的作用＋王水溶金原理<br><span class="rd">⚠ 可抢(3)①对照依据（NaCl 单独无电流）；<span class="rd">✂ (3)②补全电化学装置示意图＋电极反应式</span></span></li>
+      <li><b>第3题（20分）</b>　2025·广州模拟预测 盐效应探究<br><span class="rd">⚠ 先拿(1)配制计算 0.025a g＋不需要的仪器、(2)①加 0.5 mL 水的目的（排除稀释）、(2)②③盐效应结论；<span class="rd">✂ (3)(4)完整对照实验设计——放弃点</span></span></li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：猜想依据不充分（只从氧化还原、漏了酸碱性角度）；变量控制不严（一次改两个条件）；结论超出证据范围——证据只有一步就写"一定"…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：探究题四步（猜想→方案→现象→结论）各有一句"踩分词"，你的模板固化了吗？…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c66_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c66_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

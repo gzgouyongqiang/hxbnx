@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第36讲 多池、多室电化学装置 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第36讲　多池、多室电化学装置 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式为多池多室打底）</p>
+
+<div class="quiz">
+  <div class="ask">① 三种离子交换膜分别只允许哪种离子通过？（必保）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「离子交换膜在电化学中的应用」· 1.离子交换膜的分类</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table class="tb">
+        <tr><th>膜类型</th><th>允许通过</th><th>阻挡</th><th>典型应用</th></tr>
+        <tr><td>阳离子交换膜</td><td class="l">阳离子（Na⁺、H⁺ 等）</td><td class="l">阴离子（Cl⁻、OH⁻ 等）</td><td class="l">氯碱工业（Na⁺ 从阳极→阴极）</td></tr>
+        <tr><td>阴离子交换膜</td><td class="l">阴离子（Cl⁻、OH⁻ 等）</td><td class="l">阳离子（Na⁺、H⁺ 等）</td><td class="l">电解法回收酸、阴极保护</td></tr>
+        <tr><td>质子交换膜</td><td class="l">只允许 H⁺ 通过</td><td class="l">其他阳离子和所有阴离子</td><td class="l">氢氧燃料电池、氯碱 PEM 制氢</td></tr>
+        <tr><td>双极膜（BPM）</td><td class="l">膜内 H₂O 解离出的 H⁺ 与 OH⁻ 分别向两极迁移</td><td class="l">其他离子</td><td class="l">2023 广东 16（卯榫结构）、2026 山东 T12</td></tr>
+      </table>
+      <span class="rd">⚠ 双极膜必会</span>：H₂O 在膜界面临界解离，<span class="em">H⁺ 移向阴极、OH⁻ 移向阳极</span>，解离水量与电子转移数配套——2023-16B"每生成 1 mol NH₃·H₂O 有 9 mol H₂O 解离"是错值，应 8 mol。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 串联电解池电子守恒关系式（必保，65分必拿）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电化学计算」· 1.三种方法</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">串联电路中各电极<span class="em">转移电子数相等</span>，以 4 mol e⁻ 为桥梁：<br>
+      <b style="color:var(--gold);">4e⁻ ～ 2Cl₂ ↑ ～ O₂ ↑ ～ 2H₂ ↑ ～ 2Cu ～ 4Ag ～ 2Zn ～ 2Fe²⁺</b><br>
+      （M 为金属，n 为其离子的化合价数值）<br>
+      <span class="rd">⚠ 串联池关键：相同时间各电极电子数相等，列比例式直接乘系数</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 氯碱工业用阳离子交换膜的三大作用（必保）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「离子交换膜在电化学中的应用」· 2.离子交换膜的作用</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">氯碱工业（电解饱和食盐水，离子交换膜法）：<br>
+      <b>① 隔离两极产物</b>：阻止 Cl₂ 与 H₂ 混合爆炸（Cl₂ 与 H₂ 见光易爆），阻止 Cl₂ 与 NaOH 反应（2NaOH+Cl₂=NaCl+NaClO+H₂O）<br>
+      <b>② 选择透过 Na⁺</b>：Na⁺ 从阳极区通过膜进入阴极区，<span class="em">形成 NaOH 产品</span><br>
+      <b>③ 平衡电荷、形成闭合回路</b>：内电路靠 Na⁺ 定向迁移导电<br>
+      <span class="rd">⚠ 若用阴离子交换膜：OH⁻ 进入阳极区与 Cl₂ 反应，得不到纯净 Cl₂；若不用膜：Cl₂ 与 H₂ 直接接触易爆</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 离子交换膜两大核心作用</b>：<span class="em">隔离两极产物</span>（防止副反应/爆炸/产物混合）＋<span class="em">选择透过特定离子</span>（平衡电荷、形成闭合回路）。</li>
+  <li><b>② 三种膜的判断口诀</b>：<span class="em">阳膜挡阴</span>（只让阳离子过）·<span class="em">阴膜挡阳</span>（只让阴离子过）·<span class="em">质子膜只过 H⁺</span>。</li>
+  <li><b>③ 串联电路电子守恒</b>：<span class="em">相同时间各电极转移电子数相等</span>，列比例式计算（与原电池/电解池类型无关，只看电子数）。</li>
+  <li><b>④ 系统读图三步</b>：<span class="em">① 拆装置判池别</span>（接直流电源＝电解池、自发反应对外供电＝原电池）→ <span class="em">② 连电路</span>（串联电路中各电极转移电子数相同）→ <span class="em">③ 追离子</span>（每张膜让谁过、离子往哪移、逐室算 pH 与质量变化）。</li>
+  <li><b>⑤ 「囚徒困境」陷阱</b>：多室装置中<span class="rd">中间室</span>可能"只进不出"（离子进得来出不去），盐浓度<span class="rd">不降反升</span>，脱盐失败——2026广东T16的C选项就是这坑。</li>
+  <li><b>⑥ 充放电切换铁律</b>：<span class="em">放电负极＝充电阴极、放电正极＝充电阳极</span>——2022-16A"充电时电极 b 是阴极"、2025-14A"充电时Ⅱ为阳极"都是这条的考法。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（六年真题逐题核查）</b>
+  <p>· <b>第 16 题的"常住户口"</b>：多室装置（含膜）<span class="em">六年六考</span>（2021-16 三室双膜、2023-16 双室双极膜、2024-16 双室阳膜、2025-14 双室膜、2026-16 四室三膜、2026-18(3) 双室阴膜），另 2024(18) LAEM、2025(16) 质子膜作边缘要素——<span class="em">A 类装置分析题六年每年至少 1 道</span>，几乎固定占选择题第 16 题（2025 年顺移至 14 题）。</p>
+  <p>· <b>复杂度逐年上行</b>：三室双膜（2021）→"无需离子交换膜"充放电（2022）→双室双极膜（2023）→双室单阳膜（2024）→双室单膜二次电池（2025）→<b>四室三膜＋电解液循环</b>（2026，六年之最）；2024 起向大题渗透（2024-18 膜分离、2025-18(6)② 画电解池图、2026-18(3) 膜电解衡算）——<span class="em">"选择＋大题"双落点</span>。</p>
+  <p>· <b>判断重心已从"膜名称"转向"膜作用"</b>：2025 图中只写"离子交换膜"不标类型；2026 膜①②③要求<span class="em">由离子流向反推膜类型</span>——膜类型是推出来的结论，不是已知的前提。读图先把"谁该往哪移动"想清楚。</p>
+  <p>· <b>三条固定设问线（必练到条件反射）</b>：①"放电正极＝充电阳极"显性对应（2022-16A"充电时电极 b 是阴极"、2025-14A"充电时Ⅱ为阳极"）；②以膜为纽带的<b>跨室质量守恒</b>（2021-16B、2024-16CD、2026-18(3)②"列算式"）——<span class="rd">"气体逸出＋离子过膜"两种迁移必须叠加</span>；③循环体系 pH 自稳（2026-16D"电解液在Ⅰ和Ⅳ室间循环…Ⅰ室 pH 可保持稳定"，六年唯一）。</p>
+  <p>· <b>⚑ 六年零落点（勿重锤）</b>：<span class="rd">多池串联从未出现</span>（2026-16 的"风电＋蓄电池"只是供电情境，未考串联电路分析）；四室以上装置未出现；双极膜仅 2023 一次；"充放电＋多室＋循环"全要素未出现——别预设更复杂的结构；多池串联按外省成熟题型给冲刺层备（2026 河南 T12 顶配题）。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① 离子交换膜在原电池中的应用 -->
+<h3>知识点① · 离子交换膜在原电池中的应用<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「离子交换膜在电化学中的应用」· 1.离子交换膜在原电池和新型电源中的应用</span>
+<div class="quiz">
+  <div class="ask">思考：氯流电池（无需离子交换膜）与锌-空气电池（用阴离子交换膜）的工作原理有什么本质区别？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">本质区别在<span class="em">电解质状态</span>：<br>
+      · <b>氯流电池</b>：电解质是<span class="em">流动的含 Cl⁻/Cl₂ 溶液</span>，正负极活性物质储存在外部储罐，靠泵循环，无需隔膜（活性物质不混即可）。<br>
+      · <b>锌-空气电池</b>：电解质是<span class="em">静止的 KOH 溶液</span>，空气中的 O₂ 在正极得电子，需用阴离子交换膜让 OH⁻ 在两极间迁移，阻止 Zn²⁺ 与 O₂ 直接接触。<br>
+      <span class="rd">⚠ 离子交换膜是「静止电解液」电池的标配——流动电池可以不用</span></div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「离子交换膜的作用」· 易错辨析（抢答 4 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>氯碱工业可以用阴离子交换膜代替阳离子交换膜</summary>
+  <div class="ans"><b>×</b>　只能用<span class="em">阳离子交换膜</span>——让 Na⁺ 透过进入阴极区形成 NaOH。若用阴离子膜，OH⁻ 进入阳极区与 Cl₂ 反应，得不到纯净 Cl₂。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>质子交换膜只允许 H⁺ 通过，不允许其他阳离子通过</summary>
+  <div class="ans"><b>√</b>　质子交换膜（如 Nafion）只让 H⁺ 通过，连 Na⁺、K⁺ 都被阻挡，是氢氧燃料电池的核心部件。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>离子交换膜的主要作用是导电</summary>
+  <div class="ans"><b>×</b>　离子交换膜的主要作用是<span class="em">选择透过特定离子</span>（隔离产物＋平衡电荷），<span class="rd">导电是次要作用</span>（只是附带效果）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>串联电路中各电极通过的电子数一定相等</summary>
+  <div class="ans"><b>√</b>　<span class="em">串联电路中电流处处相等</span>，所以相同时间各电极转移的电子数一定相等——这是列比例式计算的基础。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>阳膜挡阴阴膜挡阳 · 双极膜 H⁺ 阴 OH⁻ 阳 · 读图三步：拆装置·连电路·追离子 · 放电正极＝充电阳极</p>
+</div>
+
+<!-- 知识点② 多池串联电解 -->
+<h3>知识点② · 多池串联电解（多室＋双膜）<span class="p">（约10分钟 · 三室装置是真落点 2021-16；"多池串联"⚑ 六年零考、外省成熟题型）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「多池连接电化学装置」· 1.外接电源与电解池的串联模型</span>
+<div class="quiz">
+  <div class="ask">三室电解装置（阳极室 | 阳膜 | 中间室 | 阴膜 | 阴极室）的工作原理：离子如何迁移？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">三室电解池（典型如电解制钴）：<br>
+      · <b>阳极室</b>（接电源正极）：发生氧化反应，<span class="em">阳极反应：2H₂O － 4e⁻ ＝ O₂↑ ＋ 4H⁺</span>（生成 H⁺）<br>
+      · <b>阴极室</b>（接电源负极）：发生还原反应，<span class="em">阴极反应：Mⁿ⁺ ＋ ne⁻ ＝ M</span>（金属沉积）<br>
+      · <b>阳离子交换膜</b>（阳极室→中间室）：<span class="em">H⁺ 透过</span>进入中间室，平衡电荷<br>
+      · <b>阴离子交换膜</b>（中间室→阴极室）：<span class="em">Cl⁻ 透过</span>进入阴极室，平衡电荷（同时阻止 Mⁿ⁺ 进入阳极室被氧化）<br>
+      <span class="rd">⚠ 膜选择的核心：让电荷平衡的离子透过，阻止产物离子反窜</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">原电池与电解池串联模型：燃料电池+电解池组合，燃料电池的正极接到电解池的哪极？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">原电池与电解池串联（典型如氢氧燃料电池+电解CuSO₄）：<br>
+      · 原电池<span class="em">正极</span>（O₂ 得电子）→ 连接电解池的<span class="em">阳极</span>（与电源正极相连的电极）<br>
+      · 原电池<span class="em">负极</span>（H₂ 失电子）→ 连接电解池的<span class="em">阴极</span><br>
+      · 判据：<span class="rd">原电池正极电势高，接电解池阳极；原电池负极电势低，接电解池阴极</span><br>
+      · 电子流向：原电池负极 → 外电路 → 电解池阴极 → 电解池内离子迁移 → 电解池阳极 → 外电路 → 原电池正极</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「多池连接」· 易错辨析（抢答 3 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>串联两个电解池时，相同时间内两个阴极产生的气体体积一定相等</summary>
+  <div class="ans"><b>×</b>　串联电路电子数相等（√），但<span class="em">产生的气体体积不一定相等</span>——要看放电离子和产物。例如：阴极1出 H₂（2H⁺+2e⁻=H₂↑），阴极2出 Cu（Cu²⁺+2e⁻=Cu），转移 2 mol e⁻ 时阴极1出 1 mol H₂（22.4L），阴极2出 1 mol Cu（固体不是气体）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>多池装置中所有电极的电流强度都相同</summary>
+  <div class="ans"><b>√</b>　串联电路中电流处处相等，<span class="em">所有电极的电流强度都相同</span>，但不同电极的反应和产物可能不同。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>电解精炼铜的电解池中阳极泥含有 Cu</summary>
+  <div class="ans"><b>×</b>　阳极泥只含<span class="em">不活泼金属 Ag、Au、Pt</span>，Cu 是活泼金属，优先于 Ag/Au 放电成 Cu²⁺ 进入溶液，不会沉到槽底。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>三室电解：阳极出 O₂/H⁺ · 阳膜过 H⁺ · 中间室过 Cl⁻ · 阴膜挡 Mⁿ⁺ · 阴极沉积金属</p>
+</div>
+
+<!-- 知识点③ 电子守恒计算 -->
+<h3>知识点③ · 电子守恒计算（关系式法）<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电化学计算」· 1.三种方法 + 2.电流效率</span>
+<div class="quiz">
+  <div class="ask">电化学计算有哪三种方法？分别适用于什么场景？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">电化学计算三大方法：<br>
+      · <b>① 总反应法</b>：先写电极反应式 → 写总反应式 → 按总反应比例式计算。适用于<span class="em">单个电池</span>、反应简单的场景。<br>
+      · <b>② 电子守恒法</b>：根据转移电子数相等列比例式。<span class="em">串联电路必用</span>，混合溶液分阶段电解也用。<br>
+      · <b>③ 关系式法</b>：以电子为桥梁构建关系式（如 4e⁻～2Cl₂～O₂～2H₂～2Cu），<span class="em">快速列比例</span>，最常用。<br>
+      <span class="em">公式</span>：Q ＝ I·t；F ＝ 96 500 C/mol（即 1 mol e⁻ 的电荷量）；电流效率 η ＝ (实际产物所需 e⁻) / (总 e⁻) × 100%</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">实战：用惰性电极电解 CuSO₄ 溶液 1 小时，电流 0.5 A，电流效率 80%，求阴极析出 Cu 的质量。（F = 96 500 C/mol）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">解：<br>
+      · 总电量 Q ＝ I·t ＝ 0.5 A × 3600 s ＝ 1800 C<br>
+      · 总电子数 n(e⁻) ＝ Q / F ＝ 1800 / 96500 ＝ 0.01865 mol<br>
+      · 实际参与反应电子数 n'(e⁻) ＝ 0.01865 × 80% ＝ 0.01492 mol<br>
+      · 由 Cu²⁺ ＋ 2e⁻ ＝ Cu，n(Cu) ＝ n'(e⁻) / 2 ＝ 0.00746 mol<br>
+      · m(Cu) ＝ 0.00746 × 64 ＝ <span class="em">0.477 g</span><br>
+      <span class="rd">⚠ 电流效率只算"有效电子"</span>，漏电/副反应消耗的电子要扣掉</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电化学计算」· 易错辨析（抢答 3 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>电流效率 η = 实际析出金属质量 / 理论析出金属质量 × 100%</summary>
+  <div class="ans"><b>×</b>　电流效率 η = <span class="em">生成目标产物实际需要的电子数 / 电路通过总电子数</span> × 100%。不是质量比，是电子数比。质量比要换算。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>电解 1 mol NaCl 溶液，阴极一定生成 0.5 mol H₂</summary>
+  <div class="ans"><b>×</b>　要看<span class="em">是否电解完</span>。如果只电解 50% NaCl，阴极生成 0.25 mol H₂；如果一直电解到 NaCl 耗尽转电解水，H₂ 量会变化。题目必须给出"电解 X mol NaCl"或"通过 Y mol e⁻"。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>1 法拉第 = 96 500 C 对应 1 mol 电子</summary>
+  <div class="ans"><b>√</b>　1 mol e⁻ 的电荷量 ＝ 96 500 C（法拉第常数 F）。计算时 Q = n(e⁻) × F。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>电化学计算三方法：总反应·电子守恒·关系式；Q = I·t；F = 96500；电流效率 = 有效 e⁻ / 总 e⁻</p>
+</div>
+
+<!-- 能力层：充放电切换三板斧 -->
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「充放电切换」· 三条固定设问线①</span>
+<div class="quiz">
+  <div class="ask">【真题范式·2022 广东 16 / 2025 广东 14】充放电切换"三板斧"怎么走？——2022 原文"充电时电极 a 的反应为 NaTi₂(PO₄)₃＋2Na⁺＋2e⁻＝Na₃Ti₂(PO₄)₃"；2025 原文"放电时，电极Ⅱ上 MnO₂ 减少"。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>三板斧</b>：<br>
+      ① <span class="em">定角色</span>：由已知电极反应判此刻身份——2022 电极 a 得电子 → 充电时是<b>阴极</b>；2025 电极Ⅱ上 MnO₂ 减少（被还原）→ 放电时Ⅱ是<b>正极</b>；<br>
+      ② <span class="em">角色互换</span>：<b>放电正极＝充电阳极、放电负极＝充电阴极</b>；<br>
+      ③ <span class="em">算极室变化与电量</span>：放电时 NaCl 溶液浓度增大；每转移 1 mol e⁻ 对应理论容量 26.8 A·h；电极 a 增重 46 g（Na₃Ti₂(PO₄)₃ 与 NaTi₂(PO₄)₃ 相差 2Na）。<br>
+      <span class="rd">⚠ "放电正极＝充电阳极"是三条固定设问线的第一条，六年两考。</span></div>
+  </details>
+</div>
+
+<!-- 能力层：跨室质量守恒 -->
+<div class="quiz">
+  <div class="ask">【能力层·跨室质量守恒（三年三考）】2024 广东 16(C)"每消耗 1 mol Fe₂O₃，阳极室溶液减少 213 g"为什么是错值？"列算式"新动作（2026-18(3)②）怎么落笔？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>两种迁移必须叠加</b>：阳极室 3 mol Cl₂ 逸出（71 g/mol×3＝213 g）<b>＋</b> 6 mol Na⁺ 迁出（23 g/mol×6＝138 g）＝<b>351 g</b>——干扰项 213 g 只算了气体逸出。<br>
+      <span class="em">🎯 2026-18(3)②"列算式"新动作</span>："为防止阳极室电解过程中产生沉淀，理论上最终阳极室 c(OH⁻) 应不大于＿＿"——用守恒关系<b>列出算式</b>而非代入数值，广东已从"算数值"升级到"列算式"。<br>
+      <span class="rd">⚠ 逐室分析从"中间室"开始</span>（2021 的Ⅱ室、2026 的Ⅱ/Ⅲ海水室）；2026-16C"Ⅲ室海水中盐的浓度降低"是错误项——先定离子去向，再定浓度增减（"囚徒困境"：Ⅲ室只进不出，盐浓度不降反升）。</div>
+  </details>
+</div>
+
+<!-- 冲刺层：外省组合系统与新型情境 -->
+<h3>知识点④（冲刺·85+）· 外省组合系统与新型情境<span class="p">（广东零落点，提前备）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展（2024—2026 外省新高考卷比对）</span>
+<div class="quiz">
+  <div class="ask">【外省镜子·2026 河南 T12】多组串联的电化学装置同时产生 H₂ 和 Cl₂：每组左侧均为高浓度盐酸、右侧均为低浓度盐酸（浓差原电池串驱动电解池）。"定期互换直接相连的电极，并恢复溶液浓度，整个装置可再次运行"——判断依据是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>可再运行的本质＝能否恢复初始状态</b>：互换电极后原"消耗侧"与"生成侧"对调，再恢复浓度即回到初态。<br>
+      这是"串联＋守恒＋可再运行"三合一的顶配题——<span class="rd">多池串联广东六年零考、外省成熟题型，随时可能补位</span>，冲刺层重点备。</div>
+  </details>
+</div>
+<div class="koujue">
+  <div class="t">🗣 冲刺层清单（外省高频 · 广东零落点）</div>
+  <p>① 双极膜＋多液区：2026 山东 T12、2024 湖北 T14（甘氨酸三液区——先数区、再数膜、逐区定离子流向）；② 光驱动/脉冲偏压：2026 湖北 T14（"偏压为负时光电极上发生还原反应"）；③ 电化学-化学串联：2025 湖南 T18（CO₂→C₂H₄）、2026 北京 T9（H₂S→硫酸盐）、2024 山东 T13（Br⁻/BrO₃⁻ 循环）——先分"电解段"与"化学段"；④ 充放电＋电解液组分参与反应：2024 河北 T13 Mg-CO₂（加 1,3-丙二胺捕获 CO₂）、2026 陕晋青宁 T13（加热电解液化学再生）；⑤ 电池＋脱盐＋资源回收：2025 黑吉辽蒙 T13 储氯电池、2026 黑吉辽蒙 T13 LiFePO₄ 回收、2025 河南 T12 海水淡化提锂；⑥ 非氢氧燃料电池能量转化率：2024.6 浙江 T19(4)（Q＝It 跨模块计算）；⑦ 循环意义说理：一律答"提高原料利用率、降低成本、减少污染"（2024 山东 T18(2)、2026 河南 T15(6)、2024 重庆 T17(3)）；⑧ 无隔膜电解槽反向论证隔膜功能：2025 四川 T17(7)；⑨ 耦合式电解破解"阳极电势高"：2024 辽宁 T12；⑩ 氧化还原媒介循环与电流效率：2025.6 浙江 T12</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：100分] 共14题，按题号分必做/挑战）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 基础层（65 分必拿）</h4>
+    <ul>
+      <li><b>选择题</b>　第1题 燃料电池 pH（乙烯→乙醛） · 第2题 N₂H₄ 燃料电池＋电解 CuSO₄（电子守恒）</li>
+      <li><b>选择题</b>　第4题 Na-CO₂ 电池充放电电极判断（三板斧）</li>
+      <li>滚动默写：五条必背结论 ＋ 充放电铁律 ＋ 膜的三连问读图法</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 能力层（80 分·中档生）</h4>
+    <ul>
+      <li><b>选择题</b>　第6题 RuCu/CNT 电催化 BrO₃⁻（电极反应式＋电子流向） · 第10题 HCHO 耦合制 H₂（理论产量比较）</li>
+      <li><b>非选择题</b>　第13题（12分）电解法合成氨·质子交换膜作用·N₂ 转化率</li>
+      <li>跨室守恒专练：2021-16、2024-16 逐室自算（351 g 叠加算路）＋ 2026-16"囚徒困境"重做</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 冲刺层（85+）</h4>
+    <ul>
+      <li><b>选择题</b>　第3题 复合膜 CO₂ 富集 · 第5题 双极膜＋CaCO₃＋盐酸 · 第7题 CN⁻ 废水＋海水淡化 · 第8题 自由基氨氮处理 · 第9题 NCM 前驱体 · 第11题 双极膜 BPM 电解制 HI · 第12题 锌-TCPP 超分子</li>
+      <li><b>非选择题</b>　第14题（16分）多装置综合（原电池＋电解＋电镀）</li>
+      <li><span class="rd">⚠ 多池串联/可再运行、光驱动、串联催化只对冲刺层开小灶</span></li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：多池串联先看电极材料定阴阳极、再看电流方向定正负；阳离子交换膜只过阳离子；电子守恒计算先写电极反应式…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：三室双膜装置中各室pH怎么变？为什么这里用阴膜不用阳膜？盐桥与交换膜的本质区别…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c36_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c36_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

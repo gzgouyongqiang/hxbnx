@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第34讲 原电池 常见化学电源 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第34讲　原电池　常见化学电源 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式为原电池打底）</p>
+
+<div class="quiz">
+  <div class="ask">① 写出锌铜（Cu-Zn）原电池（CuSO₄ 溶液作电解质）的正、负极电极反应式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「原电池原理」· 铜锌双液原电池</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>负极（Zn）：Zn － 2e⁻ ＝ Zn²⁺</b>（氧化反应）<br>
+      <b>正极（Cu）：Cu²⁺ ＋ 2e⁻ ＝ Cu</b>（还原反应）<br>
+      <span class="rd">⚠ 负氧正还</span>——负极失电子、正极得电子，电子经导线从 Zn 流向 Cu</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出氢氧燃料电池（碱性介质）正、负极电极反应式（与酸性式对照背）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「常见化学电源」· 燃料电池·碱性介质</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>负极（H₂）：H₂ － 2e⁻ ＋ 2OH⁻ ＝ 2H₂O</b><br>
+      <b>正极（O₂）：O₂ ＋ 2H₂O ＋ 4e⁻ ＝ 4OH⁻</b><br>
+      <span class="rd">⚠ 酸碱两式互为陷阱</span>——酸性正极是 O₂＋4H⁺＋4e⁻＝2H₂O，2023 广东 6 的干扰项正是把碱性式塞进酸性题。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出氢氧燃料电池（酸性介质）正、负极电极反应式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「常见化学电源」· 燃料电池</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>负极（H₂）：H₂ － 2e⁻ ＝ 2H⁺</b><br>
+      <b>正极（O₂）：O₂ ＋ 4H⁺ ＋ 4e⁻ ＝ 2H₂O</b><br>
+      <span class="em">介质不同写法不同</span>——酸出 H⁺、碱出 OH⁻、熔盐出对应离子</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 构成条件（4个）</b>：自发氧化还原反应 ＋ 两极材料 ＋ 闭合回路（导线＋电解质）＋ 电势差。</li>
+  <li><b>② 正负极判断口诀</b>：「<span class="em">负氧正还</span>」——负极失电子（氧化）、正极得电子（还原）；电子从负极经<span class="em">导线</span>流向正极。</li>
+  <li><b>③ 离子移动方向</b>：阳离子移向正极、阴离子移向负极（内电路靠离子导电，外电路走电子）。</li>
+  <li><b>④ 盐桥作用</b>（<span class="rd">⚑ 六年零落点·工具式掌握</span>）：连接内电路形成闭合回路 ＋ 平衡两池电荷使电池持续供电（K⁺ 移正极、Cl⁻ 移负极）。</li>
+  <li><b>⑤ 特殊反例（坑）</b>：Mg-Al 在 NaOH 溶液中 <span class="em">Al 作负极</span>；Fe-Cu 在浓 HNO₃ 中 <span class="em">Cu 作负极</span>（Fe 钝化）。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（六年真题逐题核查）</b>
+  <p>· <b>选择题固定占位（"三件套"）</b>：正负极判断＋电子流向＋离子迁移方向——六年七考（2021-9、2022-11、2022-16、2023-6、2024-5、2025-14/16），<span class="em">每年稳定 1 道（2025 两道），是电化学板块的"入场券"</span>。陷阱固定：2021-9 的 C"阳离子由正极移向负极"、D"将电能转化为化学能"。</p>
+  <p>· <b>介质决定电极反应式（本讲最高频陷阱）</b>：酸碱两套 O₂ 还原式互为干扰项——2023-6 正解 O₂＋4H⁺＋4e⁻＝2H₂O（酸性），干扰项恰是碱性式 O₂＋2H₂O＋4e⁻＝4OH⁻；2022 必考大题考碱性式。<span class="em">落笔前先问：这道题的介质是什么</span>。</p>
+  <p>· <b>能力层必练</b>：可充电电池双向分析（2022-16 氯流储能、2025-14 高容量水系电池）＋电子守恒定量（2022-16 D"每生成 1 mol Cl₂ 电极 a 理论增重 23 g"、2025-14"每转移 1 mol e⁻ 理论容量 26.8 A·h"）；金属腐蚀与防护三年三考（2022-11、2024-5、2026-6）。</p>
+  <p>· <b>近三年重心偏移</b>：原电池让位于电解池＋离子交换膜（"离子交换膜/质子交换膜/双极膜"六年累计 <span class="em">9 次</span>，是本板块绝对高频关键词）——本讲只要求看懂"这块膜允许哪种离子通过、离子往哪个电极跑"，<span class="em">膜类型的完整分析留给第 35 讲</span>。</p>
+  <p>· <b>⚑ 六年零落点（勿重锤）</b>：盐桥、铅酸蓄电池、一次电池（碱性锌锰干电池、锌银纽扣电池）、甲醇/肼/乙烷燃料电池、锂离子与钠离子电池的典型电极反应、熔融盐与非水介质原电池——<span class="rd">全部零出现</span>，以"构成条件＋一个典型电极反应式"的卡片保底，不设专题。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① 原电池原理 -->
+<h3>知识点① · 原电池原理<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「原电池原理」· 1.能量转化 / 2.构成条件</span>
+<div class="quiz">
+  <div class="ask">思考：原电池与电解池的能量转化、反应本质有何本质区别？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">原电池：<span class="em">化学能 → 电能</span>，发生<span class="em">自发</span>氧化还原反应（无外接电源）；<br>
+      电解池：<span class="em">电能 → 化学能</span>，发生<span class="em">非自发</span>氧化还原反应（需外接电源）。<br>
+      核心判据：<span class="rd">看有无外接电源</span>——有电源是电解池，无电源是原电池。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「原电池原理」· 铜锌双液原电池模型</span>
+<div class="quiz">
+  <div class="ask">铜锌双液原电池（Zn | ZnSO₄ ‖ CuSO₄ | Cu，盐桥连接）：① 正负极、② 电极反应、③ 电子流向、④ 盐桥离子移动方向分别是？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 负极 Zn、正极 Cu；② 负极 <b>Zn － 2e⁻ ＝ Zn²⁺</b>，正极 <b>Cu²⁺ ＋ 2e⁻ ＝ Cu</b>；③ 电子从 Zn 片经导线流向 Cu 片；④ K⁺ 移向正极、Cl⁻ 移向负极。<br>
+      <span class="rd">⚠ 电子不能经过电解质溶液</span>——溶液靠离子移动导电。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「原电池原理」· 易错辨析（抢答 4 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>原电池工作时电子经外电路由正极流向负极</summary>
+  <div class="ans"><b>×</b>　电子由<span class="em">负极</span>经外电路流向<span class="em">正极</span>（负→正）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>原电池工作时阳离子移向负极</summary>
+  <div class="ans"><b>×</b>　阳离子移向<span class="em">正极</span>、阴离子移向负极（阳正阴负）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>盐桥的作用是提供电子通道</summary>
+  <div class="ans"><b>×</b>　盐桥是<span class="em">离子通道</span>，不是电子通道；作用：闭合回路＋平衡电荷。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>Mg-Al 用 NaOH 作电解质时，Mg 一定作负极</summary>
+  <div class="ans"><b>×</b>　Al 与 NaOH 反应失电子，<span class="em">Al 作负极</span>、Mg 作正极（特殊反例）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>负氧正还 · 电子负→正 · 阳正阴负 · 盐桥 K⁺ 追正极</p>
+</div>
+
+<!-- 知识点② 常见化学电源 -->
+<h3>知识点② · 常见化学电源<span class="p">（约12分钟 · 铅蓄电池/干电池 ⚑ 六年零落点）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「常见化学电源」· 1.一次电池 / 2.二次电池 / 3.燃料电池</span>
+<div class="quiz">
+  <div class="ask">铅酸蓄电池放电、充电时，两极分别是什么电极？写出放电时两极反应式。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">总反应：<b>Pb ＋ PbO₂ ＋ 2H₂SO₄ ⇌ 2PbSO₄ ＋ 2H₂O</b><br>
+      <b>放电（原电池）</b>：负极 <b>Pb － 2e⁻ ＋ SO₄²⁻ ＝ PbSO₄</b>；正极 <b>PbO₂ ＋ 4H⁺ ＋ SO₄²⁻ ＋ 2e⁻ ＝ PbSO₄ ＋ 2H₂O</b><br>
+      <b>充电（电解池）</b>：负极接电源负极变<span class="em">阴极</span>、正极接电源正极变<span class="em">阳极</span>（负接负、正接正）。<br>
+      <span class="rd">⚠ 放电消耗 H₂SO₄</span>：c(H⁺)↓、pH↑，充电反之。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">氢氧燃料电池在酸性、碱性介质中的正、负极反应式分别是什么？（总反应 2H₂＋O₂＝2H₂O）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>酸性</b>：负极 <b>H₂ － 2e⁻ ＝ 2H⁺</b>，正极 <b>O₂ ＋ 4H⁺ ＋ 4e⁻ ＝ 2H₂O</b><br>
+      <b>碱性</b>：负极 <b>H₂ － 2e⁻ ＋ 2OH⁻ ＝ 2H₂O</b>，正极 <b>O₂ ＋ 2H₂O ＋ 4e⁻ ＝ 4OH⁻</b><br>
+      <span class="em">规律</span>：酸出 H⁺、碱出 OH⁻；电极材料（Pt/石墨）<span class="rd">不参与反应</span>，只导电催化。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「常见化学电源」· 易错辨析（抢答 3 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>干电池（锌锰电池）可反复充电使用</summary>
+  <div class="ans"><b>×</b>　干电池是<span class="em">一次电池</span>，不可充电。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>燃料电池的电极材料（Pt/石墨）参与电极反应</summary>
+  <div class="ans"><b>×</b>　电极材料只起<span class="em">导电和催化</span>作用，参与反应的是燃料和 O₂。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>铅蓄电池放电时负极质量减小</summary>
+  <div class="ans"><b>×</b>　负极生成难溶 PbSO₄ 附着电极，<span class="em">质量增大</span>。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>铅蓄放电负 Pb 失电子→PbSO₄，氢氧燃池酸出 H⁺ 碱出 OH⁻</p>
+</div>
+
+<!-- 知识点③ 电极反应式书写 -->
+<h3>知识点③ · 电极反应式书写<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电极反应式书写」· 1.三步法 / 2.介质判断</span>
+<div class="quiz">
+  <div class="ask">已知总反应式，如何写出电极反应式？（三步法）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>三步法</b>：① <span class="em">分半反应</span>——拆成氧化半反应＋还原半反应；② <span class="em">写易极</span>——先写容易的一极（通常是 O₂/H⁺ 得电子的还原反应）；③ <span class="em">总减易极</span>——总反应 − 已知极 ＝ 未知极，配平电荷。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">电极反应式配平时，介质酸碱性如何判断？（口诀）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><span class="em">酸性介质（稀 H₂SO₄/HCl）</span>：用 H₂O 和 H⁺ 配平（H 多出 H⁺、O 多加 H⁺）<br>
+      <span class="em">碱性介质（NaOH/KOH）</span>：用 H₂O 和 OH⁻ 配平（H 多加 OH⁻、O 多加 H₂O）<br>
+      <span class="em">非水介质（熔融/固体氧化物）</span>：用对应离子（如 O²⁻）配平。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电极反应式书写」· 易错辨析（抢答 3 题）</span>
+<details class="bianxi"><summary><span class="q">1</span>总反应 2Fe³⁺＋Cu＝2Fe²⁺＋Cu²⁺，负极反应式为 Cu＋2e⁻＝Cu²⁺</summary>
+  <div class="ans"><b>×</b>　负极是 Cu <span class="em">失电子</span>：<b>Cu － 2e⁻ ＝ Cu²⁺</b>（正极 Fe³⁺＋e⁻＝Fe²⁺）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>氢氧燃料电池酸性介质负极反应式为 H₂－2e⁻＝2OH⁻</summary>
+  <div class="ans"><b>×</b>　酸性介质<span class="em">出 H⁺ 不写 OH⁻</span>：<b>H₂ － 2e⁻ ＝ 2H⁺</b>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>锂电池（Li＋MnO₂＝LiMnO₂）负极反应式为 Li－e⁻＝Li⁺</summary>
+  <div class="ans"><b>√</b>　Li 失 1 个电子作负极：<b>Li － e⁻ ＝ Li⁺</b>（正极 MnO₂＋Li⁺＋e⁻＝LiMnO₂）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>分半反应 · 写易极 · 总减易极 · 酸 H⁺ 碱 OH⁻</p>
+</div>
+
+<!-- 知识点④ 金属腐蚀与防护（三年三考） -->
+<h3>知识点④ · 金属的腐蚀与防护（三年三考）<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点四「金属的腐蚀与防护」· 牺牲阳极法</span>
+<div class="quiz">
+  <div class="ask">【真题·2026 广东 6】做好防腐是发展海上风电的基础。下列措施不能达到防腐目的的是（钢制管桩分别配：A 铜块／B 富铝涂层／C 惰性电极／D 锌块）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>答案：A（铜块）</b><br>
+      牺牲阳极法要求"牺牲"的金属比被保护金属<span class="em">更活泼</span>：锌块（D）、富铝涂层（B）都比铁活泼，先被腐蚀、保住管桩；惰性电极（C）作辅助阳极也可行。<br>
+      <span class="rd">⚠ 铜块（A）恰恰相反</span>——铜比铁不活泼，铜铁接触构成原电池时<b>铁作负极被加速腐蚀</b>，不但不防腐、反而加快腐蚀。<br>
+      <b>同一结论的另一面（2024 广东 5）</b>："海葵一号"钢铁外壳镶嵌锌块——Zn 比 Fe 活泼，锌块作<b>负极</b>被消耗（需更换）、钢铁外壳作正极被保护，属<span class="em">牺牲阳极的阴极保护法</span>（不是外加电流法）。</div>
+  </details>
+</div>
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>牺牲阳极要"更活泼"（Zn、Al 可以，Cu 不行）；活动性弱的金属镶上去＝加速腐蚀；外加电流法是接电源、非镶金属</p>
+</div>
+
+<!-- 冲刺层：外省介质全谱与新型情境 -->
+<h3>知识点⑤（冲刺·85+）· 四种介质全谱与新型功能电池<span class="p">（广东零落点，提前备）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展（2024—2026 外省新高考卷比对）</span>
+<div class="quiz">
+  <div class="ask">【外省镜子·2024.6 浙江 T19(4)】熔融碳酸盐燃料电池中，正极（同时通入 O₂ 与 CO₂）上的电极反应式是 ＿＿＿＿</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>O₂ ＋ 4e⁻ ＋ 2CO₂ ＝ 2CO₃²⁻</b><br>
+      <b>四种介质四条式</b>：酸性 O₂＋4H⁺＋4e⁻＝2H₂O；碱性 O₂＋2H₂O＋4e⁻＝4OH⁻；熔融碳酸盐 O₂＋4e⁻＋2CO₂＝2CO₃²⁻；固体氧化物（O²⁻）O₂＋4e⁻＝2O²⁻。<br>
+      <span class="em">同一个反应、四种写法</span>——"介质定 O/H 来源"，这是外省区分度最高的角度。</div>
+  </details>
+</div>
+<div class="koujue">
+  <div class="t">🗣 冲刺层清单（外省高频 · 广东零落点）</div>
+  <p>① 四种介质全谱：2024.6 浙江 T19(4)；② 非水/有机电解质判断：2024 广西 T9（"不能用 NaPF₆ 水溶液替换"）、2024 福建 T9——依据回到"电解质能否与电极材料或产物反应"；③ 干电池与双向电池：2024 北京 T3（酸性锌锰）、2024 江苏 T8（碱性锌锰）、2024 山东 T12（铅蓄电池）；④ 双极膜解离定量：2024 湖北 T14、2026 山东 T12；⑤ 锂电脱嵌与新型功能电池：2024 湖南 T1、新课标血糖微型电池、2026 陕晋青宁 T13 可重复电池、2026 湖南 T7 心脏起搏器扣式电池；⑥ 概念反向陷阱：2024 全国甲 T1（"燃料电池将热能转化为电能"错）、2024 天津 T3（"铜块镶嵌船外壳防腐"错）</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 共12题，按题号分必做/挑战）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 基础层（65 分必拿）</h4>
+    <ul>
+      <li><b>选择题</b>　第1题 锌锰干电池 · 第2题 原电池＋盐桥 · 第3题 铅蓄电池（12 分）</li>
+      <li><b>选择题</b>　第4题 乙烷燃料电池 · 第5题 氧化还原设计原电池（8 分）</li>
+      <li>滚动默写：五条必背结论 ＋ 介质定 O/H ＋ 酸碱 O₂ 还原式对照</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>➕ 能力层（80 分·中档生）</h4>
+    <ul>
+      <li><b>选择题</b>　第6题 储能电池 · 第9题 熔融钠电池（可充电电池双向分析）</li>
+      <li><b>非选择题</b>　第11题（8分）电化学循环法电极式 · 第12题（12分）乙醇燃料电池三介质</li>
+      <li>2021 广东 9、2024 广东 5 两道真题原题重做（三件套陷阱 ＋ 金属防护）</li>
+    </ul>
+  </div>
+  <div class="box b3"><h4>🏆 冲刺层（85+）</h4>
+    <ul>
+      <li><b>选择题</b>　第7题 短路膜电池 · 第8题 MnO₂-Zn 可充电（全国甲卷）· 第10题 血糖电池（新课标）（9 分）</li>
+      <li>外省四连：四种介质全谱（2024.6 浙江）、非水介质判断（2024 广西/福建）、双极膜定量（2024 湖北）、概念反向陷阱（2024 全国甲/天津）</li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：负极失电子被氧化；盐桥作用是平衡电荷不是导电子；铅蓄电池放电两极都生成PbSO₄；燃料电池介质决定电极反应式写法…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：三步法判断正负极怎么走？碱性甲烷燃料电池负极产物是CO₃²⁻还是CO₂？怎么调介质配平…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c34_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c34_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

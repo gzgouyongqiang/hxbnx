@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第27讲 化学键及分类 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第27讲　化学键及分类</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>滚动默写·必背数据<span class="tm">5分钟</span></div>
+<p class="tip">📖 本讲无化学方程式，滚动默写<b>四大必背数据＋σ/π键计数</b>（N<sub>A</sub>类题和结构大题年年考）· 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 默写四大必背数据（每空填数字）：1 mol金刚石含＿mol C—C键；1 mol SiO₂含＿mol Si—O键；1 mol P₄含＿个P—P键；1 mol石墨含＿mol C—C键</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「共价键及其参数」· 共价键的类型（结合65分清单必背数据）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>金刚石 2N<sub>A</sub></b>（每个C连4个C，键数＝4×N<sub>A</sub>÷2）　<b>SiO₂ 4N<sub>A</sub></b>（每个Si连4个O）<br>
+      <b>P₄ 6个P—P</b>（正四面体，6条棱）　<b>石墨 1.5N<sub>A</sub></b>（每个C连3个C，3×N<sub>A</sub>÷2）<br>
+      <span class="em">共享法：键数＝（原子数×配位数）÷2</span>，别死记、会推。
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 默写σ/π键计数规则，并填空：1个乙烯(CH₂＝CH₂)分子含＿个σ键、＿个π键；1个CO₂分子含＿个σ键、＿个π键</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「共价键及其参数」· σ键和π键数目的计算</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      规则：<b>单键1σ；双键1σ＋1π；三键1σ＋2π</b><br>
+      <b>乙烯：5σ＋1π</b>（4个C—H σ键＋1个C—C σ键＋1个π键）　<b>CO₂：2σ＋2π</b>（O＝C＝O，两个双键）
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出Na₂O₂的电子式（注意：过氧根离子要加方括号、标电荷）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电子式」· 电子式的书写与判断</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Na⁺[∶O̲∶O̲∶]²⁻Na⁺</b>　陷阱：Na₂O₂的阴离子是<span class="rd">O₂²⁻整体</span>（一个离子团），不是两个O²⁻；必须整体加方括号、标2⁻，且O—O间有一对共用电子、每个O还各带一对孤电子。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 化学键三类型</b>：离子键（活泼金属＋活泼非金属、铵盐）、共价键（共用电子对）、金属键；<span class="em">AlCl₃是共价化合物</span>（含金属元素未必离子化合物）</li>
+  <li><b>② 化学反应本质</b>：旧化学键断裂＋新化学键形成；稀有气体单原子分子（He、Ne等）<span class="rd">无化学键</span></li>
+  <li><b>③ σ键/π键</b>：单键1σ、双键1σ＋1π、三键1σ＋2π；σ键头碰头可单独形成，π键肩并肩必须伴随σ键</li>
+  <li><b>④ 四大必背数据</b>：金刚石2N<sub>A</sub> C—C、SiO₂ 4N<sub>A</sub> Si—O、P₄ 6个P—P、石墨1.5N<sub>A</sub>（共享法可推）</li>
+  <li><b>⑤ 电子式陷阱</b>：Na₂O₂阴离子是<span class="em">O₂²⁻整体</span>；NH₄Cl是离子化合物（共价键在NH₄⁺内部）；离子化合物加[　]、共价化合物不加</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（综合《广东卷原子结构与性质元素周期律考点与难度研究报告》＋65分清单）</b>
+  <p>· <b style="color:var(--accent)">无独立试题、只藏选项</b>——2023 年起每年 1~3 个落点：2023-10D/11A（Na₂O₂ 键型、NH₄Cl 含 4 个 N—H）、2024-2B/2D（液化不断键、水的电子式）、2024-10A（C₂H₂ 含 3N<sub>A</sub> 个 σ 键）、2024-13A（O—H 键极性→酸性）、2025-13C（π键→加聚）、2026-8A（键能→热稳定性）、2026-13A（σ和π）——藏身题型：STSE、N<sub>A</sub>、陈述因果、结构推测性质四类。<span class="em">配位键已是大题"钉子户"</span>：2024-18(5) 冰晶石、2025-6 铜氨、2025-12 [CuCl₂]⁻、2026-17/18——大题几乎年年留位置。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.70+）</b>：键型判断（AlCl₃ 共价、NH₄Cl 离子——含金属未必离子化合物）、电子式书写正误、σ键计数"单1双1三1"、四大必背数据、<span class="em">配位键＝特殊共价键</span>（孤对电子＋空轨道——指认铜氨/[AlF₆]³⁻/[CuCl₂]⁻ 中的配位键）。</p>
+  <p>· <b style="color:var(--accent)">突破（0.55~0.75）</b>：σ/π键计数综合（2024新课标 Ni(CO)₄ 8σ）、键参数比较（键能→热稳定性，2024北京12D、2026广东8A）、<span class="em">"π键断裂、σ键形成"规范表述</span>（2024/2025-20(3)A 连续两年大题原句）。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：键参数深度计算、大π键精确计数（概念在第 28/30 讲铺）、配位键数目深度辨析、离子键成分百分数（2026-18(7) AlSb/GaN 新落点，与第 26 讲电负性联动）；极性/非极性键独立判断、金属键、键能计算 ΔH——<span class="em">广东外省均零考，直接放弃</span>。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约34分钟</span></div>
+
+<!-- 知识点① 化学键与化合物类型 -->
+<h3>知识点① · 化学键与化合物类型<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学键与化合物类型」· 化学键／离子键与共价键的比较</span>
+
+<div class="quiz">
+  <div class="ask">归类：下列物质中，含离子键＋共价键的有哪些？含金属元素但属于共价化合物的是？</div>
+  <div class="mat">
+    <span>NaCl</span><span>NaOH</span><span>Na₂O₂</span><span>NH₄Cl</span><span>AlCl₃</span><span>HCl</span><span>CO₂</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>离子键＋共价键：NaOH、Na₂O₂、NH₄Cl</b>（含原子团/过氧根/铵根）<br>
+      <b>只含离子键：NaCl</b>　<b>只含共价键：AlCl₃、HCl、CO₂</b><br>
+      <span class="rd">AlCl₃含金属元素但是共价化合物</span>——含金属元素≠离子化合物（Al³⁺极化力强，Al—Cl为共价键）。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 提升关键能力 一、第2题</span>
+<div class="quiz">
+  <div class="ask">2.下列叙述正确的是（　　）</div>
+  <p>A.KH为共价化合物<br>
+  B.Na与N、O、Cl分别形成的化合物中只含有离子键<br>
+  C.KCl、HCl、KOH的水溶液都能导电，所以它们都属于离子化合物<br>
+  D.N和Cl可形成共价化合物NCl₃</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　NCl₃中N、Cl均非金属，只含共价键，是共价化合物。<br>
+      A<span class="rd">×</span>：K⁺与H⁻（阴离子！）形成离子键，KH是离子化合物；B<span class="rd">×</span>：Na₂O₂、NaN₃中既含离子键又含共价键；C<span class="rd">×</span>：HCl溶于水导电但它是共价化合物（导电看有没有自由离子，不看键型）。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答6题）</span>
+<details class="bianxi"><summary><span class="q">1</span>化学键是相邻离子或原子间强烈的作用力，既包括静电吸引力，又包括静电排斥力</summary>
+  <div class="ans"><b>√</b>　离子键/共价键的实质都是静电作用，<span class="em">引力和斥力并存</span>，平衡时键最稳定。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>所有物质中都存在化学键</summary>
+  <div class="ans"><b>×</b>　<span class="rd">稀有气体单原子分子（He、Ne、Ar）中无化学键</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>非金属元素的两个原子之间一定形成共价键，多个原子间可能形成离子键</summary>
+  <div class="ans"><b>√</b>　两个非金属原子间必为共价键；多个原子可形成离子键（如<span class="em">NH₄Cl、NH₄NO₃</span>中铵根与酸根离子间是离子键）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>由金属元素与非金属元素形成的化学键都是离子键</summary>
+  <div class="ans"><b>×</b>　<span class="rd">AlCl₃是共价化合物</span>（Al—Cl共价键），含金属元素不一定形成离子键。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>某物质熔融状态能导电，可以证明该物质内一定存在离子键</summary>
+  <div class="ans"><b>×</b>　<span class="rd">金属（金属键）熔融也能导电</span>；熔融导电只能说明有自由移动的离子或电子，不能反推离子键。</div>
+</details>
+<details class="bianxi"><summary><span class="q">6</span>H、N和S可形成既含有离子键又含有共价键的化合物</summary>
+  <div class="ans"><b>√</b>　如<span class="em">(NH₄)₂S</span>：NH₄⁺内部共价键，NH₄⁺与S²⁻之间离子键。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>活泼金属遇活泼非金属成离子键，铵盐也是离子化合物；AlCl₃特殊是共价，稀有气体无化学键</p>
+</div>
+
+<!-- 知识点② 化学反应与化学键变化 -->
+<h3>知识点② · 化学反应与化学键变化<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学键与化合物类型」· 物质转化过程中化学键的变化</span>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 提升关键能力 二、第3题</span>
+<div class="quiz">
+  <div class="ask">3.实验室利用NH₄Cl固体和Ca(OH)₂固体反应制氨气，化学方程式为2NH₄Cl＋Ca(OH)₂ →(△) 2NH₃↑＋2H₂O＋CaCl₂，下列关于该反应的说法<b>错误</b>的是（　　）</div>
+  <p>A.NH₄Cl中存在离子键和极性键<br>
+  B.此反应过程中既有离子键、极性键断裂，也有离子键和极性键形成<br>
+  C.1 mol Ca(OH)₂含2 mol O—H，1 mol NH₃含3 mol N—H<br>
+  D.像Ca(OH)₂、CaCl₂这样含金属元素的化合物一定属于离子化合物</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　含金属元素不一定离子化合物，<span class="rd">AlCl₃是共价化合物</span>。<br>
+      A✓：NH₄⁺与Cl⁻间离子键、NH₄⁺内部N—H极性键；B✓：反应中NH₄⁺内N—H键断裂、H₂O中O—H键形成等；C✓：1 mol Ca(OH)₂有2个O—H键，1 mol NH₃有3个N—H键。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>化学反应＝旧键断裂＋新键形成；溶解熔化看键型：离子化合物电离破坏离子键，共价化合物看是否与水反应</p>
+</div>
+
+<!-- 知识点③ σ键与π键 -->
+<h3>知识点③ · σ键与π键<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「共价键及其参数」· 共价键的类型（σ键和π键）</span>
+
+<div class="quiz">
+  <div class="ask">计数：下列分子中各含几个σ键、几个π键？</div>
+  <div class="mat">
+    <span>HCN</span><span>COCl₂</span><span>乙烯 CH₂＝CH₂</span><span>CH₂＝C(CH₃)C≡CH</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>HCN（H—C≡N）：2σ＋2π</b>（H—C 1σ，C≡N 1σ＋2π）→ σ∶π＝1∶1<br>
+      <b>COCl₂：3σ＋1π</b>（C＝O 1σ＋1π，2个C—Cl各1σ）<br>
+      <b>乙烯：5σ＋1π</b>（65分清单必背）<br>
+      <b>CH₂＝C(CH₃)C≡CH：10σ＋3π</b>（单键7个σ＋双键1σ＋三键2σ，共10σ；双键1π＋三键2π，共3π）
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答4题，选自6题）</span>
+<details class="bianxi"><summary><span class="q">1</span>σ键以“头碰头”方式重叠，π键以“肩并肩”方式重叠</summary>
+  <div class="ans"><b>√</b>　σ键轨道沿键轴方向头碰头，π键轨道平行肩并肩。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>σ键的电子云图形是轴对称的，π键的电子云图形是镜面对称的</summary>
+  <div class="ans"><b>√</b>　σ键绕键轴旋转形状不变（轴对称）；π键以包含键轴的平面为对称面。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>σ键可以绕键轴旋转，π键不能绕键轴旋转</summary>
+  <div class="ans"><b>√</b>　所以含π键的分子（如烯烃）不能自由旋转，存在顺反异构。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>σ键能单独形成，而π键一定不能单独形成</summary>
+  <div class="ans"><b>√</b>　<span class="em">π键必须伴随σ键存在</span>（双键、三键中都有1个σ键）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>单键1σ，双键1σ＋1π，三键1σ＋2π；σ键头碰头可单干，π键肩并肩跟班走</p>
+</div>
+
+<!-- 知识点④ 键参数 -->
+<h3>知识点④ · 键参数（键能、键长、键角）<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「共价键及其参数」· 键参数——键能、键长和键角</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列关于键参数的说法是否正确？</div>
+  <div class="mat">
+    <span>①H—F的键长是H—X中最短的</span><span>②分子的稳定性与分子间作用力的大小有关</span><span>③碳碳三键和双键的键能分别是单键的3倍和2倍</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ①<b>√</b>　F原子半径最小，H—F键长最短、键能最大、最稳定<br>
+      ②<b>×</b>　分子稳定性与<span class="rd">分子内化学键的键能</span>有关，与分子间作用力（决定熔沸点）无关<br>
+      ③<b>×</b>　键能不是简单倍数关系（C＝C键能约为C—C的1.7倍，π键能量低于σ键）
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">判断：（2024·北京，12D）依据F、Cl、Br、I的氢化物分子中氢卤键的键能，可推断它们的热稳定性强弱。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>√</b>　同主族氢化物热稳定性：HF＞HCl＞HBr＞HI，与氢卤键键能大小一致（键能越大越稳定）。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>键能越大键越短越稳定，键角决定空间形状；稳定性看键能，熔沸点看分子间作用力</p>
+</div>
+
+<!-- 知识点⑤ 电子式 -->
+<h3>知识点⑤ · 电子式<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点三「电子式」· 电子式的书写与判断</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列电子式书写是否正确？（×的说出错在哪）</div>
+  <div class="mat">
+    <span>H₂O₂：H⁺[∶O∶O∶]²⁻H⁺</span><span>NaOH：Na⁺[∶O∶H]⁻</span><span>KBr：K⁺Br⁻</span><span>HClO：H∶O∶Cl∶</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>H₂O₂ ×</b>　H₂O₂是<span class="rd">共价化合物</span>，不能写成离子形式（无[　]和电荷）：H∶O̲∶O̲∶H<br>
+      <b>NaOH √</b>　Na⁺与[∶O∶H]⁻，离子键＋O—H共价键，写法正确（2024·湖南，2A考过）<br>
+      <b>KBr ×</b>　离子化合物要写方括号和电荷：K⁺[∶Br∶]⁻（2024·贵州，2A考过）<br>
+      <b>HClO ×</b>　连接顺序错误：次氯酸是<span class="em">H—O—Cl</span>（O在中间），不是H—Cl—O
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练 第11题（2025·广东阶段练习）</span>
+<div class="quiz">
+  <div class="ask">11.（2025·广东阶段练习）下列化学用语或图示表述正确的是（　　）</div>
+  <p>A.CN⁻的电子式为[∶C∶∶∶N∶]⁻<br>
+  B.NaCl溶液中的水合离子：（见图）<br>
+  C.金刚石中碳原子采取sp²杂化<br>
+  D.H₂中共价键的电子云轮廓图：（见图）</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>A</b>　CN⁻（C≡N⁻）电子式正确：C、N间三对共用电子对，整体带1⁻（C、N各满足8电子）。<br>
+      B<span class="rd">×</span>：水合离子示意图（见图），Na⁺半径应小于Cl⁻；C<span class="rd">×</span>：金刚石每个C与4个C成键，是<span class="em">sp³杂化</span>；D<span class="rd">×</span>：H₂的σ键电子云（见图），为轴对称球形重叠。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>离子化合物加方括号标电荷，共价化合物不加；原子团（OH⁻、O₂²⁻、NH₄⁺）整体写；注意成键连接顺序（HClO是H—O—Cl）</p>
+</div>
+
+<!-- 知识点⑥ 配位键 -->
+<h3>知识点⑥ · 配位键：大题"钉子户"<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 结合配合物 · 广东卷五年落点（2024-18(5)、2025-6、2025-12、2026-17、2026-18）</span>
+<div class="quiz">
+  <div class="ask">思考：配位键是什么？在 Na₃[AlF₆]、[Cu(NH₃)₄]²⁺、[CuCl₂]⁻ 中分别指认配位键——谁提供孤对电子、谁提供空轨道？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>配位键＝特殊共价键</b>：一方提供<span class="em">孤对电子</span>、一方提供<span class="em">空轨道</span>，成键后与普通共价键无异。<br>
+      ① Na₃[AlF₆]（冰晶石）：Na⁺ 与 [AlF₆]³⁻ 之间是离子键；[AlF₆]³⁻ 内部 F⁻ 提供孤对电子 → Al³⁺ 空轨道（<span class="em">配位键</span>）——2024-18(5) 原情境；<br>
+      ② [Cu(NH₃)₄]²⁺：NH₃ 的 N 提供孤对电子 → Cu²⁺ 空轨道（深蓝色）——铜氨制备、2026-17 整题主角；<br>
+      ③ [CuCl₂]⁻：Cl⁻ 提供孤对电子 → Cu⁺（2025-12 电荷守恒情境）。<br>
+      <span class="em">口诀：加氨水过量才出深蓝配合物，加酸配合物被破坏</span>；配位原子看<span class="em">孤对电子</span>在谁身上（2026湖南T16 范式）。</div>
+  </details>
+</div>
+<details class="bianxi"><summary><span class="q">1</span>Na₃[AlF₆]中只含离子键，不含共价键</summary>
+  <div class="ans"><b>×</b>　[AlF₆]³⁻ 内部 F—Al 之间是共价键（含配位键），Na⁺ 与配离子之间才是离子键——键型账本再加一行。</div>
+</details>
+
+<!-- 知识点⑦ 课本基础题精选 -->
+<h3>知识点⑦ · 课本基础题精选<span class="p">（人教版必修第一册 4.3 化学键 练习与应用同源）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P＿＿</span> · 必修第一册 第四章 第三节 化学键（练习与应用同源）</span>
+<div class="quiz">
+  <div class="ask">1. 判断正误：阴、阳离子之间通过静电作用形成的化学键叫离子键，这种静电作用既包括吸引力也包括排斥力。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>√</b>　离子键是阴、阳离子间的静电作用，<span class="em">吸引（异号电荷）与排斥（同号电荷、核间）并存</span>。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 下列物质中，既含有离子键又含有共价键的是（　　）</div>
+  <p>A.NaCl　B.HCl　C.NaOH　D.H₂O</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　NaOH：Na⁺与OH⁻间离子键，OH⁻内部O—H共价键。<br>
+    A只含离子键；B、D只含共价键。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">3. 下列关于化学键的说法中，正确的是（　　）</div>
+  <p>A.含有共价键的化合物一定是共价化合物<br>
+  B.离子化合物中一定只含离子键<br>
+  C.非金属元素间形成的化合物一定是共价化合物<br>
+  D.共价化合物中一定不含离子键</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>D</b>　共价化合物只含共价键，一定不含离子键（若含离子键就是离子化合物）。<br>
+    A<span class="rd">×</span>：NaOH、Na₂O₂含共价键但是离子化合物；B<span class="rd">×</span>：离子化合物可含共价键（NaOH）；C<span class="rd">×</span>：NH₄Cl全由非金属组成但是离子化合物。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>含离子键必是离子化合物；离子化合物可含共价键；共价化合物只含共价键——三者关系捋清楚</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值100分]：1~10题每题5分＋11~13题每题8分＋14题12分＋15题14分）</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2、3、4、10题（25分，送分盘）：键参数概念、物质键型表、化学键说法、化学用语、甲醛氧化</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第5、6、7、8、9、11、12、13题（49分）：N₂F₂键型、高铁酸钠、Cu轨道式、乙烷σ键、键参数、CN⁻电子式、NaBH₄、N₂/CO三键</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第14、15题（26分）：周期表综合（电子式/σπ计数）、键能分析大题，<span class="rd">✂放弃键参数深度分析、大π键精确计数</span></li></ul>
+  </div>
+</div>
+<p class="tip">📖 本讲课时精练 100分制：1~10题每题5分（50分）＋11~13题每题8分（24分）＋14题12分＋15题14分。必做25＋选做49＋挑战26＝100分。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：含共价键的不一定是共价化合物（NaOH、NH₄Cl）；稀有气体单原子无化学键；离子键电子式带电荷、共价键不带…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：NaOH里哪些键哪些力？配位键算共价键吗？为什么σ键比π键稳定、还能旋转吗…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var el = findClosed();
+    if(el){
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.transition='box-shadow .5s';
+      el.style.boxShadow='0 0 0 3px #e8d48f';
+      setTimeout(function(){ el.style.boxShadow=''; }, 2000);
+      showTip('已展开答案');
+    }else{
+      all.forEach(function(d){ d.open = false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c27_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c27_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

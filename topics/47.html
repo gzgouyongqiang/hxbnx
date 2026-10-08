@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第47讲 盐类的水解及影响因素 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第47讲　盐类的水解及影响因素 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——每式写<b>水解离子方程式</b>（弱离子＋水，用 ⇌，一般不标↑↓）。<br>💡 广东口径：水解方程式书写六年无独立设问——但"谁弱写谁、水解用 ⇌、双水解完全才用 ＝"三条规范是硬底线（外省高频：2024 北京9 Mg₃N₂＋D₂O、2026 浙江11 ICl＋H₂O）；2025·7A 考的是"铝盐一定显酸性"的判断，不是写方程式。</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 NH₄Cl 溶液水解的离子方程式，并说明溶液显什么性？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盐类的水解原理」· 一、水解离子方程式的书写（1）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>NH₄⁺＋H₂O ⇌ NH₃·H₂O＋H⁺</b>——溶液显<b>酸性</b><br>
+      弱碱阳离子 NH₄⁺ 结合水电离的 OH⁻，溶液中 c(H⁺)＞c(OH⁻)。<span class="rd">⚠ 一水合氨是弱碱写分子式不拆，配平别丢 H₂O。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 Na₂CO₃ 溶液水解的离子方程式（分步），哪一步为主？溶液显什么性？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盐类的水解原理」· 一、水解离子方程式的书写（2）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">第一步（主）：<b>CO₃²⁻＋H₂O ⇌ HCO₃⁻＋OH⁻</b><br>
+      第二步（弱）：HCO₃⁻＋H₂O ⇌ H₂CO₃＋OH⁻——溶液显<b>碱性</b><br>
+      <span class="em">规则</span>：多元弱酸盐<b>分步写、以第一步为主</b>（Na₂CO₃ 碱性主要来自第一步）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 FeCl₃ 溶液水解的离子方程式，并回答：配制 FeCl₃ 溶液时应加入什么抑制水解？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盐类的水解原理」· 一、水解离子方程式的书写（3）＋真题 2023·广东 T17(4)</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Fe³⁺＋3H₂O ⇌ Fe(OH)₃＋3H⁺</b>——多元弱碱盐<b>一步完成</b><br>
+      配制时<b>加入少量盐酸</b>（或浓盐酸溶解再稀释），增大 c(H⁺) 抑制 Fe³⁺ 水解——<span class="em">这是 2023 广东 T17(4) 的答案："加酸的目的是抑制 Fe³⁺ 水解"</span>，也是广东流程题"加酸防水解"的固定动作。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 水解定义与三特点</b>：盐电离的离子与水电离的 H⁺/OH⁻ 结合生成<b>弱电解质</b>；特点：<b>可逆、吸热（中和的逆反应）、微弱</b>；结果：<b>促进</b>水的电离（N_A 模板：<b>连续三年</b>考"水解数目偏差"——2023·11C NaHCO₃、2024·10B NH₄NO₃、2025·10C NH₄Cl，同款句式见真题 2）。</li>
+  <li><b>② 水解规律（必背）</b>：<span class="em">"有弱才水解，越弱越水解；谁强显谁性，同强显中性"</span>——NaCl 中性、NH₄Cl 酸性、CH₃COONa 碱性、Na₂CO₃ 碱性、NaHCO₃ 碱性、CuSO₄ 酸性。</li>
+  <li><b>③ 三步法判酸碱性</b>：拆离子 → 找弱离子（弱酸根/弱碱阳离子）→ 定酸碱性（弱酸根水解出 OH⁻ 显碱、弱碱阳离子水解出 H⁺ 显酸）。<span class="rd">弱酸弱碱盐（如 CH₃COONH₄）谁更弱显谁性</span>。</li>
+  <li><b>④ 书写规则</b>：水解用 ⇌，一般不标 ↑↓；多元弱酸盐<b>分步</b>写以第一步为主；多元弱碱盐<b>一步</b>完成；双水解程度大（Al³⁺＋HCO₃⁻/CO₃²⁻/S²⁻）用 ＝ 并标 ↑↓。<span class="rd">Al₂S₃ 不能由溶液制得（双水解完全）</span>。</li>
+  <li><b>⑤ 影响与应用</b>：内因越弱越水解；外因升温促进（吸热）、稀释促进、加酸抑制阳离子水解、加碱抑制阴离子水解。应用：明矾净水（Al³⁺ 水解胶体吸附）、泡沫灭火器（Al³⁺＋HCO₃⁻）、草木灰不与铵态氮肥混用、热碱去油污、Na₂CO₃ 试剂瓶用橡胶塞。<span class="bl">⚑ Kh＝Kw/Ka 已是 2025 落点（2025·17(5)②）——不再是放弃项，"用盐测酸"间接法见真题 4；蒸干灼烧、SnCl₂ 配制保存是外省高频，冲刺层见知识点④。</span><span class="rd">✂ 基础层不做：双水解定量、水解制纳米材料、明矾净水直问默写</span>。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据分层发言稿·2026-09-23 六年真题逐题核查）</b>
+  <p>· <b>🟢 必保分（N_A 模板三年连考＋应用小问）</b>：<span class="em">N_A 水解数目偏差——2023·11C（NaHCO₃）、2024·10B（NH₄NO₃）、2025·10C（NH₄Cl），同款句式同款错法</span>；抑制水解 2023·17(4)（Fe₂(SO₄)₃ 加酸"目的"标准答案）；净水 2022·12D（FeCl₃→Fe(OH)₃ 胶体）。</p>
+  <p>· <b>🟠 主突破（陌生盐判断＋Kh 新信号）</b>：陌生弱碱成盐 2021·8（GHCl 水解显酸性＋稀释促进，第 45 讲已练）；<span class="em">2025·7A"铝盐一定显酸性"——"一定"即绝对化陷阱（偏铝酸盐就是反例）</span>；<span class="em">2025·17(5)② Kh＝Kw/Ka 方案设计首次登场</span>——水解正从"背结论"转向"用常数"。</p>
+  <p>· <b>⚑ 熟盐直问六年 0 次（做减法）</b>：Na₂CO₃"谁强显谁性"、酸式盐两性、泡沫灭火器双水解、明矾净水直问、水解方程式独立书写/正误、温度影响、蒸干灼烧——全部零落点；<span class="rd">水解方程式书写正误＋抑制水解配制保存＋蒸干灼烧是外省高频三角度，冲刺层必补（见知识点④）。</span></p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约28分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 水解原理与"谁强显谁性"<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盐类的水解原理」· 1~4 小节（定义/结果/特点/规律）</span>
+
+<div class="quiz">
+  <div class="ask">【讲义原题】下列盐溶液（均为 1 mol·L⁻¹ 级别）：① CuSO₄　② KNO₃　③ Na₂CO₃　④ (NH₄)₂SO₄　⑤ NaHCO₃　⑥ CH₃COONa<br>
+  呈酸性的是＿＿＿；呈碱性的是＿＿＿；呈中性的是＿＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">酸性：<b>①④</b>（Cu²⁺、NH₄⁺ 是弱碱阳离子）；碱性：<b>③⑤⑥</b>（CO₃²⁻、HCO₃⁻、CH₃COO⁻ 是弱酸根）；中性：<b>②</b>（KNO₃ 强酸强碱盐不水解）。<br>
+      <span class="em">三步法演示</span>：拆离子（如 CuSO₄→Cu²⁺＋SO₄²⁻）→ 找弱（Cu²⁺ 弱碱阳离子）→ 定酸（水解出 H⁺）。<span class="rd">注意 NaHCO₃：HCO₃⁻ 既电离又水解，水解为主显碱性——别当成酸式盐就判酸。</span></div>
+  </details>
+</div>
+
+<p><b style="color:var(--accent);">判断抢答 5 连（讲义原文）：</b></p>
+<details class="bianxi"><summary><span class="q">1</span>溶液呈中性的盐一定是强酸、强碱反应生成的盐</summary>
+  <div class="ans"><b>×</b>　弱酸弱碱盐如 CH₃COONH₄，若弱酸与弱碱电离程度相当，溶液也呈中性。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>pH 相同的盐酸和氯化铵溶液中由水电离出的 c(H⁺) 相同</summary>
+  <div class="ans"><b>×</b>　盐酸抑制水电离（c水(H⁺)＝10⁻¹³ 级），NH₄Cl 促进水电离（c水(H⁺)＝10⁻³ 级），完全不同。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>NaHCO₃、NaHSO₄ 都能促进水的电离</summary>
+  <div class="ans"><b>×</b>　NaHCO₃ 水解促进；NaHSO₄ 电离出 H⁺，<b>抑制</b>水的电离。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>相同温度时，浓度均为 0.2 mol·L⁻¹ 的 NaHCO₃ 和 Na₂CO₃ 溶液中，存在的粒子种类相同</summary>
+  <div class="ans"><b>√</b>　均含 Na⁺、H⁺、OH⁻、H₂O、H₂CO₃、HCO₃⁻、CO₃²⁻——种类相同，浓度不同。</div>
+</details>
+<details class="bianxi"><summary><span class="q">5</span>熔融的 Na₂CO₃ 和 Na₂CO₃ 溶液中，c(Na⁺) 都是 c(CO₃²⁻) 的两倍</summary>
+  <div class="ans"><b>×</b>　熔融时无水解，恰好 2 倍；溶液中 CO₃²⁻ 水解减少，c(Na⁺)＞2c(CO₃²⁻)。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p><span class="em">有弱才水解、越弱越水解、谁强显谁性、同强显中性</span>；三步法：拆离子、找弱离子、定酸碱性——弱酸根出 OH⁻、弱碱阳离子出 H⁺。</p>
+</div>
+
+<!-- 知识点② -->
+<h3>知识点② · 水解离子方程式书写规则<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「盐类的水解原理」· 一、水解离子方程式的书写（书写规则四条）</span>
+
+<p><b style="color:var(--accent);">书写规则速查（必背）：</b><br>
+① 一般用 <b>⇌</b>、不标 ↑↓（Na₂CO₃ 水解不写气体）；<br>
+② <b>多元弱酸盐分步</b>写，以第一步为主（CO₃²⁻→HCO₃⁻→H₂CO₃）；<br>
+③ <b>多元弱碱盐一步</b>完成（Fe³⁺＋3H₂O ⇌ Fe(OH)₃＋3H⁺）；<br>
+④ 阴、阳离子<b>双水解</b>：程度小用 ⇌（CH₃COO⁻＋NH₄⁺），程度大（Al³⁺ 与 HCO₃⁻/CO₃²⁻/S²⁻）用 ＝ 并标 ↑↓。</p>
+
+<div class="quiz">
+  <div class="ask">【判断正误 ×4（课时精练 2 同款）】A. Na₂SO₃ 的水解：SO₃²⁻＋2H₂O ⇌ H₂SO₃＋2OH⁻？B. NaHCO₃ 的电离：NaHCO₃ ⇌ Na⁺＋H⁺＋CO₃²⁻？C. KHS 溶液中 HS⁻ 的电离：HS⁻＋H₂O ⇌ H₃O⁺＋S²⁻？D. AlCl₃ 溶液与 Na₂S 溶液混合：2Al³⁺＋3S²⁻＋6H₂O ＝ 2Al(OH)₃↓＋3H₂S↑？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">A. <b>×</b>——多元弱酸盐分步水解，第一步 SO₃²⁻＋H₂O ⇌ HSO₃⁻＋OH⁻；<br>
+      B. <b>×</b>——NaHCO₃ 的电离：NaHCO₃ ＝ Na⁺＋HCO₃⁻（HCO₃⁻ 不拆）；<br>
+      C. <b>√</b>——HS⁻ 的电离是"失 H⁺ 给水"：HS⁻＋H₂O ⇌ H₃O⁺＋S²⁻（注意区分：HS⁻＋H₂O ⇌ H₂S＋OH⁻ 才是水解）；<br>
+      D. <b>√</b>——Al³⁺ 与 S²⁻ 双水解程度大，用 ＝、标 ↑↓。<br>
+      <span class="em">易混三兄弟</span>：电离 vs 水解方向相反；HS⁻ 的电离方程式和水解方程式要分清（一个给水 H⁺、一个抢水 H⁺）。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>水解书写四规则：<span class="em">可逆号、不标箭，多元弱酸分步走，多元弱碱一步通，双水解大用等号</span>；电离写"＝"、水解写"⇌"，方向别搞反。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 影响因素与应用（广东"抑制水解"特色）<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「盐类水解的影响因素与应用」· 1.内因 / 2.外因 / 3.Fe₂(SO₄)₃ 为例（表）＋二、盐类水解的应用</span>
+
+<p><b style="color:var(--accent);">以 Fe³⁺＋3H₂O ⇌ Fe(OH)₃＋3H⁺（吸热）为例：</b></p>
+<table class="tb">
+  <tr><th>改变条件</th><th>平衡移动</th><th>现象/结果</th></tr>
+  <tr><td>升温</td><td>向右（吸热）</td><td>颜色变深（水解程度增大）</td></tr>
+  <tr><td>加 H₂SO₄</td><td>向左（增 H⁺ 抑制）</td><td>颜色变浅</td></tr>
+  <tr><td>加水稀释</td><td>向右</td><td>颜色变浅（浓度稀释主导）</td></tr>
+  <tr><td>加 NaHCO₃</td><td>向右（HCO₃⁻ 耗 H⁺）</td><td>生成 Fe(OH)₃ 红褐沉淀＋CO₂ 气体</td></tr>
+</table>
+
+<div class="quiz">
+  <div class="ask">【应用判断】① 明矾净水原理？② 配制 FeCl₃ 溶液如何防变质？③ 草木灰（K₂CO₃）为什么不能与铵态氮肥混用？④ 热纯碱去油污为什么比冷的好？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① Al³⁺ 水解生成 Al(OH)₃ 胶体，<b>吸附</b>水中悬浮杂质（只净水不杀菌）；<br>
+      ② 加<b>盐酸</b>抑制 Fe³⁺ 水解（不能加硫酸——引入 SO₄²⁻ 杂质）；<br>
+      ③ K₂CO₃ 水解显碱，与铵态氮肥（NH₄⁺）<b>双水解互促</b>放出 NH₃ 跑肥；<br>
+      ④ 水解吸热，<b>升温促进</b>CO₃²⁻ 水解，c(OH⁻) 大、去油污强。<br>
+      <span class="em">广东特色</span>：①②都是"加酸抑制水解"类应用（2023 广东 T17(4)/T18(5) 同思路）。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p><span class="em">水解吸热：升温促进、稀释促进；阳离子水解加酸抑制、阴离子水解加碱抑制</span>；明矾净水靠吸附、灭火器里双水解、草木灰遇铵肥跑氨、热碱去油更给力。</p>
+</div>
+
+<h3>知识点④ · 外省镜子十条清单<span class="p">（🔵 冲刺层·自选）</span></h3>
+<span class="loc">💡 依据：分层发言稿（2026-09-23）——广东还没考、外省已在考的 13 个角度精选 10 条，冲刺层逐条自查</span>
+<details><summary>展开十条清单</summary>
+  <div class="ans">
+    <b>① 水解方程式书写与正误</b>——2024 北京9（Mg₃N₂＋D₂O 制 ND₃，D 代 H）、2026 浙江11（ICl＋H₂O）、2024 贵州7C/2026 贵州5D（双水解正误）；<br>
+    <b>② 双水解相互促进</b>——2024 江苏14（Nd³⁺＋CO₃²⁻→NdOHCO₃↓ 沉钕工艺）、泡沫灭火器（2024 贵州7C）；<br>
+    <b>③ 越弱越水解</b>——2026 河北13B（甲酸铵显酸性⇔Ka(HCOOH)＞Kb(NH₃·H₂O)）、2024 天津12、2024 浙江17(3)；<br>
+    <b>④ Kh 计算与比较</b>——2024 湖南11（Na₂HPO₄：Kh＝Kw/Ka₂ 与 Ka₃ 比大小）、2024 浙江15C（Na₂S 水解率）、2026 陕晋青宁14（CaCO₃ 水解使溶解度增大）；<br>
+    <b>⑤ 抑制水解的配制保存</b>——2024 重庆16①（SnCl₂ 溶于浓盐酸抑水解＋加锡粒防氧化"双目的"）、2026 浙江10D（MgCl₂ 溶液在 HCl 气流中蒸干）、2026 湖北16(3)（酸浸供 H⁺）；<br>
+    <b>⑥ 蒸干灼烧产物判断</b>——2024 江苏12C（Na₂SO₃ 蒸干灼烧被 O₂ 氧化成 Na₂SO₄）、2026 浙江10D（MgCl₂→Mg(OH)₂/MgO）；<br>
+    <b>⑦ 净水应用</b>——2026 云南4C（明矾净水但溶液显酸性，"显碱性"即错）、2024 浙江5D（聚合氯化铝）；<br>
+    <b>⑧ N_A 陷阱变式</b>——2024 河北4C（KO₂ 中 O₂⁻）、2024 辽宁4C（Na₂SO₃ 中 SO₃²⁻）、2026 四川2C（Na₂CO₃ 中 CO₃²⁻）；<br>
+    <b>⑨ 水解促进水电离程度比较</b>——2026 湖南14C（Ba(OH)₂ 滴 NaHCO₃，恰好生成 Na₂CO₃ 时水电离程度最大）；<br>
+    <b>⑩ 结构解释水解难易</b>——2026 湖北13C（Fe³⁺ 电荷高、半径小，易水解成胶体）。<br>
+    <span class="gr">反向发现：外省也在转型——定量化（Kh 计算、水解率）＋图像化（δ-pH、pM-pH 融合）；"水解方程式书写正误、抑制水解配制保存、蒸干灼烧"三个传统角度广东全空白、外省高频，要补。</span>
+  </div>
+</details>
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑤ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第三章 第三节「盐类的水解」· 练习与应用（同源同型速练）</span>
+<p class="tip">以下 3 题与课本第三节「盐类的水解」练习同考点同型，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】判断下列盐溶液的酸碱性（填"酸/碱/中"）：① NH₄Cl＿＿；② Na₂CO₃＿＿；③ KNO₃＿＿；④ FeCl₃＿＿；⑤ CH₃COONa＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 酸（NH₄⁺ 水解）② 碱（CO₃²⁻ 水解）③ 中（强强盐）④ 酸（Fe³⁺ 水解）⑤ 碱（CH₃COO⁻ 水解）<br>
+      规律回扣：<b>谁强显谁性</b>——阳离子是弱碱离子→酸、阴离子是弱酸根→碱。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】写出下列水解离子方程式：① CH₃COONa；② NH₄Cl；③ Na₂CO₃（第一步）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>CH₃COO⁻＋H₂O ⇌ CH₃COOH＋OH⁻</b>；<br>
+      ② <b>NH₄⁺＋H₂O ⇌ NH₃·H₂O＋H⁺</b>；<br>
+      ③ <b>CO₃²⁻＋H₂O ⇌ HCO₃⁻＋OH⁻</b>。<br>
+      <span class="em">套路</span>：弱酸根＋水→弱酸＋OH⁻；弱碱阳离子＋水→弱碱＋H⁺。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③】简答：① 为什么明矾能净水？② 为什么 Na₂CO₃ 溶液的试剂瓶不能用磨口玻璃塞？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① Al³⁺ 水解生成 Al(OH)₃ 胶体，能<b>吸附</b>水中悬浮杂质沉降；<br>
+      ② Na₂CO₃ 水解使溶液显<b>碱性</b>，碱与磨口玻璃塞中的 SiO₂ 反应生成 Na₂SiO₃ 使瓶塞粘连——应用橡胶塞。<br>
+      <span class="em">两个生活水解应用</span>：净水吸附＋碱性腐蚀玻璃，都是课本课后题常客。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~12题每题3分 ＋ 13题14分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 12分）</h4>
+    <ul><li>第1题（3分）：用途与水解无关——FeCl₃ 腐蚀铜板是氧化还原（A）；</li>
+    <li>第5题（3分）：FeCl₃ 水解说法错误——50 ℃ 水解程度比 20 ℃ 小？（C，升温促进）；</li>
+    <li>第8题（3分）：0.10 mol·L⁻¹ 溶液 pH 最大——Na₂S（D，越弱越水解）；</li>
+    <li>第10题（3分）：证明水解吸热——NH₄NO₃ 溶解降温不能证明（A）；</li>
+    <li>★ 口述：向同桌复述 N_A 水解模板的句式与错因（"1 L x mol/L 盐溶液中弱离子数目＝N_A×x"必错——水解＋电离双向消耗）。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 15分）</h4>
+    <ul><li>第2题（3分）：电离/水解方程式正误——HS⁻ 电离给水 H⁺（C）；</li>
+    <li>第3题（3分）：CaCl₂ 加进 Na₂CO₃——沉淀促电离、不促水解（C）；</li>
+    <li>第4题（3分）：加 CuO 调 pH 除 Fe³⁺ 杂质（C）——水解应用经典；</li>
+    <li>第9题（3分）：SF₄ 水解方程式 SF₄＋2H₂O ＝ 4HF＋SO₂（B）；</li>
+    <li>第11题（3分）：铝片与 Na₂CO₃ 溶液——加热与 H₂ 逸出都促水解（D 错）。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 23分）</h4>
+    <ul><li>第6题（3分）：2021·浙江 水解与水电离综合（D）；</li>
+    <li>第7题（3分）：2024·天津 甲胺 CH₃NH₂ 碱性强弱比较（C）；</li>
+    <li>第12题（3分）：2022·湖南 FeCl₃ 与 Na₂SO₃ 实验探究——SO₃²⁻ 对水解有影响（D）；</li>
+    <li>第13题（14分）：弱酸 Ka 综合（HCOONa/NaCN/Na₂CO₃）——先抢 (1) pH 序 c＞b＞a、(3) CN⁻＋CO₂＋H₂O ＝ HCO₃⁻＋HCN 约 6 分；(2)(4) 水解常数比值与离子浓度排序属 Kh/守恒综合，<span class="rd">✂ 可部分放弃</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 12＋15＋23＝50 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：水解方程式写 ⇌ 且一般不写 ↑↓；"越弱越水解"——同浓度 Na₂CO₃ 比 NaHCO₃ 碱性强；配制 FeCl₃ 溶液加盐酸抑制水解…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：蒸干 FeCl₃ 溶液得不到 FeCl₃ 固体，为什么？要得到它该怎么办？…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c47_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c47_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

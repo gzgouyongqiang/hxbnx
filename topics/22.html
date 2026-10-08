@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第22讲 碳、硅 无机非金属材料 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第22讲　碳、硅　无机非金属材料</h1>
+</header>
+
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出工业上由SiO₂与焦炭在高温下制粗硅的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 正文「硅及其化合物的转化关系」②</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>SiO₂＋2C <span class="eqw">＝<span class="eqw-c">高温</span></span> Si＋2CO↑</b>　（C作还原剂，得到粗硅，需进一步提纯）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出SiO₂与NaOH溶液反应的化学方程式（玻璃被碱液腐蚀）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 正文「硅及其化合物的转化关系」③</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>SiO₂＋2NaOH ＝ Na₂SiO₃＋H₂O</b>　（所以实验室盛碱液的试剂瓶不能用玻璃塞）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出水玻璃溶液遇少量CO₂生成硅酸的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 正文「硅酸钠」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Na₂SiO₃＋CO₂＋H₂O ＝ Na₂CO₃＋H₂SiO₃↓</b>　（强酸制弱酸：碳酸酸性强于硅酸）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 材料分类（广东卷T1必考）</b>：陶瓷／玻璃／水泥=传统无机非金属；SiC／石墨烯／光导纤维=新型；丝／纸／竹／木=有机高分子；玛瑙／石英／水晶=SiO₂、大理石=CaCO₃</li>
+  <li><b>② SiO₂特殊酸性氧化物</b>：不溶于水；能与HF反应（刻蚀玻璃）；能与NaOH反应——石英坩埚不能熔NaOH</li>
+  <li><b>③ 硅的制备与用途</b>：SiO₂＋2C高温→Si＋2CO；晶体硅=半导体（芯片、太阳能电池）；SiO₂=光导纤维；自然界中硅只以化合态存在</li>
+  <li><b>④ 水玻璃Na₂SiO₃</b>：黏合剂、防火剂；遇盐酸或CO₂生成H₂SiO₃</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷碳族元素考点与难度研究报告》）</b>
+  <p>· 硅是广东卷<span class="em">"STSE送分王"</span>——连续6年每年必考1~2道（0.70~0.85）：2023Q1陶埙、2023Q3光纤SiO₂、2024Q1玉龙、2024Q3石英表、2025Q5单晶硅芯片、2026Q2/Q4碳纤维·单晶硅。硅酸盐材质辨识是整套卷<span class="em">最稳送分点</span>，必须人人过关。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.70~0.85）</b>：材料分类（<span class="rd">65分清单标注"广东卷T1必考"</span>）、SiO₂特殊酸性氧化物（与HF刻蚀玻璃、石英坩埚不能熔NaOH）、硅制备与用途（SiO₂＋2C高温→Si、芯片/光导纤维）、水玻璃Na₂SiO₃。</p>
+  <p>· <b style="color:var(--accent)">两大陷阱必过关</b>：SiO₂<span class="em">"张冠李戴"四年四连设</span>——2023-3"光纤主要材质是Si"✗（是SiO₂）、2024-3"石英成分是SiC"✗（是SiO₂）、2026-4"石英玻璃是硅酸钙"✗（是SiO₂）；碳酸盐<span class="em">"五连击"</span>——小苏打＝NaHCO₃（2022-6 把小苏打配成 Na₂CO₃ 设错）、热稳定性 Na₂CO₃＞NaHCO₃（2025-7 写反设错）、水解显碱性去油污（2025-6）、与酸产 CO₂、CaCO₃＝石灰石/汉白玉/水垢（碳酸盐详解见第 10 讲钠，本讲保俗称与热稳定性）。</p>
+  <p>· <b style="color:var(--accent)">能力层主线</b>：CO₂ 资源化"剥壳训练"——2021-19 CH₄/CO₂ 重整母题，<span class="em">看见 CO₂ 别慌，先问考的是速率、平衡还是热化学</span>；2021-9 火星电池母题一题多变（见下方拓展）；共价晶体家族熔点序列（金刚石＞SiC＞单晶硅）见第 30 讲晶体专练。</p>
+  <p>· <b style="color:var(--accent)">突破（0.50~0.70）</b>：碳循环与双碳背景题（2022Q9）、碳转化推断（NaHCO₃/Na₂CO₃热稳定性）、同素异形体（金刚石/石墨/C₆₀）、活性炭吸附应用。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：SiH₄ 自燃、CH₄-CO₂ 重整综合（2021Q19，热化学＋平衡＋晶胞跨模块）——<span class="em">多晶硅 SiHCl₃ 循环、碳族晶胞、CO₂ 电化学资源化、Pb/Sn 流程是外省四大高热区</span>（Pb 补位概率最高）；石墨烯/碳纤维"新材料概念辨析"不放弃（2024-7、2025-13、2026-2 连续落点，本讲分类与辨析已覆盖）。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 碳单质与碳酸盐 -->
+<h3>知识点① · 碳单质与碳酸盐<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「碳族元素与碳单质」「碳酸及碳酸盐」</span>
+
+<div class="quiz">
+  <div class="ask">找一找：下列物质中，哪些互为同素异形体？</div>
+  <div class="mat">
+    <span>金刚石</span><span>石墨</span><span>C₆₀</span><span>CO₂</span><span>CO</span><span>足球烯</span><span>木炭</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>金刚石／石墨／C₆₀／足球烯／木炭</b>（无定形碳）——同一种元素（C）形成的不同单质；CO₂、CO是<span class="em">化合物</span>，排除。</div>
+  </details>
+</div>
+
+<span class="loc">📖 拓展 · CO₂ 的氧化性（2021·广东 9 母题，能力层训练主线）</span>
+<div class="quiz">
+  <div class="ask">拓展：火星电池中以 CO₂ 为正极反应气体：4Na＋3CO₂ ＝ 2Na₂CO₃＋C。CO₂ 中碳被氧化还是被还原？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>被还原</b>（＋4→0，CO₂ 得电子作氧化剂）——CO₂ 通常表现酸性氧化物的"惰性"，但在电池/镁燃烧中体现氧化性（2Mg＋CO₂＝2MgO＋C 同款，镁着火不能用 CO₂ 灭火的根源）。<br>
+      <span class="em">训练主线"一题多变"</span>：把负极换 K、Mg，把 CO₂ 换 NO₂/SO₂，练"气体在正极得电子＋产物价态判断"。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答3题）</span>
+<details class="bianxi"><summary><span class="q">1</span>金刚石、石墨、C₆₀都是由碳元素组成的单质</summary>
+  <div class="ans"><b>√</b>　都是碳元素的单质，互为同素异形体。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>二氧化碳能使紫色石蕊溶液变红，说明二氧化碳具有酸性</summary>
+  <div class="ans"><b>×</b>　是CO₂与水生成的<span class="em">碳酸</span>使石蕊变红，CO₂本身没有酸性。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>石墨转变为金刚石的反应属于氧化还原反应</summary>
+  <div class="ans"><b>×</b>　同素异形体互变，C元素化合价<span class="em">不变</span>，属于化学变化但不是氧化还原反应。</div>
+</details>
+
+<!-- 知识点② 硅与SiO₂ -->
+<h3>知识点② · 硅与SiO₂<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「硅和二氧化硅」</span>
+
+<p><span class="em">硅</span>：自然界中只以<span class="em">化合态</span>存在（氧化物、硅酸盐）；晶体硅是共价晶体——半导体材料、太阳能电池、芯片。<br>
+<span class="em">SiO₂</span>：共价晶体、难溶于水——光导纤维、光学仪器。</p>
+
+<div class="quiz">
+  <div class="ask">思考：SiO₂是酸性氧化物，却有三个"特殊点"，分别是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① <span class="em">不溶于水、不与水反应</span>（不能像CO₂那样生成对应酸，硅酸只能由可溶性硅酸盐制得）；<br>
+      ② 能与<span class="em">HF</span>反应：SiO₂＋4HF ＝ SiF₄↑＋2H₂O（用来刻蚀玻璃）；<br>
+      ③ 能与<span class="em">NaOH</span>反应：SiO₂＋2NaOH ＝ Na₂SiO₃＋H₂O（<span class="rd">石英坩埚不能熔NaOH</span>）。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 硅、二氧化硅及硅酸的制取 例2</span>
+<div class="quiz">
+  <div class="ask">2.纯二氧化硅可用下列流程制得。下列说法不正确的是（　　）（见图）</div>
+  <p>A.X可用作木材防火剂<br>
+  B.步骤Ⅱ的反应是Na₂SiO₃＋H₂SO₄ ＝ H₂SiO₃↓＋Na₂SO₄<br>
+  C.步骤Ⅱ中的稀硫酸可用CO₂来代替<br>
+  D.SiO₂既能与NaOH溶液反应，又能与氢氟酸反应，所以SiO₂是两性氧化物</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　SiO₂能与HF反应是<span class="rd">它的特性（唯一能溶解它的酸）</span>，不能说明是两性氧化物；两性氧化物需既能与酸又能与碱反应<span class="em">生成盐和水</span>，SiO₂与其他酸不反应。<br>
+      <span style="color:var(--dim);font-size:15px;">A✓：X是Na₂SiO₃（水玻璃）可作防火剂；B✓：强酸制弱酸；C✓：碳酸酸性强于硅酸，可用CO₂代替。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>SiO₂是酸性氧化物，可溶于强碱（NaOH），不溶于任何酸</summary>
+  <div class="ans"><b>×</b>　SiO₂能溶于<span class="em">HF</span>（SiO₂＋4HF ＝ SiF₄↑＋2H₂O）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>SiO₂能与HF反应，因此可用HF刻蚀玻璃</summary>
+  <div class="ans"><b>√</b>　玻璃含SiO₂，HF能溶解它，用于刻蚀玻璃。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>石英是良好的半导体材料，可以制成光电池，将光能直接转化成电能</summary>
+  <div class="ans"><b>×</b>　石英是<span class="em">SiO₂</span>，不是半导体；半导体是<span class="em">晶体硅</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>因为高温时二氧化硅与碳酸钠反应放出二氧化碳，所以硅酸酸性比碳酸强</summary>
+  <div class="ans"><b>×</b>　高温下CO₂逸出使反应正向进行，是<span class="em">难挥发性酸制挥发性酸</span>，与酸性强弱无关（水溶液中碳酸酸性仍强于硅酸）。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>二氧化硅真特殊：不溶水、怕氢氟酸、石英坩埚熔不了碱</p>
+</div>
+
+<!-- 知识点③ 水玻璃与硅酸盐 -->
+<h3>知识点③ · 水玻璃与硅酸盐<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「硅酸钠」</span>
+
+<div class="quiz">
+  <div class="ask">思考：水玻璃是什么？为什么能用作木材防火剂和黏合剂？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      水玻璃是<span class="em">Na₂SiO₃的水溶液</span>，有黏性、显碱性；<br>
+      作防火剂：Na₂SiO₃受热不燃烧，失水后生成SiO₂覆盖在木材表面，<span class="em">隔绝空气</span>；<br>
+      作黏合剂：有黏性，是常用的矿物胶。
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">练一练：硅酸盐可用氧化物形式表示，试把Na₂SiO₃、Mg₂SiO₄改写成氧化物形式</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Na₂SiO₃ → Na₂O·SiO₂</b>；<b>Mg₂SiO₄ → 2MgO·SiO₂</b><br>
+    <span style="color:var(--dim);font-size:15px;">方法：金属氧化物在前、SiO₂在后，中间用"·"连接，原子个数不变。</span></div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>水玻璃泡木头，不怕火烧；硅酸只能"酸制"，强酸制弱酸</p>
+</div>
+
+<!-- 知识点④ 无机非金属材料 -->
+<h3>知识点④ · 无机非金属材料<span class="p">（约10分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「无机非金属材料」传统＋新型</span>
+
+<div class="quiz">
+  <div class="ask">分类：下列材料分别属于哪一类？（传统无机非金属／新型无机非金属／有机高分子／SiO₂类／CaCO₃类）</div>
+  <div class="mat">
+    <span>陶瓷</span><span>玻璃</span><span>水泥</span><span>碳纤维</span><span>石墨烯</span><span>SiC</span><span>丝绸</span><span>纸张</span><span>玛瑙</span><span>大理石</span><span>塑料</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <b>传统无机非金属：</b>陶瓷、玻璃、水泥<br>
+      <b>新型无机非金属：</b>碳纤维、石墨烯、SiC（光导纤维）<br>
+      <b>有机高分子：</b>丝绸、纸张、塑料<br>
+      <b>SiO₂类：</b>玛瑙（石英、水晶）；<b>CaCO₃类：</b>大理石<br>
+      <span style="color:var(--dim);font-size:15px;">判据：看成分与来源——硅酸盐烧制物是传统，碳/硅新型材料是新型，天然纤维/合成树脂是有机高分子。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 传统无机非金属材料 题1</span>
+<div class="quiz">
+  <div class="ask">1.下列关于博物院馆藏文物的说法正确的是（　　）（见图）</div>
+  <p>A.春秋龙纹人字形玉佩的主要成分是二氧化硅<br>
+  B.西汉铜错金银承弓器的主要成分属于无机非金属材料<br>
+  C.宋海棠花式玛瑙碗的主要成分是碳酸钙<br>
+  D.明宣德青花缠枝莲纹碗的主要成分是硅酸盐</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　青花瓷是陶瓷，主要成分是<span class="em">硅酸盐</span>。<br>
+      <span style="color:var(--dim);font-size:15px;">A×：玉佩是玉石（硅酸盐矿物），不是SiO₂；B×：青铜是金属材料；C×：玛瑙是SiO₂，不是CaCO₃。</span>
+    </div>
+  </details>
+</div>
+
+<details class="bianxi"><summary><span class="q">1</span>沙子和黏土的主要成分均为硅酸盐</summary>
+  <div class="ans"><b>×</b>　沙子主要成分是<span class="em">SiO₂</span>；黏土是含水的铝硅酸盐。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>石墨烯的电阻率低，热导率也低</summary>
+  <div class="ans"><b>×</b>　石墨烯电阻率低、<span class="em">热导率高</span>（优异的导电导热材料）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>冰壶主材料花岗岩属于无机非金属材料（2022·辽宁，1A）</summary>
+  <div class="ans"><b>√</b>　花岗岩是天然矿物（硅酸盐），属于无机非金属材料。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>陶瓷玻璃水泥老传统，碳化硅石墨烯新型新；丝纸竹木有机料，石英玛瑙都是SiO₂</p>
+</div>
+
+<!-- 知识点⑤ 课本基础题精选 -->
+<h3>知识点⑤ · 课本基础题精选<span class="p">（人教版必修第一册 5.3 无机非金属材料 练习与应用）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P＿＿</span> · 第五章 第三节 无机非金属材料</span>
+<div class="quiz">
+  <div class="ask">1. 下列物质中，<b>不属于</b>硅酸盐材料的是（　　）</div>
+  <p>A.玻璃　B.陶瓷　C.水晶　D.水泥</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　水晶的主要成分是<span class="em">SiO₂</span>（石英晶体），不是硅酸盐；玻璃、陶瓷、水泥都是以<span class="em">硅酸盐</span>为主要成分的传统无机非金属材料。<br>
+    <span class="em">口诀：陶瓷玻璃水泥老传统，石英玛瑙水晶都是SiO₂。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 下列关于二氧化硅的说法中，正确的是（　　）</div>
+  <p>A.SiO₂晶体易溶于水，水溶液呈酸性<br>
+  B.二氧化硅分子由一个硅原子和两个氧原子组成<br>
+  C.不能用二氧化硅跟水直接反应制取硅酸<br>
+  D.二氧化硅既能与氢氟酸反应，又能与烧碱反应，所以它是两性氧化物</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　SiO₂<span class="em">不溶于水、不与水直接反应</span>，硅酸只能由可溶性硅酸盐与酸反应制得，C正确。<br>
+    A<span class="rd">×</span>：SiO₂难溶于水；B<span class="rd">×</span>：SiO₂是共价晶体，无单个"分子"；D<span class="rd">×</span>：与HF反应是SiO₂的特性，两性氧化物须与酸、碱反应均生成盐和水。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（1~8题每题6分，9~12题每题7分，13、14题各12分）</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、2、4、6题：硅芯片、定窑白瓷、硅与SiO₂性质、SiO₂酸性氧化物（24分，送分盘）</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第3、5、7、8题：粗硅提纯NA、机器狗材料、釉料成分、多晶硅流程（24分）</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第9~12题：水玻璃流程、石墨烯、球碳、氮化硅（28分）＋T13东方之冠材料(12)＋T14 SiHCl₃制高纯硅(12)＝52分，<span class="rd">✂放弃SiH₄自燃、SiC结构比较、石墨烯分类辨析</span></li></ul>
+  </div>
+</div>
+<p class="tip">📖 本讲课时精练 100分制：1~8题每题6分＋9~12题每题7分＋T13·T14各12分（2023·山东 SiHCl₃）。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：SiO₂是酸性氧化物但能与HF反应；玻璃含硅酸盐，陶瓷玻璃水泥成分辨析…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：碳硅同主族，为何CO₂是分子晶体而SiO₂是原子晶体？烧制陶瓷是物理还是化学变化…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var el = findClosed();
+    if(el){
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.transition='box-shadow .5s';
+      el.style.boxShadow='0 0 0 3px #e8d48f';
+      setTimeout(function(){ el.style.boxShadow=''; }, 2000);
+      showTip('已展开答案');
+    }else{
+      all.forEach(function(d){ d.open = false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c22_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c22_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

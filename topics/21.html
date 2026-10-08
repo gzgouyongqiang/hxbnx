@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第21讲 氨 铵盐 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第21讲　氨　铵盐</h1>
+</header>
+
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 出处见每题标注 · 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 写出氨的催化氧化反应的化学方程式（工业制硝酸第一步）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 正文「氨的化学性质」· (3)还原性</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>4NH₃＋5O₂ <span class="eqw">＝<span class="eqw-c">催化剂△</span></span> 4NO＋6H₂O</b>　（N从－3价升到＋2价，体现还原性）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出实验室用氯化铵与熟石灰共热制取氨气的化学方程式</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 正文「氨的实验室制法」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2NH₄Cl＋Ca(OH)₂ <span class="eqw">＝<span class="eqw-c">△</span></span> CaCl₂＋2NH₃↑＋2H₂O</b>　（固固加热型装置，试管口略向下倾斜）</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出氨气与氯化氢气体相遇的化学方程式（"魔棒生烟"）</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 正文「氨的化学性质」· (1)溶于水（遇酸）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>NH₃＋HCl ＝ NH₄Cl</b>　（产生白烟，可用来检验NH₃或HCl）</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 氨的物理性质</b>：无色刺激性气味、密度比空气小、极易溶于水（1∶700）——喷泉实验</li>
+  <li><b>② 氨的化学性质三性</b>：碱性（湿润红色石蕊变蓝、与HCl白烟）；配位（[Cu(NH₃)₄]²⁺深蓝）；还原性（催化氧化制NO）</li>
+  <li><b>③ 铵盐</b>：热不稳定、与碱共热放NH₃；NH₄⁺检验——加强碱加热，湿润红色石蕊试纸变蓝</li>
+  <li><b>④ 实验室制NH₃</b>：2NH₄Cl＋Ca(OH)₂<span class="eqw" style="font-size:15px;">＝<span class="eqw-c">△</span></span>；向下排空气收集、碱石灰干燥；不用浓硫酸和无水CaCl₂</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷氮和氮族元素考点与难度研究报告》）</b>
+  <p>· <span class="em">氨装置是广东卷送分保留节目</span>——喷泉实验（2023·广东Q4）、铵盐＋碱产氨装置（2024·广东Q11）、氨水制备装置（2026·广东Q17(1)）<span class="em">连续3年考查</span>，难度0.65~0.80，2027极可能延续，几乎必拿。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.65~0.80）</b>：NH₃三性质（碱性/配位/还原性）、喷泉实验原理（1∶700极易溶）、实验室制NH₃（固固加热＋向下排空气＋碱石灰干燥）、NH₄⁺检验（强碱加热、湿润红蕊变蓝）、铵盐受热分解。</p>
+  <p>· <b style="color:var(--accent)">突破（0.55~0.65）</b>：喷泉变式组合（HCl/SO₂/CO₂/Cl₂＋吸收剂判断）、氨的还原性（催化氧化、与CuO反应）、氨水粒子种类与浓度排序、防倒吸装置辨析。</p>
+  <p>· <b style="color:var(--accent)">能力层必练</b>：归中出 N₂ 模型（NO₂⁻＋NH₄⁺，2024-19 原题配盖斯定律求 ΔH——见下方拓展）。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：尿素水解、氨水 Kb 定量计算、肼 N₂H₄ 制备整题（2026 北京-16 范式；广东 2025-19 只考过定量推导）、含氮流程压轴（氨浸工艺、[M(NH₃)₆]²⁺ 配离子平衡）——<span class="em">电化学固氮、肼、磷酸盐流程是外省三大高热区</span>。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① 氨的物理性质与喷泉实验 -->
+<h3>知识点① · 氨的物理性质与喷泉实验<span class="p">（约9分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「氨的结构特征」「氨的物理性质」</span>
+
+<div class="quiz">
+  <div class="ask">思考：氨为什么极易溶于水（1体积水约溶解700体积氨）？从结构和反应两个角度说</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① NH₃与H₂O都是<span class="em">极性分子</span>（相似相溶）；<br>
+      ② NH₃与H₂O分子间能形成<span class="em">氢键</span>；<br>
+      ③ NH₃与H₂O发生反应：NH₃＋H₂O ⇌ NH₃·H₂O ⇌ NH₄⁺＋OH⁻。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 提升关键能力「一、喷泉实验及拓展」题1（见图）</span>
+<div class="quiz">
+  <div class="ask">思考：图1喷泉实验如何引发？喷泉形成的原理是什么？（见图）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>引发：</b>打开止水夹，<span class="em">挤出胶头滴管中的水</span>；<br>
+      <b>原理：</b>氨<span class="em">极易溶于水</span>，使烧瓶内压强迅速减小，外界大气压把烧杯中的水压入烧瓶，形成喷泉。
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 提升关键能力「一、喷泉实验及拓展」题2（见图）</span>
+<div class="quiz">
+  <div class="ask">2.如图是课外活动小组的同学设计的4个喷泉实验方案，下列有关操作不可能引发喷泉的是（　　）（见图）</div>
+  <p>A.挤压装置①的胶头滴管使CCl₄全部进入烧瓶，片刻后打开弹簧夹<br>
+  B.挤压装置②的胶头滴管使NaOH溶液全部进入烧瓶，片刻后打开弹簧夹<br>
+  C.用鼓气装置从装置③的a处不断鼓入空气并打开弹簧夹<br>
+  D.在装置④的水槽中慢慢加入足量浓硫酸并打开弹簧夹</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>B</b>　②烧瓶内是<span class="em">H₂</span>：不溶于水、也不与NaOH反应，压强基本不变，不能引发喷泉。<br>
+      <span style="color:var(--dim);font-size:15px;">①Cl₂溶于CCl₄压强减小✓；③鼓空气把水压入烧瓶，NH₃溶于水✓；④浓硫酸放热使浓氨水分解出NH₃，与烧瓶内HCl反应压强减小✓</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>氨溶于水显弱碱性是因为氨气分子能电离出OH⁻</summary>
+  <div class="ans"><b>×</b>　是<span class="em">NH₃·H₂O</span>（一水合氨）电离出OH⁻，NH₃分子本身不电离。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>氨水和液氨不同，氨水是混合物，液氨是纯净物</summary>
+  <div class="ans"><b>√</b>　氨水是NH₃的水溶液（混合物）；液氨是液态NH₃（纯净物）。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>氨水中物质的量浓度最大的粒子是NH₃·H₂O（水除外）</summary>
+  <div class="ans"><b>√</b>　NH₃大部分以<span class="em">NH₃·H₂O</span>形式存在，少量电离。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>氨水显弱碱性，是弱电解质</summary>
+  <div class="ans"><b>×</b>　氨水是<span class="em">混合物</span>，不是电解质；弱电解质指NH₃·H₂O。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>氨气易溶七百倍，喷泉实验压强差；氨水是混合，液氨是纯净</p>
+</div>
+
+<!-- 知识点② 氨的化学性质三性 -->
+<h3>知识点② · 氨的化学性质三性<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「氨的化学性质」· (1)溶于水 (2)配位能力 (3)还原性</span>
+
+<div class="quiz">
+  <div class="ask">归类：下列现象分别体现了氨的哪种性质？（碱性／配位／还原性）</div>
+  <div class="mat">
+    <span>湿润红色石蕊试纸变蓝</span><span>与HCl产生白烟</span><span>[Cu(NH₃)₄]²⁺深蓝色</span><span>催化氧化生成NO</span><span>与Al³⁺生成Al(OH)₃</span>
+  </div>
+  <details><summary>显示分类结果</summary>
+    <div class="ans">
+      <b>碱性：</b>湿润红色石蕊试纸变蓝、与HCl白烟、与Al³⁺生成Al(OH)₃<br>
+      <b>配位：</b>[Cu(NH₃)₄]²⁺深蓝色（Cu(OH)₂＋4NH₃·H₂O ＝ [Cu(NH₃)₄]²⁺＋2OH⁻＋4H₂O）——<span class="em">配位口诀：加氨水过量才出深蓝配合物，加酸配合物被破坏</span>（2026-17 铜氨整题全按这条线走，铜讲次已练电镀模板）<br>
+      <b>还原性：</b>催化氧化生成NO（4NH₃＋5O₂ → 4NO＋6H₂O）
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">默写：氨的催化氧化方程式（工业制硝酸第一步），并标出氮元素化合价变化</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>4NH₃＋5O₂ <span class="eqw">＝<span class="eqw-c">催化剂△</span></span> 4NO＋6H₂O</b><br>N从－3价升到＋2价（<span class="em">升高5价</span>），失电子被氧化，NH₃作还原剂。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答3题）</span>
+<details class="bianxi"><summary><span class="q">1</span>向AlCl₃溶液中逐滴加入过量的氨水，先产生白色沉淀，最后白色沉淀溶解</summary>
+  <div class="ans"><b>×</b>　Al(OH)₃<span class="em">不溶于氨水</span>（弱碱不能溶解两性氢氧化物），沉淀不会溶解。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>氨极易溶于水，因此氨水比较稳定（不容易分解）</summary>
+  <div class="ans"><b>×</b>　氨水<span class="em">受热易分解</span>：NH₃·H₂O <span class="eqw">＝<span class="eqw-c">△</span></span> NH₃↑＋H₂O。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>现有1 mol·L⁻¹的氨水，则该溶液中NH₃·H₂O的浓度是1 mol·L⁻¹</summary>
+  <div class="ans"><b>×</b>　氨水中NH₃以NH₃、NH₃·H₂O、NH₄⁺多种形式存在且<span class="em">部分电离</span>，NH₃·H₂O浓度小于1 mol·L⁻¹。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>氨有三性：碱红蕊、配深蓝、还原催化成NO</p>
+</div>
+
+<!-- 知识点③ 铵盐与NH₄⁺检验 -->
+<h3>知识点③ · 铵盐与NH₄⁺检验<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「铵盐」「NH₄⁺的检验」</span>
+
+<p><span class="em">铵盐两大化学性质</span>：① 热不稳定性（NH₄Cl <span class="eqw">＝<span class="eqw-c">△</span></span> NH₃↑＋HCl↑，NH₄HCO₃ <span class="eqw">＝<span class="eqw-c">△</span></span> NH₃↑＋CO₂↑＋H₂O）；② 与碱反应放NH₃（NH₄⁺＋OH⁻ <span class="eqw">＝<span class="eqw-c">△</span></span> NH₃↑＋H₂O）</p>
+
+<span class="loc">📖 拓展 · 归中出 N₂（2024·广东 19 反应 a，能力层母题）</span>
+<div class="quiz">
+  <div class="ask">拓展：NO₂⁻ 与 NH₄⁺ 在加热下反应，为什么产物是 N₂？写出方程式并分析电子转移。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>NO₂⁻ ＋ NH₄⁺ <span class="eqw">＝<span class="eqw-c">Δ</span></span> N₂↑ ＋ 2H₂O</b>　——N(＋3) 与 N(−3) "碰头归中"出 0 价 N₂；每 mol NO₂⁻ 得 3 mol e⁻、每 mol NH₄⁺ 失 3 mol e⁻，1∶1 恰好完全归中。<br>
+      2024-19 以此反应（反应 a）配盖斯定律求 ΔH——<span class="em">"归中出 N₂"是氮大题小问的固定定量模型</span>（2025-19 肼分解选择性推导是同款升级，冲刺层再练）。</div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 铵盐的性质与NH₄⁺的检验 例1</span>
+<div class="quiz">
+  <div class="ask">1.已知NH₄Cl与PH₄I的性质相似，则对PH₄I性质的推测不正确的是（　　）</div>
+  <p>A.含有离子键和共价键<br>
+  B.能与NaOH溶液反应<br>
+  C.与NH₄Cl受热分解产物的种类完全一样<br>
+  D.能与溴水反应</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>C</b>　PH₄I受热分解生成PH₃和HI，HI受热又分解为H₂和I₂，与NH₄Cl分解产物种类不同。<br>
+      <span style="color:var(--dim);font-size:15px;">A✓：PH₄⁺与I⁻离子键＋PH₄⁺内共价键；B✓：与NaOH反应放PH₃；D✓：I⁻能被Br₂氧化置换。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 铵盐的性质与NH₄⁺的检验 例2</span>
+<div class="quiz">
+  <div class="ask">2.下列检验NH₄⁺的方法正确的是（　　）</div>
+  <p>A.加水溶解，再用红色石蕊试纸检测其溶液<br>
+  B.加入氢氧化钠溶液，加热试管，并用湿润的红色石蕊试纸靠近试管口上方<br>
+  C.加热试管，并用湿润的红色石蕊试纸靠近试管口上方<br>
+  D.加入氢氧化钠溶液，再滴入酚酞溶液</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>B</b>　NH₄⁺检验口诀：<span class="em">加强碱、微加热、湿润红蕊变蓝</span>。<br>
+      <span style="color:var(--dim);font-size:15px;">A×：铵盐溶液水解呈酸性，红蕊不变蓝；C×：直接加热NH₄Cl生成NH₃和HCl遇冷又化合，检验不到；D×：NaOH本身使酚酞变红，无法判断。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 铵盐后判断（抢答4题）</span>
+<details class="bianxi"><summary><span class="q">1</span>加热盛有NH₄Cl固体的试管，试管底部固体消失，试管口有晶体凝结，说明NH₄Cl固体可以升华</summary>
+  <div class="ans"><b>×</b>　这是NH₄Cl<span class="em">受热分解又化合</span>（NH₃＋HCl ⇌ NH₄Cl），不是升华。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>用浓氯化铵溶液处理过的舞台幕布不易着火，其原因是氯化铵分解吸收热量降低温度；分解产生的气体隔绝了空气</summary>
+  <div class="ans"><b>√</b>　吸热降温＋气体隔绝空气，双重阻燃。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>草木灰（含K₂CO₃）与铵盐混用会降低肥效</summary>
+  <div class="ans"><b>√</b>　草木灰显碱性，与铵盐反应放出NH₃跑掉，<span class="em">氮元素损失</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>铵盐加热均易分解产生NH₃</summary>
+  <div class="ans"><b>×</b>　如NH₄NO₃加热分解产物复杂（含N₂、N₂O等），<span class="em">不一定出NH₃</span>。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>检验NH₄⁺：加强碱、微加热、湿润红蕊变蓝啦</p>
+</div>
+
+<!-- 知识点④ 氨的实验室制法 -->
+<h3>知识点④ · 氨的实验室制法<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 正文「氨的实验室制法」</span>
+
+<p><span class="em">三种制备法</span>：① 加热NH₄Cl＋Ca(OH)₂固体（固固加热）；② 加热浓氨水（NH₃·H₂O <span class="eqw">＝<span class="eqw-c">△</span></span> NH₃↑＋H₂O）；③ 浓氨水＋固体NaOH或CaO（放热＋OH⁻增大促NH₃逸出）。收集：<span class="em">向下排空气法</span>；干燥：<span class="em">碱石灰</span>（不能用浓硫酸、P₂O₅、无水CaCl₂）。</p>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 氨气的实验室制法 例5（见图）</span>
+<div class="quiz">
+  <div class="ask">5.用如图装置（夹持装置已略去）进行NH₃制备及性质实验。下列说法不正确的是（　　）（见图）</div>
+  <p>A.甲中制备NH₃利用了NH₃·H₂O的分解反应<br>
+  B.乙中的集气瓶内a导管短、b导管长<br>
+  C.丙中的CCl₄能防止倒吸<br>
+  D.丁也可以用于制备氨气</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　NH₄Cl固体受热分解生成NH₃和HCl，遇冷<span class="rd">又化合生成NH₄Cl</span>，不能制得NH₃。<br>
+      <span style="color:var(--dim);font-size:15px;">A✓：浓氨水滴入NaOH固体，放热促使NH₃·H₂O分解；B✓：氨密度小于空气，向下排空气（短进长出）；C✓：NH₃难溶于CCl₄，从CCl₄层逸出被上层水吸收，防倒吸。</span>
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>制氨固固要加热，向下排气碱石灰；浓硫酸氯化钙，遇到氨气全报废</p>
+</div>
+
+<!-- 知识点⑤ 课本基础题精选 -->
+<h3>知识点⑤ · 课本基础题精选<span class="p">（人教版必修第一册 5.2 氮及其化合物 第2课时 氨和铵盐 练习与应用）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P＿＿</span> · 第五章 第二节 氨和铵盐</span>
+<div class="quiz">
+  <div class="ask">1. 如图所示，干燥烧瓶内有某种气体，烧杯和滴管内盛放某种溶液。挤压胶头滴管，与实验事实<b>不相符</b>的是（　　）（见图）</div>
+  <p>A.CO₂（饱和NaHCO₃溶液）／无色喷泉<br>
+  B.NH₃（H₂O中含酚酞）／红色喷泉<br>
+  C.SO₂（NaOH溶液）／无色喷泉<br>
+  D.HCl（AgNO₃溶液）／白色喷泉</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>A</b>　CO₂在饱和NaHCO₃溶液中<span class="rd">溶解度很小</span>，压强变化不明显，不能形成喷泉。<br>
+      B：NH₃极易溶于水、氨水显碱性，酚酞变红→红色喷泉；C：SO₂与NaOH反应被大量吸收→无色喷泉；D：HCl与AgNO₃生成AgCl白色沉淀→白色喷泉。<br>
+      <span class="em">喷泉判据：气体在液体中溶解度大或与液体反应，造成明显压强差。</span>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 将湿润的红色石蕊试纸放在进行下列实验的试管口，试纸<b>不变成蓝色</b>的是（　　）</div>
+  <p>A.加热浓氨水<br>
+  B.加热NH₄HCO₃固体<br>
+  C.加热NH₄Cl和Ca(OH)₂的混合物<br>
+  D.加热NH₄Cl晶体</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>D</b>　NH₄Cl受热分解：NH₄Cl <span class="eqw">＝<span class="eqw-c">△</span></span> NH₃↑＋HCl↑，生成的NH₃和HCl在<span class="em">试管口遇冷又化合生成NH₄Cl</span>，无NH₃逸出，试纸不变蓝。<br>
+      A：浓氨水受热放NH₃；B：NH₄HCO₃分解放NH₃；C：NH₄Cl＋Ca(OH)₂共热放NH₃——均使红蕊变蓝。
+    </div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（1~6题每题6分，7~10题每题8分，11、12题各16分）</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1~4题：鼻冲水氨水、离子方程式、制备装置、火箭燃料对应（24分，送分盘）</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第5~8题：喷泉装置组合、性质探究、培养皿实验、喷泉浓度（28分）</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第9~12题：合成氨工业、模拟装置、磷酸氢二铵（2022海南）、NH₃与NO₂反应（48分），<span class="rd">✂放弃尿素水解、联氨N₂H₄、氨水Kb定量计算</span></li></ul>
+  </div>
+</div>
+<p class="tip">📖 本讲课时精练 100分制：1~6题每题6分＋7~10题每题8分＋T11·T12各16分（2022·海南17 磷酸氢二铵、2025·汕头 NH₃还原NOₓ）。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：NH₃·H₂O是弱电解质（部分电离）；检验NH₄⁺须加强碱共热＋湿润红色石蕊试纸…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：喷泉实验的本质是什么（压强差）？干燥NH₃为何只能用碱石灰…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var el = findClosed();
+    if(el){
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.transition='box-shadow .5s';
+      el.style.boxShadow='0 0 0 3px #e8d48f';
+      setTimeout(function(){ el.style.boxShadow=''; }, 2000);
+      showTip('已展开答案');
+    }else{
+      all.forEach(function(d){ d.open = false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c21_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c21_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

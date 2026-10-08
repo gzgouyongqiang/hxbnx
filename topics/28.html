@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第28讲 价层电子对互斥模型 杂化轨道理论 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:var(--card-blue);border:1px solid var(--border-blue);
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  /* 练习框：素材混排展示 + 答案按钮 */
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;
+  }
+  .quiz .mat span{
+    background:var(--panel3);border:1px solid var(--border);border-radius:6px;
+    padding:3px 12px;font-size:17px;
+  }
+  /* 答案按钮 */
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:17px;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  /* 易错辨析（判断题） */
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{
+    cursor:pointer;font-size:17px;color:var(--text);
+    list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;
+  }
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{
+    border-top:1px dashed var(--border);padding:8px 14px;
+    color:var(--dim);font-size:16.5px;
+  }
+  .bianxi .ans b{color:var(--accent);}
+  /* 必背口诀（直接展示，无需思考） */
+  .koujue{background:var(--card-gold);border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  /* 核心知识点清单 */
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  /* 作业分层 */
+  .hw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .pill{display:inline-block;background:var(--panel3);border-radius:5px;padding:0 8px;font-size:14px;color:var(--dim);margin-left:6px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+
+  /* 反应条件悬浮组件：条件显示在等号/可逆号正上方 */
+  .eqw{display:inline-block;position:relative;padding:0 3px;vertical-align:middle;line-height:1.3;}
+  .eqw-c{position:absolute;top:-1.15em;left:50%;transform:translateX(-50%);
+         font-size:12px;color:var(--dim);white-space:nowrap;letter-spacing:0;font-weight:500;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第28讲　价层电子对互斥模型　杂化轨道理论</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>滚动默写·必背对应表<span class="tm">5分钟</span></div>
+<p class="tip">📖 本讲无化学方程式，滚动默写<b>价层电子对数→杂化→构型对应表</b>（广东卷年年必考黄金组合）· 先默写，同桌互批后点开对答案</p>
+
+<div class="quiz">
+  <div class="ask">① 默写对应关系：价层电子对数2、3、4分别对应＿杂化、＿构型</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「杂化轨道理论及应用」· 常考的三种杂化轨道类型</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>2 → sp杂化 → 直线形</b>（如CO₂、BeCl₂）<br>
+      <b>3 → sp²杂化 → 平面三角形</b>（如BF₃、SO₂的VSEPR模型）<br>
+      <b>4 → sp³杂化 → 四面体形</b>（如CH₄、NH₃、H₂O的VSEPR模型）<br>
+      <span class="em">杂化轨道总数＝价层电子对数＝σ键数＋孤电子对数</span>
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 默写常见分子构型：CO₂＿、SO₂＿、NH₃＿、H₂O＿、BF₃＿、CH₄＿</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「价层电子对互斥模型」· 预测分子（或离子）空间结构的思维路径</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>CO₂直线形</b>　<b>SO₂ V形</b>（VSEPR平面三角）　<b>NH₃三角锥形</b>（VSEPR四面体）<br>
+      <b>H₂O V形</b>（VSEPR四面体）　<b>BF₃平面三角形</b>　<b>CH₄正四面体形</b><br>
+      65分清单必背：<span class="em">孤电子对使空间结构≠VSEPR模型</span>（NH₃、H₂O、SO₂都是例子）。
+    </div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 填空：NH₃中N的价层电子对数＝＿（σ键＿对＋孤电子＿对）→杂化＿、空间结构＿</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「价层电子对互斥模型」· 价层电子对数的计算</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>价层电子对数＝3＋1＝4</b>（σ键3对，孤电子对(5−3×1)/2＝1对）→ <b>sp³杂化、三角锥形</b><br>
+    计算口诀：<span class="em">孤电子对数＝(a−xb)/2</span>，a为中心原子价电子数（离子±电荷），x为结合原子数，b为该原子最多接受的电子数（H为1，O/S为2，卤素为1）。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点</div>
+<ul class="kps">
+  <li><b>① 价层电子对数</b>＝σ键电子对数＋孤电子对数；孤电子对数＝(a−xb)/2；<span class="rd">π键电子不计入</span>价层电子对数</li>
+  <li><b>② 对应关系</b>：2→sp直线形、3→sp²平面三角形、4→sp³四面体形（杂化轨道总数＝价层电子对数）</li>
+  <li><b>③ 常见构型必背</b>：CO₂直线、SO₂ V形、NH₃三角锥、H₂O V形、BF₃平面三角、CH₄正四面体</li>
+  <li><b>④ 孤电子对效应</b>：<span class="em">VSEPR模型≠空间结构</span>——NH₃（VSEPR四面体→空间三角锥）、H₂O（四面体→V形）、SO₂（平面三角→V形）</li>
+  <li><b>⑤ 分子结构测定</b>：红外光谱（化学键/官能团）、质谱（相对分子质量）、X射线衍射（晶体结构）</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（综合《广东卷分子结构与性质考点与难度研究报告》＋65分清单）</b>
+  <p>· 广东卷「分子结构与性质」板块以<span class="em">杂化轨道＋VSEPR空间构型为年年必考的黄金组合</span>（2021–2026六连考：2021Q20(4)/2022Q20(3)/2023Q14(D)/2024Q9·12/2025Q20(3)/2026Q20(2)(4)），难度0.65~0.80，是分子结构最稳最好拿分的主线。</p>
+  <p>· <b style="color:var(--accent)">保分必拿（0.70+）</b>：常见分子/离子空间构型直接判断（CO₂直线、SO₂ V形、NH₃三角锥、BF₃平面三角、CH₄正四面体）、价层电子对数→杂化类型（sp/sp²/sp³）、孤电子对影响构型。</p>
+  <p>· <b style="color:var(--accent)">能力层必练（大题主阵地）</b>：VSEPR计数三类变式（含双键 π 不计入、离子 ± 电荷、孤对）——SeO₄²⁻、NH₃/NO₃⁻、NO₃⁻/CO₃²⁻ 对照练；"结构推测性质"合法边界（2025-13 范式）；<span class="em">有机大题"杂化方式改变"固定句式</span>——2024-20(3)D sp²→sp³、2025-20(3)B 20 个碳 sp²、2026-20(4)A 连续三年原句，反应前后给关键碳标成键环境；配离子情境（生成方程式 Ga³⁺＋4Cl⁻＝[GaCl₄]⁻；电离不拆 H[CuCl₂]＝H⁺＋[CuCl₂]⁻，第 15/27 讲联动）；"氮氏三兄弟"一题多变（NH₃ 三角锥、NO₃⁻ 平面三角、NH₄⁺ 正四面体——一个 N 三种构型串通全套）。</p>
+  <p>· <span class="rd">✂ 放弃（85+ 冲刺层再做）</span>：键角综合比较（孤对模型本讲已练——ClO₂⁻/ClO₃⁻/ClO₄⁻、NH₃/NH₄⁺；多重键斥力、电负性效应等综合留给冲刺）、大π键深入（咪唑环等，本讲铺概念）、等电子体推导；键角定量数值（107° 类）、d 杂化内外轨——<span class="em">广东外省均不考，不碰</span>。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约34分钟</span></div>
+
+<!-- 知识点① 价层电子对互斥模型与计算 -->
+<h3>知识点① · 价层电子对数计算<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「价层电子对互斥模型」· 价层电子对数的计算</span>
+
+<div class="quiz">
+  <div class="ask">计算：下列分子/离子的价层电子对数各是多少？（σ键对数＋孤电子对数）</div>
+  <div class="mat">
+    <span>CO₂</span><span>BF₃</span><span>H₂O</span><span>NH₃</span><span>CH₄</span><span>SO₄²⁻</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>CO₂：2＋0＝2</b>（直线形，sp）　<b>BF₃：3＋0＝3</b>（平面三角，sp²）<br>
+      <b>H₂O：2＋2＝4</b>　<b>NH₃：3＋1＝4</b>　<b>CH₄：4＋0＝4</b>（都sp³）<br>
+      <b>SO₄²⁻：4＋(6＋2−4×2)/2＝4＋0＝4</b>（正四面体，sp³）<br>
+      <span class="rd">关键：双键、三键只算1个σ键；π键电子不计入。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一 预测空间结构的思维路径（SOCl₂四步法）</span>
+<div class="quiz">
+  <div class="ask">按四步法预测SOCl₂的空间结构：①σ键电子对数？②孤电子对数？③VSEPR模型？④空间结构？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      ① σ键电子对数＝<b>3</b>（S连3个原子：1个O、2个Cl）<br>
+      ② 孤电子对数＝(6−1×2−2×1)/2＝<b>1</b><br>
+      ③ 价层电子对数＝3＋1＝4 → VSEPR模型为<b>四面体形</b><br>
+      ④ 略去孤电子对 → 空间结构为<b>三角锥形</b>、sp³杂化<br>
+      <span class="em">四步法万能：σ键数→孤对→VSEPR→空间结构</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 易错辨析（抢答4题，选自8题）</span>
+<details class="bianxi"><summary><span class="q">1</span>VSEPR理论认为VSEPR模型与分子的空间结构相同（2024·湖北，5A）</summary>
+  <div class="ans"><b>×</b>　<span class="rd">孤电子对使两者不同</span>：如NH₃的VSEPR模型是四面体，空间结构是三角锥形。</div>
+</details>
+<details class="bianxi"><summary><span class="q">2</span>PCl₃的空间结构：平面三角形（2024·黑吉辽，2D）</summary>
+  <div class="ans"><b>×</b>　PCl₃价层电子对数3＋1＝4，孤电子对1对 → 空间结构为<span class="em">三角锥形</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">3</span>H₂O的空间结构为直线形（2024·江苏，2D）</summary>
+  <div class="ans"><b>×</b>　H₂O价层电子对数2＋2＝4，孤电子对2对 → 空间结构为<span class="em">V形</span>。</div>
+</details>
+<details class="bianxi"><summary><span class="q">4</span>SO₄²⁻的空间结构：平面三角形（2024·贵州，2C）</summary>
+  <div class="ans"><b>×</b>　SO₄²⁻价层电子对数4＋0＝4，无孤电子对 → 空间结构为<span class="em">正四面体形</span>。</div>
+</details>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>价层电子对数＝σ键数＋孤对数；双键三键只算一个σ，π电子不入账</p>
+</div>
+
+<!-- 知识点② VSEPR模型与空间结构 -->
+<h3>知识点② · VSEPR模型与空间结构<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「价层电子对互斥模型」· 价层电子对数与VSEPR模型之间的关系</span>
+
+<div class="quiz">
+  <div class="ask">连线：下列微粒的VSEPR模型与空间结构分别是什么？（注意区分）</div>
+  <div class="mat">
+    <span>NH₃</span><span>H₂O</span><span>SO₂</span><span>BF₃</span><span>CH₄</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <table>
+        <tr><th>微粒</th><th>VSEPR模型</th><th>空间结构</th></tr>
+        <tr><td>NH₃</td><td>四面体形</td><td>三角锥形</td></tr>
+        <tr><td>H₂O</td><td>四面体形</td><td>V形</td></tr>
+        <tr><td>SO₂</td><td>平面三角形</td><td>V形</td></tr>
+        <tr><td>BF₃</td><td>平面三角形</td><td>平面三角形</td></tr>
+        <tr><td>CH₄</td><td>正四面体形</td><td>正四面体形</td></tr>
+      </table>
+      <span class="em">无孤电子对：两者相同；有孤电子对：空间结构＝VSEPR模型去掉孤电子对。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一 第3题</span>
+<div class="quiz">
+  <div class="ask">3.下列分子的空间结构相同的是（　　）</div>
+  <p>A.XeO₃和NH₃　B.COCl₂和SOCl₂<br>
+  C.ClF₃和BF₃　D.CO₂和SCl₂</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>A</b>　XeO₃（价层3＋(8−3×2)/2＝4，孤对1→三角锥）与NH₃（3＋1＝4，孤对1→三角锥）空间结构相同。<br>
+      B<span class="rd">×</span>：COCl₂平面三角、SOCl₂三角锥；C<span class="rd">×</span>：ClF₃ T形、BF₃平面三角；D<span class="rd">×</span>：CO₂直线、SCl₂ V形。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>无孤对模型即构型，有孤对构型少一截：四面体去一对成三角锥，去两对成V形</p>
+  <p>📌 <span class="em">见式报构型清单</span>（提笔即出）：三角锥 NH₃/PH₃/H₃O⁺/PCl₃｜V形 H₂O/H₂S/SO₂｜直线 CO₂/BeCl₂/C₂H₂｜平面三角 BF₃/SO₃/NO₃⁻/CO₃²⁻｜正四面体 CH₄/NH₄⁺/SO₄²⁻/ClO₄⁻/SeO₄²⁻</p>
+</div>
+
+<!-- 知识点③ 杂化轨道理论 -->
+<h3>知识点③ · 杂化轨道理论<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「杂化轨道理论及应用」· 常考的三种杂化轨道类型</span>
+
+<div class="quiz">
+  <div class="ask">判断：下列分子中心原子的杂化方式？（sp／sp²／sp³）</div>
+  <div class="mat">
+    <span>CO₂</span><span>BF₃</span><span>CH₄</span><span>NH₃</span><span>H₂O</span><span>C₂H₄（乙烯）</span><span>C₂H₂（乙炔）</span>
+  </div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>CO₂ → sp</b>（直线）　<b>BF₃ → sp²</b>（平面三角）<br>
+      <b>CH₄、NH₃、H₂O → sp³</b>（都是价层4对）<br>
+      <b>乙烯 → sp²</b>（C价层3对：3σ＋0孤对）　<b>乙炔 → sp</b>（C价层2对：2σ＋0孤对）<br>
+      <span class="em">判断捷径：中心原子连几个原子＋几对孤电子，总价层对数＝杂化轨道数。</span>
+    </div>
+  </details>
+</div>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二 一、第1(1)题＋二、第2题</span>
+<div class="quiz">
+  <div class="ask">判断杂化：<br>(1)PCl₃分子中，P的杂化方式为＿＿。<br>(2)[2025·甘肃，9D改编](CH₃)₄N⁺和(CH₃)₃N中N采用的杂化轨道类型为＿＿、＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>(1)sp³</b>　PCl₃价层3＋(5−3×1)/2＝4 → sp³、三角锥形<br>
+      <b>(2)都sp³</b>　(CH₃)₄N⁺中N连4个C（4σ＋0孤对）；(CH₃)₃N中N连3个C＋1对孤电子（3σ＋1孤对）——都是价层4对 → <span class="em">sp³</span>。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>杂化轨道数＝价层电子对数；2个sp直线、3个sp²平面三角、4个sp³四面体</p>
+</div>
+
+<!-- 知识点④ 综合判断与真题 -->
+<h3>知识点④ · 综合判断与真题<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「杂化轨道理论及应用」· 杂化类型的判断＋课时精练</span>
+
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练 第7题（2025·广东实验中学高三阶段考）</span>
+<div class="quiz">
+  <div class="ask">7.（2025·广东实验中学高三阶段考）氯元素有多种化合价，可形成Cl₂O、Cl⁻、ClO⁻、ClO₂⁻、ClO₃⁻、ClO₄⁻等微粒。下列说法<b>错误</b>的是（　　）</div>
+  <p>A.键角：ClO₂⁻＞ClO₃⁻＞ClO₄⁻<br>
+  B.Cl₂O的空间结构为V形<br>
+  C.ClO⁻、ClO₂⁻、ClO₃⁻中Cl的杂化方式相同<br>
+  D.基态Cl原子核外电子的空间运动状态有9种</p>
+  <details><summary>显示答案</summary>
+    <div class="ans">
+      <b>A</b>　ClO₂⁻、ClO₃⁻、ClO₄⁻价层电子对数都是4，孤电子对数分别为2、1、0，<span class="em">孤电子对数越多键角越小</span>，正确顺序为ClO₂⁻＜ClO₃⁻＜ClO₄⁻。<br>
+      B✓：Cl₂O中O孤对2对→V形；C✓：三种微粒Cl都是sp³；D✓：Cl为17号，占据9个原子轨道。
+    </div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>孤电子对数越多，键角越小（斥力排序：孤对−孤对 ＞ 孤对−成键 ＞ 成键−成键）</p>
+</div>
+
+<!-- 知识点⑤ 大π键与离域 -->
+<h3>知识点⑤ · 大π键与离域<span class="p">（约4分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 结合 2025-13D 石墨、2025-20(3)C 有机大π键</span>
+<div class="quiz">
+  <div class="ask">思考：苯环、石墨、C＝C 双键中的"离域"是怎么来的？判断大π键的两条线索是什么？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>两条线索</b>：① 未参与杂化的 p 轨道"肩并肩"重叠——C＝C 的 p 轨道、石墨层内未杂化 p 轨道（电子在整个碳原子平面运动，2025-13D 原考点）；② 苯环 6 个 C 各 1 个未杂化 p 轨道 → <span class="em">6 中心 6 电子大π键</span>。<br>
+      <span class="rd">⚠ 方向陷阱</span>："头碰头"是 σ 键、"肩并肩"才是 π 键（2023-20(4)D 设错点）。<br>
+      <span class="em">与有机联动</span>：加聚反应＝π 键断裂（2025-13C）；"杂化方式改变"句式见落点能力层——为第 30 讲晶体与第 60 讲有机铺路。</div>
+  </details>
+</div>
+
+<!-- 知识点⑥ 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（人教版选择性必修2 2.2 分子的空间结构 练习与应用同源）</span></h3>
+<span class="loc">📖 课本 <span class="pg">P＿＿</span> · 选择性必修2 第二章 第二节 分子的空间结构（练习与应用同源）</span>
+<div class="quiz">
+  <div class="ask">1. 判断正误：价层电子对互斥（VSEPR）模型与分子的空间结构不一定相同，孤电子对的存在会使两者不一致。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>√</b>　如NH₃的VSEPR模型是四面体形，但空间结构是三角锥形；<span class="em">空间结构＝VSEPR模型去掉孤电子对</span>。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">2. 下列分子的空间结构为三角锥形的是（　　）</div>
+  <p>A.CO₂　B.BF₃　C.NH₃　D.CH₄</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b>　NH₃价层4对、孤对1对 → 三角锥形。<br>
+    A直线形；B平面三角形；D正四面体形。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">3. 下列分子中，中心原子的杂化方式为sp²的是（　　）</div>
+  <p>A.CH₄　B.BF₃　C.NH₃　D.H₂O</p>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>B</b>　BF₃价层3＋0＝3 → sp²杂化、平面三角形。<br>
+    CH₄、NH₃、H₂O价层都是4对 → sp³杂化。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>三角锥、V形都是四面体去了孤对；平面三角、直线形无孤对干扰——构型判断先数价层对数</p>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层</div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值100分]：1~10题每题5分＋11~13题每题8分＋14题14分＋15题12分）</span>
+<div class="hw">
+  <div class="box b1">
+    <h4>✅ 必做（保底）</h4>
+    <ul><li>第1、3、4、9、10题（25分，送分盘）：VSEPR模型叙述、价层电子对数判断、AsBr₃杂化、粒子空间结构表、燃料分子判断</li></ul>
+  </div>
+  <div class="box b2">
+    <h4>➕ 选做（进中档）</h4>
+    <ul><li>第2、5、6、7、8、11、12、13题（49分）：磷钼酸铵、硅胶、BF₃/NH₃/H₂S/O₃、氯微粒、N/O/F、键角判断、BeCl₂杂化、类推</li></ul>
+  </div>
+  <div class="box b3">
+    <h4>🏆 挑战（冲高分）</h4>
+    <ul><li>第14、15题（26分）：KNO₂/SnCl₂/N杂化综合、MOFs综合大题，<span class="rd">✂放弃大π键书写、等电子体推导、键角比较四种模型</span></li></ul>
+  </div>
+</div>
+<p class="tip">📖 本讲课时精练 100分制：1~10题每题5分（50分）＋11~13题每题8分（24分）＋14题14分＋15题12分。必做25＋选做49＋挑战26＝100分。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：价层电子对数只算σ键和孤对、不算π键；孤对占空间把键角压缩；等性杂化轨道成分相同…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：BF₃与NF₃为何构型不同？H₂O为什么104.5°？怎么由杂化类型反推分子构型和键角…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+/* ===== 课堂遥控脚本：翻页笔/触屏适配（bubugao-class-html v2.0）=====
+   下翻键(PageDown/↓/空格)   = 平滑下滚80%屏高
+   上翻键(PageUp/↑)          = 平滑上滚80%屏高
+   回车/超链接键(Enter/Tab)   = 展开下一个未打开的答案；全部展开后按则全部收起
+   F9                        = 暂停/恢复键盘接管（防止与其他软件冲突）
+   手指触屏点击不受影响（浏览器原生点击，直接点"显示答案"即可）
+*/
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var el = findClosed();
+    if(el){
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.transition='box-shadow .5s';
+      el.style.boxShadow='0 0 0 3px #e8d48f';
+      setTimeout(function(){ el.style.boxShadow=''; }, 2000);
+      showTip('已展开答案');
+    }else{
+      all.forEach(function(d){ d.open = false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c28_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c28_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

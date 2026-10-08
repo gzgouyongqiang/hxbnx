@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第45讲 水的电离和溶液的pH · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第45讲　水的电离和溶液的pH · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——本讲默写＝1 个电离方程式＋2 个 pH 简单计算。<br>💡 广东锚点：pH 换算是 Kw 在广东卷的唯一出场方式——2025·17(3) 由起点 pH＝2.89 求苯甲酸饱和浓度 c₀、2023·18(2) 由 pH＝9.9 得 c(OH⁻)＝10⁻⁴·¹ 入 Kb 比较；25 ℃ 时 Kw＝1×10⁻¹⁴ 要形成条件反射。</p>
+
+<div class="quiz">
+  <div class="ask">① 写出水的电离方程式（标注吸/放热），并写出 25 ℃ 时水的离子积常数 Kw 的表达式与数值。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「水的电离与水的离子积常数」· 1.水是极弱的电解质 / 3.水的离子积常数</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>H₂O ⇌ H⁺＋OH⁻</b>（或 H₂O＋H₂O ⇌ H₃O⁺＋OH⁻），<b>吸热</b>过程<br>
+      <b>Kw ＝ c(H⁺)·c(OH⁻)</b>，25 ℃ 时 <b>Kw＝1×10⁻¹⁴</b>。<br>
+      <span class="rd">⚠ Kw 只随温度升高而增大</span>（100 ℃ 时约 1×10⁻¹²）；加酸加碱不改变 Kw，只改变 c(H⁺)、c(OH⁻) 的分配。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 计算 25 ℃ 时 0.005 mol·L⁻¹ H₂SO₄ 溶液的 pH（简单计算，规范写步骤）。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「溶液的酸碱性与 pH」· 2.pH 与酸碱性的关系（计算①）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">c(H₂SO₄)＝0.005 mol·L⁻¹ → <b>c(H⁺)＝2×0.005＝0.01 mol·L⁻¹</b>（二元酸 H⁺ 数翻倍）<br>
+      <b>pH＝−lg c(H⁺)＝−lg 0.01＝2</b><br>
+      <span class="em">步骤模板</span>：先算 c(H⁺)（注意二元酸×2）→ 再取负对数；酸溶液直接算 H⁺，不用绕 Kw。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 计算 25 ℃ 时 0.001 mol·L⁻¹ NaOH 溶液的 pH（规范写步骤）。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「溶液的酸碱性与 pH」· 2.pH 与酸碱性的关系（计算②）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">c(OH⁻)＝1×10⁻³ mol·L⁻¹ → 由 Kw：<b>c(H⁺)＝Kw/c(OH⁻)＝10⁻¹⁴/10⁻³＝10⁻¹¹ mol·L⁻¹</b><br>
+      <b>pH＝−lg c(H⁺)＝11</b><br>
+      <span class="em">碱溶液两步走</span>：先算 c(OH⁻) → 借 Kw 换成 c(H⁺) → 再取对数。<span class="rd">切勿拿碱的 c(OH⁻) 直接取负对数！</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 水的电离与 Kw</b>：H₂O ⇌ H⁺＋OH⁻（吸热）；Kw＝c(H⁺)·c(OH⁻)，25 ℃ 为 1×10⁻¹⁴；Kw <b>只随温度</b>增大（100 ℃ ≈ 1×10⁻¹²）；<b>任何水溶液都同时含 H⁺ 和 OH⁻</b>，由水电离出的 c(H⁺)＝c(OH⁻)（判断1 √）。</li>
+  <li><b>② 抑制与促进</b>：加酸、加碱、加 NaHSO₄（电离出 H⁺）<b>抑制</b>水电离；能水解的盐（Na₂CO₃、NH₄Cl 等）<b>促进</b>；加热促进。<span class="rd">⚠ "水电离出的 c(H⁺)＝1×10⁻¹² mol·L⁻¹"：被抑制的结果——可能是酸性也可能是碱性（双可能）</span>。<span class="bl">⚑ 广东口径：水电离程度计算与"10⁻ˣ"双解六年零落点（"水的电离"明示仅 2025·17(3)"水的电离可忽略"1 次、且是简化条件）——懂双可能原理即可，不刷题。</span></li>
+  <li><b>③ 酸碱性判断本质</b>：只取决于 <span class="em">c(H⁺) 与 c(OH⁻) 相对大小</span>（任何温度适用）；常温下才用 pH 7 分界。<span class="rd">pH＜7 不一定酸性（100 ℃ 时 pH＝6 的纯水是中性的）</span>。</li>
+  <li><b>④ pH 计算</b>：pH＝−lg c(H⁺)。单一强酸：c(H⁺)（二元酸×2）→ 取对数；单一强碱：c(OH⁻)→借 Kw→取对数。<b>稀释极限：酸稀释后 pH 趋近 7 但永远不超过 7</b>（碱不低于 7）。</li>
+  <li><b>⑤ 混合判断两规律（必背）</b>：等浓度等体积一元酸＋一元碱——"谁强显谁性，同强显中性"；常温 pH 之和＝14 的强酸强碱等体积混合显中性（＜14 酸、＞14 碱）。<span class="bl">⚑ 稀释 pH 变化广东仅 2021·8B 定性一次、混合 pH 计算六年零落点</span>——<span class="rd">✂ 放弃：混合 pH 精确计算（体积比混合）、100 ℃ Kw 混合换算、缓冲溶液定量、水电离平衡曲线综合末问</span>。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据分层发言稿·2026-09-22 六年真题逐题核查）</b>
+  <p>· <b>🟢 主战场＝中和滴定（六年不断线）</b>：2022 年起<span class="em">第 17 题连续 5 年嵌入</span>（2022 HAc 探究 / 2023 量热前置 / 2024 含硫转化 / 2025 苯甲酸 / 2026 铜氨双终点）；仪器 2021·7、2023·17(1)①、2024·17(3)①（三年三考）· 浓度计算四年四考 · 终点产物定义 2024"CO₃²⁻ 只转化为 HCO₃⁻" · 曲线画读 2022 画＋2025 读求 Ka · pH 计当证据三年三考——<span class="bl">滴定五件套第 46 讲详讲，本讲打好 Kw 与 pH 底子</span>。</p>
+  <p>· <b>🟠 本讲直接落点＝选择题阵地</b>：2021·7（仪器送分 2 分）、<span class="em">2021·8（稀释 pH 定性＋电荷守恒漏项）</span>、<span class="em">2025·12（配离子电荷守恒）</span>——"真实微粒情境中写守恒式"六年两考、全在选择题选项位。</p>
+  <p>· <b>⚑ 六年零落点（做减法）</b>：Kw 温度独立设问、水电离"10⁻ˣ"双解、强酸强碱混合 pH 计算、物料/质子守恒与离子浓度排序、滴定误差分析、滴定突跃与指示剂原理、pH 试纸操作——<span class="rd">外省高频（2024 江苏12、2026 北京4 等），冲刺层补，基础层不占课时。</span></p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约28分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 水的电离、Kw 与抑制/促进<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「水的电离与水的离子积常数」· 1~3 小节 / 影响水的电离平衡因素表</span>
+
+<table class="tb">
+  <tr><th>改变条件（25 ℃）</th><th>平衡移动</th><th>水的电离程度</th><th>c(H⁺)</th><th>c(OH⁻)</th></tr>
+  <tr><td>加 HCl</td><td>逆向</td><td><span class="rd">减小（抑制）</span></td><td>增大</td><td>减小</td></tr>
+  <tr><td>加 NaOH</td><td>逆向</td><td>减小（抑制）</td><td>减小</td><td>增大</td></tr>
+  <tr><td>加 Na₂CO₃（CO₃²⁻ 水解耗 H⁺）</td><td>正向</td><td><span class="gr">增大（促进）</span></td><td>减小</td><td>增大</td></tr>
+  <tr><td>加 NH₄Cl（NH₄⁺ 水解耗 OH⁻）</td><td>正向</td><td>增大（促进）</td><td>增大</td><td>减小</td></tr>
+  <tr><td>加 NaHSO₄（电离出 H⁺）</td><td>逆向</td><td>减小（抑制）</td><td>增大</td><td>减小</td></tr>
+  <tr><td>加热</td><td>正向</td><td>增大</td><td>增大</td><td>增大</td></tr>
+</table>
+<p class="tip">💡 三看速记：加酸碱盐先问"它消耗谁/电离出谁"——加酸出 H⁺、加碱出 OH⁻、加盐看离子水解；加热永远促进（吸热）。</p>
+<p class="tip">⚑ 广东口径："水的电离程度比较"（抑制/促进排序）六年零落点——上表会判断即可；外省已做成选择题高频（2024 湖南13、2026 湖南14、2026 四川15），定量比较冲刺层再补。</p>
+
+<div class="quiz">
+  <div class="ask">【小计算 · 讲义练习 2 节选】室温下求 c水(H⁺)（水电离出的 H⁺）：<br>
+  ① 0.01 mol·L⁻¹ 盐酸中 c水(H⁺)＝？　② pH＝4 的 NH₄Cl 溶液中 c水(H⁺)＝？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 盐酸：c(H⁺)＝0.01 → c(OH⁻)＝Kw/0.01＝1×10⁻¹² → <b>c水(H⁺)＝c(OH⁻)＝1×10⁻¹² mol·L⁻¹</b>（酸中 OH⁻ 全来自水）；<br>
+      ② NH₄Cl 水解促进水电离且显酸性 → <b>c水(H⁺)＝c(H⁺)溶液＝1×10⁻⁴ mol·L⁻¹</b>（水解的酸中 H⁺ 全来自水）。<br>
+      <span class="em">口诀</span>：酸中 OH⁻ 全来自水、碱中 H⁺ 全来自水、水解盐中谁"显性"谁来自水。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【判断抢答 4 连（讲义原文）】① 任何水溶液中均存在 H⁺ 和 OH⁻，且水电离出的 c(H⁺) 和 c(OH⁻) 相等？② NaCl 溶液和 CH₃COONH₄ 溶液均显中性，两溶液中水的电离程度相同？③ 温度一定时，在纯水中通入少量 SO₂，水的电离平衡不移动、Kw 不变？④ 室温下，0.1 mol·L⁻¹ 盐酸与 0.1 mol·L⁻¹ NaOH 溶液中水的电离程度相等？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>√</b>——任何水溶液都同时有 H⁺、OH⁻，且它们都由水电离出来的部分是 1∶1；<br>
+      ② <b>×</b>——CH₃COONH₄ 中 NH₄⁺、CH₃COO⁻ 都水解、<b>相互促进</b>水的电离，而 NaCl 中离子不水解，两溶液水的电离程度不同；<br>
+      ③ <b>×</b>——SO₂ 溶于水生成 H₂SO₃ 显酸性，<b>抑制</b>水的电离（平衡左移）；Kw 不变对，但"平衡不移动"错；<br>
+      ④ <b>√</b>——盐酸 c(H⁺)＝0.1、NaOH c(OH⁻)＝0.1，对水电离的抑制程度相同。<br>
+      <span class="em">送分眼</span>：②考盐类水解促进、③考"酸性气体抑制水电离"。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>水电离很微弱，Kw 只随温度飞；<span class="em">酸碱盐来抑制，水解盐儿来促进；酸看 OH⁻、碱看 H⁺——水中来客都是"自己人"</span>。</p>
+</div>
+
+<!-- 知识点② -->
+<h3>知识点② · 溶液的酸碱性与 pH<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「溶液的酸碱性与 pH」· 1.溶液的酸碱性 / 2.pH 与酸碱性的关系（表3）/ 3.pH 的测定</span>
+
+<table class="tb">
+  <tr><th>溶液酸碱性</th><th>c(H⁺) 与 c(OH⁻) 比较</th><th>常温下 pH</th></tr>
+  <tr><td>酸性</td><td>c(H⁺) ＞ c(OH⁻)</td><td>＜ 7</td></tr>
+  <tr><td>中性</td><td>c(H⁺) ＝ c(OH⁻)</td><td>＝ 7</td></tr>
+  <tr><td>碱性</td><td>c(H⁺) ＜ c(OH⁻)</td><td>＞ 7</td></tr>
+</table>
+<p><b style="color:var(--accent);">判断酸碱性铁律：任何温度都只看 c(H⁺) 与 c(OH⁻) 相对大小；</b>pH 与 7 比大小<b>只适用于常温</b>（100 ℃ 时 Kw＝1×10⁻¹²，pH＝6 的水才是中性）。</p>
+
+<div class="quiz">
+  <div class="ask">【判断抢答（讲义原文节选）】① 任何温度下，利用 H⁺ 和 OH⁻ 浓度的相对大小均可判断溶液的酸碱性？② pH＜7 的溶液一定显酸性？③ 在一定温度下，pH＝6.5 的纯水一定呈中性？④ 常温下能使甲基橙显黄色的溶液一定显碱性？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>√</b>——本质判据，任何温度通用；<br>
+      ② <span class="rd">×</span>——未指明温度！100 ℃ 时 pH＝6 的纯水是中性的，pH＜7 未必酸；<br>
+      ③ <b>√</b>——纯水中 c(H⁺)＝c(OH⁻)，pH＝6.5 只是该温度下 Kw 较大，仍为中性；<br>
+      ④ <span class="rd">×</span>——甲基橙变色范围 3.1~4.4，pH＞4.4 就显黄色，酸性（4.4~7）也可能黄，不一定是碱性。<br>
+      <span class="em">广东卷陷阱三件套</span>：不提温度说 pH＜7、把"纯水中性"当 pH＝7、指示剂颜色当酸碱性判据。</div>
+  </details>
+</div>
+
+<p><b style="color:var(--accent);">pH 试纸规范操作（必背）：</b>镊子取试纸于洁净玻璃片 → <b>玻璃棒蘸取</b>待测液点在试纸中央 → 变色后与<b>标准比色卡</b>对照。<span class="rd">⚠ 试纸不能用水润湿（润湿＝稀释，pH 偏大）</span>；pH 试纸只能测整数，精密测 pH 用 pH 计。<br><span class="bl">💡 广东口径：pH 计是广东卷唯一承认的测量工具（2022、2024、2025 均为"用 pH 计测得体系的 pH"）；试纸三大易错（不润湿、不伸入溶液、氧化性溶液不能用）是外省高频——2026 北京4、2024 辽宁8（ClO⁻ 氧化性溶液改用 pH 计）。</span></p>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>酸碱性判据就一句：<span class="em">c(H⁺)、c(OH⁻) 谁大谁说了算</span>；pH＝7 是常温专利；试纸润湿是大忌，玻璃棒蘸取点中央。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 稀释与混合的两大规律<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「溶液的酸碱性与 pH」· 一、走出稀释时 pH 判断误区 / 二、酸、碱混合后溶液酸碱性的判断（规律）</span>
+
+<div class="quiz">
+  <div class="ask">【讲义原题 · 稀释】① 1 mL pH＝5 的盐酸加水稀释到 10 mL，pH＝？加水稀释到 100 mL，pH 与 7 的关系？<br>
+  ② pH＝5 的 H₂SO₄ 溶液加水稀释 500 倍，稀释后 c(SO₄²⁻) 与 c(H⁺) 的比值约为多少？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 稀释 10 倍：c(H⁺)＝10⁻⁶，<b>pH＝6</b>；稀释到 100 mL（100 倍）：强酸稀释 10 倍 pH＋1，但无限稀释受水的电离限制，pH 只能<b>接近 7 而小于 7</b>（不会等于或超过 7）；<br>
+      ② 稀释前 c(SO₄²⁻)＝5×10⁻⁶ mol·L⁻¹，稀释 500 倍后 c(SO₄²⁻)＝<b>1×10⁻⁸</b>；此时 c(H⁺) 不能按酸算（太稀），<b>趋近 1×10⁻⁷</b>（水的电离贡献）→ 比值 ≈ <b>1∶10</b>。<br>
+      <span class="rd">⚠ 稀释到 10⁻⁷ 级别时，水的电离不能忽略——这是本题唯一陷阱。</span></div>
+  </details>
+</div>
+
+<p><b style="color:var(--accent);">混合判断两大规律（必背）：</b><br>
+<span class="em">规律一（等浓度等体积一元酸碱）</span>："谁强显谁性，同强显中性"——CH₃COOH＋NaOH 显碱（CH₃COONa 水解）、NH₃·H₂O＋HCl 显酸、HCl＋NaOH 中性；<br>
+<span class="em">规律二（强酸强碱、pH 之和与 14 比）</span>：pH 和 ＝14 等体积混合中性；＜14 酸过量显酸；＞14 碱过量显碱。<span class="rd">若一强一弱：谁弱谁过量、显谁性</span>（如 pH＝2 的 CH₃COOH 与 pH＝12 的 NaOH——醋酸还有大量分子未电离，混合后醋酸过量显酸性）。</p>
+<p class="tip">⚑ 广东口径：两大规律背结论应付定性判断即可——混合 pH 计算、稀释 pH 定量对比广东六年零落点（稀释仅 2021·8B 定性一次）。</p>
+
+<div class="quiz">
+  <div class="ask">【讲义原题 · 混合判断】常温下，下列两组混合后显酸性还是碱性？<br>
+  ① pH＝3 的 HCl 与 pH＝10 的 NaOH 等体积混合；<br>
+  ② pH＝2 的 CH₃COOH 与 pH＝12 的 NaOH 等体积混合。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>酸性</b>——pH 和＝13＜14，H⁺ 多（c(H⁺)＝10⁻³、c(OH⁻)＝10⁻⁴，H⁺ 是 OH⁻ 的 10 倍），混合后酸过量；<br>
+      ② <b>酸性</b>——pH 和＝14，但 CH₃COOH 是弱酸：pH＝2 时 c(CH₃COOH)≫10⁻² mol·L⁻¹（大量分子储备），NaOH 只有 10⁻² mol·L⁻¹ OH⁻，中和后<b>醋酸分子继续电离出 H⁺</b>，显酸性——"谁弱谁过量、显谁性"。<br>
+      <span class="em">对比例</span>：pH＝2 的 H₂SO₄（强酸）与 pH＝12 的 NaOH 等体积混合才真正中性。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>稀释到极限：酸不过 7、碱不过 7；<span class="em">等浓度等体积看强弱（谁强显谁性），等 pH 看储备（谁弱谁过量）</span>；pH 和 14 是强强中性的天平。</p>
+</div>
+
+<h3>知识点④ · 外省镜子十条清单<span class="p">（🔵 冲刺层·自选）</span></h3>
+<span class="loc">💡 依据：分层发言稿（2026-09-22）——广东还没考、外省已在考的 10 个角度，冲刺层逐条自查</span>
+<details><summary>展开十条清单</summary>
+  <div class="ans">
+    <b>① 水的电离程度比较</b>（酸碱抑制 vs 水解促进排序）——2024 湖南13、2026 湖南14、2026 四川15；<br>
+    <b>② 稀释 pH 变化幅度比较强弱酸</b>——2026 湖南9（pH＝3 稀释 100 倍，变化小于 2 者为弱酸）；<br>
+    <b>③ pH 试纸/pH 计使用规范</b>——2026 北京4（不能润湿）、2024 辽宁8（ClO⁻ 氧化性溶液改用 pH 计）、2026 上海5；<br>
+    <b>④ 指示剂选择与变色范围</b>——2024 湖南8（强碱滴弱酸用酚酞）、2024 浙江15；<br>
+    <b>⑤ 三大守恒＋离子浓度排序</b>——2024 江苏12、2026 重庆11（广东只考电荷守恒正误，从未考质子守恒与排序）；<br>
+    <b>⑥ 滴定曲线＋pX-pH 图融合压轴</b>——2026 四川15、2026 山东15（广东 2026 双终点已起步）；<br>
+    <b>⑦ 终点现象规范表述</b>——2024 山东19（"最后半滴＋突变＋30s 不褪"）；<br>
+    <b>⑧ 滴定误差分析</b>——2026 山东19、2026 陕晋青宁9、2026 重庆7（先判场景再定方向）；<br>
+    <b>⑨ 非酸碱滴定"去酸碱化"</b>——碘量法淀粉指示剂（2026 北京14）、KMnO₄ 自身指示剂（2026 山东19）、EDTA 配位滴定（2026 江苏16）；<br>
+    <b>⑩ pH 换算独立计算</b>——2026 上海29（pH＝9.7→c(OH⁻)＝10⁻⁴·³）。<br>
+    <span class="gr">反向发现：水电离"10⁻ˣ双解"、温度对 Kw 独立设题、双指示剂测混合碱——连外省原卷也未见，不必练。</span>
+  </div>
+</details>
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑤ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第三章 第二节「水的电离和溶液的 pH」· 练习与应用（同源同型速练）</span>
+<p class="tip">以下 3 题与课本第二节练习同考点同型（Kw 概念/pH 计算/酸碱性判断），投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】填空：25 ℃ 时，纯水中 c(H⁺)＝＿＿＿ mol·L⁻¹、c(OH⁻)＝＿＿＿ mol·L⁻¹，Kw＝＿＿＿；将纯水加热至 100 ℃，Kw 变为 1×10⁻¹²，此时 c(H⁺)＿＿＿c(OH⁻)（填"＞""＝""＜"），水显＿＿性。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">c(H⁺)＝c(OH⁻)＝<b>1×10⁻⁷ mol·L⁻¹</b>，Kw＝<b>1×10⁻¹⁴</b>；100 ℃ 时 Kw＝10⁻¹² → c(H⁺)＝c(OH⁻)＝1×10⁻⁶，<b>c(H⁺)＝c(OH⁻)</b>，水仍显<b>中</b>性。<br>
+      <span class="em">课本母题价值</span>：Kw 随温度增大，但"中性"永远由 c(H⁺)＝c(OH⁻) 定义——pH 会变小但不代表变酸。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】计算 25 ℃ 时下列溶液的 pH：① 0.001 mol·L⁻¹ 盐酸；② 0.01 mol·L⁻¹ NaOH 溶液。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① c(H⁺)＝10⁻³ → <b>pH＝3</b>；<br>
+      ② c(OH⁻)＝10⁻² → c(H⁺)＝Kw/c(OH⁻)＝10⁻¹² → <b>pH＝12</b>。<br>
+      <span class="em">口诀复现</span>：酸直接取、碱借 Kw——两条路都通向 pH＝−lg c(H⁺)。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③ · 实验操作】用 pH 试纸测溶液 pH 的正确操作是：＿＿＿＿；判断：测 pH 前将 pH 试纸用水润湿，会使酸性溶液测得的 pH 偏大还是偏小？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">正确操作：<b>玻璃棒蘸取待测液，点在干燥 pH 试纸中央，变色后与标准比色卡对照</b>；<br>
+      润湿后相当于<b>稀释</b>：酸性溶液 c(H⁺) 减小 → <b>pH 偏大</b>（碱性溶液 pH 偏小；中性不变）。<br>
+      <span class="em">送分记忆</span>：试纸润湿＝稀释＝酸大碱小（pH 读数）。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~7题每题6分 ＋ 8题8分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 12分）</h4>
+    <ul><li>第1题（6分）：2025·揭阳 一定呈酸性——c(OH⁻)＜c(H⁺)（D，本质判据）；</li>
+    <li>第2题（6分）：2025·广州期中 水电离 1×10⁻¹² "双可能"陷阱（C）——课堂已讲，独立再做一遍；</li>
+    <li>★ 口述：向同桌复述 2021·8D 与 2025·12D 的守恒式各错在哪（漏项 / 漏系数）——硬底线"电荷守恒不漏项"。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 18分）</h4>
+    <ul><li>第3题（6分）：某温度 Kw＝1×10⁻¹²，加 NaHSO₄ 后 c(H⁺)＝10⁻²——稀释 100 倍 c(OH⁻) 反而增大（D）；</li>
+    <li>第5题（6分）：体液 CO₂/H₂CO₃ 缓冲平衡——滴生理盐水 pH 增大非减小（C）；</li>
+    <li>第7题（6分）：HClO₂（弱）与 HMnO₄（强）稀释 pH-lg(V/V₀) 曲线——等浓度等体积耗碱相等（C）。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 20分）</h4>
+    <ul><li>第4题（6分）：2025·梅州 c(H⁺)-c(OH⁻) 双曲线——XZ 线上 pH 不都等于 7（D，读图题）；</li>
+    <li>第6题（6分）：液氨类比水——NH₃＋NH₃ ⇌ NH₄⁺＋NH₂⁻，离子积类比 Kw（B），<span class="rd">✂ 65 分可弃</span>；</li>
+    <li>第8题（8分）：25 ℃/100 ℃ 电离平衡曲线综合——先抢 (1) 体积比 10∶1、(2) a＋b＝14 约 4 分，(3)(4) 水电离程度比较与 Ba(OH)₂ 混合 pH＝10 属混合精算，<span class="rd">✂ 可弃后两问</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 12＋18＋20＝50 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：酸抑制水的电离、水解的盐促进水的电离——先问"水电离出的 H⁺ 去哪了"；稀释 100 倍强酸 pH＋2、弱酸不足＋2…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：水电离出的 c(H⁺)＝1×10⁻¹³ 的溶液，溶质可能是什么？（酸、碱两分，各举一例）…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c45_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c45_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

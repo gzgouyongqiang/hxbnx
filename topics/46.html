@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第46讲 酸碱中和滴定及拓展应用 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第46讲　酸碱中和滴定及拓展应用 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——本讲默写＝1 个反应＋1 个公式＋1 段终点现象模板。<br>💡 广东锚点："由滴定体积算浓度"五年五考（2022/2023/2024/2025/2026），数据清一色四位有效数字——0.1000、22.08、0.5500，你的计算也要这样写。</p>
+
+<div class="quiz">
+  <div class="ask">① 用标准盐酸滴定待测 NaOH 溶液：写出反应的离子方程式，并写出待测液浓度 c(NaOH) 的计算公式。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「酸碱中和滴定的原理与操作」· 1.原理</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">离子方程式：<b>H⁺＋OH⁻ ＝ H₂O</b><br>
+      计算公式：<b>c(NaOH)＝c(HCl)·V(HCl)/V(NaOH)</b>（标准液浓度×消耗体积 ÷ 待测液量取体积）<br>
+      <span class="em">记忆</span>：c(测)＝c(标)·V(标)/V(测)——"标乘标、除待测"。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 用 NaOH 标准液滴定未知浓度盐酸（酚酞作指示剂）——默写滴定终点的判断（答题模板填空）。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「酸碱中和滴定的原理与操作」· 2.(4) 滴定终点 / 答题规范 5</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">当滴入<b>最后半滴</b> NaOH 标准液后，溶液由<b>无色变为浅红色</b>，且<b>半分钟内不褪色</b>，停止滴定。<br>
+      <span class="em">三关键缺一不可</span>：①"最后半滴"；②颜色由什么变什么；③"半分钟内不恢复原色"——广东卷简答 2 分就是它。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 误差快判：以标准 HCl 滴定待测 NaOH（酚酞）——a. 酸式滴定管<b>未用标准液润洗</b>直接装酸；b. 锥形瓶用<b>蒸馏水洗净后残留少量水</b>未干燥。c(NaOH) 分别偏高/偏低/无影响？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「酸碱中和滴定的原理与操作」· 二、误差分析（表 2）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans">a. <b>偏高</b>——未润洗则管内壁水膜稀释标准液，实际浓度变小，消耗 V(HCl) 偏大 → c(NaOH) 偏高；<br>
+      b. <b>无影响</b>——锥形瓶中残留蒸馏水不改变 n(NaOH)，只稀释待测液，消耗 V(HCl) 不变。<br>
+      <span class="em">口诀</span>：误差只看 V(标)——让 V(标) 偏大的操作都偏高；锥形瓶里加水永远无影响。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 仪器铁律</b>：<b>酸式</b>滴定管装酸性液与氧化性液（HCl、KMnO₄）；<b>碱式</b>滴定管装碱液；滴定管精确到 <b>0.01 mL</b>（量筒不行）；锥形瓶只洗<b>不润洗</b>（更不干燥）。<span class="bl">⚑ 三年三考（2021·7、2023·17(1)①、2024·17(3)①）＋保底延伸：润洗、排气泡、调液面要过一遍手（2024·17(3)①i 已向操作延伸）。</span></li>
+  <li><b>② 滴定管操作顺序</b>：查漏 → 洗涤 → <b>润洗（2~3 次，用待装液）</b> → 装液 → 排气泡 → 调液面记初读 → 滴定；锥形瓶：洗涤 → 装待测液（移液管/滴定管量取）→ 加指示剂 2~3 滴。</li>
+  <li><b>③ 终点判断模板（必背·硬底线）</b>："滴入<b>最后半滴</b>标准液，溶液由×色变为×色，且<b>半分钟内不恢复</b>原来的颜色"——三要素缺一不可（外省标准答案库 2024 山东19："最后半滴＋突变＋30s 内不变色"）；注意方向：碱被酸滴，酚酞"红→无色"（2026 江西9）。</li>
+  <li><b>④ 指示剂选择</b>：强酸强碱——酚酞或甲基橙均可；<b>强酸滴弱碱→甲基橙</b>（终点盐显酸性）；<b>强碱滴弱酸→酚酞</b>（终点盐显碱性）；"盐显什么性，选什么范围"。<span class="bl">⚑ 广东口径：指示剂从未独立设问（酚酞只是操作情境词）——两原则：变色范围覆盖终点 pH＋突变肉眼可辨；反向考法"由最适 pH 反选指示剂"（外省 2026 浙江1月-19：pH＝4.7 选甲基橙）冲刺层见一眼。</span></li>
+  <li><b>⑤ 误差分析</b>：c(测)＝c(标)·V(标)/V(测)，标准液浓度与 V(测) 都是定值 → <span class="em">只盯 V(标)</span>：未润洗滴定管、滴定前尖嘴有气泡、仰视读数、终点后尖嘴悬滴 → V(标) 偏大 → c(测) <b>偏高</b>；俯视、气泡中途逸出 → 偏低；锥形瓶残留水 → 无影响（外省 2026 重庆7、2024 天津15 同款"无影响"）。<span class="bl">⚑ 先判场景：回滴方向相反（2026 山东19：Fe²⁺ 标准液被 O₂ 氧化，回滴剩余 KMnO₄ → 结果偏小）。</span><span class="rd">✂ 减法：滴定突跃概念、动态终点高难形态、电位滴定——广东六年零落点，冲刺层点到为止不对全班重锤。</span></li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据分层发言稿·2026-09-23 六年真题逐题核查）</b>
+  <p>· <b>🟢 必保分（五年五考计算＋三年三考仪器）</b>：<span class="em">由滴定体积算浓度 c₁V₁/V₀——2022·17(4)、2023·17(1)②、2024·17(3)、2025·17(3)①、2026·17(ⅳ)，数据清一色四位有效数字（0.1000、22.08、0.5500）</span>；仪器选择 2021·7、2023·17(1)①、2024·17(3)①（三年三考）；终点产物定义 2024"CO₃²⁻ 只转化为 HCO₃⁻"。</p>
+  <p>· <b>🟠 主突破（曲线三级演进＋拓展应用）</b>：画曲线标终点（2022）→ 读曲线求 c₀ 与 Ka（2025）→ 双终点指认（2026·17"两次突变"，存疑）；<span class="em">滴定测反应速率 2024·17(3)②（v_a∶v_b＝6∶5）——广东自己的"拓展应用"示范</span>：滴定可测速率、测转化率、测平衡浓度。</p>
+  <p>· <b>⚑ 拓展滴定＝空白带（"拓展应用"预留的命题空间）</b>：氧化还原滴定（KMnO₄/碘量法）、EDTA 配位滴定六年 0 次；沉淀滴定仅 2024·7A"Ag⁺＋Cl⁻＝AgCl↓"识别层 1 次；指示剂从未独立设问、终点现象描述、误差分析、滴定突跃六年空白——<span class="rd">外省重仓区（2024 山东19 碘量法、2024 浙江20 Volhard 返滴定），冲刺层系统补；2027 届按"五件套通用、四大滴定变奏"准备，不对全班重锤。</span></p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约30分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 原理、仪器与操作顺序<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「酸碱中和滴定的原理与操作」· 1.原理 / 2.实验操作与仪器的选择</span>
+
+<p><b style="color:var(--accent);">仪器与用途速查（必背）：</b></p>
+<table class="tb">
+  <tr><th>仪器</th><th>用途/注意</th></tr>
+  <tr><td class="l">酸式滴定管</td><td>盛酸性液、氧化性液（HCl、KMnO₄）；玻璃活塞</td></tr>
+  <tr><td class="l">碱式滴定管</td><td>盛碱液（NaOH、Na₂S₂O₃ 碱性盐）；橡胶管＋玻璃球</td></tr>
+  <tr><td class="l">锥形瓶</td><td>盛待测液＋指示剂；只水洗<b>不润洗</b>、不必干燥</td></tr>
+  <tr><td class="l">移液管/滴定管量取</td><td>精确 0.01 mL；量筒只能粗略量取（不能用于滴定）</td></tr>
+</table>
+<p class="tip">💡 滴定管"0 刻度在上、尖嘴部分无刻度"——把液面在 0 mL 的 25 mL 滴定管液体全部放出，体积<b>大于 25.00 mL</b>（判断1 × 就考这个）。</p>
+
+<div class="quiz">
+  <div class="ask">【判断抢答 4 连（讲义原文）】① 将液面在 0 mL 处的 25 mL 酸式滴定管中的液体全部放出，液体体积为 25 mL？② 滴定终点就是酸碱恰好中和的点？③ 酸碱指示剂越多变色越明显，至少加入 2~3 mL？④ 滴定接近终点时，滴定管的尖嘴可以接触锥形瓶内壁？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>×</b>——尖嘴部分无刻度，全部放出体积<b>大于</b> 25 mL；<br>
+      ② <b>×</b>——滴定终点（指示剂变色点）与恰好中和点（pH＝7）<b>有偏差</b>，选择合适指示剂使偏差在误差范围内；<br>
+      ③ <b>×</b>——指示剂加 <b>2~3 滴</b>即可，加多自身消耗酸碱且颜色不明显；<br>
+      ④ <b>√</b>——接近终点时尖嘴可轻触锥形瓶内壁，让悬滴落下，再半滴半滴地滴。<br>
+      <span class="em">四陷阱</span>：刻度区间、终点定义、指示剂用量、尖嘴悬滴——全是实验细节送分点。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>酸式装酸和氧化剂，碱式只装碱；<span class="em">滴定管"查洗润装排记"六步走，锥形瓶水洗不润不烘</span>；量取必用滴定管，量筒不能凑热闹。</p>
+</div>
+
+<!-- 知识点② -->
+<h3>知识点② · 终点判断与指示剂选择<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「酸碱中和滴定的原理与操作」· 2.(4) 滴定终点 / 3.指示剂选择 / 答题规范 5（终点判断 3 例）</span>
+
+<p><b style="color:var(--accent);">指示剂三规则（必背）：</b></p>
+<table class="tb">
+  <tr><th>滴定类型</th><th>终点盐的酸碱性</th><th>选用指示剂</th></tr>
+  <tr><td class="l">强酸 ⇌ 强碱</td><td>中性</td><td>酚酞 或 甲基橙（突变范围大）</td></tr>
+  <tr><td class="l">强酸 滴 弱碱（HCl→氨水）</td><td>酸性</td><td><b>甲基橙</b>（黄 → 橙）</td></tr>
+  <tr><td class="l">强碱 滴 弱酸（NaOH→CH₃COOH）</td><td>碱性</td><td><b>酚酞</b>（无 → 浅红）</td></tr>
+</table>
+<p class="tip">💡 记忆：<b>终点盐显什么性，就选在哪范围变色的指示剂</b>——弱酸滴定选酚酞（碱性范围 8.2~10）、弱碱滴定选甲基橙（酸性范围 3.1~4.4）。</p>
+
+<div class="quiz">
+  <div class="ask">【终点填空 ×3（讲义答题规范练习）】① 用 a mol·L⁻¹ 盐酸滴定 NaOH，酚酞指示：终点现象＿＿？甲基橙指示：终点现象＿＿？<br>② 用标准酸性 KMnO₄ 溶液滴定溶有 SO₂ 的水溶液：需要指示剂吗？终点现象？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 酚酞：滴入最后半滴盐酸后，溶液<b>由红色变为无色</b>，半分钟内不恢复红色；甲基橙：<b>由黄色变为橙色</b>，半分钟内不恢复黄色；<br>
+      ② <b>不需要</b>指示剂——KMnO₄ 是<b>自身指示剂</b>：滴入最后半滴酸性 KMnO₄ 后，溶液由无色变为<b>浅红色（浅紫红色）</b>，半分钟内不褪色。<br>
+      <span class="em">三种指示剂对号</span>：酚酞（红→无）、甲基橙（黄→橙）、KMnO₄ 自身（无→浅红）、淀粉碘量法（无→蓝）——写清"由×到×"才给分。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>终点三件套：<span class="em">最后半滴、颜色变、半分钟不还原</span>；弱酸滴定用酚酞、弱碱滴定甲基橙、高锰酸钾自己变色自己喊。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 误差分析与数据处理<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「酸碱中和滴定的原理与操作」· 二、误差分析 / 一、注意事项与数据处理（例题 1）</span>
+
+<p><b style="color:var(--accent);">误差分析核心（必背）：</b><span class="em">c(测) 只看 V(标)</span>——V(标) 偏大 → c(测) 偏高；V(标) 偏小 → 偏低；V(标) 不变 → 无影响。</p>
+<table class="tb">
+  <tr><th>操作（标准 HCl 滴待测 NaOH）</th><th>V(HCl)</th><th>c(NaOH)</th></tr>
+  <tr><td class="l">酸式滴定管未用标准液润洗</td><td>偏大</td><td><b>偏高</b></td></tr>
+  <tr><td class="l">锥形瓶用待测液润洗（多带 NaOH）</td><td>偏大</td><td><b>偏高</b></td></tr>
+  <tr><td class="l">锥形瓶残留蒸馏水</td><td>不变</td><td>无影响</td></tr>
+  <tr><td class="l">滴定前尖嘴有气泡、滴定后消失</td><td>偏大</td><td><b>偏高</b></td></tr>
+  <tr><td class="l">滴定终点<b>俯视</b>读数</td><td>偏小</td><td><b>偏低</b></td></tr>
+  <tr><td class="l">滴定终点<b>仰视</b>读数</td><td>偏大</td><td><b>偏高</b></td></tr>
+  <tr><td class="l">终点后尖嘴有悬滴</td><td>偏大</td><td><b>偏高</b></td></tr>
+</table>
+
+<div class="quiz">
+  <div class="ask">【数据处理 · 讲义例题 1】以酚酞为指示剂，用 0.100 0 mol·L⁻¹ 盐酸标准液测 NaOH 浓度，三次滴定消耗 HCl：20.02、20.00、22.50 mL（第一次锥形瓶装 20.00 mL 待测液）。① 第三次数据如何处理？② 计算 c(NaOH)。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 第三次（22.50 mL）与前两次偏差明显，<b>应舍弃</b>——平行实验取平均值前先剔除离群值；<br>
+      ② c₁(NaOH)＝0.1000×20.02/20.00＝0.1001；c₂＝0.1000×20.00/20.00＝0.0999 → <b>c(NaOH)＝(0.1001＋0.0999)/2＝0.1000 mol·L⁻¹</b><br>
+      <span class="em">规范要求</span>：重复滴定 2~3 次、舍弃离群数据、取平均值；有效数字对齐（0.100 0 的"0"别丢）。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>误差分析三句话：<span class="em">未润洗偏高、气泡偏高、仰高俯低</span>；锥形瓶里加水＝无影响；数据离群先剔除，平均值里找真相。</p>
+</div>
+
+<h3>知识点④ · 外省镜子十条清单<span class="p">（🔵 冲刺层·自选）</span></h3>
+<span class="loc">💡 依据：分层发言稿（2026-09-23）——"拓展应用"四大滴定变奏，广东还没考、外省已在考的 10 个角度</span>
+<details><summary>展开十条清单</summary>
+  <div class="ans">
+    <b>① KMnO₄ 法＋自身指示剂</b>——2024 全国甲9、2026 北京19（"滴至微红色且半分钟不褪"）；<br>
+    <b>② 碘量法体系</b>——2024 山东19（"浅蓝色消退—复现"动态终点＋30s 规范）、2026 河南16（Na₂S₂O₃ 滴定 I₂、加 KI 的目的）、2026 北京14；<br>
+    <b>③ 银量法双范式</b>——莫尔法 K₂CrO₄ 指示剂用量 Ksp 定量上限（2024 辽宁15）；Volhard 返滴定（2024 浙江20：AgNO₃ 过量→KSCN 回滴→硫酸铁铵浅红终点）；棕色滴定管防 AgNO₃ 光解（2026 山东19）；<br>
+    <b>④ K₂Cr₂O₇ 法双指示剂链</b>——2024 重庆16（SnCl₂ 预还原＋二苯胺磺酸钠终点＋偏高操作四选项组合）；<br>
+    <b>⑤ EDTA 配位滴定</b>——2024 天津15（pH＞13 钙指示剂"紫红变蓝"）、2024 江西17（PAN、pH 4~5）、2026 江苏16（标准液浓度匹配滴定管量程）；<br>
+    <b>⑥ 指示剂双向考法</b>——2026 浙江1月19（由最适 pH＝4.7 反选甲基橙）、2026 上海5（变色范围够不着改 pH 计）；<br>
+    <b>⑦ 误差分析成体系</b>——2026 陕晋青宁9（未润洗连锁传递）、2026 重庆7、2024 天津15（"偏高/偏低/无影响"多选项组合）；<br>
+    <b>⑧ 滴定曲线高阶形态</b>——2026 四川15（pM-V 曲线由点反推 Ka）、2026 贵州14（滴定分数 T 与缓冲段）；<br>
+    <b>⑨ Fe²⁺ 标准液回滴返滴定</b>——2026 山东19（回滴场景误差方向相反）；<br>
+    <b>⑩ 含量/纯度计算型滴定</b>——外省多卷独立设问（广东"求浓度"五年五考、纯度型尚未独立出现）。<br>
+    <span class="gr">反向发现：湖北、江苏全卷无滴定分析题；体系化考"四大滴定"的只有山东、浙江、重庆、天津、江西——按"五件套通用、四大滴定变奏"准备，不必按山东-19 动态终点那种高难形态对全班重锤。</span>
+  </div>
+</details>
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑤ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第三章「实验活动 2 酸碱中和滴定」· 同源同型速练</span>
+<p class="tip">以下 3 题与课本实验活动 2（酸碱中和滴定）同考点同型，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】填空：① 量取 25.00 mL 待测 NaOH 溶液应选用＿＿式滴定管；② 盛装标准盐酸应选用＿＿式滴定管；③ 滴定管的精确度为＿＿ mL；④ 量筒能不能精确量取 25.00 mL？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>碱</b>式（NaOH 腐蚀玻璃活塞，用橡胶管玻璃球）；② <b>酸</b>式（盐酸不腐蚀玻璃活塞）；③ <b>0.01</b> mL（读数估到小数点后两位）；④ <b>不能</b>——量筒只能粗略量取，精确量取用滴定管/移液管。<br>
+      <span class="em">课本实验基础</span>：滴定管=精量器，量筒=粗量器，各司其职。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】判断：a. 酸式滴定管用蒸馏水洗净后可直接装标准盐酸？b. 锥形瓶使用前必须干燥？c. 滴定终点读数时视线应与凹液面最低处相平？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">a. <b>×</b>——洗净后必须用<b>标准液润洗 2~3 次</b>再装液（否则稀释标准液致结果偏高）；<br>
+      b. <b>×</b>——锥形瓶残留蒸馏水不影响 n(待测)，不必干燥；<br>
+      c. <b>√</b>——读数"凹液面最低点＋平视"，俯视偏小、仰视偏大。<br>
+      <span class="em">三问覆盖</span>：润洗对象（滴定管润洗、锥形瓶不润洗）＋读数视线。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③】用 0.1000 mol·L⁻¹ NaOH 标准液滴定 20.00 mL 未知浓度盐酸（酚酞），终点消耗 NaOH 22.08 mL，求 c(HCl)。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">n(HCl)＝n(NaOH) → c(HCl)×20.00 ＝ 0.1000×22.08 → <b>c(HCl)＝0.1104 mol·L⁻¹</b><br>
+      与真题 2（HAc 0.1104）数值同型——<span class="em">课本实验的招牌计算</span>，会这一个公式就拿到滴定大题的开门分。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：100分] 1~8题每题8分 ＋ 9题8分 ＋ 10题14分 ＋ 11题14分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 24分）</h4>
+    <ul><li>第1题（8分）：滴定实验说法——眼睛注视锥形瓶（A），KMnO₄ 装酸式管/自身指示剂；</li>
+    <li>第2题（8分）：盐酸滴 NaOH 正确操作——读数平视凹液面（D）；</li>
+    <li>第9题（8分）：市售白醋总酸量大题——容量瓶/酚酞/终点现象/0.75 与 4.5 g/100mL 全基础，送分大题全拿；</li>
+    <li>★ 口述：复述 2024·17(3) 终点产物定义怎么决定计量比（"CO₃²⁻ 只转化为 HCO₃⁻"即 1∶1）。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 38分）</h4>
+    <ul><li>第3题（8分）：2025·肇庆 NaOH 标定 H₂C₂O₄——排气泡图（C）；</li>
+    <li>第4题（8分）：操作正误——量取 NaOH 不能用酸式管、读数记 16.20（C）；</li>
+    <li>第5题（8分）：HB 弱酸滴定曲线——酚酞作指示剂（B），Ka 数量级别算错；</li>
+    <li>第11题（14分）：2025·广东重点中学 NaOH 滴盐酸——(1)(2) 仪器与终点送分、(3) a 点 5 种微粒/b 点电荷守恒＝2、(4) 误差①偏高②偏低，全做。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 38分）</h4>
+    <ul><li>第6题（8分）：胆矾纯度碘量法（D）——<span class="rd">✂ 氧化还原滴定，65 分可弃</span>；</li>
+    <li>第7题（8分）：2025·湛江 甲醛法测 NH₄⁺（C 错在"不静置偏高"）——<span class="rd">✂ 返滴定法，可弃</span>；</li>
+    <li>第8题（8分）：2025·浙江 NaOH 除 Na₂CO₃ 标定（B）——同离子效应＋弱酸用酚酞，可挑战；</li>
+    <li>第10题（14分）：葡萄酒 SO₂ 含量测定——先抢 (1) SO₂＋H₂O₂＝H₂SO₄、(2) 赶气泡操作、(4) 液体体积＞40 mL、(5) 0.24 g·L⁻¹ 约 10 分，(3)(6) 酚酞终点与误差改进<span class="rd">✂ 可视情况放弃</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 24＋38＋38＝100 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：滴定管水洗后必须再用待装液润洗、锥形瓶绝不能润洗；终点判断要说"半分钟不褪色"；读数仰视/俯视误差方向别背反…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：强酸滴弱碱为什么选甲基橙、强碱滴弱酸选酚酞？（落到盐的水解：等量点显什么性）…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c46_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c46_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

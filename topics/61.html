@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第61讲 限定条件下有机物的同分异构体 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:92%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第61讲　限定条件下有机物的同分异构体 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案（3 式是「限定条件翻译」的三大本源：白色沉淀·CO₂·银镜｜2024·T20(2)「4 组峰＋银镜」、2026·T20(2)②「5 组峰定中间体」——本讲六年六考从不缺席）</p>
+
+<div class="quiz">
+  <div class="ask">① 苯酚与浓溴水反应：白色沉淀——「FeCl₃ 显紫色/白色沉淀 → 酚羟基」的本源</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 限定条件「含酚羟基」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">C₆H₅OH ＋ 3Br₂ → 三溴苯酚↓（白色） ＋ 3HBr</b><br>
+      要点：取代反应，溴只上<span class="em">邻、对位</span>三个位置；现象是<span class="em">白色沉淀</span>。<br>
+      <span class="gr">✅ 同分异构题里「滴入 FeCl₃ 显紫色 / 与浓溴水产生白色沉淀」→ 翻译：含<span class="em">酚羟基</span>（—OH 直接连苯环）</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 乙酸与 NaHCO₃ 溶液反应：冒气泡——「产 CO₂ → 羧基」的本源</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 限定条件「含羧基」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">CH₃COOH ＋ NaHCO₃ → CH₃COONa ＋ H₂O ＋ CO₂↑</b><br>
+      <span class="gr">✅ 同分异构题里「能与 NaHCO₃（或饱和 Na₂CO₃）反应放出 CO₂」→ 翻译：含<span class="em">羧基 —COOH</span>。注意：<span class="rd">酚羟基不能与 NaHCO₃ 反应</span>——羧基的专属身份证</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 乙醛的银镜反应：「能发生银镜反应 → 醛基」的本源</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 限定条件「含醛基」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">CH₃CHO ＋ 2[Ag(NH₃)₂]OH <i>Δ</i>→ CH₃COONH₄ ＋ 2Ag↓ ＋ 3NH₃ ＋ H₂O</b><br>
+      配平口诀：<span class="em">一水二银三个氨</span>。<br>
+      <span class="gr">✅ 同分异构题里「能发生银镜反应 / 与新制 Cu(OH)₂ 生成砖红色沉淀」→ 翻译：含<span class="em">醛基 —CHO（或甲酸酯 HCOO—）</span></span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 不饱和度 Ω 先算（第一动作）</b>：CₓH_y → <span class="em">Ω = x ＋ 1 − y/2</span>（氧不管、<span class="em">卤素/N/—NO₂/—NH₂ 都当 H 数</span>）。<span class="em">Ω=1 → 1 个双键或 1 个环</span>；Ω=2 → 1 个三键或 2 个双键（或双键＋环）；<span class="em">Ω≥4 → 优先考虑苯环</span>。</li>
+  <li><b>② 限定条件 → 官能团翻译（核心表）</b>：Na 产 H₂ → 羟基/羧基；<span class="em">银镜 → 醛基</span>；与 NaOH 反应 → 酚/羧/酯/卤素原子；<span class="em">NaHCO₃ 产 CO₂ → 羧基</span>；FeCl₃ 显紫 → 酚羟基；能水解 → 酯基/酰胺基/卤素原子；消去 → 有 β-H。<span class="rd">⚑ 性质限定三年三考：2021 三条件联用（NaHCO₃＋2倍NaOH＋3倍Na）／2024 银镜／2026 FeCl₃ 显色</span></li>
+  <li><b>③ 氢谱数字暗语（基础版）</b>：峰面积比有 <span class="em">9 / 6 / 3 → 等效 —CH₃ 的个数</span>（9=3 个、6=2 个、3=1 个）；<span class="em">4 → 两个对称 —CH₂—</span>；2 → 一个 —CH₂—；1 → —OH/—COOH/—CHO 各 1 个 H。<span class="rd">⚑ 核磁峰组数＝第一高频限定，五年五考：2021「6 个化学环境相同的氢」→2022「一组峰」→2023「2 组峰」→2024「4 组峰」→2026「5 组峰」</span></li>
+  <li><b>④ 数目速记（必背）</b>：烷基 <span class="em">—C₃H₇ 2 种、—C₄H₉ 4 种、—C₅H₁₁ 8 种</span>；苯环二取代：<span class="em">相同 3 种、不同 3 种</span>；苯环三取代：AAA 3 种、AAB 6 种、ABC 10 种。<span class="rd">⚑「共有__种」四年四考（2021/2022/2025/2026）——2025「含化合物Ⅰ」、2026「烷基＋酚羟基」6 种都靠这张速记表</span></li>
+  <li><b>⑤ 书写四步法</b>：<span class="em">算 Ω → 定官能团 → 写碳架 → 定位置</span>——按顺序组装碎片，有序书写不重不漏。<span class="rd">⚑ 书写＋命名六年唯一一次：2023·T20(1)「x 的结构简式（写一种），其名称」</span></li>
+  <li><b>⑥ 同分异构「散进全卷」</b>：2026·T15 平衡图像以「同分异构体 B(g)/C(g)」作题干载体；手性碳 2023-2025 连考第 20 题选项、顺反 2026 跟进选项——正面设问变小、基础化，但「分子式→条件→碎片→结构」的功夫满卷通用。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《65分考点清单》）</b>
+  <p>· <b>主战场（稳拿盘）</b>：<span class="em">限定条件→官能团翻译</span>（银镜→醛基 2024／FeCl₃→酚羟基 2026／NaHCO₃→羧基）；<span class="em">邻间对计数本能</span>——苯环二取代 3 种、三取代 AAB 6 种／ABC 10 种（2025「含化合物Ⅰ」、2026「烷基＋酚羟基」6 种都靠它）；<span class="em">核磁峰组数</span>是五年五考的第一高频限定。</p>
+  <p>· <b>答题模板</b>：<span class="em">算 Ω → 条件翻译定官能团 → 氢谱数字定对称 → 写碳架定位置</span>；题目问「写出一种」→ 拼一个即得 2 分（2024·T20(2) 对甲基苯甲醛）；问「共有__种」→ 按速记表逐档数，并圈出「（含化合物Ⅰ）」这类计数口径限定。</p>
+  <p>· <span class="em">🔵 冲刺层预备区</span>：<span class="em">定二移一法＋峰组数定构三步</span>（2021 五条件 10 种是 4 分大问范式，2021-2024 主体技法）；<span class="em">外省六范式</span>——水解产物指定（江苏）／红外限定／顺反计数／手性碳计数／一溴代物定对称／跨章迁移计数。</p>
+  <p>· <b>保分策略</b>：性质映射＋邻间对计数是 2025/2026 小空与选项字样的稳拿盘。<span class="rd">✂ 放弃</span>：Ω 显性计算设问、红外与质谱限定、「不含甲基」限定、对映体/立体异构计数、全枚举大题（广东零考且外省同步退场）；氢谱峰面积比精细对应（作业挑战区标✂）。</p>
+</div>
+
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约33分钟</span></div>
+
+<h3>考点① · 不饱和度：同分异构题的第一动作<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 「不饱和度及应用」</span>
+
+<table class="tb">
+  <tr><th>不饱和度</th><th>对应结构（讲义原图文字化）</th></tr>
+  <tr><td><b>Ω = 1</b></td><td class="l">1 个双键 <span class="em">或</span> 1 个环</td></tr>
+  <tr><td><b>Ω = 2</b></td><td class="l">1 个三键 <span class="em">或</span> 2 个双键 <span class="em">或</span> 1 个双键＋1 个环</td></tr>
+  <tr><td><b>Ω = 3</b></td><td class="l">3 个双键 <span class="em">或</span> 双键＋三键 <span class="em">或</span> 环＋2 个双键 等</td></tr>
+  <tr><td><b>Ω ≥ 4</b></td><td class="l"><span class="em">优先考虑苯环</span>（苯环 Ω=4：3 双键＋1 环）</td></tr>
+</table>
+
+<div class="koujue">
+  <div class="t">📢 Ω 公式与三防</div>
+  <p><b>Ω = 碳数 ＋ 1 − 氢数÷2</b>（CₓH_yO_z → Ω = x＋1−y/2）。<br>
+  三防：<span class="em">① 氧原子不算 ② 卤素、—NO₂、—NH₂ 都当 H ③ 别忘了环也算 1</span>。</p>
+</div>
+
+<div class="quiz">
+  <div class="ask">【抢答】①C₈H₈O₂　②C₄H₆　③C₅H₉NO₂（讲义深圳题）——各的不饱和度是多少？分别可能有什么结构？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 「不饱和度及应用」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">①Ω=8+1−8/2=5 → 苯环(4)＋1 个 C=O（如苯甲酸、苯甲醛、甲酸苯酚酯……）　②Ω=4+1−3=2 → 三键 / 两个双键 / 双键＋环　③Ω=5+1−9/2=2 → 无环，两个 —CHO 或 1 个 —OOCH＋C=C（讲义深圳 F 催化剂题的解析原话）</b><br>
+      <span class="gr">✅ 拿到「写同分异构体」先算 Ω——Ω 直接告诉你有几个环几个键，条件翻译才不会跑偏</span></div>
+  </details>
+</div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 1</span>C₈H₁₀ 芳香烃的同分异构体共有 4 种（乙苯 1 种＋二甲苯 3 种）中，二甲苯属于苯环上「A、A」二取代型，应有 6 种（　　）</summary>
+  <div class="ans"><b>×　</b>苯环<span class="em">二取代速记：取代基相同（A、A）3 种（邻、间、对），不同（A、B）也是 3 种</span>。二甲苯 = 邻/间/对 3 种，加乙苯共 4 种。</div></details></div>
+
+<h3>考点② · 条件翻译：把「性质题」变成「找官能团」<span class="p">（约9分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 「同分异构体书写的常见限制条件」</span>
+
+<table class="tb">
+  <tr><th>题目里的限定条件（原表）</th><th>翻译 → 官能团/结构</th></tr>
+  <tr><td>与金属钠反应放出 H₂</td><td class="l">含<span class="em">羟基或羧基</span>（醇、酚、羧酸）</td></tr>
+  <tr><td>能发生银镜反应 / 与新制 Cu(OH)₂ 生成砖红色沉淀</td><td class="l">含<span class="em">醛基</span>（醛、甲酸、甲酸某酯）</td></tr>
+  <tr><td>与 NaOH 溶液反应</td><td class="l">含<span class="em">酚羟基、羧基、酯基、卤素原子、酰胺基</span></td></tr>
+  <tr><td>与 NaHCO₃（Na₂CO₃）反应放出 CO₂</td><td class="l">含<span class="em">羧基</span></td></tr>
+  <tr><td>遇 FeCl₃ 显紫色 / 与浓溴水产生白色沉淀</td><td class="l">含<span class="em">酚羟基</span></td></tr>
+  <tr><td>能发生水解反应</td><td class="l">含<span class="em">酯基、酰胺基或卤素原子</span></td></tr>
+  <tr><td>能发生消去反应</td><td class="l">醇/卤代烃且含 <span class="em">β-H</span></td></tr>
+  <tr><td>能发生加聚反应</td><td class="l">含 <span class="em">C=C（或 C≡C）</span></td></tr>
+</table>
+
+<table class="tb">
+  <tr><th>氢谱峰面积比里的数字</th><th>暗示（讲义原表）</th></tr>
+  <tr><td><b>9、6 或 3</b></td><td class="l">有 <span class="em">3 个、2 个、1 个等效 —CH₃</span></td></tr>
+  <tr><td><b>4</b></td><td class="l">两个<span class="em">对称的 —CH₂—</span>（或苯环四个对称 H）</td></tr>
+  <tr><td><b>2</b></td><td class="l">一个 —CH₂—（或 —NH₂）</td></tr>
+  <tr><td><b>1</b></td><td class="l">—OH / —COOH / —CHO 等「1 个 H」的基团</td></tr>
+</table>
+
+<div class="quiz">
+  <div class="ask">【抢答】（2025·阳江）化合物Ⅴ是某溴代醛的同分异构体：能发生银镜反应，氢谱只有 3 组峰，峰面积比 2∶2∶1——翻译出来是什么分子？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 「变式训练 2」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">银镜 → 含 —CHO；3 组峰 2∶2∶1 → 两个 —CH₂— 加一个「1H 基团（—CHO 的 H）」→ 直链 BrCH₂—CH₂—CHO，名称：3-溴丙醛</b><br>
+      翻译流水线：<span class="em">银镜→醛基 → 数字 2+2 → 两个亚甲基 → 1 → 醛氢 → 组装成链</span>。<br>
+      <span class="gr">✅ 「写 1 种」的题，按这条流水线拼出唯一/少数几个候选，写一个就 2 分到手</span></div>
+  </details>
+</div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 2</span>能与 NaOH 溶液反应的有机物一定含有羧基或酚羟基（　　）</summary>
+  <div class="ans"><b>×　</b><span class="em">酯基（水解）、卤素原子（水解）、酰胺基</span>都能与 NaOH 反应——条件翻译表里「与 NaOH 反应」一栏有 5 种可能，别只写两种。</div></details></div>
+<div class="bianxi"><details><summary><span class="q">辨析 3</span>分子式为 C₄H₉— 的丁基有 3 种，所以 C₄H₉COOH 型羧酸有 3 种（　　）</summary>
+  <div class="ans"><b>×　</b>丁基有 <span class="em">4 种</span>（正、异、仲、叔），所以 C₄H₉—COOH 有 4 种。速记：<span class="em">丙基 2、丁基 4、戊基 8</span>。</div></details></div>
+
+<h3>考点③ · 书写四步法与「写一种」策略<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 「限定条件下同分异构体书写的一般思路」</span>
+
+<div class="koujue">
+  <div class="t">📢 四步法（讲义三步思路的展开）</div>
+  <p><b>第一步</b> 算分子式与 Ω → <b>第二步</b> 条件翻译定碎片（官能团）→ <b>第三步</b> 写碳架（直链/苯环）→ <b>第四步</b> 定位置（取代基在哪、对称性）。</p>
+</div>
+
+<div class="quiz">
+  <div class="ask">【抢答】（2024·安徽改编）某烃的同分异构体：①含 2 个碳碳三键 ②不含甲基——碳链怎么摆？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 「变式训练 4」</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b style="color:var(--gold);">不含甲基 → 三键必须在碳链两端；2 个三键 → 主链中间再加一个三键或链中排布——如 HC≡C—CH₂—C≡CH 等（共 4 种，讲义答案）</b><br>
+      思维顺序：<span class="em">先定「端基」再排「中间」</span>——「不含甲基」= 端碳必须是三键碳。<br>
+      <span class="rd">⚠ 这是「组合计数」类，65 分目标<span class="em">看懂思路即可，数不清不强求</span></span></div>
+  </details>
+</div>
+
+<div class="bianxi"><details><summary><span class="q">辨析 4</span>书写同分异构体时，先写碳链异构再动官能团位置，就不会重不漏（　　）</summary>
+  <div class="ans"><b>√　</b>顺序：<span class="em">碳架（直链→支链）→ 官能团类别异构 → 官能团位置异构</span>——「碳架、类别、位置」三级顺序是<span class="em">有序书写</span>的骨架，跳步必漏。</div></details></div>
+
+
+<!-- 考点④ 峰组数定构与定二移一 -->
+<h3>考点④ · 峰组数定构＋定二移一（4 分大问的主体技法）<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 能力层主线 · 2021-2024 大问范式</span>
+<p class="tip">⚑ <b>广东的异构大问＝「峰组数定构＋定二移一」</b>：2021 年五条件数 10 种、2024 年 4 组峰推对甲基苯甲醛，都走这条流水线——2025/2026 虽降成 1 分小空，但技法不变（今年考小、明年可能考大）。</p>
+<div class="quiz">
+  <div class="ask">2021·广东·T21(5)：芳香族同分异构体含 —COOH 与酚 —OH 两个取代基——定二移一法怎么数？（第三个位置：邻、间、对）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>先定两取代基骨架、再移第三个</b>：—COOH 与酚 —OH <span class="em">相邻 4 种＋相间 4 种＋相对 2 种＝10 种</span>（讲义原答案）——这就是「定二移一」的标准姿势。<br>
+      <span class="em">三取代速记：AAA 3 种、AAB 6 种、ABC 10 种</span>；峰组数定构三步：算 Ω → 按峰组数分碎片（4 组＝苯环四对称氢压成 2 组＋2 个取代基）→ 用 Ω 验证收口（2024 年得对甲基苯甲醛）。<br>
+      <span class="gr">✅ 两段式验算纪律：数目偏大查漏对称、偏小查漏位置——数目与结构永远互为校对</span></div>
+  </details>
+</div>
+
+<!-- 考点⑤ 外省镜子（冲刺） -->
+<h3>考点⑤ · 外省镜子：广东还没考的角度<span class="p">（约2分钟）</span></h3>
+<span class="loc">📌 冲刺 85+ 专供 · 2024-2026 三十余份外省原卷比对</span>
+<ul class="kps">
+  <li><b>水解产物指定型</b>（江苏招牌）：2024·江苏15(4)、2026·江苏15(4)——酯水解酸化得 X、Y、Z，对每个产物逐一加限定（手性碳／峰组数／显色），把异构题做成微型推断题，广东零考；</li>
+  <li><b>红外限定</b>：2024·河北18(7)、2024·江西18(7)——红外「特征吸收峰」给 Ω 定向、排除环与三键，补上广东红外零落点；</li>
+  <li><b>顺反计数</b>：2024·江西18(7)——「只考虑顺反异构」时每条合资格双键数目乘 2，立体异构从回避对象变成考查维度；</li>
+  <li><b>手性碳作计数条件</b>：2024·全国甲12(7)——手性碳从「排除项」（2021 广东 e 条件）变成计数维度；</li>
+  <li><b>对称性进阶</b>：2024·甘肃18(2)「苯环上的一溴代物只有一种」——用对称面分析替代逐个枚举；</li>
+  <li><b>跨章迁移</b>：2026·重庆15(1)④ S₄O₄ 正四面体棱嵌入计数、2026·浙江1月20(5) 试剂现象区分异构体、2026·湖南17(7) 副产物 M 是 G 的同分异构体——异构思想正在出圈。</li>
+</ul>
+<p class="tip">🔍 <b>反向发现</b>：Ω 显性计算设问、质谱分子离子峰限定、「不含甲基」限定、对映体/立体异构计数、全枚举「写出全部」大题——广东六年零考、外省同步退场（绝大多数题标注「不考虑立体异构」或「写一种即可」），一轮不投时间。</p>
+
+<div class="koujue">
+  <div class="t">📢 真题串联（强哥划重点）</div>
+  <p>广东卷大题最后一空规律：问「<span class="em">写出结构简式（一种）</span>」→ 做条件翻译，稳拿 2 分（2024 T20(2)）；问「<span class="em">共有几种</span>」且条件一长串 → 战略放弃，省时间（2021 T21(5)）。<span class="em">先算 Ω、再翻译官能团、氢谱数字定对称</span>——三件套走完，「写一种」的题基本只剩一两个候选。</p>
+</div>
+
+<!-- ==================== 四、作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">课后完成</span></div>
+<p class="tip">📖 讲义 <span class="pg">P＿＿</span> · 本讲无「课时精练」，作业取讲义「变式训练」题号（变式 1~12）</p>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（对照考点②翻译三件套）</h4>
+    <ul>
+      <li><b>变式 1（2025·广州）</b>　C₅H₁₀O 能发生银镜反应 → 写 X 的结构简式；含 C=O 的同分异构 6 种（先只写两三种）</li>
+      <li><b>变式 2（2025·阳江）</b>　银镜＋3 组峰 2∶2∶1 → 3-溴丙醛（课堂原题，独立再走一遍）</li>
+      <li><b>变式 5（2024·广东 20(2)）</b>　苯环＋4 组峰＋银镜 → 对甲基苯甲醛（真题同款，独立完成）</li>
+    </ul>
+  </div>
+  <div class="box b2"><h4>🏆 挑战（✂ 多条件组合计数，65分清单放弃点）</h4>
+    <ul>
+      <li><b>变式 3（2025·深圳）</b>　C₅H₉NO₂ 三条件（无环＋氨基＋银镜＋氢谱 3∶2∶2∶2）</li>
+      <li><b>变式 4（2024·安徽）</b>　手性碳＋2 个三键＋无甲基（计数 4 种）</li>
+      <li><b>变式 6（2025·汕头）</b>　加聚＋FeCl₃ 显紫＋五组峰 6∶2∶2∶1∶1</li>
+      <li><b>变式 7（2025·江门）</b>　AHPA 三条件（6 组峰 4∶2∶2∶2∶2∶1）</li>
+      <li><b>变式 8（2025·佛山）</b>　苯环＋硝基＋3 组峰 3∶3∶1（写全所有结构）</li>
+      <li><b>变式 9（2021·广东 21(5)）</b>　五条件 10 种（<span class="rd">✂ 考场直接跳</span>）</li>
+      <li><b>变式 10~12（浙江选考/综合）</b>　对称结构多解书写</li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：漏"限定条件"——题目限酯就只能写酯；苯环上二元取代漏"邻间对"其一；数完不验不饱和度（每多一个环或双键减 2 个 H）…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：写同分异构体的固定顺序你能背出来吗？（定类别→排碳链→移官能团→验不饱和度与对称性）…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c61_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c61_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

@@ -491,7 +491,7 @@
 
 <script>
 /* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
-(function(){
+function __uibarInit(){
   var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
   if(!fsBtn&&!lumBtn)return;
   var stEls=document.querySelectorAll('style');
@@ -550,7 +550,8 @@
   bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
   bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
   apply();
-})();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
 </script>
 
 <script src="../hxbnx-handwrite.js"></script>

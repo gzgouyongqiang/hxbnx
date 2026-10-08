@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第44讲 弱电解质的电离平衡 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第44讲　弱电解质的电离平衡 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——每式写<b>电离方程式</b>（弱电解质一律用 ⇌），并回答一个"条件改变→平衡移动"小问。电离方程式书写是本讲广东卷送分点（2021 广东 T8 鸟嘌呤盐酸盐同款考法）。<span class="rd">广东锚点</span>：五个核心方程式——CH₃COOH（2022-17）、NH₃·H₂O（2023-18(2)）、H₂CO₃ 两步（2021-18(3)②）、NaHSO₄ 对比 NaHCO₃（强拆弱不拆）、H[CuCl₂]＝H⁺＋[CuCl₂]⁻（2025-12C 配离子不拆，详见知识点④速写）。</p>
+
+<div class="quiz">
+  <div class="ask">① 写出醋酸的电离方程式，并回答：向平衡体系中加入少量 CH₃COONa 固体，平衡向哪个方向移动？c(H⁺) 如何变？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「弱电解质的电离平衡及影响因素」· 2.影响因素（同离子效应）＋应用举例（0.1 mol·L⁻¹ CH₃COOH 表）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CH₃COOH ⇌ CH₃COO⁻＋H⁺</b>（电离吸热）<br>
+      加 CH₃COONa 固体：CH₃COO⁻ 浓度增大 → <b>同离子效应</b>抑制电离 → 平衡<b>逆向移动</b>、c(H⁺)<b>减小</b>、pH 增大。<br>
+      <span class="rd">⚠ 电离方程式必须用 ⇌（可逆号），用"="表示完全电离即判错。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出一水合氨（NH₃·H₂O）的电离方程式，并回答：升高温度，平衡向哪个方向移动？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「弱电解质的电离平衡及影响因素」· 1.电离平衡的建立（(1) 电离是吸热过程）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>NH₃·H₂O ⇌ NH₄⁺＋OH⁻</b><br>
+      弱电解质电离<b>吸热</b> → 升高温度促进电离 → 平衡<b>正向移动</b>、c(OH⁻) 增大（氨水加热碱性略增强）。<br>
+      <span class="em">通用结论</span>：电离平衡与化学平衡一样服从勒夏特列——升温度促吸热方向。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 H₂CO₃ 在水中的两步电离方程式，并回答：溶液中 c(H⁺) 主要由哪一步电离决定？为什么？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电离平衡常数及应用」· 1.电离平衡常数表达式（(3) 二元弱酸碳酸）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>H₂CO₃ ⇌ H⁺＋HCO₃⁻</b>（第一步，Ka₁≈4.5×10⁻⁷）<br>
+      <b>HCO₃⁻ ⇌ H⁺＋CO₃²⁻</b>（第二步，Ka₂≈4.7×10⁻¹¹）<br>
+      c(H⁺) 主要看<b>第一步</b>——Ka₁ ≫ Ka₂（相差约 10⁴ 倍），第二步电离极微弱，<span class="rd">计算多元弱酸的 c(H⁺) 只考虑第一步，HCO₃⁻ 不要拆开写。</span></div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 强弱电解质＝是否完全电离</b>：强电解质稀溶液中<b>无溶质分子</b>（判断1 √），弱电解质稀溶液中<b>有溶质分子</b>。常见弱电解质必背：CH₃COOH、HClO、H₂CO₃、H₂S、H₂SO₃、HF、H₃PO₃、NH₃·H₂O、水。<span class="rd">NA 陷阱定性判断：弱电解质部分电离 → 离子数一定小于计量数（记结论即可）</span>。</li>
+  <li><b>② 电离平衡移动四外因</b>：<span class="em">稀释促进电离</span>（但离子浓度除 OH⁻ 外都减小）；升温促进（吸热）；<b>同离子效应</b>（加 CH₃COONa/通 HCl）抑制；加入能消耗离子的物质（如 NaOH 中和 H⁺）促进。</li>
+  <li><b>③ 证明弱电解质三角度</b>：①不能完全电离（0.1 mol·L⁻¹ 溶液 c(H⁺)＜0.1）；②存在电离平衡（改变条件平衡移动、加对应盐 c(H⁺) 变）；③其对应盐能水解（NaA 溶液显碱性）。</li>
+  <li><b>④ Ka 的表达式与铁律</b>：Ka＝c(H⁺)·c(A⁻)/c(HA)；Ka <b>越大酸性越强</b>；Ka <b>只与温度有关</b>（浓度、稀释不改 Ka，升温 Ka 增大）；Ka₁≫Ka₂≫Ka₃——由 Ka 排序可得酸性强弱，再用"强酸制弱酸"判断反应能否发生（广东高频考法）。</li>
+  <li><b>⑤ 稀释三件事（必背）</b>：加水稀释弱酸——电离程度 α <b>增大</b>、n(H⁺) 增大、c(H⁺) <b>减小</b>、Ka <b>不变</b>。<span class="em">🔵 能力层主攻＝Ka 三用（算、比、测）：测 Ka 三年三法（滴定半中和法/非水溶剂指示剂法/NaClO 间接法）＋半中和点 pH＝pKa</span>；<span class="rd">✂ 放弃：电离度 α 计算、pH-稀释倍数图像、Ka/Kb 表达式直接书写（六年零落点）</span>。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷弱电解质电离平衡·水的电离·pH 考点与难度研究报告》＋2021—2026 六年逐题重查）</b>
+  <p><b>🎯 节奏＝"隔年放大招"：</b><b>2022-17、2025-17 两度把 14 分整题交给它，且全部做成实验探究</b>；2021-18(3)②、2023-18(2)、2024-19(3) 以大题小问嵌入（约 2~6 分）；选择题六年仅 3 次触及（2021-8、2023-12D、2025-12C），从不独立成题。<b>2026 年全卷无直接考查题（近零）</b>——2022 大、2023 小、2024 中、2025 大、2026 近零：按"去年刚考过"跳讲必吃亏，2027 届要按<b>大年标准备</b>。</p>
+  <p>· <b>🟢 必保分（0.70–0.85）</b>：电离方程式书写（<span class="em">五年五题全勤的 Ka/Kb 计算与应用：2021-18(3)②、2022-17、2023-18(2)、2024-19(3)、2025-17(3)</span>）、强弱电解质判断（2023-12D）、稀释规律（2021-8B、2022-17(3)）。</p>
+  <p>· <b>🟠 主突破（0.55–0.70，能力层）</b>：<span class="em">Ka 三用：算（"列出算式"求 Ka）、比（Ka 排序判反应）、说理（"结合表中数据给出判断理由"三步）、测（测 Ka 方案——2022 滴定半中和法、2024 非水溶剂指示剂法、2025 NaClO 间接法，三年三法不重样，广东最具辨识度的进阶考向）</span>＋"pH 不能直接比 Ka"元认知辨析（2025-17(4)③）。</p>
+  <p>· <b>🔵 冲刺层预备区（广东零落点、外省选择题压轴）</b>：lg c-pH 物种分布曲线（山东 2026-15、江苏 2026-12）、双弱酸滴定 pM 曲线（四川 2026-15）、电离-配位耦合（黑吉辽蒙 2026-15）、多元弱酸最适 pH=(pKa₁+pKa₂)/2（浙江 2026-1）、Ka→Kh 联用。</p>
+  <p>· <b>✂ 放弃（六年零落点）</b>：pH-稀释倍数经典图像题、浓度-导电能力曲线选择题、电离度 α 的计算、酸碱抑制/促进水的电离独立设问、Ka/Kb 表达式直接书写、多元弱酸分步电离方程式直接书写。<span class="rd">保分策略：拆写规范＋稀释三件事＋Ka 三用。</span></p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约22分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 强弱电解质判断与电离平衡移动<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「弱电解质的电离平衡及影响因素」· 1.电离平衡的建立 / 2.影响因素 / 应用举例（0.1 mol·L⁻¹ CH₃COOH 表）</span>
+
+<p><b style="color:var(--accent);">0.1 mol·L⁻¹ CH₃COOH 平衡移动速查表（先想后揭）：</b>（CH₃COOH ⇌ CH₃COO⁻＋H⁺，ΔH＞0）</p>
+<table class="tb">
+  <tr><th>改变条件</th><th>平衡移动</th><th>c(H⁺)</th><th>导电能力</th></tr>
+  <tr><td>加水稀释</td><td><span class="bl">向右</span></td><td><span class="rd">减小</span></td><td>减弱</td></tr>
+  <tr><td>加入少量冰醋酸</td><td>向右</td><td>增大</td><td>增强</td></tr>
+  <tr><td>通入 HCl(g)</td><td><span class="bl">向左</span>（同离子）</td><td>增大</td><td>增强</td></tr>
+  <tr><td>加 NaOH(s)</td><td>向右（消耗 H⁺）</td><td>减小</td><td>增强</td></tr>
+  <tr><td>加 CH₃COONa(s)</td><td><span class="bl">向左</span>（同离子）</td><td>减小</td><td>增强</td></tr>
+  <tr><td>升高温度</td><td>向右（吸热）</td><td>增大</td><td>增强</td></tr>
+</table>
+<p class="tip">💡 <span class="rd">易错双胞胎</span>：加水稀释→电离向右但 c(H⁺) 减小（稀释效应大于电离增量）；加 CH₃COONa→平衡向左但离子总数增多、导电能力反而增强。</p>
+
+<div class="quiz">
+  <div class="ask">【判断抢答 5 连（讲义原文）】① 强电解质稀溶液中不存在溶质分子，弱电解质稀溶液中存在溶质分子？② 一元弱碱 BOH 的电离方程式为 BOH ＝ B⁺＋OH⁻？③ Na₂SO₃ 溶液与 NaHSO₃ 溶液中所含微粒的种类相同？④ 电离平衡向右移动，弱电解质分子的浓度一定减小？⑤ 25 ℃ 时 0.1 mol·L⁻¹ 的氨水加水稀释，各离子浓度均减小？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>√</b>——完全电离 vs 部分电离，弱电解质溶液里有分子；<br>
+      ② <b>×</b>——弱碱部分电离，应为 <b>BOH ⇌ B⁺＋OH⁻</b>（可逆号！）；<br>
+      ③ <b>√</b>——都是 Na⁺、SO₃²⁻/HSO₃⁻、H⁺、OH⁻ 及弱电解质分子等（亚硫酸根水解使两类溶液微粒种类相同）；<br>
+      ④ <b>×</b>——如"加冰醋酸"平衡右移，但 CH₃COOH 分子浓度反而增大（加入量超过消耗量）；<br>
+      ⑤ <b>×</b>——氨水稀释 c(OH⁻) 减小，但水的离子积不变 → <b>c(H⁺) 增大</b>（不是所有离子都减小）。<br>
+      <span class="em">抢分点</span>：②考可逆号、⑤考 Kw 恒等——都是广东选择题高频陷阱。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>强弱看电离：<span class="em">完全电离是强、部分电离是弱</span>；弱酸弱碱记"⇌"；稀释促电离、c(H⁺) 反降；同离子来抑制、消耗离子促电离。</p>
+</div>
+<p class="tip">📖 <b>强弱电解质"三辨"（概念题从不独立成题，都藏在干扰项里）</b>：<b>辨导电</b>——2023 广东 T12(D)"NaCl 导电性比同浓度醋酸强"本身是对的，但与"pH 更高"无因果关系，<span class="rd">概念对不等于选项对</span>；<b>辨拆写</b>——强电解质用"＝"全拆、弱电解质用"⇌"保留分子式；<b>辨类别</b>——含弱碱阳离子的盐（如 NH₄Cl）仍是<b>强电解质</b>（浙江 2026-1-2A 判错点）。</p>
+
+<!-- 知识点② -->
+<h3>知识点② · 证明弱电解质的三角度<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「弱电解质的电离平衡及影响因素」· 一、证明弱电解质的方法（判断弱电解质的三个思维角度）</span>
+
+<p><b style="color:var(--accent);">三个思维角度（必背）：</b><br>
+<span class="em">角度一（定义）</span>：不能完全电离 → 同浓度下 c(H⁺)＜酸的浓度、pH 高于强酸、导电性弱于强酸；<br>
+<span class="em">角度二（平衡）</span>：存在电离平衡 → 条件改变平衡移动、加对应盐 c(H⁺) 改变、稀释 pH 变化不符合强酸规律；<br>
+<span class="em">角度三（盐类水解）</span>：其对应盐能水解 → NaA 溶液显碱性（pH＞7）。</p>
+
+<div class="quiz">
+  <div class="ask">【判断】下列哪些事实能证明 HA 是弱酸？<br>① 0.1 mol·L⁻¹ HA 溶液中通入 HCl 气体，c(A⁻) 减小；② 常温下 0.1 mol·L⁻¹ HA 溶液中 c(H⁺)＜0.1 mol·L⁻¹；③ 0.1 mol·L⁻¹ HA 溶液可以使石蕊变红；④ 相同温度下，0.1 mol·L⁻¹ HA 的导电能力比 0.1 mol·L⁻¹ HCl 弱。</div>
+  <div class="mat"><span>A. ①②</span><span>B. ①③</span><span>C. ①②④</span><span>D. ②③④</span></div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>C</b><br>
+      ① <b>对</b>：通 HCl 使 c(A⁻) 减小，说明 HA 存在电离平衡（角度二）；<br>
+      ② <b>对</b>：c(H⁺)＜0.1，说明 HA 未完全电离（角度一）；<br>
+      ③ <span class="rd">错</span>：石蕊变红只说明显酸性，强酸稀溶液同样变红——与强弱无关；<br>
+      ④ <b>对</b>：同浓度导电性弱于 HCl，说明电离程度低（角度一）。<br>
+      <span class="em">送分技</span>：三个角度逐条对号入座，③ 这类"只证酸性不证强弱"的最爱混进来。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>证明弱电解质：<span class="em">浓度没它高（不完全电离）、加盐它就动（有电离平衡）、对应盐显碱性（会水解）</span>——三角度对号入座；只显酸性的证据不算数。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 电离常数 Ka：比较酸性·判断反应<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「电离平衡常数及应用」· 1.表达式 / 2.意义 / 3.影响因素 / 一、电离常数的意义（例题 3）</span>
+
+<div class="quiz">
+  <div class="ask">【挖空】① Ka 的表达式？② Ka 与温度、浓度的关系？③ 已知 Ka₁(H₂CO₃)＝4.5×10⁻⁷、Ka(HClO)＝4.0×10⁻⁸：HClO 与 NaHCO₃ 溶液能反应放出 CO₂ 吗？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① Ka＝<b>c(H⁺)·c(A⁻)/c(HA)</b>（Kb 同理：c(NH₄⁺)·c(OH⁻)/c(NH₃·H₂O)）；<br>
+      ② Ka <b>只随温度变</b>（升温增大），浓度、稀释、加盐都不改 Ka——但会改电离度 α；<br>
+      ③ <b>不能</b>——HClO 的 Ka(4.0×10⁻⁸)＜Ka₂(H₂CO₃)？不对，比较要看"强酸制弱酸"配对：若 HClO＋HCO₃⁻ → ClO⁻＋CO₂↑＋H₂O，则要求 Ka(HClO)＞Ka₂(H₂CO₃)；实际 Ka(HClO)＝4.0×10⁻⁸ ＞ Ka₂(H₂CO₃)＝4.7×10⁻¹¹，<span class="rd">却仍不能发生！</span>因为产物 CO₂ 逸出使反应彻底需酸性比 H₂CO₃ 更强？——真实原因：HClO 酸性（4.0×10⁻⁸）远弱于 H₂CO₃ 一级（4.5×10⁻⁷），HCO₃⁻ 是碳酸的共轭碱，酸性比较应看 Ka₁(H₂CO₃)：Ka(HClO)＜Ka₁(H₂CO₃) → HClO 不能把 HCO₃⁻ 变 H₂CO₃/CO₂，反应<b>不能发生</b>（这正是 2023 讲义例题 3 中方程式①的判断）——判断口诀："强酸制弱酸，Ka 大者作酸"。</div>
+  </details>
+</div>
+
+<table class="tb">
+  <tr><th>弱酸（25 ℃）</th><th>电离平衡常数 Ka</th></tr>
+  <tr><td>HCOOH（甲酸）</td><td>1.77×10⁻⁴</td></tr>
+  <tr><td>H₂S（氢硫酸）</td><td>Ka₁＝1.1×10⁻⁷、Ka₂＝1.3×10⁻¹³</td></tr>
+  <tr><td>H₂CO₃（碳酸）</td><td>Ka₁＝4.5×10⁻⁷、Ka₂＝4.7×10⁻¹¹</td></tr>
+  <tr><td>HClO（次氯酸）</td><td>4.0×10⁻⁸</td></tr>
+</table>
+
+<div class="quiz">
+  <div class="ask">【讲义例题 3 · 节选】根据上表四种弱酸的 Ka：<br>
+  (1) 酸性由强到弱的顺序是＿＿＿＿；<br>
+  (2) 相同浓度的 HCOO⁻、HS⁻、S²⁻、HCO₃⁻、CO₃²⁻、ClO⁻ 结合 H⁺ 的能力由强到弱的顺序是＿＿＿＿；<br>
+  (3) 判断：少量 CO₂ 通入 NaClO 溶液中，产物是 HCO₃⁻ 还是 CO₃²⁻？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">(1) <b>HCOOH＞H₂CO₃＞H₂S＞HClO</b>——比较 Ka₁（HCOOH 1.77×10⁻⁴ 最大）；<br>
+      (2) <b>S²⁻＞CO₃²⁻＞ClO⁻＞HS⁻＞HCO₃⁻＞HCOO⁻</b>——酸越弱，其酸根结合 H⁺ 能力越强（取对应共轭酸的 Ka 倒序）；<br>
+      (3) 产物为 <b>HCO₃⁻</b>：CO₂＋H₂O＋ClO⁻ → HCO₃⁻＋HClO。<span class="rd">为什么不是 CO₃²⁻？</span>若生成 CO₃²⁻，则 HCO₃⁻ 会把 ClO⁻"抢"走（Ka(HCO₃⁻ 作酸)＝4.7×10⁻¹¹＜Ka(HClO)＝4.0×10⁻⁸，即 CO₃²⁻ 结合 H⁺ 强于 ClO⁻），所以少量 CO₂ 与 NaClO 只到 HCO₃⁻ 为止。<br>
+      <span class="em">CO₂ 与盐反应总结（必背）</span>：CO₂ 少量通 NaClO/苯酚钠 → HCO₃⁻（弱酸制弱酸链）；CO₂ 与 Na₂CO₃ 等一般盐少量 → CO₃²⁻。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>Ka 越大酸越强，只随温度变；<span class="em">酸根结合 H⁺ 的能力与酸性反着排</span>；强酸制弱酸——写方程式前先给 Ka 排序，再看产物能否继续反应。</p>
+</div>
+
+<!-- 知识点④ 广东真题载体方程式速写 -->
+<h3>知识点④ · 广东真题载体方程式速写 ＋ "B类干扰项"提醒<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 广东卷 2021—2026 五个核心方程式 · 电离方程式书写是送分点（2021-8C、2025-12C）</span>
+<div class="quiz">
+  <div class="ask">【速写】五个广东真题载体方程式，逐个写出并标注拆写规范：<br>
+  ① CH₃COOH（2022-17 整题主角）② NH₃·H₂O（2023-18(2) Kb 计算）<br>
+  ③ H₂CO₃ 两步分写（2021-18(3)② 直接用 Ka₂ 算浓度比）<br>
+  ④ NaHSO₄ 与 NaHCO₃（强酸酸式盐 vs 弱酸酸式盐）<br>
+  ⑤ H[CuCl₂]（2025-12C 配离子，4 分就在这一拆）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>CH₃COOH ⇌ CH₃COO⁻＋H⁺</b>（弱酸 ⇌）；<br>
+      ② <b>NH₃·H₂O ⇌ NH₄⁺＋OH⁻</b>（弱碱 ⇌）；<br>
+      ③ <b>H₂CO₃ ⇌ H⁺＋HCO₃⁻</b>、<b>HCO₃⁻ ⇌ H⁺＋CO₃²⁻</b>（两步分写，Ka₁≫Ka₂）；<br>
+      ④ <b>NaHSO₄ ＝ Na⁺＋H⁺＋SO₄²⁻</b>（强酸酸式盐完全电离）vs <b>NaHCO₃ ＝ Na⁺＋HCO₃⁻</b>（HCO₃⁻ 不再拆）——口诀"强拆弱不拆"；<br>
+      ⑤ <b>H[CuCl₂] ＝ H⁺＋[CuCl₂]⁻</b>（配离子整体不拆；2025-12C 的 4 分，第 42 讲已练）。<br>
+      <span class="rd">B类干扰项提醒</span>：弱电解质六年约 10 处以"干扰项"出现（白醋、NH₄NO₃、NH₄Cl、CF₃COOH、乙酸丙酸等），多与水解、N<sub>A</sub> 粒子数目混编——先分清"电离主干题"和"水解干扰项"，别把 2 分题当大题练。</div>
+  </details>
+</div>
+
+<!-- 知识点⑤ Ka三用进阶 -->
+<h3>知识点⑤ · Ka 三用进阶：算、比、说理、测（能力层主攻）<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 2025 广东 T17(3)、2023 广东 T18(2)、2022 广东 T17(3)(4)(5)、2025 广东 T17(4)③</span>
+<div class="quiz">
+  <div class="ask">【算】起点浓度 c₀＋pH，如何"列算式"求 Ka？<br>【说理】"结合表中数据给出判断理由"按哪三步写？<br>【测】测 Ka 方案设计三要素？广东三年三法各是什么？<br>【辨析】"pH 大 ⇒ Ka 小"错在哪？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">【算】<b>Ka≈c²(H⁺)/c₀</b>（2025-17(3) 苯甲酸起点 pH＝2.89；题给"水的电离可忽略"——近似条件要显式交代）；<br>
+      【说理】三步模板：<b>判方向 → 摆数据 → 下结论</b>（2022-17(3)：稀释 10 倍 pH 2.86→3.36、增大不足 1，说明电离正向补充了 H⁺）；<br>
+      【测】三要素：<b>仪器（pH 计、滴定管）＋操作（等浓度酸碱配比）＋数据处理（半中和点 pH＝pKa）</b>；广东三年三法：<b>①滴定半中和法（2022-17）②非水溶剂指示剂-分光光度法（2024-19(3)）③NaClO 盐溶液间接法（2025-17）</b>——三年不重样，广东最具辨识度的进阶考向；<br>
+      【辨析】<b>不同酸的饱和溶液浓度（溶解度）不同</b>，pH 由 Ka 与浓度共同决定——比较酸性要么同浓度比 pH，要么直接测 Ka（2025-17(4)③，实测 Ka 顺序与 pH 顺序不同）。<br>
+      <span class="em">"Ka 是弱酸的身份证——算、比、测三用"</span>：大题主战场，五年五题全勤。</div>
+  </details>
+</div>
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（约2分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第三章 第一节「电离平衡」· 练习与应用（同源同型速练）</span>
+<p class="tip">以下 3 题与课本第一节「电离平衡」练习同考点同型（强弱判断/电离方程式/稀释规律），投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】下列物质属于弱电解质的是＿＿＿＿（填序号）：① CH₃COOH；② NH₃·H₂O；③ NaCl；④ NaOH；⑤ H₂O；⑥ CO₂；⑦ NaHCO₃。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>①②⑤</b><br>
+      CH₃COOH 弱酸、NH₃·H₂O 弱碱、H₂O 极弱电解质；NaCl/NaOH/NaHCO₃ 是<b>强电解质</b>（盐、强碱完全电离，NaHCO₃ 虽含 HCO₃⁻ 但本身完全电离）；CO₂ 是非电解质。<br>
+      <span class="em">判据</span>：弱酸、弱碱、水 = 弱电解质；盐（含酸式盐）、强酸强碱 = 强电解质。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】写出下列电离方程式：① CH₃COOH；② NH₃·H₂O；③ NaHCO₃（水溶液中）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>CH₃COOH ⇌ CH₃COO⁻＋H⁺</b>（弱酸部分电离，可逆号）；<br>
+      ② <b>NH₃·H₂O ⇌ NH₄⁺＋OH⁻</b>（弱碱部分电离）；<br>
+      ③ <b>NaHCO₃ ＝ Na⁺＋HCO₃⁻</b>（盐完全电离，用等号；<span class="rd">HCO₃⁻ 不拆开</span>，HCO₃⁻ 的微弱电离另写 HCO₃⁻ ⇌ H⁺＋CO₃²⁻）。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③】常温下，将 0.1 mol·L⁻¹ 醋酸溶液加水稀释 10 倍，下列说法正确的是：① 电离程度增大；② c(H⁺) 增大；③ Ka 增大；④ 溶液中 c(CH₃COO⁻) 减小。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>①④</b><br>
+      稀释促电离：电离程度 α 增大（①对）、n(H⁺) 增多；但体积增大占主导 → c(H⁺)、c(CH₃COO⁻) 均<b>减小</b>（②错、④对）；Ka 只随温度变，稀释不变（③错）。<br>
+      <span class="em">课本结论三件套</span>：稀释 = 电离程度↑、离子浓度↓（除 OH⁻ 外）、Ka 不变。</div>
+  </details>
+</div>
+
+<!-- 知识点⑦ 外省镜子 -->
+<h3>知识点⑦（冲刺层）· 外省镜子：广东还没考的角度<span class="p">（约2分钟 · 略讲）</span></h3>
+<span class="loc">📖 对标 2024、2026 外省新高考卷 · 十四条清单（冲刺层重点补）</span>
+<ul class="kps">
+  <li><b>① 稀释法判断酸碱强弱</b>：湖南 2026-9B（pH＝3 的 HA、HB 各稀释 100 倍，pH 变化小于 2 者为弱酸）——经典角度，广东六年零落点。</li>
+  <li><b>② lg c-pH 物种分布图＋守恒定量</b>：山东 2026-15（四线三点）、江苏 2026-12、陕晋青宁 2026-14（δ-pH 交点读 Ka₁、Ka₂）、黑吉辽蒙 2026-15。</li>
+  <li><b>③ 双弱酸滴定 pM 综合曲线</b>：四川 2026-15（起点 pH 判强弱、a 点算 Ka、半中和点守恒、"水的电离程度"比较）——外省选择题压轴标杆。</li>
+  <li><b>④ 滴定中"水的电离程度"比较</b>：湖南 2024-13（M 点碱过量抑制、N 点恰好生成盐水解促进）。</li>
+  <li><b>⑤ Ka→Kh 换算判盐溶液酸碱性</b>：湖南 2024-11、陕晋青宁 2026-14——与盐类水解联动的桥梁题。</li>
+  <li><b>⑥ 弱酸酸式根"继续电离"对方案的干扰</b>：辽宁 2024-8（用盐酸滴定测 S²⁻ 不合理——HS⁻ 会继续电离补充 S²⁻）。</li>
+  <li><b>⑦ 特例电离方程式</b>：浙江 2026-1-13（硼酸缺电子结合水：B(OH)₃＋H₂O ⇌ B(OH)₄⁻＋H⁺）、陕晋青宁 2026-6C（羟胺）。</li>
+  <li><b>⑧ 多元弱酸"某物种物质的量分数最大"的最适 pH</b>：浙江 2026-1-19(4)（pH＝(pKa₁+pKa₂)/2 模型，配指示剂选择）。</li>
+  <li><b>⑨ Ka 与 Kw 联用算平衡 pH</b>：浙江 2026-1-15。</li>
+  <li><b>⑩ 电离平衡移动"解释型"简答</b>：北京 2026-18(3)②（沉钡：Ba²⁺ 结合 S²⁻ 使 c(S²⁻) 降低、促电离正移）——按"平衡＋移动＋结论"三步答题。</li>
+  <li><b>⑪ 电离-配位耦合</b>：黑吉辽蒙 2026-15（Ka 代入 Cu²⁺＋HAc ⇌ CuAc⁺＋H⁺）、河北 2024-11——广东 2025-12C 已铺垫、2026-17(4) 铜氨再露头，大题耦合是下一站。</li>
+  <li><b>⑫ 弱碱 Kb 定量</b>：天津 2024-12（甲胺）、上海 2026-29——广东弱碱只在 2023-18(2) 考过一空。</li>
+  <li><b>⑬ 滴定曲线缓冲段与浓度影响</b>：贵州 2026-14。</li>
+  <li><b>⑭ 用 Ka 排序写"强酸制弱酸"＋同浓度按 Ka 比 c(H⁺)</b>：浙江 2024-6-8C（Ka₁(H₂CO₃)＞Ka(HClO)＞Ka₂(H₂CO₃)，CO₂ 与 ClO⁻ 只到 HClO）、北京 2024-12B。</li>
+</ul>
+<p class="tip">📌 反向发现：连外省也不是人人都考这个专题——湖北、重庆、河北、云南、江西当年轮空，分布重心在选择题压轴位且隔年轮考；pH-稀释倍数经典图像题 2026 年只剩湖南-9B 以"实验结论"选项形式保留；N<sub>A</sub>×部分电离的陷阱组合外省近两年也在弱化。<b>结论</b>：广东若跟进 lg c-pH 分布曲线，大概率先是中档版，<b>不必按山东-15 的难度对全班重锤</b>。</p>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~7题每题5分 ＋ 8题15分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 15分）</h4>
+    <ul><li>第1题（5分）：醋酸平衡移动＋pH 降低——加热（B）；</li>
+    <li>第4题（5分）：证明 HX 是弱酸的方案——"HX 制出 H₂SO₃"只证更强酸、不能证弱（C）；</li>
+    <li>第6题（5分）：HBrO 与 Na₂CO₃ 反应判断——①④ 能发生（C）。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 15分）</h4>
+    <ul><li>第2题（5分）：比较 H₂S 与 H₂SO₃ 酸性——还原性强弱不能证酸性（B）；</li>
+    <li>第3题（5分）：2025·韶关 冰醋酸稀释导电能力曲线（C，湿 pH 试纸稀释误差）；</li>
+    <li>第5题（5分）：硼酸 H₃BO₃ 一元弱酸＋pH≈6（C 错在盐碱性强弱比较）。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 20分）</h4>
+    <ul><li>第7题（5分）：2025·潮州 乙酰水杨酸 HA 人体吸收膜平衡——K 与 pH 比值换算（C），<span class="rd">✂ 65 分可弃</span>；</li>
+    <li>第8题（15分）：四种酸 Ka 综合大题——(1) 同浓度 c(H⁺) 排序 H₃PO₃＞CH₃COOH＞HClO、(2) 结合 H⁺ 能力＋少量 CO₂ 通 NaClO 离子方程式、(3) Na₂HPO₃ 是正盐——<span class="em">三问全是本讲核心应用，全做，约 12~15 分全拿</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 15＋15＋20＝50 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：弱电解质电离一律 ⇌ 不能写等号；加水稀释 Ka 不变、α 增大；比较酸性先看 Ka 再看同浓度 pH——顺序别反…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：证明醋酸是弱酸，你能给出两种不同原理的实验方案吗？（pH 计测稀释 / 对应盐 pH / 导电性对比…）…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c44_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c44_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

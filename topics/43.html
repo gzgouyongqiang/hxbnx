@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第43讲 化学反应的方向与调控 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第43讲　化学反应的方向与调控 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——每式写化学方程式，并判断"ΔS 符号＋自发温度区间"。3 式恰好覆盖四象限中的三个"会自发"象限。<span class="rd">广东锚点</span>：五年真题的五个载体反应——2025-19(2) TiO₂＋2C＋2Cl₂、2024-11 Ba(OH)₂·8H₂O＋2NH₄Cl、2021-12 2NO₂⇌N₂O₄、2021-19 重整 CH₄＋CO₂、2026-19(4) 硫化物水解（详见知识点④速写）。</p>
+
+<div class="quiz">
+  <div class="ask">① 写出工业合成氨的化学方程式（标注 ΔH＜0），并回答：该反应 ΔS 大于 0 还是小于 0？在低温还是高温下自发？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点二「化学反应的调控——工业合成氨」· 1.合成氨反应的特点</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>N₂(g)＋3H₂(g) ⇌ 2NH₃(g)　ΔH＝−92.4 kJ·mol⁻¹</b><br>
+      气体 4 mol → 2 mol，<b>ΔS＜0</b>；ΔH＜0、ΔS＜0 → <span class="em">低温自发</span>（高温 ΔG＞0 不自发）。<br>
+      <span class="rd">⚠ 所以合成氨不能用高温提高转化率——低温有利于平衡，但速率太慢，实际才用催化剂＋400~500 ℃折中。</span></div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出石灰石（CaCO₃）高温分解的化学方程式，并回答：该反应 ΔS 大于 0 还是小于 0？自发需要什么条件？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应的方向」· 3.判断方向的判据（应用1 · 2025·东莞 同款反应）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>CaCO₃(s) ＝ CaO(s)＋CO₂(g)　ΔH＞0</b><br>
+      固体变气体，<b>ΔS＞0</b>；ΔH＞0、ΔS＞0 → <span class="em">高温自发</span>（T 足够大时 TΔS 项超过 ΔH）。<br>
+      这与判断第4题 MgCl₂(l) ⇌ Mg(l)＋Cl₂(g) 同属"吸热熵增、高温自发"象限。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 H₂O₂ 分解的化学方程式（标注 MnO₂ 催化），并回答：该反应 ΔH、ΔS 的符号，是否任何温度都能自发？</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应的方向」· 3.判断方向的判据（应用1 C 选项 同款反应）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>2H₂O₂(l) ＝ 2H₂O(l)＋O₂(g)↑</b>（MnO₂ 作催化剂加快）<br>
+      放热且气体增多：ΔH＜0、<b>ΔS＞0</b> → <b>任何温度都能自发</b>（四象限中"最稳"的一格）。<br>
+      <span class="em">对照</span>：ΔH＞0、ΔS＜0 的反应任何温度都不自发——必须借助电解等外界能量（如电解水）。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 自发反应与判据</b>：在一定条件下无需外界帮助就能进行的反应叫自发反应。判据 <span class="em">ΔG＝ΔH−TΔS</span>：ΔG＜0 自发、ΔG＝0 平衡、ΔG＞0 不自发。自发 ≠ 立即发生，还需考虑速率。</li>
+  <li><b>② 熵与熵变</b>：S 度量体系混乱度，S(g)＞S(l)＞S(s)；ΔS＝S(生成物)−S(反应物)。<span class="em">定性口诀：气体分子数增多 → ΔS＞0；气体变液体/固体 → ΔS＜0</span>。</li>
+  <li><b>③ 四象限法（必背）</b>：(ΔH＜0，ΔS＞0) 任何温度自发；(ΔH＞0，ΔS＜0) 任何温度不自发；(ΔH＜0，ΔS＜0) <b>低温</b>自发；(ΔH＞0，ΔS＞0) <b>高温</b>自发。</li>
+  <li><b>④ 催化剂与条件</b>：催化剂只加快速率、不改变 ΔH/ΔS/ΔG，<span class="rd">不能改变反应方向</span>；非自发反应可在特定条件（如电解通电）下发生（判断1 √）。</li>
+  <li><b>⑤ 合成氨调控（必背）</b>：N₂＋3H₂ ⇌ 2NH₃ ΔH＜0、ΔS＜0。温度 <span class="em">400~500 ℃</span>（速率与铁触媒活性折中）、压强 <span class="em">10~30 MPa</span>（高压利平衡但设备贵）、铁触媒、N₂∶H₂≈1∶2.8、氨液化分离＋循环。<span class="em">🔵 冲刺层预备区（广东零落点、外省在考）：ΔG 数值计算、"能自发进行的条件"选择、lnK~T 求 ΔH/ΔS、耦合反应调控</span>；<span class="rd">✂ 放弃：ΔG(T) 复杂函数题、温度区间估算、熵判据独立选择题</span>。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（据《广东卷化学平衡考点与难度研究报告》＋2021—2026 六年逐题重查）</b>
+  <p><b>🎯 两长一新的三条线：</b>①<b>主线一——温度对方向的影响</b>，五年五考（2022-13、2023-15B、2024-15、2026-15D）：考"温度→平衡移动方向→某量变化"，<b>不考熵或自由能术语</b>；②<b>主线二——工业条件调控</b>，六年贯穿、多达 <b>13 处</b>（2021-19(2)、2022-18、2023-18、2024-18、2025-18、2026-18(4)）——本讲真正的<b>得分大户</b>，从不要求算 ΔG，只要求把"温度/浓度/压强/催化剂对速率与平衡的影响"说清楚；③<b>新趋势——热力学半定量判断"从零到有"</b>。</p>
+  <p>· <b>🟢 必保分</b>：ΔG 判据三行＋四象限结论——<span class="em">2025 广东 T19(2)（ΔH＜0、ΔS＞0 → 填"能"自发）、2024 广东 T11（由"有 NH₃ 生成"判熵增）、2026 广东 T19(4)（水解熵变）</span>：<b>2021—2024 四年完全没考"自发""熵变"，2025、2026 连续两年出现</b>，是必须跟上的新热点。</p>
+  <p>· <b>🟠 主突破</b>：熵变定性判断（气体增多 ΔS＞0）＋工业条件调控"双角度"回答法（热力学＋动力学）＋催化剂三句话（降活化能/不改平衡与 K/改变选择性，2022-15、2023-15、2024-15、2025-19(4) 五年五考）。</p>
+  <p>· <b>🔵 冲刺层预备区（广东零落点、外省在考）</b>：ΔG 数值计算（2026 湖北 19(1)、2026 上海 24(3)②）、"能自发进行的条件"选择（2024 浙江 19(1)）、lnK~T 线性关系求 ΔH/ΔS（2024 湖北 17②、2026 四川 18(5)）、耦合反应调控（2024 山东 20）。</p>
+  <p>· <b>✂ 放弃</b>：ΔG(T) 复杂函数题、"该反应在什么温度下自发"的温度区间估算、熵判据的独立选择题。<span class="rd">保分策略：四象限＋"气体增多熵增"＋条件调控"速率/平衡"两句话。</span></p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约23分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 方向判据：ΔG 与四象限<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应的方向」· 1.自发反应 / 2.熵和熵变 / 3.判断方向的判据</span>
+
+<p><b style="color:var(--accent);">判据公式（必背）：</b><span class="em">ΔG＝ΔH−TΔS</span>——ΔG＜0 自发；ΔG＝0 平衡；ΔG＞0 不自发。</p>
+
+<table class="tb">
+  <tr><th>ΔH</th><th>ΔS</th><th>自发条件</th><th>典例</th></tr>
+  <tr><td>＜0（放热）</td><td>＞0（熵增）</td><td><b>任何温度</b></td><td class="l">H₂O₂ 分解、2NO＋2CO → N₂＋2CO₂（放热熵增类）</td></tr>
+  <tr><td>＞0（吸热）</td><td>＜0（熵减）</td><td><span class="rd">任何温度都不自发</span></td><td class="l">电解水（需通电）</td></tr>
+  <tr><td>＜0（放热）</td><td>＜0（熵减）</td><td><b>低温</b>自发</td><td class="l">N₂＋3H₂ ⇌ 2NH₃、NH₃＋HCl → NH₄Cl</td></tr>
+  <tr><td>＞0（吸热）</td><td>＞0（熵增）</td><td><b>高温</b>自发</td><td class="l">CaCO₃ 分解、C＋CO₂ → 2CO</td></tr>
+</table>
+<p class="tip">💡 记忆法：<b>ΔH 管"能量"、ΔS 管"混乱"——能量降低与混乱增大都推动自发</b>，两者方向一致则稳自发/稳不自发，方向相反就由温度 T 裁决（T 乘在 ΔS 上）。</p>
+
+<div class="quiz">
+  <div class="ask">【判断抢答 5 连（讲义原文）】① 非自发反应，一定条件下也能使其反应发生？② 使用催化剂可以改变化学反应进行的方向？③ ΔH＜0、ΔS＞0 的反应在温度低时不能自发进行？④ 一定温度下，MgCl₂(l) ⇌ Mg(l)＋Cl₂(g) 的 ΔH＞0、ΔS＞0？⑤ 常温下 4Fe(OH)₂(s)＋O₂(g)＋2H₂O(l) ＝ 4Fe(OH)₃(s) 能自发，则该反应 ΔH＜0？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>√</b>——如电解熔融 NaCl 制 Na（非自发可借电能发生）；<br>
+      ② <b>×</b>——催化剂不改 ΔH/ΔS/ΔG，不能改变化学反应方向；<br>
+      ③ <b>×</b>——ΔH＜0、ΔS＞0 是"任何温度都自发"的最稳格，温度低时也能自发；<br>
+      ④ <b>√</b>——电解 MgCl₂ 吸热、1 mol 液体变 1 mol 液体＋1 mol 气体，ΔS＞0；<br>
+      ⑤ <b>√</b>——气体 O₂ 被吸收进固体，ΔS＜0，能自发则必须有 ΔH＜0（放热推动）。<br>
+      <span class="em">审题要点</span>：看符号就画四象限，②⑤是"放热补偿熵减/吸热需熵增"的经典论证。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>ΔG＝ΔH−TΔS：<span class="em">放热熵增随便跑（任何温度），吸热熵减干不了（永不自发）；放热熵减要低温，吸热熵增等高温</span>；催化剂只看戏，不改变方向。</p>
+</div>
+<p class="tip">📖 <b>广东锚点（2025、2026 连续两年新热点）</b>：2025 广东 T19(2)（TiO₂＋2C＋2Cl₂，题给 ΔH＜0、ΔS＞0 ⇒ 填"能"自发）、2026 广东 T19(4)（水解反应 ΔS＞0）、2024 广东 T11（由"有 NH₃ 生成"判熵增）——2021—2024 四年广东卷完全没考"自发""熵变"，<b>连续两年出现说明这是必须跟上的新热点，不能按老经验跳过</b>。</p>
+
+<!-- 知识点② -->
+<h3>知识点② · 熵变定性判断<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点一「化学反应的方向」· 2.熵和熵变（(1)(2)）</span>
+
+<p><b style="color:var(--accent);">熵的三条基本规律（必背）：</b><br>
+① 同一物质的熵值：<span class="em">S(g)＞S(l)＞S(s)</span>（气体混乱度最大）；<br>
+② 气体的物质的量增多 → ΔS＞0；减少 → ΔS＜0（<span class="rd">只数气体！</span>固体、液体对熵变贡献小，判断只盯气体计量数变化）；<br>
+③ 同温下，气体物质的量相同的反应，ΔS 相近（不必比较）。</p>
+
+<div class="quiz">
+  <div class="ask">【抢答：熵增还是熵减？】① 冰在室温下自动熔化成水；② 水蒸气冷凝成液态水；③ KMnO₄ 受热分解（2KMnO₄ → K₂MnO₄＋MnO₂＋O₂↑）；④ N₂(g)＋3H₂(g) ⇌ 2NH₃(g)；⑤ C(s)＋H₂O(g) → CO(g)＋H₂(g)。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>熵增</b>（固体→液体，S(l)＞S(s)，自发熔化正是熵推动）；<br>
+      ② <b>熵减</b>（气体→液体，放热补偿）；<br>
+      ③ <b>熵增</b>（生成气体 O₂，气体计量数 0 → 1）；<br>
+      ④ <b>熵减</b>（气体 4 mol → 2 mol）；<br>
+      ⑤ <b>熵增</b>（固体→气体，且气体 1 → 2 mol）。<br>
+      <span class="em">快速判断法</span>：写出方程式→只盯气体计量数：增则 ΔS＞0，减则 ΔS＜0，不变则 ΔS 很小可忽略。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>熵变判断只数气：<span class="em">气体变多 ΔS＞0，气体变少 ΔS＜0</span>；固液变化别纠结，气体说了算。</p>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 化学反应的调控：工业合成氨<span class="p">（约5分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 考点二「化学反应的调控——工业合成氨」· 1.反应特点 / 2.条件选择（表）</span>
+
+<p><b style="color:var(--accent);">合成氨"三权衡"思维（必背）：</b>每个条件都问三遍——<span class="em">对速率？对平衡转化率？对设备成本？</span>然后取折中点。</p>
+<table class="tb">
+  <tr><th>条件</th><th>提高速率</th><th>提高平衡转化率</th><th>实际工业生产条件</th></tr>
+  <tr><td>压强</td><td>高压</td><td>高压（气体分子数减小）</td><td><b>10~30 MPa</b>（太高设备贵）</td></tr>
+  <tr><td>温度</td><td>高温</td><td>低温（放热反应）</td><td><b>400~500 ℃</b>（铁触媒活性高）</td></tr>
+  <tr><td>催化剂</td><td>使用</td><td>无影响</td><td><b>铁触媒</b></td></tr>
+  <tr><td>浓度</td><td>增大 N₂、H₂ 浓度</td><td>增大反应物、降低生成物浓度</td><td>N₂∶H₂≈1∶2.8，<b>氨液化分离，剩余气体循环</b></td></tr>
+</table>
+
+<div class="quiz">
+  <div class="ask">【判断抢答】① 合成氨为什么选 400~500 ℃ 而不用更低的温度？② 为什么不干脆用 100 MPa 超高压？③ 生成的氨为什么要及时液化分离？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 低温虽利平衡（放热熵减、低温自发），但<b>速率太慢、且铁触媒活性在 400~500 ℃ 最高</b>——选它同时兼顾速率与催化剂活性（课时精练 3 A 项陷阱）；<br>
+      ② 高压利平衡、但<b>设备制造成本与动力消耗剧增</b>，10~30 MPa 时转化率已较可观，综合经济效益最高（课时精练 3 C 项正解）；<br>
+      ③ 移走产物使平衡正向移动、提高转化率；但<span class="rd">浓度降低会使反应速率减慢</span>（课时精练 3 B 项说"加快反应速率"是错的）。<br>
+      <span class="em">一句话</span>：条件选择＝速率 × 转化率 × 成本 三方谈判，谁也不许独占。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【迁移应用 · 讲义例题 3（逐字）】已知 2SO₂(g)＋O₂(g) ⇌ 2SO₃(g)　ΔH＜0 的实验数据如表：<br>
+  （表：不同温度、不同压强下 SO₂ 的转化率/%）</div>
+  <table class="tb">
+    <tr><th>温度</th><th>1×10⁵ Pa</th><th>5×10⁵ Pa</th><th>1×10⁶ Pa</th><th>5×10⁶ Pa</th><th>1×10⁷ Pa</th></tr>
+    <tr><td>450 ℃</td><td>97.5</td><td>98.9</td><td>99.2</td><td>99.6</td><td>99.7</td></tr>
+    <tr><td>550 ℃</td><td>85.6</td><td>92.9</td><td>94.9</td><td>97.7</td><td>98.3</td></tr>
+  </table>
+  <div class="ask">(1) 应选择的温度是＿＿，理由是＿＿＿＿；(2) 应采用的压强是＿＿，理由是＿＿＿＿；(3) 生产中通入过量空气的目的是＿＿＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">(1) <b>450 ℃</b>——该反应放热，升温 SO₂ 转化率降低；450 ℃ 时转化率已较高（97.5%），550 ℃ 明显下降；<br>
+      (2) <b>1×10⁵ Pa（常压）</b>——常压下转化率已高达 97.5%，加压到 1×10⁷ Pa 只提高到 99.7%，<b>收益小、设备成本大增</b>，不划算；<br>
+      (3) <b>增大 O₂ 浓度，提高 SO₂ 的转化率</b>（空气廉价，让价格贵的 SO₂ 尽量转化）。<br>
+      <span class="em">和合成氨同款思维</span>：放热反应选"适当低温＋常/中压＋一种原料过量"，读表比较"转化率增量 vs 成本增量"。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>合成氨三条件：<span class="em">400~500 ℃ 看活性，10~30 MPa 看成本，铁触媒催化、氨分离循环</span>；条件选择三步问：速率、平衡、成本——三方谈判取折中。</p>
+</div>
+
+<!-- 知识点④ 广东真题载体反应速写 -->
+<h3>知识点④ · 广东真题载体反应 · ΔH/ΔS/能否自发速写<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 广东卷 2021—2026 五个载体反应 · 每个反应配一句"ΔH 符号、ΔS 符号、能否自发"</span>
+<div class="quiz">
+  <div class="ask">【速写】五个广东真题载体反应，逐个说出 ΔH 符号、ΔS 符号与自发条件：<br>
+  ① TiO₂(s)＋2C(s)＋2Cl₂(g) ＝ TiCl₄(g)＋2CO(g)（2025-19(2)，题给 ΔH＜0、ΔS＞0）<br>
+  ② Ba(OH)₂·8H₂O(s)＋2NH₄Cl(s) ＝ BaCl₂(s)＋2NH₃(g)＋10H₂O(l)（2024-11）<br>
+  ③ 2NO₂(g) ⇌ N₂O₄(g)　ΔH＜0<br>
+  ④ CH₄(g)＋CO₂(g) ⇌ 2CO(g)＋2H₂(g)（2021-19 重整体系）<br>
+  ⑤ 硫化物水解（2026-19(4)，题给 ΔS＞0）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① ΔH＜0、ΔS＞0（气体 2 mol → 3 mol）⇒ <b>任何温度自发</b>——2025 广东原题就是填"能"；<br>
+      ② ΔH＞0（吸热，"烧瓶变冷"）、ΔS＞0（固体→气体）⇒ <b>高温自发</b>；<br>
+      ③ ΔH＜0、ΔS＜0（气体 2→1）⇒ <b>低温自发</b>；<br>
+      ④ ΔH＞0、ΔS＞0（气体 2→4）⇒ <b>高温自发</b>（这正是工业重整用高温的根因）；<br>
+      ⑤ 题给 ΔS＞0（水解熵增）⇒ 熵增有利，需配合 ΔH 符号定温区。<br>
+      <span class="em">速判三句</span>：只数气体判 ΔS；由题给图像/现象判 ΔH；符号一定，四象限定温区。</div>
+  </details>
+</div>
+
+<!-- 知识点⑤ 工业条件调控双角度 -->
+<h3>知识点⑤ · 工业条件调控"双角度"回答法 ＋ lnK~1/T 判吸放热（能力层）<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 2021 广东 T19(2)、2025 广东 T18(1)、2024 广东 T18、2026 广东 T18(4)｜2021 广东 T19(4)①</span>
+<div class="quiz">
+  <div class="ask">【双角度回答法】工业流程题里"某条件（温度/浓度/pH/投料比/搅拌）为什么这样选"，按哪两个角度回答才完整？<br>【热力学桥梁】lnK 随 1/T 变化的直线，斜率与 ΔH 是什么关系？如何判断吸放热？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>双角度回答法</b>（缺一扣分）：①<b>热力学角度</b>——该条件对平衡转化率的影响（放热降温利平衡、加压向分子数减小方向…）；②<b>动力学角度</b>——该条件对反应速率的影响（升温、增浓、搅拌、粉碎…）。<span class="em">广东六年 13 处"条件调控"题（2021-19(2) 四选项、2025-18(1)"提高浸取速率的措施"、2024-18"酸度过高降低提取率"、2026-18(4)）全部按此格式答。</span><br>
+      <b>lnK~1/T 判吸放热</b>：由 ΔG°＝−RTlnK 与 ΔG°＝ΔH−TΔS 得 lnK＝−ΔH/(RT)＋ΔS/R——lnK 对 1/T 作图为直线，<b>斜率＝−ΔH/R</b>：<b>升温（1/T 减小）K 增大 ⇒ 正反应吸热</b>（2021 广东 T19(4)①：lnKrp 随 1/T 增大而升高 ⇒ a、c 为吸热反应）。<br>
+      <span class="rd">✂ 本讲只需定性判吸放热；ΔG 数值、由 lnK-T 定量求 ΔH/ΔS 留冲刺层。</span></div>
+  </details>
+</div>
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（约2分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第二章 第三节「化学反应的方向」/ 第四节「化学反应的调控」· 练习与应用（同源同型速练）</span>
+<p class="tip">以下 3 题与课本第三节（方向判据）、第四节（合成氨调控）练习同考点同型，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【课本同源①】不查数据，判断下列反应在常温下能否自发进行：<br>
+  (1) 2H₂O₂(l) ＝ 2H₂O(l)＋O₂(g)（ΔH＜0）；<br>
+  (2) CaCO₃(s) ＝ CaO(s)＋CO₂(g)（ΔH＞0）；<br>
+  (3) NH₃(g)＋HCl(g) ＝ NH₄Cl(s)。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">(1) <b>能</b>——放热＋熵增，任何温度自发；<br>
+      (2) <b>不能</b>——吸热＋熵增，常温 TΔS 不足以抵消 ΔH，需高温（高温自发）；<br>
+      (3) <b>能</b>——气体 2 mol → 固体 1 mol，ΔS＜0 却能自发，说明 ΔH＜0（放热补偿熵减，低温自发）。<br>
+      <span class="em">课本判据三连</span>：能/不能都别猜，画四象限再说话。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源②】填空（填"熵增"或"熵减"）：① 冰融化成水＿＿；② 水蒸气冷凝成液态水＿＿；③ N₂(g)＋3H₂(g) ⇌ 2NH₃(g) ＿＿。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>熵增</b>（固体→液体，这也是冰能自动熔化的原因）；② <b>熵减</b>（气体→液体，放热补偿）；③ <b>熵减</b>（气体 4 mol → 2 mol）。<br>
+      <span class="em">与知识点②抢答呼应</span>：只盯气体分子数变化最稳。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【课本同源③ · 调控简答】工业合成氨 N₂＋3H₂ ⇌ 2NH₃（ΔH＜0）：<br>
+  ① 为什么不选择更低的温度（如 200 ℃）？<br>
+  ② 为什么不选择 100 MPa 以上的超高压？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 温度低虽利于平衡（放热、低温自发），但反应速率太慢，且铁触媒在 <b>400~500 ℃ 活性最高</b>——低温下单位时间产氨太少，不经济；<br>
+      ② 高压利平衡，但压强过大对设备强度、材料要求高、动力消耗大，<b>成本剧增</b>；10~30 MPa 时转化率已较可观，综合效益最优。<br>
+      <span class="em">答题模板</span>：工业条件 = 速率 + 转化率 + 成本 三方权衡——分点写"利于××但不利于××，故选折中××"。</div>
+  </details>
+</div>
+
+<!-- 知识点⑦ 外省镜子 -->
+<h3>知识点⑦（冲刺层）· 外省镜子：广东还没考的角度<span class="p">（约2分钟 · 略讲）</span></h3>
+<span class="loc">📖 对标 2024、2026 外省新高考卷 · 十二条清单（冲刺层重点补）</span>
+<ul class="kps">
+  <li><b>① 显式 ΔG 数值计算与自发性判断</b>：2026 湖北 19(1)、2026 上海 24(3)②、2024 浙江 19(5)。</li>
+  <li><b>② "能自发进行的条件"选择</b>：2024 浙江 19(1)（高温/低温/任意温度/无法判断）。</li>
+  <li><b>③ 熵变正负的独立判断</b>：2026 浙江 18(2)②、2024 湖北 12。</li>
+  <li><b>④ lnK–T、lgK–T、lnK–1/T 线性关系</b>：2024 湖北 17(2)①、2026 湖南 18(2)②、2026 陕晋青宁 17(1)②、2026 四川 18(5)（van't Hoff 式求 ΔH）。</li>
+  <li><b>⑤ 由 ΔH、ΔS 符号反推最佳温压条件</b>：2026 黑吉辽蒙 18(2)、2026 河南 17(4)、2024 重庆 17(1)③。</li>
+  <li><b>⑥ "热力学可行≠动力学可行"辨析</b>：2026 浙江 18(1)②、2026 河南 15(4)（K 很大但浸出率低）、2024 北京 16(4)。</li>
+  <li><b>⑦ 移除产物/惰性气体带水/挥发移出调控方向</b>：2026 四川 18(3)、2026 北京 16(3)②、2024 浙江 11C。</li>
+  <li><b>⑧ 耦合反应调控</b>：2024 山东 20（CaO＋CO₂ 耦合移除）、2026 湖北 19（机械化学降活化能）。</li>
+  <li><b>⑨ 依据活化能比较选择催化剂</b>：2026 陕晋青宁 17(3)②、2026 河北 17(3)、2026 上海 16。</li>
+  <li><b>⑩ 恒容→恒压切换对平衡的影响及理由</b>：2026 上海 19。</li>
+  <li><b>⑪ "降温 vs 加惰性溶剂稀释"双因素定量比较</b>：2026 山东 20(4)。</li>
+  <li><b>⑫ 压缩体积对平衡的定量设问</b>：2024 湖北 17(2)②、2024 重庆 17(1)①。</li>
+</ul>
+<p class="tip">📌 反向发现：连外省也不是所有卷都考 ΔG 数值——2024、2026 北京卷原卷都没有任何 ΔG/自发性直接考查（只有 Q 与 K 比较判方向），真正把 ΔG 计算做成固定题的只有浙江、上海、湖北三省。<b>结论</b>：广东若跟进这个方向，大概率仍是"给 ΔH、ΔS 符号判能否自发"的半定量形态，<b>不必按浙江的难度练 ΔG 数值计算</b>。</p>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 1~5题每题4分 ＋ 6~11题每题5分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 13分）</h4>
+    <ul><li>第1题（4分）：2025·广州模拟 ΔG 判据与条件——NH₄Cl(s) 室温自发⇒ΔH＜0（C）；</li>
+    <li>第3题（4分）：合成氨条件常识——400~500 ℃ 看催化剂活性、20 MPa 省成本（C）；</li>
+    <li>第6题（5分）：NH₃ 体积分数-T-p 图——最有前途方向＝研制低温催化剂（C）。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 15分）</h4>
+    <ul><li>第7题（5分）：2007 诺奖合成氨表面机理图——活化能之差＝反应热（A）；</li>
+    <li>第9题（5分）：工业合成氨流程图——③升温不利于转化率故 C 错；</li>
+    <li>第11题（5分）：2025·清远 CO＋3H₂⇌CH₄＋H₂O 转化率-T-p 图——ΔH＜0（A）。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 22分）</h4>
+    <ul><li>第2题（4分）：金刚石/石墨 ΔG 数值计算（注意 kJ 与 J 单位换算，D 超高压变金刚石）——<span class="rd">✂ 单位换算可放弃，记结论"石墨稳定、超高压可压出金刚石"</span>；</li>
+    <li>第4题（5分）：2025·江西 乙烯水合 ΔG(T) 函数——<span class="rd">✂ 放弃</span>；</li>
+    <li>第5题（5分）：两个氢化反应 ΔG-T 图（C）——图像读截距斜率；</li>
+    <li>第8题（5分）：金红石→TiCl₄ 温度图——延长反应时间不能超过平衡（C）；</li>
+    <li>第10题（5分）：2025·潮州 汽车尾气净化 c-t 图＋K 计算（C，K＝5000 算错为陷阱）。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 13＋15＋22＝50 分，与课时精练总分一致。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：ΔG＝ΔH−TΔS 只在等温等压用；ΔS>0 不代表任何温度都自发——要算"高温自发/低温自发"温度区间…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：合成氨为什么用 400~500℃ 而不是更低（平衡更有利）？从速率与催化剂活性两个角度说…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c43_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c43_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>

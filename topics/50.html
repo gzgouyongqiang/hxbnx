@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第50讲 液相平衡体系的综合分析 · 课堂展示</title>
+<style>
+  :root{
+    --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
+    --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
+    --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:19px;line-height:1.65;padding:26px 40px 60px;
+  }
+  header h1{
+    font-size:36px;color:var(--accent);letter-spacing:2px;
+    text-align:center;margin-bottom:28px;
+    border-bottom:2px solid var(--border);padding-bottom:16px;
+  }
+  .part{
+    display:flex;align-items:center;gap:12px;
+    font-size:26px;font-weight:700;color:var(--text);
+    margin:34px 0 16px;
+  }
+  .part .no{
+    background:var(--accent);color:#22301f;border-radius:8px;
+    padding:2px 14px;font-size:19px;flex-shrink:0;
+  }
+  .part .tm{
+    margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;
+    background:var(--panel3);border-radius:999px;padding:2px 14px;
+  }
+  .loc{
+    display:inline-block;background:#2c3a45;border:1px solid #4a6a80;
+    color:var(--blue);border-radius:6px;padding:3px 14px;
+    font-size:16px;margin:6px 0 10px;font-weight:600;
+  }
+  .pg{color:var(--gold);border-bottom:2px dashed var(--gold);padding:0 5px;font-weight:700;letter-spacing:2px;}
+  h3{font-size:22px;color:var(--accent);margin:20px 0 8px;}
+  h3 .p{color:var(--blue);font-size:15px;font-weight:400;margin-left:6px;}
+  p{margin:6px 0;}
+  .em{color:var(--gold);font-weight:700;}
+  .rd{color:var(--red);font-weight:700;}
+  .gr{color:var(--accent);font-weight:700;}
+  .bl{color:var(--blue);font-weight:700;}
+  .quiz{
+    background:var(--panel2);border:1px solid #5a6d5f;border-radius:10px;
+    padding:14px 18px;margin:10px 0;
+  }
+  .quiz .ask{color:var(--gold);font-weight:700;margin-bottom:8px;}
+  .quiz .mat{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;}
+  .quiz .mat span{background:var(--panel3);border:1px solid var(--border);border-radius:6px;padding:3px 12px;font-size:16.5px;}
+  details{
+    background:var(--panel3);border:1px solid #5a6d5f;
+    border-radius:8px;margin:6px 0;padding:0;
+  }
+  details summary{
+    cursor:pointer;font-size:16.5px;color:var(--accent);
+    list-style:none;padding:8px 14px;font-weight:700;
+    display:flex;align-items:center;gap:8px;
+  }
+  details summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  details[open] summary::before{content:"▾";}
+  details .ans{
+    border-top:1px dashed var(--border);padding:10px 14px;
+    color:var(--text);font-size:16.5px;line-height:1.9;
+  }
+  details .ans b{color:var(--accent);}
+  details .ans .em{color:var(--gold);font-weight:700;}
+  details .ans .rd{color:var(--red);font-weight:700;}
+  details .ans table{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  details .ans th{background:var(--panel3);color:var(--accent);}
+  details .ans th,details .ans td{border:1px solid var(--border);padding:5px 10px;text-align:left;}
+  .bianxi{background:var(--panel2);border:1px solid var(--border);border-radius:8px;margin:8px 0;padding:0;}
+  .bianxi summary{cursor:pointer;font-size:17px;color:var(--text);list-style:none;padding:8px 14px;display:flex;align-items:center;gap:8px;}
+  .bianxi summary::before{content:"▸";font-size:14px;color:var(--dim);}
+  .bianxi[open] summary::before{content:"▾";}
+  .bianxi summary .q{color:var(--gold);font-weight:700;margin-right:4px;}
+  .bianxi .ans{border-top:1px dashed var(--border);padding:8px 14px;color:var(--dim);font-size:16.5px;}
+  .bianxi .ans b{color:var(--accent);}
+  .koujue{background:#3a4433;border:2px dashed var(--gold);border-radius:12px;padding:12px 20px;margin:14px 0;}
+  .koujue .t{color:var(--gold);font-weight:700;font-size:17px;margin-bottom:4px;}
+  .koujue p{color:var(--text);font-size:18px;}
+  .kps li{list-style:none;margin:10px 0;padding:10px 16px;background:var(--panel2);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+  .kps li b{color:var(--accent);}
+  .hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  @media (max-width:900px){.hw{grid-template-columns:1fr;}}
+  .hw .box{background:var(--panel2);border-radius:10px;padding:14px 18px;}
+  .hw .box h4{font-size:19px;margin-bottom:8px;}
+  .hw .b1 h4{color:var(--accent);}
+  .hw .b2 h4{color:var(--blue);}
+  .hw .b3 h4{color:var(--gold);}
+  .hw ul{margin-left:18px;font-size:16.5px;}
+  .tip{color:var(--dim);font-size:15px;margin:4px 0 10px;}
+  .fig{text-align:center;margin:10px 0;}
+  .fig img{max-width:80%;display:block;margin:0 auto;border-radius:6px;background:#fff;padding:6px;}
+  table.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:16px;}
+  table.tb th{background:var(--panel3);color:var(--accent);}
+  table.tb th,table.tb td{border:1px solid var(--border);padding:6px 12px;text-align:center;}
+  table.tb td.l{text-align:left;}
+  /* ===== 右侧备注栏 + 可拖拽栏间线（v2.1 精修）===== */
+  .twocol{display:grid;grid-template-columns:1fr 8px 320px;align-items:start;}
+  .colMain{min-width:0;}
+  .colDiv{cursor:col-resize;background:var(--border);border-radius:4px;align-self:stretch;min-height:300px;}
+  .colDiv:hover{background:var(--accent);}
+  .notesCol{position:sticky;top:12px;max-height:calc(100vh - 30px);overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+  .notesCol .nt{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+  .notesCol .nsub{color:var(--dim);font-size:13px;margin-bottom:6px;}
+  .notesCol h4{font-size:15.5px;color:var(--accent);margin:10px 0 5px;}
+  .notesCol textarea{width:100%;min-height:86px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:15px;font-family:inherit;line-height:1.7;resize:vertical;}
+  .notesCol textarea:focus{border-color:var(--accent);outline:none;}
+  .notesCol .nfoot{color:var(--dim);font-size:12.5px;margin-top:8px;}
+  @media (max-width:1100px){
+    .twocol{grid-template-columns:1fr;}
+    .colDiv{display:none;}
+    .notesCol{position:static;max-height:none;margin-top:10px;}
+  }
+
+  /* ===== 左下角控制条（字号三档+亮度五档，与缺口真题版同款）===== */
+  :root{
+    --fs-base:19px;--fs-h1:36px;--fs-part:26px;--fs-h3:22px;
+    --fs-opt:17px;--fs-sm:16px;--fs-sub:15px;
+    --card-blue:#2c3a45;--card-gold:#3a4433;--border-blue:#4a6a80;
+  }
+  body{font-size:var(--fs-base);}
+  header h1{font-size:var(--fs-h1);}
+  header .sub{font-size:var(--fs-sm);}
+  .part{font-size:var(--fs-part);}
+  .part .no{font-size:var(--fs-base);}
+  .part .tm{font-size:var(--fs-sub);}
+  .loc{font-size:var(--fs-sm);background:var(--card-blue);border:1px solid var(--border-blue);}
+  h3{font-size:var(--fs-h3);}
+  h3 .p{font-size:var(--fs-sub);}
+  .quiz .ask{font-size:var(--fs-base);}
+  .quiz .mat span{font-size:var(--fs-opt);}
+  details summary{font-size:var(--fs-opt);}
+  details .ans{font-size:var(--fs-opt);}
+  details .ans table{font-size:var(--fs-sm);}
+  .bianxi summary{font-size:var(--fs-opt);}
+  .bianxi .ans{font-size:var(--fs-opt);}
+  .koujue{background:var(--card-gold);}
+  .koujue .t{font-size:var(--fs-sm);}
+  .koujue p{font-size:var(--fs-base);}
+  .hw .box h4{font-size:var(--fs-base);}
+  .hw ul{font-size:var(--fs-opt);}
+  .tip{font-size:var(--fs-sub);}
+  .eqw-c{font-size:calc(var(--fs-sub) - 3px);}
+  .beike summary{font-size:calc(var(--fs-sub) - 2px);}
+  .notesCol .nt{font-size:var(--fs-sm);}
+  .notesCol h4{font-size:var(--fs-sub);}
+  .notesCol textarea{font-size:var(--fs-sub);}
+  .notesCol .nsub,.notesCol .nfoot{font-size:calc(var(--fs-sub) - 2px);}
+  #uiBar{
+    position:fixed;left:8px;bottom:8px;z-index:99999;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  }
+  #uiBar button{
+    background:transparent;border:none;color:var(--gold);
+    font-size:14px;cursor:pointer;font-family:inherit;
+    letter-spacing:1px;padding:5px 10px;border-radius:8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.75);
+    opacity:.8;transition:opacity .2s,background .2s;
+  }
+  #uiBar button:hover{opacity:1;background:rgba(255,255,255,.12);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>第50讲　液相平衡体系的综合分析 · 课堂展示</h1>
+</header>
+<div class="twocol">
+<main class="colMain">
+
+<!-- ==================== 一、方程式滚动默写 ==================== -->
+<div class="part"><span class="no">一</span>方程式滚动默写<span class="tm">5分钟</span></div>
+<p class="tip">📖 先默写，同桌互批后点开对答案——本讲默写＝写平衡体系与常数关系（2022 广东 T19 重铬酸根体系就是多平衡综合的原型）。默写前先圈题干限定语——"忽略""可忽略"是命题人让你不算的信号（2025-17"水的电离可忽略"、2024-19(3)"该溶剂本身不电离"）。</p>
+
+<div class="quiz">
+  <div class="ask">① 写出 K₂Cr₂O₇ 溶液中存在的水解平衡（重铬酸根 Cr₂O₇²⁻ 与水的反应）。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 典例剖析 例2（2022·广东 T19(2)，平衡(ⅰ)）</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>Cr₂O₇²⁻(aq)＋H₂O(l) ⇌ 2HCrO₄⁻(aq)</b>　K₁＝3.0×10⁻²（25 ℃）<br>
+      HCrO₄⁻ 还能继续电离：<b>HCrO₄⁻ ⇌ CrO₄²⁻＋H⁺</b>　K₂＝3.3×10⁻⁷——<span class="em">同一溶液两个平衡耦合，这就是"多平衡体系"的典型样本</span>。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">② 写出 Na₂S 溶液中 S²⁻ 的第一步水解方程式，并写出其水解常数 Kh₁ 与 Ka₁(H₂S)、Kw 的关系式。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 3.常数关系推导举例 (1) 水解常数与电离常数、Kw 关系</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>S²⁻＋H₂O ⇌ HS⁻＋OH⁻</b><br>
+      <b>Kh₁ ＝ Kw/Ka₂</b>（S²⁻ 对应 H₂S 的<b>第二级</b> Ka₂！）——写 Kh 先找"该离子是哪个酸的第几级共轭碱"。<span class="em">通用式</span>：酸根 A⁻ 水解 Kh＝Kw/Ka(HA)；酸式根 HCO₃⁻ 水解 Kh＝Kw/Ka₁。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">③ 写出 ZnS(s)＋2H⁺ ⇌ Zn²⁺＋H₂S(aq) 的平衡常数 K 与 Ksp(ZnS)、Ka₁·Ka₂(H₂S) 的关系式。</div>
+  <span class="loc" style="margin:0;">📖 讲义 <span class="pg">P＿＿</span> · 3.常数关系推导举例 (3) 平衡常数与电离常数、溶度积关系</span>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>K ＝ Ksp(ZnS)/(Ka₁·Ka₂)</b><br>
+      推导思路：ZnS(s) ⇌ Zn²⁺＋S²⁻（Ksp）；S²⁻＋2H⁺ ⇌ H₂S（1/(Ka₁Ka₂)）；两式相加 → 总 K＝Ksp/(Ka₁Ka₂)。<span class="em">核心手法</span>：常数相乘除＝方程式相加——"组合消元"思维，先写表达式再找公共量。</div>
+  </details>
+</div>
+
+<!-- ==================== 二、本讲核心知识点 ==================== -->
+<div class="part"><span class="no">二</span>本讲核心知识点<span class="tm">3分钟</span></div>
+<ul class="kps">
+  <li><b>① 多平衡"家族"四成员</b>：电离平衡（弱酸弱碱）、水解平衡（盐）、沉淀溶解平衡（Ksp）、络合平衡（配离子）——同一溶液可多平衡<b>共存且耦合</b>（2022 广东 T19 铬体系、2024 广东 T19 非水溶剂体系）。</li>
+  <li><b>② 分析框架四工具（必背）</b>：①粒子相互作用视角（谁与谁反应）；②<b>守恒关系</b>是定盘星（电荷/物料/质子，任何平衡下都成立）；③函数与图像（pH/对数曲线交点有常数意义）；④<b>常数组合推导</b>（先写各平衡常数表达式→找相同量→组合消元得总反应 K）。<span class="em">读图三步</span>：先认坐标（线性/lg/pX，纵轴每格差几个数量级）→再认特殊点（交点＝两浓度相等、δ＝0.5 处 pH＝pKa、拐点＝物种切换）→后自问"哪条常数式能表达这条线"——图上每个特殊点必须能翻译成一条常数表达式。</li>
+  <li><b>③ 常数桥梁公式</b>：Kh＝Kw/Ka（或 Kw/Kb）；沉淀酸溶 K＝Ksp×1/(Ka₁Ka₂)……——"方程式相加对应常数相乘"。</li>
+  <li><b>④ 稀释与多平衡</b>：稀释促进电离/水解（向离子数<b>增多</b>方向），离子总数通常增大（2022 广东 T19(2) B 选项）；加酸/碱通过耦合平衡"牵一发而动全身"（先看直接反应的平衡，再顺藤摸瓜）。</li>
+  <li><b>⑤ 元素守恒锁总量</b>：如铬体系 c(Cr 总)＝2c(Cr₂O₇²⁻)＋c(HCrO₄⁻)＋c(CrO₄²⁻)＝定值——无论多少平衡，守恒式恒成立（2022-19(2)② 设 x、y、z 按 Cr 原子守恒列式）。<span class="rd">✂ 放弃：常数线性组合的复杂推导、图像交点代换定量计算、多平衡联立求解（大题末问压轴区分度，2022 广东 T19(2)②③、2024 广东 T19 级）</span>。</li>
+  <li><b>⑥ 限定语圈画（读题得分点）</b>："水的电离可忽略"（2025 广东 17）、"该溶剂本身不电离"（2024 广东 19(3)）、"忽略 CO₃²⁻ 水解的影响"（2024 广东 17）——命题人写"忽略"就是让你不算，见到先圈出来。</li>
+</ul>
+
+<!-- 本讲广东卷考点落点 -->
+<div style="background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;">
+  <b style="color:var(--gold);">📊 本讲广东卷考点落点（综合框架讲——据 65分清单＋化学平衡/弱电解质报告交叉）</b>
+  <p>· <b>🎯 方法主线一句话：一译一合</b>——把图像特殊点翻译成常数表达式，把多平衡常数组合化简成只含已知量的式子。本讲没有独立题位、处处寄生 17/18/19 压轴小问——是第 48/49 讲的"装配车间"。</p>
+  <p>· <b>🟢 必保分</b>：识别体系中并存的多重平衡、单一平衡常数表达式书写、守恒式（元素守恒锁总量）——多平衡大题的前两空（写平衡/写守恒）常是送分；基础层全部任务＝五个常数关系＋读图三步。</p>
+  <p>· <b>🟠 主突破（0.55–0.65）</b>：条件改变（加酸/稀释/加固体）对耦合平衡移动方向的连锁判断（<span class="em">2022 广东 T19(2)① 铬体系 A-D 多选——先看条件直接影响的平衡，再顺藤摸瓜</span>）；"列出算式"设问连年出现（2021-18(3)②、2024-18(5)、2025-17(3)、2026-18(3)②）——写出常数关系式即得分，弱化数值。</p>
+  <p>· <b>🔵 冲刺层预备区</b>：Ka 测定方案设计<b>四年四考</b>（2022-17(5) 半中和法、2024-19(3) 非水溶剂分光光度法、2025-17(3)(5) 曲线法＋NaClO 间接法）——方案设计必须答全"仪器＋操作＋数据处理"三要素；情境快速大学化（非水溶剂/电子效应/两次突变滴定），"读题先认情境"是第一道门槛。</p>
+  <p>· <b>✂ 放弃（0.45–0.55 压轴）</b>：多平衡常数联立求解离子浓度（2022 广东 T19(2)② c(HCrO₄⁻)≈6.0×10⁻⁴ 级）、图像交点代换定量计算、标准 δ 整图题海、拓展滴定（银量法/EDTA/KMnO₄ 返滴定，广东六年零落点）——65 分目标只取前问。</p>
+</div>
+
+<!-- ==================== 三、知识点选讲 ==================== -->
+<div class="part"><span class="no">三</span>知识点选讲<span class="tm">约32分钟</span></div>
+
+<!-- 知识点① -->
+<h3>知识点① · 平衡家族与四工具：铬体系实战<span class="p">（约8分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 1.命题选材 / 2.分析多平衡体系的关键（四工具）＋典例 例2（2022·广东 T19(2)）</span>
+
+<div class="quiz">
+  <div class="ask">【判断】下列溶液各存在什么平衡？① NH₄Cl 溶液；② Na₂CO₃ 溶液；③ AgCl 悬浊液；④ 含 [Ag(NH₃)₂]⁺ 的银氨溶液。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① <b>水解平衡</b>（NH₄⁺）＋水的电离平衡；② 水解平衡（CO₃²⁻ 两级）＋电离平衡（H₂CO₃）；③ <b>沉淀溶解平衡</b>；④ <b>络合平衡</b>（配离子解离）＋相关电离平衡。<br>
+      <span class="em">识别口诀</span>：弱离子找水解/电离、有沉淀找 Ksp、有配离子找 Kf——先分类再分析，别乱成一锅粥。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>多平衡分析四板斧：<span class="em">粒子互看作反应、守恒定盘星、图像交点藏常数、常数组合靠消元</span>——先写表达式，再找公共量。</p>
+</div>
+
+<!-- 知识点② -->
+<h3>知识点② · 常数桥梁公式与组合推导<span class="p">（约7分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 3.几种常考常数关系推导举例（(1)(2)(3)）</span>
+
+<table class="tb">
+  <tr><th>目标关系</th><th>桥梁公式</th></tr>
+  <tr><td class="l">酸根水解常数</td><td>Kh(A⁻)＝Kw/Ka(HA)（如 Kh(HCO₃⁻)＝Kw/Ka₁）</td></tr>
+  <tr><td class="l">金属阳离子水解（沉淀型）</td><td>Cu²⁺＋2H₂O ⇌ Cu(OH)₂＋2H⁺：Kh＝Kw²/Ksp[Cu(OH)₂]</td></tr>
+  <tr><td class="l">沉淀酸溶</td><td>ZnS＋2H⁺ ⇌ Zn²⁺＋H₂S：K＝Ksp(ZnS)/(Ka₁·Ka₂)</td></tr>
+  <tr><td class="l">连续络合</td><td>Cr³⁺＋2SCN⁻ ⇌ [Cr(SCN)₂]⁺：K₃＝K₁×K₂（2024 广东模拟 C 选项）</td></tr>
+</table>
+<p class="tip">💡 <span class="rd">易错点</span>：Kh 与 Ka 配对时小心级数——S²⁻ 水解用 Ka₂、HCO₃⁻ 水解用 Ka₁（它是一级电离产物）；先写方程式再配对绝不漏。</p>
+
+<div class="quiz">
+  <div class="ask">【配对抢答】① CH₃COO⁻ 水解 Kh＝？② CO₃²⁻ 水解 Kh₁＝？③ HS⁻ 水解 Kh＝？④ NH₄⁺ 水解 Kh＝？（对应：Ka(CH₃COOH)、Ka₁/Ka₂(H₂CO₃)、Ka₁/Ka₂(H₂S)、Kb(NH₃·H₂O)）</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① Kh＝Kw/Ka(CH₃COOH)；② Kh₁＝Kw/<b>Ka₂(H₂CO₃)</b>（CO₃²⁻ 是二级共轭碱）；③ Kh＝Kw/<b>Ka₁(H₂S)</b>（HS⁻ 是一级共轭碱）；④ Kh＝Kw/Kb(NH₃·H₂O)。<br>
+      <span class="em">一句话</span>：离子是第几级电离的产物，Kh 就配第几级 Ka——"级数对号入座"。</div>
+  </details>
+</div>
+
+<!-- 知识点③ -->
+<h3>知识点③ · 元素守恒锁总量与除尽判断<span class="p">（约6分钟）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 典例 例3(1)（2025·湛江 CdS 污水除镉）＋例2② 铬元素守恒</span>
+
+<div class="quiz">
+  <div class="ask">【送分演示 · 例3(1)①】已知 Ka₂(H₂S)＝10⁻¹²·⁹⁰、Ksp(CdS)＝10⁻²⁶·¹⁰。污水中加 K₂S 至 c(S²⁻)＝1×10⁻⁵ mol·L⁻¹，能否将 Cd²⁺（原浓度 10⁻⁴ mol·L⁻¹ 级）除尽？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>能</b>——残留 c(Cd²⁺)＝Ksp/c(S²⁻)＝10⁻²⁶·¹⁰/10⁻⁵＝<b>10⁻²¹·¹⁰ mol·L⁻¹ ≪ 10⁻⁵</b>（除尽标准），沉淀完全。<br>
+      <span class="em">套路</span>：Ksp 数量级极小的硫化物沉淀，只要 S²⁻ 稍微过量就能除到 10⁻²⁰ 级——工业除镉/除铜的理论依据。同类：铬体系元素守恒 2x＋y＋z＝0.10（Cr 原子守恒）也是"锁总量"动作，先列守恒再谈计算。</div>
+  </details>
+</div>
+
+<div class="koujue">
+  <div class="t">🗣 必背口诀（直接记忆）</div>
+  <p>多平衡别慌：<span class="em">守恒锁总量、Ksp 判除尽（残留＝Ksp÷沉淀剂浓度）、表达式先写、消元后计算</span>——65 分只做到"写对守恒与表达式"这一层。</p>
+</div>
+
+<!-- 知识点④ -->
+<h3>知识点④ · Ka 测定方案设计三要素<span class="p">（约5分钟 · 四年四考）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 典例 例1（Ka 的测定）＋2022-17(5) 半中和法 / 2025-17(3) pH-V 曲线法</span>
+
+<div class="quiz">
+  <div class="ask">【方案设计抢分】"如何准确测定某弱酸的 Ka？"——用 pH-V 滴定曲线（2025 广东 17(3)）说明读哪个点、算哪条式；2022 广东 17(5) 半中和法与它共用一句话，是哪句？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans"><b>半等电点：V(终点)/2 处 pH＝pKa</b>——此时 c(A⁻)＝c(HA)，Ka＝c(H⁺)，从 pH-V 曲线直接读；半中和法（2022-17(5)）：中和一半时 n(NaA)＝n(HA)，c(H⁺)＝Ka——<b>同一句话：一半中和点，pH 即 pKa</b>，一法两题。<br>
+      <span class="em">方案设计三要素（评分点）</span>：<b>仪器</b>（pH 计——广东卷唯一承认的测量工具）＋<b>操作</b>（滴定至一半/取半终点样品测 pH）＋<b>数据处理</b>（读 pH 写 Ka 表达式）。<br>
+      <span class="em">变式</span>：2024-19(3) 非水溶剂分光光度法——"该溶剂本身不电离"＝Kw 不用管、光度法定浓度；2025-17(5) NaClO 间接法＝同款内核。</div>
+  </details>
+</div>
+
+<!-- 知识点⑤ -->
+<h3>知识点⑤ · 外省镜子：广东还没考的角度<span class="p">（约3分钟 · 冲刺层）</span></h3>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 拓展视野——外省 2024/2026 新高考卷高频，广东 2027 届可能跟进</span>
+<p class="tip">💡 <b>反向发现</b>：外省的"综合"有固定构图——一张图＋两组守恒＋常数组合，几乎每卷必设 1 道；标准 δ 整图题外省也不多，多以对数图、双坐标图变形出现。广东 2022-19(2) 铬体系题已是同构题——学生缺的不是新知，是"把陌生图翻译成常数表达式"的动作。</p>
+<div class="quiz">
+  <div class="ask">【冲刺层八条镜子】① lg c-pH 全对数图（2026 山东 T15 三交点定点算浓度＋守恒定试剂；2026 黑吉辽蒙 T15 pX-pH 四物种交点求 K）② δ 分布分数图＋Ksp 双体系（2024 湖北 T13、2026 江苏 T12、2024 浙江 6 月 T15）③ pH＋pM 双坐标（2026 湖南 T14，pBa=4.3 算 Ksp）④ 两次突变滴定数据处理（2026 广东 17(4) 存疑＋2024 湖南 T13）⑤ 配位平衡图像（2024 河北 T11、2026 河北 T14 I₃⁻ 多重平衡）⑥ 滴定＋pM 对数图（2026 四川 T15）⑦ 拓展滴定（2026 山东 T19 KMnO₄ 返滴定、2024 浙江 6 月 T20 银量法、2026 江苏 T16 EDTA）⑧ 指示剂平衡情境（2026 北京 T11 石蕊"红分子⇌蓝离子"）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">镜子用法：①②③ 都走"读图三步＋交点翻译常数"——先识线再联立；④ 两次突变是 2027 届广东最可能跟进的题型——分段判断主反应、两个终点各算一段；⑤⑥ 是 K₁×K₂ 常数组合的图像版；⑦ 滴定剂＋指示剂＋误差分析三件套各走一题；⑧ 把指示剂本身当平衡体系考——新瓶装旧酒。</div>
+  </details>
+</div>
+
+
+<!-- 课本基础题精选 -->
+<h3>知识点⑥ · 课本基础题精选<span class="p">（约3分钟）</span></h3>
+<span class="loc">📖 课本 人教版选择性必修1 <span class="pg">P＿＿</span> · 第三章 水溶液中的离子反应与平衡 · 章末整合（同源同型速练）</span>
+<p class="tip">以下 3 题与课本"水溶液离子平衡"章末整合同考点同型，投影速练、答案揭晓即走；纸质课本页码由老师核对后填写。</p>
+
+<div class="quiz">
+  <div class="ask">【章末同源①】向 FeCl₃ 溶液中同时存在：水解平衡 Fe³⁺＋3H₂O ⇌ Fe(OH)₃＋3H⁺。分别加入：① 盐酸；② 少量 NaHCO₃；③ 加热。水解平衡向哪移动？</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">① 加盐酸：<b>左移</b>（增 H⁺ 抑制，配制 FeCl₃ 的原理）；② 加 NaHCO₃：<b>右移</b>（HCO₃⁻ 耗 H⁺，双水解出 Fe(OH)₃↓＋CO₂↑）；③ 加热：<b>右移</b>（水解吸热）。<br>
+      <span class="em">一平衡三外因</span>——第47讲知识点③的回顾应用。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【章末同源②】NH₄HCO₃ 溶液显什么性？写出其水解方程式并说明理由（H₂CO₃ Ka₁＝4.5×10⁻⁷，NH₃·H₂O Kb＝1.8×10⁻⁵）。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">HCO₃⁻ 水解 Kh＝Kw/Ka₁≈2.2×10⁻⁸；NH₄⁺ 水解 Kh′＝Kw/Kb≈5.6×10⁻¹⁰ → <b>HCO₃⁻ 水解更强，溶液显碱性</b>。<br>
+      <span class="em">双水解谁强看 Kh</span>：两个 Kh 一大一小，谁大显谁性——弱酸弱碱盐酸碱性判定的通用法。</div>
+  </details>
+</div>
+
+<div class="quiz">
+  <div class="ask">【章末同源③】写出 NaHCO₃ 溶液中的三大守恒式。</div>
+  <details><summary>显示答案</summary>
+    <div class="ans">电荷守恒：<b>c(Na⁺)＋c(H⁺) ＝ c(HCO₃⁻)＋2c(CO₃²⁻)＋c(OH⁻)</b>；<br>
+      物料守恒：<b>c(Na⁺) ＝ c(HCO₃⁻)＋c(CO₃²⁻)＋c(H₂CO₃)</b>；<br>
+      质子守恒：<b>c(H⁺)＋c(H₂CO₃) ＝ c(OH⁻)＋c(CO₃²⁻)</b>。<br>
+      <span class="em">三大守恒全复习</span>——第48讲内容的现场检验。</div>
+  </details>
+</div>
+
+<!-- ==================== 四、课时作业分层 ==================== -->
+<div class="part"><span class="no">四</span>课时作业分层<span class="tm">2分钟</span></div>
+<span class="loc">📖 讲义 <span class="pg">P＿＿</span> · 课时精练（[分值：50分] 第1题10分＋第2题10分＋第3题18分＋第4题12分）</span>
+<div class="hw">
+  <div class="box b1"><h4>✅ 必做（保底 · 10分）</h4>
+    <ul><li>第1题(1)（2024·广东模拟 KSCN 络合 Cr³⁺，BC）——K₁×K₂ 常数组合同款：稀释效应/元素守恒/K 相乘，先抢 (1) 10 分全拿。</li></ul>
+  </div>
+  <div class="box b2"><h4>➕ 选做（进中档 · 10分）</h4>
+    <ul><li>第2题(1)（2024·梅州 铬(Ⅵ) Cr₂O₇²⁻/CrO₄²⁻ 平衡：②选 BC，①调 pH＝4.5 精算可先理解思路）——耦合平衡判断＋守恒。</li></ul>
+  </div>
+  <div class="box b3"><h4>🏆 挑战（冲高分 · 30分）</h4>
+    <ul><li>第1题(2)、第3题（18分，2024·广东2月大联考 银回收多平衡流程）、第4题（12分，2025·深圳 硫氰化物综合）——<span class="rd">✂ 多平衡联立与图像计算密集，65 分只抢"写平衡/写守恒/单空判断"约各题前 1~2 空，联立末问全弃</span>。</li></ul>
+  </div>
+</div>
+<p class="tip">📖 三层分值合计 10＋10＋30＝50 分，与课时精练总分一致。本讲为综合框架讲，作业以"抢前问"为主。</p>
+
+</main>
+<div class="colDiv" title="拖动调节左右栏宽"></div>
+<aside class="notesCol">
+  <div class="nt">📝 课堂备注</div>
+  <div class="nsub">随手记 · 自动暂存本机</div>
+  <h4>⚠️ 易错点</h4>
+  <textarea data-key="err" placeholder="如：多平衡交叉时先分清"每个粒子来自哪个平衡"；读图像先抓拐点、平台、交点——各代表一个平衡事件；别把分布分数当浓度…"></textarea>
+  <h4>❓ 课堂追问</h4>
+  <textarea data-key="ask" placeholder="如：拿到一张滴定/分布分数综合图，你的前三步看什么？（坐标轴、拐点平台、等量点±范围）…"></textarea>
+  <div class="nfoot">拖动左侧竖线可调栏宽 · 内容只保存在本机浏览器</div>
+</aside>
+</div>
+
+<script>
+(function(){
+  var enabled = true;
+  var tips = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('details'));
+  function findClosed(){
+    for (var i=0;i<all.length;i++){ if(!all[i].open) return all[i]; }
+    return null;
+  }
+  function openNext(){
+    var d = findClosed();
+    if(d){
+      d.open = true;
+      d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      d.style.boxShadow='0 0 0 3px #e8d48f'; d.style.transition='box-shadow 0.8s';
+      setTimeout(function(){ d.style.boxShadow=''; }, 1500);
+    } else {
+      all.forEach(function(x){ x.open=false; });
+      showTip('全部答案已收起，可重新开始');
+    }
+  }
+  function scrollDir(dir){
+    window.scrollBy({top: dir*Math.round(window.innerHeight*0.6), behavior:'smooth'});
+  }
+  function showTip(msg){
+    if(!tips){
+      tips=document.createElement('div');
+      tips.style.cssText='position:fixed;top:14px;right:14px;z-index:99999;background:rgba(0,0,0,.8);color:#e8d48f;font-size:14px;padding:6px 14px;border-radius:6px;transition:opacity 1s;pointer-events:none;';
+      document.body.appendChild(tips);
+    }
+    tips.textContent=msg; tips.style.opacity='1';
+    clearTimeout(tips._t); tips._t=setTimeout(function(){ tips.style.opacity='0'; }, 2500);
+  }
+  document.addEventListener('keydown', function(e){
+    if(!enabled) return;
+    var t = e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+    var k = e.key;
+    if(k==='PageDown'||k==='ArrowDown'||k===' '){ e.preventDefault(); scrollDir(1); }
+    else if(k==='PageUp'||k==='ArrowUp'){ e.preventDefault(); scrollDir(-1); }
+    else if(k==='Enter'||k==='Tab'){ e.preventDefault(); openNext(); }
+    else if(k==='F9'){ e.preventDefault(); enabled=!enabled; showTip(enabled?'遥控已启用（F9暂停）':'遥控已暂停（F9恢复）'); }
+  });
+  showTip('遥控已启用：下翻滚动 · 回车/超链接揭答案 · F9暂停');
+})();
+</script>
+
+<script>
+/* ===== 备注栏：栏间线拖拽 + 三格内容自动暂存（localStorage）===== */
+(function(){
+  var wrap = document.querySelector('.twocol'), div = document.querySelector('.colDiv');
+  if(!wrap || !div) return;
+  var KW = 'c50_colw';
+  try{ var w = localStorage.getItem(KW); if(w) wrap.style.gridTemplateColumns = '1fr 8px ' + w; }catch(e){}
+  var drag = false;
+  function move(x){
+    var r = wrap.getBoundingClientRect();
+    var w = Math.round(r.right - x);
+    var max = Math.round(r.width * 0.55);
+    if(w < 190) w = 190; if(w > max) w = max;
+    wrap.style.gridTemplateColumns = '1fr 8px ' + w + 'px';
+    try{ localStorage.setItem(KW, w + 'px'); }catch(e){}
+  }
+  function stop(){ drag = false; document.body.style.userSelect = ''; }
+  div.addEventListener('mousedown', function(e){ drag = true; e.preventDefault(); document.body.style.userSelect = 'none'; });
+  window.addEventListener('mousemove', function(e){ if(drag) move(e.clientX); });
+  window.addEventListener('mouseup', stop);
+  div.addEventListener('touchstart', function(e){ drag = true; }, {passive:true});
+  window.addEventListener('touchmove', function(e){ if(drag && e.touches[0]) move(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', stop);
+  var tas = document.querySelectorAll('.notesCol textarea');
+  for(var i=0; i<tas.length; i++){
+    (function(t, i){
+      var k = 'c50_' + (t.getAttribute('data-key') || ('note_' + i));
+      try{ var v = localStorage.getItem(k); if(v) t.value = v; }catch(e){}
+      t.addEventListener('input', function(){ try{ localStorage.setItem(k, t.value); }catch(e){} });
+    })(tas[i], i);
+  }
+})();
+
+</script>
+
+<script>
+/* ===== 左下角控制条 兼容版：动态样式注入（不依赖 CSS 变量，老内核/受限环境可用）===== */
+function __uibarInit(){
+  var fsBtn=document.getElementById('fsBtn'),lumBtn=document.getElementById('lumBtn');
+  if(!fsBtn&&!lumBtn)return;
+  var stEls=document.querySelectorAll('style');
+  if(!stEls.length)return;
+  var css='';
+  for(var i=0;i<stEls.length;i++){css+=stEls[i].textContent+'\n';}
+  var vars={};
+  css.replace(/:root\s*\{([^}]*)\}/g,function(_,body){
+    body.replace(/(--[a-zA-Z0-9-]+)\s*:\s*([^;}]+)/g,function(_,k,v){vars[k]=v.trim();return '';});
+    return '';
+  });
+  var FS=[
+    {base:'19px',h1:'36px',part:'26px',h3:'22px',opt:'17px',sm:'16px',sub:'15px',name:'标准'},
+    {base:'23px',h1:'40px',part:'30px',h3:'26px',opt:'21px',sm:'20px',sub:'19px',name:'大'},
+    {base:'27px',h1:'44px',part:'34px',h3:'30px',opt:'25px',sm:'24px',sub:'23px',name:'特大'}
+  ];
+  var LUMVARS=['--bg','--panel','--panel2','--panel3','--card-blue','--card-gold','--text','--dim','--border','--border-blue'];
+  var LV=[80,90,100,110,120];
+  var dyn=document.createElement('style');dyn.id='dynUi';
+  document.head.appendChild(dyn);
+  var curFs=0,curLum=100;
+  try{
+    var old=localStorage.getItem('hxbnx_fs');
+    if(old==='s')curFs=0;else if(old==='m')curFs=1;else if(old==='l')curFs=2;
+    var fi=parseInt(localStorage.getItem('hxbnx_fs_i'),10);
+    if(fi>=0&&fi<FS.length)curFs=fi;
+  }catch(e){}
+  try{var l=parseInt(localStorage.getItem('hxbnx_lum'),10);if(LV.indexOf(l)>=0)curLum=l;}catch(e){}
+  function shade(hex,k){
+    var m=hex.slice(1).match(/../g),o='#';
+    for(var i=0;i<3;i++){var v=Math.round(parseInt(m[i],16)*k);if(v>255)v=255;o+=('0'+v.toString(16)).slice(-2);}
+    return o;
+  }
+  function apply(){
+    var out=css,f=FS[curFs];
+    out=out.replace(/var\((--fs-[a-z0-9-]+)\)/g,function(m,k){
+      var key=k.replace('--fs-','');
+      return (f[key]!==undefined)?f[key]:(vars[k]||m);
+    });
+    var kk=curLum/100;
+    out=out.replace(/var\((--[a-z0-9-]+)\)/g,function(m,key){
+      var base=vars[key];
+      if(!base||base.charAt(0)!=='#'||base.length<7)return m;
+      return shade(base,kk);
+    });
+    dyn.textContent=out;
+    if(fsBtn)fsBtn.textContent='\ud83d\udd24 字号：'+f.name;
+    if(lumBtn)lumBtn.textContent='\u2600\ufe0f 亮度：'+curLum+'%';
+  }
+  var lastTouch=0;
+  function bind(el,fn){
+    if(!el)return;
+    el.addEventListener('click',function(){if(Date.now()-lastTouch<600)return;fn();});
+    el.addEventListener('touchstart',function(e){lastTouch=Date.now();e.preventDefault();fn();},{passive:false});
+  }
+  bind(fsBtn,function(){curFs=(curFs+1)%FS.length;try{localStorage.setItem('hxbnx_fs_i',curFs);}catch(e){}apply();});
+  bind(lumBtn,function(){curLum=LV[(LV.indexOf(curLum)+1)%LV.length];try{localStorage.setItem('hxbnx_lum',curLum);}catch(e){}apply();});
+  apply();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',__uibarInit);}else{__uibarInit();}
+</script>
+
+
+<div id="uiBar">
+  <button id="fsBtn" title="字号：标准 / 大 / 特大（自动记住）">🔤 字号：标准</button>
+  <button id="lumBtn" title="亮度：80% / 90% / 100% / 110% / 120%（自动记住）">☀️ 亮度：100%</button>
+</div>
+
+<script src="../hxbnx-handwrite.js"></script>
+</body>
+</html>
