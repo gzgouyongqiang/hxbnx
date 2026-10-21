@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跟我一步步解题 · 2026广东卷·11 · 元素推断：谁才是电解质饮料的配料</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"Microsoft YaHei", sans-serif;
+    background:linear-gradient(135deg,#8a9aa8,#6f8294);
+    display:flex; align-items:flex-start; justify-content:center;
+    min-height:100vh; padding:24px 16px;
+  }
+  .board {
+    width:min(1000px,97vw);
+    background:#fdfdfa;
+    border:14px solid #c8ccd2;
+    border-radius:14px;
+    box-shadow:0 12px 40px rgba(0,0,0,.35);
+    padding:30px 40px 26px;
+    position:relative;
+    cursor:pointer;
+    user-select:none;
+  }
+  .board::after{
+    content:""; position:absolute; left:50%; transform:translateX(-50%);
+    bottom:-26px; width:70%; height:12px;
+    background:#b4bac2; border-radius:0 0 8px 8px;
+  }
+  h1 {
+    font-size:25px; color:#1a3c6e;
+    border-bottom:3px solid #1a3c6e;
+    padding-bottom:10px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .tag{ font-size:13.5px; background:#eef3fa; color:#1a3c6e;
+        border:1.5px solid #1a3c6e; border-radius:20px; padding:2px 12px; font-weight:normal;}
+  .usage{ font-size:14.5px; color:#667; margin:10px 0 4px; line-height:1.6; }
+  .usage b{ color:#e67e22; }
+  sub,sup{ font-size:72%; }
+
+  /* ===== 图片：题干图直载，步骤图按步懒加载 ===== */
+  .fig{ display:block; max-width:100%; margin:10px auto; border-radius:8px;
+        opacity:0; transform:scale(.98); transition:opacity .5s, transform .5s; }
+  .fig.loaded{ opacity:1; transform:none; }
+  .fig-cap{ text-align:center; font-size:13px; color:#8a97a5; margin:2px 0 10px; }
+
+  /* ===== 题目 + 关键词高亮 ===== */
+  .question {
+    background:#fffbe6; border-left:6px solid #e6a817;
+    padding:13px 18px; border-radius:0 10px 10px 0;
+    font-size:17px; line-height:1.8; color:#333; margin:14px 0 18px;
+    transition:background .5s;
+  }
+  .kw{ font-weight:bold; border-radius:4px; padding:0 3px;
+       color:inherit; background:transparent; transition:all .4s; }
+  .question.lit .kw{
+    color:#c0392b;
+    text-decoration:underline wavy #e6a817 2px;
+    text-underline-offset:4px;
+    animation:kwflash 1.6s ease;
+    animation-iteration-count:2;
+  }
+  @keyframes kwflash{
+    0%,100%{ background:#ffe08a; }
+    25%{ background:transparent; }
+    50%{ background:#ffe08a; }
+    75%{ background:transparent; }
+  }
+
+  /* ===== 步骤 ===== */
+  .step { margin-bottom:6px; }
+  .think {
+    display:flex; gap:10px; align-items:flex-start;
+    opacity:0; transform:translateX(-24px);
+    transition:opacity .4s ease, transform .4s ease;
+    margin-bottom:10px;
+  }
+  .think.show{ opacity:1; transform:translateX(0); }
+  .badge{
+    flex:0 0 30px; height:30px; border-radius:50%;
+    background:#1a3c6e; color:#fff; font-size:15px; font-weight:bold;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .think .q{
+    font-size:17.5px; color:#8a5b00; font-weight:bold;
+    background:#fff3cd; border:2px dashed #e6a817;
+    border-radius:10px; padding:9px 16px;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{box-shadow:0 0 0 0 rgba(230,168,23,.35);} 50%{box-shadow:0 0 0 8px rgba(230,168,23,0);} }
+
+  .reveal{
+    display:flex; gap:10px; align-items:flex-start;
+    opacity:0; transform:translateX(-16px);
+    transition:opacity .4s ease, transform .4s ease;
+    margin-bottom:0; max-height:0; overflow:hidden;
+  }
+  .reveal.show{ opacity:1; transform:translateX(0); max-height:1500px; margin-bottom:16px; }
+  .reveal .spacer{ flex:0 0 40px; }
+  .reveal .content{ flex:1; }
+
+  .bline{
+    display:block; font-size:17.5px; line-height:1.9; color:#222;
+    padding-left:34px; margin:3px 0;
+    opacity:0; clip-path:inset(0 100% 0 0);
+  }
+  .reveal.show .bline{
+    animation:bwrite 1.3s ease forwards;
+    animation-delay:calc(var(--i) * 1.24s);
+  }
+  @keyframes bwrite{ from{opacity:1; clip-path:inset(0 100% 0 0);} to{opacity:1; clip-path:inset(0 -3% 0 0);} }
+  .wt{ display:inline; }
+
+  .f{
+    font-family:"Cambria Math","Times New Roman",serif;
+    background:#f2f6fb; border-radius:8px;
+    padding:2px 12px; display:inline-block; margin:2px 0;
+  }
+  .c-blue{ color:#1558b0; font-weight:bold; }
+  .c-red{ color:#c0392b; font-weight:bold; }
+  .c-green{ color:#1e7e34; font-weight:bold; }
+  .box-red{
+    background:#fdecea; border:2px dashed #c0392b; border-radius:10px;
+    padding:8px 14px; font-size:16.5px; color:#8e2a20;
+  }
+  .box-green{
+    background:#e8f5e9; border:2px dashed #1e7e34; border-radius:10px;
+    padding:8px 14px; font-size:16.5px; color:#1e5e28;
+  }
+  .answer{
+    background:#1a3c6e; color:#fff; border-radius:10px;
+    padding:10px 20px; font-size:19px; font-weight:bold; display:inline-block; margin-top:4px;
+  }
+
+  /* ===== 讲解员小玉：固定站在屏幕右下角 ===== */
+  .mentor{
+    position:fixed; right:18px; bottom:10px; z-index:150;
+    width:150px; pointer-events:none; text-align:center;
+  }
+  .mentor .face{
+    width:150px; height:auto; display:block;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,.22));
+    transition:transform .25s ease;
+  }
+  .mentor.idle .face{ animation:float 2.4s ease-in-out infinite; }
+  @keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+  .mentor.talk .face{ animation:talkjump .45s ease-in-out infinite; }
+  @keyframes talkjump{ 0%,100%{transform:translateY(0) scale(1);} 50%{transform:translateY(-9px) scale(1.03);} }
+  .mentor .nametag{
+    display:inline-block; background:#e6a817; color:#fff;
+    font-size:13px; font-weight:bold; padding:2px 14px;
+    border-radius:14px; margin-bottom:2px;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+  }
+
+  /* 气泡：固定在小玉头顶，自动左右翻转 */
+  .bubble{
+    position:fixed; right:180px; bottom:150px; max-width:300px;
+    background:#fff; border:2.5px solid #e6a817; border-radius:14px;
+    padding:9px 15px; font-size:15px; color:#8a5b00; font-weight:bold;
+    opacity:0; transform:scale(.7); transform-origin:bottom right;
+    transition:opacity .25s, transform .25s; pointer-events:none; z-index:160;
+    white-space:normal; line-height:1.5;
+    box-shadow:0 4px 12px rgba(0,0,0,.16);
+  }
+  .bubble.show{ opacity:1; transform:scale(1); }
+  .bubble::after{
+    content:""; position:absolute; right:20px; bottom:-9px;
+    width:14px; height:14px; background:#fff;
+    border-right:2.5px solid #e6a817; border-bottom:2.5px solid #e6a817;
+    transform:rotate(45deg);
+  }
+  .bubble.leftside{ right:auto; left:24px; transform-origin:bottom left; }
+  .bubble.leftside::after{ right:auto; left:20px; }
+
+  /* ===== 控制条 ===== */
+  .controls{
+    display:flex; align-items:center; justify-content:center;
+    gap:16px; margin-top:22px; flex-wrap:wrap;
+    padding-right:170px;
+  }
+  button{
+    font-size:16.5px; padding:9px 24px; border:none; border-radius:30px;
+    background:#1a3c6e; color:#fff; cursor:pointer;
+    box-shadow:0 3px 0 #12294d;
+  }
+  button:active{ transform:translateY(2px); box-shadow:none; }
+  button.ghost{ background:#e4e8ee; color:#444; box-shadow:0 3px 0 #c3c9d2; }
+  .dots{ display:flex; gap:8px; }
+  .dot{ width:11px; height:11px; border-radius:50%; background:#cfd6de; cursor:pointer; transition:.3s; }
+  .dot.on{ background:#1a3c6e; transform:scale(1.25); }
+  .hint{ text-align:center; color:#98a2ae; font-size:13.5px; margin-top:12px; padding-right:170px; }
+  .count{ font-size:14px; color:#667; min-width:86px; text-align:center; }
+  .soundbtn{ font-size:13px; padding:6px 14px; position:absolute; top:16px; right:16px; }
+
+  /* ===== 彩带 ===== */
+  .confetti{
+    position:fixed; top:-20px; z-index:200; pointer-events:none;
+    width:10px; height:14px; opacity:1;
+  }
+  @keyframes fall{
+    0%{ transform:translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(105vh) rotate(720deg); opacity:.3; }
+  }
+
+  /* ===== 通关解题卡 ===== */
+  .cardMask{
+    position:fixed; inset:0; background:rgba(0,0,0,.45);
+    display:none; align-items:center; justify-content:center; z-index:300;
+  }
+  .cardMask.show{ display:flex; }
+  .solveCard{
+    width:min(420px,92vw); background:linear-gradient(160deg,#fffef5,#fff3cd);
+    border:3px solid #e6a817; border-radius:18px;
+    padding:26px 30px; text-align:center; position:relative;
+    box-shadow:0 16px 50px rgba(0,0,0,.4);
+    animation:cardin .5s cubic-bezier(.2,1.4,.4,1);
+  }
+  @keyframes cardin{ from{transform:scale(.5) rotate(-8deg); opacity:0;} to{transform:scale(1) rotate(0); opacity:1;} }
+  .solveCard .rare{ font-size:12.5px; letter-spacing:3px; color:#b8860b; font-weight:bold; }
+  .solveCard h2{ font-size:21px; color:#1a3c6e; margin:8px 0 4px; }
+  .solveCard .num{ font-size:12px; color:#a08420; margin-bottom:12px; }
+  .solveCard .koujue{
+    background:#fff; border:2px dashed #e6a817; border-radius:12px;
+    padding:12px; font-size:17.5px; font-weight:bold; color:#8a5b00; margin:10px 0 16px;
+  }
+  .solveCard .stars{ color:#e6a817; font-size:20px; letter-spacing:4px; }
+  .solveCard button{ margin-top:6px; }
+
+  /* 返回列表链接（网站版） */
+  .backlink{
+    display:inline-block; margin-bottom:10px; font-size:14px; font-weight:bold;
+    color:#1a3c6e; text-decoration:none; background:#eef3fa;
+    border:1.5px solid #1a3c6e; border-radius:20px; padding:3px 14px;
+  }
+  .backlink:hover{ background:#dce8f8; }
+
+  /* ===== 移动端适配（学生手机访问） ===== */
+  @media (max-width:768px){
+    body{ padding:10px 6px; }
+    .board{ padding:18px 14px 14px; border-width:9px; }
+    h1{ font-size:19px; }
+    .usage{ font-size:13px; }
+    .question{ font-size:15px; padding:10px 12px; }
+    .think .q{ font-size:15px; padding:7px 12px; }
+    .badge{ flex:0 0 26px; height:26px; font-size:13px; }
+    .bline{ font-size:15px; line-height:1.75; padding-left:22px; }
+    .f, .box-red, .box-green{ font-size:14.5px; }
+    .answer{ font-size:16px; padding:8px 14px; }
+    /* 小玉缩小、贴边，不挡板书 */
+    .mentor{ width:92px; right:8px; bottom:6px; }
+    .mentor .face{ width:92px; }
+    .mentor .nametag{ font-size:11px; padding:1px 10px; }
+    .bubble{ right:104px; bottom:118px; max-width:min(220px,58vw); font-size:13.5px; padding:7px 11px; }
+    .bubble.leftside{ left:10px; }
+    /* 控制条不再给小玉留位 */
+    .controls{ padding-right:0; gap:10px; }
+    .hint{ padding-right:0; }
+    button{ font-size:14px; padding:7px 15px; }
+    .solveCard{ padding:20px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="board" id="board">
+  <a class="backlink" href="../walk.html">← 返回小玉讲题 · 小岩讲真题</a>
+  <h1>📖 跟我一步步解题 · 2026广东卷·11 · 元素推断：谁才是电解质饮料的配料
+    <span class="tag">推断 → 定位 → 比性质</span>
+  </h1>
+  <div class="usage" id="usage">👈 用法：点一下白板看<strong>审题要点</strong>；之后每一步<strong>先自己想</strong>，想出思路再点一下，对照小玉的板书。做完全题有奖励！</div>
+
+  <div class="question" id="question">
+    化合物 <span class="kw">L<sub>2</sub>MQR<sub>4</sub></span> 与 <span class="kw">TXR<sub>4</sub></span> 可用作<span class="kw">电解质饮料的配料</span>。短周期元素 M、R、L、T、Q、X 原子序数依次增加，<span class="kw">R、X 同族</span>，<span class="kw">Q 与 X 相邻</span>，<span class="kw">Q 基态原子的 3p 轨道为半充满</span>，则<br><b>A.</b> 原子半径：R＞X＞M<br><b>B.</b> 金属性：T＞L＞M<br><b>C.</b> 第一电离能：Q＞T＞L<br><b>D.</b> 最高价氧化物对应水化物的酸性：Q＞X
+  </div>
+
+  <div id="steps">
+
+    <!-- 第1步 -->
+    <div class="step">
+      <div class="think"><span class="badge">1</span><div class="q">🔍 先审题！三个条件就是三个突破口，分别能「钉」住谁？自己先说一遍</div></div>
+      <div class="reveal"><span class="spacer"></span><div class="content">
+                <span class="bline" style="--i:0"><span class="wt"><span class="c-blue">审题笔记：每个条件都对应一类「钉子户」线索</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt">🔴 <b>3p 轨道半充满</b> → 3p³，短周期里只有 <span class="c-red">P（磷）</span> → <b>Q = P</b></span></span>
+        <span class="bline" style="--i:0"><span class="wt">🔴 <b>R、X 同族，Q 与 X 相邻</b> → P 的邻居只有 S；X 与 O 同族 → <span class="c-red">X = S、R = O</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt">🔴 <b>电解质饮料的配料</b> → 常见钠、镁的盐，用来回代验证</span></span>
+      </div></div>
+    </div>
+    <!-- 第2步 -->
+    <div class="step">
+      <div class="think"><span class="badge">2</span><div class="q">💭 六个元素还差 M、L、T。用什么把它们「夹」出来？</div></div>
+      <div class="reveal"><span class="spacer"></span><div class="content">
+                <span class="bline" style="--i:0"><span class="wt"><span class="c-blue">思路：按原子序数「填空」——M＜O＜L＜T＜P＜S</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">M＜R=O：M 只能是 <b>H</b>（L<sub>2</sub>MQR<sub>4</sub> = Na<sub>2</sub><b>H</b>PO<sub>4</sub>，磷酸氢二钠）</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">O＜L＜T＜P：L=<b>Na</b>、T=<b>Mg</b>（TXR<sub>4</sub> = <b>Mg</b>SO<sub>4</sub>，硫酸镁）</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">六元素：<b>M=H、R=O、L=Na、T=Mg、Q=P、X=S</b>，回代两个化合物均成立 ✅</span></span></span>
+      </div></div>
+    </div>
+    <!-- 第3步 -->
+    <div class="step">
+      <div class="think"><span class="badge">3</span><div class="q">💭 元素定位了，逐项比性质！先看 A、B 两项</div></div>
+      <div class="reveal"><span class="spacer"></span><div class="content">
+                <span class="bline" style="--i:0"><span class="wt"><span class="c-blue">A. 原子半径：R＞X＞M 即 O＞S＞H？</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">同主族自上而下半径增大：S＞O；H 最小 → 应为 <span class="c-red">X＞R＞M</span>，A ✘</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="c-blue">B. 金属性：T＞L＞M 即 Mg＞Na＞H？</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">同周期自左而右金属性减弱：Na＞Mg；H 最弱 → 应为 <span class="c-red">L＞T＞M</span>，B ✘</span></span></span>
+      </div></div>
+    </div>
+    <!-- 第4步 -->
+    <div class="step">
+      <div class="think"><span class="badge">4</span><div class="q">💭 C、D 是分水岭：第一电离能有「反常」，酸性怎么比？</div></div>
+      <div class="reveal"><span class="spacer"></span><div class="content">
+                <span class="bline" style="--i:0"><span class="wt"><span class="c-blue">C. 第一电离能 Q＞T＞L 即 P＞Mg＞Na</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">P：3p³ <b>半充满</b>，稳！Mg：3s² <b>全充满</b>，稳！均反常偏高，且 P＞Mg＞Na <span class="c-green">✓ C 对</span></span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="c-blue">D. 最高价氧化物对应水化物的酸性 Q＞X 即 H<sub>3</sub>PO<sub>4</sub>＞H<sub>2</sub>SO<sub>4</sub>？</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="f">非金属性 S＞P → 酸性 H<sub>2</sub>SO<sub>4</sub>＞H<sub>3</sub>PO<sub>4</sub>，应为 <span class="c-red">X＞Q</span>，D ✘</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="answer">✅ 答案 C</span></span></span>
+      </div></div>
+    </div>
+    <!-- 第5步 -->
+    <div class="step">
+      <div class="think"><span class="badge">5</span><div class="q">💭 复盘：这类题的通法口诀是什么？下次从哪下手？</div></div>
+      <div class="reveal"><span class="spacer"></span><div class="content">
+                <span class="bline" style="--i:0"><span class="wt"><span class="box-red">✘ 易错：把「半充满」忘了——P 的第一电离能比 S 还高，不抓反常必错</span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="box-green">✔ 口诀：<b>先专有名词定钉子（半充满→P）→ 再同族相邻撒网（S、O）→ 序数填空夹残余 → 回代验证化合物</b></span></span></span>
+        <span class="bline" style="--i:0"><span class="wt"><span class="box-green">✔ 半充满/全充满（p³、d⁵、f⁷）第一电离能「反常高」，高考钉子户，见一次记一次</span></span></span>
+      </div></div>
+    </div>
+
+  </div>
+
+  <!-- 讲解员小岩：表情随讲解状态切换 -->
+  <div class="mentor idle" id="mentor">
+    <div class="nametag" id="nametag">小岩</div>
+    <img class="face" id="face" src="../assets/xiaoyan/xiaoyan_idle.webp" alt="小岩">
+  </div>
+  <div class="bubble" id="bubble"></div>
+
+  <button class="soundbtn ghost" onclick="toggleSound(event)">🔊 声音:开</button>
+
+  <div class="controls">
+    <button class="ghost" onclick="prev(event)">← 回退</button>
+    <div class="dots" id="dots"></div>
+    <button onclick="next(event)">继续 →</button>
+    <span class="count" id="count"></span>
+    <button class="ghost" onclick="reset(event)">🔄 重学</button>
+  </div>
+  <div class="hint" id="hint"></div>
+</div>
+
+<!-- 通关解题卡 -->
+<div class="cardMask" id="cardMask">
+  <div class="solveCard">
+    <div class="rare">— ⭐ 解 题 卡 ⭐ —</div>
+    <h2>2026广东卷·11 · 元素推断</h2>
+    <div class="num">NO.011 · 推断→定位→比性质 · 难度★★☆</div>
+    <div class="stars">★ ★ ★ ☆ ☆</div>
+    <div class="koujue">半充满定钉子，同族撒网<br>序数填空回代，电离能防反常</div>
+    <div style="font-size:14px;color:#8a7430;margin-bottom:10px;">小岩：和你一起解完了这道题，卡收好！集满同类卡=这类题毕业 🎓</div>
+    <button onclick="closeCard(event)">收下卡片 ✨</button>
+  </div>
+</div>
+
+<script>
+const board=document.getElementById('board');
+const bubble=document.getElementById('bubble');
+const question=document.getElementById('question');
+const mentor=document.getElementById('mentor');
+const face=document.getElementById('face');
+
+/* ===== 角色配置：做「小岩讲真题」题页时，只改下面两行即可接入 assets/xiaoyan/ ===== */
+const ROLE_NAME='小岩';                       // 讲解员名字（名牌 + 台词）
+const FACE_BASE='../assets/xiaoyan/xiaoyan_';    // 表情路径前缀；小岩改为 '../assets/xiaoyan/xiaoyan_'
+document.getElementById('nametag').textContent=ROLE_NAME;
+face.src=FACE_BASE+'idle.webp';
+document.getElementById('usage').innerHTML='👈 用法：点一下白板看<strong>审题要点</strong>；之后每一步<strong>先自己想</strong>，想出思路再点一下，对照'+ROLE_NAME+'的板书。做完全题有奖励！';
+const steps=[...document.querySelectorAll('.step')];
+const dotsBox=document.getElementById('dots');
+const countEl=document.getElementById('count');
+const hintEl=document.getElementById('hint');
+const STEP_MS=1240, WRITE_MS=1300;
+const N=steps.length;
+const MID_STEP=3;   // 题眼加时台词所在步索引(0起算)，按题改；无需此台词则删 goNext 里 MID_STEP 分支
+let state=Array(N).fill(0);
+let timers=[], bubbleTimer=null, soundOn=true, faceTimer=null;
+
+const WALK_ID='w02';   // 题号（如 w01），gen_tts.py 自动注入；配音按 ../assets/walk/audio/<题号>/<key>.mp3 按需加载
+const LINES={
+  think:[
+    "三个条件三把钥匙，半充满这把最锋利！",
+    "序数填空：M是H，L钠T镁，回代就验证了！",
+    "半径比位置，金属性比同周期，逐个来！",
+    "分水岭来了：半充满全充满电离能反常，盯住！",
+    "口诀收好，元素推断题就是送分题！"
+  ],
+  mid:"半充满、全充满电离能反常，这就是题眼！",
+  done:"通关！小岩把解题卡送给你！"
+};
+/* 每步 think 时的表情（第4步是坑→惊讶脸） */
+const THINK_FACE=['think','think','think','alert','think'];   // 每步思考态表情，与步数等长：一般 think，题眼步 alert（按题改）
+
+function setFace(name, sticky=true){
+  clearTimeout(faceTimer);
+  face.src=FACE_BASE+name+'.webp';
+  if(!sticky){
+    faceTimer=setTimeout(()=>setFace('idle'), 2600);  // 临时表情 2.6s 后回待机
+  }
+}
+
+steps.forEach((_,i)=>{
+  const d=document.createElement('span');
+  d.className='dot'; d.title='第'+(i+1)+'步';
+  d.onclick=e=>{e.stopPropagation();jump(i);};
+  dotsBox.appendChild(d);
+});
+const ds=[...dotsBox.children];
+
+function clearTimers(){ timers.forEach(clearTimeout); timers=[]; }
+
+/* 小玉说话：表情+弹跳+气泡+神经语音 */
+function say(text, ms=4200, voiceKey=null){
+  bubble.textContent=text;
+  bubble.classList.remove('leftside');
+  bubble.classList.add('show');
+  mentor.classList.add('talk');
+  clearTimeout(bubbleTimer);
+  bubbleTimer=setTimeout(()=>{ bubble.classList.remove('show'); mentor.classList.remove('talk'); }, ms);
+  speak(voiceKey);
+}
+/* 配音：按需加载 mp3 文件（网站版分离存储，不再 base64 内嵌） */
+let curAudio=null;
+function speak(key){
+  if(!soundOn || !key || !WALK_ID) return;
+  if(curAudio){ curAudio.pause(); curAudio=null; }
+  curAudio=new Audio('../assets/walk/audio/'+WALK_ID+'/'+key+'.mp3');
+  curAudio.play().catch(()=>{});   // 自动播放策略/404 失败时静默，气泡文字照常
+}
+function beep(freq, dur, type='sine', vol=.15){
+  if(!soundOn) return;
+  try{
+    const ctx=beep.ctx||(beep.ctx=new (window.AudioContext||window.webkitAudioContext)());
+    if(ctx.state==='suspended') ctx.resume();
+    const o=ctx.createOscillator(), g=ctx.createGain();
+    o.type=type; o.frequency.value=freq;
+    g.gain.setValueAtTime(vol, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001, ctx.currentTime+dur);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime+dur);
+  }catch(e){}
+}
+function chime(){ beep(880,.15); setTimeout(()=>beep(1175,.25),140); }
+function toggleSound(e){ e&&e.stopPropagation(); soundOn=!soundOn;
+  if(!soundOn && curAudio){ curAudio.pause(); }
+  e.target.textContent=soundOn?'🔊 声音:开':'🔇 声音:关'; }
+
+/* 板书：小玉做写字状，行由 CSS 逐行显现 */
+function writeLines(stepIdx){
+  clearTimers();
+  setFace('write');
+  const nLines=steps[stepIdx].querySelectorAll('.bline').length;
+  timers.push(setTimeout(()=>setFace('idle'), nLines*STEP_MS+WRITE_MS));
+}
+
+/* 通关彩带 + 解题卡 */
+function celebrate(){
+  /* 记录已学（网站版列表页据此显示✅；本地 file:// 打开时静默失败无碍） */
+  try{
+    const wid=(location.pathname.split('/').pop()||'').replace(/\.html?$/,'');
+    if(wid){
+      let done=JSON.parse(localStorage.getItem('hxbnx_walk_done')||'[]');
+      if(!done.includes(wid)){ done.push(wid); localStorage.setItem('hxbnx_walk_done', JSON.stringify(done)); }
+    }
+  }catch(e){}
+  const colors=['#e6a817','#1a3c6e','#e74c3c','#1e7e34','#9b59b6','#ff9f43'];
+  for(let i=0;i<40;i++){
+    const c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*100+'vw';
+    c.style.background=colors[i%colors.length];
+    c.style.animation=`fall ${1.8+Math.random()*1.6}s linear ${Math.random()*0.6}s forwards`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 4200);
+  }
+  setFace('cheer');
+  chime();
+  setTimeout(()=>document.getElementById('cardMask').classList.add('show'), 900);
+}
+function closeCard(e){ e&&e.stopPropagation(); document.getElementById('cardMask').classList.remove('show'); }
+
+/* 图片懒加载：步骤图（.fig[data-src]）在对应步被激活（state>=1）时才下载 */
+function loadFigs(){
+  let upto=-1;
+  state.forEach((v,i)=>{ if(v>=1) upto=i; });
+  document.querySelectorAll('.fig[data-src]:not([data-loaded])').forEach(img=>{
+    if(+img.dataset.step<=upto){
+      img.dataset.loaded='1';
+      img.onload=()=>img.classList.add('loaded');
+      img.src=img.dataset.src;
+    }
+  });
+}
+function render(){
+  steps.forEach((s,i)=>{
+    s.querySelector('.think').classList.toggle('show', state[i]>=1);
+    s.querySelector('.reveal').classList.toggle('show', state[i]>=2);
+  });
+  ds.forEach((d,i)=>d.classList.toggle('on', state[i]>0));
+  question.classList.toggle('lit', state[0]>=1);
+  const total=N*2, done=state.reduce((a,b)=>a+b,0);
+  countEl.textContent=`${done} / ${total}`;
+  const cur=state.findIndex(v=>v===1);
+  hintEl.textContent = cur>=0
+    ? '💭 先自己想，有思路了再点一下对答案'
+    : (done<total ? '点击白板 / 空格 → 继续' : '🎉 全部完成！'+ROLE_NAME+'的解题卡收了吗？');
+  loadFigs();
+}
+function next(e){
+  e&&e.stopPropagation();
+  const i=state.findIndex(v=>v<2);
+  if(i<0) return;
+  state[i]++;
+  render();
+  if(state[i]===1){ setFace(THINK_FACE[i]); say(LINES.think[i], 4200, 't'+i); }
+  if(state[i]===2){
+    writeLines(i);
+    if(i===N-1){ setTimeout(()=>say(LINES.done, 4000, 'done'), 2400); setTimeout(celebrate, 2800); }
+    else if(i===MID_STEP && MID_STEP<N-1){ setTimeout(()=>{ setFace('star'); say(LINES.mid, 3600, 'mid'); }, 3000); }
+  }
+}
+function prev(e){
+  e&&e.stopPropagation();
+  for(let i=N-1;i>=0;i--){
+    if(state[i]>0){
+      state[i]--;
+      clearTimers();
+      setFace('encourage');
+      render();
+      break;
+    }
+  }
+}
+function jump(j){
+  clearTimers();
+  for(let i=0;i<N;i++) state[i]= i<j?2 : (i===j?1:0);
+  render();
+  if(j<N){ setFace(THINK_FACE[j]); say(LINES.think[j], 4200, 't'+j); }
+}
+function reset(e){ e&&e.stopPropagation(); clearTimers(); state=Array(N).fill(0);
+  document.getElementById('cardMask').classList.remove('show');
+  setFace('encourage'); render(); }
+
+document.getElementById('board').addEventListener('click',()=>next());
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'||e.code==='ArrowRight'){e.preventDefault();next();}
+  if(e.code==='ArrowLeft'){e.preventDefault();prev();}
+});
+render();
+/* 开场：小玉挥手打招呼 */
+setFace('wave');
+setTimeout(()=>say('你好呀！我是'+ROLE_NAME+'，跟我一步一步把这题吃透吧！', 3600, 'hello'), 600);
+</script>
+</body>
+</html>

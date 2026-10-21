@@ -26,4 +26,21 @@ const WALK_DATA = [
   { board:'xiaoyu', id:'w01', title:'氢氧化铝的两性计算', src:'经典题型 · 沉淀溶解',
     cat:'元素化合物', type:'计算题', kp:'铝的两性', level:2, file:'w01.html',
     note:'先沉淀、后判断、过量再溶、最后称重' },
+
+  // ===== 小岩讲真题 · 2026广东卷（2026-10-21 强哥钦点首发 5 道）=====
+  { board:'xiaoyan', id:'w02', title:'元素推断：谁才是电解质饮料的配料', src:'2026·广东卷 T11',
+    cat:'广东卷', type:'推断题', kp:'元素周期律 · 第一电离能', level:2, file:'w02.html',
+    note:'半充满定钉子，同族撒网，电离能反常是分水岭' },
+  { board:'xiaoyan', id:'w03', title:'卤代烃性质探究实验装置题', src:'2026·广东卷 T12',
+    cat:'广东卷', type:'实验题', kp:'卤代烃 · 消去与取代', level:2, file:'w03.html',
+    note:'溶剂定反应类型，查卤离子：冷却、酸化、加银盐' },
+  { board:'xiaoyan', id:'w04', title:'能量图＋浓度图双图联读', src:'2026·广东卷 T15',
+    cat:'广东卷', type:'图像题', kp:'反应热 · 化学平衡 · 动力学vs热力学', level:3, file:'w04.html',
+    note:'峰高速率终点稳，物料守恒挂上去证 2z>x+y' },
+  { board:'xiaoyan', id:'w05', title:'电解还原CO₂联动海水脱盐（选错误）', src:'2026·广东卷 T16',
+    cat:'广东卷', type:'电化学', kp:'电解池 · 离子交换膜', level:3, file:'w05.html',
+    note:'定电极→推膜→盯脱盐：中转室不脱盐' },
+  { board:'xiaoyan', id:'w06', title:'从金精矿到金光：提金工艺全流程大题', src:'2026·广东卷 T18',
+    cat:'广东卷', type:'流程大题', kp:'化工流程 · 溶度积 · 氧化还原', level:3, file:'w06.html',
+    note:'七问逐点击破：分步浸取控浓度，守恒列式防沉淀' },
 ];
