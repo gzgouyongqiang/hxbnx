@@ -369,9 +369,11 @@ const face=document.getElementById('face');
 
 /* ===== 角色配置：做「小岩讲真题」题页时，只改下面两行即可接入 assets/xiaoyan/ ===== */
 const ROLE_NAME='小岩';                       // 讲解员名字（名牌 + 台词）
+const BOARD_KEY='xiaoyan';                     // 所属板块：xiaoyu=小玉讲难题 / xiaoyan=小岩讲真题（决定返回链接落哪个 Tab）
 const FACE_BASE='../assets/xiaoyan/xiaoyan_';    // 表情路径前缀；小岩改为 '../assets/xiaoyan/xiaoyan_'
 const ASSET_VER='?v=20261021';             // 素材版本号：破浏览器缓存（换立绘/表情时改这里）
 document.getElementById('nametag').textContent=ROLE_NAME;
+document.querySelector('.backlink').href='../walk.html?board='+BOARD_KEY;
 face.src=FACE_BASE+'idle.webp'+ASSET_VER;
 document.getElementById('usage').innerHTML='👈 用法：点一下白板看<strong>审题要点</strong>；之后每一步<strong>先自己想</strong>，想出思路再点一下，对照'+ROLE_NAME+'的板书。做完全题有奖励！';
 const steps=[...document.querySelectorAll('.step')];

@@ -201,6 +201,11 @@
   var BOARD_ORDER=['xiaoyu','xiaoyan'];
 
   var state={board:'xiaoyu', cat:null, q:'', onlyUndone:false};
+  // 支持 ?board=xiaoyu|xiaoyan 从首页对应角色入口直达 Tab
+  try{
+    var qb=new URLSearchParams(location.search).get('board');
+    if(qb==='xiaoyu'||qb==='xiaoyan') state.board=qb;
+  }catch(e){}
 
   function getDone(){
     try{ return JSON.parse(localStorage.getItem(DONE_KEY)||'[]'); }catch(e){ return []; }
