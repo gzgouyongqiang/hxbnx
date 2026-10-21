@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>小玉讲题 · 小岩讲真题 | 化学不难学</title>
+<link rel="stylesheet" href="assets/diary.css?v=4">
+<style>
+  body{ background:linear-gradient(135deg,#fdf6e3,#fef9ec); }
+  .walk-head{
+    text-align:center; padding:34px 16px 10px; position:relative;
+  }
+  .walk-head .avatar-big{
+    width:96px; height:96px; border-radius:50%; object-fit:cover;
+    border:3px solid #e6a817; background:#fff;
+    box-shadow:0 6px 18px rgba(230,168,23,.35);
+    animation:float 2.6s ease-in-out infinite;
+  }
+  @keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+  .walk-title{
+    font-size:32px; color:#1a3c6e; font-weight:bold; margin-top:10px;
+    letter-spacing:2px;
+  }
+  .walk-sub{ font-size:14.5px; color:#8a7430; margin-top:6px; }
+  .walk-stats{
+    display:inline-flex; gap:18px; margin-top:14px; background:#fff;
+    border:2px solid #e6a817; border-radius:30px; padding:6px 22px;
+    font-size:14px; color:#8a5b00; font-weight:bold;
+    box-shadow:0 3px 10px rgba(230,168,23,.18);
+  }
+  .walk-stats b{ color:#1a3c6e; font-size:16px; }
+
+  /* 板块 Tab */
+  .walk-tabs{
+    max-width:1080px; margin:22px auto 0; padding:0 16px;
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+  }
+  .walk-tab{
+    display:flex; align-items:center; gap:8px; cursor:pointer;
+    background:#fff; border:2px solid #e0d3a0; border-radius:16px;
+    padding:10px 18px; font-size:16px; font-weight:bold; color:#8a7430;
+    transition:all .2s; user-select:none;
+  }
+  .walk-tab .tav{
+    width:34px; height:34px; border-radius:50%; object-fit:cover;
+    border:2px solid #e0d3a0; background:#fff;
+  }
+  .walk-tab:hover{ border-color:#e6a817; }
+  .walk-tab.on{
+    background:linear-gradient(135deg,#1a3c6e,#2b5fa0); color:#fff;
+    border-color:#1a3c6e; box-shadow:0 6px 16px rgba(26,60,110,.3);
+  }
+  .walk-tab.on .tav{ border-color:#fff; }
+
+  .walk-usage{
+    max-width:860px; margin:14px auto 0; padding:10px 18px;
+    background:#fffbe6; border-left:5px solid #e6a817; border-radius:0 10px 10px 0;
+    font-size:14px; color:#6b5a2e; line-height:1.7;
+  }
+
+  /* 筛选区 */
+  .walk-filter{
+    max-width:1080px; margin:20px auto 0; padding:0 16px;
+  }
+  .filter-row{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px;
+  }
+  .filter-label{ font-size:13px; color:#98a2ae; font-weight:bold; flex:0 0 44px; }
+  .chip{
+    font-size:13px; padding:4px 14px; border-radius:20px; cursor:pointer;
+    background:#fff; border:1.5px solid #d8c98f; color:#8a7430; font-weight:bold;
+    transition:all .2s; user-select:none;
+  }
+  .chip:hover{ border-color:#e6a817; }
+  .chip.on{ background:#e6a817; border-color:#e6a817; color:#fff; }
+  .walk-search{
+    width:100%; box-sizing:border-box; font-size:14px; padding:8px 16px;
+    border:2px solid #d8c98f; border-radius:24px; outline:none; background:#fff;
+    margin-bottom:4px;
+  }
+  .walk-search:focus{ border-color:#e6a817; }
+  .only-undone{ margin-left:auto; }
+
+  /* 卡片网格 */
+  .walk-grid{
+    max-width:1080px; margin:18px auto 40px; padding:0 16px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px;
+  }
+  .walk-card{
+    background:#fff; border:2px solid #ead9a8; border-radius:14px;
+    padding:16px 18px; text-decoration:none; color:#333; position:relative;
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .walk-card:hover{
+    transform:translateY(-4px); border-color:#e6a817;
+    box-shadow:0 10px 24px rgba(230,168,23,.22);
+  }
+  .wc-top{ display:flex; align-items:center; gap:8px; }
+  .wc-id{
+    flex:0 0 auto; background:#1a3c6e; color:#fff; font-size:12px; font-weight:bold;
+    border-radius:8px; padding:2px 8px;
+  }
+  .wc-src{ font-size:12px; color:#98a2ae; }
+  .wc-done{
+    margin-left:auto; font-size:12px; font-weight:bold; color:#1e7e34;
+    background:#e8f5e9; border-radius:12px; padding:2px 9px;
+  }
+  .wc-title{ font-size:17px; font-weight:bold; color:#1a3c6e; line-height:1.45; }
+  .wc-note{ font-size:13px; color:#8a7430; line-height:1.5; }
+  .wc-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; }
+  .wc-tag{
+    font-size:11.5px; padding:2px 9px; border-radius:12px; font-weight:bold;
+  }
+  .wc-tag.c{ background:#eaf4ea; color:#2e7d32; border:1px solid #b7e0b9; }
+  .wc-tag.t{ background:#eef3fa; color:#1a3c6e; border:1px solid #b8cbe4; }
+  .wc-tag.k{ background:#fdf3e0; color:#8a5b00; border:1px solid #e6c877; }
+  .wc-stars{ color:#e6a817; font-size:13px; letter-spacing:2px; }
+
+  .walk-empty{
+    grid-column:1/-1; text-align:center; padding:60px 20px; color:#b3a06a;
+  }
+  .walk-empty .big{ font-size:52px; margin-bottom:12px; }
+
+  .walk-back{
+    display:block; text-align:center; margin:26px 0 30px;
+    font-size:14px; color:#1a3c6e; font-weight:bold; text-decoration:none;
+  }
+  .walk-back:hover{ text-decoration:underline; }
+
+  @media (max-width:600px){
+    .walk-title{ font-size:25px; }
+    .walk-grid{ grid-template-columns:1fr; }
+    .filter-label{ flex-basis:100%; }
+    .walk-tab{ font-size:14px; padding:8px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 板块切换 Tab -->
+<div class="walk-tabs" id="walkTabs"></div>
+
+<div class="walk-head">
+  <img class="avatar-big" id="boardAvatar" src="assets/xiaoyu/avatar.png" alt="小玉">
+  <div class="walk-title" id="boardTitle">🧑‍🏫 小玉讲难题</div>
+  <div class="walk-sub" id="boardSub">跟着小玉，一步一步吃透难题 —— 审题 → 思路 → 演算 → 复盘</div>
+  <div class="walk-stats">
+    <span>共 <b id="statTotal">0</b> 题</span>
+    <span>已学 <b id="statDone">0</b> 题</span>
+  </div>
+</div>
+
+<div class="walk-usage" id="boardUsage">
+  👆 <b>玩法</b>：每题先自己看题想思路 —— 点一下白板，小玉先抛出思考问题；想好了再点一下，她才写出板书。
+  做完全题有<b>解题卡</b>奖励，集满同类卡 = 这类题毕业 🎓
+</div>
+
+<div class="walk-filter">
+  <div class="filter-row">
+    <span class="filter-label">分类</span>
+    <span id="catChips" style="display:flex;gap:8px;flex-wrap:wrap;"></span>
+  </div>
+  <input class="walk-search" id="walkSearch" type="text" placeholder="🔍 搜标题 / 来源 / 知识点，如：广东卷、水解、NA…">
+  <div class="filter-row">
+    <span class="chip only-undone" id="onlyUndone">👀 只看未学</span>
+  </div>
+</div>
+
+<div class="walk-grid" id="walkGrid"></div>
+
+<a class="walk-back" href="index.html">← 回到首页 · 2027届高考日记</a>
+
+<div class="footer">2027届高考日记 · 化学不难学 | 小玉讲题 · 小岩讲真题 · 坚持每一天</div>
+
+<script src="walk/data.js"></script>
+<script>
+(function(){
+  var DONE_KEY='hxbnx_walk_done';
+
+  // 板块配置：分类轴不同（小玉=知识板块；小岩=卷种）
+  var BOARDS={
+    xiaoyu:{
+      name:'小玉讲难题', icon:'🧑‍🏫',
+      avatar:'assets/xiaoyu/avatar.png', alt:'小玉',
+      sub:'跟着小玉，一步一步吃透难题 —— 审题 → 思路 → 演算 → 复盘',
+      usage:'👆 <b>玩法</b>：每题先自己看题想思路 —— 点一下白板，小玉先抛出思考问题；想好了再点一下，她才写出板书。'
+        +'做完全题有<b>解题卡</b>奖励，集满同类卡 = 这类题毕业 🎓',
+      emptyBig:'👩‍🏫', emptyText:'小玉备课中…… 第一道讲题由强哥钦点，马上就来！'
+    },
+    xiaoyan:{
+      name:'小岩讲真题', icon:'👦',
+      avatar:'assets/xiaoyan/avatar.png', alt:'小岩',
+      sub:'跟着小岩，拆解高考真题 —— 命题意图 → 突破口 → 标准作答 → 避坑',
+      usage:'👆 <b>玩法</b>：每题先自己看题想思路 —— 点一下白板，小岩先抛出思考问题；想好了再点一下，他才写出板书。'
+        +'做完全题有<b>解题卡</b>奖励，集满同类卡 = 这类题毕业 🎓',
+      emptyBig:'👦', emptyText:'小岩备课中…… 真题由强哥钦点，马上就来！'
+    }
+  };
+  var BOARD_ORDER=['xiaoyu','xiaoyan'];
+
+  var state={board:'xiaoyu', cat:null, q:'', onlyUndone:false};
+
+  function getDone(){
+    try{ return JSON.parse(localStorage.getItem(DONE_KEY)||'[]'); }catch(e){ return []; }
+  }
+  function stars(n){ return '★'.repeat(n)+'☆'.repeat(3-n); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function inBoard(item){ return item.board===state.board; }
+
+  /* Tab 渲染 */
+  function buildTabs(){
+    var box=document.getElementById('walkTabs');
+    box.innerHTML='';
+    BOARD_ORDER.forEach(function(key){
+      var b=BOARDS[key];
+      var el=document.createElement('div');
+      el.className='walk-tab'+(state.board===key?' on':'');
+      el.innerHTML='<img class="tav" src="'+b.avatar+'" alt="'+b.alt+'">'
+        +'<span>'+b.icon+' '+b.name+'</span>';
+      el.onclick=function(){
+        if(state.board===key) return;
+        state.board=key; state.cat=null;
+        renderAll();
+      };
+      box.appendChild(el);
+    });
+  }
+
+  /* 分类 chips：取当前板块的 cat 唯一值 */
+  function buildChips(){
+    var cats=[];
+    WALK_DATA.forEach(function(q){
+      if(inBoard(q) && q.cat && cats.indexOf(q.cat)<0) cats.push(q.cat);
+    });
+    var box=document.getElementById('catChips');
+    box.innerHTML='';
+    cats.forEach(function(v){
+      var c=document.createElement('span');
+      c.className='chip'+(state.cat===v?' on':'');
+      c.textContent=v;
+      c.onclick=function(){ state.cat=(state.cat===v?null:v); renderAll(); };
+      box.appendChild(c);
+    });
+  }
+
+  function filtered(){
+    var q=state.q.trim().toLowerCase();
+    var done=getDone();
+    return WALK_DATA.filter(function(item){
+      if(!inBoard(item)) return false;
+      if(state.cat && item.cat!==state.cat) return false;
+      if(state.onlyUndone && done.indexOf(item.id)>=0) return false;
+      if(q){
+        var hay=(item.title+' '+item.src+' '+item.cat+' '+(item.type||'')+' '+(item.kp||'')+' '+(item.note||'')).toLowerCase();
+        if(hay.indexOf(q)<0) return false;
+      }
+      return true;
+    });
+  }
+
+  function applyBoard(){
+    var b=BOARDS[state.board];
+    document.getElementById('boardAvatar').src=b.avatar;
+    document.getElementById('boardAvatar').alt=b.alt;
+    document.getElementById('boardTitle').textContent=b.icon+' '+b.name;
+    document.getElementById('boardSub').textContent=b.sub;
+    document.getElementById('boardUsage').innerHTML=b.usage;
+  }
+
+  function renderGrid(){
+    var done=getDone();
+    var boardItems=WALK_DATA.filter(inBoard);
+    document.getElementById('statTotal').textContent=boardItems.length;
+    document.getElementById('statDone').textContent=done.filter(function(id){
+      return boardItems.some(function(q){return q.id===id;}); }).length;
+
+    var grid=document.getElementById('walkGrid');
+    grid.innerHTML='';
+    var b=BOARDS[state.board];
+    if(!boardItems.length){
+      grid.innerHTML='<div class="walk-empty"><div class="big">'+b.emptyBig+'</div>'
+        +'<div>'+b.emptyText+'</div></div>';
+      return;
+    }
+    if(!filtered().length){
+      grid.innerHTML='<div class="walk-empty"><div class="big">🔍</div>'
+        +'<div>没有匹配的题，换个条件试试</div></div>';
+      return;
+    }
+    filtered().forEach(function(item){
+      var isDone=done.indexOf(item.id)>=0;
+      var a=document.createElement('a');
+      a.className='walk-card';
+      a.href='walk/'+item.file;
+      a.innerHTML=
+        '<div class="wc-top"><span class="wc-id">'+esc(item.id)+'</span>'
+        +'<span class="wc-src">'+esc(item.src)+'</span>'
+        +(isDone?'<span class="wc-done">✅ 已学</span>':'')
+        +'</div>'
+        +'<div class="wc-title">'+esc(item.title)+'</div>'
+        +(item.note?'<div class="wc-note">💡 '+esc(item.note)+'</div>':'')
+        +'<div class="wc-tags">'
+        +'<span class="wc-tag c">'+esc(item.cat)+'</span>'
+        +(item.type?'<span class="wc-tag t">'+esc(item.type)+'</span>':'')
+        +(item.kp?'<span class="wc-tag k">'+esc(item.kp)+'</span>':'')
+        +'<span class="wc-stars">'+stars(item.level)+'</span>'
+        +'</div>';
+      grid.appendChild(a);
+    });
+  }
+
+  function renderAll(){ buildTabs(); applyBoard(); buildChips(); renderGrid(); }
+
+  document.getElementById('walkSearch').addEventListener('input', function(e){
+    state.q=e.target.value; renderGrid();
+  });
+  document.getElementById('onlyUndone').addEventListener('click', function(){
+    state.onlyUndone=!state.onlyUndone;
+    this.classList.toggle('on', state.onlyUndone);
+    renderGrid();
+  });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
