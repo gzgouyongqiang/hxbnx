@@ -517,3 +517,75 @@ body {
     padding: 14px 10px;
   }
 }
+
+/* ===== 小玉头像（首页 · 小玉讲题列表页共用） ===== */
+/* ===== 小玉讲题 · 小岩讲真题 双人全身像入口 ===== */
+.duo-section {
+  max-width: 800px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+.duo-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.duo-card {
+  flex: 1 1 0;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.duo-card:hover { transform: translateY(-4px); }
+.duo-card.duo-xiaoyu:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(240,192,64,0.12); }
+.duo-card.duo-xiaoyan:hover { border-color: #4a86c8; box-shadow: 0 6px 20px rgba(74,134,200,0.15); }
+
+.duo-figure {
+  height: 220px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.duo-figure img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.duo-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.duo-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .duo-row { gap: 14px; }
+  .duo-figure { height: 160px; }
+}
+
+.avatar-round{
+  width:44px; height:44px; border-radius:50%; object-fit:cover;
+  border:2px solid #e6a817; background:#fff; vertical-align:middle;
+}
