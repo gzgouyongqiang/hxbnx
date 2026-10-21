@@ -397,8 +397,9 @@ const face=document.getElementById('face');
 /* ===== 角色配置：做「小岩讲真题」题页时，只改下面两行即可接入 assets/xiaoyan/ ===== */
 const ROLE_NAME='小岩';                       // 讲解员名字（名牌 + 台词）
 const FACE_BASE='../assets/xiaoyan/xiaoyan_';    // 表情路径前缀；小岩改为 '../assets/xiaoyan/xiaoyan_'
+const ASSET_VER='?v=20261021';             // 素材版本号：破浏览器缓存（换立绘/表情时改这里）
 document.getElementById('nametag').textContent=ROLE_NAME;
-face.src=FACE_BASE+'idle.webp';
+face.src=FACE_BASE+'idle.webp'+ASSET_VER;
 document.getElementById('usage').innerHTML='👈 用法：点一下白板看<strong>审题要点</strong>；之后每一步<strong>先自己想</strong>，想出思路再点一下，对照'+ROLE_NAME+'的板书。做完全题有奖励！';
 const steps=[...document.querySelectorAll('.step')];
 const dotsBox=document.getElementById('dots');
@@ -429,7 +430,7 @@ const THINK_FACE=['think','think','think','alert','alert','think','think'];   //
 
 function setFace(name, sticky=true){
   clearTimeout(faceTimer);
-  face.src=FACE_BASE+name+'.webp';
+  face.src=FACE_BASE+name+'.webp'+ASSET_VER;
   if(!sticky){
     faceTimer=setTimeout(()=>setFace('idle'), 2600);  // 临时表情 2.6s 后回待机
   }

@@ -353,7 +353,7 @@
   <!-- 讲解员小玉：表情随讲解状态切换 -->
   <div class="mentor idle" id="mentor">
     <div class="nametag">小玉</div>
-    <img class="face" id="face" src="../assets/xiaoyu/xiaoyu_idle.webp" alt="小玉">
+    <img class="face" id="face" src="../assets/xiaoyu/xiaoyu_idle.webp?v=20261021" alt="小玉">
   </div>
   <div class="bubble" id="bubble"></div>
 
@@ -417,7 +417,7 @@ const THINK_FACE=['think','think','think','alert','think','think','think'];   //
 
 function setFace(name, sticky=true){
   clearTimeout(faceTimer);
-  face.src='../assets/xiaoyu/xiaoyu_'+name+'.webp';
+  face.src='../assets/xiaoyu/xiaoyu_'+name+'.webp?v=20261021';
   if(!sticky){
     faceTimer=setTimeout(()=>setFace('idle'), 2600);  // 临时表情 2.6s 后回待机
   }
