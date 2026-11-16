@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>触屏手写画板演示 - 化学不难学</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Microsoft YaHei',sans-serif; background:#f5f6fa; color:#333; overflow-x:hidden; }
+  .demo-header { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; padding:30px; text-align:center; }
+  .demo-header h1 { font-size:24px; margin-bottom:8px; }
+  .demo-header p { opacity:0.85; font-size:14px; }
+  .demo-section { max-width:800px; margin:20px auto; padding:0 16px; }
+  .demo-card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .demo-card h2 { font-size:18px; margin-bottom:12px; color:#2c3e50; }
+  .demo-card p { line-height:1.8; font-size:14px; }
+  .equation { font-size:22px; text-align:center; padding:20px; background:#f8f9fa; border-radius:8px; margin:12px 0; }
+  .hint-box { background:#fff3cd; border-left:4px solid #f39c12; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+  .demo-img-placeholder { width:100%; height:200px; background:linear-gradient(135deg,#a8edea,#fed6e3); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; color:#666; margin:12px 0; }
+  .question { font-size:15px; line-height:2; }
+  .option { padding:8px 12px; background:#f8f9fa; border-radius:6px; margin:6px 0; cursor:pointer; transition:background .2s; }
+  .option:hover { background:#e8f4fd; }
+  .instructions { background:#e8f5e9; border-left:4px solid #4caf50; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; }
+  .instructions strong { color:#2e7d32; }
+  .instructions ul { margin:8px 0 0 20px; font-size:13px; line-height:1.8; }
+  .instructions kbd { background:#333; color:#fff; padding:2px 6px; border-radius:4px; font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="demo-header">
+  <h1>🧪 触屏手写画板演示</h1>
+  <p>点击右上角 ✏️ 开启手写 → 用手指在屏幕上画</p>
+</div>
+
+<div class="demo-section">
+
+  <div class="instructions">
+    <strong>📋 使用方法：</strong>
+    <ul>
+      <li>点击右上角 <strong>✏️</strong> 按钮开启/关闭手写模式</li>
+      <li>开启后，画板覆盖全屏，手指可直接写画</li>
+      <li>快捷键：<kbd>Ctrl+H</kbd> 开关手写，<kbd>Ctrl+Shift+C</kbd> 清空画板</li>
+      <li>6种颜色可选，可调节笔触粗细，🧽 橡皮擦，🗑 清空</li>
+      <li>关闭手写后，页面原有交互（按钮、折叠等）正常使用</li>
+    </ul>
+  </div>
+
+  <div class="demo-card">
+    <h2>📝 题目示例：氧化还原反应</h2>
+    <p class="question">下列反应中，属于氧化还原反应的是（　　）</p>
+    <div class="option">A. CaCO₃ → CaO + CO₂↑</div>
+    <div class="option">B. 2Na + Cl₂ → 2NaCl</div>
+    <div class="option">C. CaO + H₂O → Ca(OH)₂</div>
+    <div class="option">D. Na₂CO₃ + Ca(OH)₂ → CaCO₃↓ + 2NaOH</div>
+    <div class="hint-box">💡 上课提示：开启手写后，让学生在选项旁边用手指圈出答案、写过程</div>
+  </div>
+
+  <div class="demo-card">
+    <h2>⚗️ 化学方程式配平</h2>
+    <div class="equation">KMnO₄ + HCl → KCl + MnCl₂ + Cl₂↑ + H₂O</div>
+    <div class="hint-box">💡 上课提示：让学生直接在屏幕上写配平系数、标电子转移方向</div>
+  </div>
+
+  <div class="demo-card">
+    <h2>🔬 装置图标注</h2>
+    <div class="demo-img-placeholder">📊 实验装置示意图区域</div>
+    <div class="hint-box">💡 上课提示：学生可以在装置图上用手指标注药品名称、气体流向</div>
+  </div>
+
+  <div class="demo-card">
+    <h2>✏️ 自由书写区</h2>
+    <p>开启手写模式后，这里就是你的白板。可以让学生上来写方程式、画结构式、标注电子式……</p>
+    <div style="height:300px;background:#fff;border:2px dashed #ddd;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:16px">
+      ✋ 开启手写后在此区域书写
+    </div>
+  </div>
+
+</div>
+
+<!-- 手写画板插件（本地课堂版：与本文件同文件夹） -->
+<script src="hxbnx-handwrite.js"></script>
+</body>
+</html>

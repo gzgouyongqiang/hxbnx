@@ -2,3 +2,5 @@
 add_favicon.py
 generate_site.py
 __pycache__/
+test-local/
+.playwright-cli/

@@ -1,0 +1,294 @@
+import os
+
+# Quiz data
+normal_qs = [
+    ('蒸馏烧瓶', '蒸馏烧瓶', ['圆底烧瓶', '蒸馏烧瓶', '锥形瓶', '三颈烧瓶'], '有支管用于连接冷凝管，常用于蒸馏实验。注意和圆底烧瓶的区别——圆底烧瓶没有支管。'),
+    ('圆底烧瓶', '圆底烧瓶', ['蒸馏烧瓶', '圆底烧瓶', '平底烧瓶', '锥形瓶'], '底部呈球形，无支管。常用于加热反应或作为反应容器。加热时需垫石棉网。'),
+    ('酸式滴定管', '酸式滴定管', ['酸式滴定管', '碱式滴定管', '移液管', '量筒'], '下端有玻璃活塞控制液滴流出。用于盛装酸性溶液或氧化性溶液（如KMnO4）。不能装碱性溶液！'),
+    ('碱式滴定管', '碱式滴定管', ['酸式滴定管', '碱式滴定管', '移液管', '量筒'], '下端用橡胶管+玻璃珠控制液体流出。用于盛装碱性溶液。不能装酸性或氧化性溶液（会腐蚀橡胶）。'),
+    ('三颈烧瓶', '三颈烧瓶', ['三颈烧瓶', '蒸馏烧瓶', '圆底烧瓶', '锥形瓶'], '有三个瓶口，可同时进行搅拌、加料、测温等操作。常用于有机合成中的多步反应。'),
+    ('分液漏斗', '分液漏斗', ['长颈漏斗', '分液漏斗', '普通漏斗', '容量瓶'], '有活塞和玻璃塞，用于分离互不相溶的两种液体（萃取分液）。使用前必须检查是否漏水！'),
+    ('干燥管', '干燥管', ['冷凝管', '干燥管', 'U形管', '洗气瓶'], '内装固体干燥剂（如CaCl2、碱石灰），用于干燥气体。气体从粗口进、细口出。'),
+    ('冷凝管', '冷凝管', ['干燥管', '冷凝管', '洗气管', '温度计'], '用于将蒸汽冷却为液体。常见三种：直形（蒸馏）、球形（回流）、蛇形（高效）。冷却水从下口进上口出！'),
+    ('容量瓶', '容量瓶', ['量筒', '容量瓶', '锥形瓶', '烧杯'], '细长颈，有刻度线，带磨口玻璃塞。用于精确配制一定物质的量浓度的溶液。不能加热，不能长期储存溶液！'),
+    ('量筒', '量筒', ['容量瓶', '量筒', '移液管', '滴定管'], '用于量取一定体积的液体，精度较低（0.1mL级）。不能用作反应容器，不能加热！'),
+    ('长颈漏斗', '长颈漏斗', ['分液漏斗', '长颈漏斗', '布氏漏斗', '普通漏斗'], '颈部较长，用于向反应容器中添加液体。使用时下端必须插入液面以下形成液封，防止气体逸出！'),
+]
+
+hard_qs = [
+    ('过滤装置', '该装置的名称是？', ['过滤装置', '萃取装置', '蒸馏装置', '启普发生器'], '一贴二低三靠！这是过滤操作的标准装置。玻璃棒引流、漏斗颈紧贴烧杯内壁、滤纸边缘低于漏斗边缘。'),
+    ('蒸馏装置', '该装置的名称是？', ['蒸馏装置', '过滤装置', '萃取装置', '制气装置'], '蒸馏装置的关键部件：蒸馏烧瓶(B)、温度计(i)、冷凝管(A)、牛角管(f)、锥形瓶(j)。温度计水银球位于支管口处，冷凝水从下进上出(c→d)。'),
+    ('萃取装置', '该装置的名称是？', ['萃取装置', '过滤装置', '蒸馏装置', '分液操作'], '萃取分液三步骤：①检漏 → ②振荡放气 → ③静置分层 → ④上层从上口倒出，下层从下口放出。右手压住瓶塞，左手握住活塞！'),
+    ('启普发生器', '该仪器的名称是？', ['启普发生器', '制气装置', '洗气瓶', '储气瓶'], '启普发生器的三大优点：随开随用、随关随停。适用于块状固体与液体不加热反应制气（如Zn+稀H2SO4制H2）。A=漏斗，B=容器，C=导气管。'),
+    ('固体加热装置', '该装置适用于制备什么气体？', ['O2(固体加热制取)', 'H2(Zn+H2SO4)', 'CO2(CaCO3+HCl)', 'Cl2(MnO2+浓HCl)'], '固体加热型：试管口略向下倾斜（防止冷凝水倒流炸裂试管），导管刚露出橡皮塞即可。可用于制O2、NH3、CH4等。'),
+    ('液体加热制气装置', '该装置适用于制备什么气体？', ['Cl2(MnO2+浓H2SO4)', 'H2(Zn+稀H2SO4)', 'CO2(CaCO3+HCl)', 'SO2(Na2SO3+H2SO4)'], '液体+液体加热型：需垫石棉网加热，用分液漏斗逐滴滴加液体以控制反应速率。可制Cl2、C2H4等。'),
+    ('液体不加热制气装置', '该装置适用于制备什么气体？', ['CO2(CaCO3+HCl)', 'O2(H2O2+MnO2)', 'SO2(Na2SO3+H2SO4)', '以上均可'], '固液不加热型：长颈漏斗下端必须插入液面以下形成液封！可制H2、CO2、NO2、SO2、O2等多种气体。最常用的气体制备装置类型！'),
+    ('坩埚', '该仪器的用途是？', ['高温灼烧固体', '配制溶液', '称量固体', '蒸发结晶'], '坩埚用于高温灼烧固体（如加热分解Cu2(OH)2CO3）。可直接用酒精喷灯加热，不需要垫石棉网！用坩埚钳夹取，放在泥三角上加热。'),
+    ('坩埚钳', '该仪器的用途是？', ['夹持坩埚/蒸发皿', '夹持试管', '夹持烧瓶', '夹持滤纸'], '坩埚钳专门用来夹取高温的坩埚和蒸发皿。使用时从侧面夹入，不可从正上方垂直插入。'),
+]
+
+# Image extension mapping
+ext_map = {
+    '蒸馏烧瓶': 'png', '圆底烧瓶': 'png', '酸式滴定管': 'png', '碱式滴定管': 'png',
+    '三颈烧瓶': 'png', '分液漏斗': 'png', '干燥管': 'png', '冷凝管': 'png',
+    '容量瓶': 'png', '量筒': 'png', '长颈漏斗': 'png',
+    '过滤装置': 'png', '蒸馏装置': 'png', '萃取装置': 'png', '启普发生器': 'png',
+    '固体加热装置': 'png', '液体加热制备气体装置': 'png', '液体不加热制备气体装置': 'png',
+    '坩埚': 'png', '坩埚钳': 'png',
+}
+
+html = '''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实验装置识别大师 - 化学不难学</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);min-height:100vh;color:#333}
+.container{max-width:700px;margin:0 auto;padding:20px 15px}
+.header{text-align:center;padding:25px 0 20px}
+.header h1{font-size:26px;color:#1a5276;display:flex;align-items:center;justify-content:center;gap:10px}
+.header p{color:#5d6d7e;font-size:14px}
+.modes{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.mode-btn{padding:12px 28px;border:none;border-radius:14px;font-size:16px;font-weight:bold;cursor:pointer;transition:all .3s ease}
+.mode-btn.primary{background:#e74c3c;color:#fff;box-shadow:0 4px 15px rgba(231,76,60,0.35)}
+.mode-btn.hard{background:#8e44ad;color:#fff;box-shadow:0 4px 15px rgba(142,68,173,0.35)}
+.mode-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.game-area{background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,.1);padding:30px 24px;display:none}
+.game-area.active{display:block}
+.progress-bar{height:8px;background:#ecf0f1;border-radius:4px;margin-bottom:22px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#e74c3c,#f39c12);transition:width .4s ease;width:0%}
+.progress-info{display:flex;justify-content:space-between;font-size:13px;color:#7f8c8d;margin-bottom:6px}
+.img-container{text-align:center;margin-bottom:22px;padding:18px;background:#f8f9fa;border-radius:14px;border:2px dashed #bdc3c7;min-height:200px;display:flex;align-items:center;justify-content:center}
+.img-container img{max-width:100%;max-height:260px;object-fit:contain;border-radius:8px}
+.timer-wrapper{text-align:center;margin-bottom:18px}
+.timer-circle{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;border:4px solid #ecf0f1;font-size:24px;font-weight:bold;transition:border-color .3s,color .3s}
+.timer-circle.warning{border-color:#f39c12;color:#f39c12}
+.timer-circle.danger{border-color:#e74c3c;color:#e74c3c;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.question-text{text-align:center;font-size:17px;font-weight:bold;color:#2c3e50;margin-bottom:18px;line-height:1.5}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.option-btn{padding:14px 16px;border:2px solid #dfe6e9;border-radius:12px;background:#fff;font-size:15px;cursor:pointer;transition:all .2s ease;text-align:center;font-weight:500}
+.option-btn:hover:not(:disabled){border-color:#3498db;background:#ebf5fb;transform:translateY(-1px)}
+.option-btn.correct{border-color:#27ae60;background:#d5f5e3;color:#1e8449;animation:correctPop .4s ease}
+.option-btn.wrong{border-color:#e74c3c;background:#fadbd8;color:#c0392b;animation:shake .4s ease}
+.option-btn:disabled{cursor:not-allowed;opacity:.7}
+@keyframes correctPop{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.score-display{display:flex;justify-content:center;gap:28px;margin-bottom:18px;font-size:14px}
+.score-item{display:flex;align-items:center;gap:6px}
+.score-num{font-size:22px;font-weight:bold;color:#e74c3c}
+.combo-badge{background:linear-gradient(135deg,#f39c12,#e74c3c);color:#fff;padding:3px 10px;border-radius:10px;font-size:13px;font-weight:bold;display:none}
+.combo-badge.show{display:inline-block;animation:comboIn .3s ease}
+@keyframes comboIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.analysis-box{background:#fef9e7;border-left:4px solid #f39c12;padding:14px 18px;border-radius:0 10px 10px 0;margin-top:16px;display:none;font-size:14px;line-height:1.7;animation:fadeIn .3s ease}
+.analysis-box.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.analysis-box .tag{display:inline-block;background:#f39c12;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;margin-right:6px}
+.timeout-notice{background:#fdedec;color:#c0392b;padding:10px 16px;border-radius:10px;text-align:center;font-size:14px;margin-bottom:14px;display:none;animation:fadeIn .3s}
+.timeout-notice.show{display:block}
+.result-screen{text-align:center;padding:30px 0;display:none}
+.result-screen.active{display:block}
+.result-score{font-size:56px;font-weight:bold;color:#e74c3c;margin:10px 0}
+.result-label{font-size:16px;color:#7f8c8d;margin-bottom:20px}
+.result-stats{display:flex;justify-content:center;gap:30px;margin:20px 0}
+.stat-item{text-align:center}
+.stat-num{font-size:28px;font-weight:bold;color:#2c3e50}
+.stat-label{font-size:13px;color:#95a5a6}
+.result-actions{margin-top:24px;display:flex;gap:12px;justify-content:center}
+.btn{padding:12px 28px;border:none;border-radius:12px;font-size:15px;font-weight:bold;cursor:pointer;transition:all .3s}
+.btn-retry{background:#e74c3c;color:#fff}
+.btn-home{background:#95a5a6;color:#fff}
+.btn:hover{filter:brightness(1.1)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>&#128524; 实验装置识别大师</h1><p>看图识仪器 · 辨装置 · 玩转化学实验</p>
+</div>
+<div class="modes" id="modes">
+<button class="mode-btn primary" onclick="startGame('normal')">&#128218; 认仪器模式<br><small style="font-size:11px;opacity:.8">11题 · 20秒/题</small></button>
+<button class="mode-btn hard" onclick="startGame('hard')">&#9889; 装置达人模式<br><small style="font-size:11px;opacity:.8">9题 · 15秒/题</small></button>
+</div>
+<div class="game-area" id="gameArea">
+<div class="progress-info"><span id="qProgress">第 1 题</span><span id="scoreDisplay">得分: <b>0</b></span></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="timeout-notice" id="timeoutNotice">&#9200; 时间到！继续作答可得5分（半分）</div>
+<div class="timer-wrapper"><div class="timer-circle" id="timerCircle">20</div></div>
+<div class="img-container" id="imgContainer"></div>
+<div class="question-text" id="questionText"></div>
+<div class="score-display">
+<span class="score-item">连击 &#128293;<span class="score-num" id="comboNum">0</span></span>
+<span class="combo-badge" id="comboBadge">×2 加成!</span>
+</div>
+<div class="options" id="optionsArea"></div>
+<div class="analysis-box" id="analysisBox"></div>
+</div>
+<div class="result-screen" id="resultScreen">
+<div style="font-size:48px">&#127942;</div>
+<div class="result-score" id="finalScore">0</div>
+<div class="result-label">最终得分</div>
+<div class="result-stats">
+<div class="stat-item"><div class="stat-num" id="statCorrect">0</div><div class="stat-label">答对</div></div>
+<div class="stat-item"><div class="stat-num" id="statWrong">0</div><div class="stat-label">答错</div></div>
+<div class="stat-item"><div class="stat-num" id="statLate">0</div><div class="stat-label">超时后答对</div></div>
+</div>
+<div class="result-actions">
+<button class="btn btn-retry" onclick="document.getElementById('resultScreen').classList.remove('active');document.getElementById('modes').style.display='flex';">再来一局</button>
+<a href="index.html" class="btn btn-home">返回首页</a>
+</div>
+</div>
+</div>
+
+<script>
+// ========== Quiz Data ==========
+const QUIZ_NORMAL = [
+'''
+
+# Build normal quiz data
+quiz_lines = []
+for img_name, answer, options, analysis in normal_qs:
+    ans_idx = options.index(answer)
+    ext = ext_map.get(img_name, 'png')
+    opts_js = '[' + ','.join(['"' + o + '"' for o in options]) + ']'
+    # Escape analysis for JS string
+    analysis_esc = analysis.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n')
+    quiz_lines.append('  {img:"%s",ext:"%s",q:"请识别图中仪器的名称：",ans:%d,opts:%s,analysis:"%s"},' % (
+        img_name, ext, ans_idx, opts_js, analysis_esc
+    ))
+
+html += '\n'.join(quiz_lines) + '\n];\n\nconst QUIZ_HARD = [\n'
+
+# Build hard quiz data
+quiz_lines2 = []
+for img_name, question, options, analysis in hard_qs:
+    ext = ext_map.get(img_name, 'png')
+    opts_js = '[' + ','.join(['"' + o + '"' for o in options]) + ']'
+    analysis_esc = analysis.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n')
+    quiz_lines2.append('  {img:"%s",ext:"%s",q:"%s",ans:0,opts:%s,analysis:"%s"},' % (
+        img_name, ext, question, opts_js, analysis_esc
+    ))
+
+html += '\n'.join(quiz_lines2) + '\n];\n\n'
+
+# Game logic JS with auto-advance
+js = r'''
+// ========== Game Logic ==========
+let currentQuiz=[],currentIndex=0,score=0,combo=0,timer=null,timeLeft=20,timeLimit=20;
+let correctCount=0,wrongCount=0,lateCount=0,answered=false,timeoutTriggered=false,autoTimer=null;
+
+function startGame(mode){
+  currentQuiz = mode==='normal'?QUIZ_NORMAL:QUIZ_HARD;
+  timeLimit = mode==='normal'?20:15;
+  currentIndex=0;score=0;combo=0;
+  correctCount=0;wrongCount=0;lateCount=0;
+  document.getElementById('modes').style.display='none';
+  document.getElementById('gameArea').classList.add('active');
+  document.getElementById('resultScreen').classList.remove('active');
+  showQuestion();
+}
+
+function showQuestion(){
+  clearTimeout(autoTimer);
+  answered=false;timeoutTriggered=false;
+  const q=currentQuiz[currentIndex];
+  const total=currentQuiz.length;
+  document.getElementById('qProgress').innerText='第 '+(currentIndex+1)+' / '+total+' 题';
+  document.getElementById('progressFill').style.width=(currentIndex/total*100)+'%';
+  document.getElementById('scoreDisplay').innerHTML='得分: <b>'+score+'</b>';
+  document.getElementById('comboNum').textContent=combo;
+  document.getElementById('comboBadge').className='combo-badge';
+  document.getElementById('timeoutNotice').className='timeout-notice';
+  document.getElementById('analysisBox').className='analysis-box';
+  document.getElementById('imgContainer').innerHTML='<img src="apparatus_imgs/'+q.img+'.'+q.ext+'" alt="'+q.img+'">';
+  document.getElementById('questionText').textContent=q.q;
+  const optsHtml=q.opts.map(function(o,i){return '<button class="option-btn" onclick="selectAnswer('+i+')">'+o+'</button>';}).join('');
+  document.getElementById('optionsArea').innerHTML=optsHtml;
+  startTimer(timeLimit);
+}
+
+function startTimer(sec){
+  clearInterval(timer);
+  timeLeft=sec;
+  const el=document.getElementById('timerCircle');
+  el.textContent=timeLeft;
+  el.className='timer-circle';
+  timer=setInterval(function(){
+    timeLeft--;
+    el.textContent=timeLeft;
+    if(timeLeft<=5 && timeLeft>0) el.className='timer-circle warning';
+    if(timeLeft<=3 && timeLeft>0) el.className='timer-circle danger';
+    if(timeLeft<=0){
+      clearInterval(timer);
+      timeoutTriggered=true;
+      el.textContent='\u23F0';
+      el.className='timer-circle danger';
+      document.getElementById('timeoutNotice').className='timeout-notice show';
+    }
+  },1000);
+}
+
+function selectAnswer(idx){
+  if(answered) return;
+  answered=true;
+  clearInterval(timer);
+  const q=currentQuiz[currentIndex];
+  const btns=document.querySelectorAll('.option-btn');
+  const isCorrect=(idx===q.ans);
+  const points=isCorrect?(!timeoutTriggered?10:5):0;
+  btns.forEach(function(b){b.disabled=true;});
+  if(isCorrect){
+    btns[idx].className+=' correct';
+    score+=points;combo++;
+    if(timeoutTriggered) lateCount++; else correctCount++;
+    if(combo>=3){
+      const mult=combo>=5?3:2;
+      score+=points*(mult-1);
+      const badge=document.getElementById('comboBadge');
+      badge.textContent='\u00D7'+mult+' \u8FDE\u51FB\u52A0\u6210!';
+      badge.className='combo-badge show';
+    }
+  }else{
+    btns[idx].className+=' wrong';
+    btns[q.ans].className+=' correct';
+    combo=0;wrongCount++;
+  }
+  document.getElementById('scoreDisplay').innerHTML='\u5F97\u5206: <b>'+score+'</b>';
+  document.getElementById('comboNum').textContent=combo;
+  const ae=document.getElementById('analysisBox');
+  const tg=isCorrect?'\u2705 \u6B63\u786E':'\u274C \u9519\u8BEF';
+  const pi=isCorrect?(!timeoutTriggered?'(+10\u5206)':'(+5\u5206)'):'(0\u5206)';
+  ae.innerHTML='<span class="tag">'+tg+'</span> '+pi+'<br><br>'+q.analysis;
+  ae.className='analysis-box show';
+  // Auto-advance after 1200ms
+  autoTimer=setTimeout(function(){ nextQuestion(); }, 1200);
+}
+
+function nextQuestion(){
+  clearTimeout(autoTimer);
+  currentIndex++;
+  if(currentIndex<currentQuiz.length) showQuestion();
+  else showResult();
+}
+
+function showResult(){
+  clearInterval(timer);clearTimeout(autoTimer);
+  document.getElementById('gameArea').classList.remove('active');
+  document.getElementById('resultScreen').classList.add('active');
+  document.getElementById('finalScore').textContent=score;
+  document.getElementById('statCorrect').textContent=correctCount;
+  document.getElementById('statWrong').textContent=wrongCount;
+  document.getElementById('statLate').textContent=lateCount;
+}
+'''
+html += js + '</script>\n</body>\n</html>'
+
+out_path = r'C:\Users\Administrator\hxbnx_repo\apparatus-master.html'
+with open(out_path, 'w', encoding='utf-8') as f:
+    f.write(html)
+
+size_kb = os.path.getsize(out_path) // 1024
+print('Done:', out_path, size_kb, 'KB')
+print('Images folder: apparatus_imgs/ (%d files)' % len(ext_map))
