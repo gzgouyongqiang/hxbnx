@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考点10 原电池与电解池 · 高考选择题训练 | 化学不难学</title>
+<style>
+:root{--bg:#0b1220;--card:#1e293b;--panel:#0f172a;--text:#e2e8f0;--muted:#8ea0b5;--faint:#5b6b7f;
+--accent:#22d3ee;--accent-ink:#083344;--accent-soft:#164e63;--accent-border:#155e75;
+--ok:#34d399;--ok-bg:#022c22;--ok-ink:#6ee7b7;--bad:#fb7185;--bad-bg:#4c0519;--bad-ink:#fda4af;
+--border:#334155;--opt-bg:#0f172a;--score:#a78bfa;--shadow:none}
+html[data-theme="light"]{--bg:#f6f7fb;--card:#ffffff;--panel:#f8fafc;--text:#1e293b;--muted:#64748b;--faint:#94a3b8;
+--accent:#4f46e5;--accent-ink:#ffffff;--accent-soft:#eef2ff;--accent-border:#c7d2fe;
+--ok:#16a34a;--ok-bg:#f0fdf4;--ok-ink:#15803d;--bad:#dc2626;--bad-bg:#fef2f2;--bad-ink:#b91c1c;
+--border:#e2e5ec;--opt-bg:#f8fafc;--score:#d97706}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding-bottom:90px}
+.wrap{max-width:680px;margin:0 auto;padding:0 14px}
+header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border)}
+.hd-in{max-width:680px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.hd-back{color:var(--accent);text-decoration:none;font-size:13px;flex-shrink:0}
+.hd-title{font-size:15px;font-weight:500;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd-theme{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border);border-radius:999px;width:34px;height:34px;font-size:16px;cursor:pointer;flex-shrink:0}
+.stats{display:flex;gap:8px;margin:12px 0}
+.stat{flex:1;background:var(--card);border-radius:10px;padding:8px 10px;text-align:center;border:1px solid var(--border)}
+.stat small{display:block;font-size:11px;color:var(--muted)}
+.stat b{font-size:16px;font-weight:500}
+.stat.s-score b{color:var(--score)}.stat.s-ok b{color:var(--ok)}
+.qcard{background:var(--card);border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid var(--border)}
+.qmeta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.qno{background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:2px 10px;font-size:12px;font-weight:500}
+.qpt{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 8px;font-size:11px}
+.qsrc{font-size:11px;color:var(--faint)}
+.qmark{margin-left:auto;font-size:16px}
+.stem{font-size:14.5px;margin-bottom:12px}
+.opt{display:flex;gap:8px;width:100%;text-align:left;background:var(--opt-bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px;font-size:13.5px;color:var(--text);cursor:pointer;line-height:1.6}
+.opt .ol{font-weight:500;flex-shrink:0;color:var(--accent)}
+.opt.sel{border-color:var(--accent);border-width:1.5px;background:var(--accent-soft)}
+.opt.rgt{border-color:var(--ok);border-width:1.5px;background:var(--ok-bg)}
+.opt.wrg{border-color:var(--bad);border-width:1.5px;background:var(--bad-bg)}
+.opt:disabled{cursor:default}
+.submit{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.submit:disabled{opacity:.35;cursor:default}
+.verdict{margin-top:10px;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500;display:none}
+.exp{margin-top:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:none}
+.exp .et{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:6px}
+.exp p{font-size:12.5px;color:var(--muted)}
+.next{display:none;width:100%;margin-top:10px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border);border-radius:10px;padding:10px;font-size:14px;font-weight:500;cursor:pointer}
+.qfig{background:#fff;border-radius:10px;padding:8px;margin-bottom:12px;text-align:center}
+.qfig img{max-width:100%;height:auto;display:inline-block}
+.lesson-nav{display:flex;gap:8px;margin:18px 0 6px}
+.lesson-nav a,.lesson-nav span{flex:1;text-align:center;border-radius:10px;padding:10px 6px;font-size:12.5px;font-weight:500;text-decoration:none;border:1px solid var(--accent-border)}
+.lesson-nav a{background:var(--accent-soft);color:var(--accent)}
+.lesson-nav span{background:var(--panel);color:var(--faint);border-color:var(--border);opacity:.6}
+footer{text-align:center;padding:24px 0 10px;color:var(--faint);font-size:12px}
+.result{display:none;background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);margin-bottom:16px;text-align:center}
+.result h3{font-size:16px;font-weight:500;margin-bottom:12px}
+#canvas{max-width:100%;border-radius:12px;margin-bottom:12px;display:none}
+.btn-gen{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+#stuName:disabled{opacity:.7}
+.btn-row{display:flex;gap:10px}
+.btn-row button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
+.btn-save{background:var(--accent);color:var(--accent-ink)}
+.btn-redo{background:transparent;color:var(--accent)}
+.name-row{display:flex;gap:8px;margin-bottom:12px}
+.name-row input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text)}
+.done-flag{color:var(--ok)}
+sub,sup{font-size:.72em}
+.rxn{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 2px}
+.rxn i{font-style:normal;font-size:.62em;line-height:1.15;white-space:nowrap}
+.rxn em{font-style:normal;line-height:1;font-size:.95em}
+</style>
+</head>
+<body>
+<header><div class="hd-in">
+<a class="hd-back" href="index.html">‹ 训练目录</a>
+<div class="hd-title">考点10 · 原电池与电解池</div>
+<button class="hd-theme" id="resetBtn" title="清空本讲记录重新做" style="font-size:13px;width:auto;padding:0 12px;">⟲ 重置</button>
+<button class="hd-theme" id="themeBtn" title="切换配色">☀</button>
+</div></header>
+<div class="wrap">
+<div class="stats">
+<div class="stat"><small>进度</small><b><span id="sProg">0</span>/20</b></div>
+<div class="stat s-score"><small>得分</small><b><span id="sScore">0</span> 分</b></div>
+<div class="stat s-ok"><small>正确</small><b><span id="sOk">0</span> 题</b></div>
+<div class="stat"><small>用时</small><b id="sTime">00:00</b></div>
+</div>
+<div id="result" class="result">
+<h3>🎉 本讲完成！输入姓名生成成绩卡，保存发给老师</h3>
+<div id="genZone">
+<div class="name-row"><input id="stuName" placeholder="输入姓名（会记住）"><button class="btn-gen" id="btnGen" style="width:130px;flex-shrink:0;">生成成绩卡</button></div>
+<p style="font-size:11.5px;color:var(--faint);margin:0;">姓名提交后将锁定；要改名只能重刷整讲</p>
+</div>
+<canvas id="canvas" width="750" height="430"></canvas>
+<div class="btn-row" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-redo" id="btnRedo">重刷本讲</button></div>
+</div>
+<div id="qlist"></div>
+<div class="lesson-nav"><a href="09.html">‹ 考点9</a><a href="index.html">训练目录</a><span>考点11 制作中</span></div>
+<footer>化学不难学 · 高考选择题训练 · 每题 2 分 · 满分 40 分<br>题源：《学习与评价》2027版 + 历年高考原卷</footer>
+</div>
+<script>
+var QS = [{"id": 1, "src": "2026 广东 6", "ans": "A", "stem": "做好防腐是发展海上风电的基础。下列措施不能达到防腐目的的是", "opts": ["<img src=\"figs/k10/q1_A.png\" alt=\"装置\" style=\"height:4.5em;vertical-align:middle;border-radius:3px\"><br>铜制管桩上镶嵌铜块", "<img src=\"figs/k10/q1_B.png\" alt=\"装置\" style=\"height:4.5em;vertical-align:middle;border-radius:3px\"><br>铜制管桩上覆盖富铝涂层", "<img src=\"figs/k10/q1_C.png\" alt=\"装置\" style=\"height:4.5em;vertical-align:middle;border-radius:3px\"><br>铜制管桩连接惰性电极并接电源正极", "<img src=\"figs/k10/q1_D.png\" alt=\"装置\" style=\"height:4.5em;vertical-align:middle;border-radius:3px\"><br>铜制管桩上镶嵌锌块"], "exp": "选项 A，铁的金属活动性强于铜，铁与铜在海水中形成原电池时，活泼的金属 Fe 作负极，失电子被腐蚀，会加速钢制管桩腐蚀，不能达到防腐目的。选项 B，在金属表面覆盖致密的保护层，将金属制品与周围物质隔开是一种普遍采用的防护方法，铝表面致密的氧化膜能隔绝空气和水，防止内部的铁被腐蚀；如果涂层被破坏，铝会与铁形成原电池，铝作负极被腐蚀，可保护钢制管桩，达到防腐目的。选项 C，该装置为外加电流保护法，钢制管桩连接电源负极，作阴极被保护，能达到防腐目的。选项 D，锌的金属活动性强于铁，锌块与钢制管桩形成原电池时，锌作负极被腐蚀，钢制管桩作正极被保护，属于牺牲阳极法，能达到防腐目的。"}, {"id": 2, "src": "2024 广东 5", "ans": "D", "stem": "我国自主设计建造的浮式生产储卸油装置\"海葵一号\"将在珠江口盆地海域使用，其钢铁外壳镶嵌了锌块，以利用电化学原理延缓外壳的腐蚀。下列有关说法正确的是", "opts": ["钢铁外壳为负极", "镶嵌的锌块可永久使用", "该法为外加电流法", "锌发生反应：Zn−2e<sup>−</sup>═Zn<sup>2+</sup>"], "exp": "选项 A，钢铁外壳镶嵌了锌块，以延缓外壳的腐蚀。钢铁外壳、锌块、海水构成原电池，由于金属活动性 Zn＞Fe，锌块为负极，失电子发生氧化反应，锌被腐蚀，钢铁为正极，不被腐蚀，从而保护钢铁，延缓其腐蚀。选项 B，锌块为负极，电极反应为 Zn−2e<sup>−</sup>═Zn<sup>2+</sup>，镶嵌的锌块会逐渐消耗，需根据腐蚀情况进行维护和更换，不能永久使用。选项 C，钢铁外壳镶嵌锌块，以延缓外壳的腐蚀，该方法为牺牲阳极的保护法。选项 D，锌块为负极，失电子，发生氧化反应，电极反应为 Zn−2e<sup>−</sup>═Zn<sup>2+</sup>，正确。"}, {"id": 3, "src": "2023 广东 6", "ans": "B", "figs": ["figs/k10/q3.png"], "stem": "负载有 Pt 和 Ag 的活性炭，可选择性去除 Cl<sup>−</sup> 实现废酸的纯化，其工作原理如图。下列说法正确的是", "opts": ["Ag 作原电池正极", "电子由 Ag 经活性炭流向 Pt", "Pt 表面发生的电极反应：O<sub>2</sub>+2H<sub>2</sub>O+4e<sup>−</sup>═4OH<sup>−</sup>", "每消耗标准状况下 11.2 L 的 O<sub>2</sub>，最多去除 1 mol Cl<sup>−</sup>"], "exp": "选项 A，Pt 和 Ag 在活性炭的连接下，在废酸中构成原电池。Ag 比 Pt 活泼，Ag 作原电池的负极，负极电极反应为 Ag+Cl<sup>−</sup>−e<sup>−</sup>═AgCl，从而去除 Cl<sup>−</sup> 实现废酸的纯化；Pt 作原电池的正极，错误。选项 B，电子由负极（Ag）经活性炭流向 Pt（正极），正确。选项 C，溶液是废酸，呈酸性，Pt 表面的 O<sub>2</sub> 得到电子，正极电极反应为 O<sub>2</sub>+4H<sup>+</sup>+4e<sup>−</sup>═2H<sub>2</sub>O，错误。选项 D，由正、负极电极反应可得 O<sub>2</sub>～4e<sup>−</sup>～4Cl<sup>−</sup>，故每消耗标准状况下 11.2 L 的 O<sub>2</sub>（0.5 mol），转移 2 mol 电子，最多去除 2 mol Cl<sup>−</sup>，错误。"}, {"id": 4, "src": "2022 广东 10", "ans": "C", "stem": "以熔融盐为电解液，以含 Cu、Mg 和 Si 等的铝合金废料为阳极进行电解，实现 Al 的再生。该过程中", "opts": ["阴极发生的反应为 Mg−2e<sup>−</sup>═Mg<sup>2+</sup>", "阴极上 Al 被氧化", "在电解槽底部产生含 Cu 的阳极泥", "阳极和阴极的质量变化相等"], "exp": "选项 A，电解时，铝合金废料为阳极，纯铝为阴极，阴极发生还原反应，阴极电极反应为 Al<sup>3+</sup>+3e<sup>−</sup>═Al；阳极发生氧化反应 Mg−2e<sup>−</sup>═Mg<sup>2+</sup>、Al−3e<sup>−</sup>═Al<sup>3+</sup>，错误。选项 B，阴极上发生反应为 Al<sup>3+</sup>+3e<sup>−</sup>═Al，电解液中 Al<sup>3+</sup> 被还原为铝单质，Al 元素被还原，发生还原反应，错误。选项 C，由于 Al 比 Cu、Si 活泼，铝合金中的 Mg、Al 溶解后，Cu、Si 沉积在电解槽阳极的底部形成阳极泥，正确。选项 D，阳极材料中的 Mg 比 Al 活泼，电解时 Mg 和 Al 均溶解进入电解液中，阳极质量减小，阴极上只析出 Al 单质，阴极质量增加。当转移相同的电子数时，阳极和阴极的质量变化不相等，错误。"}, {"id": 5, "src": "2021 广东 9", "ans": "D", "stem": "火星大气中含有大量 CO<sub>2</sub>，一种有 CO<sub>2</sub> 参加反应的新型全固态电池有望为火星探测器供电。该电池以金属钠为负极、碳纳米管为正极，放电时", "opts": ["负极上发生还原反应", "将电能转化为化学能", "阳离子由正极移向负极", "CO<sub>2</sub> 在正极上得电子"], "exp": "选项 A，放电时总反应为 4Na+3CO<sub>2</sub>═2Na<sub>2</sub>CO<sub>3</sub>+C，放电时，金属钠为负极，失去电子，发生氧化反应，错误。选项 B，放电时装置为原电池，能量转化关系为化学能转化为电能，错误。选项 C，放电时阳离子由负极移向正极，错误。选项 D，放电时，正极 CO<sub>2</sub> 得到电子生成 C，发生还原反应，正确。"}, {"id": 6, "src": "2026 江西 7", "ans": "D", "figs": ["figs/k10/q6.png"], "stem": "背靠背式电解池可用于电化学合成氨，如图。下列说法正确的是", "opts": ["阳极反应：4OH<sup>−</sup>═2H<sub>2</sub>O+O<sub>2</sub>↑", "外电路电子由 b 流向 a", "每生成 1 mol NH<sub>3</sub>，消耗 6 mol H<sub>2</sub>O", "OH<sup>−</sup>经交换膜从右向左移动"], "exp": "选项 A，该装置为阴离子交换膜电解池，右侧通入 N<sub>2</sub> 与 H<sub>2</sub>O 生成 NH<sub>3</sub>，氮元素化合价从 0 降低至 −3，得到电子，发生还原反应，因此右侧电极为阴极，连接电源负极 b，阴极反应为 N<sub>2</sub>+6H<sub>2</sub>O+6e<sup>−</sup>═2NH<sub>3</sub>+6OH<sup>−</sup>；左侧电极为阳极，连接电源正极 a，OH<sup>−</sup> 在阳极失去电子，发生氧化反应，阳极反应为 4OH<sup>−</sup>−4e<sup>−</sup>═2H<sub>2</sub>O+O<sub>2</sub>↑，错误（原式未写失去电子）。选项 B，左侧电极为阳极，连接电源正极 a；右侧电极为阴极，连接电源负极 b，外电路中电子由负极 b 流向阳极，由阳极流向正极 a，错误。选项 C，电化学合成氨总电解反应为 2N<sub>2</sub>+6H<sub>2</sub>O <span class=\"rxn\"><i>通电</i><em>=</em></span> 4NH<sub>3</sub>+3O<sub>2</sub>，每生成 1 mol NH<sub>3</sub> 消耗 1.5 mol H<sub>2</sub>O，不是 6 mol，错误。选项 D，装置为阴离子交换膜电解池，OH<sup>−</sup> 经交换膜从阴极（右侧）向阳极（左侧）移动，即从右向左移动，正确。"}, {"id": 7, "src": "2022 广东 11", "ans": "D", "stem": "为检验牺牲阳极的阴极保护法对钢铁防腐的效果，将镀层有破损的镀锌铁片放入酸化的 3% NaCl 溶液中。一段时间后，取溶液分别实验，能说明铁片没有被腐蚀的是", "opts": ["加入 AgNO<sub>3</sub> 溶液产生沉淀", "加入淀粉碘化钾溶液无蓝色出现", "加入 KSCN 溶液无红色出现", "加入 K<sub>3</sub>[Fe(CN)<sub>6</sub>] 溶液无蓝色沉淀生成"], "exp": "选项 A，镀层有破损的镀锌铁片放入酸化的 3% NaCl 溶液中可构成原电池，锌为负极，电极反应为 Zn−2e<sup>−</sup>═Zn<sup>2+</sup>，铁为正极，电极反应为 2H<sup>+</sup>+2e<sup>−</sup>═H<sub>2</sub>↑，铁被保护，不易被腐蚀。由于电解质溶液显酸性，若铁片被腐蚀，则铁片发生析氢腐蚀，负极电极反应为 Fe−2e<sup>−</sup>═Fe<sup>2+</sup>，因此要验证铁没有被腐蚀，即需要验证溶液中不存在 Fe<sup>2+</sup>。无论铁片是否发生腐蚀，溶液中一定存在 Cl<sup>−</sup>，加入 AgNO<sub>3</sub> 溶液发生反应 Ag<sup>+</sup>+Cl<sup>−</sup>═AgCl↓，只能说明溶液中存在 Cl<sup>−</sup>，错误。选项 B，铁片发生腐蚀生成 Fe<sup>2+</sup>，碘化钾溶液不与 Fe<sup>2+</sup> 反应，故加入淀粉碘化钾溶液无蓝色出现，不能说明铁片没有被腐蚀，错误。选项 C，KSCN 溶液用于检验 Fe<sup>3+</sup>，无红色出现，只能说明溶液中不存在 Fe<sup>3+</sup>，错误。选项 D，K<sub>3</sub>[Fe(CN)<sub>6</sub>] 用于检验 Fe<sup>2+</sup>，加入后无蓝色沉淀生成，说明溶液中不存在 Fe<sup>2+</sup>，正确。"}, {"id": 8, "src": "2024 浙江 1 月 13", "ans": "C", "stem": "破损的镀锌铁皮在氨水中发生电化学腐蚀，生成 [Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> 和 H<sub>2</sub>，下列说法不正确的是", "opts": ["氨水浓度越大，腐蚀趋势越大", "随着腐蚀的进行，溶液的 pH 变大", "铁电极上的电极反应为 2NH<sub>3</sub>+2e<sup>−</sup>═2NH<sub>2</sub><sup>−</sup>+H<sub>2</sub>↑", "每生成标准状况下 224 mL H<sub>2</sub>，消耗 0.010 mol Zn"], "exp": "选项 A，镀锌铁皮在氨水中发生电化学腐蚀，Zn 作负极，负极电极反应为 Zn+4NH<sub>3</sub>·H<sub>2</sub>O−2e<sup>−</sup>═[Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>+4H<sub>2</sub>O，Zn 反应生成 [Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>，发生氧化反应，Fe 作正极，正极电极反应为 2H<sub>2</sub>O+2e<sup>−</sup>═H<sub>2</sub>↑+2OH<sup>−</sup>。氨水浓度越大，越容易生成 [Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>，腐蚀趋势越大，正确。选项 B，镀锌铁皮在氨水中发生电化学腐蚀的总反应为 Zn+4NH<sub>3</sub>·H<sub>2</sub>O═[Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>+H<sub>2</sub>↑+2H<sub>2</sub>O+2OH<sup>−</sup>，随着腐蚀的进行，反应中有 OH<sup>−</sup> 生成，溶液的 pH 变大，正确。选项 C，该电化学腐蚀中 Fe 作正极，铁电极反应为 2H<sub>2</sub>O+2e<sup>−</sup>═H<sub>2</sub>↑+2OH<sup>−</sup>，错误。选项 D，根据得失电子守恒，每生成 1 mol H<sub>2</sub>，消耗 1 mol Zn，标准状况下 224 mL H<sub>2</sub> 是 0.010 mol H<sub>2</sub>，消耗 0.010 mol Zn，正确。"}, {"id": 9, "src": "2023 海南 8", "ans": "A", "figs": ["figs/k10/q9.png"], "stem": "利用金属 Al、海水及其中的溶解氧可组成电池，如图所示。下列说法正确的是", "opts": ["b 电极为电池正极", "电池工作时，海水中的 Na<sup>+</sup> 向 a 电极移动", "电池工作时，紧邻 a 电极区域的海水呈强碱性", "每消耗 1 kg Al，电池最多向外提供 37 mol 电子的电量"], "exp": "选项 A，Al、石墨、海水构成原电池，Al 为活泼金属，失去电子，发生氧化反应，负极反应为 Al−3e<sup>−</sup>═Al<sup>3+</sup>；石墨为正极，得到电子，发生还原反应，正极反应为 O<sub>2</sub>+4e<sup>−</sup>+2H<sub>2</sub>O═4OH<sup>−</sup>。故 b 电极（石墨）为电池正极，正确。选项 B，电池工作时，阳离子向正极移动，海水中的 Na<sup>+</sup> 向 b 电极移动，错误。选项 C，电池工作时，a 电极为负极，反应为 Al−3e<sup>−</sup>═Al<sup>3+</sup>，Al<sup>3+</sup> 水解显酸性，a 电极区域的海水呈酸性，错误。选项 D，每消耗 1 kg Al，电池最多向外提供电子的电量为 (1000/27) mol×3 = (1000/9) mol，错误。"}, {"id": 10, "src": "2023 辽宁 7", "ans": "D", "figs": ["figs/k10/q10.png"], "stem": "某无隔膜流动海水电解法制 H<sub>2</sub> 的装置如图所示，其中高选择性催化剂 PRT 可抑制 O<sub>2</sub> 产生。下列说法正确的是", "opts": ["b 端电势高于 a 端电势", "理论上转移 2 mol e<sup>−</sup> 生成 4 g H<sub>2</sub>", "电解后海水 pH 下降", "阳极发生：Cl<sup>−</sup>+H<sub>2</sub>O−2e<sup>−</sup>═HClO+H<sup>+</sup>"], "exp": "选项 A，左侧电极产生 O<sub>2</sub>，左侧电极为阳极，a 电极为电源正极；右侧电极为阴极，b 电极为电源负极，该装置的总反应产生 O<sub>2</sub> 和 H<sub>2</sub>，为电解海水装置。a 电极为正极，b 电极为负极，a 电极端电势高于 b 端电势，错误。选项 B，右侧电极反应为 2H<sup>+</sup>+2e<sup>−</sup>═H<sub>2</sub>↑，理论上转移 2 mol e<sup>−</sup> 生成 2 g H<sub>2</sub>，错误。选项 C，电解总反应为 Cl<sup>−</sup>+H<sub>2</sub>O═HClO+H<sub>2</sub>↑，电解消耗 H<sub>2</sub>O 并生成 OH<sup>−</sup>，海水 pH 上升，错误。选项 D，阳极上 Cl<sup>−</sup> 放电转化为 HClO，阳极电极反应为 Cl<sup>−</sup>+H<sub>2</sub>O−2e<sup>−</sup>═HClO+H<sup>+</sup>，正确。"}, {"id": 11, "src": "2024 重庆 9", "ans": "D", "figs": ["figs/k10/q11.png"], "stem": "我国科研工作者研发了一种新型复合电极材料，可将 CO<sub>2</sub> 电催化转化为甲酸，如图是电解装置示意图。下列说法正确的是", "opts": ["电解时电极 N 上产生 OH<sup>−</sup>", "电解时电极 M 上发生氧化反应", "阴离子交换膜均有两种离子通过", "总反应为 2CO<sub>2</sub>+2H<sub>2</sub>O <span class=\"rxn\"><i>通电</i><em>=</em></span> 2HCOOH+O<sub>2</sub>"], "exp": "选项 A，酸性条件下，电解时电极 N（阳极）上 H<sub>2</sub>O 失去电子生成 O<sub>2</sub>，发生氧化反应，电极反应为 2H<sub>2</sub>O−4e<sup>−</sup>═4H<sup>+</sup>+O<sub>2</sub>↑，错误。选项 B，催化电极 M（阴极）上 CO<sub>2</sub> 和 H<sub>2</sub>O 得到电子生成 HCOOH，发生还原反应，电极反应为 CO<sub>2</sub>+2H<sup>+</sup>+2e<sup>−</sup>═HCOOH，错误。选项 C，阴极室里 HCOO<sup>−</sup>、OH<sup>−</sup> 通过阴离子交换膜进入中间室，阳极室里 H<sup>+</sup> 通过阳离子交换膜进入中间室，HCOO<sup>−</sup> 和 H<sup>+</sup> 结合为 HCOOH，阳离子交换膜只有 1 种离子通过，错误。选项 D，总反应为 2CO<sub>2</sub>+2H<sub>2</sub>O <span class=\"rxn\"><i>通电</i><em>=</em></span> 2HCOOH+O<sub>2</sub>，正确。"}, {"id": 12, "src": "2024 甘肃 7", "ans": "B", "figs": ["figs/k10/q12.png"], "stem": "某固体电解池工作原理如图所示，下列说法错误的是", "opts": ["电极 1 的多孔结构能增大与水蒸气的接触面积", "电极 2 是阴极，发生还原反应：O<sub>2</sub>+4e<sup>−</sup>═2O<sup>2−</sup>", "工作时 O<sup>2−</sup> 从多孔电极 1 迁移到多孔电极 2", "理论上电源提供 2 mol e<sup>−</sup> 能分解 1 mol H<sub>2</sub>O"], "exp": "选项 A，电极 1 的多孔结构能增大电极的表面积，增大与水蒸气的接触面积，正确。选项 B，由图可知，多孔电极 1 上 H<sub>2</sub>O(g) 得到电子转化成 H<sub>2</sub>(g)，发生还原反应，多孔电极 1 为阴极，阴极电极反应为 2H<sub>2</sub>O+4e<sup>−</sup>═2H<sub>2</sub>+2O<sup>2−</sup>；多孔电极 2 上 O<sup>2−</sup> 失去电子转化成 O<sub>2</sub>(g)，发生氧化反应，多孔电极 2 为阳极，阳极电极反应为 2O<sup>2−</sup>−4e<sup>−</sup>═O<sub>2</sub>↑，错误。选项 C，工作时，电解池中阴离子向阳极移动，O<sup>2−</sup> 向阳极移动，即 O<sup>2−</sup> 从多孔电极 1 迁移到多孔电极 2，正确。选项 D，电解总反应为 2H<sub>2</sub>O(g) <span class=\"rxn\"><i>通电</i><em>=</em></span> 2H<sub>2</sub>(g)+O<sub>2</sub>(g)，分解 2 mol H<sub>2</sub>O 转移 4 mol e<sup>−</sup>，理论上电源提供 2 mol e<sup>−</sup> 能分解 1 mol H<sub>2</sub>O，正确。"}, {"id": 13, "src": "2024 广州调研 9", "ans": "D", "figs": ["figs/k10/q13.png"], "stem": "如图装置能保护埋在潮湿土壤中的钢铁输水管，减缓钢铁输水管的锈蚀。下列说法不正确的是", "opts": ["钢铁被腐蚀时电极反应为 Fe−2e<sup>−</sup>═Fe<sup>2+</sup>", "该装置利用了牺牲阳极法进行防腐", "该装置钢铁输水管是电池的正极", "该装置电子从钢铁输水管经导线流向镁"], "exp": "选项 A，钢铁腐蚀可分为析氢腐蚀和吸氧腐蚀两种类型，在酸性环境中发生析氢腐蚀，在弱酸性或中性环境中发生吸氧腐蚀，负极反应为 Fe−2e<sup>−</sup>═Fe<sup>2+</sup>，正确。选项 B，牺牲阳极法通常是在被保护的钢铁设备上安装若干比铁活泼的金属，成为原电池的负极，不断被腐蚀，而作为正极的钢铁设备就被保护起来，正确。选项 C，图中 Mg 作为负极被腐蚀，钢铁输水管是电池的正极，正确。选项 D，该装置电子由原电池的负极（Mg）经导线流向正极（钢铁输水管），错误。"}, {"id": 14, "src": "2024 广州一测 5", "ans": "D", "stem": "一种在室温下可循环充放电的新型纤维 Ca−O<sub>2</sub> 电池有望应用于可穿戴设备的储能，其工作原理为 Ca+O<sub>2</sub> <span class=\"rxn\"><i>放电</i><em>⇌</em><i>充电</i></span> CaO<sub>2</sub>，放电时", "opts": ["Ca 发生还原反应", "O<sub>2</sub> 在正极失电子", "阳离子由正极移向负极", "每消耗 1 mol O<sub>2</sub>，转移 2 mol 电子"], "exp": "选项 A，可循环充放电的新型纤维 Ca−O<sub>2</sub> 电池放电时，负极 Ca 失去电子转化为 Ca<sup>2+</sup>，发生氧化反应，错误。选项 B，放电时，正极 O<sub>2</sub> 得到电子转化为 O<sub>2</sub><sup>2−</sup>，发生还原反应，错误。选项 C，放电时阳离子由负极移向正极，错误。选项 D，反应中 O<sub>2</sub> 由 0 价降为 −1 价，则每消耗 1 mol O<sub>2</sub>，转移 2 mol 电子，正确。"}, {"id": 15, "src": "2025 广州调研 4", "ans": "A", "stem": "为了保证港珠澳大桥钢管桩的抗腐蚀寿命，科研人员采用牺牲阳极法延缓钢管桩的腐蚀。下列有关说法正确的是", "opts": ["钢管桩为电子流入的一极", "钢管桩发生反应：Fe−3e<sup>−</sup>═Fe<sup>3+</sup>", "牺牲阳极法中钢管桩可镶嵌铜块", "牺牲阳极法中钢管桩与外加电源负极相连"], "exp": "选项 A，牺牲阳极保护法中，钢管桩作为阴极，是电子流入的一极，正确。选项 B，腐蚀过程中钢管桩是原电池的负极，钢管桩发生的反应为 Fe−2e<sup>−</sup>═Fe<sup>2+</sup>，错误。选项 C，牺牲阳极法保护钢管桩应选择比铁更活泼的金属作为阳极，在钢管桩镶嵌合金或锌块，镁、锌比铁活泼，它们成为原电池的负极，不断遭受腐蚀，作为正极的钢管桩就被保护起来，错误。选项 D，利用外加电源保护钢管桩的电化学保护法称为外加电流法，而不是牺牲阳极法；外加电流法是把保护的钢铁作为阴极，用惰性电极作为辅助阳极，外接直流电源，钢铁与直流电源负极相连，钢铁被迫成为阴极而受到保护，错误。"}, {"id": 16, "src": "2025 广州一测 7", "ans": "D", "stem": "Mg−H<sub>2</sub>O<sub>2</sub> 电池可用于驱动无人驾驶的潜航器，该电池以镁片、石墨为电极，石墨电极一侧加入 H<sub>2</sub>O<sub>2</sub>，海水为电解质溶液。该电池工作时，下列说法正确的是", "opts": ["镁片为正极，发生还原反应", "石墨电极表面产生大量氢气", "电子由石墨电极流出", "溶液中的阳离子向石墨电极移动"], "exp": "选项 A，电池以镁片、石墨为电极，活泼金属作原电池负极，则镁片为原电池的负极，发生氧化反应，错误。选项 B，石墨电极为正极，石墨电极一侧加入 H<sub>2</sub>O<sub>2</sub>，发生还原反应 H<sub>2</sub>O<sub>2</sub>+2e<sup>−</sup>═2OH<sup>−</sup>，无 H<sub>2</sub> 生成，错误。选项 C，电子由负极（镁电极）流出，经导线流向正极（石墨电极），错误。选项 D，原电池电解质溶液中的阳离子由负极移向正极，故溶液中的阳离子向石墨电极移动，正确。"}, {"id": 17, "src": "2025 广州二测 9", "ans": "D", "figs": ["figs/k10/q17.png"], "stem": "通过控制电位可以实现从地下卤水（主要含有 Na<sup>+</sup>、K<sup>+</sup>、Cl<sup>−</sup>、Br<sup>−</sup>）中提取溴单质，其工作原理如图。电解过程中，下列说法不正确的是", "opts": ["Pt 电极上发生还原反应", "石墨电极上发生的反应：2Br<sup>−</sup>−2e<sup>−</sup>═Br<sub>2</sub>", "溶液中的阳离子从阳极室进入阴极室", "阴极室溶液的 pH 逐渐降低"], "exp": "选项 A，与电池负极相连的 Pt 电极为阴极，发生还原反应，正确。选项 B，与电极正极相连的石墨电极为阳极，发生氧化反应，根据题干实现从地下卤水中提取溴单质，石墨电极发生的反应为 2Br<sup>−</sup>−2e<sup>−</sup>═Br<sub>2</sub>，正确。选项 C，电解过程中，外电路中电流由电源正极流向石墨电极、由 Pt 电极流向电源负极，为了形成闭合回路，溶液中阳离子的移动方向是从阳极室进入阴极室，正确。选项 D，电解过程中，溶液中的 H<sub>2</sub>O 在阴极被还原为 H<sub>2</sub>，阴极反应为 2H<sub>2</sub>O+2e<sup>−</sup>═2OH<sup>−</sup>+H<sub>2</sub>↑，随着电解的进行，阴极室中 c(OH<sup>−</sup>) 逐渐增大，阴极室溶液的 pH 逐渐升高，错误。"}, {"id": 18, "src": "2026 广州调研 8", "ans": "C", "figs": ["figs/k10/q18.png"], "stem": "镁−海水电池驱动的自供电海水电解系统示意图如图所示，下列说法错误的是", "opts": ["电极 a 为正极", "气体 1 和气体 3 均为氢气", "电极 b 上发生还原反应", "外电路中电子从电极 b 流向 a"], "exp": "选项 A，该系统电源为镁−海水驱动的自供电海水电解系统，左侧是原电池，Mg 电极为负极，发生氧化反应，反应为 Mg−2e<sup>−</sup>+2OH<sup>−</sup>═Mg(OH)<sub>2</sub>；电极 a 为正极，发生还原反应，反应为 2H<sub>2</sub>O+2e<sup>−</sup>═H<sub>2</sub>↑+2OH<sup>−</sup>。右侧是电解池，电极 b 与电极 a 连接，即与电源正极相连，故电极 b 为阳极，发生氧化反应，反应为 4OH<sup>−</sup>−4e<sup>−</sup>═2H<sub>2</sub>O+O<sub>2</sub>↑；电极 c 为阴极，发生还原反应，反应为 2H<sub>2</sub>O+2e<sup>−</sup>═H<sub>2</sub>↑+2OH<sup>−</sup>。选项 B，电极 a 得电子，为正极，根据电极反应方程式，气体 1 和气体 3 均为氢气，正确。选项 C，电极 b 为阳极，发生氧化反应，错误。选项 D，外电路中电子从 Mg 电极流向电极 c，经过内电路，再从电极 b 流向电极 a，正确。"}, {"id": 19, "src": "2026 广州一测 5", "ans": "C", "stem": "某种一次性保暖贴的主要成分有铁粉、水、食盐、活性炭、吸水性树脂，使用时需撕开外包装袋。下列说法正确的是", "opts": ["使用时电能转化为化学能", "使用时铁粉作负极，发生还原反应", "使用时氧气在活性炭上得电子，转化为 OH<sup>−</sup>", "使用后产生的深褐色固体主要为 Fe<sub>3</sub>O<sub>4</sub>"], "exp": "选项 A，保暖贴内袋中的物质变为深褐色固体，其主要成分为炭粉、氯化钠固体、Fe<sub>2</sub>O<sub>3</sub> 固体以及含镁和铝的盐，因而变得较硬。该原电池中，铁粉作负极，发生氧化反应，反应为 Fe−2e<sup>−</sup>═Fe<sup>2+</sup>，氧气为正极，发生还原反应，反应为 O<sub>2</sub>+4e<sup>−</sup>+2H<sub>2</sub>O═4OH<sup>−</sup>。整个反应类似于 Fe 的吸氧腐蚀，最终得到产物为铁锈。该反应原理为原电池，化学能转化为电能，错误。选项 B，使用时铁粉作负极，发生氧化反应，错误。选项 C，氧气为正极，在活性炭上发生还原反应，反应为 O<sub>2</sub>+4e<sup>−</sup>+2H<sub>2</sub>O═4OH<sup>−</sup>，正确。选项 D，使用后产生的深褐色固体主要为 Fe<sub>2</sub>O<sub>3</sub>，错误。"}, {"id": 20, "src": "2026 广州二测 8", "ans": "D", "figs": ["figs/k10/q20.png"], "stem": "下图为青铜器在潮湿环境中发生电化学腐蚀的原理示意图，环境中的 Cl<sup>−</sup> 扩散到孔口，并与正极反应产物和负极反应产物作用生成多孔粉状锈 Cu<sub>2</sub>(OH)<sub>3</sub>Cl。下列说法正确的是", "opts": ["青铜基体发生还原反应被腐蚀", "电子由青铜基体经溶液流向多孔催化层", "负极发生的电极反应：2Cl<sup>−</sup>−2e<sup>−</sup>═Cl<sub>2</sub>↑", "生成 0.01 mol Cu<sub>2</sub>(OH)<sub>3</sub>Cl，理论上消耗 0.01 mol O<sub>2</sub>"], "exp": "选项 A，青铜器在潮湿环境中可构成原电池，发生吸氧腐蚀，Cu 为原电池的负极，负极的电极反应为 Cu−2e<sup>−</sup>═Cu<sup>2+</sup>，惰性物质（多孔催化层）为原电池的正极，正极的电极反应为 O<sub>2</sub>+2H<sub>2</sub>O+4e<sup>−</sup>═4OH<sup>−</sup>。青铜基体为负极，发生氧化反应被腐蚀，错误。选项 B，原电池工作时，电子由负极（青铜基体）沿金属层流向正极（多孔催化层），不是经溶液流向正极，错误。选项 C，负极的电极反应为 Cu−2e<sup>−</sup>═Cu<sup>2+</sup>，错误。选项 D，负极生成的 Cu<sup>2+</sup> 与正极生成的 OH<sup>−</sup> 及溶液中的 Cl<sup>−</sup> 反应生成多孔粉状锈 Cu<sub>2</sub>(OH)<sub>3</sub>Cl，反应的离子方程式为 2Cu<sup>2+</sup>+3OH<sup>−</sup>+Cl<sup>−</sup>═Cu<sub>2</sub>(OH)<sub>3</sub>Cl。生成 0.01 mol Cu<sub>2</sub>(OH)<sub>3</sub>Cl，消耗 0.02 mol Cu<sup>2+</sup>，负极生成 0.02 mol Cu<sup>2+</sup> 时失去 0.04 mol e<sup>−</sup>，根据电子守恒，正极得到 0.04 mol e<sup>−</sup> 时消耗 0.01 mol O<sub>2</sub>，正确。"}];
+var KEY = 'xz10_state', TKEY = 'xz_theme', NKEY = 'xz_name', LKEY = 'xz10_lock';
+var N = QS.length, PER = 2;
+var st = {a:{}, score:0, ok:0, elapsed:0, started:false};
+function $(id){return document.getElementById(id)}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.a)st=s}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+s%60).slice(-2)}
+function renderStats(){$('sProg').textContent=Object.keys(st.a).length;$('sScore').textContent=st.score;$('sOk').textContent=st.ok;$('sTime').textContent=fmt(st.elapsed)}
+function build(){
+  var box=$('qlist');
+  QS.forEach(function(q,i){
+    var d=document.createElement('div');d.className='qcard';d.id='qc'+q.id;
+    var h='<div class="qmeta"><span class="qno">第 '+(i+1)+' 题</span><span class="qpt">'+PER+' 分</span><span class="qsrc">'+q.src+'</span><span class="qmark" id="qm'+q.id+'"></span></div>';
+    h+='<div class="stem">'+q.stem+'</div>';
+    if(q.figs){q.figs.forEach(function(f){h+='<div class="qfig"><img src="'+f+'" alt="题图"></div>'})}
+    h+='<div id="op'+q.id+'"></div>';
+    h+='<button class="submit" id="sb'+q.id+'" disabled>提交本题</button>';
+    h+='<div class="verdict" id="vd'+q.id+'"></div>';
+    h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
+    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'生成本讲成绩卡 →')+'</button>';
+    d.innerHTML=h;box.appendChild(d);
+    var picked=null,done=!!st.a[q.id];
+    var ob=$('op'+q.id);
+    q.opts.forEach(function(o,j){
+      var L='ABCD'[j],b=document.createElement('button');
+      b.className='opt';b.innerHTML='<span class="ol">'+L+'．</span><span>'+o+'</span>';
+      b.onclick=function(){
+        if(done)return;
+        if(!st.started){st.started=true}
+        picked=L;
+        Array.prototype.forEach.call(ob.children,function(c){c.classList.remove('sel')});
+        b.classList.add('sel');
+        $('sb'+q.id).disabled=false;
+      };
+      ob.appendChild(b);
+    });
+    if(done){
+      var pick=st.a[q.id],ok=pick===q.ans;
+      paintResult(q,ob,pick,ok);
+      $('ex'+q.id).style.display='block';
+      $('sb'+q.id).style.display='none';
+      $('nx'+q.id).style.display='block';
+      $('qm'+q.id).textContent=ok?'✓':'✗';
+      if(i===N-1)showResult();
+    }
+    $('sb'+q.id).onclick=function(){
+      if(picked===null||done)return;
+      done=true;
+      var ok=picked===q.ans;
+      st.a[q.id]=picked;
+      if(ok){st.score+=PER;st.ok++}
+      paintResult(q,ob,picked,ok);
+      var v=$('vd'+q.id);
+      v.style.display='block';
+      v.style.background=ok?'var(--ok-bg)':'var(--bad-bg)';
+      v.style.color=ok?'var(--ok-ink)':'var(--bad-ink)';
+      v.textContent=ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans;
+      $('qm'+q.id).textContent=ok?'✓':'✗';
+      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+      $('ex'+q.id).style.display='block';
+      $('sb'+q.id).style.display='none';
+      $('nx'+q.id).style.display='block';
+      renderStats();save();
+      if(Object.keys(st.a).length===N)showResult();
+    };
+    $('nx'+q.id).onclick=function(){
+      if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
+      else{$('result').scrollIntoView({behavior:'smooth',block:'center'})}
+    };
+  });
+}
+function paintResult(q,ob,pick,ok){
+  Array.prototype.forEach.call(ob.children,function(c,j){
+    var L='ABCD'[j];c.disabled=true;
+    if(L===q.ans)c.classList.add('rgt');
+    else if(L===pick)c.classList.add('wrg');
+  });
+}
+var timer=setInterval(function(){
+  if(st.started&&Object.keys(st.a).length<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
+},1000);
+function showResult(){
+  $('result').style.display='block';
+  var locked=localStorage.getItem(LKEY);
+  if(locked){
+    lockCard(locked);
+  }else{
+    $('stuName').value=localStorage.getItem(NKEY)||'';
+    $('genZone').style.display='block';
+  }
+}
+function lockCard(name){
+  $('genZone').style.display='none';
+  $('doneZone').style.display='flex';
+  $('stuName').value=name;
+  drawCard();
+  $('canvas').style.display='block';
+}
+$('btnGen').onclick=function(){
+  var name=$('stuName').value.trim();
+  if(!name){alert('请先输入姓名');return}
+  try{localStorage.setItem(LKEY,name);localStorage.setItem(NKEY,name)}catch(e){}
+  lockCard(name);
+};
+function drawCard(){
+  var c=$('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+  var g=x.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#0f172a');g.addColorStop(.55,'#152743');g.addColorStop(1,'#1b1140');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.fillStyle='rgba(34,211,238,.08)';x.beginPath();x.arc(W-60,60,150,0,7);x.fill();
+  x.fillStyle='rgba(167,139,250,.08)';x.beginPath();x.arc(50,H-40,130,0,7);x.fill();
+  x.fillStyle='#67e8f9';x.font='500 22px sans-serif';x.fillText('化学不难学 · 高考选择题训练',40,52);
+  x.fillStyle='#8ea0b5';x.font='16px sans-serif';x.fillText('考点10 原电池与电解池 · 每题 '+PER+' 分',40,84);
+  var name=$('stuName').value.trim()||'同学';
+  x.fillStyle='#e2e8f0';x.font='500 26px sans-serif';x.fillText(name,40,150);
+  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(st.score,40,255);
+  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(st.score).length*52+14,250);
+  var acc=Math.round(st.ok/N*100);
+  var cells=[['正确',st.ok+' / '+N+' 题'],['正确率',acc+'%'],['用时',fmt(st.elapsed)]];
+  cells.forEach(function(cell,i){
+    var cx=40+i*228;
+    x.fillStyle='#1e293b';x.fillRect(cx,290,208,84);
+    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,320);
+    x.fillStyle='#e2e8f0';x.font='500 24px sans-serif';x.fillText(cell[1],cx+18,356);
+  });
+  var d=new Date();
+  x.fillStyle='#5b6b7f';x.font='14px sans-serif';
+  x.fillText('日期 '+d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),40,410);
+}
+$('stuName').addEventListener('input',function(){try{localStorage.setItem(NKEY,this.value)}catch(e){}});
+$('btnSave').onclick=function(){
+  var a=document.createElement('a');
+  a.download='选择题训练_考点10_'+(($('stuName').value.trim()||'成绩'))+'.png';
+  a.href=$('canvas').toDataURL('image/png');a.click();
+};
+$('btnRedo').onclick=function(){
+  if(confirm('确定清空本讲答题记录和成绩卡重新刷吗？')){localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload()}
+};
+$('resetBtn').onclick=function(){
+  var n=Object.keys(st.a).length;
+  if(n===0){alert('本讲还没有答题记录');return}
+  if(confirm('确定清空本讲 '+n+' 题记录重新做吗？')){
+    localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload();
+  }
+};
+function applyTheme(t){
+  document.documentElement.dataset.theme=t;
+  $('themeBtn').textContent=t==='dark'?'☀':'🌙';
+  try{localStorage.setItem(TKEY,t)}catch(e){}
+}
+$('themeBtn').onclick=function(){
+  applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+};
+applyTheme((function(){try{return localStorage.getItem(TKEY)||'dark'}catch(e){return 'dark'}})());
+load();build();renderStats();
+</script>
+</body>
+</html>
