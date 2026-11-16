@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考点14 化学反应历程与化学平衡 · 高考选择题训练 | 化学不难学</title>
+<style>
+:root{--bg:#0b1220;--card:#1e293b;--panel:#0f172a;--text:#e2e8f0;--muted:#8ea0b5;--faint:#5b6b7f;
+--accent:#22d3ee;--accent-ink:#083344;--accent-soft:#164e63;--accent-border:#155e75;
+--ok:#34d399;--ok-bg:#022c22;--ok-ink:#6ee7b7;--bad:#fb7185;--bad-bg:#4c0519;--bad-ink:#fda4af;
+--border:#334155;--opt-bg:#0f172a;--score:#a78bfa;--shadow:none}
+html[data-theme="light"]{--bg:#f6f7fb;--card:#ffffff;--panel:#f8fafc;--text:#1e293b;--muted:#64748b;--faint:#94a3b8;
+--accent:#4f46e5;--accent-ink:#ffffff;--accent-soft:#eef2ff;--accent-border:#c7d2fe;
+--ok:#16a34a;--ok-bg:#f0fdf4;--ok-ink:#15803d;--bad:#dc2626;--bad-bg:#fef2f2;--bad-ink:#b91c1c;
+--border:#e2e5ec;--opt-bg:#f8fafc;--score:#d97706}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding-bottom:90px}
+.wrap{max-width:680px;margin:0 auto;padding:0 14px}
+header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border)}
+.hd-in{max-width:680px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.hd-back{color:var(--accent);text-decoration:none;font-size:13px;flex-shrink:0}
+.hd-title{font-size:15px;font-weight:500;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd-theme{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border);border-radius:999px;width:34px;height:34px;font-size:16px;cursor:pointer;flex-shrink:0}
+.stats{display:flex;gap:8px;margin:12px 0}
+.stat{flex:1;background:var(--card);border-radius:10px;padding:8px 10px;text-align:center;border:1px solid var(--border)}
+.stat small{display:block;font-size:11px;color:var(--muted)}
+.stat b{font-size:16px;font-weight:500}
+.stat.s-score b{color:var(--score)}.stat.s-ok b{color:var(--ok)}
+.qcard{background:var(--card);border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid var(--border)}
+.qmeta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.qno{background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:2px 10px;font-size:12px;font-weight:500}
+.qpt{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 8px;font-size:11px}
+.qsrc{font-size:11px;color:var(--faint)}
+.qmark{margin-left:auto;font-size:16px}
+.stem{font-size:14.5px;margin-bottom:12px}
+.opt{display:flex;gap:8px;width:100%;text-align:left;background:var(--opt-bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px;font-size:13.5px;color:var(--text);cursor:pointer;line-height:1.6}
+.opt .ol{font-weight:500;flex-shrink:0;color:var(--accent)}
+.opt.sel{border-color:var(--accent);border-width:1.5px;background:var(--accent-soft)}
+.opt.rgt{border-color:var(--ok);border-width:1.5px;background:var(--ok-bg)}
+.opt.wrg{border-color:var(--bad);border-width:1.5px;background:var(--bad-bg)}
+.opt:disabled{cursor:default}
+.submit{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.submit:disabled{opacity:.35;cursor:default}
+.verdict{margin-top:10px;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500;display:none}
+.exp{margin-top:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:none}
+.exp .et{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:6px}
+.exp p{font-size:12.5px;color:var(--muted)}
+.next{display:none;width:100%;margin-top:10px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border);border-radius:10px;padding:10px;font-size:14px;font-weight:500;cursor:pointer}
+.qfig{background:#fff;border-radius:10px;padding:8px;margin-bottom:12px;text-align:center}
+.qfig img{max-width:100%;height:auto;display:inline-block}
+.lesson-nav{display:flex;gap:8px;margin:18px 0 6px}
+.lesson-nav a,.lesson-nav span{flex:1;text-align:center;border-radius:10px;padding:10px 6px;font-size:12.5px;font-weight:500;text-decoration:none;border:1px solid var(--accent-border)}
+.lesson-nav a{background:var(--accent-soft);color:var(--accent)}
+.lesson-nav span{background:var(--panel);color:var(--faint);border-color:var(--border);opacity:.6}
+footer{text-align:center;padding:24px 0 10px;color:var(--faint);font-size:12px}
+.result{display:none;background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);margin-bottom:16px;text-align:center}
+.result h3{font-size:16px;font-weight:500;margin-bottom:12px}
+#canvas{max-width:100%;border-radius:12px;margin-bottom:12px;display:none}
+.btn-gen{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+#stuName:disabled{opacity:.7}
+.btn-row{display:flex;gap:10px}
+.btn-row button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
+.btn-save{background:var(--accent);color:var(--accent-ink)}
+.btn-redo{background:transparent;color:var(--accent)}
+.name-row{display:flex;gap:8px;margin-bottom:12px}
+.name-row input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text)}
+.done-flag{color:var(--ok)}
+sub,sup{font-size:.72em}
+.rxn{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 2px}
+.rxn i{font-style:normal;font-size:.62em;line-height:1.15;white-space:nowrap}
+.rxn em{font-style:normal;line-height:1;font-size:.95em}
+</style>
+</head>
+<body>
+<header><div class="hd-in">
+<a class="hd-back" href="index.html">‹ 训练目录</a>
+<div class="hd-title">考点14 · 化学反应历程与化学平衡</div>
+<button class="hd-theme" id="resetBtn" title="清空本讲记录重新做" style="font-size:13px;width:auto;padding:0 12px;">⟲ 重置</button>
+<button class="hd-theme" id="themeBtn" title="切换配色">☀</button>
+</div></header>
+<div class="wrap">
+<div class="stats">
+<div class="stat"><small>进度</small><b><span id="sProg">0</span>/20</b></div>
+<div class="stat s-score"><small>得分</small><b><span id="sScore">0</span> 分</b></div>
+<div class="stat s-ok"><small>正确</small><b><span id="sOk">0</span> 题</b></div>
+<div class="stat"><small>用时</small><b id="sTime">00:00</b></div>
+</div>
+<div id="result" class="result">
+<h3>🎉 本讲完成！输入姓名生成成绩卡，保存发给老师</h3>
+<div id="genZone">
+<div class="name-row"><input id="stuName" placeholder="输入姓名（会记住）"><button class="btn-gen" id="btnGen" style="width:130px;flex-shrink:0;">生成成绩卡</button></div>
+<p style="font-size:11.5px;color:var(--faint);margin:0;">姓名提交后将锁定；要改名只能重刷整讲</p>
+</div>
+<canvas id="canvas" width="750" height="430"></canvas>
+<div class="btn-row" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-redo" id="btnRedo">重刷本讲</button></div>
+</div>
+<div id="qlist"></div>
+<div class="lesson-nav"><a href="13.html">‹ 考点13</a><a href="index.html">训练目录</a><span>考点15 制作中</span></div>
+<footer>化学不难学 · 高考选择题训练 · 每题 2 分 · 满分 40 分<br>题源：《学习与评价》2027版 + 历年高考原卷</footer>
+</div>
+<script>
+var QS = [{"id": 1, "src": "2026 广东 15", "ans": "B", "figs": ["figs/k14/q1.png"], "stem": "物质 A(g) 可同时转化为它的同分异构体 B(g) 和 C(g)，其反应过程的能量变化如图 a，某温度下，测得恒容密闭容器中各组分浓度 c 随时间 t 的变化如图 b，则下列说法正确的是", "opts": ["t<sub>1</sub> 时，体系中物质的质量：m(A)=2m(B)", "图 b 中数据满足关系：2z＞x+y", "体系中，反应 A(g)⇌C(g) 先达到平衡", "体系平衡后，升高温度，B 的体积分数增加"], "exp": "【题析】由图 a 可知，反应 A(g)⇌C(g) 的 ΔH＞0，活化能小，反应吸热且速率快；反应 A(g)⇌B(g) 的 ΔH＜0，活化能大，反应放热且速率慢，故相同条件下 A(g)⇌C(g) 反应速率更快。相同质量 B(g) 具有的能量比 C(g) 的低，B(g) 更稳定，平衡时转化过程最终会生成更多的 B，生成 B(g) 的量大于 C(g)。由图 b 可知，A(g) 浓度逐渐减小，B(g) 浓度逐渐增大，开始生成速率快的为 C(g)，C(g) 浓度先增大后减小。选项 A，设初始加入 A 的质量为 m<sub>0</sub>，浓度为 c<sub>0</sub>。A、B、C 互为同分异构体，摩尔质量相同，等质量时物质的量相等；由图 b 知 t<sub>1</sub> 时 B、C 浓度相等，则 c(A)+2c(B)=c<sub>0</sub>，恒容下气体体积不变，故 m(A)+2m(B)=m<sub>0</sub>，但 t<sub>1</sub> 时 A 的转化率未知，无法确定 m(A) 与 2m(B) 的关系，错误。选项 B，由图 b 知 t<sub>1</sub> 时 c(B)=c(C)，结合各物质浓度关系与守恒，可得 2z＞x+y，正确。选项 C，两个反应在同一体系中同时进行、同时达到平衡，不存在一个反应先单独达到平衡，错误。选项 D，由图 a 知 A(g)⇌B(g) 为放热反应，升高温度平衡逆向移动，B 的物质的量减小，气体总物质的量不变，故 B 的体积分数减小，错误。"}, {"id": 2, "src": "2025 广东 16", "ans": "C", "figs": ["figs/k14/q2.png"], "stem": "某理论研究认为：燃料电池（图 b）的电极Ⅰ和Ⅱ上所发生反应的催化机理示意图分别如图 a 和图 c，其中 O<sub>2</sub> 获得第一个电子的过程最慢。由此可知，理论上下列说法正确的是", "opts": ["负极反应的催化剂是 i", "图 a 中，i 到 ii 过程的活化能一定最低", "电池工作过程中，负极室的溶液质量保持不变", "相同时间内，电极Ⅰ和电极Ⅱ上的催化循环完成次数相同"], "exp": "【题析】由燃料电池的电极Ⅰ和Ⅱ上反应的催化机理示意图可知：图 a 中 O<sub>2</sub> 得到电子，发生还原反应，电极Ⅰ为燃料电池的正极，正极反应为 O<sub>2</sub>+4H<sup>+</sup>+4e<sup>−</sup>=2H<sub>2</sub>O，正极反应的催化剂是 i；图 c 中 H<sub>2</sub> 失去电子，发生氧化反应，电极Ⅱ为负极，负极反应为 H<sub>2</sub>−2e<sup>−</sup>=2H<sup>+</sup>。选项 A，负极反应的催化剂不是 i，错误。选项 B，图 c 中 i 到 ii 过程为 O<sub>2</sub> 获得第一个电子的过程，根据题意该过程最慢，则 i 到 ii 过程的活化能一定最高，错误。选项 C，负极室 H<sub>2</sub> 失去电子生成 H<sup>+</sup>，每转移 2 mol 电子，生成 2 mol H<sup>+</sup>，同时有 2 mol H<sup>+</sup> 经质子交换膜进入正极室，生成与迁移的 H<sup>+</sup> 数目相等，故负极室的溶液质量保持不变，正确。选项 D，O<sub>2</sub> 需要转移 4 个电子完成一次电极Ⅰ的催化循环，H<sub>2</sub> 需要转移 2 个电子完成一次电极Ⅱ的催化循环，故相同时间内两电极上的催化循环完成次数不相同，错误。"}, {"id": 3, "src": "2024 广东 15", "ans": "A", "stem": "对反应 S(g)⇌T(g)（I 为中间产物），相同条件下：①加入催化剂，反应达到平衡所需时间大幅缩短；②提高反应温度，c平(S)/c平(T) 增大，c平(S)/c平(I) 减小。基于以上事实，可能的反应历程示意图（—为无催化剂，···为有催化剂）为", "opts": ["<img src=\"figs/k14/q3a.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">", "<img src=\"figs/k14/q3b.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">", "<img src=\"figs/k14/q3c.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">", "<img src=\"figs/k14/q3d.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">"], "exp": "【题析】反应 S(g)⇌T(g)（I 为中间产物）涉及基元反应：反应 a．S(g)⇌I(g)　ΔH<sub>1</sub>；反应 b．I(g)⇌T(g)　ΔH<sub>2</sub>。催化剂能降低反应的活化能、加快反应速率，图中实线和虚线分别表示无催化剂和有催化剂的反应过程，加入催化剂后活化能显著降低、达到平衡时间大幅缩短。由①可知加入催化剂对慢反应（活化能大的反应）的加速效果显著，四个图像中反应 a（S⇌I）的活化能最大，为慢反应，加入催化剂后其活化能明显降低，符合这一特征。由②，提高温度 c平(S)/c平(T) 增大，说明升温平衡逆向移动，则 S⇌T 为放热反应（ΔH＜0），反应物 S 的总能量高于生成物 T 的总能量；提高温度 c平(S)/c平(I) 减小，说明升温使 S⇌I 平衡正向移动，则 S⇌I 为吸热反应（ΔH<sub>1</sub>＞0），反应物 S 的总能量低于中间产物 I 的总能量。综合可知 S 的能量高于 T、低于 I，且第一步活化能大、催化剂显著降低第一步活化能，符合的反应历程示意图为选项 A。"}, {"id": 4, "src": "2023 广东 15", "ans": "C", "figs": ["figs/k14/q4.png"], "stem": "催化剂Ⅰ和Ⅱ均能催化反应 R(g)⇌P(g)。反应历程（如图）中，M 为中间产物。其他条件相同时，下列说法不正确的是", "opts": ["使用Ⅰ和Ⅱ，反应历程都分 4 步进行", "反应达平衡时，升高温度，R 的浓度增大", "使用Ⅱ时，反应体系更快达到平衡", "使用Ⅰ时，反应过程中 M 所能达到的最高浓度更大"], "exp": "【题析】反应 R(g)⇌P(g)（M 为中间产物）涉及基元反应：①R(g)⇌M(g)　ΔH<sub>1</sub>；②M(g)⇌P(g)　ΔH<sub>2</sub>。选项 A，由图可知，催化剂Ⅰ和Ⅱ均出现四个峰，反应历程均产生 4 个过渡态，即都分 4 步进行，正确。选项 B，反应物 R 的总能量高于生成物 P 的总能量，该反应为放热反应（ΔH＜0），升高温度平衡逆向移动，R 的浓度增大，正确。选项 C，催化剂Ⅰ的反应最高活化能（第 3 步）小于催化剂Ⅱ的反应最高活化能（第 1 步），故使用催化剂Ⅰ时反应速率更快、体系更快达到平衡，错误。选项 D，使用催化剂Ⅰ时 R⇌M 为快反应、M⇌P 为慢反应，反应开始后短时间内生成较多 M，随后 M 缓慢下降，M 能达到的最高浓度较大；使用催化剂Ⅱ时 R⇌M 为慢反应、M⇌P 为快反应，生成的 M 会迅速转化为 P，M 的最高浓度较小，正确。"}, {"id": 5, "src": "2022 广东 13", "ans": "C", "figs": ["figs/k14/q5.png"], "stem": "恒容密闭容器中，BaSO<sub>4</sub>(s)+4H<sub>2</sub>(g)⇌BaS(s)+4H<sub>2</sub>O(g) 在不同温度下达平衡时，各组分的物质的量(n)如图所示。下列说法正确的是", "opts": ["该反应的 ΔH＜0", "a 为 n(H<sub>2</sub>O) 随温度的变化曲线", "向平衡体系中充入惰性气体，平衡不移动", "向平衡体系中加入 BaSO<sub>4</sub>，H<sub>2</sub> 的平衡转化率增大"], "exp": "【题析】选项 A，恒容密闭容器中反应前后气体分子数不变，有固体消耗和生成；由图知温度升高 H<sub>2</sub> 物质的量缓慢减小，说明升温平衡正向移动，该反应为吸热反应（ΔH＞0），错误。选项 B，升高温度平衡正向移动，H<sub>2</sub> 减少、H<sub>2</sub>O(g) 增多，二者变化量相同；200 ℃ 时 H<sub>2</sub> 起始为 4 mol，平衡时小于 1 mol，Δn(H<sub>2</sub>)＞3 mol，则平衡时 H<sub>2</sub>O 大于 3 mol，最上方曲线为 n(H<sub>2</sub>O) 随温度变化曲线；a 的变化量明显较 H<sub>2</sub> 小，则 a 为 n(BaS) 随温度变化曲线，错误。选项 C，向恒容密闭容器中充入惰性气体，H<sub>2</sub>(g)、H<sub>2</sub>O(g) 浓度均不变，平衡不移动，正确。选项 D，向平衡体系中加入 BaSO<sub>4</sub> 固体，固态反应物浓度不变，不影响平衡移动，H<sub>2</sub> 的平衡转化率不变，错误。"}, {"id": 6, "src": "2022 广东 15", "ans": "D", "figs": ["figs/k14/q6.png"], "stem": "在相同条件下研究催化剂Ⅰ、Ⅱ对反应 X→2Y 的影响，各物质浓度 c 随反应时间 t 的部分变化曲线如图，则下列说法正确的是", "opts": ["无催化剂时，反应不能进行", "与催化剂Ⅰ相比，Ⅱ使反应活化能更低", "a 曲线表示使用催化剂Ⅱ时 X 的浓度随 t 的变化", "使用催化剂Ⅰ时，0～2 min 内，v(X)=1.0 mol·L<sup>−1</sup>·min<sup>−1</sup>"], "exp": "【题析】由曲线变化趋势可知，a 曲线代表反应物 X，其余三条线代表不同催化剂作用下的生成物 Y；催化剂Ⅰ作用下 Y 生成速率最快，催化效果最好。选项 A，由图知无催化剂时生成物浓度也在增加，反应也能进行，错误。选项 B，催化剂Ⅰ作用下反应速率比Ⅱ快，则催化剂Ⅰ使反应活化能更低，错误。选项 C，0～2 min 由 a 曲线知 X 浓度减小 2.0 mol·L<sup>−1</sup>，据反应方程式 Y 浓度应增加 4.0 mol·L<sup>−1</sup>，符合催化剂Ⅰ条件下的数据，故 a 曲线表示使用催化剂Ⅰ时 X 的浓度变化，错误。选项 D，使用催化剂Ⅰ时，0～2 min 内 Δc(Y)=4.0 mol·L<sup>−1</sup>，则 v(Y)=4.0/2=2.0 mol·L<sup>−1</sup>·min<sup>−1</sup>，v(X)=½v(Y)=½×2.0=1.0 mol·L<sup>−1</sup>·min<sup>−1</sup>，正确。"}, {"id": 7, "src": "2021 广东 14", "ans": "D", "figs": ["figs/k14/q7.png"], "stem": "反应 X⇌2Z 经历两步：①X→Y；②Y→2Z。反应体系中 X、Y、Z 的浓度 c 随时间 t 的变化曲线如图所示。下列说法不正确的是", "opts": ["a 为 c(X) 随 t 的变化曲线", "t<sub>1</sub> 时，c(X)=c(Y)=c(Z)", "t<sub>2</sub> 时，Y 的消耗速率大于生成速率", "t<sub>3</sub> 后，c(Z)=2c<sub>0</sub>−c(Y)"], "exp": "【题析】选项 A，X 为反应物，浓度随反应进行而减小，a 曲线为 X；先增大后减小的曲线为中间产物 Y，始终增大的曲线为产物 Z，正确。选项 B，t<sub>1</sub> 时三线交点表示三种物质浓度相等，即 c(X)=c(Y)=c(Z)，正确。选项 C，先增大后减小的曲线为中间产物 Y，t<sub>2</sub> 时 Y 的曲线下降，说明 Y 的消耗速率大于生成速率，正确。选项 D，由图知 t<sub>3</sub> 后 c(Y) 趋于零，反应①几乎将 X 完全转化为 Y，则反应②中 Y 的起始浓度为 c<sub>0</sub>；反应②为 Y→2Z，设 t<sub>3</sub> 后 Y 的浓度变化为 x，则 c(Z)=2x，c(Y)=c<sub>0</sub>−x，可得 c(Z)=2c<sub>0</sub>−2c(Y)，而非 2c<sub>0</sub>−c(Y)，错误。"}, {"id": 8, "src": "2026 河南 13", "ans": "C", "figs": ["figs/k14/q8.png"], "stem": "向一恒容密闭容器中加入物质 M，发生基元反应：M(g)⇌N(g)，N(g)⇌Q(g)，温度为 T<sub>1</sub>、T<sub>2</sub>，各组分的物质的量浓度 c 与时间 t 的关系如图 1、图 2 所示。温度为 T<sub>1</sub> 时，M 的浓度随时间的变化关系为 lnc=lnc<sub>0</sub>−kt，k 为反应 M(g)⇌N(g) 的速率常数。下列说法正确的是", "opts": ["T<sub>1</sub>＞T<sub>2</sub>", "温度为 T<sub>1</sub> 时，M 反应一半需要的时间为 2ln2/k", "N 的浓度达到最大值时，N 的生成速率等于消耗速率", "加入某催化剂，仅使反应 N(g)⇌Q(g) 的速率增大，则 N 的浓度最大值将增大"], "exp": "【题析】选项 A，温度越高反应速率越快，相同时间内反应物消耗越多；对比两图，T<sub>2</sub> 温度下相同时间内 M 浓度下降更多，速率更快，故 T<sub>2</sub>＞T<sub>1</sub>，错误。选项 B，温度为 T<sub>1</sub> 时，M 反应一半时 c=½c<sub>0</sub>，代入 lnc=lnc<sub>0</sub>−kt 得 ln(c<sub>0</sub>/2)=lnc<sub>0</sub>−kt，解得 t=ln2/k，错误。选项 C，N 为中间产物，先生成后消耗，浓度先增大后减小；浓度达到最大值之前生成速率大于消耗速率，浓度最大时生成速率等于消耗速率，此后生成速率小于消耗速率，正确。选项 D，催化剂仅改变反应速率、不改变浓度变化趋势；M 浓度一定时，若仅使反应 N⇌Q 的速率增大，N 的生成速率不变而消耗速率增大，则 N 的浓度最大值将减小，错误。"}, {"id": 9, "src": "2024 安徽 10", "ans": "B", "figs": ["figs/k14/q9.png"], "stem": "某温度下，在密闭容器中充入一定量的 X(g)，发生反应：X(g)⇌Y(g)　ΔH<sub>1</sub>＜0，Y(g)⇌Z(g)　ΔH<sub>2</sub>＜0，测得各气体浓度与反应时间的关系如图所示。下列反应进程示意图符合题意的是", "opts": ["<img src=\"figs/k14/q9a.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">", "<img src=\"figs/k14/q9b.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">", "<img src=\"figs/k14/q9c.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">", "<img src=\"figs/k14/q9d.png\" alt=\"反应历程图\" style=\"height:4.2em;vertical-align:middle\">"], "exp": "【题析】由题意：X(g)⇌Y(g)　ΔH<sub>1</sub>＜0，Y(g)⇌Z(g)　ΔH<sub>2</sub>＜0，两个反应均为放热反应，故能量 X＞Y＞Z。由浓度—时间图可知，反应初期随时间推移 X 浓度快速减小，Y、Z 浓度增大且 Y 增大更快；随着反应进行 X、Y 浓度逐渐减小，Z 浓度继续增大，说明 X⇌Y 速率较慢（慢反应）、Y⇌Z 速率较快（快反应），故 X⇌Y 的活化能较大，Y⇌Z 的活化能较小。能量关系为 X＞Y＞Z 且第一步活化能大于第二步活化能的反应进程示意图为选项 B。"}, {"id": 10, "src": "2025 安徽 11", "ans": "C", "figs": ["figs/k14/q10.png"], "stem": "恒温恒压密闭容器中，t=0 时加入 A(g)，各组分物质的量分数 x 随反应时间 t 变化的曲线如图（反应速率 v=kx，k 为反应速率常数）。下列说法错误的是", "opts": ["该条件下 x(N,平衡)/x(M,平衡)=k<sub>1</sub>k<sub>2</sub>/(k₋<sub>1</sub>k₋<sub>2</sub>)", "0～t<sub>1</sub> 时间段，生成 M 和 N 的平均反应速率相等", "若加入催化剂，k<sub>1</sub> 增大，k<sub>2</sub> 不变，则 x<sub>1</sub> 和 x(N,平衡) 均变大", "若 A(g)→M(g) 和 A(g)→N(g) 均为放热反应，升高温度则 x(A,平衡) 变大"], "exp": "【题析】选项 A，对反应 A(g)⇌M(g)，平衡时正逆速率相等：k<sub>1</sub>x(A,平衡)=k₋<sub>1</sub>x(M,平衡)；对反应 A(g)⇌N(g)，平衡时 k<sub>2</sub>x(A,平衡)=k₋<sub>2</sub>x(N,平衡)。两式联立得 x(N,平衡)/x(M,平衡)=k<sub>1</sub>k<sub>2</sub>/(k₋<sub>1</sub>k₋<sub>2</sub>)，正确。选项 B，0～t<sub>1</sub> 时间段生成 M 和 N 的物质的量相同，则二者平均反应速率相等，正确。选项 C，平衡常数只受温度影响，温度不变则平衡常数不变；加入催化剂使 k<sub>1</sub> 增大、k<sub>2</sub> 不变，一定时间内更多 A 转化为 M，x<sub>1</sub> 变大，但催化剂不影响平衡移动，x(N,平衡) 不变，错误。选项 D，若 A→M 和 A→N 均为放热反应，升高温度两反应均逆向移动，A 的物质的量分数变大，即 x(A,平衡) 变大，正确。"}, {"id": 11, "src": "2024 黑龙江 10", "ans": "A", "figs": ["figs/k14/q11.png"], "stem": "异山梨醇是一种由生物质制备的高附加值化学品，150 ℃ 时其制备过程及相关物质浓度随时间变化如图所示，15 h 后异山梨醇浓度不再变化。下列说法错误的是", "opts": ["3 h 时，反应②正、逆反应速率相等", "该温度下的平衡常数：①＞②", "0～3 h 平均速率 v(异山梨醇)=0.014 mol·kg<sup>−1</sup>·h<sup>−1</sup>", "反应②加入催化剂不改变其平衡转化率"], "exp": "【题析】选项 A，由图知 3 h 后异山梨醇浓度继续增大，15 h 后才不再变化，故 3 h 时反应②未达到平衡，正、逆反应速率不相等，错误。选项 B，15 h 后各物质浓度不再变化且山梨醇转化完全，反应②中 1,4-失水山梨醇浓度不为 0、仍有剩余，即反应②正向进行程度小于反应①，故平衡常数①＞②，正确。选项 C，异山梨醇在 0～3 h 浓度变化量为 0.042 mol·kg<sup>−1</sup>，平均速率 v=0.042/3=0.014 mol·kg<sup>−1</sup>·h<sup>−1</sup>，正确。选项 D，催化剂只能改变化学反应速率，不能改变平衡转化率，正确。"}, {"id": 12, "src": "2024 海南 7", "ans": "D", "figs": ["figs/k14/q12.png"], "stem": "已知 298 K、101 kPa 时，CO<sub>2</sub>(g)+3H<sub>2</sub>(g)⇌CH<sub>3</sub>OH(g)+H<sub>2</sub>O(g)　ΔH=−49.5 kJ·mol<sup>−1</sup>。该反应在密闭的刚性容器中分别于 T<sub>1</sub>、T<sub>2</sub> 温度下进行，CO<sub>2</sub> 的初始浓度为 0.40 mol·L<sup>−1</sup>，c(CO<sub>2</sub>)～t 关系如图所示。下列说法错误的是", "opts": ["T<sub>1</sub>＞T<sub>2</sub>", "T<sub>1</sub> 下反应达到平衡时 c(CH<sub>3</sub>OH)=0.15 mol·L<sup>−1</sup>", "使用催化剂 1 的反应活化能比催化剂 2 的大", "使用催化剂 2 和催化剂 3 的反应历程相同"], "exp": "【题析】选项 A，反应 ΔH＜0，升温平衡逆向移动，反应物 c(CO<sub>2</sub>) 增大；由图知平衡时 CO<sub>2</sub> 浓度 T<sub>1</sub> 下比 T<sub>2</sub> 下大，故 T<sub>1</sub>＞T<sub>2</sub>，正确。选项 B，T<sub>1</sub> 下平衡时 c(CO<sub>2</sub>)=0.25 mol·L<sup>−1</sup>，Δc(CO<sub>2</sub>)=0.40−0.25=0.15 mol·L<sup>−1</sup>，由变化量之比等于化学计量数之比，c(CH<sub>3</sub>OH)=0.15 mol·L<sup>−1</sup>，正确。选项 C，T<sub>1</sub> 时使用催化剂 2 先达到平衡，说明催化剂 2 条件下速率大于催化剂 1，则催化剂 1 的活化能比催化剂 2 的大，正确。选项 D，催化剂 2 和催化剂 3 达到平衡的时间不同、速率不同（且温度不同），说明二者活化能不同，反应历程不同，错误。"}, {"id": 13, "src": "2025 山东 10", "ans": "D", "figs": ["figs/k14/q13.png"], "stem": "在恒容密闭容器中，Na<sub>2</sub>SiF<sub>6</sub>(s) 热解反应所得固相产物和气相产物均为含氟化合物。平衡体系中各组分物质的量随温度的变化关系（实线部分）如图所示。已知：T<sub>2</sub> 温度时，Na<sub>2</sub>SiF<sub>6</sub>(s) 完全分解；体系中气相产物在 T<sub>1</sub>、T<sub>3</sub> 温度时的分压分别为 p<sub>1</sub>、p<sub>3</sub>。下列说法错误的是", "opts": ["a 线所示物种为固相产物", "T<sub>1</sub> 温度时，向容器中通入 N<sub>2</sub>，气相产物分压仍为 p<sub>1</sub>", "p<sub>3</sub> 小于 T<sub>3</sub> 温度时热解反应的平衡常数 Kp", "T<sub>1</sub> 温度时，向容器中加入 b 线所示物种，重新达平衡时逆反应速率增大"], "exp": "【题析】T<sub>2</sub> 时 Na<sub>2</sub>SiF<sub>6</sub>(s) 完全分解，由图知分解产生两种物质的量分别为 2 mol 和 1 mol，则热解反应为 Na<sub>2</sub>SiF<sub>6</sub>(s)⇌2NaF(s)+SiF<sub>4</sub>(g)，a 线代表 NaF(s)，b 线代表 SiF<sub>4</sub>(g)，c 线代表 Na<sub>2</sub>SiF<sub>6</sub>(s)。选项 A，a 线所示 NaF 为固相产物，正确。选项 B，T<sub>1</sub> 时通入 N<sub>2</sub>，N<sub>2</sub> 不参与反应且恒容下各组分浓度不变，平衡不移动，气相产物分压仍为 p<sub>1</sub>，正确。选项 C，升温时 Na<sub>2</sub>SiF<sub>6</sub> 减少、NaF 与 SiF<sub>4</sub> 增多，平衡正向移动，为吸热反应，Kp=p(SiF<sub>4</sub>) 随温度升高而增大，故 p<sub>3</sub> 小于 T<sub>3</sub> 温度时的 Kp，正确。选项 D，T<sub>1</sub> 时加入 b 线所示 SiF<sub>4</sub>(g)，瞬间其分压增大、平衡逆向移动，但温度不变 Kp 不变，重新达平衡时 T<sub>1</sub> 温度下 SiF<sub>4</sub> 分压仍为 p<sub>1</sub>、浓度不变，逆反应速率不变，错误。"}, {"id": 14, "src": "2023 湖南 13", "ans": "B", "figs": ["figs/k14/q14.png"], "stem": "向一恒容密闭容器中加入 1 mol CH<sub>4</sub> 和一定量的 H<sub>2</sub>O，发生反应：CH<sub>4</sub>(g)+H<sub>2</sub>O(g)⇌CO(g)+3H<sub>2</sub>(g)。CH<sub>4</sub> 的平衡转化率按不同投料比 x=n(CH<sub>4</sub>)/n(H<sub>2</sub>O) 随温度的变化曲线如图所示。下列说法错误的是", "opts": ["x<sub>1</sub>＜x<sub>2</sub>", "反应速率：v(正)＜v(逆)", "点 a、b、c 对应的平衡常数：Ka＜Kb=Kc", "反应温度为 T<sub>1</sub> K，当容器内压强不变时，反应达到平衡状态"], "exp": "【题析】投料比 x 不变时，升温 CH<sub>4</sub> 平衡转化率增大，该反应为吸热反应；相同温度下 x=n(CH<sub>4</sub>)/n(H<sub>2</sub>O) 减小，相当于 CH<sub>4</sub> 投料不变而增大 H<sub>2</sub>O 投料，会增大 CH<sub>4</sub> 的平衡转化率，故 x 越小 CH<sub>4</sub> 平衡转化率越大。选项 A，a 点平衡转化率大于 c 点，b 点投料比小于 c 点，故 x<sub>1</sub>＜x<sub>2</sub>，正确。选项 B，b、c 均为平衡点且温度相同，b 点投料比小、投入 n(H<sub>2</sub>O) 更多，反应物浓度更大，平衡正向移动使 CH<sub>4</sub> 转化率增大、生成物浓度增大，则相同温度下 v(正)＞v(逆)，错误。选项 C，投料比不变时升温 CH<sub>4</sub> 转化率增大，说明正反应吸热，升温平衡正向移动、K 增大；温度相同 K 不变，故 Ka＜Kb=Kc，正确。选项 D，该反应为气体分子数增大的反应，反应进行时压强改变，温度一定时压强不变即达平衡，正确。"}, {"id": 15, "src": "2023 广州调研 13", "ans": "C", "figs": ["figs/k14/q15.png"], "stem": "向密闭容器中充入 S<sub>2</sub>Cl<sub>2</sub>、Cl<sub>2</sub> 和 SCl<sub>2</sub>，发生反应 S<sub>2</sub>Cl<sub>2</sub>(g)+Cl<sub>2</sub>(g)⇌2SCl<sub>2</sub>(g)，S<sub>2</sub>Cl<sub>2</sub> 与 SCl<sub>2</sub> 的初始消耗速率(v)与温度(T)的关系如图所示（图中 A、B 点处于平衡状态），下列说法不正确的是", "opts": ["a 为 v(SCl<sub>2</sub>) 随温度的变化曲线", "该反应的 ΔH＜0", "200 ℃ 下反应一段时间，S<sub>2</sub>Cl<sub>2</sub> 的物质的量增多", "反应达到平衡后向体系中充入氦气，平衡不移动"], "exp": "【题析】选项 A，A、B 点处于平衡状态，此时 v(正)∶v(逆)=2∶1，平衡时不同物质的正逆反应速率之比等于化学计量数之比；由 S<sub>2</sub>Cl<sub>2</sub>(g)+Cl<sub>2</sub>(g)⇌2SCl<sub>2</sub>(g) 可知 A 点代表 SCl<sub>2</sub> 初始消耗速率，a 为 v(SCl<sub>2</sub>) 随温度变化曲线，正确。选项 B，升高温度 SCl<sub>2</sub> 初始消耗速率大于 S<sub>2</sub>Cl<sub>2</sub> 初始消耗速率的 2 倍，即 v(SCl<sub>2</sub>)＞2v(S<sub>2</sub>Cl<sub>2</sub>)，平衡逆向移动，正反应放热（ΔH＜0），正确。选项 C，200 ℃ 下 v(SCl<sub>2</sub>)∶v(S<sub>2</sub>Cl<sub>2</sub>)＜2∶1，平衡向正反应方向进行，S<sub>2</sub>Cl<sub>2</sub> 的物质的量减小，错误。选项 D，密闭体系中平衡后充入氦气，各组分浓度不变，平衡不移动，正确。"}, {"id": 16, "src": "2023 广州二测 12", "ans": "B", "figs": ["figs/k14/q16.png"], "stem": "汽车尾气中 NO 产生的反应为 N<sub>2</sub>(g)+O<sub>2</sub>(g)⇌2NO(g)　ΔH。一定条件下，将等物质的量的 N<sub>2</sub> 和 O<sub>2</sub> 在恒容密闭容器中反应，曲线 a 表示该反应在温度 T 下 c(N<sub>2</sub>) 随时间(t)的变化，曲线 b 表示该反应在某一起始条件改变时 c(N<sub>2</sub>) 随时间(t)的变化。下列叙述不正确的是", "opts": ["温度 T 下，0～40 s 内 v(N<sub>2</sub>)=(c<sub>0</sub>−c<sub>1</sub>)/40 mol·L<sup>−1</sup>·s<sup>−1</sup>", "M 点 v(逆,N<sub>2</sub>) 小于 N 点 v(逆,N<sub>2</sub>)", "曲线 b 对应的条件改变可能是充入氧气", "若曲线 b 对应的条件改变是升高温度，则 ΔH＞0"], "exp": "【题析】选项 A，温度 T 下 0～40 s 内 v(N<sub>2</sub>)=(c<sub>0</sub>−c<sub>1</sub>)/40 mol·L<sup>−1</sup>·s<sup>−1</sup>，正确。选项 B，M、N 点时反应未达平衡，反应仍不断正向进行，M 点反应物浓度大于 N 点，则 M 点 v(正,N<sub>2</sub>) 大于 N 点 v(正,N<sub>2</sub>)；在 N 点 v(正,N<sub>2</sub>) 大于 v(逆,N<sub>2</sub>)，则 M 点 v(正,N<sub>2</sub>) 大于 N 点 v(逆,N<sub>2</sub>)，故不能得出 M 点 v(逆,N<sub>2</sub>) 小于 N 点 v(逆,N<sub>2</sub>)，错误。选项 C，充入氧气使反应速率加快（起始斜率大）且平衡正向移动、c(N<sub>2</sub>) 减小，与曲线 b 相符，正确。选项 D，若曲线 b 对应升高温度，反应速率增大且平衡正向移动，则正反应吸热（ΔH＞0），正确。"}, {"id": 17, "src": "2025 广州调研 15", "ans": "D", "figs": ["figs/k14/q17.png"], "stem": "恒压条件下，Ni(s) 和 CO(g) 在密闭容器中发生反应 Ni(s)+4CO(g)⇌Ni(CO)<sub>4</sub>(g)，反应达到平衡时，Ni(CO)<sub>4</sub> 体积分数 x 与温度的关系如图所示。下列说法正确的是", "opts": ["p<sub>1</sub>＞p<sub>2</sub>＞p<sub>3</sub>", "该反应的 ΔH＞0", "M 点和 N 点平衡常数 K：N＞M", "100 ℃、p<sub>1</sub> 时，CO 的转化率为 80%"], "exp": "【题析】选项 A，该反应是气体分子数减少的反应，增大压强平衡正向移动，Ni(CO)<sub>4</sub> 体积分数增大；相同温度下体积分数随压强增大而增大，故 p<sub>3</sub>＞p<sub>2</sub>＞p<sub>1</sub>，错误。选项 B，相同压强下升温时 Ni(CO)<sub>4</sub> 体积分数降低，说明升温平衡逆向移动，正反应放热（ΔH＜0），错误。选项 C，平衡常数 K 只受温度影响，M、N 两点温度相同，K 相同，错误。选项 D，100 ℃、p<sub>1</sub> 时 Ni(CO)<sub>4</sub> 体积分数为 50%，即 CO 体积分数也为 50%，二者物质的量相等；设初始 CO 为 a mol、转化 4x mol，平衡时 CO 为 (a−4x) mol、Ni(CO)<sub>4</sub> 为 x mol，由 a−4x=x 得 a=5x，CO 转化率=4x/5x×100%=80%，正确。"}, {"id": 18, "src": "2025 广州一模 15", "ans": "C", "figs": ["figs/k14/q18.png"], "stem": "某温度下，在密闭容器中充入一定量的 R(g)，发生反应 R(g)⇌T(g)，该反应经历两步：①R(g)⇌I(g)，②I(g)⇌T(g)，催化剂 M 能催化第②步反应，反应历程如图所示。下列说法不正确的是", "opts": ["升高温度，c平(T)/c平(I) 减小，且 c平(T)/c平(R) 减小", "不使用催化剂 M，反应过程中 c(I) 先增大后减小", "使用催化剂 M，反应①的 ΔH 不变，反应②的 ΔH 减小", "使用催化剂 M，反应①速率不变，反应②速率加快"], "exp": "【题析】由图知 R 的能量高于 T，反应 R(g)⇌T(g) 为放热反应（ΔH＜0）；R 的能量低于 I，反应① R⇌I 为吸热反应（ΔH＞0）；I 的能量高于 T，反应② I⇌T 为放热反应（ΔH＜0）。选项 A，升温平衡逆向移动，c平(T) 减小、c平(I) 增大，故 c平(T)/c平(I) 减小；反应 R⇌T 放热，升温逆向移动，c平(T) 减小、c平(R) 增大，故 c平(T)/c平(R) 减小，正确。选项 B，不使用催化剂 M 时反应②活化能大于反应①，反应①为快反应、②为慢反应，起始阶段 I 的生成速率大于消耗速率，c(I) 增大；随反应进行 R 浓度减小，I 的生成速率减小、消耗速率增大，当生成速率小于消耗速率时 c(I) 减小，正确。选项 C，催化剂只改变活化能、不改变焓变，使用催化剂 M 时反应①和②的 ΔH 均不变，错误。选项 D，催化剂 M 只降低反应②的活化能、使反应②加快，不改变反应①的活化能，反应①速率不变，正确。"}, {"id": 19, "src": "2026 广州一模 16", "ans": "D", "figs": ["figs/k14/q19.png"], "stem": "在钯(Pd)催化下高效合成乙酸乙烯酯(CH<sub>2</sub>=CHOOCCH<sub>3</sub>)的过程示意图如下。下列说法正确的是", "opts": ["反应①中氧化剂和还原剂的物质的量之比为 2∶1", "反应②中有 C—O 键的断裂和形成", "生成 CH<sub>2</sub>=CHOOCCH<sub>3</sub>，总反应的原子利用率为 100%", "每消耗 1 mol O<sub>2</sub> 理论上可生成 2 mol CH<sub>2</sub>=CHOOCCH<sub>3</sub>"], "exp": "【题析】合成乙酸乙烯酯分两步进行：反应①中 O<sub>2</sub> 在 H<sup>+</sup> 作用下被还原为 H<sub>2</sub>O，同时 Pd<sup>0</sup> 被氧化为 Pd<sup>2+</sup>，半反应为 O<sub>2</sub>+4e<sup>−</sup>+4H<sup>+</sup>=2H<sub>2</sub>O；反应②中 Pd<sup>2+</sup> 被还原为 Pd<sup>0</sup>，CH<sub>3</sub>COOH 与 CH<sub>2</sub>=CH<sub>2</sub> 被氧化为 CH<sub>2</sub>=CHOOCCH<sub>3</sub> 与 H<sup>+</sup>，半反应为 CH<sub>3</sub>COOH+CH<sub>2</sub>=CH<sub>2</sub>−2e<sup>−</sup>=CH<sub>2</sub>=CHOOCCH<sub>3</sub>+2H<sup>+</sup>。总反应为 2CH<sub>3</sub>COOH+CH<sub>2</sub>=CH<sub>2</sub>+O<sub>2</sub>→2CH<sub>2</sub>=CHOOCCH<sub>3</sub>+2H<sub>2</sub>O。选项 A，反应①中氧化剂 O<sub>2</sub> 化合价降 4，还原剂 Pd<sup>0</sup> 化合价升 2，氧化剂与还原剂之比为 1∶2，错误。选项 B，反应②中 CH<sub>3</sub>COOH 断裂 O—H 键、CH<sub>2</sub>=CH<sub>2</sub> 断裂 C—H 键，形成 C—O 键，无 C—O 键的断裂，错误。选项 C，总反应除生成 CH<sub>2</sub>=CHOOCCH<sub>3</sub> 外还生成 H<sub>2</sub>O，原子利用率不为 100%，错误。选项 D，由总反应知每消耗 1 mol O<sub>2</sub> 理论上生成 2 mol CH<sub>2</sub>=CHOOCCH<sub>3</sub>，正确。"}, {"id": 20, "src": "2026 广州二测 16", "ans": "C", "figs": ["figs/k14/q20.png"], "stem": "在催化剂的作用下，一种将工业副产物 HCl 气体转化为 Cl<sub>2</sub> 的反应历程如下，X、Y、Z、W 中有两种极性分子和两种非极性分子。下列说法错误的是", "opts": ["Z 为 O<sub>2</sub>，W 为 H<sub>2</sub>O", "总反应中氧化剂和还原剂的物质的量之比为 1∶4", "上述反应①、②、③、④、⑤中有 3 个氧化还原反应", "CuO 可作该反应的催化剂，通过降低活化能加快反应速率"], "exp": "【题析】选项 A，由反应⑤ CuCl 与 Z 生成 Cu<sub>2</sub>OCl<sub>2</sub> 知 Z 为 O<sub>2</sub>；由反应② Cu(OH)Cl 分解生成 Cu<sub>2</sub>OCl<sub>2</sub> 和 W 知 W 为 H<sub>2</sub>O，正确。选项 B，由反应① CuO 与 Y 生成 Cu(OH)Cl 知 Y 为 HCl；由反应④ CuCl<sub>2</sub> 分解生成 CuCl 和 X 知 X 为 Cl<sub>2</sub>，总反应为 4HCl+O<sub>2</sub>=2Cl<sub>2</sub>+2H<sub>2</sub>O，O 元素由 0 价降为 −2 价、O<sub>2</sub> 作氧化剂，Cl 元素由 −1 价升为 0 价、HCl 作还原剂，氧化剂与还原剂物质的量之比为 1∶4，正确。选项 C，反应④ 2CuCl<sub>2</sub>=2CuCl+Cl<sub>2</sub> 和反应⑤ 4CuCl+O<sub>2</sub>=2Cu<sub>2</sub>OCl<sub>2</sub> 有元素化合价变化，是氧化还原反应；反应①、②、③ 均无元素化合价变化，不是氧化还原反应，故只有 2 个氧化还原反应，错误。选项 D，反应①先消耗 CuO、反应⑤再生成 CuO，CuO 是该反应的催化剂，通过降低活化能加快反应速率，正确。"}];
+var KEY = 'xz14_state', TKEY = 'xz_theme', NKEY = 'xz_name', LKEY = 'xz14_lock';
+var N = QS.length, PER = 2;
+var st = {a:{}, score:0, ok:0, elapsed:0, started:false};
+function $(id){return document.getElementById(id)}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.a)st=s}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+s%60).slice(-2)}
+function renderStats(){$('sProg').textContent=Object.keys(st.a).length;$('sScore').textContent=st.score;$('sOk').textContent=st.ok;$('sTime').textContent=fmt(st.elapsed)}
+function build(){
+  var box=$('qlist');
+  QS.forEach(function(q,i){
+    var d=document.createElement('div');d.className='qcard';d.id='qc'+q.id;
+    var h='<div class="qmeta"><span class="qno">第 '+(i+1)+' 题</span><span class="qpt">'+PER+' 分</span><span class="qsrc">'+q.src+'</span><span class="qmark" id="qm'+q.id+'"></span></div>';
+    h+='<div class="stem">'+q.stem+'</div>';
+    if(q.figs){q.figs.forEach(function(f){h+='<div class="qfig"><img src="'+f+'" alt="题图"></div>'})}
+    h+='<div id="op'+q.id+'"></div>';
+    h+='<button class="submit" id="sb'+q.id+'" disabled>提交本题</button>';
+    h+='<div class="verdict" id="vd'+q.id+'"></div>';
+    h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
+    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'生成本讲成绩卡 →')+'</button>';
+    d.innerHTML=h;box.appendChild(d);
+    var picked=null,done=!!st.a[q.id];
+    var ob=$('op'+q.id);
+    q.opts.forEach(function(o,j){
+      var L='ABCD'[j],b=document.createElement('button');
+      b.className='opt';b.innerHTML='<span class="ol">'+L+'．</span><span>'+o+'</span>';
+      b.onclick=function(){
+        if(done)return;
+        if(!st.started){st.started=true}
+        picked=L;
+        Array.prototype.forEach.call(ob.children,function(c){c.classList.remove('sel')});
+        b.classList.add('sel');
+        $('sb'+q.id).disabled=false;
+      };
+      ob.appendChild(b);
+    });
+    if(done){
+      var pick=st.a[q.id],ok=pick===q.ans;
+      paintResult(q,ob,pick,ok);
+      $('ex'+q.id).style.display='block';
+      $('sb'+q.id).style.display='none';
+      $('nx'+q.id).style.display='block';
+      $('qm'+q.id).textContent=ok?'✓':'✗';
+      if(i===N-1)showResult();
+    }
+    $('sb'+q.id).onclick=function(){
+      if(picked===null||done)return;
+      done=true;
+      var ok=picked===q.ans;
+      st.a[q.id]=picked;
+      if(ok){st.score+=PER;st.ok++}
+      paintResult(q,ob,picked,ok);
+      var v=$('vd'+q.id);
+      v.style.display='block';
+      v.style.background=ok?'var(--ok-bg)':'var(--bad-bg)';
+      v.style.color=ok?'var(--ok-ink)':'var(--bad-ink)';
+      v.textContent=ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans;
+      $('qm'+q.id).textContent=ok?'✓':'✗';
+      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+      $('ex'+q.id).style.display='block';
+      $('sb'+q.id).style.display='none';
+      $('nx'+q.id).style.display='block';
+      renderStats();save();
+      if(Object.keys(st.a).length===N)showResult();
+    };
+    $('nx'+q.id).onclick=function(){
+      if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
+      else{$('result').scrollIntoView({behavior:'smooth',block:'center'})}
+    };
+  });
+}
+function paintResult(q,ob,pick,ok){
+  Array.prototype.forEach.call(ob.children,function(c,j){
+    var L='ABCD'[j];c.disabled=true;
+    if(L===q.ans)c.classList.add('rgt');
+    else if(L===pick)c.classList.add('wrg');
+  });
+}
+var timer=setInterval(function(){
+  if(st.started&&Object.keys(st.a).length<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
+},1000);
+function showResult(){
+  $('result').style.display='block';
+  var locked=localStorage.getItem(LKEY);
+  if(locked){
+    lockCard(locked);
+  }else{
+    $('stuName').value=localStorage.getItem(NKEY)||'';
+    $('genZone').style.display='block';
+  }
+}
+function lockCard(name){
+  $('genZone').style.display='none';
+  $('doneZone').style.display='flex';
+  $('stuName').value=name;
+  drawCard();
+  $('canvas').style.display='block';
+}
+$('btnGen').onclick=function(){
+  var name=$('stuName').value.trim();
+  if(!name){alert('请先输入姓名');return}
+  try{localStorage.setItem(LKEY,name);localStorage.setItem(NKEY,name)}catch(e){}
+  lockCard(name);
+};
+function drawCard(){
+  var c=$('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+  var g=x.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#0f172a');g.addColorStop(.55,'#152743');g.addColorStop(1,'#1b1140');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.fillStyle='rgba(34,211,238,.08)';x.beginPath();x.arc(W-60,60,150,0,7);x.fill();
+  x.fillStyle='rgba(167,139,250,.08)';x.beginPath();x.arc(50,H-40,130,0,7);x.fill();
+  x.fillStyle='#67e8f9';x.font='500 22px sans-serif';x.fillText('化学不难学 · 高考选择题训练',40,52);
+  x.fillStyle='#8ea0b5';x.font='16px sans-serif';x.fillText('考点14 化学反应历程与化学平衡 · 每题 '+PER+' 分',40,84);
+  var name=$('stuName').value.trim()||'同学';
+  x.fillStyle='#e2e8f0';x.font='500 26px sans-serif';x.fillText(name,40,150);
+  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(st.score,40,255);
+  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(st.score).length*52+14,250);
+  var acc=Math.round(st.ok/N*100);
+  var cells=[['正确',st.ok+' / '+N+' 题'],['正确率',acc+'%'],['用时',fmt(st.elapsed)]];
+  cells.forEach(function(cell,i){
+    var cx=40+i*228;
+    x.fillStyle='#1e293b';x.fillRect(cx,290,208,84);
+    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,320);
+    x.fillStyle='#e2e8f0';x.font='500 24px sans-serif';x.fillText(cell[1],cx+18,356);
+  });
+  var d=new Date();
+  x.fillStyle='#5b6b7f';x.font='14px sans-serif';
+  x.fillText('日期 '+d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),40,410);
+}
+$('stuName').addEventListener('input',function(){try{localStorage.setItem(NKEY,this.value)}catch(e){}});
+$('btnSave').onclick=function(){
+  var a=document.createElement('a');
+  a.download='选择题训练_考点14_'+(($('stuName').value.trim()||'成绩'))+'.png';
+  a.href=$('canvas').toDataURL('image/png');a.click();
+};
+$('btnRedo').onclick=function(){
+  if(confirm('确定清空本讲答题记录和成绩卡重新刷吗？')){localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload()}
+};
+$('resetBtn').onclick=function(){
+  var n=Object.keys(st.a).length;
+  if(n===0){alert('本讲还没有答题记录');return}
+  if(confirm('确定清空本讲 '+n+' 题记录重新做吗？')){
+    localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload();
+  }
+};
+function applyTheme(t){
+  document.documentElement.dataset.theme=t;
+  $('themeBtn').textContent=t==='dark'?'☀':'🌙';
+  try{localStorage.setItem(TKEY,t)}catch(e){}
+}
+$('themeBtn').onclick=function(){
+  applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+};
+applyTheme((function(){try{return localStorage.getItem(TKEY)||'dark'}catch(e){return 'dark'}})());
+load();build();renderStats();
+</script>
+</body>
+</html>
