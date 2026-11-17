@@ -75,6 +75,17 @@ sub,sup{font-size:.72em}
 .rxn{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 2px}
 .rxn i{font-style:normal;font-size:.62em;line-height:1.15;white-space:nowrap}
 .rxn em{font-style:normal;line-height:1;font-size:.95em}
+.helprow{display:flex;gap:8px;margin-top:8px}
+.helprow button{flex:1;border-radius:10px;padding:9px 6px;font-size:12.5px;cursor:pointer;background:transparent;line-height:1.4}
+.jade{color:var(--accent);border:1px solid var(--accent-border)}
+.rock{color:#f59e0b;border:1px dashed #b45309}
+.helpbox{margin-top:10px;border-radius:10px;padding:12px;display:none}
+.jadebox{background:var(--accent-soft);border:1px solid var(--accent-border)}
+.rockbox{background:rgba(245,158,11,.09);border:1px solid #b45309}
+.helpbox .ht{font-size:12px;font-weight:500;margin-bottom:6px}
+.jadebox .ht{color:var(--accent)}
+.rockbox .ht{color:#f59e0b}
+.helpbox p{font-size:12.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -95,7 +106,7 @@ sub,sup{font-size:.72em}
 <div id="result" class="result">
 <h3>成绩卡 · 当前进度快照</h3>
 <div class="name-row"><input id="stuName" placeholder="输入姓名（可随时修改）"><button class="btn-gen" id="btnGen" style="width:120px;flex-shrink:0;">生成成绩卡</button></div>
-<p class="hint">每次生成都是独立快照，改姓名或继续做题后可重新生成。跳过和未做的题不计入。</p>
+<p class="hint">每次生成都是独立快照，改姓名或继续做题后可重新生成。跳过和未做的题不计入；问小玉不扣分，问过小岩的题计 0 分。</p>
 <canvas id="canvas" width="750" height="560"></canvas>
 <div class="btn-row2" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-close" id="btnClose">继续做题</button></div>
 </div>
@@ -107,14 +118,14 @@ sub,sup{font-size:.72em}
 var QS = [{"id": 1, "src": "2024 广东 6", "ans": "C", "figs": ["figs/k5/q1.png"], "stem": "提纯 2.0 g 苯甲酸粗品（含少量 NaCl 和泥沙）的过程如下。其中，操作 X 为", "opts": ["加热蒸馏", "加水稀释", "冷却结晶", "萃取分液"], "exp": "苯甲酸粗品（含少量 NaCl 和泥沙）加水加热进行溶解，得到浊液，趁热过滤，除去泥沙，滤液中含有少量 NaCl，由于苯甲酸的溶解度受温度影响大，而 NaCl 的溶解度受温度影响小，可通过冷却结晶的方式进行除杂，得到苯甲酸晶体，过滤后对晶体进行洗涤，得到苯甲酸。因此，操作 X 为冷却结晶，故选 C。"}, {"id": 2, "src": "2022 广东 4", "ans": "A", "stem": "实验室进行粗盐提纯时，需除去 Ca<sup>2+</sup>、Mg<sup>2+</sup> 和 SO<sub>4</sub><sup>2−</sup>，所用试剂包括 BaCl<sub>2</sub> 以及", "opts": ["Na<sub>2</sub>CO<sub>3</sub>、NaOH、HCl", "Na<sub>2</sub>CO<sub>3</sub>、HCl、KOH", "K<sub>2</sub>CO<sub>3</sub>、HNO<sub>3</sub>、NaOH", "Na<sub>2</sub>CO<sub>3</sub>、NaOH、HNO<sub>3</sub>"], "exp": "除去粗盐中的 Ca<sup>2+</sup>、Mg<sup>2+</sup> 和 SO<sub>4</sub><sup>2−</sup> 分别需要用到 Na<sub>2</sub>CO<sub>3</sub>、NaOH 和 BaCl<sub>2</sub>，过量的 BaCl<sub>2</sub> 用 Na<sub>2</sub>CO<sub>3</sub> 除去，过量的 Na<sub>2</sub>CO<sub>3</sub>、NaOH 用 HCl 除去。选项 A 正确；选项 B 除杂过程中引入了 K<sup>+</sup> 杂质；选项 C、D 均引入了 NO<sub>3</sub><sup>−</sup> 杂质。粗盐提纯过程中，为了保证引入的离子完全被除去，Na<sub>2</sub>CO<sub>3</sub> 必须在 BaCl<sub>2</sub> 后加入，盐酸用于除去过量的 CO<sub>3</sub><sup>2−</sup> 和 OH<sup>−</sup>，必须在最后加入，加入试剂的正确顺序可以是 BaCl<sub>2</sub>、Na<sub>2</sub>CO<sub>3</sub>、NaOH、HCl，或 BaCl<sub>2</sub>、NaOH、Na<sub>2</sub>CO<sub>3</sub>、HCl，或 NaOH、BaCl<sub>2</sub>、Na<sub>2</sub>CO<sub>3</sub>、HCl。"}, {"id": 3, "src": "2025 广东 6", "ans": "D", "figs": ["figs/k5/q3.png"], "stem": "对铁钉进行预处理，并用铜氨溶液给铁钉镀铜。下列操作不能达到实验目的是", "opts": ["除油污", "除铁锈", "制铜氨溶液", "铁钉镀铜"], "exp": "选项 A，Na<sub>2</sub>CO<sub>3</sub> 溶液呈碱性，油污在碱性溶液中发生水解反应；同时，加热可以增强 Na<sub>2</sub>CO<sub>3</sub> 溶液的碱性，可以达到除油污的目的。选项 B，铁锈的主要成分为 Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O，Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O 能与稀盐酸反应，可以达到除铁锈的目的。选项 C，向 CuSO<sub>4</sub> 溶液中滴加足量氨水，可以生成铜氨溶液，即 [Cu(NH<sub>3</sub>)<sub>4</sub>]SO<sub>4</sub>。选项 D，铁钉镀铜应使用电解装置，Cu 片与电源正极相连作阳极，铁钉与电源负极相连作阴极，含有镀层金属离子的溶液作电镀液；图中无电源，装置中铁钉为原电池的负极，Fe 发生氧化反应，铜氨溶液中的 Cu<sup>2+</sup> 在 Cu 片发生还原反应生成 Cu，该操作不能达到实验目的。"}, {"id": 4, "src": "2021 广东 7", "ans": "B", "figs": ["figs/k5/q4.png"], "stem": "测定浓硫酸试剂中 H<sub>2</sub>SO<sub>4</sub> 含量的主要操作包括：①量取一定量的浓硫酸，稀释；②转移定容得待测液；③移取 20.00 mL 待测液，用 0.1000 mol·L<sup>−1</sup> 的 NaOH 溶液滴定。上述操作中，不需要用到的仪器为", "opts": ["250 mL 容量瓶", "分液漏斗", "锥形瓶", "碱式滴定管"], "exp": "实验过程中，①量取一定量的浓硫酸并稀释所需仪器为量筒、烧杯、玻璃棒；②转移定容得待测液所需仪器为玻璃棒、容量瓶、胶头滴管；③移取 20.00 mL 待测液，用 0.1000 mol·L<sup>−1</sup> 的 NaOH 溶液滴定所需仪器为酸式滴定管（移取 20.00 mL 待测液）、碱式滴定管、锥形瓶。选项中，A 为容量瓶，B 为分液漏斗，C 为锥形瓶，D 为碱式滴定管。上述操作中，不需要用到的仪器为分液漏斗。"}, {"id": 5, "src": "2021 广东 12", "ans": "B", "stem": "化学是以实验为基础的科学。下列实验操作或做法正确且能达到目的是", "opts": ["将铜丝插入浓硝酸中——制备 NO", "将密闭烧瓶中的 NO<sub>2</sub> 降温——探究温度对平衡移动的影响", "将溴水滴入 KI 溶液中，加入乙醇并振荡——萃取溶液中生成的碘", "实验结束，将剩余 NaCl 固体放回原试剂瓶——节约试剂"], "exp": "选项 A，NO 制备反应为 3Cu+8HNO<sub>3</sub>(稀)=3Cu(NO<sub>3</sub>)<sub>2</sub>+2NO↑+4H<sub>2</sub>O，浓硝酸与铜的反应为 Cu+4HNO<sub>3</sub>(浓)=Cu(NO<sub>3</sub>)<sub>2</sub>+2NO<sub>2</sub>↑+2H<sub>2</sub>O，制备 NO 应选用稀硝酸与铜反应。选项 B，反应 2NO<sub>2</sub>(红棕色)⇌N<sub>2</sub>O<sub>4</sub>(无色) ΔH＜0，升高或降低温度都会引起平衡移动，使有色物质 NO<sub>2</sub> 的浓度发生改变，观察现象可获得平衡移动的证据。选项 C，溴水氧化 KI 生成碘单质，萃取碘应选择与水不互溶的非极性溶剂（如 CCl<sub>4</sub>、苯等），乙醇与水互溶。选项 D，易燃物（如钠、钾、白磷等）若随便丢弃易引起火灾，中学实验室可以将未用完的钠、钾、白磷等放回原试剂瓶；其他取出用后多余的试剂要按常见废弃物的属性进行分类处理，不能放回原试剂瓶以避免污染试剂。"}, {"id": 6, "src": "2023 浙江 6 月 12", "ans": "B", "figs": ["figs/k5/q6.png"], "stem": "苯甲酸是一种常用的食品防腐剂。某实验小组设计粗苯甲酸（含有少量 NaCl 和泥沙）的提纯方案如下，下列说法不正确的是", "opts": ["操作Ⅰ中依据苯甲酸的溶解度估算加水量", "操作Ⅱ趁热过滤的目的是除去泥沙和 NaCl", "操作Ⅲ缓慢冷却结晶可减少杂质被包裹", "操作Ⅳ可用冷水洗涤晶体"], "exp": "选项 A，操作Ⅰ中，为减少能耗、减少苯甲酸的溶解损失，溶解所用水量的量需加以控制，可依据苯甲酸的溶解度估算加水量。选项 B，操作Ⅱ趁热过滤的目的是除去泥沙，同时防止温度过低析出苯甲酸晶体，NaCl 在滤液中不能被除去。选项 C，操作Ⅲ缓慢冷却结晶，可形成较大的苯甲酸晶体颗粒，减少杂质被包裹在晶体颗粒内部。选项 D，苯甲酸微溶于冷水，易溶于热水，操作Ⅳ可用冷水洗涤晶体，既可去除晶体表面吸附的杂质离子，又能减少苯甲酸溶解损失。"}, {"id": 7, "src": "2024 湖北 3", "ans": "B", "stem": "关于物质的分离、提纯，下列说法错误的是", "opts": ["蒸馏法分离 CH<sub>2</sub>Cl<sub>2</sub> 和 CCl<sub>4</sub>", "过滤法分离苯酚和 NaHCO<sub>3</sub> 溶液", "萃取和柱色谱法从青蒿中提取分离青蒿素", "重结晶法提纯含有少量食盐和泥沙的苯甲酸"], "exp": "选项 A，CH<sub>2</sub>Cl<sub>2</sub> 和 CCl<sub>4</sub> 互溶，二者沸点不同，可用蒸馏的方法将二者分离。选项 B，苯酚与 NaHCO<sub>3</sub> 溶液反应生成苯酚钠和 CO<sub>2</sub>，苯酚钠溶于水，混合物中不是以固体形式存在，不能用过滤法分离。选项 C，将青蒿浸泡在有机溶剂中得到提取液，利用萃取的方法将提取液中的青蒿素提取出来，也可以利用不同溶质在色谱柱上的保留时间不同将青蒿素固定在色谱柱上，再利用极性溶剂将青蒿素洗脱下来，得到纯净的青蒿素。选项 D，食盐和苯甲酸的溶解度差异较大，可利用重结晶法将低温下溶解度较小的苯甲酸提纯出来。"}, {"id": 8, "src": "2024 湖南 8", "ans": "D", "stem": "为达到下列实验目的，操作方法合理的是", "opts": ["从含有 I<sub>2</sub> 的 NaCl 固体中提取 I<sub>2</sub>——用 CCl<sub>4</sub> 溶解、萃取、分液", "提纯实验室制备的乙酸乙酯——依次用 NaOH 溶液洗涤、水洗、分液、干燥", "用 NaOH 标准溶液滴定未知浓度的 CH<sub>3</sub>COOH 溶液——用甲基橙作指示剂进行滴定", "从明矾过饱和溶液中快速析出晶体——用玻璃棒摩擦烧杯内壁"], "exp": "选项 A，用 CCl<sub>4</sub> 溶解、萃取、分液后，I<sub>2</sub> 仍然溶在 CCl<sub>4</sub> 中，无法用分液法获得 I<sub>2</sub>；从含有 I<sub>2</sub> 的 NaCl 固体中提取 I<sub>2</sub>，可采用升华法。选项 B，实验室制备的乙酸乙酯中含有乙酸、乙醇等，提纯乙酸乙酯不能用 NaOH 溶液洗涤，可用饱和 Na<sub>2</sub>CO<sub>3</sub> 溶液洗涤、水洗、分液、干燥获得乙酸乙酯。选项 C，用 NaOH 标准溶液滴定未知浓度的 CH<sub>3</sub>COOH 溶液，反应终点是 CH<sub>3</sub>COONa 溶液，呈碱性，不宜选择酸性范围（3.1～4.4）变色的甲基橙作指示剂，为了减少误差，应选择碱性范围变色的酚酞作指示剂。选项 D，从明矾过饱和溶液中快速析出晶体，可以用玻璃棒摩擦烧杯内壁产生晶种，从而析出晶体。"}, {"id": 9, "src": "2024 江苏 3", "ans": "A", "figs": ["figs/k5/q9.png"], "stem": "实验室进行铁钉镀锌实验。下列相关原理、装置及操作不正确的是", "opts": ["配制 NaOH 溶液", "铁钉除油污", "铁钉除锈", "铁钉镀锌"], "exp": "选项 A，配制一定物质的量浓度的溶液时，溶质要放在烧杯中溶解，不能直接放在容量瓶中溶解。选项 B，油污的主要成分是油脂，油脂在碱性条件下可发生水解反应生成可溶于水的甘油和高级脂肪酸盐，将铁钉放在 NaOH 溶液中加热后可以除去其表面的油污。选项 C，铁锈的主要成分是 Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O，可溶于盐酸，将铁钉放在盐酸中可以除去其表面的铁锈。选项 D，该装置为电解池，铁钉与电源负极相连作阴极，锌片与电源的正极相连作阳极，电解质溶液为 ZnCl<sub>2</sub> 溶液，该装置为电镀装置，可实现铁钉镀锌。"}, {"id": 10, "src": "2022 北京 5", "ans": "D", "figs": ["figs/k5/q10.png"], "stem": "下列实验中，不能达到实验目的是", "opts": ["由海水制取蒸馏水", "萃取碘水中的碘", "分离粗盐中的不溶物", "由 FeCl<sub>3</sub>·6H<sub>2</sub>O 制取无水 FeCl<sub>3</sub> 固体"], "exp": "选项 A，实验室用海水制取蒸馏水可用蒸馏法制备，蒸馏时用到蒸馏烧瓶、酒精灯、冷凝管、牛角管、锥形瓶等仪器，温度计水银球应处在蒸馏烧瓶的支管口附近，冷凝管应从下口进水、上口出水。选项 B，碘在水中的溶解度小，在 CCl<sub>4</sub> 中的溶解度大，可用 CCl<sub>4</sub> 萃取碘水中的碘，CCl<sub>4</sub> 的密度比水的大，在下层。选项 C，粗盐中含有较多的可溶性杂质和不溶性杂质，将粗盐溶于水形成溶液，用过滤法将不溶于水的杂质除去。选项 D，直接加热 FeCl<sub>3</sub>·6H<sub>2</sub>O 会促进水解，生成的 HCl 易挥发，得到 Fe(OH)<sub>3</sub>，继续加热会使 Fe(OH)<sub>3</sub> 分解产生 Fe<sub>2</sub>O<sub>3</sub>，得不到 FeCl<sub>3</sub> 固体；由 FeCl<sub>3</sub>·6H<sub>2</sub>O 制取无水 FeCl<sub>3</sub> 固体，为了抑制 FeCl<sub>3</sub> 水解，应在 HCl 气流中加热。"}, {"id": 11, "src": "2022 河北 5", "ans": "D", "figs": ["figs/k5/q11.png"], "stem": "下列图示装置不能达到实验目的是", "opts": ["用 CCl<sub>4</sub> 萃取溴水中的 Br<sub>2</sub>", "除去 Cl<sub>2</sub> 中的 HCl 并干燥", "验证铁的吸氧腐蚀", "实验室制备少量 NH<sub>3</sub>"], "exp": "选项 A，CCl<sub>4</sub> 和水不互溶，且 Br<sub>2</sub> 在 CCl<sub>4</sub> 中的溶解度大于在水中的溶解度，故可用 CCl<sub>4</sub> 萃取溴水中 Br<sub>2</sub>。选项 B，浓盐酸具有挥发性，Cl<sub>2</sub> 中混有 HCl 和水蒸气，盛有饱和 NaCl 溶液的洗气瓶能除去 HCl 气体，盛有浓硫酸的洗气瓶能干燥 Cl<sub>2</sub>。选项 C，铁丝网在食盐水中发生吸氧腐蚀会使试管内气体的物质的量减小，气体压强减小，红墨水会沿导管上升，达到验证铁的吸氧腐蚀的实验目的。选项 D，向下排空气法收集 NH<sub>3</sub> 的试管中没有排出气体的出口，实验室制备少量 NH<sub>3</sub> 的试管口不能塞橡胶塞，应在试管口放一团棉花，且导气管应伸到试管底部。"}, {"id": 12, "src": "2025 黑吉辽蒙 8", "ans": "B", "figs": ["figs/k5/q12.png"], "stem": "巧设实验，方得真知。下列实验设计合理的是", "opts": ["除去 Cl<sub>2</sub> 中的 HCl", "制备少量 NO 避免其被氧化", "用乙醇萃取 CS<sub>2</sub> 中的 S", "制作简易氢氧燃料电池"], "exp": "选项 A，碱石灰为 NaOH 和 CaO 的混合物，既能吸收 HCl 又能吸收 Cl<sub>2</sub>，不能用碱石灰除去 Cl<sub>2</sub> 中的 HCl。选项 B，铜丝和稀硝酸反应生成硝酸铜、NO 和水，NO 难溶于水，U 形管左侧与大气隔绝，避免生成的 NO 被氧化。选项 C，S 微溶于乙醇、易溶于 CS<sub>2</sub>，乙醇与 CS<sub>2</sub> 互溶，不能用乙醇萃取 CS<sub>2</sub> 中的 S。选项 D，关闭 K<sub>1</sub>、打开 K<sub>2</sub> 时，为电解 Na<sub>2</sub>SO<sub>4</sub> 溶液装置，阳极反应为 Zn−2e<sup>−</sup>=Zn<sup>2+</sup>，阴极反应为 2H<sub>2</sub>O+2e<sup>−</sup>=2OH<sup>−</sup>+H<sub>2</sub>↑，阳极无氧气生成，阴极生成氢气；当打开 K<sub>1</sub>、关闭 K<sub>2</sub> 时，不能形成氢氧燃料电池，为完成实验，可将锌电极改为石墨电极。"}, {"id": 13, "src": "2026 黑吉辽蒙 4", "ans": "A", "figs": ["figs/k5/q13.png"], "stem": "化学是一门实验与理论并重的学科。下列实验方案不合理的是", "opts": ["Cl<sub>2</sub> 收集及尾气处理", "实验室制备乙炔", "除去 CO<sub>2</sub> 的 SO<sub>2</sub>", "实验室铜件镀镍"], "exp": "选项 A，Cl<sub>2</sub> 的密度大于空气，采用向上排空气法收集；Cl<sub>2</sub> 在饱和 CaCl<sub>2</sub> 溶液中溶解度极低，且不与 CaCl<sub>2</sub> 发生反应，不能用 CaCl<sub>2</sub> 溶液吸收尾气，可用 NaOH 溶液吸收 Cl<sub>2</sub>。选项 B，电石与水反应生成乙炔，该反应剧烈，采用饱和 NaCl 溶液可减缓电石与水的反应速率。选项 C，CO<sub>2</sub> 与 NaHCO<sub>3</sub> 溶液不反应，亚硫酸的酸性比碳酸的强，SO<sub>2</sub> 通入饱和 NaHCO<sub>3</sub> 溶液可发生反应生成 Na<sub>2</sub>SO<sub>3</sub> 和 CO<sub>2</sub>，能除去 CO<sub>2</sub> 中的 SO<sub>2</sub>。选项 D，实验室铜件镀镍，铜制镀件接电源负极作阴极，镀层金属镍接电源正极作阳极，含有镀层金属的阳离子（Ni<sup>2+</sup>）的溶液作电解质溶液。"}, {"id": 14, "src": "2021 江苏 3", "ans": "D", "figs": ["figs/k5/q14.png"], "stem": "下列由废铜屑制取 CuSO<sub>4</sub>·5H<sub>2</sub>O 的实验原理与装置不能达到实验目的是", "opts": ["除去废铜屑表面的油脂", "溶解废铜屑", "过滤得到 CuSO<sub>4</sub> 溶液", "蒸干溶液获得 CuSO<sub>4</sub>·5H<sub>2</sub>O"], "exp": "选项 A，Na<sub>2</sub>CO<sub>3</sub> 溶液显碱性，在加热的条件下可以除去铜屑表面的油污。选项 B，发生反应为 Cu+H<sub>2</sub>O<sub>2</sub>+H<sub>2</sub>SO<sub>4</sub>=CuSO<sub>4</sub>+2H<sub>2</sub>O，能溶解废铜屑。选项 C，过滤除去不溶的杂质，可得到 CuSO<sub>4</sub> 溶液。选项 D，蒸干溶液得到无水硫酸铜固体，不能获得 CuSO<sub>4</sub>·5H<sub>2</sub>O；将 CuSO<sub>4</sub> 溶液加热浓缩、冷却结晶、过滤，才能得到 CuSO<sub>4</sub>·5H<sub>2</sub>O 晶体。"}, {"id": 15, "src": "2020 山东 5", "ans": "C", "figs": ["figs/k5/q15.png"], "stem": "利用下列装置（夹持装置略）进行实验，能达到实验目的是", "opts": ["制备并收集 CO<sub>2</sub>", "制备溴苯并验证有 HBr 产生", "制备无水 MgCl<sub>2</sub>", "在铁上镀铜"], "exp": "选项 A，CO<sub>2</sub> 密度大于空气的，应采用向上排空气法收集，图中集气试管口向下，不能达到实验目的。选项 B，苯与溴在溴化铁作用下发生反应，反应放热，且溴易挥发，挥发出来的溴单质能与水反应生成 HBr；欲验证反应生成的 HBr，导出气体在通入 AgNO<sub>3</sub> 溶液前需经 CCl<sub>4</sub> 洗涤，除去 HBr 中混有的溴蒸气，故装置不能达到实验目的。选项 C，在 HCl 气流下加热 MgCl<sub>2</sub>·6H<sub>2</sub>O，能防止 MgCl<sub>2</sub> 的水解，制得无水 MgCl<sub>2</sub>。选项 D，铁上镀铜，镀层金属 Cu 作阳极，待镀制品 Fe 作阴极，含有镀层金属离子的溶液作电镀液；装置中铁作阳极，铜作阴极，不能达到实验目的。"}, {"id": 16, "src": "2025 湖北 4", "ans": "C", "figs": ["figs/k5/q16.png"], "stem": "下列化学实验目的与相应实验示意图不相符的是", "opts": ["用量热计测定反应热", "分离乙酸乙酯和饱和食盐水", "在铁片上镀镍", "转移热蒸发皿至陶土网"], "exp": "选项 A，隔热层可防止热量散失，温度计测定反应前后的温度，玻璃搅拌器可使反应完全，图中中和反应反应热的测定装置合理。选项 B，乙酸乙酯与饱和食盐水不互溶，饱和食盐水的密度大，在下层，乙酸乙酯的密度小，在上层，可通过分液进行分离。选项 C，在铁片上镀镍，待镀金属铁片作阴极，镀层金属镍片作阳极；图中铁片作阳极，镍片作阴极，不能达到实验目的。选项 D，转移热蒸发皿至陶土网，需要用坩埚钳夹取蒸发皿，操作合理。"}, {"id": 17, "src": "2024 广州二测 13", "ans": "C", "stem": "下列实验操作能达到实验目的是", "opts": ["制备 Fe(OH)<sub>3</sub> 胶体——将 NaOH 浓溶液滴加到饱和 FeCl<sub>3</sub> 溶液中", "检验乙醇和浓硫酸加热生成乙烯——将产生的气体通入酸性 KMnO<sub>4</sub> 溶液中", "检验久置的 FeSO<sub>4</sub> 溶液是否被完全氧化——取少量待测液，滴加 K<sub>3</sub>[Fe(CN)<sub>6</sub>] 溶液", "探究浓度对反应速率的影响——常温下将铁片分别插入稀硝酸和浓硝酸中"], "exp": "选项 A，制备 Fe(OH)<sub>3</sub> 胶体的正确操作为向沸水中逐滴加入 5～6 滴饱和 FeCl<sub>3</sub> 溶液，继续煮沸至液体呈红褐色，停止加热。选项 B，实验中挥发的乙醇也能使酸性 KMnO<sub>4</sub> 溶液褪色，无法检验乙烯。选项 C，检验久置的 FeSO<sub>4</sub> 溶液是否被完全氧化，可取样滴加 K<sub>3</sub>[Fe(CN)<sub>6</sub>] 检验是否剩余 Fe<sup>2+</sup>。选项 D，铁片在浓硝酸中会发生钝化，无法实现探究浓度对反应速率的影响的实验目的。"}, {"id": 18, "src": "2026 广州调研 6", "ans": "A", "figs": ["figs/k5/q18.png"], "stem": "由废铁屑制取 (NH<sub>4</sub>)<sub>2</sub>Fe(SO<sub>4</sub>)<sub>2</sub>·6H<sub>2</sub>O 晶体，下列相关原理、装置及操作正确的是", "opts": ["除去废铁屑表面的油污", "制取 FeSO<sub>4</sub> 溶液", "制取 (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> 溶液", "蒸干溶液得到 (NH<sub>4</sub>)<sub>2</sub>Fe(SO<sub>4</sub>)<sub>2</sub>·6H<sub>2</sub>O 晶体"], "exp": "选项 A，油污在碱性条件（NaOH 溶液）下发生水解反应，同时加热能加快反应速率。选项 B，铁屑遇浓硫酸发生钝化，无法制取 FeSO<sub>4</sub> 溶液。选项 C，氨气通过长导管通入稀硫酸会发生倒吸。选项 D，(NH<sub>4</sub>)<sub>2</sub>Fe(SO<sub>4</sub>)<sub>2</sub>·6H<sub>2</sub>O 晶体为结晶水合物，(NH<sub>4</sub>)<sub>2</sub>Fe(SO<sub>4</sub>)<sub>2</sub> 溶液蒸干过程中结晶水会丢失，无法得到含有结晶水的晶体，应采用蒸发浓缩、冷却结晶的方法。"}, {"id": 19, "src": "2026 广州一测 6", "ans": "D", "figs": ["figs/k5/q19.png"], "stem": "下列操作能达到实验目的是", "opts": ["配制 FeCl<sub>3</sub> 溶液", "制备 Fe(OH)<sub>3</sub> 胶体", "铁钉镀铜", "蚀刻覆铜板"], "exp": "选项 A，配制 FeCl<sub>3</sub> 溶液需抑制 Fe<sup>3+</sup> 的水解，正确操作应向无水 FeCl<sub>3</sub> 固体中加入浓盐酸，溶解后再稀释成需要的浓度，且容量瓶不能用于溶解固体。选项 B，制备 Fe(OH)<sub>3</sub> 胶体需要控制颗粒不能过大，因而反应速率不能太快，故不能使用 NaOH 溶液，正确操作是向沸水中逐滴加入饱和 FeCl<sub>3</sub> 溶液，继续煮沸至液体呈红褐色，再停止加热。选项 C，铁钉镀铜为电镀实验，装置应为电解池，构成条件要有直流电源，铜片为阳极，铁钉为阴极，铜氨溶液为电解质，图示是用电器而不是直流电源。选项 D，FeCl<sub>3</sub> 溶液可以刻蚀覆铜板是因为 Fe<sup>3+</sup> 与 Cu 发生氧化还原反应，化学方程式为 2Fe<sup>3+</sup>+Cu=2Fe<sup>2+</sup>+Cu<sup>2+</sup>。"}, {"id": 20, "src": "2026 广州二测 5", "ans": "D", "figs": ["figs/k5/q20.png"], "stem": "关于模拟工业上从海水中提取镁的生产流程，下列操作错误的是", "opts": ["浓缩海水", "沉淀 Mg<sup>2+</sup>", "获得 Mg(OH)<sub>2</sub>", "制取镁"], "exp": "选项 A，采用蒸发装置可使水蒸发，从而浓缩海水。选项 B，由于 Mg(OH)<sub>2</sub> 的溶解度小于 Ca(OH)<sub>2</sub> 的，加入石灰乳可发生反应 Ca(OH)<sub>2</sub>+Mg<sup>2+</sup>=Ca<sup>2+</sup>+Mg(OH)<sub>2</sub>↓，达到沉淀 Mg<sup>2+</sup> 的目的。选项 C，Mg(OH)<sub>2</sub> 不溶于水，通过过滤 Mg(OH)<sub>2</sub> 悬浊液可获得 Mg(OH)<sub>2</sub>。选项 D，Mg 是较活泼金属，需要电解熔融 MgCl<sub>2</sub> 才能制取镁；图中装置是原电池装置，且电解质是 MgCl<sub>2</sub> 溶液，不是熔融 MgCl<sub>2</sub>，因此该装置不能制得镁。"}];
 var KEY = 'xz5_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
-var st = {a:{}, skip:{}, elapsed:0, started:false};
+var st = {a:{}, skip:{}, help:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
 function calc(){
   var ok=0;
-  QS.forEach(function(q){if(st.a[q.id]===q.ans)ok++});
+  QS.forEach(function(q){if(st.a[q.id]===q.ans&&st.help[q.id]!=='rock')ok++});
   var done=Object.keys(st.a).length;
   return {done:done,ok:ok,score:ok*PER};
 }
@@ -125,6 +136,8 @@ function renderStats(){
 function setSkip(id,on){
   var act=$('act'+id),tip=$('skd'+id),ob=$('op'+id);
   act.style.display=on?'none':'flex';
+  $('hl'+id).style.display=on?'none':'flex';
+  if(on){var jb=$('jbx'+id),rb=$('rbx'+id);if(jb)jb.style.display='none';if(rb)rb.style.display='none';}
   tip.style.display=on?'block':'none';
   Array.prototype.forEach.call(ob.children,function(b){b.disabled=on||!!st.a[id]});
   $('qc'+id).classList.toggle('skipped-card',on);
@@ -138,6 +151,11 @@ function build(){
     if(q.figs){q.figs.forEach(function(f){h+='<div class="qfig"><img src="'+f+'" alt="题图"></div>'})}
     h+='<div id="op'+q.id+'"></div>';
     h+='<div class="btn-row" id="act'+q.id+'"><button class="submit" id="sb'+q.id+'" disabled>提交本题</button><button class="skipbtn" id="sk'+q.id+'">跳过此题</button></div>';
+    h+='<div class="helprow" id="hl'+q.id+'">';
+    if(q.hint){h+='<button class="jade" id="jd'+q.id+'">🙋 求助小玉 · 思路点拨</button>';}
+    h+='<button class="rock" id="rk'+q.id+'">📖 求助小岩 · 看详解本题计0分</button></div>';
+    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="ht">🙋 小玉点拨 · 不扣分，自己接着想</div><p>'+(q.hint||'')+'</p></div>';
+    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="ht">📖 小岩详解 · 本题已计 0 分</div><p>'+q.exp+'</p></div>';
     h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
@@ -161,29 +179,60 @@ function build(){
     if(done){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
-      $('ex'+q.id).style.display='block';
+      if(st.help[q.id]==='rock'){
+        $('rbx'+q.id).style.display='block';
+        $('hl'+q.id).style.display='none';
+        $('qm'+q.id).textContent='📖';
+        $('qm'+q.id).style.color='#f59e0b';
+      }else{
+        $('ex'+q.id).style.display='block';
+        $('hl'+q.id).style.display='none';
+        $('qm'+q.id).textContent=ok?'✓':'✗';
+        $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+      }
       $('act'+q.id).style.display='none';
-      $('qm'+q.id).textContent=ok?'✓':'✗';
-      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
     }else if(skipped){
       setSkip(q.id,true);
+    }else if(st.help[q.id]){
+      $(st.help[q.id]==='rock'?'rbx'+q.id:'jbx'+q.id).style.display='block';
+      var hb=$(st.help[q.id]==='rock'?'rk'+q.id:'jd'+q.id);
+      if(hb)hb.style.opacity=.5;
     }
     $('sb'+q.id).onclick=function(){
       if(picked===null||done||skipped)return;
       done=true;
       var ok=picked===q.ans;
+      var rock=st.help[q.id]==='rock';
       st.a[q.id]=picked;
       paintResult(q,ob,picked,ok);
       var v=$('vd'+q.id);
       v.style.display='block';
-      v.style.background=ok?'var(--ok-bg)':'var(--bad-bg)';
-      v.style.color=ok?'var(--ok-ink)':'var(--bad-ink)';
-      v.textContent=ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans;
-      $('qm'+q.id).textContent=ok?'✓':'✗';
-      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
-      $('ex'+q.id).style.display='block';
+      v.style.background=rock?'rgba(245,158,11,.09)':(ok?'var(--ok-bg)':'var(--bad-bg)');
+      v.style.color=rock?'#f59e0b':(ok?'var(--ok-ink)':'var(--bad-ink)');
+      v.textContent=rock?'已求助小岩 · 本题计 0 分（正确答案 '+q.ans+'）':(ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans);
+      $('qm'+q.id).textContent=rock?'📖':(ok?'✓':'✗');
+      $('qm'+q.id).style.color=rock?'#f59e0b':(ok?'var(--ok)':'var(--bad)');
+      if(rock){$('rbx'+q.id).style.display='block';$('hl'+q.id).style.display='none';}
+      else{$('ex'+q.id).style.display='block';$('hl'+q.id).style.display='none';}
       $('act'+q.id).style.display='none';
       Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
+      renderStats();save();
+    };
+    if($('jd'+q.id)){$('jd'+q.id).onclick=function(){
+      if(done||skipped)return;
+      st.help[q.id]='jade';
+      if(!st.started){st.started=true}
+      $('jbx'+q.id).style.display='block';
+      $('jd'+q.id).style.opacity=.5;
+      save();
+    };}
+    $('rk'+q.id).onclick=function(){
+      if(done||skipped)return;
+      if(!confirm('看小岩详解后，本题将计 0 分（即使答对）。确定求助吗？'))return;
+      st.help[q.id]='rock';
+      if(!st.started){st.started=true}
+      $('rbx'+q.id).style.display='block';
+      $('rk'+q.id).style.opacity=.5;
       renderStats();save();
     };
     $('sk'+q.id).onclick=function(){
@@ -262,18 +311,21 @@ function drawCard(){
   var d=new Date();
   var stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
   x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('提交时间 '+stamp,40,400);
-  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('已做题号（绿=对 红=错，跳过/未做不计）',40,432);
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('已做题号（绿=自己对 蓝=问小玉 橙=问小岩0分 红=自己错）',40,432);
   var doneList=QS.filter(function(q){return !!st.a[q.id]});
+  var jadeN=0,rockN=0;
   doneList.forEach(function(q,i){
     var col=i%14,row=Math.floor(i/14);
     var bx=40+col*48,by=450+row*46;
-    var ok=st.a[q.id]===q.ans;
-    x.fillStyle=ok?'#16a34a':'#dc2626';x.fillRect(bx,by,38,36);
+    var ok=st.a[q.id]===q.ans,h=st.help[q.id];
+    var colr=h==='rock'?'#d97706':h==='jade'?'#3b82f6':(ok?'#16a34a':'#dc2626');
+    if(h==='rock')rockN++;if(h==='jade')jadeN++;
+    x.fillStyle=colr;x.fillRect(bx,by,38,36);
     x.fillStyle='#ffffff';x.font='500 16px sans-serif';x.fillText(String(q.id),bx+9,by+25);
   });
   x.fillStyle='#5b6b7f';x.font='13px sans-serif';
-  x.fillText('答对 '+cc.ok+' · 答错 '+(cc.done-cc.ok)+' · 未做 '+(N-cc.done)+' · 跳过 '+Object.keys(st.skip).length,40,H-22);
-  window.__lastCard={time:stamp,done:cc.done,ok:cc.ok,score:cc.score,elapsed:fmt(st.elapsed),skip:Object.keys(st.skip).length};
+  x.fillText('答对 '+cc.ok+' · 答错 '+(cc.done-cc.ok)+' · 问小玉 '+jadeN+' · 问小岩 '+rockN+' · 未做 '+(N-cc.done)+' · 跳过 '+Object.keys(st.skip).length,40,H-22);
+  window.__lastCard={time:stamp,done:cc.done,ok:cc.ok,score:cc.score,elapsed:fmt(st.elapsed),skip:Object.keys(st.skip).length,jade:jadeN,rock:rockN};
 }
 $('stuName').addEventListener('input',function(){try{localStorage.setItem(NKEY,this.value)}catch(e){}});
 $('btnSave').onclick=function(){
