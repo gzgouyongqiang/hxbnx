@@ -126,7 +126,7 @@ var KEY = 'xz5_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
 var st = {a:{}, skip:{}, help:{}, fold:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.fold=s.fold||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.fold=s.fold||{};st.elapsed=s.elapsed||0;st.started=!!(s.started&&Object.keys(s.a||{}).length>0)}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
 /* ===== 小玉/小岩 立绘与语音（素材与模式复用自 walk 模块） ===== */
@@ -193,7 +193,6 @@ function build(){
       b.className='opt';b.innerHTML='<span class="ol">'+L+'．</span><span>'+o+'</span>';
       b.onclick=function(){
         if(done||skipped)return;
-        if(!st.started){st.started=true}
         picked=L;
         Array.prototype.forEach.call(ob.children,function(c){c.classList.remove('sel')});
         b.classList.add('sel');
@@ -226,6 +225,7 @@ function build(){
     $('sb'+q.id).onclick=function(){
       if(picked===null||done||skipped)return;
       done=true;
+      if(!st.started){st.started=true}
       var ok=picked===q.ans;
       var rock=st.help[q.id]==='rock';
       st.a[q.id]=picked;
@@ -246,7 +246,6 @@ function build(){
     if($('jd'+q.id)){$('jd'+q.id).onclick=function(){
       if(done||skipped)return;
       st.help[q.id]='jade';delete st.fold[q.id];
-      if(!st.started){st.started=true}
       $('jbx'+q.id).style.display='flex';
       $('jd'+q.id).style.opacity=.5;
       setFace('jf'+q.id,YU_BASE,'think',2400);
@@ -258,7 +257,6 @@ function build(){
       if(done||skipped)return;
       if(!confirm('看小岩详解后，本题将计 0 分（即使答对）。确定求助吗？'))return;
       st.help[q.id]='rock';delete st.fold[q.id];
-      if(!st.started){st.started=true}
       $('rbx'+q.id).style.display='flex';
       $('rk'+q.id).style.opacity=.5;
       setFace('rf'+q.id,YAN_BASE,'write',2400);
@@ -275,7 +273,6 @@ function build(){
     $('sk'+q.id).onclick=function(){
       if(done||skipped)return;
       skipped=true;st.skip[q.id]=1;
-      if(!st.started){st.started=true}
       setSkip(q.id,true);save();
     };
     $('us'+q.id).onclick=function(){
@@ -372,7 +369,7 @@ $('btnSave').onclick=function(){
 };
 $('resetBtn').onclick=function(){
   var c=calc();
-  if(c.done===0&&Object.keys(st.skip).length===0){alert('本讲还没有答题记录');return}
+  if(c.done===0&&Object.keys(st.skip).length===0&&Object.keys(st.help).length===0){alert('本讲还没有答题记录');return}
   if(confirm('确定清空本讲全部记录和成绩卡重新做吗？')){
     localStorage.removeItem(KEY);location.reload();
   }
