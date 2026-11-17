@@ -79,16 +79,19 @@ sub,sup{font-size:.72em}
 .helprow button{flex:1;border-radius:10px;padding:9px 6px;font-size:12.5px;cursor:pointer;background:transparent;line-height:1.4}
 .jade{color:var(--accent);border:1px solid var(--accent-border)}
 .rock{color:#f59e0b;border:1px dashed #b45309}
-.helpbox{margin-top:10px;border-radius:10px;padding:12px;display:none;gap:10px;align-items:flex-start}
+.helpbox{margin-top:6px;border-radius:10px;padding:12px;display:none;gap:10px;align-items:flex-start}
 .jadebox{background:var(--accent-soft);border:1px solid var(--accent-border)}
 .rockbox{background:rgba(245,158,11,.09);border:1px solid #b45309}
+.hthead{display:none;font-size:12px;font-weight:500;margin-top:8px;cursor:pointer;border-radius:8px;padding:8px 10px;line-height:1.4}
+.hthead.yan{background:rgba(245,158,11,.09);border:1px solid #b45309;color:#f59e0b}
+.hthead.yu{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent)}
+.hthead .chev{float:right;font-weight:400;opacity:.65}
 .hb-face{flex-shrink:0;width:64px;text-align:center}
 .hb-face img{width:62px;height:62px;object-fit:contain;animation:hbfloat 2.6s ease-in-out infinite}
 @keyframes hbfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .hb-face .hn{font-size:11px;color:var(--muted);margin-top:2px}
 .hb-main{flex:1;min-width:0}
-.helpbox .ht{font-size:12px;font-weight:500;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.hb-close{background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;padding:2px 9px;cursor:pointer;flex-shrink:0}
+.helpbox .ht{font-size:12px;font-weight:500;margin-bottom:6px}
 .jadebox .ht{color:var(--accent)}
 .rockbox .ht{color:#f59e0b}
 .helpbox p{font-size:12.5px;color:var(--muted)}
@@ -124,9 +127,9 @@ sub,sup{font-size:.72em}
 var QS = [{"id": 1, "src": "2026 广东 1", "ans": "B", "stem": "中国的桥，中国的美。桥如诗，梁如虹，一柱一梁见匠心。下列桥梁构件的材质主要成分属于有机物的是", "opts": ["赵州桥·石拱", "广济桥·木船", "十七孔桥·汉白玉石栏杆", "港珠澳大桥·斜拉钢索"], "exp": "选项 A，石拱是天然石材，如花岗岩、石灰岩，主要成分为硅酸盐或碳酸盐，属于无机非金属材料。选项 B，木船的材质为木材，主要成分为纤维素，纤维素属于天然有机高分子化合物，属于有机物。选项 C，汉白玉石栏杆是白色大理石的一种，主要成分为 CaCO<sub>3</sub>，属于无机物。选项 D，斜拉钢索主要成分为钢，是铁碳合金，属于金属材料。", "hint": "分清桥梁构件的材质家族：石拱、汉白玉属碳酸盐/硅酸盐，钢索是金属——想想木材的主要成分纤维素是不是天然有机高分子。"}, {"id": 2, "src": "2025 广东 1", "ans": "D", "stem": "中华传统技艺，凸显人民智慧。下列选项所涉及材料的主要成分属于合金的是", "opts": ["剪纸·纸哪吒", "篆刻·石印章", "活字印刷术·木活字", "中医针灸·不锈钢针"], "exp": "选项 A，纸的主要成分是纤维素（有机化合物），不属于合金。选项 B，石印章的材料通常是天然矿物（如大理石等），主要成分为硅酸盐或碳酸盐，不属于合金。选项 C，木活字的材料是木材，主要成分为纤维素和木质素（有机化合物），不属于合金。选项 D，不锈钢由铁、铬、镍等多种金属组成，属于合金。", "hint": "合金=金属与金属（或非金属）熔合而成。锚点：不锈钢是铁铬镍合金、青铜是铜锡合金；纸、石、木的主要成分分别是什么？"}, {"id": 3, "src": "2024 广东 1", "ans": "C", "stem": "龙是中华民族重要的精神象征和文化符号。下列与龙有关的历史文物中，主要材质为有机高分子的是", "opts": ["红山玉龙", "鎏金铁芯铜龙", "云龙纹丝绸", "云龙纹瓷瓶"], "exp": "选项 A，红山玉龙主要成分为 SiO<sub>2</sub> 和硅酸盐，主要材质是无机非金属材料。选项 B，鎏金铁芯铜龙主要成分为金属铜和铁，主要材质是金属材料。选项 C，云龙纹丝绸主要成分是蛋白质，蛋白质属于有机高分子。蛋白质是一种复杂的天然有机高分子，由碳、氢、氧、氮、硫等元素组成。用蚕丝织成的丝绸可以制作服装。选项 D，云龙纹瓷瓶主要成分为硅酸盐，主要材质属于无机非金属材料。陶瓷是以黏土为主要原料，经高温烧制而成的。", "hint": "丝绸的原料是蚕丝，蚕丝的主要成分属于蛋白质类天然高分子；玉、铜、瓷三者的材料归属都要能秒判。"}, {"id": 4, "src": "2023 广东 1", "ans": "C", "stem": "“高山流水觅知音”。下列中国古乐器中，主要由硅酸盐材料制成的是", "opts": ["九霄环佩木古琴", "裴李岗文化骨笛", "商朝后期陶埙", "曾侯乙青铜编钟"], "exp": "选项 A，九霄环佩木古琴主要由木材构成。木材的主要成分是纤维素。琴弦主要由动物筋制得。选项 B，裴李岗文化骨笛由动物骨骼构成，动物骨骼主要由有机质和无机质（羟基磷酸钙）组成。选项 C，商朝后期陶埙属于陶瓷，陶瓷由硅酸盐制成。选项 D，曾侯乙青铜编钟主要由合金材料青铜制成。", "hint": "陶器瓷器都以黏土为原料高温烧制，黏土是典型硅酸盐；注意骨骼的主要成分是羟基磷酸钙（钙的磷酸盐），别和硅酸盐混淆。"}, {"id": 5, "src": "2022 广东 3", "ans": "C", "stem": "广东一直是我国对外交流的重要窗口，馆藏文物是其历史见证。下列文物主要由硅酸盐制成的是", "opts": ["南宋鎏金饰品", "蒜头纹银盒", "广彩瓷咖啡杯", "铜镀金钟座"], "exp": "选项 A，南宋鎏金饰品是一种表面镀金的金属饰品，属于金属材料。鎏金是中国古老的传统工艺，至今有两千多年的历史。鎏金工艺是用汞和金搅和成白色“金汞齐”，涂抹在金属饰品上，再用火烘烤，汞蒸发而留下金。选项 B，蒜头纹银盒主要由金属银制成，属于金属材料。选项 C，广彩瓷咖啡杯是由黏土等硅酸盐产品烧制而成的，其主要成分为硅酸盐。选项 D，铜镀金钟座是由金属铜制成的表面镀有金的钟座，属于金属材料。", "hint": "鎏金、镀金只是表面工艺，判断材质看本体；'陶瓷=黏土烧制=硅酸盐'这个锚点在文物题里反复出现。"}, {"id": 6, "src": "2022 广东 1", "ans": "B", "stem": "中华文明源远流长，在世界文明中独树一帜，汉字居功至伟。随着时代发展，汉字被不断赋予新的文化内涵，其载体也发生相应变化。下列汉字载体主要由合金材料制成的是", "opts": ["兽骨", "青铜器", "纸张", "液晶显示屏"], "exp": "选项 A，兽骨是甲骨文的刻划载体之一，这些兽骨主要是牛的肩胛骨，其主要成分为无机盐磷酸钙。选项 B，青铜是我国使用最早的合金，青铜是在纯铜中加入锡或铅制得的合金。选项 C，纸张主要成分是纤维素。选项 D，液晶显示屏主要是由液晶和玻璃基板制成的。液晶是一种有机高分子材料，玻璃基板一般为硅酸盐材料。", "hint": "汉字载体的材质：兽骨主要成分是磷酸钙，纸是纤维素，液晶屏是玻璃基板（硅酸盐）加液晶；'青铜'二字直接指向铜锡合金。"}, {"id": 7, "src": "2021 广东 1", "ans": "A", "stem": "今年五一假期，人文考古游持续成为热点。很多珍贵文物都记载着中华文明的灿烂成就，具有深邃的文化寓意和极高的学术价值。下列国宝级文物主要由合金材料制成的是", "opts": ["铸客大铜鼎", "河姆渡出土陶灶", "兽首玛瑙杯", "角形玉杯"], "exp": "选项 A，人类生产合金是从制作青铜器开始的，铸客大铜鼎属于青铜合金。选项 B，陶器是人类使用黏土（主要成分为 Al<sub>2</sub>O<sub>3</sub>·2SiO<sub>2</sub>·2H<sub>2</sub>O 等）天然物为原料，经高温烧制而成的一种有用的人造材料，河姆渡出土陶灶主要成分为硅酸盐。选项 C，兽首玛瑙杯主要成分为二氧化硅。选项 D，角形玉杯主要成分为硅酸盐。", "hint": "把四个名词各自归类：青铜→铜锡合金（人类最早使用的合金之一）；陶、玉、玛瑙都属无机非金属家族（玛瑙成分是二氧化硅）。"}, {"id": 8, "src": "2025 河南 1", "ans": "A", "stem": "活字印刷术极大地促进了世界文化的交流，推动了人类文明的进步。下列“活字”字坯的主要成分为硅酸盐的是", "opts": ["泥活字", "木活字", "铜活字", "铅活字"], "exp": "选项 A，泥活字的主要材料是黏土，黏土的主要成分是硅酸盐。选项 B，木活字主要成分是纤维素。选项 C，铜活字是铜合金，主要成分是铜。选项 D，铅活字主要成分是铅。", "hint": "四种字坯材质不同：泥=黏土（本身就是硅酸盐，烧后才成陶）、木=纤维素、铜和铅=金属单质或合金。"}, {"id": 9, "src": "2025 河北 1", "ans": "B", "stem": "河北省古建筑数量大，历史跨度长，种类齐全，在我国建筑史上占有非常重要的地位。下列古建筑组件主要成分属于有机物的是", "opts": ["基石", "斗拱", "青瓦", "琉璃"], "exp": "选项 A，古建筑中的基石一般使用石质材料，常用的石材有花岗岩、青石等。花岗岩的主要成分是硅酸盐，青石的主要成分是 CaCO<sub>3</sub>，均属于无机物。选项 B，斗拱是由木材制成的。木材的主要成分是纤维素，属于有机物。选项 C，青瓦是由黏土烧制而成的传统建筑材料。黏土的主要成分是含水的铝硅酸盐，属于无机物。选项 D，琉璃的主要成分是二氧化硅，属于无机物。", "hint": "斗拱是木结构构件；基石（花岗岩/青石）、青瓦（黏土烧制）、琉璃（二氧化硅）都是无机家族——想清楚哪件是木头做的。"}, {"id": 10, "src": "2023 重庆 1", "ans": "B", "stem": "重庆市战略性新兴产业发展“十四五”规划（2021—2025 年）涉及的下列物质中，属于金属材料的是", "opts": ["重组蛋白", "高性能铜箔", "氮化镓半导体", "聚氨酯树脂"], "exp": "选项 A，重组蛋白为有机化合物。选项 B，合金、纯金属均为金属材料，铜箔为金属材料。选项 C，氮化镓半导体为新型无机非金属材料。选项 D，聚氨酯树脂为有机合成材料。", "hint": "判断金属材料抓成分元素：铜箔的本体是金属铜；氮化镓属新型无机非金属，重组蛋白、聚氨酯树脂属有机物。"}, {"id": 11, "src": "2024 广州调研 1", "ans": "B", "stem": "下列馆藏文物主要由金属材料制成的是", "opts": ["三彩釉陶俑", "错银铜牛灯", "透雕玉环佩", "青釉瓷壶"], "exp": "选项 A，三彩釉陶俑是陶瓷，主要成分是硅酸盐。选项 B，错银铜牛灯是青铜（铜锡合金），由金属材料制成。选项 C，透雕重环玉佩的主要成分为硅酸盐。选项 D，青釉瓷壶是陶瓷，主要成分是硅酸盐。", "hint": "'错银铜牛灯'的本体是青铜（铜锡合金）；三彩釉陶俑、玉佩、瓷壶都可归入硅酸盐家族。"}, {"id": 12, "src": "2024 广州一测 1", "ans": "B", "stem": "馆藏文物记载着中华文明的灿烂成就。下列文物主要由硅酸盐制成的是", "opts": ["四羊方尊青铜礼器", "陶熏炉", "金漆木雕如意", "船纹铜提筒"], "exp": "选项 A 和选项 D，四羊方尊青铜礼器和船纹铜提筒均由铜合金制成。选项 B，陶熏炉由硅酸盐材料制成。选项 C，金漆木雕如意是在樟木雕刻的如意上贴上金箔，樟木是植物纤维等天然有机高分子化合物，不属于硅酸盐材料。", "hint": "文物材质认字头：'陶'→黏土烧制硅酸盐；青铜器→金属，木雕→纤维素，金漆只是表面贴金。"}, {"id": 13, "src": "2024 广州二测 1", "ans": "C", "stem": "我国古代的容器充分展现工艺之美。下列容器主要由合金材料制成的是", "opts": ["人面鱼纹彩陶盆", "玛瑙梅花耳杯", "青铜敦", "彩漆木雕鸳鸯形盒"], "exp": "选项 A，陶盆由硅酸盐材料制成。选项 B，玛瑙的主要成分是二氧化硅。选项 C，青铜为合金材料。选项 D，木雕的材料是木材，主要成分是纤维素。", "hint": "'青铜'是合金的代名词（铜+锡/铅）；彩陶盆、玛瑙（二氧化硅）、彩漆木雕（纤维素）各有固定归属。"}, {"id": 14, "src": "2025 广州调研 1", "ans": "B", "stem": "文物是文化传承的重要载体。下列文物的主要材质为有机高分子的是", "opts": ["黄釉陶制瓦当", "鸟兽纹锦", "双兽三轮青铜盘", "高足瓷盖碗"], "exp": "选项 A，黄釉陶制瓦当的主要材质为硅酸盐材料，属于无机非金属材料。选项 B，鸟兽纹锦是丝织品，丝织品主要材质为有机高分子材料。选项 C，双兽三轮青铜盘主要材质是青铜，青铜是合金，属于金属材料。选项 D，高足瓷盖碗的主要材质为硅酸盐材料，属于无机非金属材料。", "hint": "锦是丝织品，蚕丝蛋白质是天然有机高分子的代表；陶瓦当、青铜盘、瓷器分别属于哪个家族要能脱口而出。"}, {"id": 15, "src": "2025 广州一测 1", "ans": "C", "stem": "器具是饮食文化的重要载体。下列我国古代器具中主要由合金材料制成的是", "opts": ["单耳黑陶杯", "秘色瓷莲花碗", "青铜四足鬲", "檀香木雕杯"], "exp": "选项 A，单耳黑陶杯为陶器，属于无机硅酸盐材料。选项 B，秘色瓷莲花碗属于瓷器。陶瓷是以黏土为原料，经高温烧制而成的，属于无机硅酸盐材料。选项 C，青铜四足鬲是由合金材料制成的。选项 D，檀香木雕杯是一种以檀香木为材料雕刻而成的茶具或工艺品，其主要成分中含较多的纤维素，是有机物。", "hint": "黑陶、瓷器→黏土/高岭土烧制的硅酸盐；檀香木→纤维素有机物；'青铜'器具直接对应合金。"}, {"id": 16, "src": "2025 广州二测 1", "ans": "C", "stem": "中华文化源远流长，古人使用不同的材料制作乐器。下列乐器中，主要材质为硅酸盐材料的是", "opts": ["青铜镈钟", "木笙", "陶埙", "骨笛"], "exp": "选项 A，青铜镈钟属于青铜器。古代青铜是铜与锡、铅等金属形成的合金，属于金属材料。选项 B，木笙是一种以簧片与竹管耦合共振而发声的吹奏乐器。竹、木的主要成分中含较多的纤维素，是有机物。选项 C，陶埙属于陶器。陶器、瓷器是以黏土为原料，经高温烧制而成的，属于无机硅酸盐材料。选项 D，骨笛是笛子的一种。骨骼的主要成分是羟基磷灰石，含有钙、磷、氧、氢等元素，不属于硅酸盐材料。", "hint": "陶埙与陶器同源（黏土烧制硅酸盐）；特别注意：骨骼的主要成分是羟基磷灰石（磷酸钙盐），不属于硅酸盐！"}, {"id": 17, "src": "2026 广州调研 1", "ans": "D", "stem": "中国非物质文化遗产丰富。下列选项所涉及物质的主要成分属于硅酸盐材料的是", "opts": ["雕版印刷技艺·木板", "桑蚕丝织技艺·蚕丝", "传统制茶技艺·铁锅", "青瓷烧制技艺·瓷器"], "exp": "选项 A，雕版印刷技艺是运用刀具在木板上雕刻文字或图案，再用墨、纸、绢等材料刷印、装订成书籍的一种特殊技艺。木板是植物纤维等天然有机高分子化合物，不属于硅酸盐材料。选项 B，蚕丝的主要成分是天然蛋白质，属于高分子材料。选项 C，铁锅的主要成分是铁，属于金属材料。选项 D，瓷器是主要以高岭土（主要成分为 Al<sub>2</sub>O<sub>3</sub>·2SiO<sub>2</sub>·2H<sub>2</sub>O）为原料，经高温烧制而成的，其主要成分为硅酸盐材料。", "hint": "木板和蚕丝都属天然有机高分子；铁锅是金属材料；瓷器由高岭土高温烧制，其主要成分家族要判断准。"}, {"id": 18, "src": "2026 广州一测 1", "ans": "C", "stem": "中华传统技艺，凸显人民智慧。下列选项所涉及材料的主要成分属于有机高分子的是", "opts": ["铜雕技艺·青铜", "玉雕技艺·玉石", "粤绣技艺·蚕丝", "陶器烧制技艺·陶瓷"], "exp": "选项 A，古代青铜是铜与锡、铅等金属形成的合金，属于金属材料。选项 B，玉石的主要成分是硅酸盐，属于硅酸盐材料。选项 C，蚕丝的主要成分是天然蛋白质，属于有机高分子材料。选项 D，陶瓷是主要以高岭土（主要成分为 Al<sub>2</sub>O<sub>3</sub>·2SiO<sub>2</sub>·2H<sub>2</sub>O）为原料，经高温烧制而成的，其主要成分为硅酸盐材料。", "hint": "蚕丝=蛋白质类天然有机高分子，这是粤绣的原料；玉石与陶瓷都属硅酸盐，青铜属金属合金。"}, {"id": 19, "src": "2026 广州二测 1", "ans": "B", "stem": "我国农耕文化源远流长。下列有关农耕文化物品所涉及材料的主要成分属于合金的是", "opts": ["陶仓", "青铜灶", "木犁", "石磨"], "exp": "选项 A，陶仓是古代以陶瓷中的陶器制作成的盛放粮食等物品的容器，其主要材料是硅酸盐材料。选项 B，青铜灶是用青铜制成的炉灶，其主要材料是青铜，属于合金。选项 C，木犁主要是利用木材制作成的用于农业耕种用的一种工具，木材的主要成分是纤维素。选项 D，石磨是用于磨碎谷物等农作物的一种工具，石磨一般是由花岗岩或大理石等硬度较高、耐磨性能好的岩石制作而成，花岗岩的主要成分是石英、长石和云母，大理石的主要成分是碳酸钙。", "hint": "青铜灶的'青铜'即合金锚点；石磨由花岗岩/大理石制成（石英、长石或碳酸钙），不是金属；陶仓、木犁各有家族。"}, {"id": 20, "src": "2024 河北 1", "ans": "D", "stem": "燕赵大地历史悠久，文化灿烂。对下列河北博物院馆藏文物（战国宫门青铜铺首、西汉透雕白玉璧、五代彩绘石质浮雕、元青花釉里红瓷盖罐）的说法错误的是", "opts": ["青铜铺首主要成分是铜锡合金", "透雕白玉璧主要成分是硅酸盐", "石质浮雕主要成分是碳酸钙", "青花釉里红瓷盖罐主要成分是硫酸钙"], "exp": "选项 A，青铜铺首是青铜器。青铜的主要成分是铜锡合金。选项 B，透雕白玉璧是玉石。玉石的主要成分是硅酸盐。选项 C，石质浮雕是汉白玉。汉白玉的主要成分是碳酸钙。选项 D，青花釉里红瓷盖罐是陶瓷。陶瓷的主要成分是硅酸盐，不是硫酸钙。", "hint": "本题选'错误'项。四个文物四个家族：青铜→铜锡合金、玉→硅酸盐、汉白玉石材→碳酸钙；瓷器的成分容易和某种钙盐混淆，小心被带偏。"}];
 var KEY = 'xz1_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
-var st = {a:{}, skip:{}, help:{}, fold:{}, elapsed:0, started:false};
+var st = {a:{}, skip:{}, help:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.fold=s.fold||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
 /* ===== 小玉/小岩 立绘与语音（素材与模式复用自 walk 模块） ===== */
@@ -148,6 +151,7 @@ function playVoice(src){
     a.play().catch(function(){});
   }catch(e){}
 }
+function toggleBox(bx){var el=$(bx);if(!el)return;el.style.display=(el.style.display==='flex')?'none':'flex'}
 function calc(){
   var ok=0;
   QS.forEach(function(q){if(st.a[q.id]===q.ans&&st.help[q.id]!=='rock')ok++});
@@ -162,7 +166,7 @@ function setSkip(id,on){
   var act=$('act'+id),tip=$('skd'+id),ob=$('op'+id);
   act.style.display=on?'none':'flex';
   $('hl'+id).style.display=on?'none':'flex';
-  if(on){var jb=$('jbx'+id),rb=$('rbx'+id);if(jb)jb.style.display='none';if(rb)rb.style.display='none';}
+  if(on){var jb=$('jbx'+id),rb=$('rbx'+id),jh=$('jht'+id),rh=$('rht'+id);if(jb)jb.style.display='none';if(rb)rb.style.display='none';if(jh)jh.style.display='none';if(rh)rh.style.display='none';}
   tip.style.display=on?'block':'none';
   Array.prototype.forEach.call(ob.children,function(b){b.disabled=on||!!st.a[id]});
   $('qc'+id).classList.toggle('skipped-card',on);
@@ -179,8 +183,10 @@ function build(){
     h+='<div class="helprow" id="hl'+q.id+'">';
     if(q.hint){h+='<button class="jade" id="jd'+q.id+'">🙋 求助小玉 · 思路点拨</button>';}
     h+='<button class="rock" id="rk'+q.id+'">📖 求助小岩 · 看详解本题计0分</button></div>';
-    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="hb-face"><img id="jf'+q.id+'" src="../assets/xiaoyu/xiaoyu_idle.webp'+FACE_VER+'" alt="小玉"><div class="hn">小玉</div></div><div class="hb-main"><div class="ht"><span>🙋 小玉点拨 · 不扣分，自己接着想</span><button class="hb-close" id="jcx'+q.id+'">收起 ▲</button></div><p>'+(q.hint||'')+'</p></div></div>';
-    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="hb-face"><img id="rf'+q.id+'" src="../assets/xiaoyan/xiaoyan_idle.webp'+FACE_VER+'" alt="小岩"><div class="hn">小岩</div></div><div class="hb-main"><div class="ht"><span>📖 小岩详解 · 本题已计 0 分</span><button class="hb-close" id="rcx'+q.id+'">收起 ▲</button></div><p>'+q.exp+'</p></div></div>';
+    h+='<div class="hthead yu" id="jht'+q.id+'" title="点击收起/展开">🙋 小玉点拨 · 不扣分<span class="chev">▾</span></div>';
+    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="hb-face"><img id="jf'+q.id+'" src="../assets/xiaoyu/xiaoyu_idle.webp'+FACE_VER+'" alt="小玉"><div class="hn">小玉</div></div><div class="hb-main"><div class="ht">🙋 小玉点拨 · 不扣分，自己接着想</div><p>'+(q.hint||'')+'</p></div></div>';
+    h+='<div class="hthead yan" id="rht'+q.id+'" title="点击收起/展开">📖 小岩详解 · 本题已计 0 分<span class="chev">▾</span></div>';
+    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="hb-face"><img id="rf'+q.id+'" src="../assets/xiaoyan/xiaoyan_idle.webp'+FACE_VER+'" alt="小岩"><div class="hn">小岩</div></div><div class="hb-main"><div class="ht">📖 小岩详解</div><p>'+q.exp+'</p></div></div>';
     h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
@@ -204,22 +210,23 @@ function build(){
     if(done){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
-      if(st.help[q.id]==='rock'&&!st.fold[q.id]){
-        $('rbx'+q.id).style.display='flex';
+      if(st.help[q.id]==='rock'){
+        $('rht'+q.id).style.display='block';
         $('hl'+q.id).style.display='none';
         $('qm'+q.id).textContent='📖';
         $('qm'+q.id).style.color='#f59e0b';
       }else{
         $('ex'+q.id).style.display='block';
         $('hl'+q.id).style.display='none';
-        $('qm'+q.id).textContent=(st.help[q.id]==='rock')?'📖':(ok?'✓':'✗');
-        $('qm'+q.id).style.color=(st.help[q.id]==='rock')?'#f59e0b':(ok?'var(--ok)':'var(--bad)');
+        $('qm'+q.id).textContent=ok?'✓':'✗';
+        $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
       }
       $('act'+q.id).style.display='none';
     }else if(skipped){
       setSkip(q.id,true);
-    }else if(st.help[q.id]&&!st.fold[q.id]){
-      $(st.help[q.id]==='rock'?'rbx'+q.id:'jbx'+q.id).style.display='flex';
+    }else if(st.help[q.id]){
+      var htp=$(st.help[q.id]==='rock'?'rht'+q.id:'jht'+q.id);
+      if(htp)htp.style.display='block';
       var hb=$(st.help[q.id]==='rock'?'rk'+q.id:'jd'+q.id);
       if(hb)hb.style.opacity=.5;
     }
@@ -237,7 +244,7 @@ function build(){
       v.textContent=rock?'已求助小岩 · 本题计 0 分（正确答案 '+q.ans+'）':(ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans);
       $('qm'+q.id).textContent=rock?'📖':(ok?'✓':'✗');
       $('qm'+q.id).style.color=rock?'#f59e0b':(ok?'var(--ok)':'var(--bad)');
-      if(rock){$('rbx'+q.id).style.display='flex';$('hl'+q.id).style.display='none';}
+      if(rock){$('rht'+q.id).style.display='block';$('rbx'+q.id).style.display='flex';$('hl'+q.id).style.display='none';}
       else{$('ex'+q.id).style.display='block';$('hl'+q.id).style.display='none';}
       $('act'+q.id).style.display='none';
       Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
@@ -245,8 +252,9 @@ function build(){
     };
     if($('jd'+q.id)){$('jd'+q.id).onclick=function(){
       if(done||skipped)return;
-      st.help[q.id]='jade';delete st.fold[q.id];
+      st.help[q.id]='jade';
       if(!st.started){st.started=true}
+      $('jht'+q.id).style.display='block';
       $('jbx'+q.id).style.display='flex';
       $('jd'+q.id).style.opacity=.5;
       setFace('jf'+q.id,YU_BASE,'think',2400);
@@ -257,20 +265,15 @@ function build(){
     $('rk'+q.id).onclick=function(){
       if(done||skipped)return;
       if(!confirm('看小岩详解后，本题将计 0 分（即使答对）。确定求助吗？'))return;
-      st.help[q.id]='rock';delete st.fold[q.id];
+      st.help[q.id]='rock';
       if(!st.started){st.started=true}
+      $('rht'+q.id).style.display='block';
       $('rbx'+q.id).style.display='flex';
       $('rk'+q.id).style.opacity=.5;
       setFace('rf'+q.id,YAN_BASE,'write',2400);
       setTimeout(function(){if(st.help[q.id]==='rock')setFace('rf'+q.id,YAN_BASE,'think',2600)},2700);
       playVoice('../assets/xz/audio/xiaoyan_hi.mp3');
       renderStats();save();
-    };
-    $('jcx'+q.id).onclick=function(){st.fold[q.id]=1;$('jbx'+q.id).style.display='none';save()};
-    $('rcx'+q.id).onclick=function(){
-      st.fold[q.id]=1;save();
-      $('rbx'+q.id).style.display='none';
-      if(done){$('ex'+q.id).style.display='block'}
     };
     $('sk'+q.id).onclick=function(){
       if(done||skipped)return;
@@ -287,6 +290,8 @@ function build(){
       if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
       else{window.scrollTo({top:0,behavior:'smooth'})}
     };
+    $('jht'+q.id).onclick=function(){toggleBox('jbx'+q.id)};
+    $('rht'+q.id).onclick=function(){toggleBox('rbx'+q.id)};
   });
 }
 function paintResult(q,ob,pick,ok){
