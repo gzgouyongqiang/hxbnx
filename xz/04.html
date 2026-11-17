@@ -79,19 +79,16 @@ sub,sup{font-size:.72em}
 .helprow button{flex:1;border-radius:10px;padding:9px 6px;font-size:12.5px;cursor:pointer;background:transparent;line-height:1.4}
 .jade{color:var(--accent);border:1px solid var(--accent-border)}
 .rock{color:#f59e0b;border:1px dashed #b45309}
-.helpbox{margin-top:6px;border-radius:10px;padding:12px;display:none;gap:10px;align-items:flex-start}
+.helpbox{margin-top:10px;border-radius:10px;padding:12px;display:none;gap:10px;align-items:flex-start}
 .jadebox{background:var(--accent-soft);border:1px solid var(--accent-border)}
 .rockbox{background:rgba(245,158,11,.09);border:1px solid #b45309}
-.hthead{display:none;font-size:12px;font-weight:500;margin-top:8px;cursor:pointer;border-radius:8px;padding:8px 10px;line-height:1.4}
-.hthead.yan{background:rgba(245,158,11,.09);border:1px solid #b45309;color:#f59e0b}
-.hthead.yu{background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent)}
-.hthead .chev{float:right;font-weight:400;opacity:.65}
 .hb-face{flex-shrink:0;width:64px;text-align:center}
 .hb-face img{width:62px;height:62px;object-fit:contain;animation:hbfloat 2.6s ease-in-out infinite}
 @keyframes hbfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .hb-face .hn{font-size:11px;color:var(--muted);margin-top:2px}
 .hb-main{flex:1;min-width:0}
-.helpbox .ht{font-size:12px;font-weight:500;margin-bottom:6px}
+.helpbox .ht{font-size:12px;font-weight:500;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.hb-close{background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:11px;padding:2px 9px;cursor:pointer;flex-shrink:0}
 .jadebox .ht{color:var(--accent)}
 .rockbox .ht{color:#f59e0b}
 .helpbox p{font-size:12.5px;color:var(--muted)}
@@ -127,9 +124,9 @@ sub,sup{font-size:.72em}
 var QS = [{"id": 1, "src": "2024 广东 8", "ans": "A", "figs": ["figs/k4/q1.png"], "stem": "1810 年，化学家戴维首次确认“氯气”是一种由新元素组成的单质。兴趣小组利用以下装置进行实验。其中，难以达到预期目的的是", "opts": ["制备 Cl<sub>2</sub>", "净化、干燥 Cl<sub>2</sub>", "收集 Cl<sub>2</sub>", "验证 Cl<sub>2</sub> 的氧化性"], "exp": "选项 A，利用浓盐酸和二氧化锰反应制备 Cl<sub>2</sub> 需要加热，图中缺少加热装置，且分液漏斗内应盛装浓盐酸，不能达到预期目的。选项 B，实验室制得的 Cl<sub>2</sub> 中混有 HCl 杂质，可通过饱和食盐水洗气除杂，再通过无水 CaCl<sub>2</sub> 干燥，可以达到净化、干燥 Cl<sub>2</sub> 的目的。选项 C，Cl<sub>2</sub> 的密度大于空气的，可用向上排空气法收集。选项 D，H<sub>2</sub> 可以在 Cl<sub>2</sub> 中安静地燃烧，产生苍白色火焰，Cl<sub>2</sub> 将 H<sub>2</sub> 氧化，验证了 Cl<sub>2</sub> 的氧化性。"}, {"id": 2, "src": "2023 广东 4", "ans": "B", "figs": ["figs/k4/q2.png"], "stem": "1827 年，英国科学家法拉第进行了 NH<sub>3</sub> 喷泉实验。在此启发下，兴趣小组利用以下装置，进行如下实验。其中，难以达到预期目的的是", "opts": ["喷泉实验", "干燥 NH<sub>3</sub>", "收集 NH<sub>3</sub>", "制备 NH<sub>3</sub>"], "exp": "选项 A，打开止水夹，将胶头滴管中的水快速挤入圆底烧瓶中，由于 NH<sub>3</sub> 极易溶于水，NH<sub>3</sub> 溶于水后圆底烧瓶内压强减小，从而产生喷泉。选项 B，P<sub>2</sub>O<sub>5</sub> 是酸性氧化物，是一种酸性干燥剂，NH<sub>3</sub> 是碱性气体，P<sub>2</sub>O<sub>5</sub> 吸水生成磷酸，磷酸与 NH<sub>3</sub> 发生反应生成 (NH<sub>4</sub>)<sub>3</sub>PO<sub>4</sub> 等物质，故不能用 P<sub>2</sub>O<sub>5</sub> 干燥 NH<sub>3</sub>，实验室常用碱石灰干燥 NH<sub>3</sub>。选项 C，NH<sub>3</sub> 的密度比空气的小，可采用向下排空气集气法收集，若集气瓶正放，需要短导管进气、长导管出气。选项 D，CaO 与浓氨水混合后，CaO 与水反应并放出大量的热，使 NH<sub>3</sub> 挥发，可用此装置制备 NH<sub>3</sub>。"}, {"id": 3, "src": "2022 广东 8", "ans": "D", "figs": ["figs/k4/q3.png"], "stem": "实验室用 MnO<sub>2</sub> 和浓盐酸反应生成 Cl<sub>2</sub> 后，按照净化、收集、性质检验及尾气处理的顺序进行实验。下列装置（“→”表示气流方向）不能达到实验目的的是", "opts": ["净化（饱和食盐水、浓硫酸）", "收集", "性质检验（干燥红布条、湿润红布条）", "尾气处理（水）"], "exp": "选项 A，浓盐酸易挥发，制备的 Cl<sub>2</sub> 中一般会混有 HCl 和 H<sub>2</sub>O 等杂质，Cl<sub>2</sub> 在饱和食盐水中溶解度较低，HCl 易溶于饱和食盐水，饱和食盐水可除去 Cl<sub>2</sub> 中的 HCl，再用浓硫酸除去水蒸气，净化时气流方向应长进短出。选项 B，Cl<sub>2</sub> 的密度比空气的大，常温下 Cl<sub>2</sub> 不与空气中的成分反应，用向上排空气法收集时气流方向需长进短出。选项 C，Cl<sub>2</sub> 通过干燥的红布条，红布条不褪色，证明 Cl<sub>2</sub> 没有漂白性；Cl<sub>2</sub> 通过湿润的红布条时，Cl<sub>2</sub> 与水发生反应生成的 HClO 具有漂白性，湿润的红布条褪色，说明氯水具有漂白性，U 形管中间的无水 CaCl<sub>2</sub> 可防止湿润的红布条对干燥的红布条造成干扰。选项 D，常温下 1 体积水约溶解 2 体积 Cl<sub>2</sub>，Cl<sub>2</sub> 在水中溶解度不大，故用水不能完全吸收多余的 Cl<sub>2</sub>，实验室常用 NaOH 溶液吸收多余的 Cl<sub>2</sub>。"}, {"id": 4, "src": "2023 广东 9", "ans": "C", "figs": ["figs/k4/q4.png"], "stem": "按下图装置进行实验。将稀硫酸全部加入Ⅰ中的试管，关闭活塞。下列说法正确的是", "opts": ["Ⅰ中试管内的反应，体现 H<sup>+</sup> 的氧化性", "Ⅱ中品红溶液褪色，体现 SO<sub>2</sub> 的还原性", "在Ⅰ和Ⅲ的试管中，都出现了浑浊现象", "撤掉水浴，重做实验，Ⅳ中红色更快褪去"], "exp": "选项 A，Ⅰ中发生反应为 S<sub>2</sub>O<sub>3</sub><sup>2−</sup>+2H<sup>+</sup>=S↓+SO<sub>2</sub>↑+H<sub>2</sub>O，反应中只是硫元素的化合价发生变化，氢元素化合价不变，H<sup>+</sup> 不体现氧化性，该反应中氧化剂和还原剂均为 S<sub>2</sub>O<sub>3</sub><sup>2−</sup>。选项 B，SO<sub>2</sub> 进入Ⅱ中使品红溶液褪色，体现 SO<sub>2</sub> 的漂白性，与 SO<sub>2</sub> 的还原性无关。选项 C，SO<sub>2</sub> 进入Ⅲ中与 Na<sub>2</sub>S 溶液发生反应为 SO<sub>2</sub>+2S<sup>2−</sup>+2H<sub>2</sub>O=3S↓+4OH<sup>−</sup>，Ⅰ和Ⅲ的试管中反应均生成 S 单质，S 是一种淡黄色不溶于水的固体，Ⅰ和Ⅲ的试管中都会出现浑浊现象。选项 D，撤掉水浴，重做实验，温度降低，反应速率减慢，产生 SO<sub>2</sub> 气体减慢，Ⅳ中红色褪去的速率也减慢。"}, {"id": 5, "src": "2022 广东 5", "ans": "B", "figs": ["figs/k4/q5.png"], "stem": "若将铜丝插入热浓硫酸中进行如图（a～d 均为浸有相应试液的棉花）所示的探究实验，下列分析正确的是", "opts": ["Cu 与浓硫酸反应，只体现 H<sub>2</sub>SO<sub>4</sub> 的酸性", "a 处变红，说明 SO<sub>2</sub> 是酸性氧化物", "b 或 c 处褪色，均说明 SO<sub>2</sub> 具有漂白性", "试管底部出现白色固体，说明反应中无 H<sub>2</sub>O 生成"], "exp": "选项 A，Cu 与浓硫酸反应的化学方程式为 Cu+2H<sub>2</sub>SO<sub>4</sub>(浓)=CuSO<sub>4</sub>+2H<sub>2</sub>O+SO<sub>2</sub>↑（加热），硫元素部分变价，体现了浓硫酸的强氧化性和酸性。选项 B，a 处紫色石蕊溶液变红，是因为 SO<sub>2</sub> 与 H<sub>2</sub>O 反应生成 H<sub>2</sub>SO<sub>3</sub>，H<sub>2</sub>SO<sub>3</sub> 显酸性，说明 SO<sub>2</sub> 是酸性氧化物。选项 C，b 处品红溶液褪色，说明 SO<sub>2</sub> 具有漂白性；c 处酸性 KMnO<sub>4</sub> 溶液褪色，是因为发生了氧化还原反应（5SO<sub>2</sub>+2KMnO<sub>4</sub>+2H<sub>2</sub>O=K<sub>2</sub>SO<sub>4</sub>+2MnSO<sub>4</sub>+2H<sub>2</sub>SO<sub>4</sub>），只能说明 SO<sub>2</sub> 具有还原性。选项 D，试管底部出现的白色固体为无水 CuSO<sub>4</sub>，其产生的原因是浓硫酸具有吸水性，吸收反应中生成的 H<sub>2</sub>O。"}, {"id": 6, "src": "2021 广东适应性 14", "ans": "C", "figs": ["figs/k4/q6.png"], "stem": "推理是一种重要的能力。打开分液漏斗活塞，进行如图所示的探究实验，对实验现象的预测及分析错误的是", "opts": ["试管内 CCl<sub>4</sub> 层溶液褪色，说明 Br<sub>2</sub> 具有氧化性", "试管中的红色花瓣褪色，说明 SO<sub>2</sub> 具有漂白性", "试管中产生大量气泡，说明 Na<sub>2</sub>SO<sub>3</sub> 被氧化产生 SO<sub>3</sub>", "一段时间后试管内有白色沉淀，说明有 SO<sub>4</sub><sup>2−</sup> 生成"], "exp": "选项 A，制备 SO<sub>2</sub> 的反应为 Na<sub>2</sub>SO<sub>3</sub>+H<sub>2</sub>SO<sub>4</sub>=SO<sub>2</sub>↑+Na<sub>2</sub>SO<sub>4</sub>+H<sub>2</sub>O，SO<sub>2</sub> 通入试管 CCl<sub>4</sub> 层后，CCl<sub>4</sub> 层中的 Br<sub>2</sub> 与 SO<sub>2</sub> 发生反应 SO<sub>2</sub>+Br<sub>2</sub>+2H<sub>2</sub>O=H<sub>2</sub>SO<sub>4</sub>+2HBr，CCl<sub>4</sub> 层溶液褪色，说明 SO<sub>2</sub> 具有还原性，Br<sub>2</sub> 具有氧化性。选项 B，过量的 SO<sub>2</sub> 会从试管液面逸出，逸出的 SO<sub>2</sub> 使红色花瓣褪色，说明 SO<sub>2</sub> 具有漂白性。选项 C，试管中产生的大量气泡是锥形瓶中生成 SO<sub>2</sub> 引起，发生反应为 Na<sub>2</sub>SO<sub>3</sub>+H<sub>2</sub>SO<sub>4</sub>=Na<sub>2</sub>SO<sub>4</sub>+SO<sub>2</sub>↑+H<sub>2</sub>O，属于强酸制弱酸的复分解反应，没有发生氧化还原反应。选项 D，CCl<sub>4</sub> 层内有 H<sub>2</sub>SO<sub>4</sub> 生成，Ba<sup>2+</sup> 和 SO<sub>4</sub><sup>2−</sup> 反应生成的 BaSO<sub>4</sub> 不能溶于强酸，故试管内有白色沉淀，说明有 SO<sub>4</sub><sup>2−</sup> 生成。"}, {"id": 7, "src": "2024 河北 10", "ans": "C", "figs": ["figs/k4/q7.png"], "stem": "图示装置不能完成相应气体的发生和收集实验的是（加热、除杂和尾气处理装置任选）", "opts": ["SO<sub>2</sub>：饱和 Na<sub>2</sub>SO<sub>3</sub> 溶液＋浓硫酸", "Cl<sub>2</sub>：MnO<sub>2</sub>＋浓盐酸", "NH<sub>3</sub>：固体 NH<sub>4</sub>Cl＋熟石灰", "CO<sub>2</sub>：石灰石＋稀盐酸"], "exp": "选项 A，饱和 Na<sub>2</sub>SO<sub>3</sub> 溶液和浓硫酸反应可以制备 SO<sub>2</sub>，使用固液不加热制气装置，SO<sub>2</sub> 密度比空气的大，用向上排空气法收集。选项 B，MnO<sub>2</sub> 和浓盐酸加热反应可以制备 Cl<sub>2</sub>，使用固液加热制气装置，Cl<sub>2</sub> 密度比空气的大，用向上排空气法收集。选项 C，固体 NH<sub>4</sub>Cl 与熟石灰加热可以制备 NH<sub>3</sub>，需要使用固固加热制气装置，用向下排空气法收集，图中发生装置不合理。选项 D，石灰石（主要成分为 CaCO<sub>3</sub>）和稀盐酸反应制备 CO<sub>2</sub>，使用固液不加热制气装置，CO<sub>2</sub> 密度比空气的大，用向上排空气法收集。"}, {"id": 8, "src": "2022 江苏 4", "ans": "C", "figs": ["figs/k4/q8.png"], "stem": "实验室制取少量 SO<sub>2</sub> 水溶液并探究其酸性，下列实验装置和操作不能达到实验目的是", "opts": ["用装置甲制取 SO<sub>2</sub> 气体", "用装置乙制取 SO<sub>2</sub> 水溶液", "用装置丙吸收尾气中的 SO<sub>2</sub>", "用干燥的 pH 试纸检验 SO<sub>2</sub> 水溶液的酸性"], "exp": "选项 A，实验室制取 SO<sub>2</sub> 的反应为 H<sub>2</sub>SO<sub>4</sub>+2NaHSO<sub>3</sub>=Na<sub>2</sub>SO<sub>4</sub>+2SO<sub>2</sub>↑+2H<sub>2</sub>O，故装置甲可以制取 SO<sub>2</sub> 气体。选项 B，SO<sub>2</sub> 溶于水可得到 SO<sub>2</sub> 水溶液，气体通入液体时“长进短出”，故装置乙可制取 SO<sub>2</sub> 水溶液。选项 C，SO<sub>2</sub> 在饱和 NaHSO<sub>3</sub> 溶液中溶解度很小，故装置丙不能吸收尾气中的 SO<sub>2</sub>，尾气 SO<sub>2</sub> 应用 NaOH 溶液吸收。选项 D，SO<sub>2</sub> 水溶液显酸性，可用干燥的 pH 试纸检验其酸性，若 pH 试纸润湿会影响检验结果。"}, {"id": 9, "src": "2023 北京 8", "ans": "D", "figs": ["figs/k4/q9.png"], "stem": "完成下述实验，装置或试剂不正确的是", "opts": ["实验室制 Cl<sub>2</sub>", "实验室收集 C<sub>2</sub>H<sub>4</sub>", "验证 NH<sub>3</sub> 易溶于水且溶液呈碱性", "除去 CO<sub>2</sub> 中混有的少量 HCl"], "exp": "选项 A，在加热条件下，MnO<sub>2</sub> 固体将浓盐酸氧化为 Cl<sub>2</sub>，固液加热的反应装置可用于制备 Cl<sub>2</sub>。选项 B，C<sub>2</sub>H<sub>4</sub> 不溶于水，可选择排水收集法。选项 C，挤压胶头滴管使水进入烧瓶将 NH<sub>3</sub> 溶解，烧瓶中气体减少、压强降低，打开活塞，烧杯中的水迅速被压入烧瓶中形成红色喷泉，红色喷泉可证明 NH<sub>3</sub> 易溶于水且溶液呈碱性。选项 D，饱和 Na<sub>2</sub>CO<sub>3</sub> 溶液也会吸收 CO<sub>2</sub>，不能达到除杂的目的，应该选用饱和 NaHCO<sub>3</sub> 溶液除杂。"}, {"id": 10, "src": "2024 浙江 1 月 8", "ans": "A", "figs": ["figs/k4/q10.png"], "stem": "下列实验装置使用不正确的是", "opts": ["二氧化锰和浓盐酸反应制氯气", "标准酸溶液滴定未知碱溶液", "测定中和反应反应热", "制备乙酸乙酯"], "exp": "选项 A，缺少加热装置，不适用于二氧化锰和浓盐酸反应制氯气。选项 B，利用酸式滴定管中装有的标准酸溶液滴定未知碱溶液，装置正确。选项 C，装置用于测定中和反应反应热，温度计测温度、玻璃搅拌器起搅拌作用，装置密封、隔热保温效果好。选项 D，装置用于制备乙酸乙酯，导管末端不伸入液面下，利用饱和碳酸钠溶液收集乙酸乙酯。"}, {"id": 11, "src": "2026 四川 4", "ans": "B", "figs": ["figs/k4/q11.png"], "stem": "下列图示中，实验操作或方法正确的是", "opts": ["除去乙炔中的少量 H<sub>2</sub>S", "探究 NaHCO<sub>3</sub> 的热稳定性", "向容量瓶中转移 NaCl 溶液", "制备 Fe(OH)<sub>3</sub> 胶体"], "exp": "选项 A，酸性 KMnO<sub>4</sub> 溶液具有强氧化性，乙炔、H<sub>2</sub>S 均具有还原性，二者都能与酸性 KMnO<sub>4</sub> 溶液发生氧化还原反应，乙炔含碳碳三键，会被酸性 KMnO<sub>4</sub> 溶液氧化，会损失提纯的乙炔。选项 B，NaHCO<sub>3</sub> 热稳定性差，受热分解生成 Na<sub>2</sub>CO<sub>3</sub>、H<sub>2</sub>O、CO<sub>2</sub>，将 CO<sub>2</sub> 气体通入澄清石灰水，出现浑浊可验证 NaHCO<sub>3</sub> 的热稳定性弱，加热 NaHCO<sub>3</sub> 固体时试管口略向下倾斜，避免反应生成的水蒸气冷凝倒流使试管炸裂。选项 C，向容量瓶中转移溶液时，必须用玻璃棒引流，以防止液体洒出瓶外，玻璃棒下端靠在容量瓶刻度线下方的内壁。选项 D，制备 Fe(OH)<sub>3</sub> 胶体时，正确操作是向沸水中逐滴加入 5～6 滴 FeCl<sub>3</sub> 饱和溶液，继续煮沸至液体呈红褐色，停止加热；若将 FeCl<sub>3</sub> 饱和溶液滴入 NaOH 溶液中，会直接生成 Fe(OH)<sub>3</sub> 沉淀，无法得到 Fe(OH)<sub>3</sub> 胶体。"}, {"id": 12, "src": "2026 浙江 1 月 10", "ans": "D", "figs": ["figs/k4/q12.png"], "stem": "利用下列装置进行实验，无法达到实验目的是", "opts": ["分离植物油和水", "证明 NH<sub>3</sub> 溶于水", "证明 Na<sub>2</sub>O<sub>2</sub> 与水反应生成 O<sub>2</sub>", "制备无水 MgCl<sub>2</sub>"], "exp": "选项 A，植物油和水互不相溶，可利用分液漏斗进行分液操作。选项 B，将充满 NH<sub>3</sub> 的试管倒立放在水中，NH<sub>3</sub> 极易溶于水，会使试管内压强迅速减小，外界大气压将水压入试管，证明 NH<sub>3</sub> 极易溶于水。选项 C，Na<sub>2</sub>O<sub>2</sub> 与水反应生成 NaOH 和 O<sub>2</sub>，氧气具有助燃性，能使带火星的木条复燃。选项 D，MgCl<sub>2</sub> 溶液中存在水解平衡，MgCl<sub>2</sub>+2H<sub>2</sub>O⇌Mg(OH)<sub>2</sub>+2HCl，加热 MgCl<sub>2</sub> 会促进该水解平衡正向移动，生成的 HCl 易挥发，得到 Mg(OH)<sub>2</sub>，继续加热会使 Mg(OH)<sub>2</sub> 分解产生 MgO，得不到无水 MgCl<sub>2</sub>；若要制备无水 MgCl<sub>2</sub>，可在 HCl 氛围中加热 MgCl<sub>2</sub> 溶液。"}, {"id": 13, "src": "2023 全国乙卷 9", "ans": "D", "figs": ["figs/k4/q13.png"], "stem": "下列装置可以用于相应实验的是", "opts": ["制备 CO<sub>2</sub>", "分离乙醇和乙酸", "验证 SO<sub>2</sub> 酸性", "测量 O<sub>2</sub> 体积"], "exp": "选项 A，Na<sub>2</sub>CO<sub>3</sub> 固体比较稳定，受热不易分解，不能采用加热 Na<sub>2</sub>CO<sub>3</sub> 的方法制备 CO<sub>2</sub>。选项 B，装置为分液装置，用于分离不互溶的液体，乙醇和乙酸是互溶的，不能采用分液法分离，应采用蒸馏装置来分离。选项 C，SO<sub>2</sub> 通入品红溶液中，可验证其漂白性，不能验证其酸性。选项 D，O<sub>2</sub> 不易溶于水，可以通过排水法测量 O<sub>2</sub> 的体积。"}, {"id": 14, "src": "2023 江苏 3", "ans": "C", "figs": ["figs/k4/q14.png"], "stem": "实验室制取 Cl<sub>2</sub> 的实验原理及装置均正确的是", "opts": ["制备 Cl<sub>2</sub>", "除去 Cl<sub>2</sub> 中的 HCl", "收集 Cl<sub>2</sub>", "吸收尾气中的 Cl<sub>2</sub>"], "exp": "选项 A，实验室采用加热 MnO<sub>2</sub> 固体和浓盐酸制取 Cl<sub>2</sub>，不能用稀盐酸。选项 B，Cl<sub>2</sub> 在饱和食盐水中溶解度较低，饱和食盐水可除去 Cl<sub>2</sub> 中的 HCl，净化时气流方向应长进短出。选项 C，Cl<sub>2</sub> 的密度比空气的大，用向上排空气法收集，收集时气流方向需长进短出。选项 D，Cl<sub>2</sub> 在水中溶解度较小，不能用水吸收尾气中的 Cl<sub>2</sub>，实验室常用 NaOH 溶液吸收尾气中的 Cl<sub>2</sub>。"}, {"id": 15, "src": "2023 广州一测 3", "ans": "C", "figs": ["figs/k4/q15.png"], "stem": "实验室用 MnO<sub>2</sub> 和浓盐酸反应制备 Cl<sub>2</sub> 并回收 MnCl<sub>2</sub>，下列装置能达到实验目的是", "opts": ["收集 Cl<sub>2</sub>", "吸收尾气 Cl<sub>2</sub>", "分离 MnO<sub>2</sub> 和 MnCl<sub>2</sub> 溶液", "蒸干 MnCl<sub>2</sub> 溶液制 MnCl<sub>2</sub>·4H<sub>2</sub>O"], "exp": "选项 A，收集 Cl<sub>2</sub> 时，Cl<sub>2</sub> 的密度大于空气的，使用图中装置收集气体时，气体应从集气瓶长管进入。选项 B，Cl<sub>2</sub> 能与 NaOH 溶液反应，吸收尾气 Cl<sub>2</sub> 需要用 NaOH 溶液。选项 C，分离 MnO<sub>2</sub> 和 MnCl<sub>2</sub> 溶液是固体和液体分离，分离方法是过滤。选项 D，MnCl<sub>2</sub>·4H<sub>2</sub>O 含有结晶水，蒸干 MnCl<sub>2</sub> 溶液，蒸发溶剂会失去结晶水。"}, {"id": 16, "src": "2023 广州二测 5", "ans": "D", "figs": ["figs/k4/q16.png"], "stem": "下列装置用于实验室制取 NO 并回收 Cu(NO<sub>3</sub>)<sub>2</sub>，不能达到实验目的是", "opts": ["制 NO 气体", "除去 NO 中的少量 NO<sub>2</sub>", "收集 NO 气体", "蒸干溶液获得 Cu(NO<sub>3</sub>)<sub>2</sub> 固体"], "exp": "选项 A，制取 NO 的反应为 3Cu+8HNO<sub>3</sub>(稀)=3Cu(NO<sub>3</sub>)<sub>2</sub>+2NO↑+4H<sub>2</sub>O，制取装置为固液混合且不需要加热。选项 B，NO 难溶于水，NO<sub>2</sub> 可与水反应 3NO<sub>2</sub>+H<sub>2</sub>O=2HNO<sub>3</sub>+NO，可用水除去 NO 中混有的少量 NO<sub>2</sub>。选项 C，NO 难溶于水，可用排水法收集 NO，收集时由短导管通入 NO，利用气压原理将水从长导管排出。选项 D，将 Cu(NO<sub>3</sub>)<sub>2</sub> 溶液蒸干，Cu<sup>2+</sup> 易水解生成氢氧化铜，氢氧化铜受热分解生成氧化铜，难于得到纯净的 Cu(NO<sub>3</sub>)<sub>2</sub> 固体；欲制得 Cu(NO<sub>3</sub>)<sub>2</sub> 晶体，可先往 Cu(NO<sub>3</sub>)<sub>2</sub> 溶液加入少量稀硝酸，再蒸发浓缩、冷却结晶、过滤、洗涤、干燥。"}, {"id": 17, "src": "2024 广州调研 4", "ans": "D", "figs": ["figs/k4/q17.png"], "stem": "化学家舍勒将软锰矿（主要成分是 MnO<sub>2</sub>）与浓盐酸作为原料制氯气。兴趣小组利用下列装置进行如下实验，能达到预期目的是", "opts": ["制取氯气", "净化氯气", "收集氯气", "制备漂白液"], "exp": "选项 A，MnO<sub>2</sub> 与浓盐酸反应制氯气需要加热。选项 B，杂质气体 HCl 能与饱和 NaHCO<sub>3</sub> 溶液反应生成 CO<sub>2</sub> 气体，引入新的杂质气体 CO<sub>2</sub>，净化氯气应用饱和食盐水。选项 C，氯气密度比空气的大，收集装置的导管应长进短出。选项 D，Cl<sub>2</sub> 与 NaOH 溶液反应生成 NaClO、NaCl，可制得漂白液。"}, {"id": 18, "src": "2024 广州一测 4", "ans": "B", "figs": ["figs/k4/q18.png"], "stem": "用下列实验装置进行相应实验，不能达到实验目的是", "opts": ["验证 NH<sub>3</sub> 易溶于水且溶液呈碱性", "蒸干 NH<sub>4</sub>Cl 饱和溶液制备 NH<sub>4</sub>Cl 晶体", "除去粗盐溶液中不溶物", "分离乙酸乙酯和饱和 Na<sub>2</sub>CO<sub>3</sub> 溶液"], "exp": "选项 A，NH<sub>3</sub> 极易溶于水，溶于水后圆底烧瓶内压强减小，从而产生喷泉，水中滴有酚酞，喷泉颜色呈红色，体现 NH<sub>3</sub> 水溶液呈碱性。选项 B，加热 NH<sub>4</sub>Cl 会分解生成 NH<sub>3</sub> 和 HCl，故蒸干 NH<sub>4</sub>Cl 溶液不能得到 NH<sub>4</sub>Cl 晶体。选项 C，可通过过滤，利用溶解性的差异除去粗盐溶液中不溶物。选项 D，乙酸乙酯在饱和 Na<sub>2</sub>CO<sub>3</sub> 溶液中溶解度较低，可通过分液分离。"}, {"id": 19, "src": "2025 广州调研 7", "ans": "A", "figs": ["figs/k4/q19.png"], "stem": "实验室利用以下装置进行 NH<sub>3</sub> 制备、干燥、收集及尾气处理的实验。下列装置能达到预期目的的是", "opts": ["制备 NH<sub>3</sub>", "干燥 NH<sub>3</sub>", "收集 NH<sub>3</sub>", "尾气处理"], "exp": "选项 A，制取 NH<sub>3</sub> 的反应为 Ca(OH)<sub>2</sub>+2NH<sub>4</sub>Cl=CaCl<sub>2</sub>+2NH<sub>3</sub>↑+2H<sub>2</sub>O（加热），制取装置为固体与固体混合加热的装置。选项 B，P<sub>2</sub>O<sub>5</sub> 是酸性氧化物，是一种酸性干燥剂，NH<sub>3</sub> 是碱性气体，因此不能用 P<sub>2</sub>O<sub>5</sub> 干燥 NH<sub>3</sub>，实验室常用碱石灰干燥 NH<sub>3</sub>。选项 C，NH<sub>3</sub> 的密度比空气的小，可采用向下排空气法收集，若集气瓶正放，利用排空气法收集氨气时，装置导管应短导管进气、长导管出气。选项 D，NH<sub>3</sub> 极易溶于水，因此尾气处理时应添加防倒吸装置，图中缺少防倒吸装置。"}, {"id": 20, "src": "2025 广州二测 5", "ans": "B", "figs": ["figs/k4/q20.png"], "stem": "兴趣小组利用下列装置进行实验，能达到实验目的是", "opts": ["制备 NO", "除去 NO 中的 NO<sub>2</sub>", "收集 NO", "吸收尾气中的 NO"], "exp": "选项 A，制备 NO 应用稀硝酸与铜丝反应，发生反应 8HNO<sub>3</sub>(稀)+3Cu=3Cu(NO<sub>3</sub>)<sub>2</sub>+2NO↑+4H<sub>2</sub>O；用浓硝酸与铜丝反应是制备 NO<sub>2</sub> 的方法之一。选项 B，NO 不溶于水，NO<sub>2</sub> 会与水反应生成 HNO<sub>3</sub> 和 NO，发生反应 3NO<sub>2</sub>+H<sub>2</sub>O=2HNO<sub>3</sub>+NO，因此当 NO 中混有少量 NO<sub>2</sub> 杂质时，可将气体通入盛有水的洗气瓶中，从而达到除杂的目的。选项 C，NO 在常温下很容易和氧气化合生成 NO<sub>2</sub>，如果用排空气法收集，则 NO 会与瓶内空气中的 O<sub>2</sub> 发生反应，无法通过排空气法收集 NO。选项 D，NO 不溶于水，也不与 NaOH 反应，将 NO 尾气通入 NaOH 溶液无法实现尾气处理。"}];
 var KEY = 'xz4_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
-var st = {a:{}, skip:{}, help:{}, elapsed:0, started:false};
+var st = {a:{}, skip:{}, help:{}, fold:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.fold=s.fold||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
 /* ===== 小玉/小岩 立绘与语音（素材与模式复用自 walk 模块） ===== */
@@ -151,7 +148,6 @@ function playVoice(src){
     a.play().catch(function(){});
   }catch(e){}
 }
-function toggleBox(bx){var el=$(bx);if(!el)return;el.style.display=(el.style.display==='flex')?'none':'flex'}
 function calc(){
   var ok=0;
   QS.forEach(function(q){if(st.a[q.id]===q.ans&&st.help[q.id]!=='rock')ok++});
@@ -183,10 +179,8 @@ function build(){
     h+='<div class="helprow" id="hl'+q.id+'">';
     if(q.hint){h+='<button class="jade" id="jd'+q.id+'">🙋 求助小玉 · 思路点拨</button>';}
     h+='<button class="rock" id="rk'+q.id+'">📖 求助小岩 · 看详解本题计0分</button></div>';
-    h+='<div class="hthead yu" id="jht'+q.id+'" title="点击收起/展开">🙋 小玉点拨 · 不扣分<span class="chev">▾</span></div>';
-    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="hb-face"><img id="jf'+q.id+'" src="../assets/xiaoyu/xiaoyu_idle.webp'+FACE_VER+'" alt="小玉"><div class="hn">小玉</div></div><div class="hb-main"><div class="ht">🙋 小玉点拨 · 不扣分，自己接着想</div><p>'+(q.hint||'')+'</p></div></div>';
-    h+='<div class="hthead yan" id="rht'+q.id+'" title="点击收起/展开">📖 小岩详解 · 本题已计 0 分<span class="chev">▾</span></div>';
-    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="hb-face"><img id="rf'+q.id+'" src="../assets/xiaoyan/xiaoyan_idle.webp'+FACE_VER+'" alt="小岩"><div class="hn">小岩</div></div><div class="hb-main"><div class="ht">📖 小岩详解</div><p>'+q.exp+'</p></div></div>';
+    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="hb-face"><img id="jf'+q.id+'" src="../assets/xiaoyu/xiaoyu_idle.webp'+FACE_VER+'" alt="小玉"><div class="hn">小玉</div></div><div class="hb-main"><div class="ht"><span>🙋 小玉点拨 · 不扣分，自己接着想</span><button class="hb-close" id="jcx'+q.id+'">收起 ▲</button></div><p>'+(q.hint||'')+'</p></div></div>';
+    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="hb-face"><img id="rf'+q.id+'" src="../assets/xiaoyan/xiaoyan_idle.webp'+FACE_VER+'" alt="小岩"><div class="hn">小岩</div></div><div class="hb-main"><div class="ht"><span>📖 小岩详解 · 本题已计 0 分</span><button class="hb-close" id="rcx'+q.id+'">收起 ▲</button></div><p>'+q.exp+'</p></div></div>';
     h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
@@ -210,23 +204,22 @@ function build(){
     if(done){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
-      if(st.help[q.id]==='rock'){
-        $('rht'+q.id).style.display='block';
+      if(st.help[q.id]==='rock'&&!st.fold[q.id]){
+        $('rbx'+q.id).style.display='flex';
         $('hl'+q.id).style.display='none';
         $('qm'+q.id).textContent='📖';
         $('qm'+q.id).style.color='#f59e0b';
       }else{
         $('ex'+q.id).style.display='block';
         $('hl'+q.id).style.display='none';
-        $('qm'+q.id).textContent=ok?'✓':'✗';
-        $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+        $('qm'+q.id).textContent=(st.help[q.id]==='rock')?'📖':(ok?'✓':'✗');
+        $('qm'+q.id).style.color=(st.help[q.id]==='rock')?'#f59e0b':(ok?'var(--ok)':'var(--bad)');
       }
       $('act'+q.id).style.display='none';
     }else if(skipped){
       setSkip(q.id,true);
-    }else if(st.help[q.id]){
-      var htp=$(st.help[q.id]==='rock'?'rht'+q.id:'jht'+q.id);
-      if(htp)htp.style.display='block';
+    }else if(st.help[q.id]&&!st.fold[q.id]){
+      $(st.help[q.id]==='rock'?'rbx'+q.id:'jbx'+q.id).style.display='flex';
       var hb=$(st.help[q.id]==='rock'?'rk'+q.id:'jd'+q.id);
       if(hb)hb.style.opacity=.5;
     }
@@ -244,7 +237,7 @@ function build(){
       v.textContent=rock?'已求助小岩 · 本题计 0 分（正确答案 '+q.ans+'）':(ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans);
       $('qm'+q.id).textContent=rock?'📖':(ok?'✓':'✗');
       $('qm'+q.id).style.color=rock?'#f59e0b':(ok?'var(--ok)':'var(--bad)');
-      if(rock){$('rht'+q.id).style.display='block';$('rbx'+q.id).style.display='flex';$('hl'+q.id).style.display='none';}
+      if(rock){$('rbx'+q.id).style.display='flex';$('hl'+q.id).style.display='none';}
       else{$('ex'+q.id).style.display='block';$('hl'+q.id).style.display='none';}
       $('act'+q.id).style.display='none';
       Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
@@ -252,9 +245,8 @@ function build(){
     };
     if($('jd'+q.id)){$('jd'+q.id).onclick=function(){
       if(done||skipped)return;
-      st.help[q.id]='jade';
+      st.help[q.id]='jade';delete st.fold[q.id];
       if(!st.started){st.started=true}
-      $('jht'+q.id).style.display='block';
       $('jbx'+q.id).style.display='flex';
       $('jd'+q.id).style.opacity=.5;
       setFace('jf'+q.id,YU_BASE,'think',2400);
@@ -265,15 +257,20 @@ function build(){
     $('rk'+q.id).onclick=function(){
       if(done||skipped)return;
       if(!confirm('看小岩详解后，本题将计 0 分（即使答对）。确定求助吗？'))return;
-      st.help[q.id]='rock';
+      st.help[q.id]='rock';delete st.fold[q.id];
       if(!st.started){st.started=true}
-      $('rht'+q.id).style.display='block';
       $('rbx'+q.id).style.display='flex';
       $('rk'+q.id).style.opacity=.5;
       setFace('rf'+q.id,YAN_BASE,'write',2400);
       setTimeout(function(){if(st.help[q.id]==='rock')setFace('rf'+q.id,YAN_BASE,'think',2600)},2700);
       playVoice('../assets/xz/audio/xiaoyan_hi.mp3');
       renderStats();save();
+    };
+    $('jcx'+q.id).onclick=function(){st.fold[q.id]=1;$('jbx'+q.id).style.display='none';save()};
+    $('rcx'+q.id).onclick=function(){
+      st.fold[q.id]=1;save();
+      $('rbx'+q.id).style.display='none';
+      if(done){$('ex'+q.id).style.display='block'}
     };
     $('sk'+q.id).onclick=function(){
       if(done||skipped)return;
@@ -290,8 +287,6 @@ function build(){
       if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
       else{window.scrollTo({top:0,behavior:'smooth'})}
     };
-    $('jht'+q.id).onclick=function(){toggleBox('jbx'+q.id)};
-    $('rht'+q.id).onclick=function(){toggleBox('rbx'+q.id)};
   });
 }
 function paintResult(q,ob,pick,ok){
