@@ -25,11 +25,14 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px 14px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
 .pcard.ok{border-color:var(--accent-border)}
 .pcard.todo{opacity:.55}
+.pcard.skip{opacity:.72;border-style:dashed}
+.pcard.skip .pno{color:var(--faint)}
 .pno{font-size:11px;color:var(--accent);font-weight:500}
 .ptitle{font-size:13.5px;line-height:1.45;min-height:38px}
 .pstat{font-size:11px;margin-top:2px}
 .pstat.go{color:var(--accent)}
 .pstat.lock{color:var(--faint)}
+.pstat.skiptag{color:var(--faint)}
 footer{text-align:center;padding:26px 0 14px;color:var(--faint);font-size:12px}
 </style>
 </head>
@@ -61,7 +64,7 @@ footer{text-align:center;padding:26px 0 14px;color:var(--faint);font-size:12px}
 <a class="pcard ok" href="13.html"><span class="pno">考点 13</span><span class="ptitle">综合实验设计</span><span class="pstat go">开始刷题 →</span></a>
 <a class="pcard ok" href="14.html"><span class="pno">考点 14</span><span class="ptitle">化学反应历程与化学平衡</span><span class="pstat go">开始刷题 →</span></a>
 <a class="pcard ok" href="15.html"><span class="pno">考点 15</span><span class="ptitle">水溶液中的离子反应与平衡</span><span class="pstat go">开始刷题 →</span></a>
-<div class="pcard todo"><span class="pno">考点 16</span><span class="ptitle">晶体结构</span><span class="pstat lock">制作中</span></div>
+<div class="pcard skip"><span class="pno">考点 16</span><span class="ptitle">晶体结构</span><span class="pstat skiptag">⊘ 跳过 · 填空题·非本模块</span></div>
 
 </div>
 <footer>化学不难学 · 《学习与评价》2027版配套</footer>
