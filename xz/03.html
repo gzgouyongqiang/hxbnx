@@ -26,7 +26,9 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .stat small{display:block;font-size:11px;color:var(--muted)}
 .stat b{font-size:16px;font-weight:500}
 .stat.s-score b{color:var(--score)}.stat.s-ok b{color:var(--ok)}
+.cardbar{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:14px}
 .qcard{background:var(--card);border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid var(--border)}
+.qcard.skipped-card{opacity:.55}
 .qmeta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
 .qno{background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:2px 10px;font-size:12px;font-weight:500}
 .qpt{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 8px;font-size:11px}
@@ -39,8 +41,13 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .opt.rgt{border-color:var(--ok);border-width:1.5px;background:var(--ok-bg)}
 .opt.wrg{border-color:var(--bad);border-width:1.5px;background:var(--bad-bg)}
 .opt:disabled{cursor:default}
-.submit{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.btn-row{display:flex;gap:8px}
+.btn-row button{flex:1}
+.submit{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:13.5px;font-weight:500;cursor:pointer}
 .submit:disabled{opacity:.35;cursor:default}
+.skipbtn{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px;font-size:13.5px;cursor:pointer}
+.skipped-tip{margin-top:8px;font-size:12.5px;color:var(--muted);background:var(--panel);border-radius:8px;padding:8px 10px;display:none}
+.undoskip{background:transparent;color:var(--accent);border:1px solid var(--accent-border);border-radius:6px;padding:2px 10px;font-size:12px;cursor:pointer;margin-left:8px}
 .verdict{margin-top:10px;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500;display:none}
 .exp{margin-top:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:none}
 .exp .et{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:6px}
@@ -55,17 +62,19 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 footer{text-align:center;padding:24px 0 10px;color:var(--faint);font-size:12px}
 .result{display:none;background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);margin-bottom:16px;text-align:center}
 .result h3{font-size:16px;font-weight:500;margin-bottom:12px}
-#canvas{max-width:100%;border-radius:12px;margin-bottom:12px;display:none}
-.btn-gen{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
-#stuName:disabled{opacity:.7}
-.btn-row{display:flex;gap:10px}
-.btn-row button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
-.btn-save{background:var(--accent);color:var(--accent-ink)}
-.btn-redo{background:transparent;color:var(--accent)}
-.name-row{display:flex;gap:8px;margin-bottom:12px}
+#canvas{max-width:100%;border-radius:12px;margin:12px 0;display:none}
+.btn-gen{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.name-row{display:flex;gap:8px;margin-bottom:8px}
 .name-row input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text)}
-.done-flag{color:var(--ok)}
+.hint{font-size:11.5px;color:var(--faint);margin:0 0 10px}
+.btn-row2{display:flex;gap:10px}
+.btn-row2 button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
+.btn-save{background:var(--accent);color:var(--accent-ink)}
+.btn-close{background:transparent;color:var(--accent)}
 sub,sup{font-size:.72em}
+.rxn{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 2px}
+.rxn i{font-style:normal;font-size:.62em;line-height:1.15;white-space:nowrap}
+.rxn em{font-style:normal;line-height:1;font-size:.95em}
 </style>
 </head>
 <body>
@@ -77,34 +86,49 @@ sub,sup{font-size:.72em}
 </div></header>
 <div class="wrap">
 <div class="stats">
-<div class="stat"><small>进度</small><b><span id="sProg">0</span>/20</b></div>
+<div class="stat"><small>已做</small><b><span id="sProg">0</span>/20</b></div>
 <div class="stat s-score"><small>得分</small><b><span id="sScore">0</span> 分</b></div>
 <div class="stat s-ok"><small>正确</small><b><span id="sOk">0</span> 题</b></div>
 <div class="stat"><small>用时</small><b id="sTime">00:00</b></div>
 </div>
+<button class="cardbar" id="btnCard">生成成绩卡（随时可生成，做几题都行）</button>
 <div id="result" class="result">
-<h3>🎉 本讲完成！输入姓名生成成绩卡，保存发给老师</h3>
-<div id="genZone">
-<div class="name-row"><input id="stuName" placeholder="输入姓名（会记住）"><button class="btn-gen" id="btnGen" style="width:130px;flex-shrink:0;">生成成绩卡</button></div>
-<p style="font-size:11.5px;color:var(--faint);margin:0;">姓名提交后将锁定；要改名只能重刷整讲</p>
-</div>
-<canvas id="canvas" width="750" height="430"></canvas>
-<div class="btn-row" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-redo" id="btnRedo">重刷本讲</button></div>
+<h3>成绩卡 · 当前进度快照</h3>
+<div class="name-row"><input id="stuName" placeholder="输入姓名（可随时修改）"><button class="btn-gen" id="btnGen" style="width:120px;flex-shrink:0;">生成成绩卡</button></div>
+<p class="hint">每次生成都是独立快照，改姓名或继续做题后可重新生成。跳过和未做的题不计入。</p>
+<canvas id="canvas" width="750" height="560"></canvas>
+<div class="btn-row2" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-close" id="btnClose">继续做题</button></div>
 </div>
 <div id="qlist"></div>
-<div class="lesson-nav"><a href="02.html">‹ 考点2</a><a href="index.html">训练目录</a><span>考点4 制作中</span></div>
+<div class="lesson-nav"><a href="02.html">‹ 考点2</a><a href="index.html">训练目录</a><a href="04.html">考点4 ›</a></div>
 <footer>化学不难学 · 高考选择题训练 · 每题 2 分 · 满分 40 分<br>题源：《学习与评价》2027版 + 历年高考原卷</footer>
 </div>
 <script>
 var QS = [{"id": 1, "src": "2025 广东 2", "ans": "A", "figs": ["figs/k3/q1.png"], "stem": "在法拉第发现苯 200 周年之际，我国科学家首次制备了以金属 M 为中心的多烯环配合物。该配合物具有芳香性，其多烯环结构形似梅花，如图所示。该多烯环上", "opts": ["C－H 键是共价键", "有 8 个碳碳双键", "共有 16 个氢原子", "不能发生取代反应"], "exp": "选项 A，C 和 H 原子间通过共用电子对形成的 C－H 键是共价键。选项 B，该配合物具有芳香性，有类似苯的结构，存在共轭大 π 键，不存在碳碳双键。选项 C，该多烯环上有 10 个 H 原子。选项 D，大 π 键环上可以发生取代反应。"}, {"id": 2, "src": "2024 广东 9", "ans": "C", "figs": ["figs/k3/q2.png"], "stem": "从我国南海的柳珊瑚中分离得到的柳珊瑚酸，如图所示，具有独特的环系结构。下列关于柳珊瑚酸的说法不正确的是", "opts": ["能使溴的四氯化碳溶液褪色", "能与氨基酸的氨基发生反应", "其环系结构中 3 个五元环共平面", "其中碳原子的杂化方式有 sp<sup>2</sup> 和 sp<sup>3</sup>"], "exp": "选项 A，柳珊瑚酸含有碳碳双键，能使溴的四氯化碳溶液褪色。选项 B，柳珊瑚酸含有羧基，能与氨基酸的氨基发生反应。选项 C，柳珊瑚酸的环系结构含有多个饱和碳原子，这些饱和碳原子为 sp<sup>3</sup> 杂化，具有正四面体结构，因此柳珊瑚酸的环系结构中 3 个五元环不可能共平面。选项 D，柳珊瑚酸中饱和碳原子为 sp<sup>3</sup> 杂化，羧基上的碳原子、酮羰基上的碳原子、碳碳双键的碳原子均是形成双键的碳原子，均为 sp<sup>2</sup> 杂化。"}, {"id": 3, "src": "2023 广东 8", "ans": "B", "figs": ["figs/k3/q3.png"], "stem": "2022 年诺贝尔化学奖授予研究“点击化学”的科学家。如图所示化合物是“点击化学”研究中的常用分子。关于该化合物说法不正确的是", "opts": ["能发生加成反应", "最多能与等物质的量的 NaOH 反应", "能使溴水和酸性 KMnO<sub>4</sub> 溶液褪色", "能与氨基酸和蛋白质中的氨基反应"], "exp": "选项 A，该化合物含有苯环、碳碳三键，都能和氢气发生加成反应。选项 B，该化合物含有羧基（－COOH）和酰胺基，二者均能与 NaOH 反应，羧基与 NaOH 反应可生成羧酸盐，酰胺基与 NaOH 反应可生成羧酸盐和氨，因此 1 mol 该物质最多能与 2 mol NaOH 反应。选项 C，该化合物含有碳碳三键，能使溴水和酸性 KMnO<sub>4</sub> 溶液褪色。选项 D，该化合物含有羧基（－COOH），能与氨基酸和蛋白质中的氨基（－NH<sub>2</sub>）发生反应，氨基与羧基间脱水缩合生成酰胺基。"}, {"id": 4, "src": "2021 广东 5", "ans": "A", "figs": ["figs/k3/q4.png"], "stem": "昆虫信息素是昆虫之间传递信号的化学物质。人工合成信息素可用于诱捕害虫、测报虫情等。一种信息素的分子结构简式如图所示，关于该化合物说法不正确的是", "opts": ["属于烷烃", "可发生水解反应", "可发生加聚反应", "具有一定的挥发性"], "exp": "选项 A，烷烃是指分子中的碳原子都以碳碳单键相连，其余的价键都与氢原子结合而成的化合物，该化合物中还含有氧元素，不属于烷烃。选项 B，该信息素含有酯基，能发生水解反应。选项 C，该信息素含有碳碳双键，能发生加聚反应。选项 D，由人工合成信息素可用于诱捕害虫、测报虫情可知，该信息素具有一定的挥发性。"}, {"id": 5, "src": "2022 广东 9", "ans": "A", "figs": ["figs/k3/q5.png"], "stem": "我国科学家进行了如图所示的碳循环研究。下列说法正确的是", "opts": ["淀粉是多糖，在一定条件下能水解成葡萄糖", "葡萄糖与果糖互为同分异构体，都属于烃类", "1 mol CO 中含有 6.02×10<sup>23</sup> 个电子", "22.4 L CO<sub>2</sub> 被还原生成 1 mol CO"], "exp": "选项 A，淀粉是多糖，在酸或酶的催化作用下能发生水解反应，水解生成葡萄糖。选项 B，葡萄糖与果糖的分子式都是 C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>，二者结构不同，互为同分异构体，但两种有机物中均含有氧元素，均不属于烃类，属于烃的衍生物。选项 C，1 mol CO 中含有 14 mol 电子，即 14×6.02×10<sup>23</sup> 个电子。选项 D，没有指明 CO<sub>2</sub> 的体积是否在标准状况下，则 22.4 L CO<sub>2</sub> 的物质的量不一定是 1 mol，生成的 CO 的物质的量也不一定是 1 mol。"}, {"id": 6, "src": "2026 广东 10", "ans": "B", "stem": "美食镌刻着生生不息的化学密码。下列岭南美食对应的说法错误的是", "opts": ["客家盐焗鸡：制作过程中使用的粗盐属于混合物", "潮汕牛肉丸：牛肉富含的蛋白质不含 N、O 元素", "肇庆裹蒸粽：糯米中富含的淀粉可水解成葡萄糖", "新会陈皮茶：茶香飘溢，说明分子是不断运动的"], "exp": "选项 A，粗盐除 NaCl 外还含有 MgCl<sub>2</sub>、CaCl<sub>2</sub> 等杂质，属于混合物。选项 B，蛋白质是一类非常复杂的天然有机高分子，蛋白质的基本组成元素包括 C、H、O、N、S 等元素。选项 C，淀粉属于多糖，在酶的催化作用下可发生逐步水解，最终生成葡萄糖。选项 D，茶香飘溢是香味分子扩散到空气中的结果，说明分子是在不断运动的。"}, {"id": 7, "src": "2024 广东 4", "ans": "B", "stem": "我国饮食注重营养均衡，讲究“色香味形”。下列说法不正确的是", "opts": ["烹饪糖醋排骨用蔗糖炒出焦糖色，蔗糖属于二糖", "新鲜榨得的花生油具有独特油香，油脂属于芳香烃", "凉拌黄瓜加醋使其具有可口酸味，食醋中含有极性分子", "端午时节用粽叶将糯米包裹成形，糯米中的淀粉可水解"], "exp": "选项 A，蔗糖属于二糖，1 mol 蔗糖水解生成 1 mol 葡萄糖和 1 mol 果糖。选项 B，日常食用的花生油、大豆油和动物油等都属于油脂，油脂是高级脂肪酸甘油酯，油脂不属于芳香烃。选项 C，食醋中含有 CH<sub>3</sub>COOH、H<sub>2</sub>O 等，均为极性分子。选项 D，糯米中的淀粉可水解，淀粉在稀酸或酶的催化下能发生水解反应生成葡萄糖。"}, {"id": 8, "src": "2023 广东 3", "ans": "D", "stem": "建设美丽乡村，守护中华家园，衣食住行皆化学。下列说法正确的是", "opts": ["千家万户通光纤，光纤的主要材质为 Si", "乡村公路铺沥青，沥青属于天然无机材料", "美容扮靓迎佳节，化妆品中的甘油难溶于水", "均衡膳食助健康，主食中的淀粉可水解为葡萄糖"], "exp": "选项 A，光纤的主要材质为二氧化硅。选项 B，沥青是石油分馏的产品，属于有机材料。选项 C，甘油（丙三醇）分子中含有羟基，易与水分子形成分子间氢键，甘油易溶于水。选项 D，淀粉在酶的催化作用下水解，最终生成葡萄糖。"}, {"id": 9, "src": "2025 广州调研 3", "ans": "D", "stem": "我国饮食注重营养均衡，口感讲究“软糯香甜”。下列说法不正确的是", "opts": ["蒸制的蛋糕口感绵软，蛋白质在蒸制过程中会发生变性", "芋头煮熟后非常软糯，芋头中的淀粉可用碘水进行检验", "八角桂皮炖肉可添香，桂皮中的肉桂醛属于烃的衍生物", "红糖花生香脆又甘甜，红糖中的蔗糖不能发生水解反应"], "exp": "选项 A，蛋白质在加热条件下会发生变性，因此在蒸制过程中蛋白质会发生变性。选项 B，淀粉遇碘水变蓝，芋头中的淀粉可以用碘水检验。选项 C，肉桂醛中含有醛基，肉桂醛属于烃的衍生物。选项 D，蔗糖是二糖，蔗糖能水解生成葡萄糖和果糖。"}, {"id": 10, "src": "2025 广州二测 3", "ans": "D", "stem": "“二十四节气”是中国农耕文化的产物，每个节气都有对应的食物。下列说法正确的是", "opts": ["清明吃艾饼，艾叶中的纤维素属于二糖", "夏至吃面条，面条中的淀粉属于纯净物", "立秋吃芝麻，芝麻中的油脂属于芳香烃", "冬至吃饺子，饺子中的蛋白质可水解为氨基酸"], "exp": "选项 A，纤维素是自然界中分布最广的一种多糖，主要存在于植物的茎和叶中，属于天然有机高分子，不属于二糖。选项 B，淀粉的分子式可以表示为 (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub>，由于不同淀粉分子的聚合度（n 值）不同，因此淀粉属于混合物。选项 C，油脂是高级脂肪酸与甘油（丙三醇）通过酯化反应生成的酯，油脂中含有氧元素，不属于芳香烃。选项 D，蛋白质在酸、碱或酶的作用下能发生水解，生成多肽，多肽进一步水解，最终形成氨基酸。"}, {"id": 11, "src": "2024 安徽 5", "ans": "B", "figs": ["figs/k3/q11.png"], "stem": "D-乙酰氨基葡萄糖（结构简式如图）是一种天然存在的特殊单糖。下列有关该物质说法正确的是", "opts": ["分子式为 C<sub>8</sub>H<sub>14</sub>O<sub>6</sub>N", "能发生缩聚反应", "与葡萄糖互为同系物", "分子中含有 σ 键，不含 π 键"], "exp": "选项 A，由该物质的结构可知，其分子式为 C<sub>8</sub>H<sub>15</sub>O<sub>6</sub>N。选项 B，该物质结构中含有多个醇羟基，能发生缩聚反应。选项 C，葡萄糖的分子式为 C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>，含有的官能团是羟基和醛基，该物质分子式为 C<sub>8</sub>H<sub>15</sub>O<sub>6</sub>N，含有的官能团是羟基、醚键和酰胺基，官能团不同、结构不相似，二者不互为同系物。选项 D，该物质分子中含有酰胺基，酰胺基中含有 C=O 键，且 1 个 C=O 键中含有 1 个 σ 键和 1 个 π 键。"}, {"id": 12, "src": "2024 山东 8", "ans": "B", "figs": ["figs/k3/q12.png"], "stem": "植物提取物阿魏萜宁具有抗菌活性，其结构简式如图所示。下列关于阿魏萜宁的说法错误的是", "opts": ["可与 Na<sub>2</sub>CO<sub>3</sub> 溶液反应", "消去反应产物最多有 2 种", "酸性条件下的水解产物均可生成高聚物", "与 Br<sub>2</sub> 反应时可发生取代和加成两种反应"], "exp": "选项 A，该有机物含有酚羟基，苯酚酸性强于 HCO<sub>3</sub><sup>−</sup>，该有机物可与 Na<sub>2</sub>CO<sub>3</sub> 溶液反应。选项 B，由分子结构可知，与醇羟基相连的 C 原子共与 3 个不同化学环境的 C 原子相连，且这 3 个 C 原子上均连接 H 原子，因此该有机物发生消去反应时，消去反应产物最多有 3 种。选项 C，该有机物酸性条件下的水解产物有 2 种，其中一种含有碳碳双键和 2 个醇羟基，这种水解产物既能通过发生加聚反应生成高聚物，也能通过发生缩聚反应生成高聚物，另一种水解产物含有羧基和酚羟基，其可以发生缩聚反应生成高聚物。选项 D，该有机物分子中含有酚羟基且其邻位上有 H 原子，故可与浓溴水发生取代反应，又含有碳碳双键，其可与 Br<sub>2</sub> 发生加成反应。"}, {"id": 13, "src": "2024 广州一测 7", "ans": "D", "figs": ["figs/k3/q13.png"], "stem": "一种对治疗糖尿病具有重要作用的化合物，其结构如图所示。关于该化合物说法不正确的是", "opts": ["属于芳香化合物", "含有 3 种含氧官能团", "能发生取代反应和加成反应", "最多能与等物质的量的 NaOH 反应"], "exp": "选项 A，该有机物含有苯环，属于芳香化合物。选项 B，该有机物含有酰胺基、醚键、羧基，共 3 种含氧官能团。选项 C，该有机物含有碳碳双键、苯环，可在催化剂作用下与氢气发生加成反应；该化合物含有羧基，可以在加热、浓硫酸催化下与醇类发生取代反应。选项 D，该有机物含有的酰胺基和羧基都能与 NaOH 反应，最多能与 2 倍物质的量的 NaOH 反应。"}, {"id": 14, "src": "2024 广州二测 5", "ans": "C", "figs": ["figs/k3/q14.png"], "stem": "《本草纲目》记载“看药上长起长霜，则药已成矣”。“长霜”主要成分为没食子酸，其结构如图所示。关于该化合物说法不正确的是", "opts": ["属于烃的衍生物", "能发生取代反应", "能与溴水发生加成反应", "能与 NaOH 溶液和 Na<sub>2</sub>CO<sub>3</sub> 溶液反应"], "exp": "选项 A，该有机物中含有氧元素，属于烃的含氧衍生物。选项 B，羧基能与醇类发生酯化反应，酚羟基能与浓溴水发生取代反应。选项 C，苯环是共轭大 π 键，不存在碳碳双键，不能与溴水发生加成反应。选项 D，酚羟基有弱酸性，能与 NaOH 反应，也能与 Na<sub>2</sub>CO<sub>3</sub> 反应，但不能与 NaHCO<sub>3</sub> 反应；羧基与 NaOH、Na<sub>2</sub>CO<sub>3</sub> 溶液均能反应。"}, {"id": 15, "src": "2025 广州调研 6", "ans": "D", "figs": ["figs/k3/q15.png"], "stem": "从茶树精油分离得到的有效成分为如图所示的化合物（结构简式见图），其具有独特香味。下列关于该化合物的说法不正确的是", "opts": ["分子中含有 1 个手性碳原子", "能使酸性 KMnO<sub>4</sub> 溶液褪色", "能与氨基酸的羧基发生反应", "能在 NaOH 的乙醇溶液中发生消去反应"], "exp": "选项 A，该分子中仅有一个手性碳原子，该手性碳原子是和羟基相连的碳原子。选项 B，该分子中存在碳碳双键，能使酸性 KMnO<sub>4</sub> 溶液褪色。选项 C，该分子中的羟基能与氨基酸中的羧基发生酯化反应。选项 D，该分子中没有卤素原子，不能在 NaOH 的乙醇溶液中发生消去反应。"}, {"id": 16, "src": "2025 广州一测 9", "ans": "D", "figs": ["figs/k3/q16.png"], "stem": "某抗生素的结构简式如图所示。下列关于该物质的说法不正确的是", "opts": ["能发生加成反应", "能与氨基酸的氨基发生反应", "能使酸性 KMnO<sub>4</sub> 溶液褪色", "最多能与等物质的量的 NaOH 反应"], "exp": "选项 A，该有机物中含碳碳双键，能发生加成反应。选项 B，氨基酸中的氨基具有碱性，该有机物中含有羧基，羧基具有酸性，能与氨基酸的氨基发生反应。选项 C，该有机物中含碳碳双键和醇羟基，均能使酸性 KMnO<sub>4</sub> 溶液褪色。选项 D，该有机物中的酰胺基和羧基都可与 NaOH 反应，最多能与 2 倍物质的量的 NaOH 反应。"}, {"id": 17, "src": "2025 广州二测 7", "ans": "B", "figs": ["figs/k3/q17.png"], "stem": "一种非天然氨基酸的结构如图所示。关于该化合物，说法不正确的是", "opts": ["能使酸性 KMnO<sub>4</sub> 溶液褪色", "最多能与等物质的量的 Na 反应", "既能与 HCl 反应又能与 NaOH 反应", "分子中碳原子的杂化方式有 sp<sup>2</sup> 和 sp<sup>3</sup>"], "exp": "选项 A，该有机化合物中的羟基、与苯环直接相连的亚甲基（－CH<sub>2</sub>－）均能被酸性 KMnO<sub>4</sub> 溶液氧化，故能使酸性 KMnO<sub>4</sub> 溶液褪色。选项 B，该有机化合物中的羟基、羧基均能与 Na 反应，因此该化合物最多能与 2 倍物质的量的 Na 反应。选项 C，该有机化合物含有的氨基具有碱性、含有的羧基具有酸性，因此该化合物既能与 HCl 反应又能与 NaOH 反应。选项 D，该有机化合物中苯环和羧基上的碳原子采取 sp<sup>2</sup> 杂化，碳链中亚甲基（－CH<sub>2</sub>－）、次甲基（－CH－）的碳原子采取 sp<sup>3</sup> 杂化。"}, {"id": 18, "src": "2026 广州调研 4", "ans": "C", "figs": ["figs/k3/q18.png"], "stem": "葡萄糖是一种营养物质，其结构如图所示。下列关于葡萄糖的说法错误的是", "opts": ["属于烃的衍生物", "分子中含有两种含氧官能团", "能发生还原反应和水解反应", "葡萄糖和麦芽糖都能发生银镜反应"], "exp": "选项 A，葡萄糖中含有氧元素，属于烃的含氧衍生物。选项 B，葡萄糖分子中含有羟基和醛基两种含氧官能团。选项 C，葡萄糖分子中含有醛基，能发生还原反应，但无论是醛基还是羟基，都不能发生水解反应。选项 D，葡萄糖和麦芽糖是还原糖，都能发生银镜反应。"}, {"id": 19, "src": "2026 广州一测 2", "ans": "A", "figs": ["figs/k3/q19.png"], "stem": "轮烯在有机合成及分子结构研究中具有重要价值，[18]-轮烯的结构如图所示。下列关于 [18]-轮烯的说法错误的是", "opts": ["与乙烯互为同系物", "含极性共价键", "碳氢原子个数比为 1∶1", "能与氢气发生加成反应"], "exp": "选项 A，该有机物中含有多个单双交替的碳碳双键，类似苯环的离域大 π 键，而乙烯只含有一个碳碳双键，两者不互为同系物。选项 B，键线式省略了碳骨架上的 C－H 键，C－H 键为极性共价键。选项 C，该有机物分子式为 C<sub>18</sub>H<sub>18</sub>，碳氢原子个数比为 1∶1。选项 D，该有机物中含有多个单双交替的碳碳双键，能与氢气发生加成反应。"}, {"id": 20, "src": "2026 广州二测 2", "ans": "D", "figs": ["figs/k3/q20.png"], "stem": "我国科学家屠呦呦因青蒿素的研究获得诺贝尔生理学或医学奖。以青蒿酸（结构简式如图所示）为原料可合成青蒿素，下列关于青蒿酸的说法中正确的是", "opts": ["属于芳香烃的衍生物", "能发生水解反应和加成反应", "其结构中 2 个六元环共平面", "最多能与等物质的量的 NaOH 反应"], "exp": "选项 A，青蒿酸分子中不含苯环，不属于芳香烃的衍生物。选项 B，青蒿酸分子中含有碳碳双键和羧基，能发生加成反应和酯化反应（取代反应），但不能发生水解反应。选项 C，青蒿酸分子中 2 个六元环共用的 2 个碳原子均采取 sp<sup>3</sup> 杂化，因此青蒿酸分子结构中 2 个六元环不可能共平面。选项 D，青蒿酸分子中只有羧基能与 NaOH 反应，因此青蒿酸最多能与等物质的量的 NaOH 反应。"}];
-var KEY = 'xz3_state', TKEY = 'xz_theme', NKEY = 'xz_name', LKEY = 'xz3_lock';
+var KEY = 'xz3_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
-var st = {a:{}, score:0, ok:0, elapsed:0, started:false};
+var st = {a:{}, skip:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.a)st=s}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
-function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+s%60).slice(-2)}
-function renderStats(){$('sProg').textContent=Object.keys(st.a).length;$('sScore').textContent=st.score;$('sOk').textContent=st.ok;$('sTime').textContent=fmt(st.elapsed)}
+function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
+function calc(){
+  var ok=0;
+  QS.forEach(function(q){if(st.a[q.id]===q.ans)ok++});
+  var done=Object.keys(st.a).length;
+  return {done:done,ok:ok,score:ok*PER};
+}
+function renderStats(){
+  var c=calc();
+  $('sProg').textContent=c.done;$('sScore').textContent=c.score;$('sOk').textContent=c.ok;$('sTime').textContent=fmt(st.elapsed);
+}
+function setSkip(id,on){
+  var act=$('act'+id),tip=$('skd'+id),ob=$('op'+id);
+  act.style.display=on?'none':'flex';
+  tip.style.display=on?'block':'none';
+  Array.prototype.forEach.call(ob.children,function(b){b.disabled=on||!!st.a[id]});
+  $('qc'+id).classList.toggle('skipped-card',on);
+}
 function build(){
   var box=$('qlist');
   QS.forEach(function(q,i){
@@ -113,18 +137,19 @@ function build(){
     h+='<div class="stem">'+q.stem+'</div>';
     if(q.figs){q.figs.forEach(function(f){h+='<div class="qfig"><img src="'+f+'" alt="题图"></div>'})}
     h+='<div id="op'+q.id+'"></div>';
-    h+='<button class="submit" id="sb'+q.id+'" disabled>提交本题</button>';
+    h+='<div class="btn-row" id="act'+q.id+'"><button class="submit" id="sb'+q.id+'" disabled>提交本题</button><button class="skipbtn" id="sk'+q.id+'">跳过此题</button></div>';
+    h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
-    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'生成本讲成绩卡 →')+'</button>';
+    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'返回顶部生成成绩卡')+'</button>';
     d.innerHTML=h;box.appendChild(d);
-    var picked=null,done=!!st.a[q.id];
+    var picked=null,done=!!st.a[q.id],skipped=!!st.skip[q.id];
     var ob=$('op'+q.id);
     q.opts.forEach(function(o,j){
       var L='ABCD'[j],b=document.createElement('button');
       b.className='opt';b.innerHTML='<span class="ol">'+L+'．</span><span>'+o+'</span>';
       b.onclick=function(){
-        if(done)return;
+        if(done||skipped)return;
         if(!st.started){st.started=true}
         picked=L;
         Array.prototype.forEach.call(ob.children,function(c){c.classList.remove('sel')});
@@ -137,17 +162,17 @@ function build(){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
       $('ex'+q.id).style.display='block';
-      $('sb'+q.id).style.display='none';
-      $('nx'+q.id).style.display='block';
+      $('act'+q.id).style.display='none';
       $('qm'+q.id).textContent=ok?'✓':'✗';
-      if(i===N-1)showResult();
+      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+    }else if(skipped){
+      setSkip(q.id,true);
     }
     $('sb'+q.id).onclick=function(){
-      if(picked===null||done)return;
+      if(picked===null||done||skipped)return;
       done=true;
       var ok=picked===q.ans;
       st.a[q.id]=picked;
-      if(ok){st.score+=PER;st.ok++}
       paintResult(q,ob,picked,ok);
       var v=$('vd'+q.id);
       v.style.display='block';
@@ -157,14 +182,24 @@ function build(){
       $('qm'+q.id).textContent=ok?'✓':'✗';
       $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
       $('ex'+q.id).style.display='block';
-      $('sb'+q.id).style.display='none';
-      $('nx'+q.id).style.display='block';
+      $('act'+q.id).style.display='none';
+      Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
       renderStats();save();
-      if(Object.keys(st.a).length===N)showResult();
+    };
+    $('sk'+q.id).onclick=function(){
+      if(done||skipped)return;
+      skipped=true;st.skip[q.id]=1;
+      if(!st.started){st.started=true}
+      setSkip(q.id,true);save();
+    };
+    $('us'+q.id).onclick=function(){
+      if(!skipped)return;
+      skipped=false;delete st.skip[q.id];
+      setSkip(q.id,false);save();
     };
     $('nx'+q.id).onclick=function(){
       if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
-      else{$('result').scrollIntoView({behavior:'smooth',block:'center'})}
+      else{window.scrollTo({top:0,behavior:'smooth'})}
     };
   });
 }
@@ -176,33 +211,34 @@ function paintResult(q,ob,pick,ok){
   });
 }
 var timer=setInterval(function(){
-  if(st.started&&Object.keys(st.a).length<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
+  var c=calc();
+  if(st.started&&c.done<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
 },1000);
-function showResult(){
+function pad(n){return ('0'+n).slice(-2)}
+function showCard(){
   $('result').style.display='block';
-  var locked=localStorage.getItem(LKEY);
-  if(locked){
-    lockCard(locked);
-  }else{
-    $('stuName').value=localStorage.getItem(NKEY)||'';
-    $('genZone').style.display='block';
-  }
-}
-function lockCard(name){
-  $('genZone').style.display='none';
-  $('doneZone').style.display='flex';
-  $('stuName').value=name;
+  $('stuName').value=localStorage.getItem(NKEY)||'';
   drawCard();
   $('canvas').style.display='block';
+  $('doneZone').style.display='flex';
+  $('result').scrollIntoView({behavior:'smooth',block:'start'});
 }
+$('btnCard').onclick=function(){showCard()};
 $('btnGen').onclick=function(){
-  var name=$('stuName').value.trim();
-  if(!name){alert('请先输入姓名');return}
-  try{localStorage.setItem(LKEY,name);localStorage.setItem(NKEY,name)}catch(e){}
-  lockCard(name);
+  var name=$('stuName').value.trim()||'同学';
+  try{localStorage.setItem(NKEY,name)}catch(e){}
+  drawCard();
+  $('canvas').style.display='block';
+  $('doneZone').style.display='flex';
+};
+$('btnClose').onclick=function(){
+  $('result').style.display='none';
+  var first=QS.find(function(q){return !st.a[q.id]&&!st.skip[q.id]});
+  var el=first?document.getElementById('qc'+first.id):$('qlist');
+  el.scrollIntoView({behavior:'smooth',block:'start'});
 };
 function drawCard(){
-  var c=$('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+  var c=document.getElementById('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
   var g=x.createLinearGradient(0,0,W,H);
   g.addColorStop(0,'#0f172a');g.addColorStop(.55,'#152743');g.addColorStop(1,'#1b1140');
   x.fillStyle=g;x.fillRect(0,0,W,H);
@@ -212,19 +248,32 @@ function drawCard(){
   x.fillStyle='#8ea0b5';x.font='16px sans-serif';x.fillText('考点3 有机物结构与性质 · 每题 '+PER+' 分',40,84);
   var name=$('stuName').value.trim()||'同学';
   x.fillStyle='#e2e8f0';x.font='500 26px sans-serif';x.fillText(name,40,150);
-  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(st.score,40,255);
-  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(st.score).length*52+14,250);
-  var acc=Math.round(st.ok/N*100);
-  var cells=[['正确',st.ok+' / '+N+' 题'],['正确率',acc+'%'],['用时',fmt(st.elapsed)]];
+  var cc=calc();
+  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(cc.score,40,250);
+  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(cc.score).length*52+14,250);
+  var acc=cc.done?Math.round(cc.ok/cc.done*100):0;
+  var cells=[['正确率',acc+'%（'+cc.ok+'/'+cc.done+'）'],['完成度',cc.done+' / '+N+' 题'],['做题时长',fmt(st.elapsed)]];
   cells.forEach(function(cell,i){
     var cx=40+i*228;
-    x.fillStyle='#1e293b';x.fillRect(cx,290,208,84);
-    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,320);
-    x.fillStyle='#e2e8f0';x.font='500 24px sans-serif';x.fillText(cell[1],cx+18,356);
+    x.fillStyle='#1e293b';x.fillRect(cx,280,208,84);
+    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,310);
+    x.fillStyle='#e2e8f0';x.font='500 20px sans-serif';x.fillText(cell[1],cx+18,346);
   });
   var d=new Date();
-  x.fillStyle='#5b6b7f';x.font='14px sans-serif';
-  x.fillText('日期 '+d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),40,410);
+  var stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('提交时间 '+stamp,40,400);
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('已做题号（绿=对 红=错，跳过/未做不计）',40,432);
+  var doneList=QS.filter(function(q){return !!st.a[q.id]});
+  doneList.forEach(function(q,i){
+    var col=i%14,row=Math.floor(i/14);
+    var bx=40+col*48,by=450+row*46;
+    var ok=st.a[q.id]===q.ans;
+    x.fillStyle=ok?'#16a34a':'#dc2626';x.fillRect(bx,by,38,36);
+    x.fillStyle='#ffffff';x.font='500 16px sans-serif';x.fillText(String(q.id),bx+9,by+25);
+  });
+  x.fillStyle='#5b6b7f';x.font='13px sans-serif';
+  x.fillText('答对 '+cc.ok+' · 答错 '+(cc.done-cc.ok)+' · 未做 '+(N-cc.done)+' · 跳过 '+Object.keys(st.skip).length,40,H-22);
+  window.__lastCard={time:stamp,done:cc.done,ok:cc.ok,score:cc.score,elapsed:fmt(st.elapsed),skip:Object.keys(st.skip).length};
 }
 $('stuName').addEventListener('input',function(){try{localStorage.setItem(NKEY,this.value)}catch(e){}});
 $('btnSave').onclick=function(){
@@ -232,14 +281,11 @@ $('btnSave').onclick=function(){
   a.download='选择题训练_考点3_'+(($('stuName').value.trim()||'成绩'))+'.png';
   a.href=$('canvas').toDataURL('image/png');a.click();
 };
-$('btnRedo').onclick=function(){
-  if(confirm('确定清空本讲答题记录和成绩卡重新刷吗？')){localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload()}
-};
 $('resetBtn').onclick=function(){
-  var n=Object.keys(st.a).length;
-  if(n===0){alert('本讲还没有答题记录');return}
-  if(confirm('确定清空本讲 '+n+' 题记录重新做吗？')){
-    localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload();
+  var c=calc();
+  if(c.done===0&&Object.keys(st.skip).length===0){alert('本讲还没有答题记录');return}
+  if(confirm('确定清空本讲全部记录和成绩卡重新做吗？')){
+    localStorage.removeItem(KEY);location.reload();
   }
 };
 function applyTheme(t){

@@ -26,7 +26,9 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .stat small{display:block;font-size:11px;color:var(--muted)}
 .stat b{font-size:16px;font-weight:500}
 .stat.s-score b{color:var(--score)}.stat.s-ok b{color:var(--ok)}
+.cardbar{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:14px}
 .qcard{background:var(--card);border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid var(--border)}
+.qcard.skipped-card{opacity:.55}
 .qmeta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
 .qno{background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:2px 10px;font-size:12px;font-weight:500}
 .qpt{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 8px;font-size:11px}
@@ -39,8 +41,13 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .opt.rgt{border-color:var(--ok);border-width:1.5px;background:var(--ok-bg)}
 .opt.wrg{border-color:var(--bad);border-width:1.5px;background:var(--bad-bg)}
 .opt:disabled{cursor:default}
-.submit{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.btn-row{display:flex;gap:8px}
+.btn-row button{flex:1}
+.submit{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:13.5px;font-weight:500;cursor:pointer}
 .submit:disabled{opacity:.35;cursor:default}
+.skipbtn{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px;font-size:13.5px;cursor:pointer}
+.skipped-tip{margin-top:8px;font-size:12.5px;color:var(--muted);background:var(--panel);border-radius:8px;padding:8px 10px;display:none}
+.undoskip{background:transparent;color:var(--accent);border:1px solid var(--accent-border);border-radius:6px;padding:2px 10px;font-size:12px;cursor:pointer;margin-left:8px}
 .verdict{margin-top:10px;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500;display:none}
 .exp{margin-top:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:none}
 .exp .et{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:6px}
@@ -55,17 +62,19 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 footer{text-align:center;padding:24px 0 10px;color:var(--faint);font-size:12px}
 .result{display:none;background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);margin-bottom:16px;text-align:center}
 .result h3{font-size:16px;font-weight:500;margin-bottom:12px}
-#canvas{max-width:100%;border-radius:12px;margin-bottom:12px;display:none}
-.btn-gen{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
-#stuName:disabled{opacity:.7}
-.btn-row{display:flex;gap:10px}
-.btn-row button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
-.btn-save{background:var(--accent);color:var(--accent-ink)}
-.btn-redo{background:transparent;color:var(--accent)}
-.name-row{display:flex;gap:8px;margin-bottom:12px}
+#canvas{max-width:100%;border-radius:12px;margin:12px 0;display:none}
+.btn-gen{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.name-row{display:flex;gap:8px;margin-bottom:8px}
 .name-row input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text)}
-.done-flag{color:var(--ok)}
+.hint{font-size:11.5px;color:var(--faint);margin:0 0 10px}
+.btn-row2{display:flex;gap:10px}
+.btn-row2 button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
+.btn-save{background:var(--accent);color:var(--accent-ink)}
+.btn-close{background:transparent;color:var(--accent)}
 sub,sup{font-size:.72em}
+.rxn{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 2px}
+.rxn i{font-style:normal;font-size:.62em;line-height:1.15;white-space:nowrap}
+.rxn em{font-style:normal;line-height:1;font-size:.95em}
 </style>
 </head>
 <body>
@@ -77,19 +86,18 @@ sub,sup{font-size:.72em}
 </div></header>
 <div class="wrap">
 <div class="stats">
-<div class="stat"><small>进度</small><b><span id="sProg">0</span>/20</b></div>
+<div class="stat"><small>已做</small><b><span id="sProg">0</span>/20</b></div>
 <div class="stat s-score"><small>得分</small><b><span id="sScore">0</span> 分</b></div>
 <div class="stat s-ok"><small>正确</small><b><span id="sOk">0</span> 题</b></div>
 <div class="stat"><small>用时</small><b id="sTime">00:00</b></div>
 </div>
+<button class="cardbar" id="btnCard">生成成绩卡（随时可生成，做几题都行）</button>
 <div id="result" class="result">
-<h3>🎉 本讲完成！输入姓名生成成绩卡，保存发给老师</h3>
-<div id="genZone">
-<div class="name-row"><input id="stuName" placeholder="输入姓名（会记住）"><button class="btn-gen" id="btnGen" style="width:130px;flex-shrink:0;">生成成绩卡</button></div>
-<p style="font-size:11.5px;color:var(--faint);margin:0;">姓名提交后将锁定；要改名只能重刷整讲</p>
-</div>
-<canvas id="canvas" width="750" height="430"></canvas>
-<div class="btn-row" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-redo" id="btnRedo">重刷本讲</button></div>
+<h3>成绩卡 · 当前进度快照</h3>
+<div class="name-row"><input id="stuName" placeholder="输入姓名（可随时修改）"><button class="btn-gen" id="btnGen" style="width:120px;flex-shrink:0;">生成成绩卡</button></div>
+<p class="hint">每次生成都是独立快照，改姓名或继续做题后可重新生成。跳过和未做的题不计入。</p>
+<canvas id="canvas" width="750" height="560"></canvas>
+<div class="btn-row2" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-close" id="btnClose">继续做题</button></div>
 </div>
 <div id="qlist"></div>
 <div class="lesson-nav"><span>已是第一讲</span><a href="index.html">训练目录</a><a href="02.html">考点2 ›</a></div>
@@ -97,14 +105,30 @@ sub,sup{font-size:.72em}
 </div>
 <script>
 var QS = [{"id": 1, "src": "2026 广东 1", "ans": "B", "stem": "中国的桥，中国的美。桥如诗，梁如虹，一柱一梁见匠心。下列桥梁构件的材质主要成分属于有机物的是", "opts": ["赵州桥·石拱", "广济桥·木船", "十七孔桥·汉白玉石栏杆", "港珠澳大桥·斜拉钢索"], "exp": "选项 A，石拱是天然石材，如花岗岩、石灰岩，主要成分为硅酸盐或碳酸盐，属于无机非金属材料。选项 B，木船的材质为木材，主要成分为纤维素，纤维素属于天然有机高分子化合物，属于有机物。选项 C，汉白玉石栏杆是白色大理石的一种，主要成分为 CaCO<sub>3</sub>，属于无机物。选项 D，斜拉钢索主要成分为钢，是铁碳合金，属于金属材料。"}, {"id": 2, "src": "2025 广东 1", "ans": "D", "stem": "中华传统技艺，凸显人民智慧。下列选项所涉及材料的主要成分属于合金的是", "opts": ["剪纸·纸哪吒", "篆刻·石印章", "活字印刷术·木活字", "中医针灸·不锈钢针"], "exp": "选项 A，纸的主要成分是纤维素（有机化合物），不属于合金。选项 B，石印章的材料通常是天然矿物（如大理石等），主要成分为硅酸盐或碳酸盐，不属于合金。选项 C，木活字的材料是木材，主要成分为纤维素和木质素（有机化合物），不属于合金。选项 D，不锈钢由铁、铬、镍等多种金属组成，属于合金。"}, {"id": 3, "src": "2024 广东 1", "ans": "C", "stem": "龙是中华民族重要的精神象征和文化符号。下列与龙有关的历史文物中，主要材质为有机高分子的是", "opts": ["红山玉龙", "鎏金铁芯铜龙", "云龙纹丝绸", "云龙纹瓷瓶"], "exp": "选项 A，红山玉龙主要成分为 SiO<sub>2</sub> 和硅酸盐，主要材质是无机非金属材料。选项 B，鎏金铁芯铜龙主要成分为金属铜和铁，主要材质是金属材料。选项 C，云龙纹丝绸主要成分是蛋白质，蛋白质属于有机高分子。蛋白质是一种复杂的天然有机高分子，由碳、氢、氧、氮、硫等元素组成。用蚕丝织成的丝绸可以制作服装。选项 D，云龙纹瓷瓶主要成分为硅酸盐，主要材质属于无机非金属材料。陶瓷是以黏土为主要原料，经高温烧制而成的。"}, {"id": 4, "src": "2023 广东 1", "ans": "C", "stem": "“高山流水觅知音”。下列中国古乐器中，主要由硅酸盐材料制成的是", "opts": ["九霄环佩木古琴", "裴李岗文化骨笛", "商朝后期陶埙", "曾侯乙青铜编钟"], "exp": "选项 A，九霄环佩木古琴主要由木材构成。木材的主要成分是纤维素。琴弦主要由动物筋制得。选项 B，裴李岗文化骨笛由动物骨骼构成，动物骨骼主要由有机质和无机质（羟基磷酸钙）组成。选项 C，商朝后期陶埙属于陶瓷，陶瓷由硅酸盐制成。选项 D，曾侯乙青铜编钟主要由合金材料青铜制成。"}, {"id": 5, "src": "2022 广东 3", "ans": "C", "stem": "广东一直是我国对外交流的重要窗口，馆藏文物是其历史见证。下列文物主要由硅酸盐制成的是", "opts": ["南宋鎏金饰品", "蒜头纹银盒", "广彩瓷咖啡杯", "铜镀金钟座"], "exp": "选项 A，南宋鎏金饰品是一种表面镀金的金属饰品，属于金属材料。鎏金是中国古老的传统工艺，至今有两千多年的历史。鎏金工艺是用汞和金搅和成白色“金汞齐”，涂抹在金属饰品上，再用火烘烤，汞蒸发而留下金。选项 B，蒜头纹银盒主要由金属银制成，属于金属材料。选项 C，广彩瓷咖啡杯是由黏土等硅酸盐产品烧制而成的，其主要成分为硅酸盐。选项 D，铜镀金钟座是由金属铜制成的表面镀有金的钟座，属于金属材料。"}, {"id": 6, "src": "2022 广东 1", "ans": "B", "stem": "中华文明源远流长，在世界文明中独树一帜，汉字居功至伟。随着时代发展，汉字被不断赋予新的文化内涵，其载体也发生相应变化。下列汉字载体主要由合金材料制成的是", "opts": ["兽骨", "青铜器", "纸张", "液晶显示屏"], "exp": "选项 A，兽骨是甲骨文的刻划载体之一，这些兽骨主要是牛的肩胛骨，其主要成分为无机盐磷酸钙。选项 B，青铜是我国使用最早的合金，青铜是在纯铜中加入锡或铅制得的合金。选项 C，纸张主要成分是纤维素。选项 D，液晶显示屏主要是由液晶和玻璃基板制成的。液晶是一种有机高分子材料，玻璃基板一般为硅酸盐材料。"}, {"id": 7, "src": "2021 广东 1", "ans": "A", "stem": "今年五一假期，人文考古游持续成为热点。很多珍贵文物都记载着中华文明的灿烂成就，具有深邃的文化寓意和极高的学术价值。下列国宝级文物主要由合金材料制成的是", "opts": ["铸客大铜鼎", "河姆渡出土陶灶", "兽首玛瑙杯", "角形玉杯"], "exp": "选项 A，人类生产合金是从制作青铜器开始的，铸客大铜鼎属于青铜合金。选项 B，陶器是人类使用黏土（主要成分为 Al<sub>2</sub>O<sub>3</sub>·2SiO<sub>2</sub>·2H<sub>2</sub>O 等）天然物为原料，经高温烧制而成的一种有用的人造材料，河姆渡出土陶灶主要成分为硅酸盐。选项 C，兽首玛瑙杯主要成分为二氧化硅。选项 D，角形玉杯主要成分为硅酸盐。"}, {"id": 8, "src": "2025 河南 1", "ans": "A", "stem": "活字印刷术极大地促进了世界文化的交流，推动了人类文明的进步。下列“活字”字坯的主要成分为硅酸盐的是", "opts": ["泥活字", "木活字", "铜活字", "铅活字"], "exp": "选项 A，泥活字的主要材料是黏土，黏土的主要成分是硅酸盐。选项 B，木活字主要成分是纤维素。选项 C，铜活字是铜合金，主要成分是铜。选项 D，铅活字主要成分是铅。"}, {"id": 9, "src": "2025 河北 1", "ans": "B", "stem": "河北省古建筑数量大，历史跨度长，种类齐全，在我国建筑史上占有非常重要的地位。下列古建筑组件主要成分属于有机物的是", "opts": ["基石", "斗拱", "青瓦", "琉璃"], "exp": "选项 A，古建筑中的基石一般使用石质材料，常用的石材有花岗岩、青石等。花岗岩的主要成分是硅酸盐，青石的主要成分是 CaCO<sub>3</sub>，均属于无机物。选项 B，斗拱是由木材制成的。木材的主要成分是纤维素，属于有机物。选项 C，青瓦是由黏土烧制而成的传统建筑材料。黏土的主要成分是含水的铝硅酸盐，属于无机物。选项 D，琉璃的主要成分是二氧化硅，属于无机物。"}, {"id": 10, "src": "2023 重庆 1", "ans": "B", "stem": "重庆市战略性新兴产业发展“十四五”规划（2021—2025 年）涉及的下列物质中，属于金属材料的是", "opts": ["重组蛋白", "高性能铜箔", "氮化镓半导体", "聚氨酯树脂"], "exp": "选项 A，重组蛋白为有机化合物。选项 B，合金、纯金属均为金属材料，铜箔为金属材料。选项 C，氮化镓半导体为新型无机非金属材料。选项 D，聚氨酯树脂为有机合成材料。"}, {"id": 11, "src": "2024 广州调研 1", "ans": "B", "stem": "下列馆藏文物主要由金属材料制成的是", "opts": ["三彩釉陶俑", "错银铜牛灯", "透雕玉环佩", "青釉瓷壶"], "exp": "选项 A，三彩釉陶俑是陶瓷，主要成分是硅酸盐。选项 B，错银铜牛灯是青铜（铜锡合金），由金属材料制成。选项 C，透雕重环玉佩的主要成分为硅酸盐。选项 D，青釉瓷壶是陶瓷，主要成分是硅酸盐。"}, {"id": 12, "src": "2024 广州一测 1", "ans": "B", "stem": "馆藏文物记载着中华文明的灿烂成就。下列文物主要由硅酸盐制成的是", "opts": ["四羊方尊青铜礼器", "陶熏炉", "金漆木雕如意", "船纹铜提筒"], "exp": "选项 A 和选项 D，四羊方尊青铜礼器和船纹铜提筒均由铜合金制成。选项 B，陶熏炉由硅酸盐材料制成。选项 C，金漆木雕如意是在樟木雕刻的如意上贴上金箔，樟木是植物纤维等天然有机高分子化合物，不属于硅酸盐材料。"}, {"id": 13, "src": "2024 广州二测 1", "ans": "C", "stem": "我国古代的容器充分展现工艺之美。下列容器主要由合金材料制成的是", "opts": ["人面鱼纹彩陶盆", "玛瑙梅花耳杯", "青铜敦", "彩漆木雕鸳鸯形盒"], "exp": "选项 A，陶盆由硅酸盐材料制成。选项 B，玛瑙的主要成分是二氧化硅。选项 C，青铜为合金材料。选项 D，木雕的材料是木材，主要成分是纤维素。"}, {"id": 14, "src": "2025 广州调研 1", "ans": "B", "stem": "文物是文化传承的重要载体。下列文物的主要材质为有机高分子的是", "opts": ["黄釉陶制瓦当", "鸟兽纹锦", "双兽三轮青铜盘", "高足瓷盖碗"], "exp": "选项 A，黄釉陶制瓦当的主要材质为硅酸盐材料，属于无机非金属材料。选项 B，鸟兽纹锦是丝织品，丝织品主要材质为有机高分子材料。选项 C，双兽三轮青铜盘主要材质是青铜，青铜是合金，属于金属材料。选项 D，高足瓷盖碗的主要材质为硅酸盐材料，属于无机非金属材料。"}, {"id": 15, "src": "2025 广州一测 1", "ans": "C", "stem": "器具是饮食文化的重要载体。下列我国古代器具中主要由合金材料制成的是", "opts": ["单耳黑陶杯", "秘色瓷莲花碗", "青铜四足鬲", "檀香木雕杯"], "exp": "选项 A，单耳黑陶杯为陶器，属于无机硅酸盐材料。选项 B，秘色瓷莲花碗属于瓷器。陶瓷是以黏土为原料，经高温烧制而成的，属于无机硅酸盐材料。选项 C，青铜四足鬲是由合金材料制成的。选项 D，檀香木雕杯是一种以檀香木为材料雕刻而成的茶具或工艺品，其主要成分中含较多的纤维素，是有机物。"}, {"id": 16, "src": "2025 广州二测 1", "ans": "C", "stem": "中华文化源远流长，古人使用不同的材料制作乐器。下列乐器中，主要材质为硅酸盐材料的是", "opts": ["青铜镈钟", "木笙", "陶埙", "骨笛"], "exp": "选项 A，青铜镈钟属于青铜器。古代青铜是铜与锡、铅等金属形成的合金，属于金属材料。选项 B，木笙是一种以簧片与竹管耦合共振而发声的吹奏乐器。竹、木的主要成分中含较多的纤维素，是有机物。选项 C，陶埙属于陶器。陶器、瓷器是以黏土为原料，经高温烧制而成的，属于无机硅酸盐材料。选项 D，骨笛是笛子的一种。骨骼的主要成分是羟基磷灰石，含有钙、磷、氧、氢等元素，不属于硅酸盐材料。"}, {"id": 17, "src": "2026 广州调研 1", "ans": "D", "stem": "中国非物质文化遗产丰富。下列选项所涉及物质的主要成分属于硅酸盐材料的是", "opts": ["雕版印刷技艺·木板", "桑蚕丝织技艺·蚕丝", "传统制茶技艺·铁锅", "青瓷烧制技艺·瓷器"], "exp": "选项 A，雕版印刷技艺是运用刀具在木板上雕刻文字或图案，再用墨、纸、绢等材料刷印、装订成书籍的一种特殊技艺。木板是植物纤维等天然有机高分子化合物，不属于硅酸盐材料。选项 B，蚕丝的主要成分是天然蛋白质，属于高分子材料。选项 C，铁锅的主要成分是铁，属于金属材料。选项 D，瓷器是主要以高岭土（主要成分为 Al<sub>2</sub>O<sub>3</sub>·2SiO<sub>2</sub>·2H<sub>2</sub>O）为原料，经高温烧制而成的，其主要成分为硅酸盐材料。"}, {"id": 18, "src": "2026 广州一测 1", "ans": "C", "stem": "中华传统技艺，凸显人民智慧。下列选项所涉及材料的主要成分属于有机高分子的是", "opts": ["铜雕技艺·青铜", "玉雕技艺·玉石", "粤绣技艺·蚕丝", "陶器烧制技艺·陶瓷"], "exp": "选项 A，古代青铜是铜与锡、铅等金属形成的合金，属于金属材料。选项 B，玉石的主要成分是硅酸盐，属于硅酸盐材料。选项 C，蚕丝的主要成分是天然蛋白质，属于有机高分子材料。选项 D，陶瓷是主要以高岭土（主要成分为 Al<sub>2</sub>O<sub>3</sub>·2SiO<sub>2</sub>·2H<sub>2</sub>O）为原料，经高温烧制而成的，其主要成分为硅酸盐材料。"}, {"id": 19, "src": "2026 广州二测 1", "ans": "B", "stem": "我国农耕文化源远流长。下列有关农耕文化物品所涉及材料的主要成分属于合金的是", "opts": ["陶仓", "青铜灶", "木犁", "石磨"], "exp": "选项 A，陶仓是古代以陶瓷中的陶器制作成的盛放粮食等物品的容器，其主要材料是硅酸盐材料。选项 B，青铜灶是用青铜制成的炉灶，其主要材料是青铜，属于合金。选项 C，木犁主要是利用木材制作成的用于农业耕种用的一种工具，木材的主要成分是纤维素。选项 D，石磨是用于磨碎谷物等农作物的一种工具，石磨一般是由花岗岩或大理石等硬度较高、耐磨性能好的岩石制作而成，花岗岩的主要成分是石英、长石和云母，大理石的主要成分是碳酸钙。"}, {"id": 20, "src": "2024 河北 1", "ans": "D", "stem": "燕赵大地历史悠久，文化灿烂。对下列河北博物院馆藏文物（战国宫门青铜铺首、西汉透雕白玉璧、五代彩绘石质浮雕、元青花釉里红瓷盖罐）的说法错误的是", "opts": ["青铜铺首主要成分是铜锡合金", "透雕白玉璧主要成分是硅酸盐", "石质浮雕主要成分是碳酸钙", "青花釉里红瓷盖罐主要成分是硫酸钙"], "exp": "选项 A，青铜铺首是青铜器。青铜的主要成分是铜锡合金。选项 B，透雕白玉璧是玉石。玉石的主要成分是硅酸盐。选项 C，石质浮雕是汉白玉。汉白玉的主要成分是碳酸钙。选项 D，青花釉里红瓷盖罐是陶瓷。陶瓷的主要成分是硅酸盐，不是硫酸钙。"}];
-var KEY = 'xz1_state', TKEY = 'xz_theme', NKEY = 'xz_name', LKEY = 'xz1_lock';
+var KEY = 'xz1_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
-var st = {a:{}, score:0, ok:0, elapsed:0, started:false};
+var st = {a:{}, skip:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.a)st=s}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
-function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+s%60).slice(-2)}
-function renderStats(){$('sProg').textContent=Object.keys(st.a).length;$('sScore').textContent=st.score;$('sOk').textContent=st.ok;$('sTime').textContent=fmt(st.elapsed)}
+function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
+function calc(){
+  var ok=0;
+  QS.forEach(function(q){if(st.a[q.id]===q.ans)ok++});
+  var done=Object.keys(st.a).length;
+  return {done:done,ok:ok,score:ok*PER};
+}
+function renderStats(){
+  var c=calc();
+  $('sProg').textContent=c.done;$('sScore').textContent=c.score;$('sOk').textContent=c.ok;$('sTime').textContent=fmt(st.elapsed);
+}
+function setSkip(id,on){
+  var act=$('act'+id),tip=$('skd'+id),ob=$('op'+id);
+  act.style.display=on?'none':'flex';
+  tip.style.display=on?'block':'none';
+  Array.prototype.forEach.call(ob.children,function(b){b.disabled=on||!!st.a[id]});
+  $('qc'+id).classList.toggle('skipped-card',on);
+}
 function build(){
   var box=$('qlist');
   QS.forEach(function(q,i){
@@ -113,18 +137,19 @@ function build(){
     h+='<div class="stem">'+q.stem+'</div>';
     if(q.figs){q.figs.forEach(function(f){h+='<div class="qfig"><img src="'+f+'" alt="题图"></div>'})}
     h+='<div id="op'+q.id+'"></div>';
-    h+='<button class="submit" id="sb'+q.id+'" disabled>提交本题</button>';
+    h+='<div class="btn-row" id="act'+q.id+'"><button class="submit" id="sb'+q.id+'" disabled>提交本题</button><button class="skipbtn" id="sk'+q.id+'">跳过此题</button></div>';
+    h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
-    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'生成本讲成绩卡 →')+'</button>';
+    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'返回顶部生成成绩卡')+'</button>';
     d.innerHTML=h;box.appendChild(d);
-    var picked=null,done=!!st.a[q.id];
+    var picked=null,done=!!st.a[q.id],skipped=!!st.skip[q.id];
     var ob=$('op'+q.id);
     q.opts.forEach(function(o,j){
       var L='ABCD'[j],b=document.createElement('button');
       b.className='opt';b.innerHTML='<span class="ol">'+L+'．</span><span>'+o+'</span>';
       b.onclick=function(){
-        if(done)return;
+        if(done||skipped)return;
         if(!st.started){st.started=true}
         picked=L;
         Array.prototype.forEach.call(ob.children,function(c){c.classList.remove('sel')});
@@ -137,17 +162,17 @@ function build(){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
       $('ex'+q.id).style.display='block';
-      $('sb'+q.id).style.display='none';
-      $('nx'+q.id).style.display='block';
+      $('act'+q.id).style.display='none';
       $('qm'+q.id).textContent=ok?'✓':'✗';
-      if(i===N-1)showResult();
+      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+    }else if(skipped){
+      setSkip(q.id,true);
     }
     $('sb'+q.id).onclick=function(){
-      if(picked===null||done)return;
+      if(picked===null||done||skipped)return;
       done=true;
       var ok=picked===q.ans;
       st.a[q.id]=picked;
-      if(ok){st.score+=PER;st.ok++}
       paintResult(q,ob,picked,ok);
       var v=$('vd'+q.id);
       v.style.display='block';
@@ -157,14 +182,24 @@ function build(){
       $('qm'+q.id).textContent=ok?'✓':'✗';
       $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
       $('ex'+q.id).style.display='block';
-      $('sb'+q.id).style.display='none';
-      $('nx'+q.id).style.display='block';
+      $('act'+q.id).style.display='none';
+      Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
       renderStats();save();
-      if(Object.keys(st.a).length===N)showResult();
+    };
+    $('sk'+q.id).onclick=function(){
+      if(done||skipped)return;
+      skipped=true;st.skip[q.id]=1;
+      if(!st.started){st.started=true}
+      setSkip(q.id,true);save();
+    };
+    $('us'+q.id).onclick=function(){
+      if(!skipped)return;
+      skipped=false;delete st.skip[q.id];
+      setSkip(q.id,false);save();
     };
     $('nx'+q.id).onclick=function(){
       if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
-      else{$('result').scrollIntoView({behavior:'smooth',block:'center'})}
+      else{window.scrollTo({top:0,behavior:'smooth'})}
     };
   });
 }
@@ -176,33 +211,34 @@ function paintResult(q,ob,pick,ok){
   });
 }
 var timer=setInterval(function(){
-  if(st.started&&Object.keys(st.a).length<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
+  var c=calc();
+  if(st.started&&c.done<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
 },1000);
-function showResult(){
+function pad(n){return ('0'+n).slice(-2)}
+function showCard(){
   $('result').style.display='block';
-  var locked=localStorage.getItem(LKEY);
-  if(locked){
-    lockCard(locked);
-  }else{
-    $('stuName').value=localStorage.getItem(NKEY)||'';
-    $('genZone').style.display='block';
-  }
-}
-function lockCard(name){
-  $('genZone').style.display='none';
-  $('doneZone').style.display='flex';
-  $('stuName').value=name;
+  $('stuName').value=localStorage.getItem(NKEY)||'';
   drawCard();
   $('canvas').style.display='block';
+  $('doneZone').style.display='flex';
+  $('result').scrollIntoView({behavior:'smooth',block:'start'});
 }
+$('btnCard').onclick=function(){showCard()};
 $('btnGen').onclick=function(){
-  var name=$('stuName').value.trim();
-  if(!name){alert('请先输入姓名');return}
-  try{localStorage.setItem(LKEY,name);localStorage.setItem(NKEY,name)}catch(e){}
-  lockCard(name);
+  var name=$('stuName').value.trim()||'同学';
+  try{localStorage.setItem(NKEY,name)}catch(e){}
+  drawCard();
+  $('canvas').style.display='block';
+  $('doneZone').style.display='flex';
+};
+$('btnClose').onclick=function(){
+  $('result').style.display='none';
+  var first=QS.find(function(q){return !st.a[q.id]&&!st.skip[q.id]});
+  var el=first?document.getElementById('qc'+first.id):$('qlist');
+  el.scrollIntoView({behavior:'smooth',block:'start'});
 };
 function drawCard(){
-  var c=$('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+  var c=document.getElementById('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
   var g=x.createLinearGradient(0,0,W,H);
   g.addColorStop(0,'#0f172a');g.addColorStop(.55,'#152743');g.addColorStop(1,'#1b1140');
   x.fillStyle=g;x.fillRect(0,0,W,H);
@@ -212,19 +248,32 @@ function drawCard(){
   x.fillStyle='#8ea0b5';x.font='16px sans-serif';x.fillText('考点1 化学与材料 · 每题 '+PER+' 分',40,84);
   var name=$('stuName').value.trim()||'同学';
   x.fillStyle='#e2e8f0';x.font='500 26px sans-serif';x.fillText(name,40,150);
-  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(st.score,40,255);
-  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(st.score).length*52+14,250);
-  var acc=Math.round(st.ok/N*100);
-  var cells=[['正确',st.ok+' / '+N+' 题'],['正确率',acc+'%'],['用时',fmt(st.elapsed)]];
+  var cc=calc();
+  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(cc.score,40,250);
+  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(cc.score).length*52+14,250);
+  var acc=cc.done?Math.round(cc.ok/cc.done*100):0;
+  var cells=[['正确率',acc+'%（'+cc.ok+'/'+cc.done+'）'],['完成度',cc.done+' / '+N+' 题'],['做题时长',fmt(st.elapsed)]];
   cells.forEach(function(cell,i){
     var cx=40+i*228;
-    x.fillStyle='#1e293b';x.fillRect(cx,290,208,84);
-    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,320);
-    x.fillStyle='#e2e8f0';x.font='500 24px sans-serif';x.fillText(cell[1],cx+18,356);
+    x.fillStyle='#1e293b';x.fillRect(cx,280,208,84);
+    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,310);
+    x.fillStyle='#e2e8f0';x.font='500 20px sans-serif';x.fillText(cell[1],cx+18,346);
   });
   var d=new Date();
-  x.fillStyle='#5b6b7f';x.font='14px sans-serif';
-  x.fillText('日期 '+d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),40,410);
+  var stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('提交时间 '+stamp,40,400);
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('已做题号（绿=对 红=错，跳过/未做不计）',40,432);
+  var doneList=QS.filter(function(q){return !!st.a[q.id]});
+  doneList.forEach(function(q,i){
+    var col=i%14,row=Math.floor(i/14);
+    var bx=40+col*48,by=450+row*46;
+    var ok=st.a[q.id]===q.ans;
+    x.fillStyle=ok?'#16a34a':'#dc2626';x.fillRect(bx,by,38,36);
+    x.fillStyle='#ffffff';x.font='500 16px sans-serif';x.fillText(String(q.id),bx+9,by+25);
+  });
+  x.fillStyle='#5b6b7f';x.font='13px sans-serif';
+  x.fillText('答对 '+cc.ok+' · 答错 '+(cc.done-cc.ok)+' · 未做 '+(N-cc.done)+' · 跳过 '+Object.keys(st.skip).length,40,H-22);
+  window.__lastCard={time:stamp,done:cc.done,ok:cc.ok,score:cc.score,elapsed:fmt(st.elapsed),skip:Object.keys(st.skip).length};
 }
 $('stuName').addEventListener('input',function(){try{localStorage.setItem(NKEY,this.value)}catch(e){}});
 $('btnSave').onclick=function(){
@@ -232,14 +281,11 @@ $('btnSave').onclick=function(){
   a.download='选择题训练_考点1_'+(($('stuName').value.trim()||'成绩'))+'.png';
   a.href=$('canvas').toDataURL('image/png');a.click();
 };
-$('btnRedo').onclick=function(){
-  if(confirm('确定清空本讲答题记录和成绩卡重新刷吗？')){localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload()}
-};
 $('resetBtn').onclick=function(){
-  var n=Object.keys(st.a).length;
-  if(n===0){alert('本讲还没有答题记录');return}
-  if(confirm('确定清空本讲 '+n+' 题记录重新做吗？')){
-    localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload();
+  var c=calc();
+  if(c.done===0&&Object.keys(st.skip).length===0){alert('本讲还没有答题记录');return}
+  if(confirm('确定清空本讲全部记录和成绩卡重新做吗？')){
+    localStorage.removeItem(KEY);location.reload();
   }
 };
 function applyTheme(t){

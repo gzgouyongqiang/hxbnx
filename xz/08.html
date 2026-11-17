@@ -26,7 +26,9 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .stat small{display:block;font-size:11px;color:var(--muted)}
 .stat b{font-size:16px;font-weight:500}
 .stat.s-score b{color:var(--score)}.stat.s-ok b{color:var(--ok)}
+.cardbar{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:14px}
 .qcard{background:var(--card);border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid var(--border)}
+.qcard.skipped-card{opacity:.55}
 .qmeta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
 .qno{background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:2px 10px;font-size:12px;font-weight:500}
 .qpt{background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:2px 8px;font-size:11px}
@@ -39,8 +41,13 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 .opt.rgt{border-color:var(--ok);border-width:1.5px;background:var(--ok-bg)}
 .opt.wrg{border-color:var(--bad);border-width:1.5px;background:var(--bad-bg)}
 .opt:disabled{cursor:default}
-.submit{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.btn-row{display:flex;gap:8px}
+.btn-row button{flex:1}
+.submit{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:13.5px;font-weight:500;cursor:pointer}
 .submit:disabled{opacity:.35;cursor:default}
+.skipbtn{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px;font-size:13.5px;cursor:pointer}
+.skipped-tip{margin-top:8px;font-size:12.5px;color:var(--muted);background:var(--panel);border-radius:8px;padding:8px 10px;display:none}
+.undoskip{background:transparent;color:var(--accent);border:1px solid var(--accent-border);border-radius:6px;padding:2px 10px;font-size:12px;cursor:pointer;margin-left:8px}
 .verdict{margin-top:10px;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500;display:none}
 .exp{margin-top:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:none}
 .exp .et{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:6px}
@@ -55,16 +62,15 @@ header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px s
 footer{text-align:center;padding:24px 0 10px;color:var(--faint);font-size:12px}
 .result{display:none;background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);margin-bottom:16px;text-align:center}
 .result h3{font-size:16px;font-weight:500;margin-bottom:12px}
-#canvas{max-width:100%;border-radius:12px;margin-bottom:12px;display:none}
-.btn-gen{width:100%;background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
-#stuName:disabled{opacity:.7}
-.btn-row{display:flex;gap:10px}
-.btn-row button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
-.btn-save{background:var(--accent);color:var(--accent-ink)}
-.btn-redo{background:transparent;color:var(--accent)}
-.name-row{display:flex;gap:8px;margin-bottom:12px}
+#canvas{max-width:100%;border-radius:12px;margin:12px 0;display:none}
+.btn-gen{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer}
+.name-row{display:flex;gap:8px;margin-bottom:8px}
 .name-row input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text)}
-.done-flag{color:var(--ok)}
+.hint{font-size:11.5px;color:var(--faint);margin:0 0 10px}
+.btn-row2{display:flex;gap:10px}
+.btn-row2 button{flex:1;border-radius:10px;padding:11px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--accent-border)}
+.btn-save{background:var(--accent);color:var(--accent-ink)}
+.btn-close{background:transparent;color:var(--accent)}
 sub,sup{font-size:.72em}
 .rxn{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 2px}
 .rxn i{font-style:normal;font-size:.62em;line-height:1.15;white-space:nowrap}
@@ -80,34 +86,49 @@ sub,sup{font-size:.72em}
 </div></header>
 <div class="wrap">
 <div class="stats">
-<div class="stat"><small>进度</small><b><span id="sProg">0</span>/20</b></div>
+<div class="stat"><small>已做</small><b><span id="sProg">0</span>/20</b></div>
 <div class="stat s-score"><small>得分</small><b><span id="sScore">0</span> 分</b></div>
 <div class="stat s-ok"><small>正确</small><b><span id="sOk">0</span> 题</b></div>
 <div class="stat"><small>用时</small><b id="sTime">00:00</b></div>
 </div>
+<button class="cardbar" id="btnCard">生成成绩卡（随时可生成，做几题都行）</button>
 <div id="result" class="result">
-<h3>🎉 本讲完成！输入姓名生成成绩卡，保存发给老师</h3>
-<div id="genZone">
-<div class="name-row"><input id="stuName" placeholder="输入姓名（会记住）"><button class="btn-gen" id="btnGen" style="width:130px;flex-shrink:0;">生成成绩卡</button></div>
-<p style="font-size:11.5px;color:var(--faint);margin:0;">姓名提交后将锁定；要改名只能重刷整讲</p>
-</div>
-<canvas id="canvas" width="750" height="430"></canvas>
-<div class="btn-row" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-redo" id="btnRedo">重刷本讲</button></div>
+<h3>成绩卡 · 当前进度快照</h3>
+<div class="name-row"><input id="stuName" placeholder="输入姓名（可随时修改）"><button class="btn-gen" id="btnGen" style="width:120px;flex-shrink:0;">生成成绩卡</button></div>
+<p class="hint">每次生成都是独立快照，改姓名或继续做题后可重新生成。跳过和未做的题不计入。</p>
+<canvas id="canvas" width="750" height="560"></canvas>
+<div class="btn-row2" id="doneZone" style="display:none"><button class="btn-save" id="btnSave">保存成绩卡图片</button><button class="btn-close" id="btnClose">继续做题</button></div>
 </div>
 <div id="qlist"></div>
-<div class="lesson-nav"><a href="07.html">‹ 考点7</a><a href="index.html">训练目录</a><span>考点9 制作中</span></div>
+<div class="lesson-nav"><a href="07.html">‹ 考点7</a><a href="index.html">训练目录</a><a href="09.html">考点9 ›</a></div>
 <footer>化学不难学 · 高考选择题训练 · 每题 2 分 · 满分 40 分<br>题源：《学习与评价》2027版 + 历年高考原卷</footer>
 </div>
 <script>
 var QS = [{"id": 1, "src": "2026 广东 11", "ans": "C", "stem": "化合物 L<sub>2</sub>MQR<sub>4</sub> 与 TXR<sub>4</sub> 可用作电解质饮料的配料。短周期元素 M、R、L、T、Q、X 原子序数依次增加，R、X 同族，Q 与 X 相邻，Q 基态原子的 3p 轨道为半充满，则", "opts": ["原子半径：R＞X＞M", "金属性：T＞L＞M", "第一电离能：Q＞T＞L", "最高价氧化物对应水化物的酸性：Q＞X"], "exp": "Q 基态原子的 3p 轨道为半充满，电子排布式为 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>，故 Q 为 P 元素。Q 与 X 相邻且 X 原子序数更大，故 X 为 S 元素；R 与 X 同族，故 R 为 O 元素。结合化合物为电解质配料，TXR<sub>4</sub> 为 TSO<sub>4</sub>，SO<sub>4</sub><sup>2−</sup> 带 2 个负电荷，T 为 +2 价，则 T 为 Mg 元素；L<sub>2</sub>MQR<sub>4</sub> 为 L<sub>2</sub>MPO<sub>4</sub>，PO<sub>4</sub><sup>3−</sup> 带 3 个负电荷，M、R、L 原子序数依次增加，可推出 M 为 H、L 为 Na，电解质为 Na<sub>2</sub>HPO<sub>4</sub> 和 MgSO<sub>4</sub>。元素 M、R、L、T、Q、X 分别为 H、O、Na、Mg、P、S。选项 A，同周期主族元素从左到右原子半径依次减小，同主族从上到下原子半径依次增大，原子半径为 S＞O＞H（X＞R＞M），错误。选项 B，同周期主族元素从左到右金属性逐渐减弱，同主族从上到下金属性逐渐增强，金属性为 Na＞Mg＞H（L＞T＞M），错误。选项 C，同周期元素从左到右第一电离能呈增大趋势，第ⅡA 族和第ⅤA 族分别因 s 轨道全充满和 p 轨道半充满，结构稳定，第一电离能高于同周期相邻元素，故第一电离能为 P＞Mg＞Na（Q＞T＞L），正确。选项 D，同周期主族元素从左至右非金属性逐渐增强，非金属性越强最高价氧化物对应水化物酸性越强，非金属性为 S＞P，酸性为 H<sub>2</sub>SO<sub>4</sub>＞H<sub>3</sub>PO<sub>4</sub>（X＞Q），错误。"}, {"id": 2, "src": "2025 广东 9", "ans": "B", "figs": ["figs/k8/q2.png"], "stem": "元素 a～i 为短周期元素，其第一电离能与原子序数的关系如图。下列说法正确的是", "opts": ["a 和 g 同主族", "金属性：g＞h＞i", "原子半径：e＞d＞c", "最简单氢化物沸点：b＞c"], "exp": "每个周期第一种元素第一电离能最小、最后一种最大，同族从上到下第一电离能变小；同周期中第ⅡA 族和第ⅤA 族第一电离能大于相邻元素。推断 a～i 分别是 B、C、N、O、F、Ne、Na、Mg、Al。选项 A，a 为 B（第ⅢA 族），g 为 Na（第ⅠA 族），不同主族，错误。选项 B，g、h、i 为 Na、Mg、Al，同周期从左到右金属性依次减弱，金属性为 Na＞Mg＞Al（g＞h＞i），正确。选项 C，c、d、e 为 N、O、F，同周期从左到右原子半径依次减小，原子半径为 N＞O＞F（c＞d＞e），错误。选项 D，b 为 C、c 为 N，NH<sub>3</sub> 分子间形成氢键沸点高，沸点为 NH<sub>3</sub>＞CH<sub>4</sub>（c＞b），错误。"}, {"id": 3, "src": "2024 广东 12", "ans": "D", "figs": ["figs/k8/q3.png"], "stem": "一种可为运动员补充能量的物质，其分子结构式如图。已知 R、W、Z、X、Y 为原子序数依次增大的短周期主族元素，Z 和 Y 同族，则", "opts": ["沸点：ZR<sub>3</sub>＜YR<sub>3</sub>", "最高价氧化物的水化物的酸性：Z＜W", "第一电离能：Z＜X＜W", "ZX<sub>3</sub><sup>−</sup> 和 WX<sub>3</sub><sup>2−</sup> 空间结构均为平面三角形"], "exp": "Y 可形成 5 个共价键，Z 形成 3 个共价键，Z 和 Y 同族且 Y 原子序数大，故 Z、Y 为第ⅤA 族，Z 为 N、Y 为 P。W 形成 4 个共价键且原子序数比 N 小，为 C；R 形成 1 个共价键且比 C 小，为 H；X 形成 2 个共价键且原子序数在 N 和 P 之间，为 O。R、W、Z、X、Y 分别为 H、C、N、O、P。选项 A，NH<sub>3</sub> 可形成分子间氢键、PH<sub>3</sub> 不能，沸点为 NH<sub>3</sub>＞PH<sub>3</sub>（ZR<sub>3</sub>＞YR<sub>3</sub>），错误。选项 B，非金属性 C＜N，酸性为 H<sub>2</sub>CO<sub>3</sub>＜HNO<sub>3</sub>（W＜Z），错误。选项 C，第二周期从左到右第一电离能增大，但 N 的 2p 半充满稳定，第一电离能大于相邻 O，为 C＜O＜N（W＜X＜Z），错误。选项 D，NO<sub>3</sub><sup>−</sup> 中心原子孤电子对数为 ½(5+1−3×2)=0，价层电子对数 3+0=3，sp<sup>2</sup> 杂化，平面三角形；CO<sub>3</sub><sup>2−</sup> 中心原子孤电子对数为 ½(4+2−3×2)=0，价层电子对数 3+0=3，sp<sup>2</sup> 杂化，平面三角形，正确。"}, {"id": 4, "src": "2023 广东 14", "ans": "A", "stem": "化合物 XYZ<sub>4</sub>ME<sub>4</sub> 可作肥料，所含的 5 种元素位于主族，在每个短周期均有分布，仅有 Y 和 M 同族。Y 的基态原子价层 p 轨道半充满，X 的基态原子价层电子排布式为 ns<sup>n−1</sup>，X 与 M 同周期，E 在地壳中含量最多。下列说法正确的是", "opts": ["元素电负性：E＞Y＞Z", "氢化物沸点：M＞Y＞E", "第一电离能：X＞E＞Y", "YZ<sub>3</sub> 和 YE<sub>3</sub><sup>−</sup> 的空间结构均为三角锥形"], "exp": "E 在地壳中含量最多，为 O。5 种元素在每个短周期均有分布，Z 为 H。X 价层电子排布式为 ns<sup>n−1</sup>，n−1=1 或 2，即 n=2 或 3，为 2s<sup>1</sup>（Li）或 3s<sup>2</sup>（Mg）；Li 与 H 同族，与\"仅有 Y 和 M 同族\"矛盾，故 X 为 Mg。Y 价层 p 半充满且与 M 同族，为第ⅤA 族 N 或 P；X（Mg）与 M 同周期，故 M 为 P、Y 为 N。X、Y、Z、M、E 分别为 Mg、N、H、P、O，化合物为 MgNH<sub>4</sub>PO<sub>4</sub>。选项 A，O、N、H 电负性：同周期从左到右增大、同主族从上到下减小，为 O＞N＞H（E＞Y＞Z），正确。选项 B，氢化物 PH<sub>3</sub>、NH<sub>3</sub>、H<sub>2</sub>O，H<sub>2</sub>O 分子间氢键最多最强，沸点 H<sub>2</sub>O＞NH<sub>3</sub>＞PH<sub>3</sub>（E＞Y＞M），错误。选项 C，Mg、O、N 中 N 的 2p 半充满稳定，第一电离能大于相邻 O，Mg 是金属最小，为 N＞O＞Mg（Y＞E＞X），错误。选项 D，NH<sub>3</sub> 中心原子孤电子对数 ½(5−3×1)=1，价层电子对数 3+1=4，sp<sup>3</sup> 杂化，三角锥形；NO<sub>3</sub><sup>−</sup> 中心原子孤电子对数 ½(5+1−3×2)=0，价层电子对数 3+0=3，sp<sup>2</sup> 杂化，平面三角形，错误。"}, {"id": 5, "src": "2026 贵州 7", "ans": "D", "stem": "[(QY<sub>3</sub>ZX<sub>2</sub>)<sub>2</sub>W]<sup>−</sup> 是某离子液体的阴离子。已知：Q、W、X、Y 和 Z 为原子序数依次增大的短周期主族元素，基态 Q 原子的核外电子有 4 种空间运动状态，X 和 Z 同族，Y 的价层电子数最多。下列说法错误的是", "opts": ["第一电离能：Y＞W＞X＞Z", "最简单氢化物的键角：Q＞X＞Z", "电负性：Y＞X＞W＞Q", "最简单氢化物的沸点：W＞Y＞X"], "exp": "Q 核外电子有 4 种空间运动状态，即占据 4 个原子轨道，排布式 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup>，Q 为 C。结合阴离子可知 Y 形成 1 个共价键且价层电子数最多，Y 位于第ⅦA 族，为 F；进而 W、X 为 N、O；Z 与 X 同族，为 S。Q、W、X、Y、Z 依次为 C、N、O、F、S。选项 A，同周期从左到右第一电离能呈增大趋势，第ⅡA、第ⅤA 族比相邻大，第一电离能为 F＞N＞O＞S（Y＞W＞X＞Z），正确。选项 B，最简单氢化物 CH<sub>4</sub>、H<sub>2</sub>O、H<sub>2</sub>S 中心原子均 sp<sup>3</sup> 杂化，CH<sub>4</sub> 无孤电子对键角最大，H<sub>2</sub>O、H<sub>2</sub>S 均有 2 对孤电子对，电负性 O＞S 使 H<sub>2</sub>O 成键电子对斥力较大，键角为 CH<sub>4</sub>＞H<sub>2</sub>O＞H<sub>2</sub>S（Q＞X＞Z），正确。选项 C，同周期从左到右电负性增大，为 F＞O＞N＞C（Y＞X＞W＞Q），正确。选项 D，H<sub>2</sub>O 常温呈液态沸点最高；HF 分子间氢键强于 NH<sub>3</sub>，沸点为 H<sub>2</sub>O＞HF＞NH<sub>3</sub>（X＞Y＞W），故 W＞Y＞X 错误。"}, {"id": 6, "src": "2026 黑吉辽蒙 10", "ans": "B", "stem": "颜料 W<sub>6</sub>X<sub>6</sub>M<sub>5</sub>Z<sub>4</sub> 因含有 Z<sup>2−</sup> 而显色，M、W、X、Y、Z 为原子序数依次增大的短周期元素，基态 M 最外层电子数是内层的三倍，基态 W 最外层仅有一个电子，X 是地壳中含量最多的金属元素且与 Y 相邻，Z 与 M 同族。下列说法错误的是", "opts": ["简单离子半径：W＜M＜Z", "最简单氢化物沸点：Z＜Y＜M", "第一电离能：X＜Y＜M", "最高价氧化物水化物酸性：X＜Y＜Z"], "exp": "M 最外层电子数是内层的三倍，短周期只有 O（内层 2、最外层 6），M 为 O；Z 与 M 同族为 S。W 原子序数大于 O、最外层 1 个电子，为 Na。X 是地壳中含量最多的金属元素，为 Al；X 与 Y 相邻且 Y 原子序数大，为 Si。M、W、X、Y、Z 依次为 O、Na、Al、Si、S。选项 A，Na<sup>+</sup> 与 O<sup>2−</sup> 电子层结构相同，核电荷数越大半径越小，Na<sup>+</sup>＜O<sup>2−</sup>；S<sup>2−</sup> 有 3 个电子层半径更大，为 Na<sup>+</sup>＜O<sup>2−</sup>＜S<sup>2−</sup>（W＜M＜Z），正确。选项 B，氢化物 SiH<sub>4</sub>、H<sub>2</sub>S、H<sub>2</sub>O，H<sub>2</sub>O 分子间形成氢键沸点高，SiH<sub>4</sub>、H<sub>2</sub>S 为分子晶体相对分子质量越大沸点越高，为 SiH<sub>4</sub>＜H<sub>2</sub>S＜H<sub>2</sub>O（Y＜Z＜M），故 Z＜Y＜M 错误。选项 C，同周期第一电离能 Al＜Si＜S，同主族 S＜O，故 Al＜Si＜O（X＜Y＜M），正确。选项 D，第三周期从左到右非金属性增强、最高价氧化物水化物酸性增强，为 Al(OH)<sub>3</sub>＜H<sub>2</sub>SiO<sub>3</sub>＜H<sub>2</sub>SO<sub>4</sub>（X＜Y＜Z），正确。"}, {"id": 7, "src": "2026 云南 8", "ans": "D", "stem": "某水滑石是一种高效环保的阻燃剂，所含 U、V、W、X、Y、Z 为原子序数依次增大的前 20 号主族元素，U 是原子半径最小的元素，V 的 p 轨道电子数是 s 轨道电子数的一半，X 的最外层电子数与其 K 层电子数相等，Y 的氧化物具有两性，X 和 Z 同主族，Z 的原子序数等于 W 和 X 的原子序数之和。下列说法正确的是", "opts": ["最简单氢化物沸点：V＞W", "最高价氧化物的水化物碱性：X＞Z", "第一电离能：X＜Y", "U 与 W 能形成两种常见液态化合物"], "exp": "U 原子半径最小，为 H。V 的 p 电子数是 s 电子数的一半，排布式 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup>，V 为 C。X 最外层电子数等于 K 层数（2），为第ⅡA 族，可能 Be 或 Mg；X 原子序数大于 V（C），为 Mg。Y 氧化物两性，为 Al。X 与 Z 同主族，Z 为 Ca。Z 原子序数 20 = W + X(12)，W 为 8 号 O。U、V、W、X、Y、Z 依次为 H、C、O、Mg、Al、Ca。选项 A，H<sub>2</sub>O 分子间存在氢键，沸点远高于 CH<sub>4</sub>，为 H<sub>2</sub>O＞CH<sub>4</sub>（W＞V），错误。选项 B，金属性越强最高价氧化物水化物碱性越强，为 Ca(OH)<sub>2</sub>＞Mg(OH)<sub>2</sub>（Z＞X），错误。选项 C，第三周期从左到右第一电离能增大，但 Al 失去的是 3p 电子、能量高于 Mg 的 3s 电子，Al 第一电离能比 Mg 低，为 Al＜Mg（Y＜X），错误。选项 D，H 与 O 可形成 H<sub>2</sub>O 和 H<sub>2</sub>O<sub>2</sub>，二者常温下均为液态，正确。"}, {"id": 8, "src": "2025 安徽 9", "ans": "D", "figs": ["figs/k8/q8.png"], "stem": "某化合物的结构如图所示。W、X、Y、Z 是原子序数依次增大的短周期元素，其中 X、Z 位于同一主族。下列说法错误的是", "opts": ["元素电负性：X＞Z＞Y", "该物质中 Y 和 Z 均采取 sp<sup>3</sup> 杂化", "基态原子未成对电子数：W＜X＜Y", "基态原子的第一电离能：X＞Z＞Y"], "exp": "X、Z 同主族且均形成 2 个共价键，X 为 O、Z 为 S。W 形成 1 个共价键、原子序数最小，为 H。Y 形成 5 个共价键且原子序数在 O、S 之间，为 P。W、X、Y、Z 分别为 H、O、P、S。选项 A，同周期从左到右电负性增大、同主族从上到下减小，电负性 O＞S＞P（X＞Z＞Y），正确。选项 B，P 形成 4 个 σ 键、无孤电子对，价层电子对数 4，sp<sup>3</sup> 杂化；S 形成 2 个 σ 键、有 2 对孤电子对，价层电子对数 4，sp<sup>3</sup> 杂化，正确。选项 C，基态 H 未成对电子数 1，O（2s<sup>2</sup>2p<sup>4</sup>）为 2，P（3s<sup>2</sup>3p<sup>3</sup>）为 3，为 H＜O＜P（W＜X＜Y），正确。选项 D，同主族从上到下第一电离能减小，O＞S；第ⅤA 族 P 的 p 轨道半充满，第一电离能 P＞S，故为 O＞P＞S（X＞Y＞Z），X＞Z＞Y 错误。"}, {"id": 9, "src": "2025 陕晋青宁 9", "ans": "D", "figs": ["figs/k8/q9.png"], "stem": "一种高聚物 (XYZ<sub>2</sub>)ₙ 被称为\"无机橡胶\"，可由如图所示的环状三聚体制备。X、Y 和 Z 都是短周期元素，X、Y 价电子数相等，X、Z 电子层数相同，基态 Y 的 2p 轨道半充满，Z 的最外层只有 1 个未成对电子。下列说法正确的是", "opts": ["X、Z 的第一电离能：X＞Z", "X、Y 的简单氢化物的键角：X＞Y", "最高价含氧酸的酸性：Z＞X＞Y", "X、Y、Z 均能形成多种氧化物"], "exp": "X、Y 价电子数相等即同主族，X 形成 5 个共价键、Y 形成 3 个共价键，均为第ⅤA 族；Y 的 2p 半充满，排布式 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>，Y 为 N、X 为 P。X、Z 电子层数相同（第三周期），Z 最外层只有 1 个未成对电子且形成 1 个共价键，Z 为 Cl。X、Y、Z 分别为 P、N、Cl。选项 A，同周期从左到右第一电离能增大，Cl＞P（Z＞X），错误。选项 B，氢化物 PH<sub>3</sub>、NH<sub>3</sub> 中心原子孤电子对数均为 1、均 sp<sup>3</sup> 杂化，中心原子电负性越大键角越大，电负性 N＞P，键角 NH<sub>3</sub>＞PH<sub>3</sub>（Y＞X），错误。选项 C，非金属性 Cl＞N＞P，最高价含氧酸酸性 HClO<sub>4</sub>＞HNO<sub>3</sub>＞H<sub>3</sub>PO<sub>4</sub>（Z＞Y＞X），错误。选项 D，P、N、Cl 均能形成多种氧化物，如 P<sub>2</sub>O<sub>5</sub>、P<sub>2</sub>O<sub>3</sub>、NO、NO<sub>2</sub>、N<sub>2</sub>O、N<sub>2</sub>O<sub>5</sub>、ClO<sub>2</sub>、Cl<sub>2</sub>O<sub>7</sub> 等，正确。"}, {"id": 10, "src": "2023 湖南 6", "ans": "C", "stem": "日光灯中用到的某种荧光粉的主要成分为 3W<sub>3</sub>(ZX<sub>4</sub>)<sub>2</sub>·WY<sub>2</sub>。已知：X、Y、Z 和 W 为原子序数依次增大的前 20 号元素，W 为金属元素。基态 X 原子 s 轨道上的电子数和 p 轨道上的电子数相等，基态 X、Y、Z 原子的未成对电子数之比为 2∶1∶3。下列说法正确的是", "opts": ["电负性：X＞Y＞Z＞W", "原子半径：X＜Y＜Z＜W", "Y 和 W 的单质都能与水反应生成气体", "Z 元素最高价氧化物对应的水化物具有强氧化性"], "exp": "基态 X 原子 s 轨道电子数与 p 轨道相等，可能 O（1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup>）或 Mg；因与 Z 形成 ZX<sub>4</sub> 基团，X 为 O。X 未成对电子数为 2，X、Y、Z 未成对电子数之比 2∶1∶3，则 Y 为 1、Z 为 3。W 为金属且荧光粉中 Y 与 W 形成 WY<sub>2</sub>，Y 为 F 或 Cl；Z 未成对电子数 3 且原子序数大于 Y，故 Y 为 F、Z 为 P；W 显 +2 价，为 Ca。X、Y、Z、W 分别为 O、F、P、Ca。选项 A，同周期从左到右电负性增大、同主族从上到下减小，为 F＞O＞P＞Ca（Y＞X＞Z＞W），错误。选项 B，同周期从左到右原子半径减小、同主族从上到下增大，为 F＜O＜P＜Ca（Y＜X＜Z＜W），错误。选项 C，F<sub>2</sub> 与水反应生成 HF 和 O<sub>2</sub>，Ca 与水反应生成 Ca(OH)<sub>2</sub> 和 H<sub>2</sub>，均生成气体，正确。选项 D，Z 最高价氧化物对应水化物为 H<sub>3</sub>PO<sub>4</sub>，无强氧化性，错误。"}, {"id": 11, "src": "2023 湖北 6", "ans": "A", "stem": "W、X、Y、Z 为原子序数依次增加的同一短周期元素，其中 X、Y、Z 相邻，W 的核外电子数与 X 的价层电子数相等，Z<sub>2</sub> 是氧化性最强的单质，4 种元素可形成离子化合物 (XY)<sup>+</sup>(WZ<sub>4</sub>)<sup>−</sup>。下列说法正确的是", "opts": ["分子的极性：WZ<sub>3</sub>＜XZ<sub>3</sub>", "第一电离能：X＜Y＜Z", "氧化性：X<sub>2</sub>Y<sub>3</sub>＜W<sub>2</sub>Y<sub>3</sub>", "键能：X<sub>2</sub>＜Y<sub>2</sub>＜Z<sub>2</sub>"], "exp": "Z<sub>2</sub> 是氧化性最强的单质，Z 为 F。X、Y、Z 相邻且原子序数依次增加，X 为 N、Y 为 O。W 核外电子数等于 X 的价层电子数（5），W 为 B。W、X、Y、Z 分别为 B、N、O、F。选项 A，BF<sub>3</sub> 中心原子孤电子对数 ½(3−3×1)=0、价层电子对数 3，平面三角形、结构对称，为非极性分子；NF<sub>3</sub> 中心原子孤电子对数 ½(5−3×1)=1、价层电子对数 4，三角锥形，为极性分子。极性 BF<sub>3</sub>＜NF<sub>3</sub>（WZ<sub>3</sub>＜XZ<sub>3</sub>），正确。选项 B，同周期从左到右第一电离能增大，但第ⅡA、第ⅤA 族大于相邻元素，为 O＜N＜F（Y＜X＜Z），错误。选项 C，X<sub>2</sub>Y<sub>3</sub> 为 N<sub>2</sub>O<sub>3</sub>、W<sub>2</sub>Y<sub>3</sub> 为 B<sub>2</sub>O<sub>3</sub>，N 非金属性更强，氧化性 N<sub>2</sub>O<sub>3</sub>＞B<sub>2</sub>O<sub>3</sub>（X<sub>2</sub>Y<sub>3</sub>＞W<sub>2</sub>Y<sub>3</sub>），错误。选项 D，N<sub>2</sub> 含 N≡N 键、键能大，O<sub>2</sub> 含氧氧双键、F<sub>2</sub> 含氟氟单键，键能 N<sub>2</sub>＞O<sub>2</sub>＞F<sub>2</sub>（X<sub>2</sub>＞Y<sub>2</sub>＞Z<sub>2</sub>），错误。"}, {"id": 12, "src": "2022 福建 4", "ans": "A", "stem": "某非线性光学晶体由钾元素（K）和原子序数依次增大的 X、Y、Z、W 四种短周期元素组成。X 与 Y、Z 与 W 均为同周期相邻元素，X 的核外电子总数为最外层电子数的 2 倍，Z 为地壳中含量最多的元素。下列说法正确的是", "opts": ["简单氢化物沸点：Z＞W", "YW<sub>3</sub> 分子的空间构型为三角锥形", "原子半径：Y＜X＜Z＜W", "最高价氧化物对应水化物的碱性：X＜Y"], "exp": "X 核外电子总数为最外层电子数的 2 倍，X 为 Be。Z 是地壳中含量最多的元素，为 O。X 与 Y 同周期相邻，Y 为 B；Z 与 W 同周期相邻，W 为 F。X、Y、Z、W 分别为 Be、B、O、F。选项 A，H<sub>2</sub>O 常温为液态、HF 常温为气体，沸点 H<sub>2</sub>O＞HF（Z＞W），正确。选项 B，BF<sub>3</sub> 中心原子孤电子对数 ½(3−3×1)=0、价层电子对数 3，平面三角形，错误。选项 C，同周期从左到右原子半径减小，为 Be＞B＞O＞F（X＞Y＞Z＞W），错误。选项 D，Be 最高价氧化物水化物 Be(OH)<sub>2</sub> 显碱性，B 的 H<sub>3</sub>BO<sub>3</sub> 显酸性，碱性 Be(OH)<sub>2</sub>＞H<sub>3</sub>BO<sub>3</sub>（X＞Y），错误。"}, {"id": 13, "src": "2024 广州调研 15", "ans": "C", "stem": "净化污水用到的某种絮凝剂的主要成分为 XYZ<sub>4</sub>(ME<sub>4</sub>)<sub>2</sub>，所含的 5 种短周期主族元素在每个周期均有分布，M 与 E 为第ⅥA 族元素，Y 的基态原子 p 轨道半充满，Y 与 E 同周期，X 是在地壳中含量最多的金属元素。下列说法正确的是", "opts": ["元素电负性：Y＞E＞Z", "简单氢化物沸点：Y＞E＞M", "第一电离能：Y＞E＞X", "ME<sub>3</sub> 和 ME<sub>3</sub><sup>2−</sup> 的空间结构均为平面三角形"], "exp": "X 是地壳中含量最多的金属元素，为 Al。M、E 为第ⅥA 族（S 或 O）。Y 的 p 半充满，排布式 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>，为 N；Y 与 E 同周期，E 为 O、M 为 S。5 种元素每周期均有分布，Z 为 H。X、Y、Z、M、E 分别为 Al、N、H、S、O，絮凝剂为 NH<sub>4</sub>Al(SO<sub>4</sub>)<sub>2</sub>。选项 A，电负性 O＞N＞H（E＞Y＞Z），错误。选项 B，同主族气态氢化物沸点从上到下升高，但含氢键（N、O、F）更高，沸点 H<sub>2</sub>O＞NH<sub>3</sub>＞H<sub>2</sub>S（E＞Y＞M），错误。选项 C，同周期从左到右第一电离能增大，但第ⅤA 族大于第ⅥA 族；同主族从上到下减小，第一电离能 N＞O＞Al（Y＞E＞X），正确。选项 D，SO<sub>3</sub> 中心原子孤电子对数 ½(6−3×2)=0、价层电子对数 3，sp<sup>2</sup> 杂化、平面三角形；SO<sub>3</sub><sup>2−</sup> 中心原子孤电子对数 ½(6+2−3×2)=1、价层电子对数 4，sp<sup>3</sup> 杂化、三角锥形，错误。"}, {"id": 14, "src": "2024 广州一测 14", "ans": "C", "stem": "化合物 X<sub>3</sub>YZE<sub>4</sub>ME<sub>3</sub> 所含的 5 种元素均为短周期主族元素。X、Y 和 Z 为同周期元素，原子序数依次增加。X 的基态原子价层电子排布式为 ns<sup>n−2</sup>，Z 的基态原子价层 p 轨道半充满，E 是地壳中含量最多的元素，M 是有机分子的骨架元素。下列说法正确的是", "opts": ["元素电负性：M＞E＞Z", "简单氢化物沸点：Z＞E＞M", "第一电离能：Z＞Y＞X", "E<sub>3</sub> 和 ME<sub>2</sub> 的空间结构均为直线形"], "exp": "X 价层电子排布式为 ns<sup>n−2</sup>，X 为 Na。Z 价层 p 半充满且原子序数大于 X，排布式 3s<sup>2</sup>3p<sup>3</sup>，Z 为 P。E 是地壳中含量最多的元素 O；M 是有机分子骨架元素 C。由 X<sub>3</sub>YZE<sub>4</sub>ME<sub>3</sub> 且 X、Y、Z 原子序数依次增加，Y 为 Mg。该化合物为 Na<sub>3</sub>MgPO<sub>4</sub>CO<sub>3</sub>。选项 A，电负性 O＞C＞P（E＞M＞Z），错误。选项 B，H<sub>2</sub>O 分子间存在氢键，沸点 H<sub>2</sub>O＞PH<sub>3</sub>＞CH<sub>4</sub>（E＞Z＞M），错误。选项 C，同周期从左到右第一电离能增大，第一电离能 P＞Mg＞Na（Z＞Y＞X），正确。选项 D，O<sub>3</sub> 和 CO<sub>2</sub> 中心原子孤电子对数均为 ½(6−2×2)=1、价层电子对数 2+1=3，sp<sup>2</sup> 杂化、V 形，并非直线形，错误。"}, {"id": 15, "src": "2024 广州二测 14", "ans": "D", "stem": "化合物 XY(ZW<sub>4</sub>)<sub>2</sub> 可作食品膨松剂，W、X、Y、Z 为原子序数依次增大的短周期元素，W 的基态原子 s 能级上的电子总数和 p 能级上的电子总数相等，W 和 Z 同族，Y 是地壳中含量最多的金属元素。下列说法正确的是", "opts": ["第一电离能：X＞Y＞Z", "简单氢化物沸点：Z＞W", "原子半径：Z＞Y＞X＞W", "ZW<sub>2</sub> 和 W<sub>3</sub> 的空间结构均为 V 形"], "exp": "W 的基态原子 s 能级电子总数等于 p 能级，排布式 1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup>，W 为 O；W 与 Z 同族，Z 为 S。Y 是地壳中含量最多的金属元素 Al。由 XY(ZW<sub>4</sub>)<sub>2</sub> 可知 X 为 +1 价，X 为 Na。选项 A，同周期从左到右第一电离能增大，为 S＞Al＞Na（Z＞Y＞X），错误。选项 B，H<sub>2</sub>O 分子间形成氢键，沸点 H<sub>2</sub>O＞H<sub>2</sub>S（W＞Z），错误。选项 C，同周期从左到右原子半径减小，第三周期 Na＞Al＞S，W 在第二周期，原子半径 Na＞Al＞S＞O（X＞Y＞Z＞W），错误。选项 D，ZW<sub>2</sub> 为 SO<sub>2</sub>、W<sub>3</sub> 为 O<sub>3</sub>，中心原子孤电子对数均为 ½(6−2×2)=1、价层电子对数 2+1=3，sp<sup>2</sup> 杂化、V 形，正确。"}, {"id": 16, "src": "2025 广州调研 14", "ans": "B", "figs": ["figs/k8/q16.png"], "stem": "一种应用于医药、化妆品制造的有机原料分子结构如图所示。已知 R、W、X、Y、Z 为原子序数依次增大的短周期主族元素，Y 和 Z 同族。下列说法不正确的是", "opts": ["第一电离能：W＜Y＜X", "简单氢化物的键角：X＜Y", "最高价氧化物的水合物酸性：W＜Z", "WY<sub>3</sub><sup>2−</sup> 和 XY<sub>3</sub><sup>−</sup> 的空间结构均为平面三角形"], "exp": "Y 和 Z 同族且均与其他原子形成两个共价键，推知 Y 为 O、Z 为 S。R 原子序数最小且只能形成一个共价键，为 H。W 能形成四个共价键且原子序数介于 H、O 之间，为 C；X 介于 C、O 之间，为 N。R、W、X、Y、Z 分别为 H、C、N、O、S。选项 A，同周期从左到右第一电离能增大，但第ⅤA 族大于第ⅥA 族，为 C＜O＜N（W＜Y＜X），正确。选项 B，X、Y 氢化物为 NH<sub>3</sub> 和 H<sub>2</sub>O，中心原子均 sp<sup>3</sup> 杂化，H<sub>2</sub>O 中 O 有 2 对孤电子对、NH<sub>3</sub> 中 N 只有 1 对，孤电子对斥力使 H<sub>2</sub>O 键角更小：NH<sub>3</sub> 键角 107°、H<sub>2</sub>O 键角 105°，键角 H<sub>2</sub>O＜NH<sub>3</sub>（Y＜X），故 X＜Y 错误。选项 C，W、Z 最高价氧化物对应水化物为 H<sub>2</sub>CO<sub>3</sub> 和 H<sub>2</sub>SO<sub>4</sub>，酸性 H<sub>2</sub>CO<sub>3</sub>＜H<sub>2</sub>SO<sub>4</sub>（W＜Z），正确。选项 D，WY<sub>3</sub><sup>2−</sup> 为 CO<sub>3</sub><sup>2−</sup>、XY<sub>3</sub><sup>−</sup> 为 NO<sub>3</sub><sup>−</sup>，中心原子孤电子对数分别为 ½(4+2−3×2)=0、½(5+1−3×2)=0，价层电子对数均为 3，sp<sup>2</sup> 杂化、平面三角形，正确。"}, {"id": 17, "src": "2025 广州二测 13", "ans": "C", "stem": "一种有机除草剂分子含有 X、Y、Z、W、R 五种原子序数依次增大的短周期主族元素，已知 X 的原子核只有 1 个质子，Y 的基态原子 s 轨道上的电子数是 p 轨道上的电子数的 2 倍，Z 与 R 同族，Z 的基态原子价层 p 轨道半充满，W 的基态原子价层电子排布式为 ns<sup>n</sup>np<sup>n+2</sup>。下列有关说法正确的是", "opts": ["第一电离能：Y＞W＞Z", "元素电负性：Z＞W＞X", "沸点：X<sub>2</sub>W＞ZX<sub>3</sub>＞RX<sub>3</sub>", "ZW<sub>2</sub><sup>−</sup> 的空间结构为直线形"], "exp": "X 原子核只有 1 个质子，为 H。Y 的 s 电子数是 p 电子数的 2 倍，排布式 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup>，为 C。Z 价层 p 半充满，排布式可能 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup> 或 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>；Z 与 R 同族且 R 原子序数更大，Z 为 N、R 为 P。W 价层排布式 ns<sup>n</sup>np<sup>n+2</sup>，n=2 即 2s<sup>2</sup>2p<sup>4</sup>，W 为 O。X、Y、Z、W、R 分别为 H、C、N、O、P。选项 A，同周期从左到右第一电离能增大，但第ⅤA 族大于第ⅥA 族，为 N＞O＞C（Z＞W＞Y），错误。选项 B，同周期从左到右电负性增大，为 O＞N＞H（W＞Z＞X），错误。选项 C，X<sub>2</sub>W、ZX<sub>3</sub>、RX<sub>3</sub> 为 H<sub>2</sub>O、NH<sub>3</sub>、PH<sub>3</sub>，NH<sub>3</sub>、H<sub>2</sub>O 分子间能形成氢键且每个 H<sub>2</sub>O 形成更多氢键，沸点 H<sub>2</sub>O＞NH<sub>3</sub>＞PH<sub>3</sub>（X<sub>2</sub>W＞ZX<sub>3</sub>＞RX<sub>3</sub>），正确。选项 D，ZW<sub>2</sub><sup>−</sup> 为 NO<sub>2</sub><sup>−</sup>，中心原子孤电子对数 ½(5+1−2×2)=1、价层电子对数 2+1=3，sp<sup>2</sup> 杂化、V 形，不是直线形，错误。"}, {"id": 18, "src": "2026 广州调研 13", "ans": "D", "figs": ["figs/k8/q18.png"], "stem": "元素 a～h 为短周期主族元素，其电负性与原子序数的关系如图所示。下列说法正确的是", "opts": ["a 和 h 都是 s 区元素", "第一电离能：e＞d＞c", "简单离子半径：h＞g＞f", "最简单氢化物的键角：b＞c＞d"], "exp": "短周期主族元素电负性同周期从左往右增大、同主族从上往下减小，推出 a～h 分别为 B、C、N、O、F、Na、Mg、Al。选项 A，a 为 B、h 为 Al，均是 p 区元素，错误。选项 B，e、d、c 为 F、O、N，第二周期从左到右第一电离能增大，但 N 的 2p 半充满稳定，第一电离能大于相邻 O，为 F＞N＞O（e＞c＞d），错误。选项 C，h、g、f 为 Al、Mg、Na，简单离子 Al<sup>3+</sup>、Mg<sup>2+</sup>、Na<sup>+</sup> 核外电子排布相同，核电荷数越大半径越小，为 Na<sup>+</sup>＞Mg<sup>2+</sup>＞Al<sup>3+</sup>（f＞g＞h），错误。选项 D，b、c、d 为 C、N、O，最简单氢化物 CH<sub>4</sub>、NH<sub>3</sub>、H<sub>2</sub>O 均 sp<sup>3</sup> 杂化，孤电子对数分别为 0、1、2，孤电子对越多键角越小，键角 CH<sub>4</sub>＞NH<sub>3</sub>＞H<sub>2</sub>O（b＞c＞d），正确。"}, {"id": 19, "src": "2026 广州一测 8", "ans": "B", "figs": ["figs/k8/q19.png"], "stem": "元素 a～h 为短周期主族元素，其原子半径与核电荷数的关系如图所示，下列说法正确的是", "opts": ["b 和 g 同族", "电负性：c＞h＞g", "第一电离能：f＞e＞d", "最简单氢化物的沸点：h＞a"], "exp": "短周期主族元素原子半径同周期从左往右减小、同主族从上往下增大，推出 a～h 分别为 N、O、F、Na、Mg、Al、Si、P。选项 A，b 为 O、g 为 Si，不是同一主族，错误。选项 B，c、h、g 为 F、P、Si，电负性同周期从左往右增大、同主族从上往下减小，为 F＞P＞Si（c＞h＞g），正确。选项 C，f、e、d 为 Al、Mg、Na，第三周期从左到右第一电离能增大，但 Al 失去的是 3p 电子、能量高于 Mg 的 3s 电子，为 Mg＞Al＞Na（e＞f＞d），错误。选项 D，h、a 为 P、N，最简单氢化物 PH<sub>3</sub>、NH<sub>3</sub>，NH<sub>3</sub> 存在分子间氢键，沸点 NH<sub>3</sub>＞PH<sub>3</sub>（a＞h），错误。"}, {"id": 20, "src": "2026 广州二测 13", "ans": "C", "figs": ["figs/k8/q20.png"], "stem": "元素 a～j 为短周期主族元素，其第一电离能与族序数的关系如图。下列说法正确的是", "opts": ["原子半径：a＞d＞b", "元素电负性：j＞e＞g", "最简单氢化物的键角：d＞f＞h", "最简单氢化物的沸点：h＞e＞f"], "exp": "短周期主族元素第一电离能同主族从上往下减小、同周期从左往右增大，但第ⅤA 族大于同周期第ⅥA 族。推出 a～j 依次为 Al、B、Si、C、P、N、S、O、Cl、F。选项 A，a、d、b 为 Al、C、B，原子半径同周期从左往右减小、同主族从上往下增大，Al、B 同主族，C、B 同周期，为 Al＞B＞C（a＞b＞d），错误。选项 B，j、e、g 为 F、P、S，电负性同周期从左往右增大、同主族从上往下减小，为 F＞S＞P（j＞g＞e），错误。选项 C，d、f、h 为 C、N、O，最简单氢化物 CH<sub>4</sub>、NH<sub>3</sub>、H<sub>2</sub>O 中心原子均 sp<sup>3</sup> 杂化，CH<sub>4</sub> 无孤电子对、NH<sub>3</sub> 有 1 对、H<sub>2</sub>O 有 2 对，孤电子对越多键角越小，键角 CH<sub>4</sub>＞NH<sub>3</sub>＞H<sub>2</sub>O（d＞f＞h），正确。选项 D，h、e、f 为 O、P、N，最简单氢化物 H<sub>2</sub>O、PH<sub>3</sub>、NH<sub>3</sub>，H<sub>2</sub>O、NH<sub>3</sub> 分子间能形成氢键且 H<sub>2</sub>O 氢键更强、每个 H<sub>2</sub>O 形成更多氢键，沸点 H<sub>2</sub>O＞NH<sub>3</sub>＞PH<sub>3</sub>（h＞f＞e），错误。"}];
-var KEY = 'xz8_state', TKEY = 'xz_theme', NKEY = 'xz_name', LKEY = 'xz8_lock';
+var KEY = 'xz8_state', TKEY = 'xz_theme', NKEY = 'xz_name';
 var N = QS.length, PER = 2;
-var st = {a:{}, score:0, ok:0, elapsed:0, started:false};
+var st = {a:{}, skip:{}, elapsed:0, started:false};
 function $(id){return document.getElementById(id)}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.a)st=s}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
-function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+s%60).slice(-2)}
-function renderStats(){$('sProg').textContent=Object.keys(st.a).length;$('sScore').textContent=st.score;$('sOk').textContent=st.ok;$('sTime').textContent=fmt(st.elapsed)}
+function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
+function calc(){
+  var ok=0;
+  QS.forEach(function(q){if(st.a[q.id]===q.ans)ok++});
+  var done=Object.keys(st.a).length;
+  return {done:done,ok:ok,score:ok*PER};
+}
+function renderStats(){
+  var c=calc();
+  $('sProg').textContent=c.done;$('sScore').textContent=c.score;$('sOk').textContent=c.ok;$('sTime').textContent=fmt(st.elapsed);
+}
+function setSkip(id,on){
+  var act=$('act'+id),tip=$('skd'+id),ob=$('op'+id);
+  act.style.display=on?'none':'flex';
+  tip.style.display=on?'block':'none';
+  Array.prototype.forEach.call(ob.children,function(b){b.disabled=on||!!st.a[id]});
+  $('qc'+id).classList.toggle('skipped-card',on);
+}
 function build(){
   var box=$('qlist');
   QS.forEach(function(q,i){
@@ -116,18 +137,19 @@ function build(){
     h+='<div class="stem">'+q.stem+'</div>';
     if(q.figs){q.figs.forEach(function(f){h+='<div class="qfig"><img src="'+f+'" alt="题图"></div>'})}
     h+='<div id="op'+q.id+'"></div>';
-    h+='<button class="submit" id="sb'+q.id+'" disabled>提交本题</button>';
+    h+='<div class="btn-row" id="act'+q.id+'"><button class="submit" id="sb'+q.id+'" disabled>提交本题</button><button class="skipbtn" id="sk'+q.id+'">跳过此题</button></div>';
+    h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
-    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'生成本讲成绩卡 →')+'</button>';
+    h+='<button class="next" id="nx'+q.id+'">'+(i<N-1?'下一题 →':'返回顶部生成成绩卡')+'</button>';
     d.innerHTML=h;box.appendChild(d);
-    var picked=null,done=!!st.a[q.id];
+    var picked=null,done=!!st.a[q.id],skipped=!!st.skip[q.id];
     var ob=$('op'+q.id);
     q.opts.forEach(function(o,j){
       var L='ABCD'[j],b=document.createElement('button');
       b.className='opt';b.innerHTML='<span class="ol">'+L+'．</span><span>'+o+'</span>';
       b.onclick=function(){
-        if(done)return;
+        if(done||skipped)return;
         if(!st.started){st.started=true}
         picked=L;
         Array.prototype.forEach.call(ob.children,function(c){c.classList.remove('sel')});
@@ -140,17 +162,17 @@ function build(){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
       $('ex'+q.id).style.display='block';
-      $('sb'+q.id).style.display='none';
-      $('nx'+q.id).style.display='block';
+      $('act'+q.id).style.display='none';
       $('qm'+q.id).textContent=ok?'✓':'✗';
-      if(i===N-1)showResult();
+      $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
+    }else if(skipped){
+      setSkip(q.id,true);
     }
     $('sb'+q.id).onclick=function(){
-      if(picked===null||done)return;
+      if(picked===null||done||skipped)return;
       done=true;
       var ok=picked===q.ans;
       st.a[q.id]=picked;
-      if(ok){st.score+=PER;st.ok++}
       paintResult(q,ob,picked,ok);
       var v=$('vd'+q.id);
       v.style.display='block';
@@ -160,14 +182,24 @@ function build(){
       $('qm'+q.id).textContent=ok?'✓':'✗';
       $('qm'+q.id).style.color=ok?'var(--ok)':'var(--bad)';
       $('ex'+q.id).style.display='block';
-      $('sb'+q.id).style.display='none';
-      $('nx'+q.id).style.display='block';
+      $('act'+q.id).style.display='none';
+      Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
       renderStats();save();
-      if(Object.keys(st.a).length===N)showResult();
+    };
+    $('sk'+q.id).onclick=function(){
+      if(done||skipped)return;
+      skipped=true;st.skip[q.id]=1;
+      if(!st.started){st.started=true}
+      setSkip(q.id,true);save();
+    };
+    $('us'+q.id).onclick=function(){
+      if(!skipped)return;
+      skipped=false;delete st.skip[q.id];
+      setSkip(q.id,false);save();
     };
     $('nx'+q.id).onclick=function(){
       if(i<N-1){var n=QS[i+1];var el=document.getElementById('qc'+n.id);el.scrollIntoView({behavior:'smooth',block:'start'})}
-      else{$('result').scrollIntoView({behavior:'smooth',block:'center'})}
+      else{window.scrollTo({top:0,behavior:'smooth'})}
     };
   });
 }
@@ -179,33 +211,34 @@ function paintResult(q,ob,pick,ok){
   });
 }
 var timer=setInterval(function(){
-  if(st.started&&Object.keys(st.a).length<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
+  var c=calc();
+  if(st.started&&c.done<N){st.elapsed++;renderStats();if(st.elapsed%5===0)save()}
 },1000);
-function showResult(){
+function pad(n){return ('0'+n).slice(-2)}
+function showCard(){
   $('result').style.display='block';
-  var locked=localStorage.getItem(LKEY);
-  if(locked){
-    lockCard(locked);
-  }else{
-    $('stuName').value=localStorage.getItem(NKEY)||'';
-    $('genZone').style.display='block';
-  }
-}
-function lockCard(name){
-  $('genZone').style.display='none';
-  $('doneZone').style.display='flex';
-  $('stuName').value=name;
+  $('stuName').value=localStorage.getItem(NKEY)||'';
   drawCard();
   $('canvas').style.display='block';
+  $('doneZone').style.display='flex';
+  $('result').scrollIntoView({behavior:'smooth',block:'start'});
 }
+$('btnCard').onclick=function(){showCard()};
 $('btnGen').onclick=function(){
-  var name=$('stuName').value.trim();
-  if(!name){alert('请先输入姓名');return}
-  try{localStorage.setItem(LKEY,name);localStorage.setItem(NKEY,name)}catch(e){}
-  lockCard(name);
+  var name=$('stuName').value.trim()||'同学';
+  try{localStorage.setItem(NKEY,name)}catch(e){}
+  drawCard();
+  $('canvas').style.display='block';
+  $('doneZone').style.display='flex';
+};
+$('btnClose').onclick=function(){
+  $('result').style.display='none';
+  var first=QS.find(function(q){return !st.a[q.id]&&!st.skip[q.id]});
+  var el=first?document.getElementById('qc'+first.id):$('qlist');
+  el.scrollIntoView({behavior:'smooth',block:'start'});
 };
 function drawCard(){
-  var c=$('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
+  var c=document.getElementById('canvas'),x=c.getContext('2d'),W=c.width,H=c.height;
   var g=x.createLinearGradient(0,0,W,H);
   g.addColorStop(0,'#0f172a');g.addColorStop(.55,'#152743');g.addColorStop(1,'#1b1140');
   x.fillStyle=g;x.fillRect(0,0,W,H);
@@ -215,19 +248,32 @@ function drawCard(){
   x.fillStyle='#8ea0b5';x.font='16px sans-serif';x.fillText('考点8 物质结构与性质 元素周期律 · 每题 '+PER+' 分',40,84);
   var name=$('stuName').value.trim()||'同学';
   x.fillStyle='#e2e8f0';x.font='500 26px sans-serif';x.fillText(name,40,150);
-  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(st.score,40,255);
-  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(st.score).length*52+14,250);
-  var acc=Math.round(st.ok/N*100);
-  var cells=[['正确',st.ok+' / '+N+' 题'],['正确率',acc+'%'],['用时',fmt(st.elapsed)]];
+  var cc=calc();
+  x.fillStyle='#a78bfa';x.font='700 88px sans-serif';x.fillText(cc.score,40,250);
+  x.fillStyle='#8ea0b5';x.font='18px sans-serif';x.fillText('分 / 满分 '+(N*PER)+' 分',40+String(cc.score).length*52+14,250);
+  var acc=cc.done?Math.round(cc.ok/cc.done*100):0;
+  var cells=[['正确率',acc+'%（'+cc.ok+'/'+cc.done+'）'],['完成度',cc.done+' / '+N+' 题'],['做题时长',fmt(st.elapsed)]];
   cells.forEach(function(cell,i){
     var cx=40+i*228;
-    x.fillStyle='#1e293b';x.fillRect(cx,290,208,84);
-    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,320);
-    x.fillStyle='#e2e8f0';x.font='500 24px sans-serif';x.fillText(cell[1],cx+18,356);
+    x.fillStyle='#1e293b';x.fillRect(cx,280,208,84);
+    x.fillStyle='#67e8f9';x.font='14px sans-serif';x.fillText(cell[0],cx+18,310);
+    x.fillStyle='#e2e8f0';x.font='500 20px sans-serif';x.fillText(cell[1],cx+18,346);
   });
   var d=new Date();
-  x.fillStyle='#5b6b7f';x.font='14px sans-serif';
-  x.fillText('日期 '+d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),40,410);
+  var stamp=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('提交时间 '+stamp,40,400);
+  x.fillStyle='#8ea0b5';x.font='15px sans-serif';x.fillText('已做题号（绿=对 红=错，跳过/未做不计）',40,432);
+  var doneList=QS.filter(function(q){return !!st.a[q.id]});
+  doneList.forEach(function(q,i){
+    var col=i%14,row=Math.floor(i/14);
+    var bx=40+col*48,by=450+row*46;
+    var ok=st.a[q.id]===q.ans;
+    x.fillStyle=ok?'#16a34a':'#dc2626';x.fillRect(bx,by,38,36);
+    x.fillStyle='#ffffff';x.font='500 16px sans-serif';x.fillText(String(q.id),bx+9,by+25);
+  });
+  x.fillStyle='#5b6b7f';x.font='13px sans-serif';
+  x.fillText('答对 '+cc.ok+' · 答错 '+(cc.done-cc.ok)+' · 未做 '+(N-cc.done)+' · 跳过 '+Object.keys(st.skip).length,40,H-22);
+  window.__lastCard={time:stamp,done:cc.done,ok:cc.ok,score:cc.score,elapsed:fmt(st.elapsed),skip:Object.keys(st.skip).length};
 }
 $('stuName').addEventListener('input',function(){try{localStorage.setItem(NKEY,this.value)}catch(e){}});
 $('btnSave').onclick=function(){
@@ -235,14 +281,11 @@ $('btnSave').onclick=function(){
   a.download='选择题训练_考点8_'+(($('stuName').value.trim()||'成绩'))+'.png';
   a.href=$('canvas').toDataURL('image/png');a.click();
 };
-$('btnRedo').onclick=function(){
-  if(confirm('确定清空本讲答题记录和成绩卡重新刷吗？')){localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload()}
-};
 $('resetBtn').onclick=function(){
-  var n=Object.keys(st.a).length;
-  if(n===0){alert('本讲还没有答题记录');return}
-  if(confirm('确定清空本讲 '+n+' 题记录重新做吗？')){
-    localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload();
+  var c=calc();
+  if(c.done===0&&Object.keys(st.skip).length===0){alert('本讲还没有答题记录');return}
+  if(confirm('确定清空本讲全部记录和成绩卡重新做吗？')){
+    localStorage.removeItem(KEY);location.reload();
   }
 };
 function applyTheme(t){
