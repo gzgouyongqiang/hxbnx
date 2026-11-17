@@ -79,9 +79,14 @@ sub,sup{font-size:.72em}
 .helprow button{flex:1;border-radius:10px;padding:9px 6px;font-size:12.5px;cursor:pointer;background:transparent;line-height:1.4}
 .jade{color:var(--accent);border:1px solid var(--accent-border)}
 .rock{color:#f59e0b;border:1px dashed #b45309}
-.helpbox{margin-top:10px;border-radius:10px;padding:12px;display:none}
+.helpbox{margin-top:10px;border-radius:10px;padding:12px;display:none;gap:10px;align-items:flex-start}
 .jadebox{background:var(--accent-soft);border:1px solid var(--accent-border)}
 .rockbox{background:rgba(245,158,11,.09);border:1px solid #b45309}
+.hb-face{flex-shrink:0;width:64px;text-align:center}
+.hb-face img{width:62px;height:62px;object-fit:contain;animation:hbfloat 2.6s ease-in-out infinite}
+@keyframes hbfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hb-face .hn{font-size:11px;color:var(--muted);margin-top:2px}
+.hb-main{flex:1;min-width:0}
 .helpbox .ht{font-size:12px;font-weight:500;margin-bottom:6px}
 .jadebox .ht{color:var(--accent)}
 .rockbox .ht{color:#f59e0b}
@@ -123,6 +128,25 @@ function $(id){return document.getElementById(id)}
 function load(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s){st.a=s.a||{};st.skip=s.skip||{};st.help=s.help||{};st.elapsed=s.elapsed||0;st.started=!!s.started}}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 function fmt(s){s=Math.floor(s);return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
+/* ===== 小玉/小岩 立绘与语音（素材与模式复用自 walk 模块） ===== */
+var FACE_VER='?v=20261117';
+var YU_BASE='../assets/xiaoyu/xiaoyu_', YAN_BASE='../assets/xiaoyan/xiaoyan_';
+var curAudio=null, faceTimers={};
+function setFace(fid,base,name,hold){
+  var img=$(fid);if(!img)return;
+  img.src=base+name+'.webp'+FACE_VER;
+  if(faceTimers[fid])clearTimeout(faceTimers[fid]);
+  if(name!=='idle'){faceTimers[fid]=setTimeout(function(){setFace(fid,base,'idle')},hold||2600)}
+}
+function playVoice(src){
+  try{if(curAudio){curAudio.pause();curAudio=null}}catch(e){}
+  try{
+    var a=new Audio(src);
+    curAudio=a;
+    a.onerror=function(){if(curAudio===a)curAudio=null};
+    a.play().catch(function(){});
+  }catch(e){}
+}
 function calc(){
   var ok=0;
   QS.forEach(function(q){if(st.a[q.id]===q.ans&&st.help[q.id]!=='rock')ok++});
@@ -154,8 +178,8 @@ function build(){
     h+='<div class="helprow" id="hl'+q.id+'">';
     if(q.hint){h+='<button class="jade" id="jd'+q.id+'">🙋 求助小玉 · 思路点拨</button>';}
     h+='<button class="rock" id="rk'+q.id+'">📖 求助小岩 · 看详解本题计0分</button></div>';
-    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="ht">🙋 小玉点拨 · 不扣分，自己接着想</div><p>'+(q.hint||'')+'</p></div>';
-    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="ht">📖 小岩详解 · 本题已计 0 分</div><p>'+q.exp+'</p></div>';
+    h+='<div class="helpbox jadebox" id="jbx'+q.id+'"><div class="hb-face"><img id="jf'+q.id+'" src="../assets/xiaoyu/xiaoyu_idle.webp'+FACE_VER+'" alt="小玉"><div class="hn">小玉</div></div><div class="hb-main"><div class="ht">🙋 小玉点拨 · 不扣分，自己接着想</div><p>'+(q.hint||'')+'</p></div></div>';
+    h+='<div class="helpbox rockbox" id="rbx'+q.id+'"><div class="hb-face"><img id="rf'+q.id+'" src="../assets/xiaoyan/xiaoyan_idle.webp'+FACE_VER+'" alt="小岩"><div class="hn">小岩</div></div><div class="hb-main"><div class="ht">📖 小岩详解 · 本题已计 0 分</div><p>'+q.exp+'</p></div></div>';
     h+='<div class="skipped-tip" id="skd'+q.id+'">已跳过（不计入统计）<button class="undoskip" id="us'+q.id+'">撤销跳过</button></div>';
     h+='<div class="verdict" id="vd'+q.id+'"></div>';
     h+='<div class="exp" id="ex'+q.id+'"><div class="et">答案 '+q.ans+' · 题析</div><p>'+q.exp+'</p></div>';
@@ -180,7 +204,7 @@ function build(){
       var pick=st.a[q.id],ok=pick===q.ans;
       paintResult(q,ob,pick,ok);
       if(st.help[q.id]==='rock'){
-        $('rbx'+q.id).style.display='block';
+        $('rbx'+q.id).style.display='flex';
         $('hl'+q.id).style.display='none';
         $('qm'+q.id).textContent='📖';
         $('qm'+q.id).style.color='#f59e0b';
@@ -194,7 +218,7 @@ function build(){
     }else if(skipped){
       setSkip(q.id,true);
     }else if(st.help[q.id]){
-      $(st.help[q.id]==='rock'?'rbx'+q.id:'jbx'+q.id).style.display='block';
+      $(st.help[q.id]==='rock'?'rbx'+q.id:'jbx'+q.id).style.display='flex';
       var hb=$(st.help[q.id]==='rock'?'rk'+q.id:'jd'+q.id);
       if(hb)hb.style.opacity=.5;
     }
@@ -212,7 +236,7 @@ function build(){
       v.textContent=rock?'已求助小岩 · 本题计 0 分（正确答案 '+q.ans+'）':(ok?'回答正确 +'+PER+' 分':'回答错误 · 正确答案 '+q.ans);
       $('qm'+q.id).textContent=rock?'📖':(ok?'✓':'✗');
       $('qm'+q.id).style.color=rock?'#f59e0b':(ok?'var(--ok)':'var(--bad)');
-      if(rock){$('rbx'+q.id).style.display='block';$('hl'+q.id).style.display='none';}
+      if(rock){$('rbx'+q.id).style.display='flex';$('hl'+q.id).style.display='none';}
       else{$('ex'+q.id).style.display='block';$('hl'+q.id).style.display='none';}
       $('act'+q.id).style.display='none';
       Array.prototype.forEach.call(ob.children,function(b){b.disabled=true});
@@ -222,8 +246,11 @@ function build(){
       if(done||skipped)return;
       st.help[q.id]='jade';
       if(!st.started){st.started=true}
-      $('jbx'+q.id).style.display='block';
+      $('jbx'+q.id).style.display='flex';
       $('jd'+q.id).style.opacity=.5;
+      setFace('jf'+q.id,YU_BASE,'think',2400);
+      setTimeout(function(){if(st.help[q.id]==='jade')setFace('jf'+q.id,YU_BASE,'encourage',2600)},2700);
+      playVoice('../assets/xz/audio/k10/h'+q.id+'.mp3');
       save();
     };}
     $('rk'+q.id).onclick=function(){
@@ -231,8 +258,11 @@ function build(){
       if(!confirm('看小岩详解后，本题将计 0 分（即使答对）。确定求助吗？'))return;
       st.help[q.id]='rock';
       if(!st.started){st.started=true}
-      $('rbx'+q.id).style.display='block';
+      $('rbx'+q.id).style.display='flex';
       $('rk'+q.id).style.opacity=.5;
+      setFace('rf'+q.id,YAN_BASE,'write',2400);
+      setTimeout(function(){if(st.help[q.id]==='rock')setFace('rf'+q.id,YAN_BASE,'think',2600)},2700);
+      playVoice('../assets/xz/audio/xiaoyan_hi.mp3');
       renderStats();save();
     };
     $('sk'+q.id).onclick=function(){
