@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0c0f0e">
-<title>街拍快处理 · 拍照即美化</title>
+<title>街拍快处理 · 场景一键出片</title>
 <script src="camera_assets/selfie_segmentation.js"></script>
 <style>
 :root{
   --bg:#0c0f0e; --panel:#161b19; --panel2:#1e2622; --line:#2c3a33;
-  --txt:#d8e2dc; --dim:#8fa39a; --gold:#d4af37; --accent:#7fc99a; --danger:#e07a5f;
+  --txt:#d8e2dc; --dim:#8fa39a; --gold:#d4af37; --accent:#7fc99a;
   --glass:rgba(12,15,14,.55);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -20,28 +20,25 @@ body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang S
 .screen.on{display:flex}
 button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
 button:active{opacity:.75}
-svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
+svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
 
 /* ---------- 取景页 ---------- */
 #vf{background:#000}
 #cam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#guide{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+#guide{position:absolute;left:50%;transform:translate(-50%,-50%);
   border:1.5px solid rgba(255,255,255,.5);pointer-events:none;box-shadow:0 0 0 999px rgba(0,0,0,.15)}
 #guide::before,#guide::after{content:"";position:absolute;width:20px;height:20px;border:2.5px solid var(--gold)}
 #guide::before{left:-2px;top:-2px;border-right:none;border-bottom:none}
 #guide::after{right:-2px;bottom:-2px;border-left:none;border-top:none}
-/* 九宫格构图线 */
-#grid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;display:none;
+#grid{position:absolute;left:50%;transform:translate(-50%,-50%);pointer-events:none;display:none;
   border-left:1px solid rgba(255,255,255,.22);border-right:1px solid rgba(255,255,255,.22)}
 #grid::before{content:"";position:absolute;left:0;right:0;top:33.33%;border-top:1px solid rgba(255,255,255,.22)}
 #grid::after{content:"";position:absolute;left:0;right:0;top:66.66%;border-top:1px solid rgba(255,255,255,.22)}
 #grid.on{display:block}
-/* 水平仪胶囊 */
 #level{position:absolute;left:50%;top:calc(env(safe-area-inset-top,0px) + 58px);transform:translateX(-50%);
   font-size:11px;color:var(--txt);background:var(--glass);backdrop-filter:blur(8px);
   border:1px solid var(--line);padding:3px 12px;border-radius:12px;z-index:6;display:none;letter-spacing:.5px}
 #level.ok{color:var(--accent);border-color:rgba(127,201,154,.5)}
-/* 白闪 */
 #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9;transition:opacity .1s}
 #flash.go{opacity:.85;transition:none}
 
@@ -58,15 +55,21 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
 
 #vfBottom{position:absolute;bottom:0;left:0;right:0;z-index:5;
   padding-bottom:calc(env(safe-area-inset-bottom,0px) + 12px);
-  background:linear-gradient(to top,rgba(0,0,0,.78) 30%,transparent)}
-.segRow{display:flex;justify-content:center;gap:0;margin:2px 0 8px}
-.seg{font-size:13px;color:var(--dim);padding:6px 20px;background:var(--glass);backdrop-filter:blur(8px);
-  border:1px solid var(--line);display:flex;align-items:center;gap:6px}
-.seg:first-child{border-radius:18px 0 0 18px;border-right:none}
-.seg:last-child{border-radius:0 18px 18px 0}
-.seg.on{color:var(--gold);border-color:var(--gold);background:rgba(212,175,55,.12)}
-.segRow.ratio{margin-bottom:12px}
-.segRow.ratio .seg{font-size:12px;padding:4px 14px}
+  background:linear-gradient(to top,rgba(0,0,0,.80) 30%,transparent)}
+/* 场景 chips 横向滚动 */
+.sceneRow{display:flex;gap:8px;overflow-x:auto;padding:6px 14px 8px;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch}
+.sceneRow::-webkit-scrollbar{display:none}
+.scene{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;
+  font-size:11px;color:var(--dim);padding:8px 12px;border-radius:14px;
+  background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--line);min-width:56px}
+.scene.on{color:var(--gold);border-color:var(--gold);background:rgba(212,175,55,.12)}
+.segRow.ratio{display:flex;justify-content:center;gap:0;margin-bottom:10px}
+.segRow.ratio .seg{font-size:12px;color:var(--dim);padding:4px 14px;background:var(--glass);
+  backdrop-filter:blur(8px);border:1px solid var(--line)}
+.segRow.ratio .seg:first-child{border-radius:16px 0 0 16px;border-right:none}
+.segRow.ratio .seg:last-child{border-radius:0 16px 16px 0}
+.segRow.ratio .seg.on{color:var(--gold);border-color:var(--gold);background:rgba(212,175,55,.12)}
 .shutterRow{display:flex;align-items:center;justify-content:center;gap:34px;padding:2px 0 8px}
 #thumbBtn{width:50px;height:50px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);
   overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--dim)}
@@ -80,7 +83,7 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
 .toolRow{display:flex;gap:10px;justify-content:center;margin-bottom:6px}
 .tool{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--txt);
   background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:18px;padding:8px 16px}
-.hint{font-size:11px;color:#77807b;text-align:center;line-height:1.5}
+.hint{font-size:11px;color:#9aae9f;text-align:center;line-height:1.5;letter-spacing:.3px}
 
 /* ---------- 处理页 ---------- */
 #proc{background:var(--bg);justify-content:center;align-items:center;gap:18px}
@@ -98,12 +101,13 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
   background:rgba(12,15,14,.6);padding:3px 10px;border-radius:10px;white-space:nowrap}
 #ctrl{padding:8px 14px calc(env(safe-area-inset-bottom,0px) + 12px);background:rgba(22,27,25,.92);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
-.presets{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
+.presets{display:flex;gap:8px;align-items:center;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
 .presets::-webkit-scrollbar{display:none}
+.plabel{flex:0 0 auto;font-size:11px;color:var(--dim);letter-spacing:2px}
 .pBtn{flex:0 0 auto;font-size:13px;color:var(--dim);border:1px solid var(--line);border-radius:16px;padding:5px 13px;background:var(--panel2)}
 .pBtn.on{color:var(--gold);border-color:var(--gold);font-weight:600}
 #sliders{max-height:0;overflow:hidden;transition:max-height .25s}
-#sliders.open{max-height:400px}
+#sliders.open{max-height:460px}
 .srow{display:flex;align-items:center;gap:10px;padding:3px 0}
 .srow.off{opacity:.35;pointer-events:none}
 .srow label{font-size:12px;color:var(--dim);width:58px;flex:0 0 auto}
@@ -141,14 +145,7 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
   </div>
   <div id="vfMsg">正在启动相机…<br>若手机弹窗询问相机权限，请点"允许"</div>
   <div id="vfBottom">
-    <div class="segRow">
-      <button class="seg" id="modePhoto">
-        <svg class="ic" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>照片
-      </button>
-      <button class="seg on" id="modePortrait">
-        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg>人像
-      </button>
-    </div>
+    <div class="sceneRow" id="sceneRow"></div>
     <div class="segRow ratio">
       <button class="seg on" data-r="4:3">4:3</button>
       <button class="seg" data-r="16:9">16:9</button>
@@ -170,14 +167,14 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
         <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l4.5-4.5L11 14l3.5-3.5L21 16"/><circle cx="15.5" cy="9.5" r="1.3"/></svg>相册导入
       </button>
     </div>
-    <div class="hint">人像模式：AI虚化背景 · 照片模式：仅调色保细节</div>
+    <div class="hint" id="sceneTip"></div>
   </div>
 </div>
 
 <!-- 处理中 -->
 <div class="screen" id="proc">
   <div class="spinner"></div>
-  <div id="procTxt">AI 正在识别人像…</div>
+  <div id="procTxt">正在处理…</div>
 </div>
 
 <!-- 成片 -->
@@ -192,7 +189,7 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
   </div>
   <div id="ctrl">
     <div class="presets" id="presets"></div>
-    <button id="sliderToggle">▾ 微调参数（虚化 / 压暗 / 色调）</button>
+    <button id="sliderToggle">▾ 微调参数（美容 / 虚化 / 色调）</button>
     <div id="sliders"></div>
     <div class="actRow">
       <button class="act ghost" id="cmpBtn">
@@ -217,19 +214,80 @@ svg.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;str
 "use strict";
 /* ================= 状态 ================= */
 const $ = id => document.getElementById(id);
-const P = { blur:10, dark:0, bright:100, contrast:100, satur:100, temp:0, vig:0 };
-let curMode = "portrait";               // portrait=人像(分割虚化) / photo=照片(仅调色)
+const P = { blur:10, dark:0, beauty:55, bright:103, contrast:104, satur:102, temp:6, vig:0 };
+let curScene = "portrait";
 const RATIO = {"4:3":4/3,"16:9":16/9,"1:1":1,"full":0};
 let curRatio = 4/3;
-let base = null, maskAlpha = null, lastThumb = null;
+let base = null, maskAlpha = null;
 let camStream = null, facing = "environment";
 let segBusy = false;
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-/* ================= toast ================= */
-let toastTimer = null;
-function toast(msg, ms=2400){
-  const t = $("toast"); t.textContent = msg; t.style.display = "block";
-  clearTimeout(toastTimer); toastTimer = setTimeout(()=> t.style.display="none", ms);
+/* ================= 场景体系 ================= */
+/* 技术行为: seg=跑人像分割 stack=连拍合成帧数 beauty=磨皮强度 */
+const SCENES = {
+  portrait:  { name:"人像", seg:true,  stack:0, beauty:55,
+               tone:{bright:103,contrast:104,satur:102,temp:6, vig:0 },
+               tech:{blur:10, dark:0}, icon:"user",
+               tip:"自动美容磨皮 · AI虚化背景" },
+  landscape: { name:"风景", seg:false, stack:0, beauty:0,
+               tone:{bright:101,contrast:107,satur:110,temp:-4,vig:0 },
+               tech:{blur:0, dark:0}, icon:"mount",
+               tip:"大景深不虚化 · 细节清晰拉满" },
+  sunny:     { name:"晴日", seg:false, stack:0, beauty:0,
+               tone:{bright:97, contrast:110,satur:112,temp:0, vig:0 },
+               tech:{blur:0, dark:0}, icon:"sun",
+               tip:"压亮度护天空高光 · 色彩饱满" },
+  rain:      { name:"阴雨", seg:false, stack:0, beauty:0,
+               tone:{bright:106,contrast:114,satur:115,temp:8, vig:0 },
+               tech:{blur:0, dark:0}, icon:"rain",
+               tip:"去灰提透 · 阴天也通透" },
+  night:     { name:"夜景", seg:false, stack:5, beauty:0,
+               tone:{bright:122,contrast:106,satur:104,temp:-6,vig:10},
+               tech:{blur:0, dark:0}, icon:"moon",
+               tip:"按下快门稳住1秒 · 连拍合成降噪" },
+  stage:     { name:"舞台", seg:false, stack:0, beauty:0,
+               tone:{bright:99, contrast:118,satur:108,temp:0, vig:22},
+               tech:{blur:0, dark:0}, icon:"star",
+               tip:"压暗四周杂光 · 聚焦主体" }
+};
+const ICONS = {
+  user:  '<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/>',
+  mount: '<path d="M3 19l6-8 4 5 3-3 5 6H3z"/><circle cx="17" cy="7" r="2.2"/>',
+  sun:   '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>',
+  rain:  '<path d="M18 10.5A5.5 5.5 0 0 0 7.2 9 4 4 0 0 0 6 16.8h11a3.6 3.6 0 0 0 1-6.3z"/><path d="M8.5 18.5l-1 2.5M12.5 18.5l-1 2.5M16.5 18.5l-1 2.5"/>',
+  moon:  '<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/>',
+  star:  '<path d="M12 3l2.6 5.6 6 .7-4.4 4.1 1.2 5.9-5.4-3-5.4 3 1.2-5.9L3.4 9.3l6-.7z"/>'
+};
+
+/* 场景 chips 渲染 */
+const sceneRow = $("sceneRow");
+Object.keys(SCENES).forEach(key=>{
+  const s = SCENES[key];
+  const b = document.createElement("button");
+  b.className = "scene" + (key==="portrait" ? " on" : "");
+  b.dataset.k = key;
+  b.innerHTML = '<svg class="ic" viewBox="0 0 24 24">'+ICONS[s.icon]+'</svg><span>'+s.name+'</span>';
+  b.onclick = ()=>setScene(key);
+  sceneRow.appendChild(b);
+});
+function setScene(key){
+  curScene = key;
+  const s = SCENES[key];
+  document.querySelectorAll(".scene").forEach(x=>x.classList.toggle("on", x.dataset.k===key));
+  Object.assign(P, s.tone, s.tech, { beauty:s.beauty });
+  ["bright","contrast","satur","temp","vig","blur","dark","beauty"].forEach(syncSlider);
+  presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));   // 回到场景默认风格
+  $("sceneTip").textContent = s.tip;
+  updateSliderLocks();
+}
+/* 场景决定哪些滑块可用 */
+function updateSliderLocks(){
+  const on = curScene === "portrait";
+  ["blur","dark","beauty"].forEach(k=>{
+    slidersBox.querySelector("input[data-k='"+k+"']").closest(".srow")
+      .classList.toggle("off", !on);
+  });
 }
 
 /* ================= 工具 ================= */
@@ -237,6 +295,11 @@ function mkCanvas(w,h){ const c=document.createElement("canvas"); c.width=w; c.h
 function show(id){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
   $(id).classList.add("on");
+}
+let toastTimer = null;
+function toast(msg, ms=2400){
+  const t = $("toast"); t.textContent = msg; t.style.display = "block";
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=> t.style.display="none", ms);
 }
 
 /* ================= 相机 ================= */
@@ -267,7 +330,7 @@ function stopCamera(){
 }
 function placeGuide(){
   const vw = innerWidth, vh = innerHeight;
-  const topSafe = 52, bottomSafe = 218;     // 顶栏与底部控制区高度，取景区避开
+  const topSafe = 52, bottomSafe = 252;
   const availH = vh - topSafe - bottomSafe;
   let w, h;
   if(curRatio === 0){ w = vw; h = availH; }
@@ -290,16 +353,6 @@ document.querySelectorAll(".ratio .seg").forEach(b=>{
   };
 });
 
-/* 模式切换 */
-$("modePhoto").onclick = ()=>setMode("photo");
-$("modePortrait").onclick = ()=>setMode("portrait");
-function setMode(m){
-  curMode = m;
-  $("modePhoto").classList.toggle("on", m==="photo");
-  $("modePortrait").classList.toggle("on", m==="portrait");
-  $("sliders").querySelector("input[data-k='blur']").closest(".srow").classList.toggle("off", m==="photo");
-}
-
 /* 构图网格 */
 $("gridBtn").onclick = ()=>{
   const g = $("grid");
@@ -307,7 +360,7 @@ $("gridBtn").onclick = ()=>{
   $("gridBtn").classList.toggle("on", g.classList.contains("on"));
 };
 
-/* 水平仪（尽力而为：拿不到传感器数据自动隐藏） */
+/* 水平仪 */
 let levelOn = false;
 function startLevel(){
   if(levelOn) return;
@@ -318,8 +371,7 @@ function startLevel(){
     el.style.display = "block";
     const tilt = Math.round(e.gamma*10)/10;
     if(Math.abs(tilt) <= 1.2){
-      el.classList.add("ok");
-      el.textContent = "水平 ✓";
+      el.classList.add("ok"); el.textContent = "水平 ✓";
     }else{
       el.classList.remove("ok");
       el.textContent = (tilt>0?"右倾 ":"左倾 ") + Math.abs(tilt).toFixed(1) + "°";
@@ -327,7 +379,7 @@ function startLevel(){
   });
 }
 
-/* 快门音（WebAudio 模拟咔哒，首次拍照时创建） */
+/* 快门音 + 白闪 */
 let audioCtx = null;
 function shutterSound(){
   try{
@@ -348,8 +400,8 @@ function shutterFlash(){
   setTimeout(()=>f.classList.remove("go"), 130);
 }
 
-/* 快门：按成片框比例从视频帧中央裁剪 */
-$("shutter").onclick = ()=>{
+/* 快门：按成片框比例从视频帧中央裁剪；夜景场景连拍堆栈 */
+$("shutter").onclick = async ()=>{
   const v = $("cam");
   if(!camStream || !v.videoWidth){ toast("相机还没就绪，稍等一下"); return; }
   shutterFlash(); shutterSound();
@@ -359,8 +411,19 @@ $("shutter").onclick = ()=>{
   const gRatio = gw/gh;
   if(vw/vh > gRatio){ ch = vh; cw = ch*gRatio; } else { cw = vw; ch = cw/gRatio; }
   const sx=(vw-cw)/2, sy=(vh-ch)/2;
+  const draw = ctx => ctx.drawImage(v, sx, sy, cw, ch, 0, 0, Math.round(cw), Math.round(ch));
   const c = mkCanvas(Math.round(cw), Math.round(ch));
-  c.getContext("2d").drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
+  const ctx = c.getContext("2d");
+  draw(ctx);
+  const n = SCENES[curScene].stack;
+  if(n > 1){
+    for(let i=1;i<n;i++){
+      await sleep(110);
+      ctx.globalAlpha = 1/(i+1);          // 累积平均：降噪
+      draw(ctx);
+      ctx.globalAlpha = 1;
+    }
+  }
   handleSource(c);
 };
 
@@ -423,7 +486,7 @@ async function runSegment(srcCanvas){
   });
 }
 
-/* mask 灰度 → alpha（缩小尺寸+羽化）；返回人像占比用于降级判断 */
+/* mask 灰度 → alpha（缩小+羽化）；返回人像占比 */
 function buildMaskAlpha(grayMask, W, H){
   const LONG = 720;
   const scale = Math.min(1, LONG/Math.max(W,H));
@@ -444,6 +507,25 @@ function buildMaskAlpha(grayMask, W, H){
   return { canvas: small, ratio: hit/total };
 }
 
+/* ================= 美容：磨皮（缩放低通 + 与原图按强度混合） ================= */
+function beautyPass(srcCanvas, strength){
+  if(strength <= 0) return srcCanvas;
+  const W = srcCanvas.width, H = srcCanvas.height;
+  const k = (strength/100) * 0.62;
+  const low = mkCanvas(W, H);
+  const lc = low.getContext("2d");
+  lc.imageSmoothingQuality = "high";
+  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1);          // 缩到1/4
+  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1, 0, 0, W, H); // 放大回来=低通
+  const out = mkCanvas(W, H);
+  const oc = out.getContext("2d");
+  oc.drawImage(low, 0, 0);
+  oc.globalAlpha = k;
+  oc.drawImage(srcCanvas, 0, 0);
+  oc.globalAlpha = 1;
+  return out;
+}
+
 /* ================= 色调滤镜串 ================= */
 function filterStr(){
   return "brightness("+(P.bright/100)+") contrast("+(P.contrast/100)+") saturate("+(P.satur/100)+")";
@@ -457,9 +539,13 @@ function compose(){
   if(!base) return;
   const W = base.width, H = base.height;
 
+  /* ① 美容（人像场景，作用在调色前） */
+  const skin = (curScene==="portrait" && P.beauty>0) ? beautyPass(base, P.beauty) : base;
+
+  /* ② 全图色调 */
   const adj = mkCanvas(W,H), ac = adj.getContext("2d");
   ac.filter = filterStr();
-  ac.drawImage(base,0,0);
+  ac.drawImage(skin,0,0);
   ac.filter = "none";
   if(P.temp !== 0){
     const k = Math.min(0.22, Math.abs(P.temp)/500);
@@ -477,8 +563,9 @@ function compose(){
     ac.fillStyle = g; ac.fillRect(0,0,W,H);
   }
 
+  /* ③ 合成：人像=清晰前景叠模糊背景；其他场景=整图直出 */
   const fin = mkCanvas(W,H), fc = fin.getContext("2d");
-  if(maskAlpha && curMode === "portrait"){
+  if(maskAlpha && curScene === "portrait"){
     const bg = mkCanvas(W,H), bc = bg.getContext("2d");
     if(P.blur > 0) bc.filter = "blur(" + P.blur + "px)";
     bc.drawImage(adj,0,0);
@@ -505,10 +592,9 @@ function compose(){
   try{
     const t = mkCanvas(72, 72*Math.min(1,H/W));
     t.getContext("2d").drawImage(rc, 0, 0, t.width, t.height);
-    lastThumb = t.toDataURL("image/jpeg", .6);
     const tb = $("thumbBtn");
     tb.classList.add("has");
-    tb.querySelector("img").src = lastThumb;
+    tb.querySelector("img").src = t.toDataURL("image/jpeg", .6);
   }catch(e){}
 }
 
@@ -518,7 +604,8 @@ async function handleSource(srcCanvas){
   base = srcCanvas;
   maskAlpha = null;
   show("proc");
-  if(curMode === "portrait"){
+  const s = SCENES[curScene];
+  if(s.seg){
     $("procTxt").textContent = "AI 正在识别人像…（首次约需下载6MB推理引擎，请稍候）";
     const gray = await runSegment(srcCanvas);
     if(gray){
@@ -526,23 +613,24 @@ async function handleSource(srcCanvas){
       if(m.ratio >= 0.05){
         maskAlpha = m.canvas;
       }else{
-        toast("未检测到明显人像，已按「照片模式」处理（仅调色）");
+        toast("未检测到明显人像，本次不虚化（仅美容调色）");
       }
     }else{
-      toast("人像识别失败，已按「照片模式」处理（仅调色）");
+      toast("人像识别失败，本次仅调色");
     }
+  }else if(s.stack > 1){
+    $("procTxt").textContent = "夜景连拍合成中…";
   }else{
     $("procTxt").textContent = "正在处理…";
-    await new Promise(r=>setTimeout(r,300));
   }
+  await sleep(200);
   show("res");
   compose();
 }
 
 /* ================= 成片页交互 ================= */
 $("cmpBtn").addEventListener("pointerdown", ()=>{
-  const rc = $("resCanvas");
-  rc.getContext("2d").drawImage(base,0,0);
+  $("resCanvas").getContext("2d").drawImage(base,0,0);
   $("resTip").textContent = "原图";
 });
 $("cmpBtn").addEventListener("pointerup", ()=>{ compose(); $("resTip").textContent = "按住「对比」看原图"; });
@@ -560,35 +648,41 @@ $("dlBtn").onclick = ()=>{
   }, "image/jpeg", 0.95);
 };
 
-/* 预设 */
+/* 风格（叠加在场景之上的口味，只动色调五件套） */
 const PRESETS = {
-  "原图":  { blur:0, dark:0, bright:100, contrast:100, satur:100, temp:0, vig:0 },
-  "清爽":  { blur:10, dark:8, bright:101, contrast:108, satur:88,  temp:-8, vig:0 },
-  "通亮":  { blur:10, dark:5, bright:106, contrast:105, satur:108, temp:0,  vig:0 },
-  "暖阳":  { blur:10, dark:6, bright:104, contrast:106, satur:106, temp:14, vig:0 },
-  "胶片":  { blur:12, dark:10, bright:105, contrast:95,  satur:86, temp:8,  vig:18 }
+  "原味":  { bright:100, contrast:100, satur:100, temp:0,  vig:0 },
+  "清爽":  { bright:101, contrast:108, satur:88,  temp:-8, vig:0 },
+  "胶片":  { bright:105, contrast:95,  satur:86,  temp:8,  vig:18 },
+  "黑白":  { bright:102, contrast:115, satur:0,   temp:0,  vig:8  },
+  "暖阳":  { bright:104, contrast:106, satur:106, temp:14, vig:0  }
 };
 const presetsBox = $("presets");
-Object.keys(PRESETS).forEach(name=>{
-  const b = document.createElement("button");
-  b.className = "pBtn" + (name==="清爽" ? " on" : "");
-  b.textContent = name;
-  b.onclick = ()=>{
-    Object.assign(P, PRESETS[name]);
-    Object.keys(PRESETS[name]).forEach(k => syncSlider(k));
-    presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));
-    b.classList.add("on");
-    scheduleCompose();
-  };
-  presetsBox.appendChild(b);
-});
+(function(){
+  const lb = document.createElement("span");
+  lb.className = "plabel"; lb.textContent = "风格";
+  presetsBox.appendChild(lb);
+  Object.keys(PRESETS).forEach(name=>{
+    const b = document.createElement("button");
+    b.className = "pBtn";
+    b.textContent = name;
+    b.onclick = ()=>{
+      Object.assign(P, PRESETS[name]);
+      Object.keys(PRESETS[name]).forEach(k => syncSlider(k));
+      presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");
+      scheduleCompose();
+    };
+    presetsBox.appendChild(b);
+  });
+})();
 
 /* 滑块 */
 const SLIDERS = [
+  { k:"beauty",  label:"美容",   min:0,  max:100, step:1 },
   { k:"blur",    label:"虚化",   min:0,  max:24,  step:1 },
   { k:"dark",    label:"压暗",   min:0,  max:60,  step:1 },
-  { k:"bright",  label:"亮度",   min:70, max:130, step:1 },
-  { k:"contrast",label:"对比",   min:70, max:140, step:1 },
+  { k:"bright",  label:"亮度",   min:70, max:140, step:1 },
+  { k:"contrast",label:"对比",   min:70, max:150, step:1 },
   { k:"satur",   label:"饱和",   min:0,  max:180, step:1 },
   { k:"temp",    label:"冷暖",   min:-100,max:100, step:1 },
   { k:"vig",     label:"晕影",   min:0,  max:60,  step:1 }
@@ -614,12 +708,11 @@ function syncSlider(k){
   if(inp){ inp.value = P[k]; inp.closest(".srow").querySelector(".v").textContent = P[k]; }
 }
 Object.keys(P).forEach(syncSlider);
-setMode("portrait");
 
 $("sliderToggle").onclick = ()=>{
   const s = $("sliders");
   s.classList.toggle("open");
-  $("sliderToggle").textContent = s.classList.contains("open") ? "▴ 收起参数" : "▾ 微调参数（虚化 / 压暗 / 色调）";
+  $("sliderToggle").textContent = s.classList.contains("open") ? "▴ 收起参数" : "▾ 微调参数（美容 / 虚化 / 色调）";
 };
 
 /* ================= 启动 ================= */
@@ -628,6 +721,7 @@ if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
 }else{
   startCamera();
 }
+setScene("portrait");
 addEventListener("beforeunload", stopCamera);
 </script>
 </body>
