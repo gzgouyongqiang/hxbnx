@@ -41,6 +41,11 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 #level.ok{color:var(--accent);border-color:rgba(127,201,154,.5)}
 #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9;transition:opacity .1s}
 #flash.go{opacity:.85;transition:none}
+/* 点按对焦环 */
+#focusRing{position:absolute;width:76px;height:76px;border:2px solid var(--gold);border-radius:50%;
+  pointer-events:none;z-index:7;display:none;transform:translate(-50%,-50%)}
+#focusRing.go{display:block;animation:fring .5s ease-out}
+@keyframes fring{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
 
 #vfTop{position:absolute;top:calc(env(safe-area-inset-top,0px) + 8px);left:0;right:0;
   display:flex;justify-content:space-between;align-items:center;padding:8px 12px;z-index:5;gap:8px}
@@ -134,6 +139,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
   <div id="grid"></div>
   <div id="level"></div>
   <div id="flash"></div>
+  <div id="focusRing"></div>
   <div id="vfTop">
     <div class="pill glass" id="resPill">准备中…</div>
     <div id="topRight">
@@ -278,7 +284,7 @@ function setScene(key){
   Object.assign(P, s.tone, s.tech, { beauty:s.beauty });
   ["bright","contrast","satur","temp","vig","blur","dark","beauty"].forEach(syncSlider);
   presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));   // 回到场景默认风格
-  $("sceneTip").textContent = s.tip;
+  $("sceneTip").textContent = s.tip + " · 点画面任意处可重新对焦";
   updateSliderLocks();
 }
 /* 场景决定哪些滑块可用 */
@@ -309,7 +315,7 @@ async function startCamera(){
   $("vfMsg").innerHTML = "正在启动相机…<br>若手机弹窗询问相机权限，请点\"允许\"";
   try{
     camStream = await navigator.mediaDevices.getUserMedia({
-      video:{ facingMode:{ ideal:facing }, width:{ideal:3840}, height:{ideal:2160} },
+      video:{ facingMode:{ ideal:facing }, width:{ideal:1920}, height:{ideal:1080} },
       audio:false
     });
     const v = $("cam");
@@ -400,7 +406,42 @@ function shutterFlash(){
   setTimeout(()=>f.classList.remove("go"), 130);
 }
 
-/* 快门：按成片框比例从视频帧中央裁剪；夜景场景连拍堆栈 */
+/* 点按对焦：重新触发对焦循环（先single-shot再回continuous），设备不支持则静默 */
+$("cam").addEventListener("pointerdown", e=>{
+  const ring = $("focusRing");
+  ring.style.left = e.clientX+"px"; ring.style.top = e.clientY+"px";
+  ring.classList.remove("go"); void ring.offsetWidth; ring.classList.add("go");
+  const track = camStream && camStream.getVideoTracks()[0];
+  if(!track) return;
+  (async ()=>{
+    let caps = null;
+    try{ caps = track.getCapabilities ? track.getCapabilities() : null; }catch(err){}
+    if(caps && caps.focusMode && caps.focusMode.includes("single-shot")){
+      try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(350); }catch(err){}
+    }
+    try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
+  })();
+});
+
+/* 系统级拍照（走ISP拍照管线+触发真实对焦循环），不支持/失败返回 null */
+async function takePhotoHiRes(){
+  if(!("ImageCapture" in window)) return null;
+  try{
+    const track = camStream.getVideoTracks()[0];
+    const ic = new ImageCapture(track);
+    const blob = await ic.takePhoto();
+    const img = await new Promise((res,rej)=>{
+      const i = new Image();
+      i.onload = ()=>res(i);
+      i.onerror = rej;
+      i.src = URL.createObjectURL(blob);
+    });
+    return { img, w: img.naturalWidth, h: img.naturalHeight,
+             release: ()=>URL.revokeObjectURL(img.src) };
+  }catch(e){ return null; }
+}
+
+/* 快门：非夜景优先系统拍照管线；夜景走视频流连拍堆栈 */
 $("shutter").onclick = async ()=>{
   const v = $("cam");
   if(!camStream || !v.videoWidth){ toast("相机还没就绪，稍等一下"); return; }
@@ -410,18 +451,32 @@ $("shutter").onclick = async ()=>{
   let cw, ch;
   const gRatio = gw/gh;
   if(vw/vh > gRatio){ ch = vh; cw = ch*gRatio; } else { cw = vw; ch = cw/gRatio; }
-  const sx=(vw-cw)/2, sy=(vh-ch)/2;
-  const draw = ctx => ctx.drawImage(v, sx, sy, cw, ch, 0, 0, Math.round(cw), Math.round(ch));
-  const c = mkCanvas(Math.round(cw), Math.round(ch));
-  const ctx = c.getContext("2d");
-  draw(ctx);
   const n = SCENES[curScene].stack;
-  if(n > 1){
-    for(let i=1;i<n;i++){
-      await sleep(110);
-      ctx.globalAlpha = 1/(i+1);          // 累积平均：降噪
-      draw(ctx);
-      ctx.globalAlpha = 1;
+
+  let c = null;
+  if(n <= 1){
+    const shot = await takePhotoHiRes();
+    if(shot){
+      const iw = shot.w, ih = shot.h;
+      let scw, sch;
+      if(iw/ih > gRatio){ sch = ih; scw = sch*gRatio; } else { scw = iw; sch = scw/gRatio; }
+      c = mkCanvas(Math.round(scw), Math.round(sch));
+      c.getContext("2d").drawImage(shot.img, (iw-scw)/2, (ih-sch)/2, scw, sch, 0, 0, c.width, c.height);
+      shot.release();
+    }
+  }
+  if(!c){
+    const sx=(vw-cw)/2, sy=(vh-ch)/2;
+    c = mkCanvas(Math.round(cw), Math.round(ch));
+    const ctx = c.getContext("2d");
+    ctx.drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
+    if(n > 1){
+      for(let i=1;i<n;i++){
+        await sleep(110);
+        ctx.globalAlpha = 1/(i+1);          // 累积平均：降噪
+        ctx.drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
+        ctx.globalAlpha = 1;
+      }
     }
   }
   handleSource(c);
