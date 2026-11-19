@@ -264,8 +264,26 @@ function readFile(file){
   e.target.value = "";
 }
 
-/* ================= 人像分割（MediaPipe，本地模型） ================= */
-const segmenter = new SelfieSegmentation({ locateFile: f => "camera_assets/" + f });
+/* ================= 人像分割（MediaPipe，本地模型） =================
+   模型加载源自动探测：jsdelivr镜像(国内快) → 站内同源(兜底) */
+const CDN_CANDIDATES = [
+  "https://gcore.jsdelivr.net/gh/gzgouyongqiang/hxbnx@main/camera_assets/",
+  "https://cdn.jsdelivr.net/gh/gzgouyongqiang/hxbnx@main/camera_assets/",
+  "https://testingcf.jsdelivr.net/gh/gzgouyongqiang/hxbnx@main/camera_assets/",
+  "camera_assets/"
+];
+let cdnBase = "camera_assets/";
+(async function pickCdn(){
+  for(const c of CDN_CANDIDATES){
+    const ok = await Promise.race([
+      fetch(c + "selfie_segmentation.binarypb", {cache:"no-store"}).then(r=>r.ok),
+      new Promise(res=>setTimeout(()=>res(false), 2500))
+    ]).catch(()=>false);
+    if(ok){ cdnBase = c; $("segPill").textContent = "人像识别 · 引擎就绪"; return; }
+  }
+  $("segPill").textContent = "人像识别 · 引擎就绪(站内)";
+})();
+const segmenter = new SelfieSegmentation({ locateFile: f => cdnBase + f });
 segmenter.setOptions({ modelSelection: 0 });   // 0=通用模型(249KB)
 async function runSegment(srcCanvas){
   if(segBusy) return null;
@@ -380,7 +398,7 @@ async function handleSource(srcCanvas){
   base = srcCanvas;
   maskAlpha = null;
   show("proc");
-  $("procTxt").textContent = "AI 正在识别人像…";
+  $("procTxt").textContent = "AI 正在识别人像…（首次约需下载6MB推理引擎，请稍候）";
   const gray = await runSegment(srcCanvas);
   if(gray) maskAlpha = buildMaskAlpha(gray, base.width, base.height);
   else toast("人像识别失败：按无分割模式处理（仅色调）");
