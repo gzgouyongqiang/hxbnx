@@ -45,6 +45,8 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
   pointer-events:none;z-index:7;display:none;transform:translate(-50%,-50%)}
 #focusRing.go{display:block;animation:fring .5s ease-out}
 @keyframes fring{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+.tool.glow{border-color:var(--gold);box-shadow:0 0 14px rgba(212,175,55,.45);animation:glowPulse 1.6s ease-in-out infinite}
+@keyframes glowPulse{50%{box-shadow:0 0 4px rgba(212,175,55,.15)}}
 
 #vfTop{position:absolute;top:calc(env(safe-area-inset-top,0px) + 8px);left:0;right:0;
   display:flex;justify-content:space-between;align-items:center;padding:8px 12px;z-index:5;gap:8px}
@@ -201,6 +203,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
         <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l4.5-4.5L11 14l3.5-3.5L21 16"/><circle cx="15.5" cy="9.5" r="1.3"/></svg><span class="tl">相册导入</span>
       </button>
     </div>
+    <div class="hint" id="envTip"></div>
     <div class="hint" id="sceneTip"></div>
   </div>
 </div>
@@ -373,6 +376,8 @@ async function startCamera(){
     $("vfMsg").innerHTML = "相机启动失败（"+e.name+"）<br>" +
       "① 检查是否通过 https:// 打开本页<br>② 检查浏览器相机权限<br>" +
       "③ 也可点「系统相机」按钮绕过";
+    const env = $("envTip");
+    if(env) env.textContent = "环境:" + browserName() + " · 相机不可用";
   }
 }
 function stopCamera(){
@@ -412,17 +417,42 @@ $("gridBtn").onclick = ()=>{
 };
 
 /* ================= 对焦系统（全透明化） ================= */
-let afCaps = null, afMode = "";
+let afCaps = null, afMode = "", afLevel = "none";
+function browserName(){
+  const ua = navigator.userAgent || "";
+  if(/MicroMessenger/i.test(ua)) return "微信内置";
+  if(/MiuiBrowser/i.test(ua)) return "小米浏览器";
+  if(/HeyTapBrowser/i.test(ua)) return "OPPO浏览器";
+  if(/VivoBrowser/i.test(ua)) return "vivo浏览器";
+  if(/HuaweiBrowser/i.test(ua)) return "华为浏览器";
+  if(/QQBrowser/i.test(ua)) return "QQ浏览器";
+  if(/Baidubrowser/i.test(ua)) return "百度浏览器";
+  if(/Edg\//i.test(ua)) return "Edge";
+  if(/Chrome/i.test(ua)) return "Chrome";
+  if(/Firefox/i.test(ua)) return "Firefox";
+  if(/Safari/i.test(ua)) return "Safari";
+  return "未知浏览器";
+}
 function probeAF(track){
   try{
     afCaps = track.getCapabilities ? track.getCapabilities() : {};
     const fm = afCaps.focusMode || [];
+    const hasDist = !!afCaps.focusDistance;
+    if(fm.includes("single-shot") || hasDist) afLevel = "full";
+    else if(fm.includes("continuous")) afLevel = "partial";
+    else afLevel = "none";
     if(fm.includes("single-shot")) afMode = "AF:单次";
     else if(fm.includes("continuous")) afMode = "AF:连续";
     else afMode = "AF:受限";
-    if(afCaps.focusDistance) afMode += "+手动";
-    $("segPill").textContent = afMode;
-  }catch(e){ afMode = "AF:未知"; $("segPill").textContent = afMode; }
+    if(hasDist) afMode += "+手动";
+    if(afLevel === "none"){
+      afMode += "·无控制权";
+      $("sysBtn").classList.add("glow");
+      toast("此浏览器不支持网页对焦控制：请点「系统相机」按钮拍摄（对焦100%可靠），或改用Chrome打开本页", 6000);
+    }
+  }catch(e){ afMode = "AF:未知"; afLevel = "none"; }
+  const env = $("envTip");
+  if(env) env.textContent = "环境:" + browserName() + " · " + afMode;
 }
 /* 抓帧清晰度评分（灰度差分能量，近似拉普拉斯） */
 async function sharpnessScore(){
@@ -531,6 +561,7 @@ $("cam").addEventListener("pointerdown", e=>{
     }else{
       $("segPill").textContent = "对焦 · 镜头重启";
       await startCamera();
+      if(afLevel === "none") toast("本浏览器无对焦控制权：建议改用「系统相机」按钮拍摄", 5000);
     }
     $("segPill").textContent = afMode;
   })();
