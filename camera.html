@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0c0f0e">
-<title>街拍快处理 · 场景一键出片</title>
+<title>电影感快拍 · 按快门即出片</title>
 <script src="camera_assets/selfie_segmentation.js"></script>
 <style>
 :root{
@@ -41,7 +41,6 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 #level.ok{color:var(--accent);border-color:rgba(127,201,154,.5)}
 #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9;transition:opacity .1s}
 #flash.go{opacity:.85;transition:none}
-/* 点按对焦环 */
 #focusRing{position:absolute;width:76px;height:76px;border:2px solid var(--gold);border-radius:50%;
   pointer-events:none;z-index:7;display:none;transform:translate(-50%,-50%)}
 #focusRing.go{display:block;animation:fring .5s ease-out}
@@ -60,15 +59,18 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 
 #vfBottom{position:absolute;bottom:0;left:0;right:0;z-index:5;
   padding-bottom:calc(env(safe-area-inset-bottom,0px) + 12px);
-  background:linear-gradient(to top,rgba(0,0,0,.80) 30%,transparent)}
-/* 场景 chips 横向滚动 */
-.sceneRow{display:flex;gap:8px;overflow-x:auto;padding:6px 14px 8px;scrollbar-width:none;
+  background:linear-gradient(to top,rgba(0,0,0,.82) 30%,transparent)}
+/* 电影模板 chips */
+.filmRow{display:flex;gap:8px;overflow-x:auto;padding:8px 14px 10px;scrollbar-width:none;
   -webkit-overflow-scrolling:touch}
-.sceneRow::-webkit-scrollbar{display:none}
-.scene{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;
-  font-size:11px;color:var(--dim);padding:8px 12px;border-radius:14px;
-  background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--line);min-width:56px}
-.scene.on{color:var(--gold);border-color:var(--gold);background:rgba(212,175,55,.12)}
+.filmRow::-webkit-scrollbar{display:none}
+.film{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  padding:9px 14px;border-radius:14px;min-width:96px;
+  background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--line)}
+.film .n{font-size:13.5px;font-weight:600;color:var(--txt);letter-spacing:.5px}
+.film .f{font-size:10px;color:var(--dim)}
+.film.on{border-color:var(--gold);background:rgba(212,175,55,.13)}
+.film.on .n{color:var(--gold)}
 .segRow.ratio{display:flex;justify-content:center;gap:0;margin-bottom:10px}
 .segRow.ratio .seg{font-size:12px;color:var(--dim);padding:4px 14px;background:var(--glass);
   backdrop-filter:blur(8px);border:1px solid var(--line)}
@@ -106,11 +108,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
   background:rgba(12,15,14,.6);padding:3px 10px;border-radius:10px;white-space:nowrap}
 #ctrl{padding:8px 14px calc(env(safe-area-inset-bottom,0px) + 12px);background:rgba(22,27,25,.92);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
-.presets{display:flex;gap:8px;align-items:center;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
-.presets::-webkit-scrollbar{display:none}
-.plabel{flex:0 0 auto;font-size:11px;color:var(--dim);letter-spacing:2px}
-.pBtn{flex:0 0 auto;font-size:13px;color:var(--dim);border:1px solid var(--line);border-radius:16px;padding:5px 13px;background:var(--panel2)}
-.pBtn.on{color:var(--gold);border-color:var(--gold);font-weight:600}
+.filmTag{font-size:12px;color:var(--gold);text-align:center;padding:2px 0 8px;letter-spacing:1px}
 #sliders{max-height:0;overflow:hidden;transition:max-height .25s}
 #sliders.open{max-height:460px}
 .srow{display:flex;align-items:center;gap:10px;padding:3px 0}
@@ -151,7 +149,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
   </div>
   <div id="vfMsg">正在启动相机…<br>若手机弹窗询问相机权限，请点"允许"</div>
   <div id="vfBottom">
-    <div class="sceneRow" id="sceneRow"></div>
+    <div class="filmRow" id="filmRow"></div>
     <div class="segRow ratio">
       <button class="seg on" data-r="4:3">4:3</button>
       <button class="seg" data-r="16:9">16:9</button>
@@ -180,7 +178,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 <!-- 处理中 -->
 <div class="screen" id="proc">
   <div class="spinner"></div>
-  <div id="procTxt">正在处理…</div>
+  <div id="procTxt">AI 电影感处理中…</div>
 </div>
 
 <!-- 成片 -->
@@ -194,8 +192,8 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
     <div id="resTip">按住下方「对比」看原图</div>
   </div>
   <div id="ctrl">
-    <div class="presets" id="presets"></div>
-    <button id="sliderToggle">▾ 微调参数（美容 / 虚化 / 色调）</button>
+    <div class="filmTag" id="filmTag"></div>
+    <button id="sliderToggle">▾ 微调（美容 / 虚化 / 色调）</button>
     <div id="sliders"></div>
     <div class="actRow">
       <button class="act ghost" id="cmpBtn">
@@ -220,8 +218,8 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 "use strict";
 /* ================= 状态 ================= */
 const $ = id => document.getElementById(id);
-const P = { blur:10, dark:0, beauty:55, bright:103, contrast:104, satur:102, temp:6, vig:0 };
-let curScene = "portrait";
+const P = { blur:12, dark:0, beauty:45, bright:101, contrast:106, satur:108, temp:4, vig:10, duotone:[] };
+let curFilm = "jazz";
 const RATIO = {"4:3":4/3,"16:9":16/9,"1:1":1,"full":0};
 let curRatio = 4/3;
 let base = null, maskAlpha = null;
@@ -229,70 +227,63 @@ let camStream = null, facing = "environment";
 let segBusy = false;
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-/* ================= 场景体系 ================= */
-/* 技术行为: seg=跑人像分割 stack=连拍合成帧数 beauty=磨皮强度 */
-const SCENES = {
-  portrait:  { name:"人像", seg:true,  stack:0, beauty:55,
-               tone:{bright:103,contrast:104,satur:102,temp:6, vig:0 },
-               tech:{blur:10, dark:0}, icon:"user",
-               tip:"自动美容磨皮 · AI虚化背景" },
-  landscape: { name:"风景", seg:false, stack:0, beauty:0,
-               tone:{bright:101,contrast:107,satur:110,temp:-4,vig:0 },
-               tech:{blur:0, dark:0}, icon:"mount",
-               tip:"大景深不虚化 · 细节清晰拉满" },
-  sunny:     { name:"晴日", seg:false, stack:0, beauty:0,
-               tone:{bright:97, contrast:110,satur:112,temp:0, vig:0 },
-               tech:{blur:0, dark:0}, icon:"sun",
-               tip:"压亮度护天空高光 · 色彩饱满" },
-  rain:      { name:"阴雨", seg:false, stack:0, beauty:0,
-               tone:{bright:106,contrast:114,satur:115,temp:8, vig:0 },
-               tech:{blur:0, dark:0}, icon:"rain",
-               tip:"去灰提透 · 阴天也通透" },
-  night:     { name:"夜景", seg:false, stack:5, beauty:0,
-               tone:{bright:122,contrast:106,satur:104,temp:-6,vig:10},
-               tech:{blur:0, dark:0}, icon:"moon",
-               tip:"按下快门稳住1秒 · 连拍合成降噪" },
-  stage:     { name:"舞台", seg:false, stack:0, beauty:0,
-               tone:{bright:99, contrast:118,satur:108,temp:0, vig:22},
-               tech:{blur:0, dark:0}, icon:"star",
-               tip:"压暗四周杂光 · 聚焦主体" }
-};
-const ICONS = {
-  user:  '<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/>',
-  mount: '<path d="M3 19l6-8 4 5 3-3 5 6H3z"/><circle cx="17" cy="7" r="2.2"/>',
-  sun:   '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>',
-  rain:  '<path d="M18 10.5A5.5 5.5 0 0 0 7.2 9 4 4 0 0 0 6 16.8h11a3.6 3.6 0 0 0 1-6.3z"/><path d="M8.5 18.5l-1 2.5M12.5 18.5l-1 2.5M16.5 18.5l-1 2.5"/>',
-  moon:  '<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/>',
-  star:  '<path d="M12 3l2.6 5.6 6 .7-4.4 4.1 1.2 5.9-5.4-3-5.4 3 1.2-5.9L3.4 9.3l6-.7z"/>'
+/* ================= 电影模板体系 =================
+   seg=自动识别人像(有→美容+虚化,无→全局调色)
+   duotone=电影分色调叠层(克制版teal&orange) */
+const FILMS = {
+  jazz:     { name:"暮色爵士", from:"爱乐之城", seg:true, beauty:45, blur:12, dark:0,
+              tone:{bright:101,contrast:106,satur:108,temp:4, vig:10},
+              duotone:[["70,90,180",.14],["255,170,110",.10]],
+              tip:"黄昏城市与灯光人像" },
+  mood:     { name:"花样年华", from:"王家卫", seg:true, beauty:0, blur:10, dark:6,
+              tone:{bright:94,contrast:116,satur:112,temp:16,vig:30},
+              duotone:[["180,60,40",.12]],
+              tip:"夜晚街头浓郁氛围" },
+  mist:     { name:"雾都蓝调", from:"银翼杀手2049", seg:true, beauty:0, blur:0, dark:0,
+              tone:{bright:100,contrast:96,satur:96,temp:-6,vig:12},
+              duotone:[["50,110,150",.18],["230,140,70",.08]],
+              tip:"夜雨雾感与霓虹" },
+  budapest: { name:"布达佩斯", from:"韦斯·安德森", seg:true, beauty:30, blur:0, dark:0,
+              tone:{bright:108,contrast:94,satur:92,temp:8, vig:0},
+              duotone:[["255,150,160",.08]],
+              tip:"明快对称旅行日" },
+  noir:     { name:"黑影", from:"黑色电影", seg:true, beauty:0, blur:8, dark:8,
+              tone:{bright:98,contrast:132,satur:0,temp:0, vig:26},
+              duotone:[],
+              tip:"强对比黑白故事感" },
+  before:   { name:"爱在清晨", from:"爱在三部曲", seg:true, beauty:25, blur:0, dark:0,
+              tone:{bright:103,contrast:98,satur:100,temp:6, vig:0},
+              duotone:[],
+              tip:"自然通透日常纪实" }
 };
 
-/* 场景 chips 渲染 */
-const sceneRow = $("sceneRow");
-Object.keys(SCENES).forEach(key=>{
-  const s = SCENES[key];
+/* 电影模板 chips 渲染 */
+const filmRow = $("filmRow");
+Object.keys(FILMS).forEach(key=>{
+  const f = FILMS[key];
   const b = document.createElement("button");
-  b.className = "scene" + (key==="portrait" ? " on" : "");
+  b.className = "film" + (key==="jazz" ? " on" : "");
   b.dataset.k = key;
-  b.innerHTML = '<svg class="ic" viewBox="0 0 24 24">'+ICONS[s.icon]+'</svg><span>'+s.name+'</span>';
-  b.onclick = ()=>setScene(key);
-  sceneRow.appendChild(b);
+  b.innerHTML = '<span class="n">'+f.name+'</span><span class="f">'+f.from+'</span>';
+  b.onclick = ()=>setFilm(key);
+  filmRow.appendChild(b);
 });
-function setScene(key){
-  curScene = key;
-  const s = SCENES[key];
-  document.querySelectorAll(".scene").forEach(x=>x.classList.toggle("on", x.dataset.k===key));
-  Object.assign(P, s.tone, s.tech, { beauty:s.beauty });
+function setFilm(key){
+  curFilm = key;
+  const f = FILMS[key];
+  document.querySelectorAll(".film").forEach(x=>x.classList.toggle("on", x.dataset.k===key));
+  Object.assign(P, f.tone, { blur:f.blur, dark:f.dark, beauty:f.beauty, duotone:f.duotone });
   ["bright","contrast","satur","temp","vig","blur","dark","beauty"].forEach(syncSlider);
-  presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));   // 回到场景默认风格
-  $("sceneTip").textContent = s.tip + " · 点画面任意处可重新对焦";
+  $("sceneTip").textContent = f.tip + " · 点画面任意处可重新对焦";
+  $("filmTag").textContent = "🎞 " + f.name + " · " + f.from;
   updateSliderLocks();
 }
-/* 场景决定哪些滑块可用 */
+/* 滑块锁定：非人像感的模板保留全部微调（全自动只是默认值） */
 function updateSliderLocks(){
-  const on = curScene === "portrait";
-  ["blur","dark","beauty"].forEach(k=>{
+  const portraitish = FILMS[curFilm].seg;
+  ["beauty","blur","dark"].forEach(k=>{
     slidersBox.querySelector("input[data-k='"+k+"']").closest(".srow")
-      .classList.toggle("off", !on);
+      .classList.toggle("off", !portraitish);
   });
 }
 
@@ -336,7 +327,7 @@ function stopCamera(){
 }
 function placeGuide(){
   const vw = innerWidth, vh = innerHeight;
-  const topSafe = 52, bottomSafe = 252;
+  const topSafe = 52, bottomSafe = 256;
   const availH = vh - topSafe - bottomSafe;
   let w, h;
   if(curRatio === 0){ w = vw; h = availH; }
@@ -406,7 +397,7 @@ function shutterFlash(){
   setTimeout(()=>f.classList.remove("go"), 130);
 }
 
-/* 点按对焦：重新触发对焦循环（先single-shot再回continuous），设备不支持则静默 */
+/* 点按对焦：重新触发对焦循环 */
 $("cam").addEventListener("pointerdown", e=>{
   const ring = $("focusRing");
   ring.style.left = e.clientX+"px"; ring.style.top = e.clientY+"px";
@@ -423,7 +414,7 @@ $("cam").addEventListener("pointerdown", e=>{
   })();
 });
 
-/* 系统级拍照（走ISP拍照管线+触发真实对焦循环），不支持/失败返回 null */
+/* 系统级拍照（ISP拍照管线+触发真实对焦循环），不支持/失败返回 null */
 async function takePhotoHiRes(){
   if(!("ImageCapture" in window)) return null;
   try{
@@ -441,7 +432,7 @@ async function takePhotoHiRes(){
   }catch(e){ return null; }
 }
 
-/* 快门：非夜景优先系统拍照管线；夜景走视频流连拍堆栈 */
+/* 快门：系统拍照管线优先，回退视频流截帧 */
 $("shutter").onclick = async ()=>{
   const v = $("cam");
   if(!camStream || !v.videoWidth){ toast("相机还没就绪，稍等一下"); return; }
@@ -451,33 +442,21 @@ $("shutter").onclick = async ()=>{
   let cw, ch;
   const gRatio = gw/gh;
   if(vw/vh > gRatio){ ch = vh; cw = ch*gRatio; } else { cw = vw; ch = cw/gRatio; }
-  const n = SCENES[curScene].stack;
 
   let c = null;
-  if(n <= 1){
-    const shot = await takePhotoHiRes();
-    if(shot){
-      const iw = shot.w, ih = shot.h;
-      let scw, sch;
-      if(iw/ih > gRatio){ sch = ih; scw = sch*gRatio; } else { scw = iw; sch = scw/gRatio; }
-      c = mkCanvas(Math.round(scw), Math.round(sch));
-      c.getContext("2d").drawImage(shot.img, (iw-scw)/2, (ih-sch)/2, scw, sch, 0, 0, c.width, c.height);
-      shot.release();
-    }
+  const shot = await takePhotoHiRes();
+  if(shot){
+    const iw = shot.w, ih = shot.h;
+    let scw, sch;
+    if(iw/ih > gRatio){ sch = ih; scw = sch*gRatio; } else { scw = iw; sch = scw/gRatio; }
+    c = mkCanvas(Math.round(scw), Math.round(sch));
+    c.getContext("2d").drawImage(shot.img, (iw-scw)/2, (ih-sch)/2, scw, sch, 0, 0, c.width, c.height);
+    shot.release();
   }
   if(!c){
     const sx=(vw-cw)/2, sy=(vh-ch)/2;
     c = mkCanvas(Math.round(cw), Math.round(ch));
-    const ctx = c.getContext("2d");
-    ctx.drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
-    if(n > 1){
-      for(let i=1;i<n;i++){
-        await sleep(110);
-        ctx.globalAlpha = 1/(i+1);          // 累积平均：降噪
-        ctx.drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
-        ctx.globalAlpha = 1;
-      }
-    }
+    c.getContext("2d").drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
   }
   handleSource(c);
 };
@@ -562,7 +541,7 @@ function buildMaskAlpha(grayMask, W, H){
   return { canvas: small, ratio: hit/total };
 }
 
-/* ================= 美容：磨皮（缩放低通 + 与原图按强度混合） ================= */
+/* ================= 美容：磨皮（缩放低通 + 按强度混合） ================= */
 function beautyPass(srcCanvas, strength){
   if(strength <= 0) return srcCanvas;
   const W = srcCanvas.width, H = srcCanvas.height;
@@ -570,8 +549,8 @@ function beautyPass(srcCanvas, strength){
   const low = mkCanvas(W, H);
   const lc = low.getContext("2d");
   lc.imageSmoothingQuality = "high";
-  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1);          // 缩到1/4
-  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1, 0, 0, W, H); // 放大回来=低通
+  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1);
+  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1, 0, 0, W, H);
   const out = mkCanvas(W, H);
   const oc = out.getContext("2d");
   oc.drawImage(low, 0, 0);
@@ -594,20 +573,29 @@ function compose(){
   if(!base) return;
   const W = base.width, H = base.height;
 
-  /* ① 美容（人像场景，作用在调色前） */
-  const skin = (curScene==="portrait" && P.beauty>0) ? beautyPass(base, P.beauty) : base;
+  /* ① 美容（作用在调色前） */
+  const skin = P.beauty>0 ? beautyPass(base, P.beauty) : base;
 
-  /* ② 全图色调 */
+  /* ② 全图色调 + 电影分色调 */
   const adj = mkCanvas(W,H), ac = adj.getContext("2d");
   ac.filter = filterStr();
   ac.drawImage(skin,0,0);
   ac.filter = "none";
   if(P.temp !== 0){
-    const k = Math.min(0.22, Math.abs(P.temp)/500);
     ac.globalCompositeOperation = "soft-light";
     ac.fillStyle = P.temp>0 ? "rgba(255,176,88,1)" : "rgba(88,150,255,1)";
-    ac.globalAlpha = k;
+    ac.globalAlpha = Math.min(0.22, Math.abs(P.temp)/500);
     ac.fillRect(0,0,W,H);
+    ac.globalAlpha = 1;
+    ac.globalCompositeOperation = "source-over";
+  }
+  if(P.duotone && P.duotone.length){
+    ac.globalCompositeOperation = "soft-light";
+    for(const [rgb,alpha] of P.duotone){
+      ac.fillStyle = "rgba("+rgb+",1)";
+      ac.globalAlpha = alpha;
+      ac.fillRect(0,0,W,H);
+    }
     ac.globalAlpha = 1;
     ac.globalCompositeOperation = "source-over";
   }
@@ -618,9 +606,9 @@ function compose(){
     ac.fillStyle = g; ac.fillRect(0,0,W,H);
   }
 
-  /* ③ 合成：人像=清晰前景叠模糊背景；其他场景=整图直出 */
+  /* ③ 合成：有人像=清晰前景叠虚化背景；无人=整图直出 */
   const fin = mkCanvas(W,H), fc = fin.getContext("2d");
-  if(maskAlpha && curScene === "portrait"){
+  if(maskAlpha){
     const bg = mkCanvas(W,H), bc = bg.getContext("2d");
     if(P.blur > 0) bc.filter = "blur(" + P.blur + "px)";
     bc.drawImage(adj,0,0);
@@ -653,30 +641,23 @@ function compose(){
   }catch(e){}
 }
 
-/* ================= 主流程 ================= */
+/* ================= 主流程：全自动，一键出片 ================= */
 async function handleSource(srcCanvas){
   stopCamera();
   base = srcCanvas;
   maskAlpha = null;
   show("proc");
-  const s = SCENES[curScene];
-  if(s.seg){
-    $("procTxt").textContent = "AI 正在识别人像…（首次约需下载6MB推理引擎，请稍候）";
-    const gray = await runSegment(srcCanvas);
-    if(gray){
-      const m = buildMaskAlpha(gray, base.width, base.height);
-      if(m.ratio >= 0.05){
-        maskAlpha = m.canvas;
-      }else{
-        toast("未检测到明显人像，本次不虚化（仅美容调色）");
-      }
+  $("procTxt").textContent = "AI 电影感处理中…（首次约需下载6MB推理引擎，请稍候）";
+  const gray = await runSegment(srcCanvas);
+  if(gray){
+    const m = buildMaskAlpha(gray, base.width, base.height);
+    if(m.ratio >= 0.05){
+      maskAlpha = m.canvas;
     }else{
-      toast("人像识别失败，本次仅调色");
+      toast("画面中未检测到人像，按纯风景电影感处理");
     }
-  }else if(s.stack > 1){
-    $("procTxt").textContent = "夜景连拍合成中…";
   }else{
-    $("procTxt").textContent = "正在处理…";
+    toast("人像识别不可用，按纯风景电影感处理");
   }
   await sleep(200);
   show("res");
@@ -696,42 +677,14 @@ $("dlBtn").onclick = ()=>{
     const a = document.createElement("a");
     a.href = URL.createObjectURL(b);
     const d = new Date(), p = n => String(n).padStart(2,"0");
-    a.download = "IMG_" + d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+"_"+p(d.getHours())+p(d.getMinutes())+p(d.getSeconds()) + ".jpg";
+    a.download = "FILM_" + d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+"_"+p(d.getHours())+p(d.getMinutes())+p(d.getSeconds()) + ".jpg";
     a.click();
     setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
     toast("已开始下载（在通知栏/下载列表查看）");
   }, "image/jpeg", 0.95);
 };
 
-/* 风格（叠加在场景之上的口味，只动色调五件套） */
-const PRESETS = {
-  "原味":  { bright:100, contrast:100, satur:100, temp:0,  vig:0 },
-  "清爽":  { bright:101, contrast:108, satur:88,  temp:-8, vig:0 },
-  "胶片":  { bright:105, contrast:95,  satur:86,  temp:8,  vig:18 },
-  "黑白":  { bright:102, contrast:115, satur:0,   temp:0,  vig:8  },
-  "暖阳":  { bright:104, contrast:106, satur:106, temp:14, vig:0  }
-};
-const presetsBox = $("presets");
-(function(){
-  const lb = document.createElement("span");
-  lb.className = "plabel"; lb.textContent = "风格";
-  presetsBox.appendChild(lb);
-  Object.keys(PRESETS).forEach(name=>{
-    const b = document.createElement("button");
-    b.className = "pBtn";
-    b.textContent = name;
-    b.onclick = ()=>{
-      Object.assign(P, PRESETS[name]);
-      Object.keys(PRESETS[name]).forEach(k => syncSlider(k));
-      presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));
-      b.classList.add("on");
-      scheduleCompose();
-    };
-    presetsBox.appendChild(b);
-  });
-})();
-
-/* 滑块 */
+/* 滑块（微调入口，模板默认值已配好） */
 const SLIDERS = [
   { k:"beauty",  label:"美容",   min:0,  max:100, step:1 },
   { k:"blur",    label:"虚化",   min:0,  max:24,  step:1 },
@@ -753,7 +706,6 @@ SLIDERS.forEach(s=>{
   inp.addEventListener("input", ()=>{
     P[s.k] = parseFloat(inp.value);
     row.querySelector(".v").textContent = inp.value;
-    presetsBox.querySelectorAll(".pBtn").forEach(x=>x.classList.remove("on"));
     scheduleCompose();
   });
   slidersBox.appendChild(row);
@@ -762,12 +714,11 @@ function syncSlider(k){
   const inp = slidersBox.querySelector("input[data-k='"+k+"']");
   if(inp){ inp.value = P[k]; inp.closest(".srow").querySelector(".v").textContent = P[k]; }
 }
-Object.keys(P).forEach(syncSlider);
 
 $("sliderToggle").onclick = ()=>{
   const s = $("sliders");
   s.classList.toggle("open");
-  $("sliderToggle").textContent = s.classList.contains("open") ? "▴ 收起参数" : "▾ 微调参数（美容 / 虚化 / 色调）";
+  $("sliderToggle").textContent = s.classList.contains("open") ? "▴ 收起微调" : "▾ 微调（美容 / 虚化 / 色调）";
 };
 
 /* ================= 启动 ================= */
@@ -776,7 +727,7 @@ if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
 }else{
   startCamera();
 }
-setScene("portrait");
+setFilm("jazz");
 addEventListener("beforeunload", stopCamera);
 </script>
 </body>
