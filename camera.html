@@ -52,7 +52,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
   border:1px solid var(--line);border-radius:18px}
 .pill{padding:6px 13px;font-size:12px;color:var(--txt);white-space:nowrap}
 #topRight{display:flex;gap:8px;align-items:center}
-.iconBtn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--dim)}
+.iconBtn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--dim);font-size:11px;font-weight:700;letter-spacing:.5px}
 .iconBtn.on{color:var(--gold)}
 #vfMsg{position:absolute;top:18%;left:0;right:0;text-align:center;font-size:14px;color:var(--dim);z-index:5;
   padding:0 32px;text-shadow:0 1px 4px #000;line-height:1.7}
@@ -173,6 +173,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
       <button class="iconBtn glass" id="gridBtn" title="构图网格">
         <svg class="ic" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9.3 4v16M14.6 4v16M4 9.3h16M4 14.6h16"/></svg>
       </button>
+      <button class="iconBtn glass" id="afBtn" title="重启镜头重新对焦">AF</button>
       <div class="pill glass" id="segPill">引擎 · 待机</div>
     </div>
   </div>
@@ -367,6 +368,7 @@ async function startCamera(){
     $("resPill").textContent = v.videoWidth + "×" + v.videoHeight;
     placeGuide();
     startLevel();
+    probeAF(camStream.getVideoTracks()[0]);
   }catch(e){
     $("vfMsg").innerHTML = "相机启动失败（"+e.name+"）<br>" +
       "① 检查是否通过 https:// 打开本页<br>② 检查浏览器相机权限<br>" +
@@ -407,6 +409,62 @@ $("gridBtn").onclick = ()=>{
   const g = $("grid");
   g.classList.toggle("on");
   $("gridBtn").classList.toggle("on", g.classList.contains("on"));
+};
+
+/* ================= 对焦系统（全透明化） ================= */
+let afCaps = null, afMode = "";
+function probeAF(track){
+  try{
+    afCaps = track.getCapabilities ? track.getCapabilities() : {};
+    const fm = afCaps.focusMode || [];
+    if(fm.includes("single-shot")) afMode = "AF:单次";
+    else if(fm.includes("continuous")) afMode = "AF:连续";
+    else afMode = "AF:受限";
+    if(afCaps.focusDistance) afMode += "+手动";
+    $("segPill").textContent = afMode;
+  }catch(e){ afMode = "AF:未知"; $("segPill").textContent = afMode; }
+}
+/* 抓帧清晰度评分（灰度差分能量，近似拉普拉斯） */
+async function sharpnessScore(){
+  const v = $("cam");
+  if(!v.videoWidth) return 0;
+  const s = mkCanvas(96, 72);
+  const c2 = s.getContext("2d", {willReadFrequently:true});
+  c2.drawImage(v, 0, 0, 96, 72);
+  const im = c2.getImageData(0,0,96,72).data;
+  let sum = 0;
+  for(let y=1;y<71;y++){
+    for(let x=1;x<95;x++){
+      const i=(y*96+x)*4;
+      const g0=(im[i]+im[i+1]*2+im[i+2])>>2;
+      const gx=(im[i+4]+im[i+5]*2+im[i+6])>>2;
+      const gy=(im[i+384]+im[i+385]*2+im[i+386])>>2;
+      sum += Math.abs(g0-gx)+Math.abs(g0-gy);
+    }
+  }
+  return sum;
+}
+/* 真·自动对焦扫描：手动对焦距离从近到远步进，选最清晰帧锁定 */
+async function autofocusScan(track){
+  if(!afCaps || !afCaps.focusDistance) return null;
+  const fm = afCaps.focusMode || [];
+  if(!fm.includes("manual")) return null;
+  const fd = afCaps.focusDistance;
+  const step = fd.step || Math.max(0.01, (fd.max-fd.min)/8);
+  let best=null, bestScore=-1;
+  for(let d=fd.min; d<=fd.max+1e-6; d+=step){
+    try{ await track.applyConstraints({advanced:[{focusMode:"manual", focusDistance:d}]}); }catch(e){ return null; }
+    await sleep(260);
+    const sc = await sharpnessScore();
+    if(sc > bestScore){ bestScore = sc; best = d; }
+  }
+  try{ await track.applyConstraints({advanced:[{focusMode:"manual", focusDistance:best}]}); }catch(e){}
+  return best;
+}
+$("afBtn").onclick = async ()=>{
+  toast("镜头重启中…重新扫描对焦");
+  await startCamera();
+  toast("镜头已重启，对焦扫描完成");
 };
 
 /* 水平仪 */
@@ -451,7 +509,7 @@ function shutterFlash(){
   setTimeout(()=>f.classList.remove("go"), 130);
 }
 
-/* 点按对焦：重新触发对焦循环 */
+/* 点按对焦三级策略：单次触发 → 真自动对焦扫描 → 镜头重启 */
 $("cam").addEventListener("pointerdown", e=>{
   const ring = $("focusRing");
   ring.style.left = e.clientX+"px"; ring.style.top = e.clientY+"px";
@@ -461,10 +519,20 @@ $("cam").addEventListener("pointerdown", e=>{
   (async ()=>{
     let caps = null;
     try{ caps = track.getCapabilities ? track.getCapabilities() : null; }catch(err){}
-    if(caps && caps.focusMode && caps.focusMode.includes("single-shot")){
-      try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(350); }catch(err){}
+    const fm = caps && caps.focusMode || [];
+    if(fm.includes("single-shot")){
+      $("segPill").textContent = "对焦 · 触发";
+      try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(500); }catch(err){}
+      try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
+    }else if(caps && caps.focusDistance){
+      $("segPill").textContent = "对焦 · 扫描中";
+      const d = await autofocusScan(track);
+      if(d !== null) toast("焦点锁定 " + d.toFixed(2) + "m");
+    }else{
+      $("segPill").textContent = "对焦 · 镜头重启";
+      await startCamera();
     }
-    try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
+    $("segPill").textContent = afMode;
   })();
 });
 
@@ -500,6 +568,7 @@ $("shutter").onclick = async ()=>{
   let c = null;
   const shot = await takePhotoHiRes();
   if(shot){
+    $("segPill").textContent = "拍照 · 系统管线";
     const iw = shot.w, ih = shot.h;
     /* ① 先对齐视频流FOV（照片4:3全传感器 vs 流16:9裁切，视野不同） */
     const streamRatio = vw/vh;
@@ -515,10 +584,12 @@ $("shutter").onclick = async ()=>{
     shot.release();
   }
   if(!c){
+    $("segPill").textContent = "拍照 · 截帧";
     const sx=(vw-cw)/2, sy=(vh-ch)/2;
     c = mkCanvas(Math.round(cw), Math.round(ch));
     c.getContext("2d").drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
   }
+  setTimeout(()=>{ $("segPill").textContent = afMode; }, 2500);
   handleSource(c);
 };
 
