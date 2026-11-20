@@ -603,20 +603,19 @@ function buildMaskAlpha(grayMask, W, H){
   return { canvas: small, ratio: hit/total };
 }
 
-/* ================= 美容：磨皮（缩放低通 + 按强度混合） ================= */
+/* ================= 美容：磨皮（整图缩小→放大=低通柔化层，按强度与原图混合） ================= */
 function beautyPass(srcCanvas, strength){
   if(strength <= 0) return srcCanvas;
   const W = srcCanvas.width, H = srcCanvas.height;
   const k = (strength/100) * 0.62;
-  const low = mkCanvas(W, H);
-  const lc = low.getContext("2d");
-  lc.imageSmoothingQuality = "high";
-  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1);
-  lc.drawImage(srcCanvas, 0, 0, W>>2 || 1, H>>2 || 1, 0, 0, W, H);
+  const sw = Math.max(1, W>>2), sh = Math.max(1, H>>2);
+  const small = mkCanvas(sw, sh);                       // ① 整图缩到1/4
+  small.getContext("2d").drawImage(srcCanvas, 0, 0, sw, sh);
   const out = mkCanvas(W, H);
   const oc = out.getContext("2d");
-  oc.drawImage(low, 0, 0);
-  oc.globalAlpha = k;
+  oc.imageSmoothingQuality = "high";
+  oc.drawImage(small, 0, 0, sw, sh, 0, 0, W, H);        // ② 放大回来=低通
+  oc.globalAlpha = k;                                    // ③ 与原图按强度混合
   oc.drawImage(srcCanvas, 0, 0);
   oc.globalAlpha = 1;
   return out;
