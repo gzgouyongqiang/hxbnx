@@ -340,7 +340,7 @@ function setFilm(key){
   document.querySelectorAll(".film").forEach(x=>x.classList.toggle("on", x.dataset.k===key));
   Object.assign(P, f.tone, { blur:f.blur, dark:f.dark, beauty:f.beauty });
   ["bright","contrast","satur","temp","vig","blur","dark","beauty"].forEach(syncSlider);
-  $("sceneTip").textContent = f.tip + " · 点画面任意处可重新对焦";
+  $("sceneTip").textContent = f.tip + " · 点画面可查看对焦状态";
   $("filmTag").textContent = "🎞 " + f.name + " · " + f.from;
 }
 /* ================= 工具 ================= */
@@ -481,35 +481,10 @@ async function sharpnessScore(){
   }
   return sum;
 }
-/* 真·自动对焦扫描：手动对焦距离从近到远步进，选最清晰帧锁定 */
-async function autofocusScan(track){
-  if(!afCaps || !afCaps.focusDistance) return null;
-  const fm = afCaps.focusMode || [];
-  if(!fm.includes("manual")) return null;
-  const fd = afCaps.focusDistance;
-  const step = fd.step || Math.max(0.01, (fd.max-fd.min)/8);
-  let best=null, bestScore=-1;
-  for(let d=fd.min; d<=fd.max+1e-6; d+=step){
-    try{ await track.applyConstraints({advanced:[{focusMode:"manual", focusDistance:d}]}); }catch(e){ return null; }
-    await sleep(260);
-    const sc = await sharpnessScore();
-    if(sc > bestScore){ bestScore = sc; best = d; }
-  }
-  try{ await track.applyConstraints({advanced:[{focusMode:"manual", focusDistance:best}]}); }catch(e){}
-  return best;
-}
 $("afBtn").onclick = async ()=>{
-  toast("镜头重启中…");
+  toast("镜头重启中…（清除异常对焦状态）");
   await startCamera();
-  const track = camStream && camStream.getVideoTracks()[0];
-  if(track && afCaps && afCaps.focusDistance && (afCaps.focusMode||[]).includes("manual")){
-    $("segPill").textContent = "对焦 · 扫描中";
-    const d = await autofocusScan(track);
-    $("segPill").textContent = afMode;
-    toast(d!==null ? "已重启并锁定焦点 " + d.toFixed(2) + "m" : "镜头已重启");
-  }else{
-    toast("镜头已重启（本设备未开放手动对焦，依赖自动对焦）");
-  }
+  toast("镜头已重启，对焦交还系统CAF托管");
 };
 
 /* 水平仪 */
@@ -554,37 +529,14 @@ function shutterFlash(){
   setTimeout(()=>f.classList.remove("go"), 130);
 }
 
-/* 点按对焦三级策略：单次触发 → 真自动对焦扫描 → 镜头重启 */
+/* 点按画面：零约束发送（小米浏览器上对焦约束与CAF打架=拉风箱，已彻底弃用）
+   对焦完全托管给设备CAF；点按仅做视觉反馈 */
 $("cam").addEventListener("pointerdown", e=>{
   const ring = $("focusRing");
   ring.style.left = e.clientX+"px"; ring.style.top = e.clientY+"px";
   ring.classList.remove("go"); void ring.offsetWidth; ring.classList.add("go");
-  const track = camStream && camStream.getVideoTracks()[0];
-  if(!track) return;
-  (async ()=>{
-    let caps = null;
-    try{ caps = track.getCapabilities ? track.getCapabilities() : null; }catch(err){}
-    const fm = caps && caps.focusMode || [];
-    if(caps && caps.focusDistance && fm.includes("manual")){
-      $("segPill").textContent = "对焦 · 扫描中";
-      const d = await autofocusScan(track);
-      if(d !== null){ toast("焦点锁定 " + d.toFixed(2) + "m"); }
-      else{
-        $("segPill").textContent = "对焦 · 触发";
-        try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(500); }catch(err){}
-        try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
-      }
-    }else if(fm.includes("single-shot")){
-      $("segPill").textContent = "对焦 · 触发";
-      try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(500); }catch(err){}
-      try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
-    }else{
-      $("segPill").textContent = "对焦 · 镜头重启";
-      await startCamera();
-      if(afLevel === "none") toast("本浏览器无对焦控制权：建议改用「系统相机」按钮拍摄", 5000);
-    }
-    $("segPill").textContent = afMode;
-  })();
+  $("segPill").textContent = "对焦由系统CAF托管";
+  setTimeout(()=>{ $("segPill").textContent = afMode; }, 1500);
 });
 
 /* 系统级拍照（ISP拍照管线+触发真实对焦循环），不支持/失败返回 null */
