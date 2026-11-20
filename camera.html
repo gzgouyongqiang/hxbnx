@@ -674,11 +674,29 @@ let composeTimer = null;
 function scheduleCompose(){ clearTimeout(composeTimer); composeTimer = setTimeout(compose, 60); }
 
 function compose(){
+  /* 黑屏防线：任何一环异常→原图直出+错误提示，绝不输出黑屏 */
+  try{ composeInner(); }catch(err){
+    toast("处理异常: " + (err.message || err.name));
+    try{
+      const rc = $("resCanvas");
+      if(base){
+        rc.width = base.width; rc.height = base.height;
+        rc.getContext("2d").drawImage(base,0,0);
+        $("resSize").textContent = base.width+"×"+base.height;
+      }
+    }catch(e2){}
+  }
+}
+function composeInner(){
   if(!base) return;
   const W = base.width, H = base.height;
 
-  /* ① 美容（作用在调色前） */
-  const skin = P.beauty>0 ? beautyPass(base, P.beauty) : base;
+  /* ① 美容（作用在调色前，异常时回退原图） */
+  let skin = base;
+  if(P.beauty > 0){
+    try{ skin = beautyPass(base, P.beauty); }
+    catch(err){ skin = base; }
+  }
 
   /* ② 全图色调 + 电影分色调 */
   const adj = mkCanvas(W,H), ac = adj.getContext("2d");
@@ -697,7 +715,10 @@ function compose(){
   /* ③ 分离色调（电影调色核心） */
   const F = FILMS[curFilm];
   let toned = adj;
-  if(F.tone2){ toned = splitTonePass(adj, F.tone2); }
+  if(F.tone2){
+    try{ toned = splitTonePass(adj, F.tone2); }
+    catch(err){ toast("分色调降级: " + err.message); toned = adj; }
+  }
   const tc = toned.getContext("2d");
 
   /* ④ 晕影 */
