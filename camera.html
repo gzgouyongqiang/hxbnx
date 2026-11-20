@@ -390,15 +390,17 @@ function stopCamera(){
 function placeGuide(){
   const vw = innerWidth, vh = innerHeight;
   const landscape = vw > vh;
-  const topSafe = landscape ? 44 : 52;
-  const bottomSafe = landscape ? 150 : 256;
-  const availH = vh - topSafe - bottomSafe;
+  /* 动态测量实际控制区高度（模板chips行数/横竖屏不同，硬编码会错位） */
+  const topSafe = $("vfTop").offsetHeight + 16;
+  const bottomSafe = $("vfBottom").offsetHeight + 8;
+  const availH = Math.max(120, vh - topSafe - bottomSafe);
   let w, h;
   const R = ratioVal();
   if(R === 0){ w = vw; h = availH; }
   else if(vw/availH > R){ h = availH; w = h*R; }
   else { w = vw; h = w/R; }
-  w = Math.min(w, vw-20); h = Math.min(h, availH-10);
+  w = Math.max(60, Math.min(w, vw-20));
+  h = Math.max(60, Math.min(h, availH-10));
   const g = $("guide"), gr = $("grid");
   for(const el of [g, gr]){
     el.style.width = w+"px"; el.style.height = h+"px";
@@ -428,7 +430,8 @@ function startLevel(){
     const el = $("level");
     if(e.gamma === null || e.beta === null){ el.style.display="none"; return; }
     el.style.display = "block";
-    const tilt = Math.round(e.gamma*10)/10;
+    /* 横屏时横滚角由beta承担（轴语义随方向互换） */
+    const tilt = Math.round((innerWidth > innerHeight ? -e.beta : e.gamma)*10)/10;
     if(Math.abs(tilt) <= 1.2){
       el.classList.add("ok"); el.textContent = "水平 ✓";
     }else{
@@ -443,6 +446,7 @@ let audioCtx = null;
 function shutterSound(){
   try{
     audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state === "suspended"){ audioCtx.resume(); }
     const t0 = audioCtx.currentTime;
     [[880,t0,.03],[620,t0+.05,.04]].forEach(([f,t,d])=>{
       const o = audioCtx.createOscillator(), g = audioCtx.createGain();
@@ -509,10 +513,17 @@ $("shutter").onclick = async ()=>{
   const shot = await takePhotoHiRes();
   if(shot){
     const iw = shot.w, ih = shot.h;
+    /* ① 先对齐视频流FOV（照片4:3全传感器 vs 流16:9裁切，视野不同） */
+    const streamRatio = vw/vh;
+    let ax = iw, ay = ih;
+    if(iw/ih > streamRatio){ ax = ih*streamRatio; } else { ay = iw/streamRatio; }
+    /* ② 再按取景框比例中央裁剪（两步合一，保证所见即所得） */
     let scw, sch;
-    if(iw/ih > gRatio){ sch = ih; scw = sch*gRatio; } else { scw = iw; sch = scw/gRatio; }
+    if(ax/ay > gRatio){ sch = ay; scw = sch*gRatio; } else { scw = ax; sch = scw/gRatio; }
+    const ox = (iw-ax)/2, oy = (ih-ay)/2;
+    const gx = (ax-scw)/2, gy = (ay-sch)/2;
     c = mkCanvas(Math.round(scw), Math.round(sch));
-    c.getContext("2d").drawImage(shot.img, (iw-scw)/2, (ih-sch)/2, scw, sch, 0, 0, c.width, c.height);
+    c.getContext("2d").drawImage(shot.img, Math.round(ox+gx), Math.round(oy+gy), Math.round(scw), Math.round(sch), 0, 0, c.width, c.height);
     shot.release();
   }
   if(!c){
@@ -532,8 +543,13 @@ function readFile(file){
   if(!file) return;
   const img = new Image();
   img.onload = ()=>{
-    const c = mkCanvas(img.naturalWidth, img.naturalHeight);
-    c.getContext("2d").drawImage(img, 0, 0);
+    /* 超大图限制到4096长边（防内存炸裂） */
+    const MAXDIM = 4096;
+    const sc = Math.min(1, MAXDIM/Math.max(img.naturalWidth, img.naturalHeight));
+    const w = Math.max(1, Math.round(img.naturalWidth*sc));
+    const h = Math.max(1, Math.round(img.naturalHeight*sc));
+    const c = mkCanvas(w, h);
+    c.getContext("2d").drawImage(img, 0, 0, w, h);
     URL.revokeObjectURL(img.src);
     handleSource(c);
   };
@@ -565,19 +581,20 @@ const segmenter = new SelfieSegmentation({ locateFile: f => cdnBase + f });
 segmenter.setOptions({ modelSelection: 0 });
 
 async function runSegment(srcCanvas){
-  if(segBusy) return null;
+  while(segBusy){ await sleep(100); }        // 排队等待前一次识别完成（连拍竞态修复）
   segBusy = true;
   $("segPill").textContent = "识别 · 处理中";
   return new Promise(resolve=>{
+    let done = false;
+    const finish = v => { if(!done){ done = true; segBusy = false; $("segPill").textContent = "引擎 · 就绪"; resolve(v); } };
+    const guard = setTimeout(()=>finish(null), 30000);   // 30秒超时防挂死
     segmenter.onResults(res=>{
-      segBusy = false;
-      $("segPill").textContent = "引擎 · 就绪";
-      resolve(res.segmentationMask);
+      clearTimeout(guard);
+      finish(res.segmentationMask);
     });
     segmenter.send({ image: srcCanvas }).catch(()=>{
-      segBusy = false;
-      $("segPill").textContent = "识别 · 失败";
-      resolve(null);
+      clearTimeout(guard);
+      finish(null);
     });
   });
 }
@@ -726,11 +743,22 @@ async function handleSource(srcCanvas){
 }
 
 /* ================= 成片页交互 ================= */
+let cmpDown = false;
+const cmpRestore = ()=>{
+  if(!cmpDown) return;
+  cmpDown = false;
+  compose();
+  $("resTip").textContent = "按住「对比」看原图";
+};
 $("cmpBtn").addEventListener("pointerdown", ()=>{
+  if(!base) return;
+  cmpDown = true;
   $("resCanvas").getContext("2d").drawImage(base,0,0);
   $("resTip").textContent = "原图";
 });
-$("cmpBtn").addEventListener("pointerup", ()=>{ compose(); $("resTip").textContent = "按住「对比」看原图"; });
+$("cmpBtn").addEventListener("pointerup", cmpRestore);
+$("cmpBtn").addEventListener("pointercancel", cmpRestore);
+$("cmpBtn").addEventListener("pointerleave", cmpRestore);
 
 $("retakeBtn").onclick = ()=>{ show("vf"); startCamera(); };
 $("dlBtn").onclick = ()=>{
