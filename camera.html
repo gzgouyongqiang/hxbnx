@@ -481,6 +481,21 @@ async function sharpnessScore(){
   }
   return sum;
 }
+/* 等待系统 CAF 对稳：不发送任何对焦约束，纯读清晰度。
+   连续 need 帧清晰度变化都在阈值内 → 判定对焦稳定；超时兜底，绝不卡死快门。 */
+async function waitFocusStable(maxMs=1400){
+  const stepMs = 110, need = 2, tol = 0.06;
+  const t0 = performance.now();
+  let prev = await sharpnessScore(), steady = 0, last = prev;
+  while(performance.now() - t0 < maxMs){
+    await sleep(stepMs);
+    const cur = await sharpnessScore();
+    if(prev > 0 && Math.abs(cur - prev)/prev <= tol){ steady++; } else { steady = 0; }
+    prev = cur; last = cur;
+    if(steady >= need) return {ok:true, waited:Math.round(performance.now()-t0), score:last};
+  }
+  return {ok:false, waited:Math.round(performance.now()-t0), score:last};
+}
 $("afBtn").onclick = async ()=>{
   toast("镜头重启中…（清除异常对焦状态）");
   await startCamera();
@@ -529,14 +544,15 @@ function shutterFlash(){
   setTimeout(()=>f.classList.remove("go"), 130);
 }
 
-/* 点按画面：零约束发送（小米浏览器上对焦约束与CAF打架=拉风箱，已彻底弃用）
-   对焦完全托管给设备CAF；点按仅做视觉反馈 */
+/* 点按画面：不发送任何对焦约束（小米上与CAF打架=拉风箱，已弃用）。
+   对焦由设备CAF托管，点按给诚实反馈 + 提示拍照会自动等对焦。 */
 $("cam").addEventListener("pointerdown", e=>{
   const ring = $("focusRing");
   ring.style.left = e.clientX+"px"; ring.style.top = e.clientY+"px";
   ring.classList.remove("go"); void ring.offsetWidth; ring.classList.add("go");
-  $("segPill").textContent = "对焦由系统CAF托管";
-  setTimeout(()=>{ $("segPill").textContent = afMode; }, 1500);
+  $("segPill").textContent = "对焦 · 系统自动";
+  toast("对焦由手机自动完成，按快门时会先等对焦清晰再拍", 2200);
+  setTimeout(()=>{ $("segPill").textContent = afMode; }, 2000);
 });
 
 /* 系统级拍照（ISP拍照管线+触发真实对焦循环），不支持/失败返回 null */
@@ -561,6 +577,12 @@ async function takePhotoHiRes(){
 $("shutter").onclick = async ()=>{
   const v = $("cam");
   if(!camStream || !v.videoWidth){ toast("相机还没就绪，稍等一下"); return; }
+  /* 等对焦稳定：不发约束，纯检测清晰度，避免CAF没对上就出片导致糊 */
+  let focusInfo = null;
+  try{
+    focusInfo = await waitFocusStable(1400);
+    $("segPill").textContent = focusInfo.ok ? "对焦 ✓ 已锁定" : "对焦 · 自动(未稳定)";
+  }catch(e){}
   shutterFlash(); shutterSound();
   const vw = v.videoWidth, vh = v.videoHeight;
   /* guide屏幕矩形 → 视频帧坐标：cover缩放下，屏幕可见区=帧中央dispW×dispH */
