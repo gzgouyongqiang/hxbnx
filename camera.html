@@ -557,14 +557,19 @@ $("cam").addEventListener("pointerdown", e=>{
     let caps = null;
     try{ caps = track.getCapabilities ? track.getCapabilities() : null; }catch(err){}
     const fm = caps && caps.focusMode || [];
-    if(fm.includes("single-shot")){
+    if(caps && caps.focusDistance && fm.includes("manual")){
+      $("segPill").textContent = "对焦 · 扫描中";
+      const d = await autofocusScan(track);
+      if(d !== null){ toast("焦点锁定 " + d.toFixed(2) + "m"); }
+      else{
+        $("segPill").textContent = "对焦 · 触发";
+        try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(500); }catch(err){}
+        try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
+      }
+    }else if(fm.includes("single-shot")){
       $("segPill").textContent = "对焦 · 触发";
       try{ await track.applyConstraints({advanced:[{focusMode:"single-shot"}]}); await sleep(500); }catch(err){}
       try{ await track.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(err){}
-    }else if(caps && caps.focusDistance){
-      $("segPill").textContent = "对焦 · 扫描中";
-      const d = await autofocusScan(track);
-      if(d !== null) toast("焦点锁定 " + d.toFixed(2) + "m");
     }else{
       $("segPill").textContent = "对焦 · 镜头重启";
       await startCamera();
@@ -843,7 +848,7 @@ function composeInner(){
     gc.drawImage(toned,0,0);
     gc.globalCompositeOperation = "destination-in";
     gc.imageSmoothingQuality = "high";
-    gc.drawImage(maskAlpha.canvas, 0, 0, W, H);
+    gc.drawImage(maskAlpha, 0, 0, W, H);
     fc.drawImage(fg,0,0);
   }else{
     fc.drawImage(toned,0,0);
