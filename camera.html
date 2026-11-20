@@ -499,9 +499,17 @@ async function autofocusScan(track){
   return best;
 }
 $("afBtn").onclick = async ()=>{
-  toast("镜头重启中…重新扫描对焦");
+  toast("镜头重启中…");
   await startCamera();
-  toast("镜头已重启，对焦扫描完成");
+  const track = camStream && camStream.getVideoTracks()[0];
+  if(track && afCaps && afCaps.focusDistance && (afCaps.focusMode||[]).includes("manual")){
+    $("segPill").textContent = "对焦 · 扫描中";
+    const d = await autofocusScan(track);
+    $("segPill").textContent = afMode;
+    toast(d!==null ? "已重启并锁定焦点 " + d.toFixed(2) + "m" : "镜头已重启");
+  }else{
+    toast("镜头已重启（本设备未开放手动对焦，依赖自动对焦）");
+  }
 };
 
 /* 水平仪 */
@@ -674,14 +682,13 @@ const CDN_CANDIDATES = [
 ];
 let cdnBase = "camera_assets/";
 (async function pickCdn(){
-  for(const c of CDN_CANDIDATES){
-    const ok = await Promise.race([
-      fetch(c + "selfie_segmentation.binarypb", {cache:"no-store"}).then(r=>r.ok),
-      new Promise(res=>setTimeout(()=>res(false), 2500))
-    ]).catch(()=>false);
-    if(ok){ cdnBase = c; $("segPill").textContent = "引擎 · 就绪"; return; }
-  }
-  $("segPill").textContent = "引擎 · 就绪(站内)";
+  const probes = CDN_CANDIDATES.map(async c=>Promise.race([
+    fetch(c + "selfie_segmentation.binarypb", {cache:"no-store"}).then(r=>r.ok ? c : null),
+    new Promise(res=>setTimeout(()=>res(null), 2500))
+  ]).catch(()=>null));
+  const results = await Promise.all(probes);
+  cdnBase = results.find(Boolean) || "camera_assets/";   // 全源并行探测，取最快命中
+  $("segPill").textContent = "引擎 · 就绪";
 })();
 const segmenter = new SelfieSegmentation({ locateFile: f => cdnBase + f });
 segmenter.setOptions({ modelSelection: 0 });
@@ -726,20 +733,36 @@ function buildMaskAlpha(grayMask, W, H){
   return { canvas: small, ratio: hit/total };
 }
 
-/* ================= 美容：磨皮（整图缩小→放大=低通柔化层，按强度与原图混合） ================= */
+/* ================= 美容：磨皮（肤色像素专用，方向=强度越大越柔；仅人像时调用） ================= */
 function beautyPass(srcCanvas, strength){
   if(strength <= 0) return srcCanvas;
   const W = srcCanvas.width, H = srcCanvas.height;
-  const k = (strength/100) * 0.62;
+  const k = (strength/100) * 0.62;                       // k=柔化占比，越大越磨
   const sw = Math.max(1, W>>2), sh = Math.max(1, H>>2);
-  const small = mkCanvas(sw, sh);                       // ① 整图缩到1/4
-  small.getContext("2d").drawImage(srcCanvas, 0, 0, sw, sh);
+  /* ① 低分辨率原图采样+肤色蒙版（非肤色像素不参与柔化） */
+  const small = mkCanvas(sw, sh);
+  const sc2 = small.getContext("2d", {willReadFrequently:true});
+  sc2.drawImage(srcCanvas, 0, 0, sw, sh);
+  const im = sc2.getImageData(0,0,sw,sh), d = im.data;
+  for(let i=0;i<d.length;i+=4){
+    const r=d[i], g=d[i+1], b=d[i+2];
+    const isSkin = r>95 && g>40 && b>20 && r>g && r>b && (r-Math.min(g,b))>15 && Math.abs(r-g)>15;
+    d[i+3] = isSkin ? 255 : 0;                           // alpha=肤色标记
+  }
+  sc2.putImageData(im,0,0);
+  /* ② 模糊层：低通放大 × 肤色蒙版 */
+  const blur = mkCanvas(W,H), bc = blur.getContext("2d");
+  bc.imageSmoothingQuality = "high";
+  bc.drawImage(small, 0, 0, sw, sh, 0, 0, W, H);
+  bc.globalCompositeOperation = "destination-in";
+  bc.drawImage(small, 0, 0, sw, sh, 0, 0, W, H);         // 用蒙版alpha裁剪模糊层
+  bc.globalCompositeOperation = "source-over";
+  /* ③ 原图打底 + 柔化层按k叠加（方向：strength越大越柔） */
   const out = mkCanvas(W, H);
   const oc = out.getContext("2d");
-  oc.imageSmoothingQuality = "high";
-  oc.drawImage(small, 0, 0, sw, sh, 0, 0, W, H);        // ② 放大回来=低通
-  oc.globalAlpha = k;                                    // ③ 与原图按强度混合
   oc.drawImage(srcCanvas, 0, 0);
+  oc.globalAlpha = k;
+  oc.drawImage(blur, 0, 0);
   oc.globalAlpha = 1;
   return out;
 }
@@ -798,18 +821,19 @@ function composeInner(){
   if(!base) return;
   const W = base.width, H = base.height;
 
-  /* ① 美容（作用在调色前，异常时回退原图） */
+  /* ① 美容（仅人像时启用——风景片不做全图低通；异常回退原图） */
   let skin = base;
-  if(P.beauty > 0){
+  if(P.beauty > 0 && maskAlpha){
     try{ skin = beautyPass(base, P.beauty); }
     catch(err){ skin = base; }
   }
 
-  /* ② 全图色调 + 电影分色调 */
+  /* ② 全图色调 */
   const adj = mkCanvas(W,H), ac = adj.getContext("2d");
   ac.filter = filterStr();
   ac.drawImage(skin,0,0);
   ac.filter = "none";
+  skin = null;                                           // 主动释放引用，压内存峰值
   if(P.temp !== 0){
     ac.globalCompositeOperation = "soft-light";
     ac.fillStyle = P.temp>0 ? "rgba(255,176,88,1)" : "rgba(88,150,255,1)";
@@ -826,6 +850,7 @@ function composeInner(){
     try{ toned = splitTonePass(adj, F.tone2); }
     catch(err){ toast("分色调降级: " + err.message); toned = adj; }
   }
+  if(toned !== adj){ adj.width = 1; adj.height = 1; }    // 释放旧画布
   const tc = toned.getContext("2d");
 
   /* ④ 晕影 */
@@ -837,8 +862,9 @@ function composeInner(){
   }
 
   /* ⑤ 合成：有人像=清晰前景叠虚化背景；无人=整图直出 */
-  const fin = mkCanvas(W,H), fc = fin.getContext("2d");
+  let fin;
   if(maskAlpha){
+    fin = mkCanvas(W,H), fc = fin.getContext("2d");
     const bg = mkCanvas(W,H), bc = bg.getContext("2d");
     if(P.blur > 0) bc.filter = "blur(" + P.blur + "px)";
     bc.drawImage(toned,0,0);
@@ -855,7 +881,7 @@ function composeInner(){
     gc.drawImage(maskAlpha, 0, 0, W, H);
     fc.drawImage(fg,0,0);
   }else{
-    fc.drawImage(toned,0,0);
+    fin = toned;                                         // 无虚化：直出，省两张全尺寸画布
   }
 
   const rc = $("resCanvas");
