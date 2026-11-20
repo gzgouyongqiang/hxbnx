@@ -126,7 +126,8 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 #cmpBtn:active{background:var(--gold);color:#1a1608}
 #toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);transform:translateX(-50%);
   background:rgba(12,15,14,.92);border:1px solid var(--line);color:var(--txt);font-size:13px;
-  padding:8px 16px;border-radius:20px;z-index:99;display:none;max-width:82vw;text-align:center;line-height:1.6}
+  padding:8px 16px;border-radius:20px;z-index:99;display:none;max-width:86vw;text-align:center;line-height:1.6;
+  white-space:pre-line}
 
 /* ---------- 横屏适配：全屏取景 + 极简控制 ---------- */
 @media (orientation: landscape){
@@ -452,7 +453,13 @@ function probeAF(track){
     }
   }catch(e){ afMode = "AF:未知"; afLevel = "none"; }
   const env = $("envTip");
-  if(env) env.textContent = "环境:" + browserName() + " · " + afMode;
+  if(env){
+    let detail = "";
+    if(afCaps && afCaps.focusMode) detail += " 模式[" + afCaps.focusMode.join(",") + "]";
+    if(afCaps && afCaps.focusDistance) detail += " 距离" + afCaps.focusDistance.min + "-" + afCaps.focusDistance.max + "m";
+    if(!detail) detail = " 无任何对焦接口";
+    env.textContent = "环境:" + browserName() + " · " + afMode + " ·" + detail;
+  }
 }
 /* 抓帧清晰度评分（灰度差分能量，近似拉普拉斯） */
 async function sharpnessScore(){
@@ -766,7 +773,8 @@ function scheduleCompose(){ clearTimeout(composeTimer); composeTimer = setTimeou
 function compose(){
   /* 黑屏防线：任何一环异常→原图直出+错误提示，绝不输出黑屏 */
   try{ composeInner(); }catch(err){
-    toast("处理异常: " + (err.message || err.name));
+    const at = (err.stack||"").split("\n").find(l=>l.includes("camera.html"));
+    toast("处理异常: " + (err.message||err.name).slice(0,80) + "\n" + (at||"").trim().slice(0,80));
     try{
       const rc = $("resCanvas");
       if(base){
