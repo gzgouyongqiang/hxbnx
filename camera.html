@@ -597,40 +597,44 @@ async function takePhotoHiRes(){
   }catch(e){ return null; }
 }
 
-/* 快门：系统拍照管线优先，回退视频流截帧 */
+/* 快门：guide屏幕矩形精确映射（cover变换）→ 框到哪切到哪，真·所见即所得 */
 $("shutter").onclick = async ()=>{
   const v = $("cam");
   if(!camStream || !v.videoWidth){ toast("相机还没就绪，稍等一下"); return; }
   shutterFlash(); shutterSound();
   const vw = v.videoWidth, vh = v.videoHeight;
-  const gw = parseFloat($("guide").style.width), gh = parseFloat($("guide").style.height);
-  let cw, ch;
-  const gRatio = gw/gh;
-  if(vw/vh > gRatio){ ch = vh; cw = ch*gRatio; } else { cw = vw; ch = cw/gRatio; }
+  /* guide屏幕矩形 → 视频帧坐标：cover缩放下，屏幕可见区=帧中央dispW×dispH */
+  const g = $("guide");
+  const gw = parseFloat(g.style.width), gh = parseFloat(g.style.height);
+  const gcy = parseFloat(g.style.top);                    // guide中心Y（屏幕坐标）
+  const scale = Math.max(innerWidth/vw, innerHeight/vh);
+  const dispW = innerWidth/scale, dispH = innerHeight/scale;
+  const offX = (vw-dispW)/2, offY = (vh-dispH)/2;
+  const gr = {
+    x: offX + (innerWidth-gw)/2/scale,                    // guide左上X→帧坐标
+    y: offY + (gcy-gh/2)/scale,                           // guide左上Y→帧坐标
+    w: gw/scale, h: gh/scale
+  };
 
   let c = null;
   const shot = await takePhotoHiRes();
   if(shot){
     $("segPill").textContent = "拍照 · 系统管线";
-    const iw = shot.w, ih = shot.h;
-    /* ① 先对齐视频流FOV（照片4:3全传感器 vs 流16:9裁切，视野不同） */
+    /* 照片可见流区域（照片FOV≥流FOV，中心对齐）→ guide按相对位置映射进照片 */
     const streamRatio = vw/vh;
-    let ax = iw, ay = ih;
-    if(iw/ih > streamRatio){ ax = ih*streamRatio; } else { ay = iw/streamRatio; }
-    /* ② 再按取景框比例中央裁剪（两步合一，保证所见即所得） */
-    let scw, sch;
-    if(ax/ay > gRatio){ sch = ay; scw = sch*gRatio; } else { scw = ax; sch = scw/gRatio; }
-    const ox = (iw-ax)/2, oy = (ih-ay)/2;
-    const gx = (ax-scw)/2, gy = (ay-sch)/2;
-    c = mkCanvas(Math.round(scw), Math.round(sch));
-    c.getContext("2d").drawImage(shot.img, Math.round(ox+gx), Math.round(oy+gy), Math.round(scw), Math.round(sch), 0, 0, c.width, c.height);
+    let visW = shot.w, visH = shot.h;
+    if(shot.w/shot.h > streamRatio){ visW = shot.h*streamRatio; } else { visH = shot.w/streamRatio; }
+    const vOffX = (shot.w-visW)/2, vOffY = (shot.h-visH)/2;
+    const sxp = vOffX + (gr.x/vw)*visW, syp = vOffY + (gr.y/vh)*visH;
+    const swp = (gr.w/vw)*visW, shp = (gr.h/vh)*visH;
+    c = mkCanvas(Math.round(swp), Math.round(shp));
+    c.getContext("2d").drawImage(shot.img, sxp, syp, swp, shp, 0, 0, c.width, c.height);
     shot.release();
   }
   if(!c){
     $("segPill").textContent = "拍照 · 截帧";
-    const sx=(vw-cw)/2, sy=(vh-ch)/2;
-    c = mkCanvas(Math.round(cw), Math.round(ch));
-    c.getContext("2d").drawImage(v, sx, sy, cw, ch, 0, 0, c.width, c.height);
+    c = mkCanvas(Math.round(gr.w), Math.round(gr.h));
+    c.getContext("2d").drawImage(v, gr.x, gr.y, gr.w, gr.h, 0, 0, c.width, c.height);
   }
   setTimeout(()=>{ $("segPill").textContent = afMode; }, 2500);
   handleSource(c);
