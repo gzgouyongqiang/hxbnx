@@ -126,6 +126,36 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 #toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);transform:translateX(-50%);
   background:rgba(12,15,14,.92);border:1px solid var(--line);color:var(--txt);font-size:13px;
   padding:8px 16px;border-radius:20px;z-index:99;display:none;max-width:82vw;text-align:center;line-height:1.6}
+
+/* ---------- 横屏适配：全屏取景 + 极简控制 ---------- */
+@media (orientation: landscape){
+  #vfTop{padding:4px 10px}
+  .pill{padding:4px 10px;font-size:11px}
+  .iconBtn{width:30px;height:30px}
+  #level{top:calc(env(safe-area-inset-top,0px) + 46px)}
+  .filmRow{padding:4px 10px 4px}
+  .film{padding:4px 11px;min-width:0;border-radius:10px;flex-direction:row;align-items:baseline;gap:5px}
+  .film .n{font-size:11.5px}
+  .film .f{display:none}                       /* 出处小字隐藏 */
+  .segRow.ratio{display:none}                  /* 画幅按钮隐藏：点分辨率胶囊循环切换 */
+  .shutterRow{padding:0 0 4px;gap:26px}
+  #shutter{width:56px;height:56px;border-width:3px}
+  #thumbBtn{width:42px;height:42px}
+  #flipBtn{width:38px;height:38px}
+  .toolRow{margin-bottom:2px}
+  .tool{padding:7px;border-radius:50%}
+  .tool .tl{display:none}                      /* 只留图标 */
+  .hint{display:none}
+  #vfBottom{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 4px);
+    background:linear-gradient(to top,rgba(0,0,0,.7) 40%,transparent)}
+  #vfMsg{top:26%;font-size:13px}
+  /* 成片页紧凑 */
+  #resTop{padding:6px 12px 4px}
+  #ctrl{padding:6px 12px 6px}
+  .filmTag{padding:1px 0 5px}
+  #sliderToggle{padding:2px 0}
+  .act{padding:9px 0;font-size:14px}
+}
 </style>
 </head>
 <body>
@@ -165,10 +195,10 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
     </div>
     <div class="toolRow">
       <button class="tool" id="sysBtn">
-        <svg class="ic" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>系统相机
+        <svg class="ic" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg><span class="tl">系统相机</span>
       </button>
       <button class="tool" id="galBtn">
-        <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l4.5-4.5L11 14l3.5-3.5L21 16"/><circle cx="15.5" cy="9.5" r="1.3"/></svg>相册导入
+        <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15l4.5-4.5L11 14l3.5-3.5L21 16"/><circle cx="15.5" cy="9.5" r="1.3"/></svg><span class="tl">相册导入</span>
       </button>
     </div>
     <div class="hint" id="sceneTip"></div>
@@ -221,7 +251,15 @@ const $ = id => document.getElementById(id);
 const P = { blur:12, dark:0, beauty:45, bright:101, contrast:106, satur:108, temp:4, vig:10, duotone:[] };
 let curFilm = "jazz";
 const RATIO = {"4:3":4/3,"16:9":16/9,"1:1":1,"full":0};
-let curRatio = 4/3;
+let curRatioKey = "4:3";
+const RATIO_KEYS = ["4:3","16:9","1:1","full"];
+const ratioVal = ()=> RATIO[curRatioKey];
+function setRatio(key, silent){
+  curRatioKey = key;
+  document.querySelectorAll(".ratio .seg").forEach(x=>x.classList.toggle("on", x.dataset.r===key));
+  if(!silent) toast("画幅 " + (key==="full" ? "全幅" : key));
+  placeGuide();
+}
 let base = null, maskAlpha = null;
 let camStream = null, facing = "environment";
 let segBusy = false;
@@ -351,12 +389,15 @@ function stopCamera(){
 }
 function placeGuide(){
   const vw = innerWidth, vh = innerHeight;
-  const topSafe = 52, bottomSafe = 256;
+  const landscape = vw > vh;
+  const topSafe = landscape ? 44 : 52;
+  const bottomSafe = landscape ? 150 : 256;
   const availH = vh - topSafe - bottomSafe;
   let w, h;
-  if(curRatio === 0){ w = vw; h = availH; }
-  else if(vw/availH > curRatio){ h = availH; w = h*curRatio; }
-  else { w = vw; h = w/curRatio; }
+  const R = ratioVal();
+  if(R === 0){ w = vw; h = availH; }
+  else if(vw/availH > R){ h = availH; w = h*R; }
+  else { w = vw; h = w/R; }
   w = Math.min(w, vw-20); h = Math.min(h, availH-10);
   const g = $("guide"), gr = $("grid");
   for(const el of [g, gr]){
@@ -366,13 +407,10 @@ function placeGuide(){
 }
 addEventListener("resize", placeGuide);
 document.querySelectorAll(".ratio .seg").forEach(b=>{
-  b.onclick = ()=>{
-    document.querySelectorAll(".ratio .seg").forEach(x=>x.classList.remove("on"));
-    b.classList.add("on");
-    curRatio = RATIO[b.dataset.r];
-    placeGuide();
-  };
+  b.onclick = ()=> setRatio(b.dataset.r, true);
 });
+/* 横屏画幅切换入口：点分辨率胶囊循环 4:3 → 16:9 → 1:1 → 全幅 */
+$("resPill").onclick = ()=> setRatio(RATIO_KEYS[(RATIO_KEYS.indexOf(curRatioKey)+1) % RATIO_KEYS.length]);
 
 /* 构图网格 */
 $("gridBtn").onclick = ()=>{
