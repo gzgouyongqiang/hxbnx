@@ -248,7 +248,7 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 "use strict";
 /* ================= 状态 ================= */
 const $ = id => document.getElementById(id);
-const P = { blur:12, dark:0, beauty:45, bright:101, contrast:106, satur:108, temp:4, vig:10, duotone:[] };
+const P = { blur:12, dark:0, beauty:45, bright:98, contrast:112, satur:114, temp:4, vig:12 };
 let curFilm = "jazz";
 const RATIO = {"4:3":4/3,"16:9":16/9,"1:1":1,"full":0};
 let curRatioKey = "4:3";
@@ -267,56 +267,56 @@ const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
 /* ================= 电影模板体系 =================
    seg=自动识别人像(有→美容+虚化,无→全局调色)
-   duotone=电影分色调叠层(克制版teal&orange) */
+   tone2=分离色调{阴影色,高光色,强度}——电影调色核心（经本地样张矩阵三轮验证） */
 const FILMS = {
   jazz:     { name:"暮色爵士", from:"爱乐之城", seg:true, beauty:45, blur:12, dark:0,
-              tone:{bright:101,contrast:106,satur:108,temp:4, vig:10},
-              duotone:[["70,90,180",.14],["255,170,110",.10]],
+              tone:{bright:98, contrast:112, satur:114, temp:4, vig:12},
+              tone2:{shadow:[35,65,155],  high:[255,180,100], k:.42},
               tip:"黄昏城市与灯光人像" },
   mood:     { name:"花样年华", from:"王家卫", seg:true, beauty:0, blur:10, dark:6,
-              tone:{bright:94,contrast:116,satur:112,temp:16,vig:30},
-              duotone:[["180,60,40",.12]],
+              tone:{bright:88, contrast:124, satur:118, temp:10, vig:30},
+              tone2:{shadow:[110,30,25],  high:[255,195,115], k:.42},
               tip:"夜晚街头浓郁氛围" },
   mist:     { name:"雾都蓝调", from:"银翼杀手2049", seg:true, beauty:0, blur:0, dark:0,
-              tone:{bright:100,contrast:96,satur:96,temp:-6,vig:12},
-              duotone:[["50,110,150",.18],["230,140,70",.08]],
+              tone:{bright:92, contrast:88, satur:80, temp:0, vig:12},
+              tone2:{shadow:[60,110,150], high:[235,150,70], k:.55},
               tip:"夜雨雾感与霓虹" },
   budapest: { name:"布达佩斯", from:"韦斯·安德森", seg:true, beauty:30, blur:0, dark:0,
-              tone:{bright:108,contrast:94,satur:92,temp:8, vig:0},
-              duotone:[["255,150,160",.08]],
+              tone:{bright:120, contrast:84, satur:86, temp:0, vig:0},
+              tone2:{shadow:[150,120,190], high:[255,205,195], k:.40},
               tip:"明快对称旅行日" },
   noir:     { name:"黑影", from:"黑色电影", seg:true, beauty:0, blur:8, dark:8,
-              tone:{bright:98,contrast:132,satur:0,temp:0, vig:26},
-              duotone:[],
+              tone:{bright:98, contrast:134, satur:0, temp:0, vig:26},
+              tone2:null,
               tip:"强对比黑白故事感" },
   before:   { name:"爱在清晨", from:"爱在三部曲", seg:true, beauty:25, blur:0, dark:0,
-              tone:{bright:103,contrast:98,satur:100,temp:6, vig:0},
-              duotone:[],
-              tip:"自然通透日常纪实" },
+              tone:{bright:110, contrast:96, satur:104, temp:0, vig:0},
+              tone2:{shadow:[70,90,130],  high:[255,240,210], k:.12},
+              tip:"冷蓝通透的日常纪实" },
   amelie:   { name:"天使爱美丽", from:"让-皮埃尔·热内", seg:true, beauty:35, blur:10, dark:0,
-              tone:{bright:100,contrast:108,satur:112,temp:10,vig:12},
-              duotone:[["90,140,80",.16],["200,60,50",.10]],
+              tone:{bright:100, contrast:110, satur:116, temp:0, vig:12},
+              tone2:{shadow:[55,105,55],  high:[235,85,55], k:.38},
               tip:"绿红对撞的浓郁童话感" },
   ink:      { name:"水墨留白", from:"张艺谋《影》", seg:true, beauty:0, blur:0, dark:0,
-              tone:{bright:104,contrast:88,satur:18,temp:-4,vig:0},
-              duotone:[["120,150,160",.10]],
+              tone:{bright:104, contrast:86, satur:16, temp:0, vig:0},
+              tone2:{shadow:[85,112,122], high:[215,228,232], k:.26},
               tip:"淡墨青灰 · 山水雾气" },
   koreeda:  { name:"小偷家族", from:"是枝裕和", seg:true, beauty:20, blur:0, dark:0,
-              tone:{bright:104,contrast:94,satur:92,temp:-2,vig:0},
-              duotone:[["100,140,130",.08]],
-              tip:"日系生活流的温柔克制" },
+              tone:{bright:98, contrast:90, satur:80, temp:0, vig:0},
+              tone2:{shadow:[80,105,60],  high:[240,240,208], k:.32},
+              tip:"黄绿灰调的生活流" },
   dune:     { name:"沙丘", from:"维伦纽瓦", seg:true, beauty:0, blur:0, dark:0,
-              tone:{bright:100,contrast:108,satur:85,temp:12,vig:14},
-              duotone:[["200,150,80",.14]],
-              tip:"暖沙金的荒漠与建筑" },
+              tone:{bright:92, contrast:114, satur:70, temp:0, vig:16},
+              tone2:{shadow:[105,68,28],  high:[255,208,135], k:.50},
+              tip:"暗金荒漠与建筑" },
   her:      { name:"她", from:"斯派克·琼兹", seg:true, beauty:30, blur:8, dark:2,
-              tone:{bright:104,contrast:96,satur:98,temp:8, vig:6},
-              duotone:[["230,120,110",.10]],
-              tip:"温柔红粉的未来感" },
+              tone:{bright:100, contrast:102, satur:94, temp:0, vig:8},
+              tone2:{shadow:[120,40,45],  high:[255,190,170], k:.46},
+              tip:"暗调红粉的孤独未来感" },
   kikujiro: { name:"菊次郎夏天", from:"北野武", seg:true, beauty:30, blur:0, dark:0,
-              tone:{bright:106,contrast:98,satur:106,temp:-4,vig:0},
-              duotone:[["80,160,150",.10]],
-              tip:"清爽绿蓝的盛夏户外" }
+              tone:{bright:112, contrast:100, satur:122, temp:0, vig:0},
+              tone2:{shadow:[30,130,90],  high:[220,250,200], k:.32},
+              tip:"翠绿高亮的盛夏户外" }
 };
 
 /* 电影模板 chips 渲染 */
@@ -334,7 +334,7 @@ function setFilm(key){
   curFilm = key;
   const f = FILMS[key];
   document.querySelectorAll(".film").forEach(x=>x.classList.toggle("on", x.dataset.k===key));
-  Object.assign(P, f.tone, { blur:f.blur, dark:f.dark, beauty:f.beauty, duotone:f.duotone });
+  Object.assign(P, f.tone, { blur:f.blur, dark:f.dark, beauty:f.beauty });
   ["bright","contrast","satur","temp","vig","blur","dark","beauty"].forEach(syncSlider);
   $("sceneTip").textContent = f.tip + " · 点画面任意处可重新对焦";
   $("filmTag").textContent = "🎞 " + f.name + " · " + f.from;
@@ -638,6 +638,32 @@ function beautyPass(srcCanvas, strength){
   return out;
 }
 
+/* ================= 分离色调：阴影/高光分别染色（电影调色核心，低分辨率处理提速） ================= */
+function splitTonePass(srcCanvas, cfg){
+  const W = srcCanvas.width, H = srcCanvas.height;
+  const sw = Math.max(1, W>>2), sh = Math.max(1, H>>2);
+  const s = mkCanvas(sw, sh);
+  const sc2 = s.getContext("2d");
+  sc2.drawImage(srcCanvas, 0, 0, sw, sh);
+  const im = sc2.getImageData(0, 0, sw, sh), d = im.data;
+  const sr = cfg.shadow[0], sg = cfg.shadow[1], sb = cfg.shadow[2];
+  const hr = cfg.high[0], hg = cfg.high[1], hb = cfg.high[2];
+  const k = cfg.k;
+  for(let i=0; i<d.length; i+=4){
+    const l = (0.299*d[i] + 0.587*d[i+1] + 0.114*d[i+2]) / 255;
+    const hw = l*l, swt = (1-l)*(1-l);
+    d[i]   = d[i]   + ((sr-d[i]  )*swt + (hr-d[i]  )*hw)*k;
+    d[i+1] = d[i+1] + ((sg-d[i+1])*swt + (hg-d[i+1])*hw)*k;
+    d[i+2] = d[i+2] + ((sb-d[i+2])*swt + (hb-d[i+2])*hw)*k;
+  }
+  sc2.putImageData(im, 0, 0);
+  const out = mkCanvas(W, H);
+  const oc = out.getContext("2d");
+  oc.imageSmoothingQuality = "high";
+  oc.drawImage(s, 0, 0, sw, sh, 0, 0, W, H);
+  return out;
+}
+
 /* ================= 色调滤镜串 ================= */
 function filterStr(){
   return "brightness("+(P.bright/100)+") contrast("+(P.contrast/100)+") saturate("+(P.satur/100)+")";
@@ -662,34 +688,32 @@ function compose(){
   if(P.temp !== 0){
     ac.globalCompositeOperation = "soft-light";
     ac.fillStyle = P.temp>0 ? "rgba(255,176,88,1)" : "rgba(88,150,255,1)";
-    ac.globalAlpha = Math.min(0.22, Math.abs(P.temp)/500);
+    ac.globalAlpha = Math.min(0.22, Math.abs(P.temp)/400);
     ac.fillRect(0,0,W,H);
     ac.globalAlpha = 1;
     ac.globalCompositeOperation = "source-over";
   }
-  if(P.duotone && P.duotone.length){
-    ac.globalCompositeOperation = "soft-light";
-    for(const [rgb,alpha] of P.duotone){
-      ac.fillStyle = "rgba("+rgb+",1)";
-      ac.globalAlpha = alpha;
-      ac.fillRect(0,0,W,H);
-    }
-    ac.globalAlpha = 1;
-    ac.globalCompositeOperation = "source-over";
-  }
+
+  /* ③ 分离色调（电影调色核心） */
+  const F = FILMS[curFilm];
+  let toned = adj;
+  if(F.tone2){ toned = splitTonePass(adj, F.tone2); }
+  const tc = toned.getContext("2d");
+
+  /* ④ 晕影 */
   if(P.vig > 0){
-    const g = ac.createRadialGradient(W/2,H/2, Math.min(W,H)*0.45, W/2,H/2, Math.hypot(W,H)/2);
+    const g = tc.createRadialGradient(W/2,H/2, Math.min(W,H)*0.45, W/2,H/2, Math.hypot(W,H)/2);
     g.addColorStop(0,"rgba(0,0,0,0)");
     g.addColorStop(1,"rgba(0,0,0,"+(P.vig/100)+")");
-    ac.fillStyle = g; ac.fillRect(0,0,W,H);
+    tc.fillStyle = g; tc.fillRect(0,0,W,H);
   }
 
-  /* ③ 合成：有人像=清晰前景叠虚化背景；无人=整图直出 */
+  /* ⑤ 合成：有人像=清晰前景叠虚化背景；无人=整图直出 */
   const fin = mkCanvas(W,H), fc = fin.getContext("2d");
   if(maskAlpha){
     const bg = mkCanvas(W,H), bc = bg.getContext("2d");
     if(P.blur > 0) bc.filter = "blur(" + P.blur + "px)";
-    bc.drawImage(adj,0,0);
+    bc.drawImage(toned,0,0);
     bc.filter = "none";
     if(P.dark > 0){
       bc.fillStyle = "rgba(0,0,0,"+(P.dark/100)+")";
@@ -697,13 +721,13 @@ function compose(){
     }
     fc.drawImage(bg,0,0);
     const fg = mkCanvas(W,H), gc = fg.getContext("2d");
-    gc.drawImage(adj,0,0);
+    gc.drawImage(toned,0,0);
     gc.globalCompositeOperation = "destination-in";
     gc.imageSmoothingQuality = "high";
     gc.drawImage(maskAlpha.canvas, 0, 0, W, H);
     fc.drawImage(fg,0,0);
   }else{
-    fc.drawImage(adj,0,0);
+    fc.drawImage(toned,0,0);
   }
 
   const rc = $("resCanvas");
