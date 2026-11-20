@@ -8,7 +8,7 @@
 <script src="camera_assets/selfie_segmentation.js"></script>
 <style>
 :root{
-  --bg:#0c0f0e; --panel:#161b19; --panel2:#1e2622; --line:#2c3a33;
+  --bg:#0c0f0e; --panel2:#1e2622; --line:#2c3a33;
   --txt:#d8e2dc; --dim:#8fa39a; --gold:#d4af37; --accent:#7fc99a;
   --glass:rgba(12,15,14,.55);
 }
@@ -112,7 +112,6 @@ svg.ic{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;str
 #sliders{max-height:0;overflow:hidden;transition:max-height .25s}
 #sliders.open{max-height:460px}
 .srow{display:flex;align-items:center;gap:10px;padding:3px 0}
-.srow.off{opacity:.35;pointer-events:none}
 .srow label{font-size:12px;color:var(--dim);width:58px;flex:0 0 auto}
 .srow input[type=range]{flex:1;accent-color:var(--accent);height:22px}
 .srow .v{font-size:11px;color:var(--dim);width:30px;text-align:right}
@@ -338,17 +337,7 @@ function setFilm(key){
   ["bright","contrast","satur","temp","vig","blur","dark","beauty"].forEach(syncSlider);
   $("sceneTip").textContent = f.tip + " · 点画面任意处可重新对焦";
   $("filmTag").textContent = "🎞 " + f.name + " · " + f.from;
-  updateSliderLocks();
 }
-/* 滑块锁定：非人像感的模板保留全部微调（全自动只是默认值） */
-function updateSliderLocks(){
-  const portraitish = FILMS[curFilm].seg;
-  ["beauty","blur","dark"].forEach(k=>{
-    slidersBox.querySelector("input[data-k='"+k+"']").closest(".srow")
-      .classList.toggle("off", !portraitish);
-  });
-}
-
 /* ================= 工具 ================= */
 function mkCanvas(w,h){ const c=document.createElement("canvas"); c.width=w; c.height=h; return c; }
 function show(id){
@@ -389,7 +378,6 @@ function stopCamera(){
 }
 function placeGuide(){
   const vw = innerWidth, vh = innerHeight;
-  const landscape = vw > vh;
   /* 动态测量实际控制区高度（模板chips行数/横竖屏不同，硬编码会错位） */
   const topSafe = $("vfTop").offsetHeight + 16;
   const bottomSafe = $("vfBottom").offsetHeight + 8;
