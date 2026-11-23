@@ -501,12 +501,36 @@
     return out.join('\n');
   }
 
+  /* 判断源文档是不是暗色主题：看 body 背景的相对亮度。
+     暗底课件（如 v3.5 起的护眼暗灰新建页）打印时必须把字改成深色，否则白纸黑字变成白纸白字。 */
+  function isDarkDoc(d) {
+    try {
+      var b = d.body;
+      if (!b) return false;
+      var bg = d.defaultView.getComputedStyle(b).backgroundColor || '';
+      var m = bg.match(/rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,\s/]+([\d.]+))?\s*\)/);
+      if (!m) return false;
+      var a = (m[4] === undefined ? 1 : parseFloat(m[4]));
+      if (!(a > 0.15)) return false;                       // 透明背景 ⇒ 按亮底处理
+      var lum = (0.2126 * parseFloat(m[1]) + 0.7152 * parseFloat(m[2]) + 0.0722 * parseFloat(m[3])) / 255;
+      return lum < 0.5;
+    } catch (e) { return false; }
+  }
+
   /* ---------- 打印页布局样式 ---------- */
-  function layoutCSS(o) {
+  function layoutCSS(o, darkInk) {
     var contentW = o.pageW - o.margin * 2 - (o.showNotes ? (o.noteW + o.noteGap) : 0);
     return [
       '@page { size: ' + o.pageW + 'mm ' + o.pageH + 'mm; margin: 0; }',
-      'html, body { margin:0 !important; padding:0 !important; background:#fff !important; }',
+      'html, body { margin:0 !important; padding:0 !important; background:#fff !important; color:#1a1a1a !important; }',
+      // 课件若用了暗色主题（护眼暗灰 #2b2f2c 之类），文字是浅色；直接印到白纸上会几乎看不见。
+      // 这里按「暗底与否」追加一条强制深色规则 —— 亮底课件不受影响。
+      darkInk ? '.pp-body, .pp-body * { color:#1a1a1a !important; -webkit-text-fill-color:#1a1a1a !important; } ' +
+                '.pp-body h1, .pp-body h2, .pp-body h3, .pp-body h4 { color:#111 !important; } ' +
+                '.pp-body a, .pp-body strong, .pp-body b { color:#000 !important; } ' +
+                '.pp-body code, .pp-body pre { background:#f2f4f2 !important; color:#111 !important; } ' +
+                '.pp-body blockquote { background:#f5f6f5 !important; border-left-color:#999 !important; } '
+              : '',
       'body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; ' +
         'font-family:"Microsoft YaHei","PingFang SC",sans-serif; }',
       '.pp-page { width:' + o.pageW + 'mm; height:' + o.pageH + 'mm; box-sizing:border-box; ' +
@@ -681,7 +705,7 @@
     var html = '<!DOCTYPE html>\n<html lang="zh-CN"><head><meta charset="utf-8">' +
       '<title>' + esc(o.title || '讲义') + '</title>' +
       head +
-      '<style>' + layoutCSS(o) + '</style>' +
+      '<style>' + layoutCSS(o, isDarkDoc(srcDoc)) + '</style>' +
       '</head><body>' + out + '</body></html>';
     return { html: html, pages: pages.length, scale: k };
   }
@@ -798,7 +822,7 @@
     defaults: DEFAULTS
   };
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this));
-/* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== */
+/* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== */
 
     /* ---- 右下角「🖨 打印讲义」按钮 ---- */
     function initPrintBtn() {
