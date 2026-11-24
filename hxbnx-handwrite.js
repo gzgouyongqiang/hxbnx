@@ -564,10 +564,20 @@
 
     /* ---- 1. 取模块（body 顶层子元素）---- */
     var mods = [];
+    var forceBreak = [];          // forceBreak[i] = 第 i 个模块之前必须换页
+    var pendingBreak = false;
     var kids = srcBody.children;
     for (var i = 0; i < kids.length; i++) {
-      if (isRuntimeNode(kids[i])) continue;
-      mods.push(kids[i]);
+      var kid = kids[i];
+      if (isRuntimeNode(kid)) continue;
+      var kcls = (typeof kid.className === 'string') ? kid.className : '';
+      var isPB = /\bpage-?break\b/i.test(kcls) || kid.getAttribute('data-page-break') === '1';
+      var kidH = kid.offsetHeight;
+      // 纯分页标记（几乎没高度）不占版面，只记下「这里要断页」
+      if (isPB && kidH < 3) { pendingBreak = true; continue; }
+      mods.push(kid);
+      forceBreak.push(pendingBreak || (isPB && kidH >= 3));
+      pendingBreak = false;
     }
     if (!mods.length) return null;
 
@@ -592,7 +602,7 @@
     var meas = srcDoc.createElement('div');
     meas.setAttribute('style', 'position:absolute;left:-99999px;top:0;width:' + W + 'px;visibility:hidden;');
     srcBody.appendChild(meas);
-    var hArr = [], topArr = [], botArr = [], mbArr = [];
+    var hArr = [], topArr = [], botArr = [], mbArr = [], innerBots = [];
     for (var m = 0; m < mods.length; m++) {
       var c = mods[m].cloneNode(true);
       meas.appendChild(c);
@@ -602,6 +612,19 @@
       var mbs = srcWin.getComputedStyle ? srcWin.getComputedStyle(c) : null;
       var mb = mbs ? parseFloat(mbs.marginBottom) : 0;
       mbArr.push(isFinite(mb) ? mb : 0);
+
+      // 模块内部块级元素的底边（文档坐标）——跨页硬切时用来吸附切点
+      var cTop = c.offsetTop;
+      var cRect = c.getBoundingClientRect();
+      var blocks = c.querySelectorAll('p,li,tr,pre,blockquote,h1,h2,h3,h4,h5,h6,table,ul,ol,div,section,figure,img');
+      var bots = [];
+      for (var q = 0; q < blocks.length; q++) {
+        var br = blocks[q].getBoundingClientRect();
+        if (br.height < 2) continue;
+        bots.push(cTop + (br.bottom - cRect.top));
+      }
+      bots.sort(function (a, b) { return a - b; });
+      innerBots.push(bots);
     }
     srcBody.removeChild(meas);
 
@@ -611,27 +634,78 @@
       span.push(hArr[sp] + mbArr[sp]);
     }
 
-    /* ---- 4. 分页 ----
-       规则：只要「下一个模块的底」还在本页可用高度内，就放进本页；
-       于是每页覆盖的文档区间是连续的 [topArr[首], botArr[尾]+mb]，
-       下一个模块绝不会在页尾露出半截。 */
-    var pages = [], cur = [];
-    for (var p = 0; p < mods.length; p++) {
-      if (cur.length) {
-        var first0 = cur[0];
-        var startY0 = topArr[first0];
-        var nextBottom = botArr[p] + mbArr[p];
-        if (nextBottom - startY0 > availHLayout) {
-          pages.push(cur);
-          cur = [p];
-        } else {
-          cur.push(p);
-        }
-      } else {
-        cur.push(p);
-      }
+    /* ---- 4. 分页（按绝对区间切）----
+       每页记成一个 [start, end) 的文档坐标区间，渲染时用负 margin 滚到 start。
+       规则：
+         a) 贪心：下一个模块的底还在本页可用高内，就并进来；
+         b) 单个模块本身高过一页 → 按页高硬切成多页（原来会整块塞进一页被裁掉）；
+         c) 页尾是标题、后面还有内容 → 把标题推到下一页（避免孤立标题）；
+         d) 模块带 .page-break → 它前面强制断页。 */
+    var docEnd = 0;
+    for (var de = 0; de < mods.length; de++) {
+      var bde = botArr[de] + mbArr[de];
+      if (bde > docEnd) docEnd = bde;
     }
-    if (cur.length) pages.push(cur);
+
+    function isHeadingMod(idx) {
+      var el = mods[idx];
+      if (!el) return false;
+      var tag = (el.tagName || '').toUpperCase();
+      if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'H4' || tag === 'H5' || tag === 'H6') return true;
+      var c = (typeof el.className === 'string') ? el.className : '';
+      return /\b(sub-?title|sec-?title|heading|card-?title)\b/i.test(c);
+    }
+
+    var pages = [];
+    var mi = 0;
+    var startY = topArr[0];
+    var guard = 0;
+    while (mi < mods.length && guard++ < 20000) {
+      var endY = startY;
+      var mj = mi;
+      while (mj < mods.length) {
+        if (mj > mi && forceBreak[mj]) break;                  // d) 手动分页符
+        var bj = botArr[mj] + mbArr[mj];
+        if (bj - startY > availHLayout + 0.5) break;           // a) 放不下
+        endY = bj;
+        mj++;
+      }
+
+      if (mj === mi) {
+        // b) 第一个模块就放不下 → 硬切一页
+        var limit = startY + availHLayout;
+        var cut = Math.min(limit, botArr[mi] + mbArr[mi]);
+        // 切点吸附到块边界：宁可少放一点，也不让一段文字被切一半露在页尾
+        var cand = innerBots[mi];
+        if (cand && cand.length) {
+          for (var cq = cand.length - 1; cq >= 0; cq--) {
+            if (cand[cq] <= limit - 2) {
+              if (cand[cq] > startY + 40) cut = cand[cq];
+              break;
+            }
+          }
+        }
+        if (cut <= startY) cut = startY + 1;
+        pages.push({ start: startY, end: cut });
+        startY = cut;
+        if (startY >= botArr[mi] + mbArr[mi] - 0.5) {
+          mi++;
+          if (mi < mods.length && topArr[mi] > startY) startY = topArr[mi];
+        }
+        continue;
+      }
+
+      // c) 页尾孤标题：本页至少还留一个模块才推
+      while (mj - 1 > mi && mj < mods.length && isHeadingMod(mj - 1)) {
+        mj--;
+        endY = botArr[mj - 1] + mbArr[mj - 1];
+      }
+
+      pages.push({ start: startY, end: endY });
+      mi = mj;
+      if (mi < mods.length) startY = (topArr[mi] > endY) ? topArr[mi] : endY;
+    }
+    if (!pages.length) pages.push({ start: 0, end: docEnd || 1 });
 
     /* ---- 5. 手写板书 ---- */
     var inkSVG = '';
@@ -682,14 +756,12 @@
 
     var out = '';
     for (var pg = 0; pg < pages.length; pg++) {
-      var first = pages[pg][0];
-      var lastI = pages[pg][pages[pg].length - 1];
-      var startY = topArr[first];
-      var endY = botArr[lastI] + mbArr[lastI];
-      var viewH = Math.max(0, Math.min(availHpx, (endY - startY) * k));
+      var pgStart = pages[pg].start;
+      var pgEnd = pages[pg].end;
+      var viewH = Math.max(0, Math.min(availHpx, (pgEnd - pgStart) * k));
       out += '<div class="pp-page">';
       out += '<div class="pp-view" style="height:' + viewH.toFixed(2) + 'px;">';
-      out += '<div class="pp-body" style="width:' + W + 'px;zoom:' + k.toFixed(5) + ';margin-top:-' + startY.toFixed(2) + 'px;">';
+      out += '<div class="pp-body" style="width:' + W + 'px;zoom:' + k.toFixed(5) + ';margin-top:-' + pgStart.toFixed(2) + 'px;">';
       out += bodyHTML;
       out += inkSVG;
       out += '</div></div>';
@@ -754,7 +826,8 @@
       cd.open();
       cd.write(res.html);
       cd.close();
-      if (info) info.textContent = '共 ' + res.pages + ' 页 · A4 横向 · 内容缩放 ' + Math.round(res.scale * 100) + '%';
+      if (info) info.textContent = '共 ' + res.pages + ' 页 · A4 ' +
+        (cur.pageW > cur.pageH ? '横向' : '纵向') + ' · 内容缩放 ' + Math.round(res.scale * 100) + '%';
     }
 
     var bar = hostDoc.createElement('div');
@@ -800,6 +873,30 @@
     chk('页码', 'pageNumbers', '每页右下角标页码');
     chk('板书', 'showInk', '把触屏上手写的粉笔字印进讲义');
 
+    // 纸张方向
+    var vsep = hostDoc.createElement('span');
+    vsep.setAttribute('style', 'width:1px;height:18px;background:rgba(255,255,255,.25);margin:0 2px;');
+    bar.appendChild(vsep);
+    var sel = hostDoc.createElement('select');
+    sel.setAttribute('style', 'height:28px;border:none;border-radius:7px;background:rgba(255,255,255,.16);' +
+      'color:#fff;font-size:12px;padding:0 8px;cursor:pointer;outline:none;');
+    var opts2 = [['land', 'A4 横排'], ['port', 'A4 纵排']];
+    for (var oi = 0; oi < opts2.length; oi++) {
+      var op = hostDoc.createElement('option');
+      op.value = opts2[oi][0];
+      op.textContent = opts2[oi][1];
+      op.setAttribute('style', 'background:#23262c;color:#fff;');
+      sel.appendChild(op);
+    }
+    sel.value = (cur.pageW > cur.pageH) ? 'land' : 'port';
+    sel.title = '横排一屏一页（推荐）；纵排适合纯文字稿，字会小一些';
+    sel.addEventListener('change', function () {
+      if (sel.value === 'port') { cur.pageW = 210; cur.pageH = 297; cur.noteW = 30; }
+      else { cur.pageW = 297; cur.pageH = 210; cur.noteW = 42; }
+      render();
+    });
+    bar.appendChild(sel);
+
     var tip = hostDoc.createElement('span');
     tip.textContent = '打印对话框请选：A4、横向、边距「无」、勾选「背景图形」';
     tip.setAttribute('style', 'opacity:.55;font-size:12px;');
@@ -822,7 +919,7 @@
     defaults: DEFAULTS
   };
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this));
-/* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== */
+/* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== *//* ===== PRINT-ENGINE-END ===== */
 
     /* ---- 右下角「🖨 打印讲义」按钮 ---- */
     function initPrintBtn() {
