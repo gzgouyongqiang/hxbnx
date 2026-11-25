@@ -1,53 +1,81 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第04讲 离子方程式·氧化还原 · 课堂讲义</title>
+<title>第04讲 离子方程式·氧化还原 · 第一轮讲义</title>
 <style>
 :root{
   --bg:#2a342c;--panel:#333f36;--panel2:#3a4840;--panel3:#425148;
   --text:#ffffff;--dim:#9fb09d;--accent:#9ccb8c;--gold:#e8d48f;
   --red:#ff5252;--blue:#a8d0e8;--border:#46564c;
+  --lw:74%;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",sans-serif;
-  font-size:19px;line-height:1.65;padding:22px 26px 80px}
-.wrap{max-width:1560px;margin:0 auto}
-header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
-  border-bottom:2px solid var(--border);padding-bottom:12px;margin-bottom:20px}
-header h1{font-size:32px;color:var(--accent);letter-spacing:1px}
-header .tag{background:var(--accent);color:#22301f;border-radius:6px;padding:2px 12px;font-size:15px;font-weight:700}
-header .sub{color:var(--dim);font-size:15px;margin-left:auto;padding-right:66px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
-.full{grid-column:1/-1}
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 18px}
-.panel h2{font-size:20px;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  font-size:19px;line-height:1.65;padding:20px 0 70px}
+.top{max-width:1740px;margin:0 auto 16px;padding:0 24px}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  border-bottom:2px solid var(--border);padding-bottom:11px}
+header h1{font-size:31px;color:var(--accent);letter-spacing:.5px}
+header .tag{background:var(--accent);color:#22301f;border-radius:6px;padding:2px 11px;font-size:15px;font-weight:700}
+header .meta{color:var(--dim);font-size:15px;padding-right:70px}
+header .meta b{color:var(--gold);font-weight:600}
+
+/* ---------- 两栏骨架 ---------- */
+.shell{display:grid;grid-template-columns:minmax(430px,var(--lw)) 9px minmax(300px,1fr);
+  max-width:1740px;margin:0 auto;padding:0 24px;align-items:start}
+.col-main{min-width:0;padding-right:14px}
+.split{position:sticky;top:0;height:100vh;cursor:col-resize;z-index:5}
+.split::before{content:"";position:absolute;left:4px;top:0;width:2px;height:100%;background:var(--border);
+  transition:background .15s}
+.split:hover::before,.split.on::before{background:var(--accent);width:3px;left:3px}
+.split i{position:absolute;left:-5px;top:50%;width:19px;height:48px;margin-top:-24px;border-radius:9px;
+  background:#4d5f52;border:1px solid #6d8573;display:flex;align-items:center;
+  justify-content:center;color:#c4d5c0;font-size:13px;font-style:normal;letter-spacing:0;
+  writing-mode:vertical-rl;user-select:none}
+.split:hover i{color:var(--gold);border-color:var(--gold)}
+.col-side{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto;padding-left:13px}
+.col-side::-webkit-scrollbar{width:5px}
+.col-side::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ---------- 主栏 ---------- */
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:11px;
+  padding:15px 19px;margin-bottom:15px}
+.panel h2{font-size:20px;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:9px}
 .panel h2 .n{background:var(--accent);color:#22301f;border-radius:5px;padding:0 8px;font-size:15px}
-.score{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.score div{background:var(--panel2);border-radius:8px;padding:10px 14px}
-.score b{display:block;font-size:26px;color:var(--gold);line-height:1.2}
-.score span{font-size:14px;color:var(--dim)}
-kbd{background:var(--panel3);border-radius:4px;padding:1px 6px;font-size:15px;color:var(--gold);
-  font-family:inherit;border:1px solid var(--border)}
-ol.k{padding-left:22px}
-ol.k li{margin-bottom:9px}
-ol.k li b{color:var(--gold)}
-.note{color:var(--blue);font-size:15px;margin-top:6px}
-table{width:100%;border-collapse:collapse;font-size:15.5px}
+.panel h2 em{font-style:normal;font-size:14px;color:var(--dim);font-weight:400;margin-left:auto}
+.lead{color:var(--blue);font-size:16.5px;margin:0 0 11px}
+.blk{margin-top:15px;border-top:1px dashed var(--border);padding-top:13px}
+.blk:first-of-type{border-top:none;padding-top:2px;margin-top:4px}
+.blk h3{font-size:18px;color:var(--gold);margin-bottom:8px;font-weight:700}
+.blk p{margin:8px 0}
+.blk ul,.blk ol{margin:7px 0 7px 24px}
+.blk li{margin:6px 0}
+.blk li b,.blk p b{color:var(--gold)}
+.must{background:rgba(232,212,143,.1);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;
+  padding:9px 15px;margin-top:12px;font-size:16.5px;color:var(--gold)}
+.must b{color:#fff}
+
+/* ---------- 表格 ---------- */
+table{width:100%;border-collapse:collapse;font-size:16px;margin:9px 0}
 th,td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}
 th{background:var(--panel3);color:var(--gold);font-weight:600;white-space:nowrap}
 td.y{color:var(--blue);white-space:nowrap}
-.q{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:13px 17px}
+td.c{text-align:center;white-space:nowrap}
+tr.split-td td{background:rgba(168,208,232,.06)}
+
+/* ---------- 题目 / 答案 ---------- */
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+.q{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:13px 16px}
 .q .src{font-size:14px;color:var(--dim);margin-bottom:6px}
 .q .stem{font-weight:600}
-.q .opt{margin-top:6px;padding-left:4px}
-.q .opt div{margin:3px 0}
+.q .opt{margin-top:7px}
+.q .opt div{margin:4px 0}
 .a{background:#313b33;border:1px solid var(--border);border-left:3px solid var(--accent);
   border-radius:10px;padding:0;align-self:stretch;display:flex;flex-direction:column}
+.akey{color:var(--gold);font-size:19px;font-weight:700}
 .a .step{margin:7px 0}
 .a .step i{color:var(--accent);font-style:normal;font-weight:700;margin-right:6px}
-.akey{color:var(--gold);font-size:19px;font-weight:700;margin-bottom:8px}
-/* 折叠答案：与课堂展示 HTML 同款（▸/▾ + 虚线分隔） */
 details{background:var(--panel3);border:1px solid #5a6d5f;border-radius:8px;margin:0;padding:0}
-details.aKey{background:var(--panel3);border:1px solid #5a6d5f;border-radius:9px 9px 0 0}
+details.aKey{border-radius:9px 9px 0 0}
 details.aKey summary{background:var(--panel3);border-radius:9px 9px 0 0;color:var(--gold);border-bottom:none}
 details.aKey[open] summary{border-bottom:1px solid var(--border)}
 details.aMain{background:transparent;border:none;border-radius:0}
@@ -55,82 +83,197 @@ details.aMain summary{background:var(--panel2);border-bottom:1px solid var(--bor
 details.aMain[hidden]{display:none!important}
 .fold-tip{display:none}
 details.aKey:not([open]) ~ .fold-tip{display:block;margin:auto;color:var(--dim);
-  font-size:15px;text-align:center;padding:26px 18px;line-height:1.9;letter-spacing:.5px}
+  font-size:15px;text-align:center;padding:24px 18px;line-height:1.9;letter-spacing:.5px}
 summary{cursor:pointer;font-size:16px;color:var(--accent);font-weight:700;list-style:none;
   padding:9px 14px;display:flex;align-items:center;gap:8px}
 summary::-webkit-details-marker{display:none}
-summary::before{content:"▸";font-size:14px;color:var(--dim)}
-details[open] summary::before{content:"▾"}
+summary::before{content:"\25B8";font-size:14px;color:var(--dim)}
+details[open] summary::before{content:"\25BE"}
 .abody{border-top:1px dashed var(--border);padding:11px 14px}
 details.sub{margin-top:9px;background:var(--panel2)}
 details.sub summary{font-size:15px;color:var(--blue);font-weight:400;padding:7px 12px}
-/* 常见错答：先看它是怎么错的 */
 .cuoda{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--red);
   border-radius:8px;padding:10px 13px;margin-top:10px}
 .cuoda .t{color:var(--red);font-weight:700;font-size:15.5px;margin-bottom:4px}
 .cuoda .mine{color:var(--dim);font-size:13.5px;margin-top:6px}
-/* 自评三问 */
 .selfcheck{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px;
   border-top:1px dashed var(--border);padding-top:10px}
 .selfcheck .lb{font-size:14px;color:var(--dim);margin-right:2px}
 .selfcheck button{background:transparent;border:1px solid var(--border);border-radius:999px;
   color:var(--dim);font-size:14px;padding:3px 12px;cursor:pointer;font-family:inherit}
 .selfcheck button.on{background:rgba(156,203,140,.18);border-color:var(--accent);color:var(--accent);font-weight:700}
-/* 反向命题 */
-.chal{display:flex;flex-direction:column;gap:9px;margin-top:4px}
-.chal .it{background:var(--panel2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 14px}
+.chal{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.chal .it{background:var(--panel2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 15px}
 .chal .it b{color:var(--gold)}
-.chal details{margin-top:7px}
-.chal details summary{font-size:14.5px;color:var(--blue);font-weight:400;padding:5px 10px;background:var(--panel3);border-radius:6px}
-.cond{color:var(--gold);font-size:.86em;border-top:1px solid var(--gold);padding:0 3px;line-height:1.1;display:inline-block;vertical-align:.15em}
+.chal details{margin-top:9px}
+.chal details summary{font-size:15.5px;color:var(--blue);font-weight:400;padding:7px 12px;
+  background:var(--panel3);border-radius:6px}
+.hw{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.hw div{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
+.hw .t{font-size:14px;color:var(--dim);margin-bottom:5px}
+.hw ul{margin:0 0 0 20px;font-size:16.5px}
+.hw li{margin:4px 0}
+.cond{color:var(--gold);font-size:.86em;border-top:1px solid var(--gold);padding:0 3px;
+  line-height:1.1;display:inline-block;vertical-align:.15em}
 .wrong{color:var(--red)}
 .right{color:var(--accent)}
-.chain{display:flex;gap:10px;flex-wrap:wrap;font-size:15px;color:var(--dim)}
-.chain a{color:var(--blue);text-decoration:none;background:var(--panel2);border:1px solid var(--border);
-  border-radius:6px;padding:4px 11px}
-#fb{position:fixed;right:18px;bottom:18px;z-index:9;background:var(--panel3);color:var(--dim);
-  border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:14px;font-family:inherit;cursor:pointer}
+.tier{color:var(--gold)}
+
+/* ---------- 随身卡 ---------- */
+.card{background:var(--panel);border:1px solid var(--border);border-radius:11px;
+  padding:13px 15px;margin-bottom:12px}
+.card h4{font-size:16px;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.card h4 em{font-style:normal;font-size:12px;color:var(--dim);font-weight:400;margin-left:auto}
+.tl{list-style:none;font-size:15px}
+.tl li{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dashed var(--border)}
+.tl li:last-child{border-bottom:none}
+.tl b{color:var(--gold);font-weight:600;white-space:nowrap;font-size:14px}
+.ml{list-style:none;font-size:15.5px;line-height:1.55}
+.ml li{padding:5px 0 5px 26px;position:relative;border-bottom:1px dashed var(--border);counter-increment:m}
+.ml li:last-child{border-bottom:none}
+.ml li::before{content:counter(m);position:absolute;left:0;top:6px;width:18px;height:18px;border-radius:50%;
+  background:var(--panel3);color:var(--gold);font-size:12px;text-align:center;line-height:18px;font-weight:700}
+.ml{counter-reset:m}
+.card.warn .ml li::before{background:rgba(255,82,82,.22);color:var(--red)}
+.card.warn h4{color:var(--red)}
+.bb{list-style:none;font-size:15.5px}
+.bb li{padding:5px 0 5px 14px;position:relative;border-bottom:1px dashed var(--border)}
+.bb li:last-child{border-bottom:none}
+.bb li::before{content:"·";position:absolute;left:2px;color:var(--gold);font-weight:700}
+.bb b{color:var(--gold)}
+
+#fb{background:transparent;color:var(--dim);border:1px solid var(--border);border-radius:7px;
+  padding:2px 12px;font-size:14px;font-family:inherit;cursor:pointer;align-self:center;
+  margin-left:auto;margin-right:10px}
 #fb:hover{color:var(--gold);border-color:var(--gold)}
 body.focus .panel{transition:opacity .18s}
 body.focus .panel.dim{opacity:.25}
-@media (max-width:1000px){.grid{grid-template-columns:1fr}.score{grid-template-columns:1fr 1fr}}
+/* 手写笔脚本自带的两条浮动条：压缩并挪到右下，避免遮挡正文 */
+#hxbnx-disp-bar{left:auto!important;right:10px!important;bottom:8px!important;opacity:.2!important}
+#hxbnx-disp-bar:hover{opacity:.9!important}
+#hxbnx-disp-bar button{height:26px!important;padding:0 9px!important;font-size:12px!important;border-radius:7px!important}
+
+@media (max-width:1080px){
+  .shell{grid-template-columns:1fr}
+  .split{display:none}
+  .col-main{padding-right:0}
+  .col-side{position:static;max-height:none;padding-left:0}
+  .qa,.hw{grid-template-columns:1fr}
+}
 @media print{
   body{background:#fff;color:#000;font-size:11pt;padding:0}
-  .panel,.q,.a{background:#fff;border:1px solid #999}
-  .panel h2,header h1{color:#000}
-  details{display:block}
+  .shell{display:block;padding:0}
+  .split,#fb,#hxbnx-disp-bar,#hxbnx-draw-toggle{display:none!important}
+  .col-side{position:static;max-height:none;padding:0;margin-top:14px}
+  .panel,.q,.card,.cuoda,.hw div{background:#fff;border:1px solid #999}
+  .panel h2,header h1,.card h4,.blk h3{color:#000}
   .a{display:none}
-  .score b{color:#000}
   th{background:#eee;color:#000}
-  kbd{background:#eee;color:#000}
+  .must{background:#fff8e1;color:#000}
+  table{font-size:9.5pt}
 }
-</style></head><body><div class="wrap">
-<header><h1>第04讲　离子方程式·氧化还原</h1><span class="tag">保分盘</span><span class="sub">2 课时 · 卷面 6–8 分</span></header>
-<div class="grid">
-<div class="full panel"><h2><span class="n">01</span>这一讲值几分</h2><div class="score">
-<div><b>4 分</b><span>选择题 1 道：方程式书写正误，六年四考</span></div>
-<div><b>2–4 分</b><span>大题填空：流程题里写离子方程式</span></div>
-<div><b>122 题</b><span>广东四年相关题量，均难 0.66</span></div>
-<div><b>0.85</b><span>本讲目标：把 0.66 拉到 0.85</span></div>
-</div></div>
-<div class="panel"><h2><span class="n">02</span>内核</h2><ol class="k">
-<li><b>四步写</b>：写完整方程式 → 拆成离子 → 删掉两边相同的 → 查原子、电荷、电子。缺一步就漏一个空。</li>
-<li><b>只拆三类</b>：强酸（HCl、H<sub>2</sub>SO<sub>4</sub>、HNO<sub>3</sub>、HBr、HI）、强碱（NaOH、KOH、Ba(OH)<sub>2</sub>、Ca(OH)<sub>2</sub>）、可溶盐。其余一律写整体：弱酸弱碱、水、沉淀、气体、氧化物、单质、配离子。</li>
-<li><b>氧化还原先配电子</b>：得电子总数 = 失电子总数 → 再配电荷（酸性补 H<sup>+</sup>，碱性补 OH<sup>−</sup>）→ 最后补水。产物是什么价态，由电子守恒反推，不靠背。</li>
-<li><b>三个必查</b>：①这反应到底发不发生 ②谁过量，过量的那边还要继续反应 ③产物能不能带 ↓ 或 ↑。</li>
-</ol></div>
-<div class="panel"><h2><span class="n">03</span>外壳谱</h2><table>
-<colgroup><col style="width:58px"><col style="width:46%"><col></colgroup>
-<thead><tr><th>年份</th><th>壳（情境）</th><th>变的是什么</th></tr></thead><tbody>
-<tr><td class="y">2022</td><td>刻蚀电路板废液：H<sub>2</sub>O<sub>2</sub> / FeCl<sub>3</sub> / KSCN / KMnO<sub>4</sub></td><td>壳换成 PCB 车间，四选项还是四种错法</td></tr>
-<tr><td class="y">2023</td><td>氨浸提 Ni、Co（流程大题第 3 空）</td><td>从判对错变成自己写，还加了配离子</td></tr>
-<tr><td class="y">2023</td><td>硝酸氧化配合物，补全方程式</td><td>产物价态不给，只能靠电子守恒反推</td></tr>
-<tr><td class="y">2025</td><td>盐湖卤水脱硼，B(OH)<sub>3</sub> 显酸性</td><td>陌生元素，考的仍是「写不写离子形式」</td></tr>
-<tr><td class="y">2026</td><td>草酸标定 / 过量铁粉 / 铅酸电池 / KHSO<sub>4</sub> 加 Ba(OH)<sub>2</sub></td><td>四选项四个不相干的反应，谁都不连坐</td></tr>
+</style></head><body>
+<div class="top"><header>
+<h1>第04讲　离子方程式·氧化还原</h1><span class="tag">保分盘</span>
+<button id="fb" type="button">聚焦</button>
+<span class="meta">第一轮 · <b>2 课时</b> · 卷面 <b>6–8 分</b></span>
+</header></div>
+<div class="shell"><div class="col-main">
+<section class="panel"><h2><span class="n">01</span>这一讲在卷面上占哪几格<em>2 课时</em></h2>
+<p class="lead">这一讲只管一件事：<b>给你一个反应，你能不能写出一个又对、又配得平、又拿得到分的式子。</b>它在卷面上占两处 —— 选择题一道（判四个式子谁对），大题一到两个空（自己写）。选择题那 4 分是保分盘里最不该丢的分：会就是会，不会就是不会，没有中间地带。</p>
+<table><thead><tr>
+<th>题位</th>
+<th>怎么考</th>
+<th>分值</th>
+</tr></thead><tbody>
+<tr><td class="y">选择题</td><td><b>必考。</b>给四个互不相干的反应，判哪个离子方程式书写正确 —— 2026 卷一次上了两道（第 35、37 题）</td><td class="c">4 分 / 道</td></tr>
+<tr><td class="y">工业流程大题</td><td><b>几乎每套都有。</b>给情境自己写，常带配离子、陌生元素、陌生价态</td><td class="c">2–3 分</td></tr>
+<tr><td class="y">原理综合大题</td><td><b>常有。</b>补全缺项，或产物不给、只能靠电子守恒反推</td><td class="c">2 分</td></tr>
+<tr><td class="y">实验大题</td><td><b>偶有。</b>解释现象时顺手写一个式子（沉淀、氧化）</td><td class="c">1–2 分</td></tr>
 </tbody></table>
-<p class="note">五年五套壳，内核一个字没变：拆得对不对、配得平不平、产物真不真。</p></div>
-<div class="full panel"><h2><span class="n">04</span>拆壳示范</h2><div class="grid">
-<div class="q"><div class="src">2026·广东卷题组　选择题（11–16）第 37 题　难度 0.68</div><div class="stem">下列反应的方程式书写正确的是</div>
+<p class="lead" style="margin:9px 0 0">题库里与本讲相关的题（含变式）122 道，<b>均难 0.63</b> —— 一半以上的人写不对。而它考的东西，全部在本页第 02 段里，没有一道题需要额外知识。</p>
+</section>
+<section class="panel"><h2><span class="n">02</span>知识主干<em>全部必学，讲完这一节就能做题</em></h2>
+<div class="blk">
+<h3>块一　拆的边界：谁拆，谁不许拆</h3>
+<p>离子方程式的对错，十道里八道输在「拆」这一步。规则只有一句，背下来就够用：<b>只有强酸、强碱、可溶盐拆成离子；其余全部照抄分子式。</b>不是「能溶就拆」，是「溶了还完全电离才拆」。</p>
+<table><thead><tr><th>必须拆成离子</th><th>一律写分子式（不拆）</th></tr></thead><tbody>
+<tr><td><b>强酸</b>：HCl、HBr、HI、HNO<sub>3</sub>、稀 H<sub>2</sub>SO<sub>4</sub></td><td><b>弱酸</b>：CH<sub>3</sub>COOH、H<sub>2</sub>CO<sub>3</sub>、H<sub>2</sub>SO<sub>3</sub>、HClO、HF、H<sub>2</sub>C<sub>2</sub>O<sub>4</sub>（草酸）、HNO<sub>2</sub></td></tr>
+<tr><td><b>强碱</b>：NaOH、KOH、Ba(OH)<sub>2</sub>、Ca(OH)<sub>2</sub> 的澄清溶液</td><td><b>弱碱与难溶碱</b>：NH<sub>3</sub>·H<sub>2</sub>O、Fe(OH)<sub>3</sub>、Cu(OH)<sub>2</sub>、Mg(OH)<sub>2</sub>、Al(OH)<sub>3</sub></td></tr>
+<tr><td><b>可溶盐</b>：钠盐、钾盐、铵盐、硝酸盐、氯化物（除 AgCl）、硫酸盐（除 BaSO<sub>4</sub>）</td><td><b>其余全部</b>：难溶盐、微溶物的浊液、氧化物、单质、气体、水、配离子（如 [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>、Fe(SCN)<sub>3</sub>）</td></tr>
+</tbody></table>
+<ul><li><b>浓度也管拆不拆</b>：浓硫酸以分子存在，<span class="wrong">不拆</span>；浓盐酸、浓硝酸照拆。题目只写「硫酸」时默认稀的，要拆。</li><li><b>微溶物看状态</b>：澄清石灰水拆成 Ca<sup>2+</sup>+2OH<sup>−</sup>；石灰乳、石灰浆写 Ca(OH)<sub>2</sub>。</li><li><b>酸式盐看环境</b>：NaHSO<sub>4</sub> 在水溶液中拆成 Na<sup>+</sup>+H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>；熔融态只拆成 Na<sup>+</sup>+HSO<sub>4</sub><sup>−</sup>（HSO<sub>4</sub><sup>−</sup> 不电离）。</li><li><b>铵盐遇碱看加热</b>：稀溶液不加热写 NH<sub>3</sub>·H<sub>2</sub>O；加热或浓溶液才写 NH<sub>3</sub>↑+H<sub>2</sub>O。</li></ul>
+<div class="must">口诀：<b>强弱看电离，溶浊看状态，浓稀看溶剂，酸碱式看环境。</b>　四看一眼扫完，比逐条对照快得多。</div>
+</div>
+<div class="blk">
+<h3>块二　先会算化合价：配平的第一步就栽在这</h3>
+<p>配平的第一步是标化合价。高考真正会用到、又真正会错的，只有下面六个。<b>直接用，不推导：</b></p>
+<table><thead><tr><th>物质</th><th>关键元素</th><th>化合价</th><th>怎么来的</th></tr></thead><tbody>
+<tr><td>Fe<sub>3</sub>O<sub>4</sub></td><td>Fe</td><td>+8/3（平均）</td><td>4 个 O 共 −8，3 个 Fe 共 +8；其中 2 个是 +3、1 个是 +2</td></tr>
+<tr><td>Na<sub>2</sub>O<sub>2</sub></td><td>O</td><td>−1</td><td>2 个 Na 共 +2，2 个 O 共 −2</td></tr>
+<tr><td>HClO、ClO<sup>−</sup></td><td>Cl</td><td>+1</td><td>H 是 +1、O 是 −2</td></tr>
+<tr><td>S<sub>2</sub>O<sub>3</sub><sup>2−</sup></td><td>S</td><td>+2（平均）</td><td>3 个 O 共 −6，整体 −2，2 个 S 共 +4</td></tr>
+<tr><td>C<sub>2</sub>O<sub>4</sub><sup>2−</sup>（草酸根）</td><td>C</td><td>+3</td><td>4 个 O 共 −8，整体 −2，2 个 C 共 +6</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> / NO<sub>3</sub><sup>−</sup></td><td>N</td><td>−3 / +5</td><td>基本功，必须张口就来</td></tr>
+</tbody></table>
+<p><b>平均价态怎么用：</b>只在配电子时用平均值，不用去分哪个原子是几价。但遇到<b>歧化反应</b>（同一元素既升又降，如 Cl<sub>2</sub> 与 NaOH、Na<sub>2</sub>O<sub>2</sub> 与水），必须分开算：一部分升、一部分降，平均价在这里会骗你。</p>
+<p><b>氧化性、还原性强弱，只记一条链：</b>还原性 S<sup>2−</sup> &gt; SO<sub>3</sub><sup>2−</sup> &gt; I<sup>−</sup> &gt; Fe<sup>2+</sup> &gt; Br<sup>−</sup> &gt; Cl<sup>−</sup>。判断「谁先反应」时，站在这条链上看就够了。</p>
+<div class="must">一句话：<b>价态算错，后面全错。</b>　Fe<sub>3</sub>O<sub>4</sub> 的 +8/3 和 Na<sub>2</sub>O<sub>2</sub> 的 −1，这两个错一次就要再错一整道题。</div>
+</div>
+<div class="blk">
+<h3>块三　配平：电子 → 电荷 → 原子，顺序不能倒</h3>
+<p>氧化还原型的离子方程式，<b>不要背系数</b>。背下来的系数一换物质就废。按三步走，每步都有硬检查，错了立刻能查出来：</p>
+<ol><li><b>配电子</b>：标出化合价变了的元素，让「升的总数 = 降的总数」，先把这两个物质的系数定死。</li><li><b>配电荷</b>：算两边电荷的代数和。<b>酸性补 H<sup>+</sup>，碱性补 OH<sup>−</sup></b>，中性就补水（并把水看成 H<sup>+</sup>+OH<sup>−</sup> 来处理）。这一步是大题的主要失分点。</li><li><b>配原子</b>：最后补水，用氢核氧、用氧核氢。别硬凑，凑出来的数一定错。</li></ol>
+<table><thead><tr><th>氧化剂</th><th>酸性</th><th>中性／弱碱性</th><th>强碱性</th></tr></thead><tbody>
+<tr><td>MnO<sub>4</sub><sup>−</sup></td><td>Mn<sup>2+</sup>（得 5e<sup>−</sup>）</td><td>MnO<sub>2</sub>（得 3e<sup>−</sup>）</td><td>MnO<sub>4</sub><sup>2−</sup>（得 1e<sup>−</sup>）</td></tr>
+<tr><td>Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup></td><td>Cr<sup>3+</sup>（每个 Cr 得 3e<sup>−</sup>）</td><td>不考</td><td>不考</td></tr>
+<tr><td>NO<sub>3</sub><sup>−</sup></td><td>NO（得 3e<sup>−</sup>）；极稀得 NH<sub>4</sub><sup>+</sup></td><td>不氧化</td><td>不氧化</td></tr>
+<tr><td>H<sub>2</sub>O<sub>2</sub></td><td>作氧化剂 → H<sub>2</sub>O；作还原剂 → O<sub>2</sub></td><td>同左</td><td>同左</td></tr>
+</tbody></table>
+<p><b>最值钱的一张表是 MnO<sub>4</sub><sup>−</sup> 那一行。</b>同一个高锰酸钾，酸性下变成 Mn<sup>2+</sup>、中性下变成 MnO<sub>2</sub>、强碱下变成 MnO<sub>4</sub><sup>2−</sup>，系数跟着全变。题目说「酸性 KMnO<sub>4</sub>」，产物就只能是 Mn<sup>2+</sup>，这一步判错，后面配得再平也零分。</p>
+<div class="must">口诀：<b>先电子、再电荷、后原子。</b>　倒过来做必崩 —— 系数还没定就去补 H<sup>+</sup>，补多少都是猜的。</div>
+</div>
+<div class="blk">
+<h3>块四　量比与顺序：同一对试剂，投料不同产物就不同</h3>
+<p>题面出现「<b>少量</b>」「<b>过量</b>」「<b>至中性</b>」「<b>恰好完全沉淀</b>」时，这就不是配平题，是<b>投料比题</b>。做法固定：<b>把「少」的那个系数定为 1，看它能消耗多少「多」的，按这个比例写。过量的那部分不写进式子</b>——它没参加反应，留在溶液里当旁观者。</p>
+<table><thead><tr><th>体系</th><th>前一种投料</th><th>后一种投料</th></tr></thead><tbody>
+<tr><td>CO<sub>2</sub> 通入 NaOH</td><td><b>CO<sub>2</sub> 少量</b> → CO<sub>3</sub><sup>2−</sup>：2OH<sup>−</sup>+CO<sub>2</sub>=CO<sub>3</sub><sup>2−</sup>+H<sub>2</sub>O</td><td><b>CO<sub>2</sub> 过量</b> → HCO<sub>3</sub><sup>−</sup>：OH<sup>−</sup>+CO<sub>2</sub>=HCO<sub>3</sub><sup>−</sup></td></tr>
+<tr><td>Al<sup>3+</sup> 加 NaOH</td><td><b>NaOH 少量</b> → Al(OH)<sub>3</sub>↓：Al<sup>3+</sup>+3OH<sup>−</sup>=Al(OH)<sub>3</sub>↓</td><td><b>NaOH 过量</b> → AlO<sub>2</sub><sup>−</sup>：Al<sup>3+</sup>+4OH<sup>−</sup>=AlO<sub>2</sub><sup>−</sup>+2H<sub>2</sub>O</td></tr>
+<tr><td>Fe 加稀 HNO<sub>3</sub></td><td><b>Fe 少量</b> → Fe<sup>3+</sup>：Fe+NO<sub>3</sub><sup>−</sup>+4H<sup>+</sup>=Fe<sup>3+</sup>+NO↑+2H<sub>2</sub>O</td><td><b>Fe 过量</b> → Fe<sup>2+</sup>：3Fe+2NO<sub>3</sub><sup>−</sup>+8H<sup>+</sup>=3Fe<sup>2+</sup>+2NO↑+4H<sub>2</sub>O</td></tr>
+<tr><td>KHSO<sub>4</sub> 加 Ba(OH)<sub>2</sub></td><td><b>加少量</b>，至 SO<sub>4</sub><sup>2−</sup> 恰好沉淀：1∶1 投料，溶液<b>仍呈酸性</b>（还剩 1 个 H<sup>+</sup>）</td><td><b>继续加</b>，至溶液呈中性：2∶1 投料，Ba<sup>2+</sup> 不够，SO<sub>4</sub><sup>2−</sup> 只能带走一半</td></tr>
+</tbody></table>
+<p><b>第二层是顺序。</b>投料比算对了还不够，还要问一句「先跟谁反应」。规则只有一条：<b>还原性（或氧化性）强的先反应。</b></p>
+<ul><li>向 FeI<sub>2</sub> 溶液通 Cl<sub>2</sub>：I<sup>−</sup> 的还原性强于 Fe<sup>2+</sup>，<b>先氧化 I<sup>−</sup></b>。少量 Cl<sub>2</sub> 时只有 I<sup>−</sup> 反应。</li><li>向 FeBr<sub>2</sub> 溶液通 Cl<sub>2</sub>：Fe<sup>2+</sup> 的还原性强于 Br<sup>−</sup>，<b>先氧化 Fe<sup>2+</sup></b>。</li><li>把铁粉加入 FeCl<sub>3</sub> 与 CuCl<sub>2</sub> 的混合液：<b>先还原 Fe<sup>3+</sup></b>，再置换 Cu<sup>2+</sup>。</li></ul>
+<div class="must">一句话：<b>先定投料比，再排反应顺序，最后才配平。</b>　顺序错了，式子配得再漂亮也是错的。</div>
+</div>
+<div class="blk">
+<h3>块五　判错清单：五字码，一个一个对着扫</h3>
+<p>选择题考的是「判错」，不是「写对」。所以你要练的不是写式子，是<b>一眼看出它错在哪一类</b>。把下面五个字记住，四个选项扫一遍，每题不超过 40 秒。<b>判的顺序也是这个顺序：先判假，再判拆，再判平，最后判量和产。</b>因为一个根本不发生的反应，配平配得再完美也拿不到分。</p>
+<table><thead><tr><th>码</th><th>什么意思</th><th>一眼判据</th><th>典型例子</th></tr></thead><tbody>
+<tr><td><b>假</b></td><td>根本不反应</td><td>弱酸不能制强酸；可溶盐之间不产生沉淀气体水</td><td>NaHCO<sub>3</sub> 加 CaCl<sub>2</sub> 写「生成 CaCO<sub>3</sub>↓」</td></tr>
+<tr><td><b>拆</b></td><td>该拆没拆 / 不该拆却拆了</td><td>弱酸弱碱、水、浓硫酸、微溶浊液出现在离子形式里</td><td>草酸写成 C<sub>2</sub>O<sub>4</sub><sup>2−</sup></td></tr>
+<tr><td><b>平</b></td><td>原子或电荷不平</td><td>数两边电荷代数和，不相等直接判死</td><td>电解食盐水左边 −2、右边 0</td></tr>
+<tr><td><b>量</b></td><td>没算投料比 / 没算先后</td><td>题面有「少量」「过量」「至中性」</td><td>KHSO<sub>4</sub> 与 Ba(OH)<sub>2</sub> 至中性写成 1∶1</td></tr>
+<tr><td><b>产</b></td><td>产物是编的</td><td>环境不符、该溶的写了 ↓、弱酸被拆开写</td><td>酸性 KMnO<sub>4</sub> 写成 MnO<sub>2</sub></td></tr>
+</tbody></table>
+<div class="must">扫题顺序：<b>假 → 拆 → 平 → 量 → 产。</b>　前三个扫完，四个选项通常已经排除掉两三个。</div>
+</div>
+</section>
+<section class="panel"><h2><span class="n">03</span>命题生长点<em>同一个内核，五年五套壳</em></h2>
+<p class="lead">下面五套壳，是 2022 到 2026 广东卷考这一讲的原始样子。横着看一遍你会发现：<b>情境一次比一次陌生，但错的永远是那五类。</b>命题人换的只是壳，从来没换过里面的东西。</p>
+<table><colgroup><col style="width:62px"><col style="width:44%"><col></colgroup>
+<thead><tr><th>年份</th><th>壳（情境）</th><th>这一层壳，变的到底是什么</th></tr></thead><tbody>
+<tr><td class="y">2022</td><td>刻蚀电路板废液：H<sub>2</sub>O<sub>2</sub>、FeCl<sub>3</sub>、KSCN、KMnO<sub>4</sub></td><td>把四个反应塞进一个实验流程，四个选项互相不连坐 —— 判错变成四次独立的小判断</td></tr>
+<tr><td class="y">2023</td><td>氨浸提 Ni、Co（流程大题第 3 空）</td><td>从「判对错」变成「自己写」，还加了配离子 [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup></td></tr>
+<tr><td class="y">2023</td><td>硝酸氧化配合物，补全方程式</td><td>产物价态不给，只能靠电子守恒反推 —— 这正好是块三的用法</td></tr>
+<tr><td class="y">2025</td><td>盐湖卤水脱硼，B(OH)<sub>3</sub> 显酸性</td><td>陌生元素做主角，考的仍是「它该不该拆成离子」</td></tr>
+<tr><td class="y">2026</td><td>草酸标定 / 过量铁粉 / 铅酸电池 / KHSO<sub>4</sub> 加 Ba(OH)<sub>2</sub></td><td>四个选项四个不相干的反应，把拆、量、配比三种错法一次考全</td></tr>
+</tbody></table>
+<div class="must"><b>看明白了：五年五套壳，内核一个字没变 —— 拆得对不对、配得平不平、产物真不真。</b>所以做这一讲的题，别记题，记你错在哪一类。记题的人，明年换壳就废了。</div>
+</section>
+<section class="panel"><h2><span class="n">04</span>拆壳示范<em>老师板演，学生只填"五字码"</em></h2>
+<div class="qa">
+<div class="q"><div class="src">2026·广东卷　选择题（11–16）第 37 题　难度 0.68</div><div class="stem">下列反应的方程式书写正确的是</div>
 <div class="opt"><div>A．用草酸标准溶液测定硫酸酸化的高锰酸钾溶液的浓度：2MnO<sub>4</sub><sup>−</sup>+5C<sub>2</sub>O<sub>4</sub><sup>2−</sup>+16H<sup>+</sup>=2Mn<sup>2+</sup>+10CO<sub>2</sub>↑+8H<sub>2</sub>O</div></div>
 <div class="opt"><div>B．过量铁粉与稀硝酸反应：Fe+NO<sub>3</sub><sup>−</sup>+4H<sup>+</sup>=Fe<sup>3+</sup>+NO↑+2H<sub>2</sub>O</div></div>
 <div class="opt"><div>C．铅酸蓄电池放电时的总反应：Pb+PbO<sub>2</sub>+2H<sub>2</sub>SO<sub>4</sub>=2PbSO<sub>4</sub>+2H<sub>2</sub>O</div></div>
@@ -139,23 +282,24 @@ body.focus .panel.dim{opacity:.25}
 <div class="a">
 <details class="aKey"><summary>先自己选，再点开对答案</summary><div class="abody"><div class="akey">答案 C</div></div></details>
 <details class="aMain" hidden><summary>看完整解析</summary><div class="abody">
-<div class="step"><i>1</i><b>归类</b>　四个选项是四个互不相干的反应，逐个判。A 错不影响 B。</div>
+<div class="step"><i>1</i><b>归类</b>　四个选项是四个互不相干的反应，逐个判。A 错不影响 B —— 这是 2022 年以后的新趋势。</div>
 <div class="step"><i>2</i><b>找内核</b>　每个选项只做三件事：拆没拆错、配没配平、产物真不真。</div>
-<div class="step"><i>3</i><b>比差异</b>　A 拆错、B 量错、D 配比错，C 三者全过。</div>
-<div class="step"><i>4</i><b>落笔</b>　选 C。</div>
+<div class="step"><i>3</i><b>比差异</b>　A 错在拆（草酸是弱酸），B 错在量（铁过量），D 错在量（投料比），只有 C 三关全过。</div>
+<div class="step"><i>4</i><b>落笔</b>　选 C。　注意 D 是最像对的 —— 它原子平、电荷平，唯一的错在「至中性」三个字。</div>
 <details class="sub"><summary>四个选项逐个说清</summary><div style="padding:2px 4px 4px">
-<div class="step"><b class="wrong">A 错在拆</b>：草酸是弱酸，溶液中主要以 H<sub>2</sub>C<sub>2</sub>O<sub>4</sub> 分子存在，不能写成 C<sub>2</sub>O<sub>4</sub><sup>2−</sup>。配平本身没错，错在把它拆了。</div>
-<div class="step"><b class="wrong">B 错在量</b>：铁粉过量，生成的 Fe<sup>3+</sup> 会被剩下的铁还原成 Fe<sup>2+</sup>。产物应是 Fe<sup>2+</sup>，不是 Fe<sup>3+</sup>。</div>
-<div class="step"><b class="right">C 对</b>：Pb+PbO<sub>2</sub>+2H<sub>2</sub>SO<sub>4</sub>=2PbSO<sub>4</sub>+2H<sub>2</sub>O，原子平、电荷平、电子也平。</div>
+<div class="step"><b class="wrong">A 错在拆</b>：草酸是弱酸，溶液中主要以 H<sub>2</sub>C<sub>2</sub>O<sub>4</sub> 分子存在，不能写成 C<sub>2</sub>O<sub>4</sub><sup>2−</sup>。配平本身没毛病，错在把它拆了 —— 这是「配平对了但分没了」的典型。</div>
+<div class="step"><b class="wrong">B 错在量</b>：铁粉过量，生成的 Fe<sup>3+</sup> 会被剩下的铁还原成 Fe<sup>2+</sup>。产物应是 Fe<sup>2+</sup>，正确是 3Fe+2NO<sub>3</sub><sup>−</sup>+8H<sup>+</sup>=3Fe<sup>2+</sup>+2NO↑+4H<sub>2</sub>O。</div>
+<div class="step"><b class="right">C 对</b>：Pb+PbO<sub>2</sub>+2H<sub>2</sub>SO<sub>4</sub>=2PbSO<sub>4</sub>+2H<sub>2</sub>O，原子、电荷、电子三者全平。注意这是化学方程式不是离子方程式，PbSO<sub>4</sub> 难溶，就该写分子式。</div>
 <div class="step"><b class="wrong">D 错在量（配比）</b>：要「呈中性」，H<sup>+</sup> 和 OH<sup>−</sup> 必须等量，KHSO<sub>4</sub> 与 Ba(OH)<sub>2</sub> 就得按 2∶1 投料。正确写法是 2H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>+Ba<sup>2+</sup>+2OH<sup>−</sup>=BaSO<sub>4</sub>↓+2H<sub>2</sub>O。</div>
 </div></details>
-<div class="cuoda"><div class="t">最常见的一种错：选 D —— H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>+Ba<sup>2+</sup>+OH<sup>−</sup>=H<sub>2</sub>O+BaSO<sub>4</sub>↓，原子平、电荷平，看着最像对的</div><div><b>错在把「至中性」当成了配平题。</b>要中性，KHSO<sub>4</sub> 与 Ba(OH)<sub>2</sub> 必须按 2∶1 投料：2 个 H<sup>+</sup> 配 2 个 OH<sup>−</sup>，但 Ba<sup>2+</sup> 只有 1 个，只能带走 1 个 SO<sub>4</sub><sup>2−</sup>，另 1 个留在溶液里。所以正确是 2H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>+Ba<sup>2+</sup>+2OH<sup>−</sup>=BaSO<sub>4</sub>↓+2H<sub>2</sub>O。<b>「至中性」「恰好完全沉淀」这类词是投料比的暗号 —— 先定投料比，再写式子。</b></div></div>
+<div class="cuoda"><div class="t">最常见的一种错：选 D —— H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>+Ba<sup>2+</sup>+OH<sup>−</sup>=H<sub>2</sub>O+BaSO<sub>4</sub>↓，原子平、电荷平，看着最像对的</div><div><b>错在把「至中性」当成了配平题。</b>要中性，KHSO<sub>4</sub> 与 Ba(OH)<sub>2</sub> 必须按 2∶1 投料：2 个 H<sup>+</sup> 配 2 个 OH<sup>−</sup>，但 Ba<sup>2+</sup> 只有 1 个，只能带走 1 个 SO<sub>4</sub><sup>2−</sup>，另 1 个留在溶液里。<b>「至中性」「恰好完全沉淀」这类词是投料比的暗号 —— 先定投料比，再写式子。</b></div></div>
 </div></details>
-<div class="fold-tip">先自己判断一遍<br>再点开对答案</div></div></div></div>
-<div class="full panel"><h2><span class="n">05</span>变式过关</h2>
-<p class="note" style="margin:-2px 0 12px">判法：每个选项先只写一个字 —— <b>拆</b>（拆错了）／<b>量</b>（过量没过量的账）／<b>产</b>（产物是编的）／<b>平</b>（原子或电荷不平）／<b>假</b>（根本不反应）。写不出这个字，才算没看懂；写得出，答案自然就出来了。</p>
-<div class="grid">
-<div class="q"><div class="src">2022·广东卷题组　选择题（11–16）第 39 题　难度 0.40　第一档</div><div class="stem">某实验小组研究刻蚀电路板以及刻蚀废液的性质，下列实验对应的离子方程式书写正确的是</div>
+<div class="fold-tip">先自己判断一遍<br>再点开对答案</div></div>
+</div></section>
+<section class="panel"><h2><span class="n">05</span>变式过关<em>先写一个字，再看答案</em></h2>
+<p class="lead">判法：每个选项先只写一个字 —— <b>假</b>（不反应）／<b>拆</b>（拆错了）／<b>平</b>（不平）／<b>量</b>（没过量的账）／<b>产</b>（产物编的）。<b>写不出这个字，才算没看懂。</b>写得出，答案不用猜。</p>
+<div class="qa">
+<div class="q"><div class="src">2022·广东卷　选择题（11–16）第 39 题　难度 0.40　<span class="tier">第一档 · 先做</span></div><div class="stem">某实验小组研究刻蚀电路板以及刻蚀废液的性质，下列实验对应的离子方程式书写正确的是</div>
 <div class="opt"><div>A．用盐酸双氧水刻蚀铜板：Cu+H<sub>2</sub>O<sub>2</sub>+2H<sup>+</sup>=Cu<sup>2+</sup>+2H<sub>2</sub>O+O<sub>2</sub>↑</div></div>
 <div class="opt"><div>B．用 FeCl<sub>3</sub> 溶液刻蚀铜板：Cu+2Fe<sup>3+</sup>=Cu<sup>2+</sup>+2Fe<sup>2+</sup></div></div>
 <div class="opt"><div>C．检验废液中含有 Fe<sup>3+</sup>：Fe<sup>3+</sup>+3SCN<sup>−</sup>=Fe(SCN)<sub>3</sub>↓</div></div>
@@ -164,15 +308,17 @@ body.focus .panel.dim{opacity:.25}
 <div class="a">
 <details class="aKey"><summary>先自己写，再点开对答案</summary><div class="abody"><div class="akey">答案 B</div></div></details>
 <details class="aMain" hidden><summary>看为什么</summary><div class="abody">
-<div class="step"><b class="wrong">A 错在产（产物）</b>：H<sub>2</sub>O<sub>2</sub> 在这里是氧化剂，自己被还原成 H<sub>2</sub>O，不可能同时放出 O<sub>2</sub>。正确是 Cu+H<sub>2</sub>O<sub>2</sub>+2H<sup>+</sup>=Cu<sup>2+</sup>+2H<sub>2</sub>O。式子配平了，产物是假的。</div>
+<div class="step"><b class="wrong">A 错在产（产物）</b>：H<sub>2</sub>O<sub>2</sub> 在这里当氧化剂，自己被还原成 H<sub>2</sub>O，不可能同时放出 O<sub>2</sub>。正确是 Cu+H<sub>2</sub>O<sub>2</sub>+2H<sup>+</sup>=Cu<sup>2+</sup>+2H<sub>2</sub>O。式子配平了，产物是假的。</div>
 <div class="step"><b class="right">B 对</b>：Cu+2Fe<sup>3+</sup>=Cu<sup>2+</sup>+2Fe<sup>2+</sup>，原子、电荷、电子全平。</div>
-<div class="step"><b class="wrong">C 错在产（符号）</b>：Fe(SCN)<sub>3</sub> 是溶于水的配合物，显血红色，没有沉淀，不能写 ↓。</div>
+<div class="step"><b class="wrong">C 错在产（符号）</b>：Fe(SCN)<sub>3</sub> 是溶于水的配合物，显血红色，没有沉淀，不能写 ↓。它也不是离子，不该拆。</div>
 <div class="step"><b class="wrong">D 错在产（环境）</b>：酸性条件下 MnO<sub>4</sub><sup>−</sup> 被还原成 Mn<sup>2+</sup>，不是 MnO<sub>2</sub>。正确是 5Fe<sup>2+</sup>+MnO<sub>4</sub><sup>−</sup>+8H<sup>+</sup>=5Fe<sup>3+</sup>+Mn<sup>2+</sup>+4H<sub>2</sub>O。</div>
-<div class="cuoda"><div class="t">最常见的一种错：选 D —— 酸性 KMnO<sub>4</sub> 检验 Fe<sup>2+</sup>，紫红褪去，写了 3Fe<sup>2+</sup>+MnO<sub>4</sub><sup>−</sup>+4H<sup>+</sup>=3Fe<sup>3+</sup>+MnO<sub>2</sub>↓+2H<sub>2</sub>O，原子和电荷都平</div><div><b>错在没问「酸性条件下 Mn 变成什么」。</b>酸性时 MnO<sub>4</sub><sup>−</sup> 一律还原成 Mn<sup>2+</sup>（近无色），MnO<sub>2</sub> 是中性／弱碱性条件下的产物；系数也跟着错，应为 5Fe<sup>2+</sup>+MnO<sub>4</sub><sup>−</sup>+8H<sup>+</sup>=5Fe<sup>3+</sup>+Mn<sup>2+</sup>+4H<sub>2</sub>O。<b>MnO<sub>4</sub><sup>−</sup> 的产物按环境背死：酸性→Mn<sup>2+</sup>，中性／弱碱性→MnO<sub>2</sub>，强碱性→MnO<sub>4</sub><sup>2−</sup>。</b></div></div>
+<div class="cuoda"><div class="t">最常见的一种错：选 D —— 酸性 KMnO<sub>4</sub> 检验 Fe<sup>2+</sup>，紫红褪去，写了 3Fe<sup>2+</sup>+MnO<sub>4</sub><sup>−</sup>+4H<sup>+</sup>=3Fe<sup>3+</sup>+MnO<sub>2</sub>↓+2H<sub>2</sub>O，原子和电荷都平</div><div><b>错在没问「酸性条件下 Mn 变成什么」。</b>酸性时 MnO<sub>4</sub><sup>−</sup> 一律还原成 Mn<sup>2+</sup>（近无色），MnO<sub>2</sub> 是中性／弱碱性条件下的产物；系数也跟着错。<b>回头翻第 02 段那张表，MnO<sub>4</sub><sup>−</sup> 那一行必须背死。</b></div></div>
 <div class="selfcheck"><span class="lb">自查</span><button type="button">拆对没</button><button type="button">配平没</button><button type="button">产物真没</button></div>
 </div></details>
 <div class="fold-tip">先做完再点开</div></div>
-<div class="q"><div class="src">2026·广东卷题组　选择题（11–16）第 35 题　难度 0.40　第二档</div><div class="stem">下列反应的方程式/离子方程式书写正确的是</div>
+</div>
+<div class="qa">
+<div class="q"><div class="src">2026·广东卷　选择题（11–16）第 35 题　难度 0.40　<span class="tier">第二档 · 加深</span></div><div class="stem">下列反应的方程式或离子方程式书写正确的是</div>
 <div class="opt"><div>A．向 NaHCO<sub>3</sub> 溶液中加入 CaCl<sub>2</sub> 产生白色沉淀：Ca<sup>2+</sup>+HCO<sub>3</sub><sup>−</sup>=CaCO<sub>3</sub>↓+H<sup>+</sup></div></div>
 <div class="opt"><div>B．铁粉在高温下与水蒸气反应生成可燃气体：3Fe+4H<sub>2</sub>O(g) —<span class="cond">高温</span>→ Fe<sub>3</sub>O<sub>4</sub>+4H<sub>2</sub></div></div>
 <div class="opt"><div>C．电解饱和食盐水：2Cl<sup>−</sup>+2H<sup>+</sup> —<span class="cond">电解</span>→ Cl<sub>2</sub>↑+H<sub>2</sub>↑</div></div>
@@ -181,58 +327,111 @@ body.focus .panel.dim{opacity:.25}
 <div class="a">
 <details class="aKey"><summary>先自己写，再点开对答案</summary><div class="abody"><div class="akey">答案 B</div></div></details>
 <details class="aMain" hidden><summary>看为什么</summary><div class="abody">
-<div class="step"><b class="wrong">A 错在假（不反应）</b>：CaCO<sub>3</sub> 要在碱性环境下才生成，Ca<sup>2+</sup> 和 HCO<sub>3</sub><sup>−</sup> 混在一起不出沉淀。这是最常见的「编出来的反应」。</div>
-<div class="step"><b class="right">B 对</b>：3Fe+4H<sub>2</sub>O(g)=Fe<sub>3</sub>O<sub>4</sub>+4H<sub>2</sub>，高温条件别漏。</div>
-<div class="step"><b class="wrong">C 错在拆</b>：水是弱电解质不能拆成 H<sup>+</sup>，应写 2Cl<sup>−</sup>+2H<sub>2</sub>O=Cl<sub>2</sub>↑+H<sub>2</sub>↑+2OH<sup>−</sup>。顺带一算电荷：原式左边 −2、右边 0，本来就不平。</div>
-<div class="step"><b class="wrong">D 错在量</b>：Cl<sub>2</sub> 过量，I<sup>−</sup> 也会被氧化，而且 I<sup>−</sup> 的还原性比 Fe<sup>2+</sup> 强，得先反应。正确是 2Fe<sup>2+</sup>+4I<sup>−</sup>+3Cl<sub>2</sub>=2Fe<sup>3+</sup>+2I<sub>2</sub>+6Cl<sup>−</sup>。</div>
-<div class="cuoda"><div class="t">最常见的一种错：选 A —— Ca<sup>2+</sup>+HCO<sub>3</sub><sup>−</sup>=CaCO<sub>3</sub>↓+H<sup>+</sup>，看着像个正常的沉淀反应</div><div><b>错在没问「这反应到底发不发生」。</b>Ca(HCO<sub>3</sub>)<sub>2</sub> 是可溶的，Ca<sup>2+</sup> 与 HCO<sub>3</sub><sup>−</sup> 混在一起不出沉淀，要生成 CaCO<sub>3</sub> 得加热或加碱。这是本讲第一条必查 —— <b>反应发不发生，先于配平。</b>顺带一提 C 选项：左边电荷 −2、右边 0，扫一眼电荷就能判死，不用算原子。</div></div>
+<div class="step"><b class="wrong">A 错在假（不反应）</b>：Ca(HCO<sub>3</sub>)<sub>2</sub> 是可溶的，Ca<sup>2+</sup> 和 HCO<sub>3</sub><sup>−</sup> 混在一起不出沉淀，要生成 CaCO<sub>3</sub> 得加热或加碱。这是最常见的「编出来的反应」。</div>
+<div class="step"><b class="right">B 对</b>：3Fe+4H<sub>2</sub>O(g)=Fe<sub>3</sub>O<sub>4</sub>+4H<sub>2</sub>，高温条件别漏。这是化学方程式，铁和水蒸气都不拆。</div>
+<div class="step"><b class="wrong">C 错在拆（也错在平）</b>：水是弱电解质不能拆成 H<sup>+</sup>，应写 2Cl<sup>−</sup>+2H<sub>2</sub>O=Cl<sub>2</sub>↑+H<sub>2</sub>↑+2OH<sup>−</sup>。顺带一算电荷：原式左边 −2、右边 0，扫一眼就能判死。</div>
+<div class="step"><b class="wrong">D 错在量</b>：Cl<sub>2</sub> 过量，I<sup>−</sup> 也会被氧化，而且 I<sup>−</sup> 的还原性强于 Fe<sup>2+</sup>，得先反应。正确是 2Fe<sup>2+</sup>+4I<sup>−</sup>+3Cl<sub>2</sub>=2Fe<sup>3+</sup>+2I<sub>2</sub>+6Cl<sup>−</sup>。</div>
+<div class="cuoda"><div class="t">最常见的一种错：选 A —— Ca<sup>2+</sup>+HCO<sub>3</sub><sup>−</sup>=CaCO<sub>3</sub>↓+H<sup>+</sup>，看着像个正常的沉淀反应</div><div><b>错在没问「这反应到底发不发生」。</b>这是块五判错清单的第一条 —— <b>先判假，再判别的。</b>不发生的反应，配平再漂亮也是零分。顺带一提 C 选项：左边电荷 −2、右边 0，扫一眼电荷就能判死，根本不用数原子。</div></div>
 <div class="selfcheck"><span class="lb">自查</span><button type="button">拆对没</button><button type="button">配平没</button><button type="button">产物真没</button></div>
 </div></details>
 <div class="fold-tip">先做完再点开</div></div>
-<div class="q"><div class="src">2023·广东卷　工业流程题 第 (3) 空（原题含流程图，此处只取设问）　难度 0.65　大题落点</div><div class="stem">从矿石硝酸浸取液（含 Ni<sup>2+</sup>、Co<sup>2+</sup>、Al<sup>3+</sup>、Mg<sup>2+</sup>）中氨浸提取 Ni、Co。已知氨性溶液由 NH<sub>3</sub>·H<sub>2</sub>O、(NH<sub>4</sub>)<sub>2</sub>SO<sub>3</sub>、(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> 配制，Co(OH)<sub>2</sub> 易被空气氧化为 Co(OH)<sub>3</sub>。<br>问：「氨浸」时由 Co(OH)<sub>3</sub> 转化为 [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup> 的离子方程式为 ______</div>
+</div>
+<div class="qa">
+<div class="q"><div class="src">2023·广东卷　工业流程题 第 (3) 空（原题含流程图，此处只取设问）　难度 0.65　<span class="tier">大题落点 · 必须动笔</span></div><div class="stem">从矿石硝酸浸取液（含 Ni<sup>2+</sup>、Co<sup>2+</sup>、Al<sup>3+</sup>、Mg<sup>2+</sup>）中氨浸提取 Ni、Co。已知氨性溶液由 NH<sub>3</sub>·H<sub>2</sub>O、(NH<sub>4</sub>)<sub>2</sub>SO<sub>3</sub>、(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> 配制，Co(OH)<sub>2</sub> 易被空气氧化为 Co(OH)<sub>3</sub>。<br>问：「氨浸」时由 Co(OH)<sub>3</sub> 转化为 [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup> 的离子方程式为 ______</div>
 </div>
 <div class="a">
 <details class="aKey"><summary>先自己写，再点开对答案</summary><div class="abody"><div class="akey">答案 2Co(OH)<sub>3</sub>+12NH<sub>3</sub>·H<sub>2</sub>O+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O+4OH<sup>−</sup></div></div></details>
 <details class="aMain" hidden><summary>看为什么</summary><div class="abody">
-<div class="step"><b>先定电子</b>：Co(Ⅲ)→Co(Ⅱ) 每个得 1 个电子，两个 Co 共得 2 个；SO<sub>3</sub><sup>2−</sup>→SO<sub>4</sub><sup>2−</sup> 正好失 2 个。电子一对上，2∶1 的系数就定了。</div>
+<div class="step"><b>先配电子</b>：Co(Ⅲ)→Co(Ⅱ)，每个得 1 个电子，两个 Co 共得 2 个；SO<sub>3</sub><sup>2−</sup>→SO<sub>4</sub><sup>2−</sup> 正好失 2 个。电子一对上，2∶1 的系数就定了。</div>
 <div class="step"><b>再配配位</b>：每个 Co 要 6 个 NH<sub>3</sub>，两个 Co 就是 12 个 NH<sub>3</sub>·H<sub>2</sub>O。</div>
-<div class="step"><b>然后配电荷</b>：右边两个 2+ 配离子共 +4，左边只有 SO<sub>3</sub><sup>2−</sup> 的 −2，差 4 个负电荷，所以右边补 4OH<sup>−</sup>。这一步最容易被漏掉，也是本空的主要失分点。</div>
-<div class="step"><b>最后补水</b>：左边氧共 2×3+12×1+3=21 个，右边 SO<sub>4</sub><sup>2−</sup> 占 4 个、4OH<sup>−</sup> 占 4 个，差 13，所以补水 13H<sub>2</sub>O。逐项数氧，别硬凑。</div>
-<div class="step"><b>另一写法也对</b>：2Co(OH)<sub>3</sub>+8NH<sub>3</sub>·H<sub>2</sub>O+4NH<sub>4</sub><sup>+</sup>+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O（用 NH<sub>4</sub><sup>+</sup> 抵电荷）。</div>
-<div class="cuoda"><div class="t">最常见的一种错：2Co(OH)<sub>3</sub>+12NH<sub>3</sub>·H<sub>2</sub>O+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O —— 少写了右边那 4 个 OH<sup>−</sup></div><div><b>错在没配电荷。</b>右边两个配离子各 2+，共 +4；左边只有 SO<sub>3</sub><sup>2−</sup> 的 −2，差 4 个负电荷，必须补 4OH<sup>−</sup>。这是本空最主要的失分点。<b>大题写完方程式，单独再查一遍电荷，别只数原子。</b></div></div>
+<div class="step"><b>然后配电荷</b>：右边两个 2+ 配离子共 +4，左边只有 SO<sub>3</sub><sup>2−</sup> 的 −2，差 4 个负电荷，所以<b>右边补 4OH<sup>−</sup></b>。这一步最容易漏，也是本空的主要失分点。</div>
+<div class="step"><b>最后补原子</b>：左边氧 2×3+12×1+3=21 个，右边 SO<sub>4</sub><sup>2−</sup> 占 4、4OH<sup>−</sup> 占 4，差 13，补水 13H<sub>2</sub>O。逐项数氧，别硬凑。</div>
+<div class="step"><b>另一种写法也给分</b>：2Co(OH)<sub>3</sub>+8NH<sub>3</sub>·H<sub>2</sub>O+4NH<sub>4</sub><sup>+</sup>+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O（用 NH<sub>4</sub><sup>+</sup> 抵电荷）。</div>
+<div class="cuoda"><div class="t">最常见的一种错：2Co(OH)<sub>3</sub>+12NH<sub>3</sub>·H<sub>2</sub>O+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O —— 少写了右边那 4 个 OH<sup>−</sup></div><div><b>错在只数了原子，没查电荷。</b>右边两个配离子各 2+，共 +4；左边只有 SO<sub>3</sub><sup>2−</sup> 的 −2，差 4 个负电荷，必须补 4OH<sup>−</sup>。<b>大题写完方程式，单独再查一遍电荷，这一步只花 10 秒，能救 2 分。</b></div></div>
 <div class="selfcheck"><span class="lb">自查</span><button type="button">拆对没</button><button type="button">配平没</button><button type="button">产物真没</button></div>
 </div></details>
 <div class="fold-tip">先做完再点开</div></div>
-<div class="q"><div class="src">2023·广东卷　原理综合题 第 (1)② 空（节选）　难度 0.40　课后</div><div class="stem">有机物 R 能与 Fe<sup>2+</sup> 形成橙红色配离子 (FeR<sub>3</sub>)<sup>2+</sup>，可被 HNO<sub>3</sub> 氧化成淡蓝色配离子 (FeR<sub>3</sub>)<sup>3+</sup>。完成反应的离子方程式：<br>NO<sub>3</sub><sup>−</sup>+2(FeR<sub>3</sub>)<sup>2+</sup>+3H<sup>+</sup> ⇌ ______ +2(FeR<sub>3</sub>)<sup>3+</sup>+H<sub>2</sub>O</div>
+</div>
+<div class="qa">
+<div class="q"><div class="src">2023·广东卷　原理综合题 第 (1)② 空（节选）　难度 0.40　<span class="tier">课后 · 自己写</span></div><div class="stem">有机物 R 能与 Fe<sup>2+</sup> 形成橙红色配离子 (FeR<sub>3</sub>)<sup>2+</sup>，可被 HNO<sub>3</sub> 氧化成淡蓝色配离子 (FeR<sub>3</sub>)<sup>3+</sup>。完成反应的离子方程式：<br>NO<sub>3</sub><sup>−</sup>+2(FeR<sub>3</sub>)<sup>2+</sup>+3H<sup>+</sup> ⇌ ______ +2(FeR<sub>3</sub>)<sup>3+</sup>+H<sub>2</sub>O</div>
 </div>
 <div class="a">
 <details class="aKey"><summary>先自己写，再点开对答案</summary><div class="abody"><div class="akey">答案 HNO<sub>2</sub></div></div></details>
 <details class="aMain" hidden><summary>看为什么</summary><div class="abody">
 <div class="step"><b>用电子反推产物</b>：2 个 (FeR<sub>3</sub>)<sup>2+</sup> 变 3+，共失 2 个电子，所以 N 只能得 2 个。</div>
 <div class="step"><b>N 从 +5 降到 +3</b>，产物是 HNO<sub>2</sub>。若写成 NO（+2），那是得 3 个电子，对不上，直接排掉。</div>
-<div class="step"><b>弱酸写分子</b>：HNO<sub>2</sub> 是弱酸，不能拆成 H<sup>+</sup>+NO<sub>2</sub><sup>−</sup>。这一步是本题的第二道坎。</div>
+<div class="step"><b>弱酸写分子</b>：HNO<sub>2</sub> 是弱酸，不能拆成 H<sup>+</sup>+NO<sub>2</sub><sup>−</sup>。这是本题的第二道坎，也是块一那张表最直接的用法。</div>
 <div class="step"><b>电荷复核</b>：左边 −1+4+3=+6，右边 2×(+3)=+6，平。</div>
 <div class="cuoda"><div class="t">最常见的一种错：写 NO —— 觉得「硝酸被还原，就该出 NO」</div><div><b>错在没用电子守恒反推。</b>2 个 (FeR<sub>3</sub>)<sup>2+</sup> 变 3+，共失 2 个电子，N 只能得 2 个：+5 → +3，产物是 HNO<sub>2</sub>；写 NO 是 +2，等于得 3 个电子，对不上。<b>产物价态不给的时候，永远是先算电子、再定产物，不靠记。</b></div></div>
 <div class="selfcheck"><span class="lb">自查</span><button type="button">拆对没</button><button type="button">配平没</button><button type="button">产物真没</button></div>
 </div></details>
 <div class="fold-tip">先做完再点开</div></div>
-</div></div>
-<div class="full panel"><h2><span class="n">06</span>反向命题（课后，不动笔不算过）</h2><div class="chal">
-<div class="it"><b>改一改</b>　把第 35 题 D 选项的「过量 Cl<sub>2</sub>」改成「少量 Cl<sub>2</sub>」，这个离子方程式还对吗？先写判断，再写正确的式子。
+</div>
+</section>
+<section class="panel"><h2><span class="n">06</span>反向命题与今日作业<em>课后做，不动笔不算过</em></h2>
+<div class="chal">
+<div class="it"><b>改一改</b>　把上面第 35 题 D 选项的「过量 Cl<sub>2</sub>」改成「少量 Cl<sub>2</sub>」，这个离子方程式还对不对？先写判断，再写正确的式子。
 <details><summary>写完再看提示</summary><div style="padding:7px 4px 3px">少量 Cl<sub>2</sub> 时，I<sup>−</sup> 的还原性强于 Fe<sup>2+</sup>，先被氧化：2I<sup>−</sup>+Cl<sub>2</sub>=I<sub>2</sub>+2Cl<sup>−</sup>，Fe<sup>2+</sup> 还轮不到。所以原式错得更彻底 —— 它连该反应的离子都选错了。</div></details>
 </div>
 <div class="it"><b>改一改</b>　把第 37 题 D 选项的「至溶液呈中性」改成「至 SO<sub>4</sub><sup>2−</sup> 恰好完全沉淀」，方程式怎么写？写完再想：这时溶液还是中性吗？
 <details><summary>写完再看提示</summary><div style="padding:7px 4px 3px">KHSO<sub>4</sub> 与 Ba(OH)<sub>2</sub> 按 1∶1 投料：Ba<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+H<sup>+</sup>+OH<sup>−</sup>=BaSO<sub>4</sub>↓+H<sub>2</sub>O。沉淀刚好完全，但溶液里还剩 1 个 H<sup>+</sup>，是酸性的。<b>同一对试剂，投料比一变式子就变 —— 这就是「量」的内核。</b></div></details>
 </div>
-</div></div>
-<div class="full panel"><h2><span class="n">07</span>回去补</h2><div class="chain">
-<a href="../topics/02.html">第2讲 离子反应 离子方程式</a>
-<a href="../topics/03.html">第3讲 氧化还原的概念和规律</a>
-<a href="../topics/04.html">第4讲 氧化还原方程式的配平</a>
 </div>
-<p class="note">题源：选择题2026广东卷和变式／选择题11-16.docx 第35、37题；选择题2022广东卷和变式／（11-16）.docx 第39题；流程题2023广东卷和变式／工业流程题.docx 第1题(3)；原理题2023广东卷和变式／原理综合题.docx 第1题(1)②。　「常见错答」为本讲归纳的课堂易错，非官方解析。</p></div>
-</div></div>
-<button id="fb">聚焦</button>
+<div class="hw">
+<div><div class="t">必做（明天下课前交）</div><ul><li>本页 05 的三道选择题，<b>不看答案</b>重做一遍，每题在题号旁写一个五字码</li><li>把写错的那道题的正确答案，用三步法（电子→电荷→原子）重新配一遍，写在旁边</li></ul></div>
+<div><div class="t">选做（有余力的做）</div><ul><li>从 2025、2023 两套广东卷里各找一道方程式题，标出它的五字码</li><li>把第 35 题 A 选项改一个字，让它从「不反应」变成真反应，并写出正确式子</li></ul></div>
+</div>
+</section>
+</div>
+<div class="split" id="sp" title="拖动改宽度，双击复位"><i>⋮</i></div>
+<aside class="col-side">
+<div class="card"><h4>课堂时间轴<em>共 92 分钟</em></h4><ul class="tl">
+<li><span>01 考情 · 值几分</span><b>3′</b></li>
+<li><span>02 知识主干（五块）</span><b>36′</b></li>
+<li><span>03 命题生长点</span><b>8′</b></li>
+<li><span>04 拆壳示范（板演）</span><b>15′</b></li>
+<li><span>05 变式过关（动笔）</span><b>26′</b></li>
+<li><span>06 反向命题 · 布置作业</span><b>4′</b></li>
+</ul></div>
+<div class="card"><h4>必背 8 条<em>下课抽查</em></h4><ul class="ml">
+<li>只拆<b>强酸、强碱、可溶盐</b>；弱酸弱碱、水、沉淀、气体、氧化物、单质、配离子一律写分子式。</li>
+<li>浓硫酸<b>不拆</b>；浓盐酸、浓硝酸照拆。</li>
+<li>微溶物：<b>澄清溶液拆，浊液不拆</b>。</li>
+<li>配平顺序：<b>电子 → 电荷 → 原子</b>，倒过来必崩。</li>
+<li>酸性补 H<sup>+</sup>，碱性补 OH<sup>−</sup>，中性补水。</li>
+<li>MnO<sub>4</sub><sup>−</sup>：酸性→Mn<sup>2+</sup>，中性／弱碱→MnO<sub>2</sub>，强碱→MnO<sub>4</sub><sup>2−</sup>。</li>
+<li>有「少量／过量／至中性」→ <b>先定投料比</b>，把少的那个配成 1。</li>
+<li>还原性：S<sup>2−</sup> &gt; SO<sub>3</sub><sup>2−</sup> &gt; I<sup>−</sup> &gt; Fe<sup>2+</sup> &gt; Br<sup>−</sup> &gt; Cl<sup>−</sup>，强的先反应。</li>
+</ul></div>
+<div class="card warn"><h4>易错预警</h4><ul class="ml">
+<li>「至中性」「恰好完全沉淀」是<b>投料比的暗号</b>，不是配平题。</li>
+<li>写完方程式<b>单独查一遍电荷</b> —— 大题丢分八成在这里。</li>
+<li>Fe(SCN)<sub>3</sub> 是可溶配合物，<b>不写 ↓</b>。</li>
+<li>HNO<sub>2</sub>、HF、HClO、草酸都是弱酸，<b>不拆</b>。</li>
+<li>Ca<sup>2+</sup> 与 HCO<sub>3</sub><sup>−</sup> <b>不反应</b>；SO<sub>2</sub> 与 BaCl<sub>2</sub> 也不反应。</li>
+</ul></div>
+<div class="card"><h4>板书就写这几行</h4><ul class="bb">
+<li><b>四步</b>：写 → 拆 → 删 → 查</li>
+<li><b>三步配平</b>：电子 · 电荷 · 原子</li>
+<li><b>五字码</b>：假 拆 平 量 产</li>
+<li><b>一句</b>：先问反应发不发生，再问拆不拆，最后才配平</li>
+</ul></div>
+<div class="card"><h4>题源</h4><p style="font-size:13.5px;color:var(--dim);line-height:1.6">真题来源（逐字取原文，未改一字）：选择题2026广东卷和变式／选择题11-16.docx 第 35、37 题；选择题2022广东卷和变式／（11-16）.docx 第 39 题；流程题2023广东卷和变式／工业流程题.docx 第 1 题第 (3) 空；原理题2023广东卷和变式／原理综合题.docx 第 1 题第 (1)② 空。「最常见的一种错」为本讲归纳的课堂易错，非官方解析。</p></div>
+</aside></div>
 <script src="../hxbnx-handwrite.js"></script>
-<script>(function(){var on=false,b=document.getElementById("fb"),ps=[].slice.call(document.querySelectorAll(".panel"));function set(t){ps.forEach(function(x){x.classList.remove("dim")});if(t&&on)ps.forEach(function(x){if(x!==t)x.classList.add("dim")})}b.addEventListener("click",function(){on=!on;document.body.classList.toggle("focus",on);b.textContent=on?"退出聚焦":"聚焦";if(!on)set(null)});ps.forEach(function(p){p.addEventListener("mouseenter",function(){set(p)});p.addEventListener("click",function(){set(p)});p.addEventListener("mouseleave",function(){if(on)set(null)})});document.querySelectorAll(".aKey").forEach(function(k){var m=k.parentNode.querySelector(".aMain");if(!m)return;k.addEventListener("toggle",function(){m.hidden=!k.open})});document.querySelectorAll(".selfcheck button").forEach(function(x){x.addEventListener("click",function(){x.classList.toggle("on")})});})();</script>
+<script>(function(){
+var sh=document.querySelector(".shell"),sp=document.getElementById("sp"),mn=document.querySelector(".col-main");
+function LS(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+var K="war_lw_04",sv=LS(K);if(sv)sh.style.setProperty("--lw",sv);
+var dg=false,sx=0,sw=0;
+function X(e){return e.touches?e.touches[0].clientX:e.clientX}
+function dn(e){dg=true;sp.classList.add("on");sx=X(e);sw=mn.getBoundingClientRect().width;e.preventDefault()}
+function mv(e){if(!dg)return;var w=sw+(X(e)-sx);var mx=sh.getBoundingClientRect().width-300;w=Math.max(430,Math.min(mx,w));sh.style.setProperty("--lw",w+"px");e.preventDefault()}
+function up(){if(!dg)return;dg=false;sp.classList.remove("on");LS(K,sh.style.getPropertyValue("--lw"))}
+sp.addEventListener("mousedown",dn);sp.addEventListener("touchstart",dn,{passive:false});window.addEventListener("mousemove",mv);window.addEventListener("touchmove",mv,{passive:false});window.addEventListener("mouseup",up);window.addEventListener("touchend",up);
+sp.addEventListener("dblclick",function(){sh.style.removeProperty("--lw");try{localStorage.removeItem(K)}catch(e){}});
+var on=false,b=document.getElementById("fb"),ps=[].slice.call(document.querySelectorAll(".panel"));function st(t){ps.forEach(function(x){x.classList.remove("dim")});if(t&&on)ps.forEach(function(x){if(x!==t)x.classList.add("dim")})}b.addEventListener("click",function(){on=!on;document.body.classList.toggle("focus",on);b.textContent=on?"退出聚焦":"聚焦";if(!on)st(null)});ps.forEach(function(p){p.addEventListener("mouseenter",function(){st(p)});p.addEventListener("click",function(){st(p)});p.addEventListener("mouseleave",function(){if(on)st(null)})});
+document.querySelectorAll(".aKey").forEach(function(k){var m=k.parentNode.querySelector(".aMain");if(!m)return;k.addEventListener("toggle",function(){m.hidden=!k.open})});
+document.querySelectorAll(".selfcheck button").forEach(function(x){x.addEventListener("click",function(){x.classList.toggle("on")})});
+})();</script>
 </body></html>
