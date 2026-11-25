@@ -41,15 +41,26 @@ td.y{color:var(--blue);white-space:nowrap}
 .q .opt{margin-top:6px;padding-left:4px}
 .q .opt div{margin:3px 0}
 .a{background:#313b33;border:1px solid var(--border);border-left:3px solid var(--accent);
-  border-radius:10px;padding:13px 17px}
-.a .ans{color:var(--gold);font-size:19px;font-weight:700;margin-bottom:8px}
+  border-radius:10px;padding:0;align-self:stretch;display:flex;flex-direction:column}
 .a .step{margin:7px 0}
 .a .step i{color:var(--accent);font-style:normal;font-weight:700;margin-right:6px}
-details{margin-top:10px}
-summary{cursor:pointer;color:var(--blue);font-size:15px;list-style:none}
+.akey{color:var(--gold);font-size:19px;font-weight:700;margin-bottom:8px}
+/* 折叠答案：与课堂展示 HTML 同款（▸/▾ + 虚线分隔） */
+details{background:var(--panel3);border:1px solid #5a6d5f;border-radius:8px;margin:0;padding:0}
+details.aMain{background:transparent;border:none;border-radius:10px 10px 0 0}
+details.aMain summary{background:var(--panel3);border-radius:9px 9px 0 0;border-bottom:1px solid var(--border)}
+details.aMain[open] summary{border-radius:9px 9px 0 0}
+.fold-tip{display:none}
+details.aMain:not([open]) ~ .fold-tip{display:block;margin:auto;color:var(--dim);
+  font-size:15px;text-align:center;padding:26px 18px;line-height:1.9;letter-spacing:.5px}
+summary{cursor:pointer;font-size:16px;color:var(--accent);font-weight:700;list-style:none;
+  padding:9px 14px;display:flex;align-items:center;gap:8px}
 summary::-webkit-details-marker{display:none}
-summary::before{content:"▸ "}
-details[open] summary::before{content:"▾ "}
+summary::before{content:"▸";font-size:14px;color:var(--dim)}
+details[open] summary::before{content:"▾"}
+.abody{border-top:1px dashed var(--border);padding:11px 14px}
+details.sub{margin-top:9px;background:var(--panel2)}
+details.sub summary{font-size:15px;color:var(--blue);font-weight:400;padding:7px 12px}
 .cond{color:var(--gold);font-size:.86em;border-top:1px solid var(--gold);padding:0 3px;line-height:1.1;display:inline-block;vertical-align:.15em}
 .wrong{color:var(--red)}
 .right{color:var(--accent)}
@@ -104,17 +115,19 @@ body.focus .panel.dim{opacity:.25}
 <div class="opt"><div>C．铅酸蓄电池放电时的总反应：Pb+PbO<sub>2</sub>+2H<sub>2</sub>SO<sub>4</sub>=2PbSO<sub>4</sub>+2H<sub>2</sub>O</div></div>
 <div class="opt"><div>D．向 KHSO<sub>4</sub> 溶液中逐滴加入 Ba(OH)<sub>2</sub> 溶液至溶液呈中性：H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>+Ba<sup>2+</sup>+OH<sup>−</sup>=H<sub>2</sub>O+BaSO<sub>4</sub>↓</div></div>
 </div>
-<div class="a"><div class="ans">答案 C</div>
+<div class="a"><details class="aMain"><summary>显示答案</summary><div class="abody">
+<div class="akey">答案 C</div>
 <div class="step"><i>1</i><b>归类</b>　四个选项是四个互不相干的反应，逐个判。A 错不影响 B。</div>
 <div class="step"><i>2</i><b>找内核</b>　每个选项只做三件事：拆没拆错、配没配平、产物真不真。</div>
 <div class="step"><i>3</i><b>比差异</b>　A 拆错、B 量错、D 配比错，C 三者全过。</div>
 <div class="step"><i>4</i><b>落笔</b>　选 C。</div>
-<details open><summary>四个选项逐个说清</summary><div style="margin-top:8px">
+<details class="sub"><summary>四个选项逐个说清</summary><div style="padding:2px 4px 4px">
 <div class="step"><b class="wrong">A 错在拆</b>：草酸是弱酸，溶液中主要以 H<sub>2</sub>C<sub>2</sub>O<sub>4</sub> 分子存在，不能写成 C<sub>2</sub>O<sub>4</sub><sup>2−</sup>。配平本身没错，错在把它拆了。</div>
 <div class="step"><b class="wrong">B 错在量</b>：铁粉过量，生成的 Fe<sup>3+</sup> 会被剩下的铁还原成 Fe<sup>2+</sup>。产物应是 Fe<sup>2+</sup>，不是 Fe<sup>3+</sup>。</div>
 <div class="step"><b class="right">C 对</b>：Pb+PbO<sub>2</sub>+2H<sub>2</sub>SO<sub>4</sub>=2PbSO<sub>4</sub>+2H<sub>2</sub>O，原子平、电荷平、电子也平。</div>
 <div class="step"><b class="wrong">D 错在配比</b>：要「呈中性」，H<sup>+</sup> 和 OH<sup>−</sup> 必须等量，KHSO<sub>4</sub> 与 Ba(OH)<sub>2</sub> 就得按 2∶1 投料。正确写法是 2H<sup>+</sup>+SO<sub>4</sub><sup>2−</sup>+Ba<sup>2+</sup>+2OH<sup>−</sup>=BaSO<sub>4</sub>↓+2H<sub>2</sub>O。</div>
-</div></details></div></div></div>
+</div></details></div></details>
+<div class="fold-tip">先自己判断一遍<br>再点开对答案</div></div></div></div>
 <div class="full panel"><h2><span class="n">05</span>变式过关</h2><div class="grid">
 <div class="q"><div class="src">2022·广东卷题组　选择题（11–16）第 39 题　难度 0.40　第一档</div><div class="stem">某实验小组研究刻蚀电路板以及刻蚀废液的性质，下列实验对应的离子方程式书写正确的是</div>
 <div class="opt"><div>A．用盐酸双氧水刻蚀铜板：Cu+H<sub>2</sub>O<sub>2</sub>+2H<sup>+</sup>=Cu<sup>2+</sup>+2H<sub>2</sub>O+O<sub>2</sub>↑</div></div>
@@ -122,41 +135,49 @@ body.focus .panel.dim{opacity:.25}
 <div class="opt"><div>C．检验废液中含有 Fe<sup>3+</sup>：Fe<sup>3+</sup>+3SCN<sup>−</sup>=Fe(SCN)<sub>3</sub>↓</div></div>
 <div class="opt"><div>D．用酸性 KMnO<sub>4</sub> 检验 Fe<sup>2+</sup>：3Fe<sup>2+</sup>+MnO<sub>4</sub><sup>−</sup>+4H<sup>+</sup>=3Fe<sup>3+</sup>+MnO<sub>2</sub>↓+2H<sub>2</sub>O</div></div>
 </div>
-<div class="a"><div class="ans">答案 B</div>
+<div class="a"><details class="aMain"><summary>显示答案</summary><div class="abody">
+<div class="akey">答案 B</div>
 <div class="step"><b class="wrong">A 错在产物</b>：H<sub>2</sub>O<sub>2</sub> 在这里是氧化剂，自己被还原成 H<sub>2</sub>O，不可能同时放出 O<sub>2</sub>。正确是 Cu+H<sub>2</sub>O<sub>2</sub>+2H<sup>+</sup>=Cu<sup>2+</sup>+2H<sub>2</sub>O。式子配平了，产物是假的。</div>
 <div class="step"><b class="right">B 对</b>：Cu+2Fe<sup>3+</sup>=Cu<sup>2+</sup>+2Fe<sup>2+</sup>，原子、电荷、电子全平。</div>
 <div class="step"><b class="wrong">C 错在箭头</b>：Fe(SCN)<sub>3</sub> 是溶于水的配合物，显血红色，没有沉淀，不能写 ↓。</div>
 <div class="step"><b class="wrong">D 错在环境</b>：酸性条件下 MnO<sub>4</sub><sup>−</sup> 被还原成 Mn<sup>2+</sup>，不是 MnO<sub>2</sub>。正确是 5Fe<sup>2+</sup>+MnO<sub>4</sub><sup>−</sup>+8H<sup>+</sup>=5Fe<sup>3+</sup>+Mn<sup>2+</sup>+4H<sub>2</sub>O。</div>
-</div>
+</div></details>
+<div class="fold-tip">先做完再点开</div></div>
 <div class="q"><div class="src">2026·广东卷题组　选择题（11–16）第 35 题　难度 0.40　第二档</div><div class="stem">下列反应的方程式/离子方程式书写正确的是</div>
 <div class="opt"><div>A．向 NaHCO<sub>3</sub> 溶液中加入 CaCl<sub>2</sub> 产生白色沉淀：Ca<sup>2+</sup>+HCO<sub>3</sub><sup>−</sup>=CaCO<sub>3</sub>↓+H<sup>+</sup></div></div>
 <div class="opt"><div>B．铁粉在高温下与水蒸气反应生成可燃气体：3Fe+4H<sub>2</sub>O(g) —<span class="cond">高温</span>→ Fe<sub>3</sub>O<sub>4</sub>+4H<sub>2</sub></div></div>
 <div class="opt"><div>C．电解饱和食盐水：2Cl<sup>−</sup>+2H<sup>+</sup> —<span class="cond">电解</span>→ Cl<sub>2</sub>↑+H<sub>2</sub>↑</div></div>
 <div class="opt"><div>D．向 FeI<sub>2</sub> 溶液中通入过量的 Cl<sub>2</sub>：2Fe<sup>2+</sup>+Cl<sub>2</sub>=2Fe<sup>3+</sup>+2Cl<sup>−</sup></div></div>
 </div>
-<div class="a"><div class="ans">答案 B</div>
+<div class="a"><details class="aMain"><summary>显示答案</summary><div class="abody">
+<div class="akey">答案 B</div>
 <div class="step"><b class="wrong">A 错在根本不反应</b>：CaCO<sub>3</sub> 要在碱性环境下才生成，Ca<sup>2+</sup> 和 HCO<sub>3</sub><sup>−</sup> 混在一起不出沉淀。这是最常见的「编出来的反应」。</div>
 <div class="step"><b class="right">B 对</b>：3Fe+4H<sub>2</sub>O(g)=Fe<sub>3</sub>O<sub>4</sub>+4H<sub>2</sub>，高温条件别漏。</div>
 <div class="step"><b class="wrong">C 错在拆</b>：水是弱电解质不能拆成 H<sup>+</sup>，应写 2Cl<sup>−</sup>+2H<sub>2</sub>O=Cl<sub>2</sub>↑+H<sub>2</sub>↑+2OH<sup>−</sup>。顺带一算电荷：原式左边 −2、右边 0，本来就不平。</div>
 <div class="step"><b class="wrong">D 错在量</b>：Cl<sub>2</sub> 过量，I<sup>−</sup> 也会被氧化，而且 I<sup>−</sup> 的还原性比 Fe<sup>2+</sup> 强，得先反应。正确是 2Fe<sup>2+</sup>+4I<sup>−</sup>+3Cl<sub>2</sub>=2Fe<sup>3+</sup>+2I<sub>2</sub>+6Cl<sup>−</sup>。</div>
-</div>
+</div></details>
+<div class="fold-tip">先做完再点开</div></div>
 <div class="q"><div class="src">2023·广东卷　工业流程题 第 (3) 空（原题含流程图，此处只取设问）　难度 0.65　大题落点</div><div class="stem">从矿石硝酸浸取液（含 Ni<sup>2+</sup>、Co<sup>2+</sup>、Al<sup>3+</sup>、Mg<sup>2+</sup>）中氨浸提取 Ni、Co。已知氨性溶液由 NH<sub>3</sub>·H<sub>2</sub>O、(NH<sub>4</sub>)<sub>2</sub>SO<sub>3</sub>、(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> 配制，Co(OH)<sub>2</sub> 易被空气氧化为 Co(OH)<sub>3</sub>。<br>问：「氨浸」时由 Co(OH)<sub>3</sub> 转化为 [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup> 的离子方程式为 ______</div>
 </div>
-<div class="a"><div class="ans">答案 2Co(OH)<sub>3</sub>+12NH<sub>3</sub>·H<sub>2</sub>O+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O+4OH<sup>−</sup></div>
+<div class="a"><details class="aMain"><summary>显示答案</summary><div class="abody">
+<div class="akey">答案 2Co(OH)<sub>3</sub>+12NH<sub>3</sub>·H<sub>2</sub>O+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O+4OH<sup>−</sup></div>
 <div class="step"><b>先定电子</b>：Co(Ⅲ)→Co(Ⅱ) 每个得 1 个电子，两个 Co 共得 2 个；SO<sub>3</sub><sup>2−</sup>→SO<sub>4</sub><sup>2−</sup> 正好失 2 个。电子一对上，2∶1 的系数就定了。</div>
 <div class="step"><b>再配配位</b>：每个 Co 要 6 个 NH<sub>3</sub>，两个 Co 就是 12 个 NH<sub>3</sub>·H<sub>2</sub>O。</div>
 <div class="step"><b>然后配电荷</b>：右边两个 2+ 配离子共 +4，左边只有 SO<sub>3</sub><sup>2−</sup> 的 −2，差 4 个负电荷，所以右边补 4OH<sup>−</sup>。这一步最容易被漏掉，也是本空的主要失分点。</div>
 <div class="step"><b>最后补水</b>：左边氧共 2×3+12×1+3=21 个，右边 SO<sub>4</sub><sup>2−</sup> 占 4 个、4OH<sup>−</sup> 占 4 个，差 13，所以补水 13H<sub>2</sub>O。逐项数氧，别硬凑。</div>
 <div class="step"><b>另一写法也对</b>：2Co(OH)<sub>3</sub>+8NH<sub>3</sub>·H<sub>2</sub>O+4NH<sub>4</sub><sup>+</sup>+SO<sub>3</sub><sup>2−</sup>=2[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup>+SO<sub>4</sub><sup>2−</sup>+13H<sub>2</sub>O（用 NH<sub>4</sub><sup>+</sup> 抵电荷）。</div>
-</div>
+</div></details>
+<div class="fold-tip">先做完再点开</div></div>
 <div class="q"><div class="src">2023·广东卷　原理综合题 第 (1)② 空（节选）　难度 0.40　课后</div><div class="stem">有机物 R 能与 Fe<sup>2+</sup> 形成橙红色配离子 (FeR<sub>3</sub>)<sup>2+</sup>，可被 HNO<sub>3</sub> 氧化成淡蓝色配离子 (FeR<sub>3</sub>)<sup>3+</sup>。完成反应的离子方程式：<br>NO<sub>3</sub><sup>−</sup>+2(FeR<sub>3</sub>)<sup>2+</sup>+3H<sup>+</sup> ⇌ ______ +2(FeR<sub>3</sub>)<sup>3+</sup>+H<sub>2</sub>O</div>
 </div>
-<div class="a"><div class="ans">答案 HNO<sub>2</sub></div>
+<div class="a"><details class="aMain"><summary>显示答案</summary><div class="abody">
+<div class="akey">答案 HNO<sub>2</sub></div>
 <div class="step"><b>用电子反推产物</b>：2 个 (FeR<sub>3</sub>)<sup>2+</sup> 变 3+，共失 2 个电子，所以 N 只能得 2 个。</div>
 <div class="step"><b>N 从 +5 降到 +3</b>，产物是 HNO<sub>2</sub>。若写成 NO（+2），那是得 3 个电子，对不上，直接排掉。</div>
 <div class="step"><b>弱酸写分子</b>：HNO<sub>2</sub> 是弱酸，不能拆成 H<sup>+</sup>+NO<sub>2</sub><sup>−</sup>。这一步是本题的第二道坎。</div>
 <div class="step"><b>电荷复核</b>：左边 −1+4+3=+6，右边 2×(+3)=+6，平。</div>
-</div>
+</div></details>
+<div class="fold-tip">先做完再点开</div></div>
 </div></div>
 <div class="full panel"><h2><span class="n">06</span>回去补</h2><div class="chain">
 <a href="../topics/02.html">第2讲 离子反应 离子方程式</a>
